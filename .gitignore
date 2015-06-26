@@ -1,0 +1,5 @@
+# Python byte code
+*.pyc
+
+# Specific environment configuration
+config.yml
