@@ -4,35 +4,30 @@ from subprocess import Popen, PIPE
 class Site:
 
 	def __init__(self, root, directory, uri):
-		self.root = root
-		self.directory = directory
-		self.uris = [uri]
 
 		os.chdir(directory)
 
-		# Pull what we can from drush 
-		process = Popen(["drush", "--format=json", "--root=" + self.root, "--uri=" + self.uris[0], "status"], stdout=PIPE, stderr=PIPE)
+		# Get status
+		process = Popen(['drush', '--format=json', '--root=' + root, '--uri=' + uri, 'status'], stdout=PIPE, stderr=PIPE)
 		out, err = process.communicate()
-		sitedetails = json.loads(out)
-		sitedetails['filecount'] = 0
-		sitedetails['filesize'] = 0
-		sitedetails['privatefilecount'] = 0
-		sitedetails['privatefilesize'] = 0
+		self.details = json.loads(out)
+		self.details['uris'] = [uri]
 
-		# Get files
-		for dir, subdir, files in os.walk(os.path.join(self.root, sitedetails['files'])):
+		# Get file stats
+		self.details['filecount'] = 0
+		self.details['filesize'] = 0
+		self.details['privatefilecount'] = 0
+		self.details['privatefilesize'] = 0
+		for dir, subdir, files in os.walk(os.path.join(root, self.details['files'])):
 			for file in files:
-				sitedetails['filecount'] = sitedetails['filecount'] + 1
-				sitedetails['filesize'] += os.path.getsize(os.path.join(self.root, sitedetails['files']))
-		for dir, subdir, privatefiles in os.walk(os.path.join(self.root, sitedetails['private'])):
+				self.details['filecount'] = self.details['filecount'] + 1
+				self.details['filesize'] += os.path.getsize(os.path.join(root, self.details['files']))
+		for dir, subdir, privatefiles in os.walk(os.path.join(root, self.details['private'])):
 			for privatefile in privatefiles:
-				sitedetails['privatefilecount'] = sitedetails['privatefilecount'] + 1
-				sitedetails['privatefilesize'] += os.path.getsize(os.path.join(self.root, sitedetails['private']))
+				self.details['privatefilecount'] = self.details['privatefilecount'] + 1
+				self.details['privatefilesize'] += os.path.getsize(os.path.join(root, self.details['private']))
 
-	def get_projects(self):
 		# Get projects
-		process = Popen(["drush", "--format=json", "--root=" + self.root, "--uri=" + self.uris[0], "pm-info"], stdout=PIPE, stderr=PIPE)
+		process = Popen(['drush', '--format=json', '--root=' + root, '--uri=' + uri, 'pm-info'], stdout=PIPE, stderr=PIPE)
 		out, err = process.communicate()
-		projects = json.loads(out)
-		for project in projects:
-			print projects[project]
+		self.details['projects'] = json.loads(out)
