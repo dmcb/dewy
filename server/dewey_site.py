@@ -1,4 +1,4 @@
-import os, json
+import os, json, datetime
 from subprocess import Popen, PIPE
 
 class Site:
@@ -14,6 +14,7 @@ class Site:
 		out, err = process.communicate()
 		self.details = json.loads(out)
 		self.details['uris'] = [uri]
+		self.details['audited'] = datetime.datetime.now().isoformat('T')
 
 		# Get file stats
 		self.details['filecount'] = 0
@@ -38,5 +39,6 @@ class Site:
 		out, err = process.communicate()
 		projects = json.loads(out)
 		for project in projects:
+			projects[project]['audited'] = self.details['audited']
 			self.details['projects'].append([projects[project]['path'], projects[project]['status']])
 		return projects
