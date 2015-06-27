@@ -15,12 +15,12 @@ for uri in os.listdir(config['sites-root']):
 	directory = os.path.realpath(os.path.join(config['sites-root'], uri))
 
 	# Get sites
-	if os.path.isdir(directory) and os.path.split(directory)[1] != 'all' and os.path.split(directory)[1] != 'default':
+	if os.path.isdir(directory) and os.path.split(directory)[1] != 'all':
 		# There may be multiple folders pointing at the same site, create a URI for each
-		if directory in sites:
-			sites[directory].details.uris.append(uri)
+		if uri in sites:
+			sites[uri].details.uris.append(uri)
 		else:
-			sites[directory] = Site(config['drupal-root'], directory, uri)
+			sites[uri] = Site(config['drupal-root'], directory, uri)
 
 		# Get list of projects, avoid duplicates
 		site_projects = sites[directory].get_projects()
