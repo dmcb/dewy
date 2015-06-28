@@ -23,7 +23,7 @@ for uri in os.listdir(config['sites-root']):
 			sites[uri] = Site(config['drupal-root'], directory, uri)
 
 		# Get list of projects, avoid duplicates
-		site_projects = sites[directory].get_projects()
+		site_projects = sites[uri].get_projects()
 		for site_project in site_projects:
 			if site_projects[site_project]['path'] not in projects:
 				projects[site_projects[site_project]['path']] = site_projects[site_project]
@@ -32,6 +32,6 @@ for uri in os.listdir(config['sites-root']):
 couch = couchdb.Server(config['couch-location'])
 db = couch['dewey']
 for directory, site in sites.items():
-	db.save({directory: site.details})
+	db.save(site.details)
 for path, project in projects.items():
-	db.save({path: project})
+	db.save(project)
