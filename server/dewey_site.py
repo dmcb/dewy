@@ -25,10 +25,11 @@ class Site:
 			for file in files:
 				self.details['filecount'] = self.details['filecount'] + 1
 				self.details['filesize'] += os.path.getsize(os.path.join(self.root, self.details['files']))
-		for dir, subdir, privatefiles in os.walk(os.path.join(self.root, self.details['private'])):
-			for privatefile in privatefiles:
-				self.details['privatefilecount'] = self.details['privatefilecount'] + 1
-				self.details['privatefilesize'] += os.path.getsize(os.path.join(self.root, self.details['private']))
+		if 'private' in self.details:
+			for dir, subdir, privatefiles in os.walk(os.path.join(self.root, self.details['private'])):
+				for privatefile in privatefiles:
+					self.details['privatefilecount'] = self.details['privatefilecount'] + 1
+					self.details['privatefilesize'] += os.path.getsize(os.path.join(self.root, self.details['private']))
 
 	def get_projects(self):
 
