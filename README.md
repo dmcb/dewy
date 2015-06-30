@@ -5,9 +5,11 @@ A Drupal multi-site visualization tool
 ## Requirements
 
 * Drush 6.x
-* Python 2.6
-* CouchDB 1.6
-* Couchapp 1.0
+* Python 2.6+
+	* pyyaml
+	* couchdb
+* CouchDB 1.6+
+* Couchapp 1.0+
 
 ## Configuration
 
