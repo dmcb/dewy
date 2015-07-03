@@ -8,6 +8,7 @@ A Drupal multi-site visualization tool
 * Python 2.6+
 	* pyyaml
 	* couchdb
+	* beautifulsoup4
 * CouchDB 1.6+
 * Couchapp 1.0+
 

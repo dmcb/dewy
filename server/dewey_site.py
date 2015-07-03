@@ -1,5 +1,6 @@
 import os, json, datetime
 from subprocess import Popen, PIPE
+from bs4 import BeautifulSoup
 
 class Site:
 
@@ -51,6 +52,28 @@ class Site:
 					self.details['users'].append(user)
 				elif len(userdata) != 1:
 					throwaway = False
+
+		# Get node stats
+		process = Popen(['drush', '--root=' + self.root, '--uri=' + uri, 'sql-query', '--extra=--skip-column-names', 
+			'SELECT body_value FROM field_data_body;'], stdout=PIPE, stderr=PIPE)
+		out, err = process.communicate()
+		words = ''.join(BeautifulSoup(out).findAll(text=True)).split(' ')
+		self.details['counted_words'] = dict()
+		for word in words:
+			if word.lower() in self.details['counted_words']:
+				self.details['counted_words'][word.lower()] = self.details['counted_words'][word.lower()] + 1
+			else:
+				self.details['counted_words'][word.lower()] = 1
+
+		# Get last modified date
+		self.details['lastmodified'] = 0
+		process = Popen(['drush', '--root=' + self.root, '--uri=' + uri, 'sql-query', '--extra=--skip-column-names', 
+			'SELECT changed FROM node;'], stdout=PIPE, stderr=PIPE)
+		out, err = process.communicate()
+		for line in out.splitlines(True):
+			if self.details['lastmodified'] < int(line):
+				self.details['lastmodified'] = int(line)
+		self.details['lastmodified'] = datetime.datetime.fromtimestamp(self.details['lastmodified']).isoformat('T')
 
 	def get_projects(self):
 
