@@ -5,8 +5,9 @@
         <title>Dewey</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 
+        <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+        <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
         <link rel="stylesheet" href="css/styles.css">
 
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
@@ -27,17 +28,8 @@
         <!-- Templates -->
         <script id="sites" type="text/template">
             <section class="sites">
-                <h2>Sites</h2>
-                <div class="headers">
-                    <ul class="details">
-                        <li class="modules">Modules</li>
-                        <li class="users">Users</li>
-                        <li class="roles">Roles</li>
-                        <li class="files">Files</li>
-                        <li class="filesize">File size</li>
-                        <li class="lastmodified">Last modified</li>
-                        <li class="lastaccess">Last accessed</li>
-                    </ul>
+                <div class="header">
+                    <h2>Sites</h2>
                 </div>
                 <div class="list">
                 </div>
@@ -48,13 +40,10 @@
             <div class="site">
                 <h3><%= site %></h3>
                 <ul class="details">
-                    <li class="modules"><%- enabledmodulecount %> enabled, <%- totalmodulecount %> available</li>
-                    <li class="users"><%- usercount %></li>
-                    <li class="roles"><%- rolecount %></li>
-                    <li class="files"><%- filecount %> (<%= privatefilecount %> private)</li>
-                    <li class="filesize"><%= Math.round((filesize + privatefilesize) / 1048576) %> mb</li>
-                    <li class="lastmodified"><%- jQuery.timeago(lastmodified) %></li>
-                    <li class="lastaccess"><%- jQuery.timeago(lastaccess) %></li>
+                    <li class="modules"><%- enabledmodulecount %> modules enabled, <%- totalmodulecount %> available</li>
+                    <li class="users"><%- usercount %> users, <%- rolecount %> roles</li>
+                    <li class="files"><%- filecount %> files (<%= privatefilecount %> private), <%= Math.round((filesize + privatefilesize) / 1048576) %> mb</li>
+                    <li class="lastaccess">Last sign on <%- jQuery.timeago(lastaccess) %></li>
                 </ul>
             </div>
         </script>

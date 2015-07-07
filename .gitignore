@@ -3,3 +3,7 @@
 
 # Specific environment configuration
 config.yml
+
+# Development
+.sass-cache
+config.codekit
