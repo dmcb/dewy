@@ -29,10 +29,8 @@ $(function( $ ) {
 				site.attributes['enabledmodulecount'] = _.filter(site.attributes['projects'], function(module){ return module[1] == "enabled"; }).length;
 				site.attributes['totalmodulecount'] = site.attributes['projects'].length;
 				site.attributes['usercount'] = site.attributes['users'].length;
-				var roles = _.pluck(site.attributes['users'], 'role');
-				roles = _.uniq(roles);
-				site.attributes['rolecount'] = roles.length;
-				site.attributes['lastaccess'] = "10";
+				site.attributes['rolecount'] = _.uniq(_.pluck(site.attributes['users'], 'role')).length;
+				site.attributes['lastaccess'] = new Date(_.max(site.attributes['users'], function(user){ return user.access; })['access']*1000);
 				sites.append(siteTemplate(site.attributes));
 			});
 		},
