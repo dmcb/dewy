@@ -34,6 +34,7 @@ class Site:
 
 		# Get user stats
 		self.details['users'] = []
+		self.details['lastaccess'] = 0
 		process = Popen(['drush', '--root=' + self.root, '--uri=' + uri, 'sql-query', '--extra=-t', 
 			'SELECT users.name AS name, mail, access, status, role.name AS role FROM users, role, users_roles WHERE users.uid = users_roles.uid AND users_roles.rid = role.rid;'], stdout=PIPE, stderr=PIPE)
 		out, err = process.communicate()
@@ -50,6 +51,8 @@ class Site:
 					user['status'] = userdata[4].strip()
 					user['role'] = userdata[5].strip()
 					self.details['users'].append(user)
+					if self.details['lastaccess'] < int(user['access']):
+						self.details['lastaccess'] = int(user['access'])
 				elif len(userdata) != 1:
 					throwaway = False
 
