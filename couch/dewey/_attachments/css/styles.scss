@@ -20,6 +20,16 @@ header {
 section.sites {
 	margin: 0 2em;
 
+	.header {
+		h2 {
+			display: inline-block;
+		}
+
+		span {
+			margin-left: 0.5em;
+		}
+	}
+
 	h3 {
 		float: left;
 		margin: 0;

@@ -21,7 +21,7 @@ $(function( $ ) {
 		},
 		
 		render: function() {
-			$(this.el).html(this.template);
+			$(this.el).html(this.template({ "sitecount": this.collection.length }));
 			var sites = this.$('.list');
 			var siteTemplate = _.template($('#site').html());
 
