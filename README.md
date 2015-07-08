@@ -22,13 +22,24 @@ A Drupal multi-site visualization tool
 
 ## Configuration
 
-1. On your Drupal app server, configure the Dewey daemon
+### Drupal server
+
+1. Configure the Dewey daemon by copying the default file and making edits
 
 	```
 	cp config.yml.default config.yml
 	```
 
-2. On your CouchDB server, deploy the couchapp into the database:
+### CouchDB server
+
+1. Configure the web app to use Couch by copying the default file and making edits
+
+	```
+	cp couch/dewey/_attachments/js/app.js.default couch/dewey/_attachments/js/app.js
+	```
+
+
+2. Deploy the couchapp into the database:
 
 	```
 	cd dewey/couch/dewey
