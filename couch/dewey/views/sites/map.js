@@ -6,6 +6,6 @@ function(doc) {
 				enabledmodulecount++;
 			}
 		}
-		emit([doc.uri], {'enabledmodulecount': enabledmodulecount, 'totalmodulecount': doc.projects.length, 'usercount': doc.users.length, 'rolecount': doc.roles.length,  'lastaccess': doc.lastaccess, 'audited': doc.audited});
+		emit([doc.uri], {'site': doc.site, 'enabledmodulecount': enabledmodulecount, 'totalmodulecount': doc.projects.length, 'usercount': doc.users.length, 'rolecount': Object.keys(doc.roles).length, 'filecount': doc.filecount, 'filesize': doc.filesize, 'privatefilecount': doc.privatefilecount, 'privatefilesize': doc.privatefilesize, 'lastaccess': doc.lastaccess, 'audited': doc.audited});
 	}
 }

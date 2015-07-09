@@ -26,11 +26,8 @@ $(function( $ ) {
 			var siteTemplate = _.template($('#site').html());
 
 			this.collection.each(function(site) {
-				site.attributes['enabledmodulecount'] = _.filter(site.attributes['projects'], function(module){ return module[1] == "enabled"; }).length;
-				site.attributes['totalmodulecount'] = site.attributes['projects'].length;
-				site.attributes['usercount'] = site.attributes['users'].length;
-				site.attributes['rolecount'] = _.uniq(_.pluck(site.attributes['users'], 'role')).length;
-				site.attributes['lastaccess'] = new Date(_.max(site.attributes['users'], function(user){ return user.access; })['access']*1000);
+				// Data massaging
+				site.attributes['lastaccess'] = new Date(site.attributes['lastaccess']*1000);
 				sites.append(siteTemplate(site.attributes));
 			});
 		},

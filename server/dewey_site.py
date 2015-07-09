@@ -10,6 +10,9 @@ class Site:
 		self.directory = directory
 		os.chdir(self.directory)
 
+		# Message
+		print('Processing ' + uri)
+
 		# Get status
 		process = Popen(['drush', '--format=json', '--root=' + self.root, '--uri=' + uri, 'status'], stdout=PIPE, stderr=PIPE)
 		out, err = process.communicate()
@@ -56,7 +59,7 @@ class Site:
 						self.details['lastaccess'] = int(user['access'])
 					if user['role'] in self.details['roles']:
 						self.details['roles'][user['role']] = self.details['roles'][user['role']] + 1
-					else
+					else:
 						self.details['roles'][user['role']] = 1
 				elif len(userdata) != 1:
 					throwaway = False
