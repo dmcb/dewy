@@ -32,7 +32,7 @@ A Drupal multi-site visualization tool
 
 ### CouchDB server
 
-1. Configure the web app to use Couch by copying the default file and making edits
+1. Configure the web app to use Couch by copying the default file and specifying **Backbone.couch_connector.config.base_url**:
 
 	```
 	cp couch/dewey/_attachments/js/app.js.default couch/dewey/_attachments/js/app.js
@@ -43,5 +43,7 @@ A Drupal multi-site visualization tool
 
 	```
 	cd dewey/couch/dewey
-	couchapp push http://user:pass@localhost:5984/ dewey
+	couchapp push http://user:pass@localhost:5984/dewey
 	```
+	
+3. You can now access the Dewey site at **http://localhost:5984/dewey/_design/dewey/index.html**, but better yet, set up NGINX or Apache as a proxy to remove that ugly address.
