@@ -11,8 +11,9 @@ with open('config.yml', 'r') as file:
 # Get all Drupal sites, projects
 sites = dict()
 projects = dict()
-for uri in os.listdir(config['sites-root']):
-	directory = os.path.realpath(os.path.join(config['sites-root'], uri))
+sitesroot = os.path.join(config['drupal-root'], 'sites');
+for uri in os.listdir(sitesroot):
+	directory = os.path.realpath(os.path.join(sitesroot, uri))
 
 	# Get sites
 	if os.path.isdir(directory) and os.path.split(directory)[1] != 'all':
