@@ -24,11 +24,19 @@ A Drupal multi-site visualization tool
 
 ### Drupal server
 
-1. Configure the Dewey daemon by copying the default file and making edits
+1. Configure the Dewey daemon by copying the default configuration file and specifying the location of the couch database **couch-location**
 
 	```
-	cp config.yml.default config.yml
+	cp dewey/config.yml.default dewey/config.yml
 	```
+
+2. Dewey uses Drush to gather information. Hook Drush up to specific Dewey commands by symlinking the Dewey commands to a location Drush can see. If you are using a remote platform and Drush aliases to gather site information, you will need to copy **dewey.drush.inc** to that platform. Here are [Pantheon-specific instructions](https://pantheon.io/blog/expand-use-drush-pantheon-more-commands?mkt_tok=3RkMMJWWfF9wsRoju63PZKXonjHpfsX57O0sUaO3lMI%2F0ER3fOvrPUfGjI4FRcVmI%2BSLDwEYGJlv6SgFSbHDMadzzLgNUxg%3D).
+
+	```
+	mkdir ~/.drush
+	ln -s drush/dewey.drush.inc ~/.drush
+	```
+
 
 ### CouchDB server
 

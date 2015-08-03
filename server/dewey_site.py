@@ -21,26 +21,20 @@ class Site:
 		self.details['audited'] = datetime.datetime.now().isoformat('T')
 
 		# Get file stats
-		self.details['filecount'] = 0
-		self.details['filesize'] = 0
-		self.details['privatefilecount'] = 0
-		self.details['privatefilesize'] = 0
-		for dir, subdir, files in os.walk(os.path.join(self.root, self.details['files'])):
-			for file in files:
-				self.details['filecount'] = self.details['filecount'] + 1
-				self.details['filesize'] += os.path.getsize(os.path.join(self.root, self.details['files']))
-		if 'private' in self.details:
-			for dir, subdir, privatefiles in os.walk(os.path.join(self.root, self.details['private'])):
-				for privatefile in privatefiles:
-					self.details['privatefilecount'] = self.details['privatefilecount'] + 1
-					self.details['privatefilesize'] += os.path.getsize(os.path.join(self.root, self.details['private']))
+		process = Popen(['drush', '--root=' + self.root, '--uri=' + uri, 'file-usage'], stdout=PIPE, stderr=PIPE)
+		out, err = process.communicate()
+		filedetails = json.loads(out)
+		self.details['filecount'] = filedetails['filecount']['public'];
+		self.details['filesize'] = filedetails['filesize']['public'];
+		self.details['privatefilecount'] = filedetails['filecount']['private'];
+		self.details['privatefilesize'] = filedetails['filesize']['private'];
 
 		# Get user stats
 		self.details['users'] = []
 		self.details['lastaccess'] = 0
 		self.details['roles'] = dict()
 		process = Popen(['drush', '--root=' + self.root, '--uri=' + uri, 'sql-query', '--extra=-t', 
-			'SELECT users.name AS name, mail, access, status, role.name AS role FROM users, role, users_roles WHERE users.uid = users_roles.uid AND users_roles.rid = role.rid;'], stdout=PIPE, stderr=PIPE)
+			'SELECT users.name AS name, mail, access, status, role.name AS role FROM users, role, users_roles WHERE users.uid = users_roles.uid AND users_roles.rid = role.rid'], stdout=PIPE, stderr=PIPE)
 		out, err = process.communicate()
 		if out:
 			# Throw away first line of output, it is the headers we already know
@@ -66,7 +60,7 @@ class Site:
 
 		# Get node stats
 		process = Popen(['drush', '--root=' + self.root, '--uri=' + uri, 'sql-query', '--extra=--skip-column-names', 
-			'SELECT body_value FROM field_data_body;'], stdout=PIPE, stderr=PIPE)
+			'SELECT body_value FROM field_data_body'], stdout=PIPE, stderr=PIPE)
 		out, err = process.communicate()
 		words = ''.join(BeautifulSoup(out).findAll(text=True)).split(' ')
 		self.details['counted_words'] = dict()
