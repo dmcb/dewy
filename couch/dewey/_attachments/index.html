@@ -29,8 +29,43 @@
         <script id="sites" type="text/template">
             <section class="sites">
                 <div class="header">
-                    <h2>Sites</h2>
-                    <span>(<%- sitecount %> sites)</span>
+                    <div class="environment">
+                        <h2>Sites <span>(<%- sitecount %> sites)</span></h2>
+                    </div>
+                    <ul class="headers">
+                        <li class="modules">
+                            <a aria-label="Sort Up">
+                              <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                            </a>
+                            <a aria-label="Sort Down">
+                              <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                            </a>
+                        </li>
+                        <li class="users">
+                            <a aria-label="Sort Up">
+                              <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                            </a>
+                            <a aria-label="Sort Down">
+                              <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                            </a>
+                        </li>
+                        <li class="files">
+                            <a aria-label="Sort Up">
+                              <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                            </a>
+                            <a aria-label="Sort Down">
+                              <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                            </a>
+                        </li>
+                        <li class="lastaccess">
+                            <a aria-label="Sort Up">
+                              <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                            </a>
+                            <a aria-label="Sort Down">
+                              <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
                 <div class="list">
                 </div>
@@ -39,7 +74,9 @@
 
         <script id="site" type="text/template">
             <div class="site">
-                <h3><%= site %></h3>
+                <div class="title">
+                    <h3><%= site %></h3>
+                </div>
                 <ul class="details">
                     <li class="modules"><%- enabledmodulecount %> modules enabled, <%- totalmodulecount %> available</li>
                     <li class="users"><%- usercount %> users, <%- rolecount %> roles</li>

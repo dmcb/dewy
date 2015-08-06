@@ -8,3 +8,6 @@ app.js
 # Development
 .sass-cache
 config.codekit
+*.scssc
+
+*.scssc

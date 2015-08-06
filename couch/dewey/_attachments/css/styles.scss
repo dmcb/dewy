@@ -1,13 +1,17 @@
+$font-size-base: 14px;
+@import 'bootstrap-sass-3.3.5/stylesheets/bootstrap-custom';
+
 body {
 	margin: 0;
 	font-family: 'Lato', Helvetica, Arial, sans-serif;
-	font-size: 10pt;
+	color: #555;
 }
 
 header {
 	background-color: blue;
 
 	h1 {
+		@extend .row;
 		font-family: 'Lato';
 		font-weight: 300;
 		margin: 0;
@@ -18,49 +22,80 @@ header {
 }
 
 section.sites {
-	margin: 0 2em;
+	margin: 2em 2em;
 
 	.header {
-		h2 {
-			display: inline-block;
+		@extend .row;
+		margin-bottom: 1em;
+
+		.environment {
+			@extend .col-lg-4;
+			@extend .col-xs-12;
+
+			h2 {
+				margin: 0;
+
+				span {
+					@extend .small;
+					margin-left: 0.5em;
+				}
+			}
 		}
 
-		span {
-			margin-left: 0.5em;
+		.headers{
+			@extend .row;
+			@extend .col-lg-8;
+			@extend .col-xs-12;
+
+			li {
+				@extend .col-sm-3;
+				@extend .col-xs-12;
+				display: block;
+
+				a {
+					padding: 0.5em;
+					margin: 0 0.25em 0.25em 0;
+					background-color: #eee;
+					border-radius: 0.5em;
+
+					&:hover {
+						background-color: #000;
+					}
+				}
+			}
 		}
 	}
 
-	h3 {
-		float: left;
-		margin: 0;
-	}
+	.list {
+		.site {
+			@extend .row;
 
-	.site {
-		clear: both;
-		padding: 0.5em 0;
+			.title {
+				@extend .h4;
+				@extend .col-lg-4;
+				@extend .col-xs-12;
 
-		&:after {
-			content: ".";
-			display: block;
-			height: 0;
-			clear: both;
-			visibility: hidden;
-		}
-	}
+				h3 {
+					margin: 0;
+				}
+			}
 
-	.details {
-		float: right;
-		margin: 0 -0.5em;
-		padding: 0;
+			.details {
+				@extend .row;
+				@extend .col-lg-8;
+				@extend .col-xs-12;
 
-		li {
-			display: inline-block;
-			margin: 0 0.25em;
-			padding: 0.25em;
-			border-radius: 0.5em;
+				li {
+					@extend .col-sm-3;
+					@extend .col-xs-12;
+					display: block;
 
-			&:hover {
-				background-color: #eee;
+					border-radius: 0.5em;
+
+					&:hover {
+						background-color: #eee;
+					}
+				}
 			}
 		}
 	}
