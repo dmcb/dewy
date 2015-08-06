@@ -56,8 +56,10 @@ class Site:
 		# Get user stats
 		userdetails = talkToDrush(self, ['dewey-user-stats'])
 		self.details['users'] = userdetails['users']
+		self.details['usercount'] = userdetails['usercount']
 		self.details['lastaccess'] = userdetails['lastaccess']
 		self.details['roles'] = userdetails['roles']
+		self.details['rolecount'] = userdetails['rolecount']
 
 		# Get node stats
 		nodedetails = talkToDrush(self, ['dewey-node-stats'])
@@ -70,7 +72,11 @@ class Site:
 		# Get projects
 		projectdetails = talkToDrush(self, ['pm-info', '--format=json'])
 		self.details['projects'] = []
+		self.details['enabledmodulecount'] = 0
+		self.details['totalmodulecount'] = len(projectdetails.keys())
 		for project in projectdetails:
 			projectdetails[project]['audited'] = self.details['audited']
 			self.details['projects'].append([projectdetails[project]['path'], projectdetails[project]['status']])
+			if projectdetails[project]['status'] == 'enabled':
+				self.details['enabledmodulecount'] = self.details['enabledmodulecount']+1
 		return projectdetails

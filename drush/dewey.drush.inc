@@ -86,6 +86,9 @@ function drush_dewey_user_stats() {
 		}
 	}
 
+	$output['usercount'] = sizeof($output['users']);
+	$output['rolecount'] = sizeof($output['roles']);
+
 	drush_print(json_encode($output));
 }
 
