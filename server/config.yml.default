@@ -1,3 +1,4 @@
 ---
-drupal-root:    
-couch-location: 
+couch-location: http://user:pass@localhost:5984
+drupal-root:    /var/html/drupal
+alias-regex:    .*

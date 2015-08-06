@@ -4,11 +4,10 @@ A Drupal multi-site visualization tool
 
 ## Requirements
 
-* Drush 6.x
+* Drush 7.x
 * Python 2.6+
 	* pyyaml
 	* couchdb
-	* beautifulsoup4
 * CouchDB 1.6+
 * Couchapp 1.0+
 
@@ -22,19 +21,26 @@ A Drupal multi-site visualization tool
 
 ## Configuration
 
-### Drupal server
+### Drush server
 
-1. Configure the Dewey daemon by copying the default configuration file and specifying the location of the couch database **couch-location**
+1. Configure the Dewey daemon by copying the default configuration file
 
 	```
 	cp dewey/config.yml.default dewey/config.yml
 	```
 
-2. Dewey uses Drush to gather information. Hook Drush up to specific Dewey commands by symlinking the Dewey commands to a location Drush can see. If you are using a remote platform and Drush aliases to gather site information, you will need to copy **dewey.drush.inc** to that platform. Here are [Pantheon-specific instructions](https://pantheon.io/blog/expand-use-drush-pantheon-more-commands?mkt_tok=3RkMMJWWfF9wsRoju63PZKXonjHpfsX57O0sUaO3lMI%2F0ER3fOvrPUfGjI4FRcVmI%2BSLDwEYGJlv6SgFSbHDMadzzLgNUxg%3D).
+2. In dewey/config.yml specify:
+
+ 	* **couch-location**: The location of the couch database to write data to The local Drupal install (if applicable)
+ 	* **drupal-root**: The location of the local Drupal environment (if applicable) to read sites from
+ 	* **alias-regex**: The regex to match any defined site aliases, for example, matching Pantheon sites would be **pantheon\..\***
+
+3. Dewey uses Drush to gather information. Hook Drush up to specific Dewey commands by symlinking the Dewey commands to a location Drush can see. If you are using a remote platform and Drush aliases to gather site information, you will need to copy **drush/\*** to that platform (here are [Pantheon-specific instructions](https://pantheon.io/blog/expand-use-drush-pantheon-more-commands?mkt_tok=3RkMMJWWfF9wsRoju63PZKXonjHpfsX57O0sUaO3lMI%2F0ER3fOvrPUfGjI4FRcVmI%2BSLDwEYGJlv6SgFSbHDMadzzLgNUxg%3D), make sure to [enable Drush 7](https://pantheon.io/blog/fix-drush-site-aliases-policy-file))
 
 	```
 	mkdir ~/.drush
-	ln -s drush/dewey.drush.inc ~/.drush
+	ln -s drush/dewey.drush.inc ~/.drush/
+	ln -s drush/dewey ~/.drush/
 	```
 
 

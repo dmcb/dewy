@@ -1,94 +1,76 @@
 import os, json, datetime
 from subprocess import Popen, PIPE
-from bs4 import BeautifulSoup
+
+def talkToDrush(self, commands=[]):
+	if self.alias:
+		arguments = ['drush', '-y', self.alias]
+		# process = Popen(['drush', '-y', '@' + self.alias, commands], stdout=PIPE, stderr=PIPE)
+	else:
+		arguments = ['drush', '--root=' + self.root, '--uri=' + self.uri]
+		# process = Popen(['drush', '--root=' + self.root, '--uri=' + self.uri, commands], stdout=PIPE, stderr=PIPE)
+	try:
+		process = Popen(arguments + commands, stdout=PIPE, stderr=PIPE)
+		out, err = process.communicate()
+		return json.loads(out)
+	except:
+		if self.alias:
+			print "Drush failed to communicate to " + self.alias
+		else:
+			print "Drush failed to communicate to " + self.uri
+		raise Exception
 
 class Site:
 
-	def __init__(self, root, directory, uri):
-
+	def __init__(self, root=None, uri=None, alias=None):
+		# Define basics
 		self.root = root
-		self.directory = directory
-		os.chdir(self.directory)
+		self.uri = uri
+		self.alias = alias
+		self.details = dict()
 
+		# Get unique identifier
+		try:
+			output = talkToDrush(self,['dewey-uniqueness'])
+			self.unique_identifier = output['database_host'] + '/' + output['database']
+			self.details['uris'] = [output['uri']]
+			print "Added " + output['uri']
+		except:
+			if self.alias:
+				print "Failed to identify " + self.alias
+			else:
+				print "Failed to identify " + self.uri
+			raise Exception
+
+	def auditSite(self):
 		# Message
-		print('Processing ' + uri)
-
-		# Get status
-		process = Popen(['drush', '--format=json', '--root=' + self.root, '--uri=' + uri, 'status'], stdout=PIPE, stderr=PIPE)
-		out, err = process.communicate()
-		self.details = json.loads(out)
-		self.details['uris'] = [uri]
+		print('Processing ' + self.details['uris'][0])
 		self.details['audited'] = datetime.datetime.now().isoformat('T')
 
 		# Get file stats
-		process = Popen(['drush', '--root=' + self.root, '--uri=' + uri, 'file-usage'], stdout=PIPE, stderr=PIPE)
-		out, err = process.communicate()
-		filedetails = json.loads(out)
-		self.details['filecount'] = filedetails['filecount']['public'];
-		self.details['filesize'] = filedetails['filesize']['public'];
-		self.details['privatefilecount'] = filedetails['filecount']['private'];
-		self.details['privatefilesize'] = filedetails['filesize']['private'];
+		filedetails = talkToDrush(self, ['dewey-file-usage'])
+		self.details['filecount'] = filedetails['filecount']['public']
+		self.details['filesize'] = filedetails['filesize']['public']
+		self.details['privatefilecount'] = filedetails['filecount']['private']
+		self.details['privatefilesize'] = filedetails['filesize']['private']
 
 		# Get user stats
-		self.details['users'] = []
-		self.details['lastaccess'] = 0
-		self.details['roles'] = dict()
-		process = Popen(['drush', '--root=' + self.root, '--uri=' + uri, 'sql-query', '--extra=-t', 
-			'SELECT users.name AS name, mail, access, status, role.name AS role FROM users, role, users_roles WHERE users.uid = users_roles.uid AND users_roles.rid = role.rid'], stdout=PIPE, stderr=PIPE)
-		out, err = process.communicate()
-		if out:
-			# Throw away first line of output, it is the headers we already know
-			throwaway = True
-			for line in out.splitlines(True):
-				userdata = line.split('|')
-				user = dict()
-				if len(userdata) != 1 and not throwaway:
-					user['name'] = userdata[1].strip()
-					user['mail'] = userdata[2].strip()
-					user['access'] = userdata[3].strip()
-					user['status'] = userdata[4].strip()
-					user['role'] = userdata[5].strip()
-					self.details['users'].append(user)
-					if self.details['lastaccess'] < int(user['access']):
-						self.details['lastaccess'] = int(user['access'])
-					if user['role'] in self.details['roles']:
-						self.details['roles'][user['role']] = self.details['roles'][user['role']] + 1
-					else:
-						self.details['roles'][user['role']] = 1
-				elif len(userdata) != 1:
-					throwaway = False
+		userdetails = talkToDrush(self, ['dewey-user-stats'])
+		self.details['users'] = userdetails['users']
+		self.details['lastaccess'] = userdetails['lastaccess']
+		self.details['roles'] = userdetails['roles']
 
 		# Get node stats
-		process = Popen(['drush', '--root=' + self.root, '--uri=' + uri, 'sql-query', '--extra=--skip-column-names', 
-			'SELECT body_value FROM field_data_body'], stdout=PIPE, stderr=PIPE)
-		out, err = process.communicate()
-		words = ''.join(BeautifulSoup(out).findAll(text=True)).split(' ')
-		self.details['counted_words'] = dict()
-		for word in words:
-			if word.lower() in self.details['counted_words']:
-				self.details['counted_words'][word.lower()] = self.details['counted_words'][word.lower()] + 1
-			else:
-				self.details['counted_words'][word.lower()] = 1
+		nodedetails = talkToDrush(self, ['dewey-node-stats'])
+		self.details['counted_words'] = nodedetails['counted_words']
+		if nodedetails['lastmodified']:
+			self.details['lastmodified'] = datetime.datetime.fromtimestamp(int(nodedetails['lastmodified'])).isoformat('T')
+		else:
+			self.details['lastmodified'] = None
 
-		# Get last modified date
-		self.details['lastmodified'] = 0
-		process = Popen(['drush', '--root=' + self.root, '--uri=' + uri, 'sql-query', '--extra=--skip-column-names', 
-			'SELECT changed FROM node;'], stdout=PIPE, stderr=PIPE)
-		out, err = process.communicate()
-		for line in out.splitlines(True):
-			if self.details['lastmodified'] < int(line):
-				self.details['lastmodified'] = int(line)
-		self.details['lastmodified'] = datetime.datetime.fromtimestamp(self.details['lastmodified']).isoformat('T')
-
-	def get_projects(self):
-
+		# Get projects
+		projectdetails = talkToDrush(self, ['pm-info', '--format=json'])
 		self.details['projects'] = []
-		os.chdir(self.directory)
-
-		process = Popen(['drush', '--format=json', '--root=' + self.root, '--uri=' + self.details['uris'][0], 'pm-info'], stdout=PIPE, stderr=PIPE)
-		out, err = process.communicate()
-		projects = json.loads(out)
-		for project in projects:
-			projects[project]['audited'] = self.details['audited']
-			self.details['projects'].append([projects[project]['path'], projects[project]['status']])
-		return projects
+		for project in projectdetails:
+			projectdetails[project]['audited'] = self.details['audited']
+			self.details['projects'].append([projectdetails[project]['path'], projectdetails[project]['status']])
+		return projectdetails
