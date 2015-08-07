@@ -71,12 +71,16 @@ class Site:
 
 		# Get projects
 		projectdetails = talkToDrush(self, ['pm-info', '--format=json'])
-		self.details['projects'] = []
+		self.details['modules'] = dict()
 		self.details['enabledmodulecount'] = 0
-		self.details['totalmodulecount'] = len(projectdetails.keys())
+		self.details['totalmodulecount'] = 0
 		for project in projectdetails:
 			projectdetails[project]['audited'] = self.details['audited']
-			self.details['projects'].append([projectdetails[project]['path'], projectdetails[project]['status']])
-			if projectdetails[project]['status'] == 'enabled':
-				self.details['enabledmodulecount'] = self.details['enabledmodulecount']+1
+			if projectdetails[project]['type'] == 'module':
+				self.details['totalmodulecount'] = self.details['totalmodulecount']+1
+				self.details['modules'][projectdetails[project]['path']] = {'status': projectdetails[project]['status'], 'schema': projectdetails[project]['schema_version'], 'version': projectdetails[project]['version']}
+				if projectdetails[project]['status'] == 'enabled' and projectdetails[project]['type'] == 'module':
+					self.details['enabledmodulecount'] = self.details['enabledmodulecount']+1
+					
+
 		return projectdetails

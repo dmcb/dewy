@@ -75,7 +75,7 @@ function drush_dewey_user_stats() {
 
 	$result = db_query("SELECT users.name AS name, mail, access, status, role.name AS role FROM users, role, users_roles WHERE users.uid = users_roles.uid AND users_roles.rid = role.rid");
 	while ($user = $result->fetchAssoc()) {
-		$output['users'][] = $user;
+		$output['users'][$user['name']] = $user;
 		if ($user['access'] > $output['lastaccess']) {
 			$output['lastaccess'] = $user['access'];
 		}
