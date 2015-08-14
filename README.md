@@ -13,6 +13,22 @@ A Drupal multi-site visualization tool
 
 ## Installation
 
+### Drush server
+
+1. Install Composer
+
+	```
+	curl -sS https://getcomposer.org/installer | php
+	mv composer.phar /usr/local/bin/compose
+	```
+
+
+2. Install Drush
+
+	```
+	composer global require drush/drush:7.*
+	```
+
 ### CouchDB server
 
 1. CouchDB is rather difficult to install on most systems. You can try the [official instructions](http://docs.couchdb.org/en/latest/install/index.html), but better yet, [use Docker](https://registry.hub.docker.com/u/frodenas/couchdb/).
