@@ -38,7 +38,17 @@
                         <h2>Sites <span>(<%- sitecount %> sites)</span></h2>
                     </div>
                     <ul class="headers">
-                        <li class="modules">
+                        <li class="modules-enabled">
+                            <span>Enabled modules</span>
+                            <a aria-label="Sort Up">
+                              <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                            </a>
+                            <a aria-label="Sort Down">
+                              <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                            </a>
+                        </li>
+                        <li class="modules-total">
+                            <span>Total modules</span>
                             <a aria-label="Sort Up">
                               <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
                             </a>
@@ -47,6 +57,16 @@
                             </a>
                         </li>
                         <li class="users">
+                            <span>Users</span>
+                            <a aria-label="Sort Up">
+                              <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                            </a>
+                            <a aria-label="Sort Down">
+                              <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                            </a>
+                        </li>
+                        <li class="roles">
+                            <span>Roles</span>
                             <a aria-label="Sort Up">
                               <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
                             </a>
@@ -55,6 +75,7 @@
                             </a>
                         </li>
                         <li class="files">
+                            <span>Files (private)</span>
                             <a aria-label="Sort Up">
                               <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
                             </a>
@@ -63,6 +84,7 @@
                             </a>
                         </li>
                         <li class="lastaccess">
+                            <span>Last sign on</span>
                             <a aria-label="Sort Up">
                               <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
                             </a>
@@ -83,10 +105,12 @@
                     <h3><%= site %></h3>
                 </div>
                 <ul class="details">
-                    <li class="modules"><%- enabledmodulecount %> modules enabled, <%- totalmodulecount %> available</li>
-                    <li class="users"><%- usercount %> users, <%- rolecount %> roles</li>
-                    <li class="files"><%- filecount %> files (<%= privatefilecount %> private), <%= Math.round((filesize + privatefilesize) / 1048576) %> mb</li>
-                    <li class="lastaccess">Last sign on <%- jQuery.timeago(lastaccess) %></li>
+                    <li class="modules-enabled"><%- enabledmodulecount %></li>
+                    <li class="modules-total"><%- totalmodulecount %></li>
+                    <li class="users"><%- usercount %></li>
+                    <li class="roles"><%- rolecount %></li>
+                    <li class="files"><%- filecount %> (<%= privatefilecount %>)</li>
+                    <li class="lastaccess"><%- jQuery.timeago(lastaccess) %></li>
                 </ul>
             </div>
         </script>

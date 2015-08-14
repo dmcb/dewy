@@ -1615,7 +1615,7 @@ pre {
   .row:after, header div:after, #content section.sites .header:after, #content section.sites .header .headers:after, #content section.sites .list .site:after, #content section.sites .list .site .details:after {
     clear: both; }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, #content section.sites .header .headers li, #content section.sites .list .site .details li, .col-md-3, #content section.sites .header .environment, #content section.sites .list .site .title, .col-lg-3, .col-xs-4, .col-sm-4, header div .search, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, header div h1, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, #content section.sites .header .headers, #content section.sites .list .site .details, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, header div h1, header div .search, #content section.sites .header .environment, #content section.sites .header .headers, #content section.sites .header .headers li, #content section.sites .list .site .title, #content section.sites .list .site .details, #content section.sites .list .site .details li, .col-sm-12, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, #content section.sites .header .headers li, #content section.sites .list .site .details li, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, #content section.sites .header .environment, #content section.sites .list .site .title, .col-lg-3, .col-xs-4, .col-sm-4, header div .search, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, header div h1, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, #content section.sites .header .headers, #content section.sites .list .site .details, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, header div h1, header div .search, #content section.sites .header .environment, #content section.sites .header .headers, #content section.sites .header .headers li, #content section.sites .list .site .title, #content section.sites .list .site .details, #content section.sites .list .site .details li, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -1778,16 +1778,16 @@ pre {
   margin-left: 100%; }
 
 @media (min-width: 768px) {
-  .col-sm-1, .col-sm-2, .col-sm-3, #content section.sites .header .headers li, #content section.sites .list .site .details li, .col-sm-4, header div .search, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, header div h1, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
+  .col-sm-1, .col-sm-2, #content section.sites .header .headers li, #content section.sites .list .site .details li, .col-sm-3, .col-sm-4, header div .search, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, header div h1, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
     float: left; }
 
   .col-sm-1 {
     width: 8.3333333333%; }
 
-  .col-sm-2 {
+  .col-sm-2, #content section.sites .header .headers li, #content section.sites .list .site .details li {
     width: 16.6666666667%; }
 
-  .col-sm-3, #content section.sites .header .headers li, #content section.sites .list .site .details li {
+  .col-sm-3 {
     width: 25%; }
 
   .col-sm-4, header div .search {
@@ -5907,11 +5907,16 @@ header {
         margin-left: 0.5em; }
     #content section.sites .header .headers li {
       display: block; }
+      #content section.sites .header .headers li > span {
+        font-weight: bold;
+        display: block;
+        width: 100%; }
       #content section.sites .header .headers li a {
         padding: 0.5em;
         margin: 0 0.25em 0.25em 0;
         background-color: #eee;
-        border-radius: 0.5em; }
+        border-radius: 0.5em;
+        font-size: 0.8em; }
         #content section.sites .header .headers li a:hover {
           background-color: #000; }
   #content section.sites .list .site .title {
