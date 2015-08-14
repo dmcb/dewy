@@ -1069,7 +1069,7 @@ html {
 
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.428571429;
   color: #333333;
   background-color: #fff; }
@@ -1124,8 +1124,8 @@ img {
   border-radius: 50%; }
 
 hr {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 18px;
+  margin-bottom: 18px;
   border: 0;
   border-top: 1px solid #eeeeee; }
 
@@ -1151,51 +1151,51 @@ hr {
   cursor: pointer; }
 
 h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, section.sites .list .site .title, .h5, .h6 {
+.h1, .h2, .h3, .h4, #content section.sites .list .site .title, .h5, .h6 {
   font-family: inherit;
   font-weight: 500;
   line-height: 1.1;
   color: inherit; }
   h1 small,
   h1 .small,
-  h1 section.sites .header .environment h2 span,
-  section.sites .header .environment h2 h1 span, h2 small,
+  h1 #content section.sites .header .environment h2 span,
+  #content section.sites .header .environment h2 h1 span, h2 small,
   h2 .small,
-  section.sites .header .environment h2 span, h3 small,
+  #content section.sites .header .environment h2 span, h3 small,
   h3 .small,
-  h3 section.sites .header .environment h2 span,
-  section.sites .header .environment h2 h3 span, h4 small,
+  h3 #content section.sites .header .environment h2 span,
+  #content section.sites .header .environment h2 h3 span, h4 small,
   h4 .small,
-  h4 section.sites .header .environment h2 span,
-  section.sites .header .environment h2 h4 span, h5 small,
+  h4 #content section.sites .header .environment h2 span,
+  #content section.sites .header .environment h2 h4 span, h5 small,
   h5 .small,
-  h5 section.sites .header .environment h2 span,
-  section.sites .header .environment h2 h5 span, h6 small,
+  h5 #content section.sites .header .environment h2 span,
+  #content section.sites .header .environment h2 h5 span, h6 small,
   h6 .small,
-  h6 section.sites .header .environment h2 span,
-  section.sites .header .environment h2 h6 span,
+  h6 #content section.sites .header .environment h2 span,
+  #content section.sites .header .environment h2 h6 span,
   .h1 small,
   .h1 .small,
-  .h1 section.sites .header .environment h2 span,
-  section.sites .header .environment h2 .h1 span, .h2 small,
+  .h1 #content section.sites .header .environment h2 span,
+  #content section.sites .header .environment h2 .h1 span, .h2 small,
   .h2 .small,
-  .h2 section.sites .header .environment h2 span,
-  section.sites .header .environment h2 .h2 span, .h3 small,
+  .h2 #content section.sites .header .environment h2 span,
+  #content section.sites .header .environment h2 .h2 span, .h3 small,
   .h3 .small,
-  .h3 section.sites .header .environment h2 span,
-  section.sites .header .environment h2 .h3 span, .h4 small, section.sites .list .site .title small,
+  .h3 #content section.sites .header .environment h2 span,
+  #content section.sites .header .environment h2 .h3 span, .h4 small, #content section.sites .list .site .title small,
   .h4 .small,
-  section.sites .list .site .title .small,
-  .h4 section.sites .header .environment h2 span,
-  section.sites .header .environment h2 .h4 span,
-  section.sites .list .site .title .header .environment h2 span,
-  section.sites .header .environment h2 .list .site .title span, .h5 small,
+  #content section.sites .list .site .title .small,
+  .h4 #content section.sites .header .environment h2 span,
+  #content section.sites .header .environment h2 .h4 span,
+  #content section.sites .list .site .title .header .environment h2 span,
+  #content section.sites .header .environment h2 .list .site .title span, .h5 small,
   .h5 .small,
-  .h5 section.sites .header .environment h2 span,
-  section.sites .header .environment h2 .h5 span, .h6 small,
+  .h5 #content section.sites .header .environment h2 span,
+  #content section.sites .header .environment h2 .h5 span, .h6 small,
   .h6 .small,
-  .h6 section.sites .header .environment h2 span,
-  section.sites .header .environment h2 .h6 span {
+  .h6 #content section.sites .header .environment h2 span,
+  #content section.sites .header .environment h2 .h6 span {
     font-weight: normal;
     line-height: 1;
     color: #777777; }
@@ -1203,95 +1203,95 @@ h1, h2, h3, h4, h5, h6,
 h1, .h1,
 h2, .h2,
 h3, .h3 {
-  margin-top: 20px;
-  margin-bottom: 10px; }
+  margin-top: 18px;
+  margin-bottom: 9px; }
   h1 small,
   h1 .small,
-  h1 section.sites .header .environment h2 span,
-  section.sites .header .environment h2 h1 span, .h1 small,
+  h1 #content section.sites .header .environment h2 span,
+  #content section.sites .header .environment h2 h1 span, .h1 small,
   .h1 .small,
-  .h1 section.sites .header .environment h2 span,
-  section.sites .header .environment h2 .h1 span,
+  .h1 #content section.sites .header .environment h2 span,
+  #content section.sites .header .environment h2 .h1 span,
   h2 small,
   h2 .small,
-  section.sites .header .environment h2 span, .h2 small,
+  #content section.sites .header .environment h2 span, .h2 small,
   .h2 .small,
-  .h2 section.sites .header .environment h2 span,
-  section.sites .header .environment h2 .h2 span,
+  .h2 #content section.sites .header .environment h2 span,
+  #content section.sites .header .environment h2 .h2 span,
   h3 small,
   h3 .small,
-  h3 section.sites .header .environment h2 span,
-  section.sites .header .environment h2 h3 span, .h3 small,
+  h3 #content section.sites .header .environment h2 span,
+  #content section.sites .header .environment h2 h3 span, .h3 small,
   .h3 .small,
-  .h3 section.sites .header .environment h2 span,
-  section.sites .header .environment h2 .h3 span {
+  .h3 #content section.sites .header .environment h2 span,
+  #content section.sites .header .environment h2 .h3 span {
     font-size: 65%; }
 
-h4, .h4, section.sites .list .site .title,
+h4, .h4, #content section.sites .list .site .title,
 h5, .h5,
 h6, .h6 {
-  margin-top: 10px;
-  margin-bottom: 10px; }
+  margin-top: 9px;
+  margin-bottom: 9px; }
   h4 small,
   h4 .small,
-  h4 section.sites .header .environment h2 span,
-  section.sites .header .environment h2 h4 span, .h4 small, section.sites .list .site .title small,
+  h4 #content section.sites .header .environment h2 span,
+  #content section.sites .header .environment h2 h4 span, .h4 small, #content section.sites .list .site .title small,
   .h4 .small,
-  section.sites .list .site .title .small,
-  .h4 section.sites .header .environment h2 span,
-  section.sites .header .environment h2 .h4 span,
-  section.sites .list .site .title .header .environment h2 span,
-  section.sites .header .environment h2 .list .site .title span,
+  #content section.sites .list .site .title .small,
+  .h4 #content section.sites .header .environment h2 span,
+  #content section.sites .header .environment h2 .h4 span,
+  #content section.sites .list .site .title .header .environment h2 span,
+  #content section.sites .header .environment h2 .list .site .title span,
   h5 small,
   h5 .small,
-  h5 section.sites .header .environment h2 span,
-  section.sites .header .environment h2 h5 span, .h5 small,
+  h5 #content section.sites .header .environment h2 span,
+  #content section.sites .header .environment h2 h5 span, .h5 small,
   .h5 .small,
-  .h5 section.sites .header .environment h2 span,
-  section.sites .header .environment h2 .h5 span,
+  .h5 #content section.sites .header .environment h2 span,
+  #content section.sites .header .environment h2 .h5 span,
   h6 small,
   h6 .small,
-  h6 section.sites .header .environment h2 span,
-  section.sites .header .environment h2 h6 span, .h6 small,
+  h6 #content section.sites .header .environment h2 span,
+  #content section.sites .header .environment h2 h6 span, .h6 small,
   .h6 .small,
-  .h6 section.sites .header .environment h2 span,
-  section.sites .header .environment h2 .h6 span {
+  .h6 #content section.sites .header .environment h2 span,
+  #content section.sites .header .environment h2 .h6 span {
     font-size: 75%; }
 
 h1, .h1 {
-  font-size: 36px; }
+  font-size: 33px; }
 
 h2, .h2 {
-  font-size: 30px; }
+  font-size: 27px; }
 
 h3, .h3 {
-  font-size: 24px; }
+  font-size: 23px; }
 
-h4, .h4, section.sites .list .site .title {
-  font-size: 18px; }
+h4, .h4, #content section.sites .list .site .title {
+  font-size: 17px; }
 
 h5, .h5 {
-  font-size: 14px; }
+  font-size: 13px; }
 
 h6, .h6 {
   font-size: 12px; }
 
 p {
-  margin: 0 0 10px; }
+  margin: 0 0 9px; }
 
 .lead {
-  margin-bottom: 20px;
-  font-size: 16px;
+  margin-bottom: 18px;
+  font-size: 14px;
   font-weight: 300;
   line-height: 1.4; }
   @media (min-width: 768px) {
     .lead {
-      font-size: 21px; } }
+      font-size: 19.5px; } }
 
 small,
 .small,
-section.sites .header .environment h2 span {
-  font-size: 85%; }
+#content section.sites .header .environment h2 span {
+  font-size: 92%; }
 
 mark,
 .mark {
@@ -1399,14 +1399,14 @@ a.bg-danger:focus {
   background-color: #e4b9b9; }
 
 .page-header {
-  padding-bottom: 9px;
-  margin: 40px 0 20px;
+  padding-bottom: 8px;
+  margin: 36px 0 18px;
   border-bottom: 1px solid #eeeeee; }
 
 ul,
 ol {
   margin-top: 0;
-  margin-bottom: 10px; }
+  margin-bottom: 9px; }
   ul ul,
   ul ol,
   ol ul,
@@ -1428,7 +1428,7 @@ ol {
 
 dl {
   margin-top: 0;
-  margin-bottom: 20px; }
+  margin-bottom: 18px; }
 
 dt,
 dd {
@@ -1466,9 +1466,9 @@ abbr[data-original-title] {
   font-size: 90%; }
 
 blockquote {
-  padding: 10px 20px;
-  margin: 0 0 20px;
-  font-size: 17.5px;
+  padding: 9px 18px;
+  margin: 0 0 18px;
+  font-size: 16.25px;
   border-left: 5px solid #eeeeee; }
   blockquote p:last-child,
   blockquote ul:last-child,
@@ -1477,8 +1477,8 @@ blockquote {
   blockquote footer,
   blockquote small,
   blockquote .small,
-  blockquote section.sites .header .environment h2 span,
-  section.sites .header .environment h2 blockquote span {
+  blockquote #content section.sites .header .environment h2 span,
+  #content section.sites .header .environment h2 blockquote span {
     display: block;
     font-size: 80%;
     line-height: 1.428571429;
@@ -1486,8 +1486,8 @@ blockquote {
     blockquote footer:before,
     blockquote small:before,
     blockquote .small:before,
-    blockquote section.sites .header .environment h2 span:before,
-    section.sites .header .environment h2 blockquote span:before {
+    blockquote #content section.sites .header .environment h2 span:before,
+    #content section.sites .header .environment h2 blockquote span:before {
       content: '\2014 \00A0'; }
 
 .blockquote-reverse,
@@ -1500,28 +1500,28 @@ blockquote.pull-right {
   .blockquote-reverse footer:before,
   .blockquote-reverse small:before,
   .blockquote-reverse .small:before,
-  .blockquote-reverse section.sites .header .environment h2 span:before,
-  section.sites .header .environment h2 .blockquote-reverse span:before,
+  .blockquote-reverse #content section.sites .header .environment h2 span:before,
+  #content section.sites .header .environment h2 .blockquote-reverse span:before,
   blockquote.pull-right footer:before,
   blockquote.pull-right small:before,
   blockquote.pull-right .small:before,
-  blockquote.pull-right section.sites .header .environment h2 span:before,
-  section.sites .header .environment h2 blockquote.pull-right span:before {
+  blockquote.pull-right #content section.sites .header .environment h2 span:before,
+  #content section.sites .header .environment h2 blockquote.pull-right span:before {
     content: ''; }
   .blockquote-reverse footer:after,
   .blockquote-reverse small:after,
   .blockquote-reverse .small:after,
-  .blockquote-reverse section.sites .header .environment h2 span:after,
-  section.sites .header .environment h2 .blockquote-reverse span:after,
+  .blockquote-reverse #content section.sites .header .environment h2 span:after,
+  #content section.sites .header .environment h2 .blockquote-reverse span:after,
   blockquote.pull-right footer:after,
   blockquote.pull-right small:after,
   blockquote.pull-right .small:after,
-  blockquote.pull-right section.sites .header .environment h2 span:after,
-  section.sites .header .environment h2 blockquote.pull-right span:after {
+  blockquote.pull-right #content section.sites .header .environment h2 span:after,
+  #content section.sites .header .environment h2 blockquote.pull-right span:after {
     content: '\00A0 \2014'; }
 
 address {
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   font-style: normal;
   line-height: 1.428571429; }
 
@@ -1553,9 +1553,9 @@ kbd {
 
 pre {
   display: block;
-  padding: 9.5px;
-  margin: 0 0 10px;
-  font-size: 13px;
+  padding: 8.5px;
+  margin: 0 0 9px;
+  font-size: 12px;
   line-height: 1.428571429;
   word-break: break-all;
   word-wrap: break-word;
@@ -1595,33 +1595,33 @@ pre {
     .container {
       width: 1170px; } }
 
-.container-fluid {
+.container-fluid, header, #content section.sites {
   margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px; }
-  .container-fluid:before, .container-fluid:after {
+  .container-fluid:before, header:before, #content section.sites:before, .container-fluid:after, header:after, #content section.sites:after {
     content: " ";
     display: table; }
-  .container-fluid:after {
+  .container-fluid:after, header:after, #content section.sites:after {
     clear: both; }
 
-.row, header h1, section.sites .header, section.sites .header .headers, section.sites .list .site, section.sites .list .site .details {
+.row, header div, #content section.sites .header, #content section.sites .header .headers, #content section.sites .list .site, #content section.sites .list .site .details {
   margin-left: -15px;
   margin-right: -15px; }
-  .row:before, header h1:before, section.sites .header:before, section.sites .header .headers:before, section.sites .list .site:before, section.sites .list .site .details:before, .row:after, header h1:after, section.sites .header:after, section.sites .header .headers:after, section.sites .list .site:after, section.sites .list .site .details:after {
+  .row:before, header div:before, #content section.sites .header:before, #content section.sites .header .headers:before, #content section.sites .list .site:before, #content section.sites .list .site .details:before, .row:after, header div:after, #content section.sites .header:after, #content section.sites .header .headers:after, #content section.sites .list .site:after, #content section.sites .list .site .details:after {
     content: " ";
     display: table; }
-  .row:after, header h1:after, section.sites .header:after, section.sites .header .headers:after, section.sites .list .site:after, section.sites .list .site .details:after {
+  .row:after, header div:after, #content section.sites .header:after, #content section.sites .header .headers:after, #content section.sites .list .site:after, #content section.sites .list .site .details:after {
     clear: both; }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, section.sites .header .headers li, section.sites .list .site .details li, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, section.sites .header .environment, section.sites .list .site .title, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, section.sites .header .headers, section.sites .list .site .details, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, section.sites .header .environment, section.sites .header .headers, section.sites .header .headers li, section.sites .list .site .title, section.sites .list .site .details, section.sites .list .site .details li, .col-sm-12, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, #content section.sites .header .headers li, #content section.sites .list .site .details li, .col-md-3, #content section.sites .header .environment, #content section.sites .list .site .title, .col-lg-3, .col-xs-4, .col-sm-4, header div .search, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, header div h1, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, #content section.sites .header .headers, #content section.sites .list .site .details, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, header div h1, header div .search, #content section.sites .header .environment, #content section.sites .header .headers, #content section.sites .header .headers li, #content section.sites .list .site .title, #content section.sites .list .site .details, #content section.sites .list .site .details li, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px; }
 
-.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, section.sites .header .environment, section.sites .header .headers, section.sites .header .headers li, section.sites .list .site .title, section.sites .list .site .details, section.sites .list .site .details li {
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, header div h1, header div .search, #content section.sites .header .environment, #content section.sites .header .headers, #content section.sites .header .headers li, #content section.sites .list .site .title, #content section.sites .list .site .details, #content section.sites .list .site .details li {
   float: left; }
 
 .col-xs-1 {
@@ -1657,7 +1657,7 @@ pre {
 .col-xs-11 {
   width: 91.6666666667%; }
 
-.col-xs-12, section.sites .header .environment, section.sites .header .headers, section.sites .header .headers li, section.sites .list .site .title, section.sites .list .site .details, section.sites .list .site .details li {
+.col-xs-12, header div h1, header div .search, #content section.sites .header .environment, #content section.sites .header .headers, #content section.sites .header .headers li, #content section.sites .list .site .title, #content section.sites .list .site .details, #content section.sites .list .site .details li {
   width: 100%; }
 
 .col-xs-pull-0 {
@@ -1778,7 +1778,7 @@ pre {
   margin-left: 100%; }
 
 @media (min-width: 768px) {
-  .col-sm-1, .col-sm-2, .col-sm-3, section.sites .header .headers li, section.sites .list .site .details li, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
+  .col-sm-1, .col-sm-2, .col-sm-3, #content section.sites .header .headers li, #content section.sites .list .site .details li, .col-sm-4, header div .search, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, header div h1, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
     float: left; }
 
   .col-sm-1 {
@@ -1787,10 +1787,10 @@ pre {
   .col-sm-2 {
     width: 16.6666666667%; }
 
-  .col-sm-3, section.sites .header .headers li, section.sites .list .site .details li {
+  .col-sm-3, #content section.sites .header .headers li, #content section.sites .list .site .details li {
     width: 25%; }
 
-  .col-sm-4 {
+  .col-sm-4, header div .search {
     width: 33.3333333333%; }
 
   .col-sm-5 {
@@ -1802,7 +1802,7 @@ pre {
   .col-sm-7 {
     width: 58.3333333333%; }
 
-  .col-sm-8 {
+  .col-sm-8, header div h1 {
     width: 66.6666666667%; }
 
   .col-sm-9 {
@@ -1934,7 +1934,7 @@ pre {
   .col-sm-offset-12 {
     margin-left: 100%; } }
 @media (min-width: 992px) {
-  .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+  .col-md-1, .col-md-2, .col-md-3, #content section.sites .header .environment, #content section.sites .list .site .title, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, #content section.sites .header .headers, #content section.sites .list .site .details, .col-md-10, .col-md-11, .col-md-12 {
     float: left; }
 
   .col-md-1 {
@@ -1943,7 +1943,7 @@ pre {
   .col-md-2 {
     width: 16.6666666667%; }
 
-  .col-md-3 {
+  .col-md-3, #content section.sites .header .environment, #content section.sites .list .site .title {
     width: 25%; }
 
   .col-md-4 {
@@ -1961,7 +1961,7 @@ pre {
   .col-md-8 {
     width: 66.6666666667%; }
 
-  .col-md-9 {
+  .col-md-9, #content section.sites .header .headers, #content section.sites .list .site .details {
     width: 75%; }
 
   .col-md-10 {
@@ -2090,7 +2090,7 @@ pre {
   .col-md-offset-12 {
     margin-left: 100%; } }
 @media (min-width: 1200px) {
-  .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, section.sites .header .environment, section.sites .list .site .title, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, section.sites .header .headers, section.sites .list .site .details, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
+  .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
     float: left; }
 
   .col-lg-1 {
@@ -2102,7 +2102,7 @@ pre {
   .col-lg-3 {
     width: 25%; }
 
-  .col-lg-4, section.sites .header .environment, section.sites .list .site .title {
+  .col-lg-4 {
     width: 33.3333333333%; }
 
   .col-lg-5 {
@@ -2114,7 +2114,7 @@ pre {
   .col-lg-7 {
     width: 58.3333333333%; }
 
-  .col-lg-8, section.sites .header .headers, section.sites .list .site .details {
+  .col-lg-8 {
     width: 66.6666666667%; }
 
   .col-lg-9 {
@@ -2260,7 +2260,7 @@ th {
 .table {
   width: 100%;
   max-width: 100%;
-  margin-bottom: 20px; }
+  margin-bottom: 18px; }
   .table > thead > tr > th,
   .table > thead > tr > td,
   .table > tbody > tr > th,
@@ -2410,7 +2410,7 @@ table th[class*="col-"] {
   @media screen and (max-width: 767px) {
     .table-responsive {
       width: 100%;
-      margin-bottom: 15px;
+      margin-bottom: 13.5px;
       overflow-y: hidden;
       -ms-overflow-style: -ms-autohiding-scrollbar;
       border: 1px solid #ddd; }
@@ -2455,8 +2455,8 @@ legend {
   display: block;
   width: 100%;
   padding: 0;
-  margin-bottom: 20px;
-  font-size: 21px;
+  margin-bottom: 18px;
+  font-size: 19.5px;
   line-height: inherit;
   color: #333333;
   border: 0;
@@ -2500,16 +2500,16 @@ input[type="checkbox"]:focus {
 output {
   display: block;
   padding-top: 7px;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.428571429;
   color: #555555; }
 
 .form-control {
   display: block;
   width: 100%;
-  height: 34px;
+  height: 32px;
   padding: 6px 12px;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.428571429;
   color: #555555;
   background-color: #fff;
@@ -2550,7 +2550,7 @@ input[type="search"] {
   input[type="time"].form-control,
   input[type="datetime-local"].form-control,
   input[type="month"].form-control {
-    line-height: 34px; }
+    line-height: 32px; }
   input[type="date"].input-sm, .input-group-sm > input[type="date"].form-control,
   .input-group-sm > input[type="date"].input-group-addon,
   .input-group-sm > .input-group-btn > input[type="date"].btn, .input-group-sm input[type="date"],
@@ -2588,7 +2588,7 @@ input[type="search"] {
   .input-group-lg > input[type="month"].input-group-addon,
   .input-group-lg > .input-group-btn > input[type="month"].btn, .input-group-lg
   input[type="month"] {
-    line-height: 46px; } }
+    line-height: 45px; } }
 .form-group {
   margin-bottom: 15px; }
 
@@ -2600,7 +2600,7 @@ input[type="search"] {
   margin-bottom: 10px; }
   .radio label,
   .checkbox label {
-    min-height: 20px;
+    min-height: 18px;
     padding-left: 20px;
     margin-bottom: 0;
     font-weight: normal;
@@ -2653,7 +2653,7 @@ input[type="checkbox"] {
   padding-top: 7px;
   padding-bottom: 7px;
   margin-bottom: 0;
-  min-height: 34px; }
+  min-height: 31px; }
   .form-control-static.input-lg, .input-group-lg > .form-control-static.form-control,
   .input-group-lg > .form-control-static.input-group-addon,
   .input-group-lg > .input-group-btn > .form-control-static.btn, .form-control-static.input-sm, .input-group-sm > .form-control-static.form-control,
@@ -2700,7 +2700,7 @@ select[multiple].input-sm,
   height: auto; }
 .form-group-sm .form-control-static {
   height: 30px;
-  min-height: 32px;
+  min-height: 30px;
   padding: 6px 10px;
   font-size: 12px;
   line-height: 1.5; }
@@ -2708,17 +2708,17 @@ select[multiple].input-sm,
 .input-lg, .input-group-lg > .form-control,
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .btn {
-  height: 46px;
+  height: 45px;
   padding: 10px 16px;
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1.3333333;
   border-radius: 6px; }
 
 select.input-lg, .input-group-lg > select.form-control,
 .input-group-lg > select.input-group-addon,
 .input-group-lg > .input-group-btn > select.btn {
-  height: 46px;
-  line-height: 46px; }
+  height: 45px;
+  line-height: 45px; }
 
 textarea.input-lg, .input-group-lg > textarea.form-control,
 .input-group-lg > textarea.input-group-addon,
@@ -2730,28 +2730,28 @@ select[multiple].input-lg,
   height: auto; }
 
 .form-group-lg .form-control {
-  height: 46px;
+  height: 45px;
   padding: 10px 16px;
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1.3333333;
   border-radius: 6px; }
 .form-group-lg select.form-control {
-  height: 46px;
-  line-height: 46px; }
+  height: 45px;
+  line-height: 45px; }
 .form-group-lg textarea.form-control,
 .form-group-lg select[multiple].form-control {
   height: auto; }
 .form-group-lg .form-control-static {
-  height: 46px;
-  min-height: 38px;
+  height: 45px;
+  min-height: 35px;
   padding: 11px 16px;
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1.3333333; }
 
 .has-feedback {
   position: relative; }
   .has-feedback .form-control {
-    padding-right: 42.5px; }
+    padding-right: 40px; }
 
 .form-control-feedback {
   position: absolute;
@@ -2759,9 +2759,9 @@ select[multiple].input-lg,
   right: 0;
   z-index: 2;
   display: block;
-  width: 34px;
-  height: 34px;
-  line-height: 34px;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
   text-align: center;
   pointer-events: none; }
 
@@ -2770,9 +2770,9 @@ select[multiple].input-lg,
 .input-group-lg > .input-group-btn > .btn + .form-control-feedback,
 .input-group-lg + .form-control-feedback,
 .form-group-lg .form-control + .form-control-feedback {
-  width: 46px;
-  height: 46px;
-  line-height: 46px; }
+  width: 45px;
+  height: 45px;
+  line-height: 45px; }
 
 .input-sm + .form-control-feedback, .input-group-sm > .form-control + .form-control-feedback,
 .input-group-sm > .input-group-addon + .form-control-feedback,
@@ -2850,7 +2850,7 @@ select[multiple].input-lg,
   color: #a94442; }
 
 .has-feedback label ~ .form-control-feedback {
-  top: 25px; }
+  top: 23px; }
 .has-feedback label.sr-only ~ .form-control-feedback {
   top: 0; }
 
@@ -2908,7 +2908,7 @@ select[multiple].input-lg,
   padding-top: 7px; }
 .form-horizontal .radio,
 .form-horizontal .checkbox {
-  min-height: 27px; }
+  min-height: 25px; }
 .form-horizontal .form-group {
   margin-left: -15px;
   margin-right: -15px; }
@@ -2927,7 +2927,7 @@ select[multiple].input-lg,
 @media (min-width: 768px) {
   .form-horizontal .form-group-lg .control-label {
     padding-top: 14.333333px;
-    font-size: 18px; } }
+    font-size: 17px; } }
 @media (min-width: 768px) {
   .form-horizontal .form-group-sm .control-label {
     padding-top: 6px;
@@ -2945,7 +2945,7 @@ select[multiple].input-lg,
   border: 1px solid transparent;
   white-space: nowrap;
   padding: 6px 12px;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.428571429;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -3168,7 +3168,7 @@ a.btn.disabled, fieldset[disabled] a.btn {
 
 .btn-lg, .btn-group-lg > .btn {
   padding: 10px 16px;
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1.3333333;
   border-radius: 6px; }
 
@@ -3255,7 +3255,7 @@ tbody.collapse.in {
   padding: 5px 0;
   margin: 2px 0 0;
   list-style: none;
-  font-size: 14px;
+  font-size: 13px;
   text-align: left;
   background-color: #fff;
   border: 1px solid #ccc;
@@ -3269,7 +3269,7 @@ tbody.collapse.in {
     left: auto; }
   .dropdown-menu .divider {
     height: 1px;
-    margin: 9px 0;
+    margin: 8px 0;
     overflow: hidden;
     background-color: #e5e5e5; }
   .dropdown-menu > li > a {
@@ -3548,7 +3548,7 @@ tbody.collapse.in {
 
 .input-group-addon {
   padding: 6px 12px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: normal;
   line-height: 1;
   color: #555555;
@@ -3566,7 +3566,7 @@ tbody.collapse.in {
   .input-group-lg > .input-group-addon,
   .input-group-lg > .input-group-btn > .input-group-addon.btn {
     padding: 10px 16px;
-    font-size: 18px;
+    font-size: 17px;
     border-radius: 6px; }
   .input-group-addon input[type="radio"],
   .input-group-addon input[type="checkbox"] {
@@ -3647,7 +3647,7 @@ tbody.collapse.in {
     border-color: #337ab7; }
   .nav .nav-divider {
     height: 1px;
-    margin: 9px 0;
+    margin: 8px 0;
     overflow: hidden;
     background-color: #e5e5e5; }
   .nav > li > a > img {
@@ -3740,7 +3740,7 @@ tbody.collapse.in {
 .navbar {
   position: relative;
   min-height: 50px;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   border: 1px solid transparent; }
   .navbar:before, .navbar:after {
     content: " ";
@@ -3801,14 +3801,22 @@ tbody.collapse.in {
 .container > .navbar-header,
 .container > .navbar-collapse,
 .container-fluid > .navbar-header,
-.container-fluid > .navbar-collapse {
+header > .navbar-header,
+#content section.sites > .navbar-header,
+.container-fluid > .navbar-collapse,
+header > .navbar-collapse,
+#content section.sites > .navbar-collapse {
   margin-right: -15px;
   margin-left: -15px; }
   @media (min-width: 768px) {
     .container > .navbar-header,
     .container > .navbar-collapse,
     .container-fluid > .navbar-header,
-    .container-fluid > .navbar-collapse {
+    header > .navbar-header,
+    #content section.sites > .navbar-header,
+    .container-fluid > .navbar-collapse,
+    header > .navbar-collapse,
+    #content section.sites > .navbar-collapse {
       margin-right: 0;
       margin-left: 0; } }
 
@@ -3841,16 +3849,16 @@ tbody.collapse.in {
 
 .navbar-brand {
   float: left;
-  padding: 15px 15px;
-  font-size: 18px;
-  line-height: 20px;
+  padding: 16px 15px;
+  font-size: 17px;
+  line-height: 18px;
   height: 50px; }
   .navbar-brand:hover, .navbar-brand:focus {
     text-decoration: none; }
   .navbar-brand > img {
     display: block; }
   @media (min-width: 768px) {
-    .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
+    .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand, .navbar > header .navbar-brand, #content .navbar > section.sites .navbar-brand {
       margin-left: -15px; } }
 
 .navbar-toggle {
@@ -3878,11 +3886,11 @@ tbody.collapse.in {
       display: none; } }
 
 .navbar-nav {
-  margin: 7.5px -15px; }
+  margin: 8px -15px; }
   .navbar-nav > li > a {
     padding-top: 10px;
     padding-bottom: 10px;
-    line-height: 20px; }
+    line-height: 18px; }
   @media (max-width: 767px) {
     .navbar-nav .open .dropdown-menu {
       position: static;
@@ -3896,7 +3904,7 @@ tbody.collapse.in {
       .navbar-nav .open .dropdown-menu .dropdown-header {
         padding: 5px 15px 5px 25px; }
       .navbar-nav .open .dropdown-menu > li > a {
-        line-height: 20px; }
+        line-height: 18px; }
         .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-nav .open .dropdown-menu > li > a:focus {
           background-image: none; } }
   @media (min-width: 768px) {
@@ -3906,8 +3914,8 @@ tbody.collapse.in {
       .navbar-nav > li {
         float: left; }
         .navbar-nav > li > a {
-          padding-top: 15px;
-          padding-bottom: 15px; } }
+          padding-top: 16px;
+          padding-bottom: 16px; } }
 
 .navbar-form {
   margin-left: -15px;
@@ -3917,8 +3925,8 @@ tbody.collapse.in {
   border-bottom: 1px solid transparent;
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
-  margin-top: 8px;
-  margin-bottom: 8px; }
+  margin-top: 9px;
+  margin-bottom: 9px; }
   @media (min-width: 768px) {
     .navbar-form .form-group {
       display: inline-block;
@@ -3986,8 +3994,8 @@ tbody.collapse.in {
   border-bottom-left-radius: 0; }
 
 .navbar-btn {
-  margin-top: 8px;
-  margin-bottom: 8px; }
+  margin-top: 9px;
+  margin-bottom: 9px; }
   .navbar-btn.btn-sm, .btn-group-sm > .navbar-btn.btn {
     margin-top: 10px;
     margin-bottom: 10px; }
@@ -3996,8 +4004,8 @@ tbody.collapse.in {
     margin-bottom: 14px; }
 
 .navbar-text {
-  margin-top: 15px;
-  margin-bottom: 15px; }
+  margin-top: 16px;
+  margin-bottom: 16px; }
   @media (min-width: 768px) {
     .navbar-text {
       float: left;
@@ -4131,7 +4139,7 @@ tbody.collapse.in {
 
 .breadcrumb {
   padding: 8px 15px;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   list-style: none;
   background-color: #f5f5f5;
   border-radius: 4px; }
@@ -4147,7 +4155,7 @@ tbody.collapse.in {
 .pagination {
   display: inline-block;
   padding-left: 0;
-  margin: 20px 0;
+  margin: 18px 0;
   border-radius: 4px; }
   .pagination > li {
     display: inline; }
@@ -4201,7 +4209,7 @@ tbody.collapse.in {
 .pagination-lg > li > a,
 .pagination-lg > li > span {
   padding: 10px 16px;
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1.3333333; }
 .pagination-lg > li:first-child > a,
 .pagination-lg > li:first-child > span {
@@ -4228,7 +4236,7 @@ tbody.collapse.in {
 
 .pager {
   padding-left: 0;
-  margin: 20px 0;
+  margin: 18px 0;
   list-style: none;
   text-align: center; }
   .pager:before, .pager:after {
@@ -4362,11 +4370,11 @@ a.badge:hover, a.badge:focus {
     color: inherit; }
   .jumbotron p {
     margin-bottom: 15px;
-    font-size: 21px;
+    font-size: 20px;
     font-weight: 200; }
   .jumbotron > hr {
     border-top-color: #d5d5d5; }
-  .container .jumbotron, .container-fluid .jumbotron {
+  .container .jumbotron, .container-fluid .jumbotron, header .jumbotron, #content section.sites .jumbotron {
     border-radius: 6px; }
   .jumbotron .container {
     max-width: 100%; }
@@ -4374,17 +4382,17 @@ a.badge:hover, a.badge:focus {
     .jumbotron {
       padding-top: 48px;
       padding-bottom: 48px; }
-      .container .jumbotron, .container-fluid .jumbotron {
+      .container .jumbotron, .container-fluid .jumbotron, header .jumbotron, #content section.sites .jumbotron {
         padding-left: 60px;
         padding-right: 60px; }
       .jumbotron h1,
       .jumbotron .h1 {
-        font-size: 63px; } }
+        font-size: 59px; } }
 
 .thumbnail {
   display: block;
   padding: 4px;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   line-height: 1.428571429;
   background-color: #fff;
   border: 1px solid #ddd;
@@ -4410,7 +4418,7 @@ a.thumbnail.active {
 
 .alert {
   padding: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   border: 1px solid transparent;
   border-radius: 4px; }
   .alert h4 {
@@ -4482,8 +4490,8 @@ a.thumbnail.active {
     background-position: 0 0; } }
 .progress {
   overflow: hidden;
-  height: 20px;
-  margin-bottom: 20px;
+  height: 18px;
+  margin-bottom: 18px;
   background-color: #f5f5f5;
   border-radius: 4px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -4494,7 +4502,7 @@ a.thumbnail.active {
   width: 0%;
   height: 100%;
   font-size: 12px;
-  line-height: 20px;
+  line-height: 18px;
   color: #fff;
   text-align: center;
   background-color: #337ab7;
@@ -4643,16 +4651,16 @@ button.list-group-item {
   .list-group-item.active .list-group-item-heading,
   .list-group-item.active .list-group-item-heading > small,
   .list-group-item.active .list-group-item-heading > .small,
-  .list-group-item.active section.sites .header .environment h2 .list-group-item-heading > span,
-  section.sites .header .environment h2 .list-group-item.active .list-group-item-heading > span, .list-group-item.active:hover .list-group-item-heading,
+  .list-group-item.active #content section.sites .header .environment h2 .list-group-item-heading > span,
+  #content section.sites .header .environment h2 .list-group-item.active .list-group-item-heading > span, .list-group-item.active:hover .list-group-item-heading,
   .list-group-item.active:hover .list-group-item-heading > small,
   .list-group-item.active:hover .list-group-item-heading > .small,
-  .list-group-item.active:hover section.sites .header .environment h2 .list-group-item-heading > span,
-  section.sites .header .environment h2 .list-group-item.active:hover .list-group-item-heading > span, .list-group-item.active:focus .list-group-item-heading,
+  .list-group-item.active:hover #content section.sites .header .environment h2 .list-group-item-heading > span,
+  #content section.sites .header .environment h2 .list-group-item.active:hover .list-group-item-heading > span, .list-group-item.active:focus .list-group-item-heading,
   .list-group-item.active:focus .list-group-item-heading > small,
   .list-group-item.active:focus .list-group-item-heading > .small,
-  .list-group-item.active:focus section.sites .header .environment h2 .list-group-item-heading > span,
-  section.sites .header .environment h2 .list-group-item.active:focus .list-group-item-heading > span {
+  .list-group-item.active:focus #content section.sites .header .environment h2 .list-group-item-heading > span,
+  #content section.sites .header .environment h2 .list-group-item.active:focus .list-group-item-heading > span {
     color: inherit; }
   .list-group-item.active .list-group-item-text, .list-group-item.active:hover .list-group-item-text, .list-group-item.active:focus .list-group-item-text {
     color: #c7ddef; }
@@ -4758,7 +4766,7 @@ button.list-group-item-danger {
   line-height: 1.3; }
 
 .panel {
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   background-color: #fff;
   border: 1px solid transparent;
   border-radius: 4px;
@@ -4784,15 +4792,15 @@ button.list-group-item-danger {
 .panel-title {
   margin-top: 0;
   margin-bottom: 0;
-  font-size: 16px;
+  font-size: 15px;
   color: inherit; }
   .panel-title > a,
   .panel-title > small,
   .panel-title > .small,
-  section.sites .header .environment h2 .panel-title > span,
+  #content section.sites .header .environment h2 .panel-title > span,
   .panel-title > small > a,
   .panel-title > .small > a,
-  section.sites .header .environment h2 .panel-title > span > a {
+  #content section.sites .header .environment h2 .panel-title > span > a {
     color: inherit; }
 
 .panel-footer {
@@ -4954,7 +4962,7 @@ button.list-group-item-danger {
   margin-bottom: 0; }
 
 .panel-group {
-  margin-bottom: 20px; }
+  margin-bottom: 18px; }
   .panel-group .panel {
     margin-bottom: 0;
     border-radius: 4px; }
@@ -5102,7 +5110,7 @@ button.list-group-item-danger {
 
 .close {
   float: right;
-  font-size: 21px;
+  font-size: 19.5px;
   font-weight: bold;
   line-height: 1;
   color: #000;
@@ -5366,7 +5374,7 @@ button.close {
   word-break: normal;
   word-spacing: normal;
   word-wrap: normal;
-  font-size: 14px;
+  font-size: 13px;
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid #ccc;
@@ -5386,7 +5394,7 @@ button.close {
 .popover-title {
   margin: 0;
   padding: 8px 14px;
-  font-size: 14px;
+  font-size: 13px;
   background-color: #f7f7f7;
   border-bottom: 1px solid #ebebeb;
   border-radius: 5px 5px 0 0; }
@@ -5874,36 +5882,45 @@ body {
   color: #555; }
 
 header {
-  background-color: blue; }
-  header h1 {
+  background-color: blue;
+  padding-top: 1em;
+  padding-bottom: 1em; }
+  header div h1 {
     font-family: 'Lato';
     font-weight: 300;
-    margin: 0;
     text-transform: uppercase;
     color: #fff;
-    padding: 1em 1em; }
+    margin: 0; }
+  header div .search {
+    margin: 0; }
+    header div .search input {
+      width: 100%;
+      margin-top: 0.45em; }
 
-section.sites {
-  margin: 2em 2em; }
-  section.sites .header {
+#content {
+  margin-top: 2em; }
+  #content section.sites .header {
     margin-bottom: 1em; }
-    section.sites .header .environment h2 {
+    #content section.sites .header .environment h2 {
       margin: 0; }
-      section.sites .header .environment h2 span {
+      #content section.sites .header .environment h2 span {
         margin-left: 0.5em; }
-    section.sites .header .headers li {
+    #content section.sites .header .headers li {
       display: block; }
-      section.sites .header .headers li a {
+      #content section.sites .header .headers li a {
         padding: 0.5em;
         margin: 0 0.25em 0.25em 0;
         background-color: #eee;
         border-radius: 0.5em; }
-        section.sites .header .headers li a:hover {
+        #content section.sites .header .headers li a:hover {
           background-color: #000; }
-  section.sites .list .site .title h3 {
+  #content section.sites .list .site .title {
     margin: 0; }
-  section.sites .list .site .details li {
+    #content section.sites .list .site .title h3 {
+      margin: 0;
+      font-size: 1em; }
+  #content section.sites .list .site .details li {
     display: block;
     border-radius: 0.5em; }
-    section.sites .list .site .details li:hover {
+    #content section.sites .list .site .details li:hover {
       background-color: #eee; }

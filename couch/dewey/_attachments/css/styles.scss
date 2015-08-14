@@ -1,4 +1,4 @@
-$font-size-base: 14px;
+$font-size-base: 13px;
 @import 'bootstrap-sass-3.3.5/stylesheets/bootstrap-custom';
 
 body {
@@ -9,80 +9,63 @@ body {
 
 header {
 	background-color: blue;
+	@extend .container-fluid;
+	padding-top: 1em;
+	padding-bottom: 1em;
 
-	h1 {
+	div {
 		@extend .row;
-		font-family: 'Lato';
-		font-weight: 300;
-		margin: 0;
-		text-transform: uppercase;
-		color: #fff;
-		padding: 1em 1em;
+
+		h1 {
+			@extend .col-sm-8;
+			@extend .col-xs-12;
+			font-family: 'Lato';
+			font-weight: 300;
+			text-transform: uppercase;
+			color: #fff;
+			margin: 0;
+		}
+
+		.search {
+			@extend .col-sm-4;
+			@extend .col-xs-12;
+			margin: 0;
+
+			input {
+				width: 100%;
+				margin-top: 0.45em;
+			}
+		}
 	}
 }
 
-section.sites {
-	margin: 2em 2em;
+#content {
+	margin-top: 2em;
 
-	.header {
-		@extend .row;
-		margin-bottom: 1em;
+	section.sites {
+		@extend .container-fluid;
 
-		.environment {
-			@extend .col-lg-4;
-			@extend .col-xs-12;
-
-			h2 {
-				margin: 0;
-
-				span {
-					@extend .small;
-					margin-left: 0.5em;
-				}
-			}
-		}
-
-		.headers{
+		.header {
 			@extend .row;
-			@extend .col-lg-8;
-			@extend .col-xs-12;
+			margin-bottom: 1em;
 
-			li {
-				@extend .col-sm-3;
+			.environment {
+				@extend .col-md-3;
 				@extend .col-xs-12;
-				display: block;
 
-				a {
-					padding: 0.5em;
-					margin: 0 0.25em 0.25em 0;
-					background-color: #eee;
-					border-radius: 0.5em;
+				h2 {
+					margin: 0;
 
-					&:hover {
-						background-color: #000;
+					span {
+						@extend .small;
+						margin-left: 0.5em;
 					}
 				}
 			}
-		}
-	}
 
-	.list {
-		.site {
-			@extend .row;
-
-			.title {
-				@extend .h4;
-				@extend .col-lg-4;
-				@extend .col-xs-12;
-
-				h3 {
-					margin: 0;
-				}
-			}
-
-			.details {
+			.headers{
 				@extend .row;
-				@extend .col-lg-8;
+				@extend .col-md-9;
 				@extend .col-xs-12;
 
 				li {
@@ -90,10 +73,51 @@ section.sites {
 					@extend .col-xs-12;
 					display: block;
 
-					border-radius: 0.5em;
-
-					&:hover {
+					a {
+						padding: 0.5em;
+						margin: 0 0.25em 0.25em 0;
 						background-color: #eee;
+						border-radius: 0.5em;
+
+						&:hover {
+							background-color: #000;
+						}
+					}
+				}
+			}
+		}
+
+		.list {
+			.site {
+				@extend .row;
+
+				.title {
+					@extend .h4;
+					@extend .col-md-3;
+					@extend .col-xs-12;
+					margin: 0;
+
+					h3 {
+						margin: 0;
+						font-size: 1em;
+					}
+				}
+
+				.details {
+					@extend .row;
+					@extend .col-md-9;
+					@extend .col-xs-12;
+
+					li {
+						@extend .col-sm-3;
+						@extend .col-xs-12;
+						display: block;
+
+						border-radius: 0.5em;
+
+						&:hover {
+							background-color: #eee;
+						}
 					}
 				}
 			}
