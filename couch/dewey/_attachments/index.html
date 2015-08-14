@@ -39,7 +39,7 @@
                     </div>
                     <ul class="headers">
                         <li class="modules-enabled">
-                            <span>Enabled modules</span>
+                            <span>Used modules</span>
                             <a aria-label="Sort Up">
                               <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
                             </a>
@@ -105,12 +105,12 @@
                     <h3><%= site %></h3>
                 </div>
                 <ul class="details">
-                    <li class="modules-enabled"><%- enabledmodulecount %></li>
-                    <li class="modules-total"><%- totalmodulecount %></li>
-                    <li class="users"><%- usercount %></li>
-                    <li class="roles"><%- rolecount %></li>
-                    <li class="files"><%- filecount %> (<%= privatefilecount %>)</li>
-                    <li class="lastaccess"><%- jQuery.timeago(lastaccess) %></li>
+                    <li class="modules-enabled"><span class="description">Used modules</span><%- enabledmodulecount %></li>
+                    <li class="modules-total"><span class="description">Total modules</span><%- totalmodulecount %></li>
+                    <li class="users"><span class="description">Users</span><%- usercount %></li>
+                    <li class="roles"><span class="description">Roles</span><%- rolecount %></li>
+                    <li class="files"><span class="description">Files (private)</span><%- filecount %> (<%= privatefilecount %>)</li>
+                    <li class="lastaccess"><span class="description">Last sign on </span><%- jQuery.timeago(lastaccess) %></li>
                 </ul>
             </div>
         </script>

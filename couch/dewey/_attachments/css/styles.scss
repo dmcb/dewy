@@ -40,7 +40,7 @@ header {
 }
 
 #content {
-	margin-top: 2em;
+	margin-top: 1em;
 
 	section.sites {
 		@extend .container-fluid;
@@ -72,6 +72,10 @@ header {
 					@extend .col-sm-2;
 					@extend .col-xs-12;
 					display: block;
+
+					@media(max-width: $screen-md-min){
+						display: none;
+					}
 
 					& > span {
 						font-weight: bold;
@@ -105,7 +109,7 @@ header {
 					margin: 0;
 
 					h3 {
-						margin: 0;
+						margin-top: 0;
 						font-size: 1em;
 					}
 				}
@@ -117,13 +121,30 @@ header {
 
 					li {
 						@extend .col-sm-2;
-						@extend .col-xs-12;
+						@extend .col-xs-6;
 						display: block;
 
 						border-radius: 0.5em;
 
 						&:hover {
 							background-color: #eee;
+						}
+
+						.description {
+							display: none;
+
+							@media(max-width: $screen-md-min){
+								font-weight: bold;
+								display: block;
+							}
+
+							@media(max-width: $screen-sm-min){
+								font-weight: normal;
+								display: inline;
+								&::after {
+									content: ': ';
+								}
+							}
 						}
 					}
 				}

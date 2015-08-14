@@ -1615,13 +1615,13 @@ pre {
   .row:after, header div:after, #content section.sites .header:after, #content section.sites .header .headers:after, #content section.sites .list .site:after, #content section.sites .list .site .details:after {
     clear: both; }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, #content section.sites .header .headers li, #content section.sites .list .site .details li, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, #content section.sites .header .environment, #content section.sites .list .site .title, .col-lg-3, .col-xs-4, .col-sm-4, header div .search, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, header div h1, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, #content section.sites .header .headers, #content section.sites .list .site .details, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, header div h1, header div .search, #content section.sites .header .environment, #content section.sites .header .headers, #content section.sites .header .headers li, #content section.sites .list .site .title, #content section.sites .list .site .details, #content section.sites .list .site .details li, .col-sm-12, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, #content section.sites .header .headers li, #content section.sites .list .site .details li, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, #content section.sites .header .environment, #content section.sites .list .site .title, .col-lg-3, .col-xs-4, .col-sm-4, header div .search, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, #content section.sites .list .site .details li, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, header div h1, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, #content section.sites .header .headers, #content section.sites .list .site .details, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, header div h1, header div .search, #content section.sites .header .environment, #content section.sites .header .headers, #content section.sites .header .headers li, #content section.sites .list .site .title, #content section.sites .list .site .details, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px; }
 
-.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, header div h1, header div .search, #content section.sites .header .environment, #content section.sites .header .headers, #content section.sites .header .headers li, #content section.sites .list .site .title, #content section.sites .list .site .details, #content section.sites .list .site .details li {
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, #content section.sites .list .site .details li, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, header div h1, header div .search, #content section.sites .header .environment, #content section.sites .header .headers, #content section.sites .header .headers li, #content section.sites .list .site .title, #content section.sites .list .site .details {
   float: left; }
 
 .col-xs-1 {
@@ -1639,7 +1639,7 @@ pre {
 .col-xs-5 {
   width: 41.6666666667%; }
 
-.col-xs-6 {
+.col-xs-6, #content section.sites .list .site .details li {
   width: 50%; }
 
 .col-xs-7 {
@@ -1657,7 +1657,7 @@ pre {
 .col-xs-11 {
   width: 91.6666666667%; }
 
-.col-xs-12, header div h1, header div .search, #content section.sites .header .environment, #content section.sites .header .headers, #content section.sites .header .headers li, #content section.sites .list .site .title, #content section.sites .list .site .details, #content section.sites .list .site .details li {
+.col-xs-12, header div h1, header div .search, #content section.sites .header .environment, #content section.sites .header .headers, #content section.sites .header .headers li, #content section.sites .list .site .title, #content section.sites .list .site .details {
   width: 100%; }
 
 .col-xs-pull-0 {
@@ -5898,7 +5898,7 @@ header {
       margin-top: 0.45em; }
 
 #content {
-  margin-top: 2em; }
+  margin-top: 1em; }
   #content section.sites .header {
     margin-bottom: 1em; }
     #content section.sites .header .environment h2 {
@@ -5907,6 +5907,9 @@ header {
         margin-left: 0.5em; }
     #content section.sites .header .headers li {
       display: block; }
+      @media (max-width: 992px) {
+        #content section.sites .header .headers li {
+          display: none; } }
       #content section.sites .header .headers li > span {
         font-weight: bold;
         display: block;
@@ -5922,10 +5925,22 @@ header {
   #content section.sites .list .site .title {
     margin: 0; }
     #content section.sites .list .site .title h3 {
-      margin: 0;
+      margin-top: 0;
       font-size: 1em; }
   #content section.sites .list .site .details li {
     display: block;
     border-radius: 0.5em; }
     #content section.sites .list .site .details li:hover {
       background-color: #eee; }
+    #content section.sites .list .site .details li .description {
+      display: none; }
+      @media (max-width: 992px) {
+        #content section.sites .list .site .details li .description {
+          font-weight: bold;
+          display: block; } }
+      @media (max-width: 768px) {
+        #content section.sites .list .site .details li .description {
+          font-weight: normal;
+          display: inline; }
+          #content section.sites .list .site .details li .description::after {
+            content: ': '; } }
