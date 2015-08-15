@@ -33,7 +33,6 @@ class Site:
 			output = talkToDrush(self,['dewey-uniqueness'])
 			self.unique_identifier = output['database_host'] + '/' + output['database']
 			self.details['uris'] = [output['uri']]
-			print "Added " + output['uri']
 		except:
 			if self.alias:
 				print "Failed to identify " + self.alias

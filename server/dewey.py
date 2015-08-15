@@ -24,8 +24,10 @@ def getSites(config):
 				try:
 					site = Site(root=config['drupal-root'], uri=uri)
 					if site.unique_identifier in sites:
-						sites[site.unique_identifier].uris.append(site.uri)
+						print "Already added " + site.uri + " but with a different URI"
+						sites[site.unique_identifier].details['uris'].append(site.uri)
 					else:
+						print "Added " + site.uri
 						sites[site.unique_identifier] = site
 				except:
 					print "Skipping " + uri
@@ -48,8 +50,10 @@ def getSites(config):
 			try:
 				site = Site(alias=alias)
 				if site.unique_identifier in sites:
-					sites[site.unique_identifier]['uris'].append(site.uri)
+					print "Already added " + site.uri + " but with a different URI"
+					sites[site.unique_identifier].details['uris'].append(site.uri)
 				else:
+					print "Added " + site.uri
 					sites[site.unique_identifier] = site
 			except:
 				print "Skipping " + alias
