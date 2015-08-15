@@ -98,7 +98,7 @@ function drush_dewey_user_stats() {
 function drush_dewey_content_stats() {
 	$output['content_types'] = array();
 
-	$result = db_query("SELECT count(nid) as count, type FROM node");
+	$result = db_query("SELECT count(*) as count, type FROM node GROUP BY type");
 	while ($content_type = $result->fetchAssoc()) {
 		$output['content_types'][$content_type['type']] = intval($content_type['count']);
 	}
@@ -108,9 +108,18 @@ function drush_dewey_content_stats() {
 	if (db_table_exists('field_data_body')) {
 		$result = db_query("SELECT body_value FROM field_data_body");
 		while ($body = $result->fetchAssoc()) {
-			$body = strtolower(convert_html_to_text($body['body_value']));
+			try {
+				$body = strtolower(convert_html_to_text(strip_tags($body['body_value'])));
+			} catch (Exception $e) {}
 			$words = preg_split("/[\s,]+/", $body);
-			$output['words'] = array_count_values($words);
+			$counted_words = array_count_values($words);
+			foreach ($counted_words as $word => $count) {
+				if (isset($output['words'][$word])) {
+					$output['words'][$word] += $count;
+				} else {
+					$output['words'][$word] = $count;
+				}
+			}
 		}
 	}
 
