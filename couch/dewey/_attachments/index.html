@@ -38,8 +38,8 @@
                         <h2>Sites <span>(<%- sitecount %> sites)</span></h2>
                     </div>
                     <ul class="headers">
-                        <li class="modules-enabled">
-                            <span>Used modules</span>
+                        <li class="complexity">
+                            <span>Complexity</span>
                             <a aria-label="Sort Up">
                               <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
                             </a>
@@ -47,8 +47,8 @@
                               <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
                             </a>
                         </li>
-                        <li class="modules-total">
-                            <span>Total modules</span>
+                        <li class="size">
+                            <span>Size</span>
                             <a aria-label="Sort Up">
                               <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
                             </a>
@@ -56,8 +56,8 @@
                               <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
                             </a>
                         </li>
-                        <li class="users">
-                            <span>Users</span>
+                        <li class="activity">
+                            <span>Activity</span>
                             <a aria-label="Sort Up">
                               <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
                             </a>
@@ -65,26 +65,8 @@
                               <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
                             </a>
                         </li>
-                        <li class="roles">
-                            <span>Roles</span>
-                            <a aria-label="Sort Up">
-                              <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-                            </a>
-                            <a aria-label="Sort Down">
-                              <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-                            </a>
-                        </li>
-                        <li class="files">
-                            <span>Files (private)</span>
-                            <a aria-label="Sort Up">
-                              <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-                            </a>
-                            <a aria-label="Sort Down">
-                              <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-                            </a>
-                        </li>
-                        <li class="lastaccess">
-                            <span>Last sign on</span>
+                        <li class="health">
+                            <span>Health</span>
                             <a aria-label="Sort Up">
                               <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
                             </a>
@@ -105,12 +87,10 @@
                     <h3><%= site %></h3>
                 </div>
                 <ul class="details">
-                    <li class="modules-enabled"><span class="description">Used modules</span><%- enabledmodulecount %></li>
-                    <li class="modules-total"><span class="description">Total modules</span><%- totalmodulecount %></li>
-                    <li class="users"><span class="description">Users</span><%- usercount %></li>
-                    <li class="roles"><span class="description">Roles</span><%- rolecount %></li>
-                    <li class="files"><span class="description">Files (private)</span><%- filecount %> (<%= privatefilecount %>)</li>
-                    <li class="lastaccess"><span class="description">Last sign on </span><%- jQuery.timeago(lastaccess) %></li>
+                    <li class="complexity"><span class="description">Complexity</span><%- relative_complexity %></li>
+                    <li class="size"><span class="description">Size</span><%- relative_size %></li>
+                    <li class="activity"><span class="description">Activity</span><%- relative_activity %></li>
+                    <li class="health"><span class="description">Health</span><%- relative_health %></li>
                 </ul>
             </div>
         </script>

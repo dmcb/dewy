@@ -25,9 +25,44 @@ $(function( $ ) {
 			var sites = this.$('.list');
 			var siteTemplate = _.template($('#site').html());
 
+			// Loop through all sites and determine absolute values of factors
+			var factors = {'complexity': [], 'size': [], 'activity': [], 'health': []};
+
 			this.collection.each(function(site) {
-				// Data massaging
-				site.attributes['lastaccess'] = new Date(site.attributes['lastaccess']*1000);
+				site.attributes['complexity'] = site.attributes['modules'] + site.attributes['content_types'] + site.attributes['roles'];
+				site.attributes['size'] = site.attributes['nodes'] + site.attributes['words'] + site.attributes['users'] + site.attributes['files'];
+				site.attributes['activity'] = Date.parse(site.attributes['last_access']) + Date.parse(site.attributes['last_modification']);
+				site.attributes['health'] = 3;
+
+				for (var factor in factors) {
+					if (factors[factor]['maximum'] == null) {
+						factors[factor]['maximum'] = site.attributes[factor];
+					} else if (factors[factor]['maximum'] < site.attributes[factor]) {
+						factors[factor]['maximum'] = site.attributes[factor];
+					}
+					if (factors[factor]['minimum'] == null) {
+						factors[factor]['minimum'] = site.attributes[factor];
+					} else if (factors[factor]['minimum'] > site.attributes[factor]) {
+						factors[factor]['minimum'] = site.attributes[factor];
+					}
+				}
+			});
+
+			// Determine buckets from range of factor values
+			for (var factor in factors) {
+				factors[factor]['increment'] = (factors[factor]['maximum'] - factors[factor]['minimum']) / 4;
+			}
+
+			// Render
+			this.collection.each(function(site) {
+				for (var factor in factors) {
+					site.attributes['relative_' + factor] = ((site.attributes[factor] - factors[factor]['minimum']) / factors[factor]['increment']) + 1;
+					// Should there be no increment in the range because all sites are the same or there's only one, set relative values in the middle
+					if (factors[factor]['increment'] == 0) {
+						site.attributes['relative_' + factor] = 3;
+					}
+				}
+
 				sites.append(siteTemplate(site.attributes));
 			});
 		},

@@ -1,4 +1,4 @@
-$font-size-base: 13px;
+$font-size-base: 14px;
 @import 'bootstrap-sass-3.3.5/stylesheets/bootstrap-custom';
 
 body {
@@ -50,7 +50,7 @@ header {
 			margin-bottom: 1em;
 
 			.environment {
-				@extend .col-md-3;
+				@extend .col-md-4;
 				@extend .col-xs-12;
 
 				h2 {
@@ -65,11 +65,11 @@ header {
 
 			.headers{
 				@extend .row;
-				@extend .col-md-9;
+				@extend .col-md-8;
 				@extend .col-xs-12;
 
 				li {
-					@extend .col-sm-2;
+					@extend .col-sm-3;
 					@extend .col-xs-12;
 					display: block;
 
@@ -104,7 +104,7 @@ header {
 
 				.title {
 					@extend .h4;
-					@extend .col-md-3;
+					@extend .col-md-4;
 					@extend .col-xs-12;
 					margin: 0;
 
@@ -116,11 +116,11 @@ header {
 
 				.details {
 					@extend .row;
-					@extend .col-md-9;
+					@extend .col-md-8;
 					@extend .col-xs-12;
 
 					li {
-						@extend .col-sm-2;
+						@extend .col-sm-3;
 						@extend .col-xs-6;
 						display: block;
 

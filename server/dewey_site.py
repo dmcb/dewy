@@ -48,40 +48,33 @@ class Site:
 
 		# Get file stats
 		filedetails = talkToDrush(self, ['dewey-file-stats'])
-		self.details['filecount'] = filedetails['filecount']['public']
-		self.details['filesize'] = filedetails['filesize']['public']
-		self.details['privatefilecount'] = filedetails['filecount']['private']
-		self.details['privatefilesize'] = filedetails['filesize']['private']
+		self.details['file_count'] = filedetails['file_count']['public']
+		self.details['file_size'] = filedetails['file_size']['public']
+		self.details['private_file_count'] = filedetails['file_count']['private']
+		self.details['private_file_size'] = filedetails['file_size']['private']
 
 		# Get user stats
 		userdetails = talkToDrush(self, ['dewey-user-stats'])
 		self.details['users'] = userdetails['users']
-		self.details['usercount'] = userdetails['usercount']
-		self.details['lastaccess'] = userdetails['lastaccess']
+		self.details['last_access'] = userdetails['last_access']
 		self.details['roles'] = userdetails['roles']
-		self.details['rolecount'] = userdetails['rolecount']
 
 		# Get content stats
 		contentdetails = talkToDrush(self, ['dewey-content-stats'])
 		self.details['content_types'] = contentdetails['content_types']
-		self.details['counted_words'] = contentdetails['counted_words']
-		if contentdetails['lastmodified']:
-			self.details['lastmodified'] = datetime.datetime.fromtimestamp(int(contentdetails['lastmodified'])).isoformat('T')
+		self.details['words'] = contentdetails['words']
+		if contentdetails['last_modified']:
+			self.details['last_modified'] = datetime.datetime.fromtimestamp(int(contentdetails['last_modified'])).isoformat('T')
 		else:
-			self.details['lastmodified'] = None
+			self.details['last_modified'] = None
 
 		# Get projects
 		projectdetails = talkToDrush(self, ['pm-info', '--format=json'])
 		self.details['modules'] = dict()
-		self.details['enabledmodulecount'] = 0
-		self.details['totalmodulecount'] = 0
 		for project in projectdetails:
 			projectdetails[project]['audited'] = self.details['audited']
 			if projectdetails[project]['type'] == 'module':
-				self.details['totalmodulecount'] = self.details['totalmodulecount']+1
 				self.details['modules'][projectdetails[project]['path']] = {'status': projectdetails[project]['status'], 'schema': projectdetails[project]['schema_version'], 'version': projectdetails[project]['version']}
-				if projectdetails[project]['status'] == 'enabled' and projectdetails[project]['type'] == 'module':
-					self.details['enabledmodulecount'] = self.details['enabledmodulecount']+1
 					
 
 		return projectdetails
