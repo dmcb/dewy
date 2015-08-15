@@ -47,7 +47,7 @@ class Site:
 		self.details['audited'] = datetime.datetime.now().isoformat('T')
 
 		# Get file stats
-		filedetails = talkToDrush(self, ['dewey-file-usage'])
+		filedetails = talkToDrush(self, ['dewey-file-stats'])
 		self.details['filecount'] = filedetails['filecount']['public']
 		self.details['filesize'] = filedetails['filesize']['public']
 		self.details['privatefilecount'] = filedetails['filecount']['private']
@@ -61,11 +61,12 @@ class Site:
 		self.details['roles'] = userdetails['roles']
 		self.details['rolecount'] = userdetails['rolecount']
 
-		# Get node stats
-		nodedetails = talkToDrush(self, ['dewey-node-stats'])
-		self.details['counted_words'] = nodedetails['counted_words']
-		if nodedetails['lastmodified']:
-			self.details['lastmodified'] = datetime.datetime.fromtimestamp(int(nodedetails['lastmodified'])).isoformat('T')
+		# Get content stats
+		contentdetails = talkToDrush(self, ['dewey-content-stats'])
+		self.details['content_types'] = contentdetails['content_types']
+		self.details['counted_words'] = contentdetails['counted_words']
+		if contentdetails['lastmodified']:
+			self.details['lastmodified'] = datetime.datetime.fromtimestamp(int(contentdetails['lastmodified'])).isoformat('T')
 		else:
 			self.details['lastmodified'] = None
 

@@ -73,8 +73,8 @@ def saveResults(config):
 		# Record to Couch
 		for directory, site in sites.items():
 			db.save(site.details)
-		for path, project in projects.items():
-			db.save(project)
+		# for path, project in projects.items():
+		# 	db.save(project)
 	except:
 		print "Communication to CouchDB at " + config['couch-location'] + "/dewey failed"
 

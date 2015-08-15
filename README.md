@@ -55,8 +55,8 @@ A Drupal multi-site visualization tool
 
 	```
 	mkdir ~/.drush
-	ln -s drush/dewey.drush.inc ~/.drush/
-	ln -s drush/dewey ~/.drush/
+	ln -s `pwd`drush/dewey.drush.inc ~/.drush/
+	ln -s `pwd`drush/dewey ~/.drush/
 	```
 
 
