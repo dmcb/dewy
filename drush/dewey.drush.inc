@@ -13,7 +13,7 @@ function dewey_drush_command() {
 		'aliases' => array('dyfs'),
 		'callback' => 'drush_dewey_file_stats',
 		'description' => dt('Gather stats on a site\'s file usage.'),
-		'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_DATABASE,
+		'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_FULL,
 	);
 
 	$items['dewey-user-stats'] = array(
