@@ -87,12 +87,16 @@
                     <h3><%= site %></h3>
                 </div>
                 <ul class="details">
-                    <li class="complexity"><span class="description">Complexity</span><%- relative_complexity %></li>
-                    <li class="size"><span class="description">Size</span><%- relative_size %></li>
-                    <li class="activity"><span class="description">Activity</span><%- relative_activity %></li>
-                    <li class="health"><span class="description">Health</span><%- relative_health %></li>
+                    <li class="complexity"><span class="description">Complexity</span><div class="points"></div></li>
+                    <li class="size"><span class="description">Size</span><div class="points"></div></li>
+                    <li class="activity"><span class="description">Activity</span><div class="points"></div></li>
+                    <li class="health"><span class="description">Health</span><div class="points"></div></li>
                 </ul>
             </div>
+        </script>
+
+        <script id="point" type="text/template">
+            <span class="point"></span>
         </script>
 
         <!-- Scripts -->
