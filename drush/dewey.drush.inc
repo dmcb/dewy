@@ -57,7 +57,7 @@ function drush_dewey_file_stats() {
 			$iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path[$type], RecursiveDirectoryIterator::SKIP_DOTS), RecursiveIteratorIterator::SELF_FIRST);
 			$filelist = array();
 			foreach($iterator as $file) {
-				if (!$file->isDir()) {
+				if (!$file->isDir() && $file->isFile()) {
 					$output['file_count'][$type]++;
 					$output['file_size'][$type] += $file->getSize();
 				}
