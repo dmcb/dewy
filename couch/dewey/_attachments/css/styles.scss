@@ -91,7 +91,7 @@ header {
 						font-size: 0.8em;
 
 						&:hover {
-							background-color: #000;
+							opacity: 0.3;
 						}
 					}
 				}
@@ -124,12 +124,6 @@ header {
 						@extend .col-xs-6;
 						display: block;
 
-						border-radius: 0.5em;
-
-						&:hover {
-							background-color: #eee;
-						}
-
 						.description {
 							display: none;
 
@@ -157,6 +151,50 @@ header {
 								display: inline-block;
 								border-radius: 0.75em;
 							}
+						}
+
+						&.activity .points1 .point, &.health .points1 .point {
+							background-color: #f00;
+						}
+
+						&.activity .points2 .point, &.health .points2 .point {
+							background-color: #ff5b00;
+						}
+
+						&.activity .points3 .point, &.health .points3 .point {
+							background-color: #ff9d00;
+						}
+
+						&.activity .points4 .point, &.health .points4 .point {
+							background-color: #ffc600;
+						}
+
+						&.activity .points5 .point, &.health .points5 .point {
+							background-color: #ffe700;
+						}
+
+						&.activity .points6 .point, &.health .points6 .point {
+							background-color: #ffff00;
+						}
+
+						&.activity .points7 .point, &.health .points7 .point {
+							background-color: #e7ff00;
+						}
+
+						&.activity .points8 .point, &.health .points8 .point {
+							background-color: #c6ff00;
+						}
+
+						&.activity .points9 .point, &.health .points9 .point {
+							background-color: #9dff00;
+						}
+
+						&.activity .points10 .point, &.health .points10 .point {
+							background-color: #5bff00;
+						}
+
+						&:hover .points .point {
+							opacity: 0.3;
 						}
 					}
 				}

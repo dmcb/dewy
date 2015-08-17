@@ -22,7 +22,8 @@ $(function( $ ) {
 			var pointTemplate = _.template($('#point').html());
 			for (var factor in factors) {
 				var points_html = this.$('.' + factors[factor] + ' ' + '.points');
-				var points = this.model.get('relative_' + factors[factor])
+				var points = this.model.get('relative_' + factors[factor]);
+				points_html.addClass('points' + points);
 				for (var i=0; i<points; i++) {
 					points_html.append(pointTemplate);
 				}
@@ -86,7 +87,7 @@ $(function( $ ) {
 					// Should there be no increment in the range because all sites are the same or there's only one, set relative values in the middle
 					if (factors[factor]['increment'] == 0) {
 						// var tpl = _.template("<h1>LOL</h1>");
-						site.attributes['relative_' + factor] = 10;
+						site.attributes['relative_' + factor] = 5;
 					}
 				}
 
