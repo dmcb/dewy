@@ -56,10 +56,10 @@ $(function( $ ) {
 			var factors = {'complexity': [], 'size': [], 'activity': [], 'health': []};
 
 			this.collection.each(function(site) {
-				site.attributes['complexity'] = site.attributes['modules'] + site.attributes['content_types'] + site.attributes['roles'];
-				site.attributes['size'] = site.attributes['nodes'] + site.attributes['words'] + site.attributes['users'] + site.attributes['files'];
-				site.attributes['activity'] = Date.parse(site.attributes['last_access']) + Date.parse(site.attributes['last_modification']);
-				site.attributes['health'] = 3;
+				site.attributes['complexity'] = Math.log(site.attributes['modules'] + site.attributes['content_types'] + site.attributes['roles']);
+				site.attributes['size'] = Math.log(site.attributes['nodes'] + site.attributes['words'] + site.attributes['users'] + site.attributes['files']);
+				site.attributes['activity'] = Math.log(Date.parse(site.attributes['last_access']) + Date.parse(site.attributes['last_modification']));
+				site.attributes['health'] = Math.log(3);
 
 				for (var factor in factors) {
 					if (factors[factor]['maximum'] == null) {
