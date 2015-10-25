@@ -1,0 +1,249 @@
+@import 'bootstrap-sass-3.3.5/stylesheets/bootstrap-custom';
+
+// Colours
+$blue: #239CF9;
+$dark-blue: #337ab7;
+$light-blue: #D0E2F0;
+$light-grey: #eee;
+$grey: #666;
+
+// Layout
+body {
+	min-height:100%;
+	color: #333;
+	font-size: 10pt;
+	background: radial-gradient(center center, 50% 70%, #fff 70%, #fcfcfc);
+	background: -webkit-radial-gradient(center center, 50% 70%, #fff 70%, #fcfcfc);
+	background: -o-radial-gradient(center center, 50% 70%, #fff 70%, #fcfcfc);
+	background: -ms-radial-gradient(center center, 50% 70%, #fff 70%, #fcfcfc);
+	background-attachment: fixed;
+
+	header {
+		nav {
+			border-top: 5px solid $blue;
+			background-color: $light-grey;
+
+			ul {
+				@extend .container;
+				text-align: right;
+
+				li {
+					display: inline;
+
+					a {
+						display: inline-block;
+						padding: 0.5em 1em;
+						margin-right: -1em;
+
+						&:hover {
+							text-decoration: none;
+							background-color: #fff;
+						}
+
+						img {
+							max-width: 2em;
+							border-radius: 1em;
+							margin-right: 0.5em;
+						}
+					}
+				}
+			}
+		}
+
+		h1 {
+			@extend .container;
+
+			img {
+				max-width: 148px;
+			}
+		}
+	}
+
+	section {
+		@extend .container;
+		padding-bottom: 5em;
+
+		.main {
+			@extend .row;
+
+			.view {
+				.tabs {
+					ul {
+						float: left;
+						margin: 0;
+						padding: 0;
+
+						li {
+							display: inline;
+
+							a {
+								color: $dark-blue;
+								display: inline-block;
+								padding: 0.5em 1em;
+								background-color: #fff;
+								border-top: solid 1px $light-blue;
+								border-left: solid 1px $light-blue;
+								border-right: solid 1px $light-blue;
+
+								&:hover {
+									text-decoration: none;
+									color: #fff;
+									background-color: $dark-blue;
+								}
+							}
+
+							&.selected a {
+								color: #fff;
+								background-color: $dark-blue;
+							}
+						}
+					}
+
+					form {
+						float: right;
+					}
+				}
+
+				.content {
+					@extend .col-sm-10;
+					border: solid 1px $light-blue;
+
+					ul {
+						padding: 0;
+						@extend .row;
+
+						&.header {
+							background-color: $light-grey;
+							padding-top: 0.5em;
+							padding-bottom: 0.5em;
+
+							li a {
+								color: $grey;
+
+								&:hover {
+									color: $grey;
+								}
+
+								&.desc:after {
+									margin-left: 8px;
+									display: inline-block;
+									width: 0;
+									height: 0;
+									content: "";
+									vertical-align: -5px;
+									border: 6px solid;
+									border-right-color: transparent;
+									border-left-color: transparent;
+									border-bottom-color: transparent;
+								}
+
+								&.asc:after {
+									margin-left: 8px;
+									display: inline-block;
+									width: 0;
+									height: 0;
+									content: "";
+									vertical-align: 1px;
+									border: 6px solid;
+									border-right-color: transparent;
+									border-left-color: transparent;
+									border-top-color: transparent;
+								}
+							}
+						}
+
+						&.site li {
+							&.complexity, &.size, &.activity, &.health {
+								margin-top: 0.75em;
+							}
+						}
+
+
+						li {
+							display: inline;
+
+							.point {
+								width: 0.75em;
+								background-color: $blue;
+								height: 0.75em;
+								display: inline-block;
+								border-radius: 0.75em;
+								transition: opacity 0.3s;
+							}
+
+							&.title {
+								@extend .col-xs-4;
+
+								h2 {
+									margin: 0;
+									font-size: 1.4em;
+								}
+							}
+							
+							&.complexity, &.size, &.activity, &.health {
+								@extend .col-xs-2;
+							}
+						}
+					}
+				}
+			}
+
+			.groups {
+				@extend .col-sm-2;
+
+				ul {
+					margin: 0;
+					padding: 0;
+
+					li {
+						display: inline;
+					}
+				}
+			}
+		}
+	}
+
+	footer {
+		position: absolute;
+		bottom: 0;
+		background-color: $light-grey;
+		width: 100%;
+
+		ul {
+			@extend .container;
+			margin-bottom: 0;
+
+			li {
+				display: inline;
+
+				span, a {
+					display: inline-block;
+					padding: 0.5em 0;
+					margin-right: 0.25em;
+				}
+			}
+		}
+	}
+}
+
+// Elements
+a {
+	color: $blue;
+
+	&.drop:after {
+		margin-left: 4px;
+		display: inline-block;
+		width: 0;
+		height: 0;
+		content: "";
+		vertical-align: -5px;
+		border: 6px solid;
+		border-right-color: transparent;
+		border-left-color: transparent;
+		border-bottom-color: transparent;
+	}
+
+	&:hover {
+		text-decoration: none;
+	}
+}
