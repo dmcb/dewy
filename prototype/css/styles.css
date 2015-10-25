@@ -2462,8 +2462,12 @@ body {
             border-radius: 0.75em;
             transition: opacity 0.3s; }
           body section .main .view .content .sites ul li.complexity, body section .main .view .content .sites ul li.size, body section .main .view .content .sites ul li.activity, body section .main .view .content .sites ul li.health {
-            margin-top: 1.5em;
-            font-size: 0.7em; }
+            font-size: 0.8em;
+            margin-top: 0.75em; }
+            @media (max-width: 1199px) {
+              body section .main .view .content .sites ul li.complexity, body section .main .view .content .sites ul li.size, body section .main .view .content .sites ul li.activity, body section .main .view .content .sites ul li.health {
+                font-size: 0.6em;
+                margin-top: 1.5em; } }
     body section .main .groups ul {
       margin: 0;
       padding: 0; }

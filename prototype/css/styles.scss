@@ -219,8 +219,13 @@ body {
 								}
 
 								&.complexity, &.size, &.activity, &.health {
-									margin-top: 1.5em;
-									font-size: 0.7em;
+									font-size: 0.8em;
+									margin-top: 0.75em;
+
+									@media (max-width: $screen-md-max) {
+										font-size: 0.6em;
+										margin-top: 1.5em;
+									}
 								}
 							}
 						}
