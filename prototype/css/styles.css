@@ -1485,16 +1485,16 @@ address {
   .container-fluid:after {
     clear: both; }
 
-.row, body section .main, body section .main .view .content ul {
+.row, body section .main, body section .main .view nav, body section .main .view .content ul {
   margin-left: -15px;
   margin-right: -15px; }
-  .row:before, body section .main:before, body section .main .view .content ul:before, .row:after, body section .main:after, body section .main .view .content ul:after {
+  .row:before, body section .main:before, body section .main .view nav:before, body section .main .view .content ul:before, .row:after, body section .main:after, body section .main .view nav:after, body section .main .view .content ul:after {
     content: " ";
     display: table; }
-  .row:after, body section .main:after, body section .main .view .content ul:after {
+  .row:after, body section .main:after, body section .main .view nav:after, body section .main .view .content ul:after {
     clear: both; }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, body section .main .view .content ul li.complexity, body section .main .view .content ul li.size, body section .main .view .content ul li.activity, body section .main .view .content ul li.health, .col-sm-2, body section .main .groups, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, body section .main .view .content ul li.title, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, body section .main .view .content, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, body section .main .view .content ul li.complexity, body section .main .view .content ul li.size, body section .main .view .content ul li.activity, body section .main .view .content ul li.health, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, body section .main .groups, .col-md-3, .col-lg-3, .col-xs-4, body section .main .view .content ul li.title, .col-sm-4, body section .main .view nav .search, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, body section .main .view nav .tabs, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, body section .main .view, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -1657,19 +1657,19 @@ address {
   margin-left: 100%; }
 
 @media (min-width: 768px) {
-  .col-sm-1, .col-sm-2, body section .main .groups, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, body section .main .view .content, .col-sm-11, .col-sm-12 {
+  .col-sm-1, .col-sm-2, .col-sm-3, body section .main .groups, .col-sm-4, body section .main .view nav .search, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, body section .main .view nav .tabs, .col-sm-9, body section .main .view, .col-sm-10, .col-sm-11, .col-sm-12 {
     float: left; }
 
   .col-sm-1 {
     width: 8.3333333333%; }
 
-  .col-sm-2, body section .main .groups {
+  .col-sm-2 {
     width: 16.6666666667%; }
 
-  .col-sm-3 {
+  .col-sm-3, body section .main .groups {
     width: 25%; }
 
-  .col-sm-4 {
+  .col-sm-4, body section .main .view nav .search {
     width: 33.3333333333%; }
 
   .col-sm-5 {
@@ -1681,13 +1681,13 @@ address {
   .col-sm-7 {
     width: 58.3333333333%; }
 
-  .col-sm-8 {
+  .col-sm-8, body section .main .view nav .tabs {
     width: 66.6666666667%; }
 
-  .col-sm-9 {
+  .col-sm-9, body section .main .view {
     width: 75%; }
 
-  .col-sm-10, body section .main .view .content {
+  .col-sm-10 {
     width: 83.3333333333%; }
 
   .col-sm-11 {
@@ -2371,13 +2371,12 @@ body {
     max-width: 148px; }
   body section {
     padding-bottom: 5em; }
-    body section .main .view .tabs ul {
-      float: left;
+    body section .main .view nav .tabs ul {
       margin: 0;
       padding: 0; }
-      body section .main .view .tabs ul li {
+      body section .main .view nav .tabs ul li {
         display: inline; }
-        body section .main .view .tabs ul li a {
+        body section .main .view nav .tabs ul li a {
           color: #337ab7;
           display: inline-block;
           padding: 0.5em 1em;
@@ -2385,63 +2384,68 @@ body {
           border-top: solid 1px #D0E2F0;
           border-left: solid 1px #D0E2F0;
           border-right: solid 1px #D0E2F0; }
-          body section .main .view .tabs ul li a:hover {
+          body section .main .view nav .tabs ul li a:hover {
             text-decoration: none;
             color: #fff;
             background-color: #337ab7; }
-        body section .main .view .tabs ul li.selected a {
+        body section .main .view nav .tabs ul li.selected a {
           color: #fff;
           background-color: #337ab7; }
-    body section .main .view .tabs form {
-      float: right; }
+    body section .main .view nav .search form input {
+      width: 100%; }
     body section .main .view .content {
       border: solid 1px #D0E2F0; }
       body section .main .view .content ul {
+        margin: 0;
         padding: 0; }
-        body section .main .view .content ul.header {
-          background-color: #eee;
-          padding-top: 0.5em;
-          padding-bottom: 0.5em; }
-          body section .main .view .content ul.header li a {
-            color: #666; }
-            body section .main .view .content ul.header li a:hover {
-              color: #666; }
-            body section .main .view .content ul.header li a.desc:after {
-              margin-left: 8px;
-              display: inline-block;
-              width: 0;
-              height: 0;
-              content: "";
-              vertical-align: -5px;
-              border: 6px solid;
-              border-right-color: transparent;
-              border-left-color: transparent;
-              border-bottom-color: transparent; }
-            body section .main .view .content ul.header li a.asc:after {
-              margin-left: 8px;
-              display: inline-block;
-              width: 0;
-              height: 0;
-              content: "";
-              vertical-align: 1px;
-              border: 6px solid;
-              border-right-color: transparent;
-              border-left-color: transparent;
-              border-top-color: transparent; }
-        body section .main .view .content ul.site li.complexity, body section .main .view .content ul.site li.size, body section .main .view .content ul.site li.activity, body section .main .view .content ul.site li.health {
-          margin-top: 0.75em; }
         body section .main .view .content ul li {
           display: inline; }
-          body section .main .view .content ul li .point {
+          body section .main .view .content ul li.title h2 {
+            margin: 0;
+            font-size: 1.4em; }
+      body section .main .view .content .header {
+        background-color: #eee;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em; }
+        body section .main .view .content .header ul li a {
+          color: #666; }
+          body section .main .view .content .header ul li a:hover {
+            color: #666; }
+          body section .main .view .content .header ul li a.desc:after {
+            margin-left: 8px;
+            display: inline-block;
+            width: 0;
+            height: 0;
+            content: "";
+            vertical-align: -5px;
+            border: 6px solid;
+            border-right-color: transparent;
+            border-left-color: transparent;
+            border-bottom-color: transparent; }
+          body section .main .view .content .header ul li a.asc:after {
+            margin-left: 8px;
+            display: inline-block;
+            width: 0;
+            height: 0;
+            content: "";
+            vertical-align: 1px;
+            border: 6px solid;
+            border-right-color: transparent;
+            border-left-color: transparent;
+            border-top-color: transparent; }
+      body section .main .view .content .sites {
+        padding-top: 1em; }
+        body section .main .view .content .sites ul {
+          padding-bottom: 1em; }
+          body section .main .view .content .sites ul li .point {
             width: 0.75em;
             background-color: #239CF9;
             height: 0.75em;
             display: inline-block;
             border-radius: 0.75em;
             transition: opacity 0.3s; }
-          body section .main .view .content ul li.title h2 {
-            margin: 0;
-            font-size: 1.4em; }
+          body section .main .view .content .sites ul li.complexity, body section .main .view .content .sites ul li.size, body section .main .view .content .sites ul li.activity, body section .main .view .content .sites ul li.health {
+            margin-top: 0.75em; }
     body section .main .groups ul {
       margin: 0;
       padding: 0; }

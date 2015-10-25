@@ -67,109 +67,64 @@ body {
 			@extend .row;
 
 			.view {
-				.tabs {
-					ul {
-						float: left;
-						margin: 0;
-						padding: 0;
+				@extend .col-sm-9;
 
-						li {
-							display: inline;
+				nav {
+					@extend .row;
 
-							a {
-								color: $dark-blue;
-								display: inline-block;
-								padding: 0.5em 1em;
-								background-color: #fff;
-								border-top: solid 1px $light-blue;
-								border-left: solid 1px $light-blue;
-								border-right: solid 1px $light-blue;
+					.tabs {
+						@extend .col-sm-8;
 
-								&:hover {
-									text-decoration: none;
+						ul {
+							margin: 0;
+							padding: 0;
+
+							li {
+								display: inline;
+
+								a {
+									color: $dark-blue;
+									display: inline-block;
+									padding: 0.5em 1em;
+									background-color: #fff;
+									border-top: solid 1px $light-blue;
+									border-left: solid 1px $light-blue;
+									border-right: solid 1px $light-blue;
+
+									&:hover {
+										text-decoration: none;
+										color: #fff;
+										background-color: $dark-blue;
+									}
+								}
+
+								&.selected a {
 									color: #fff;
 									background-color: $dark-blue;
 								}
 							}
-
-							&.selected a {
-								color: #fff;
-								background-color: $dark-blue;
-							}
 						}
 					}
 
-					form {
-						float: right;
+					.search {
+						@extend .col-sm-4;
+
+						form input {
+							width: 100%;
+						}
 					}
 				}
 
 				.content {
-					@extend .col-sm-10;
 					border: solid 1px $light-blue;
 
 					ul {
+						margin: 0;
 						padding: 0;
-						@extend .row;
-
-						&.header {
-							background-color: $light-grey;
-							padding-top: 0.5em;
-							padding-bottom: 0.5em;
-
-							li a {
-								color: $grey;
-
-								&:hover {
-									color: $grey;
-								}
-
-								&.desc:after {
-									margin-left: 8px;
-									display: inline-block;
-									width: 0;
-									height: 0;
-									content: "";
-									vertical-align: -5px;
-									border: 6px solid;
-									border-right-color: transparent;
-									border-left-color: transparent;
-									border-bottom-color: transparent;
-								}
-
-								&.asc:after {
-									margin-left: 8px;
-									display: inline-block;
-									width: 0;
-									height: 0;
-									content: "";
-									vertical-align: 1px;
-									border: 6px solid;
-									border-right-color: transparent;
-									border-left-color: transparent;
-									border-top-color: transparent;
-								}
-							}
-						}
-
-						&.site li {
-							&.complexity, &.size, &.activity, &.health {
-								margin-top: 0.75em;
-							}
-						}
-
+					@extend .row;
 
 						li {
 							display: inline;
-
-							.point {
-								width: 0.75em;
-								background-color: $blue;
-								height: 0.75em;
-								display: inline-block;
-								border-radius: 0.75em;
-								transition: opacity 0.3s;
-							}
 
 							&.title {
 								@extend .col-xs-4;
@@ -185,11 +140,74 @@ body {
 							}
 						}
 					}
+
+					.header {
+						background-color: $light-grey;
+						padding-top: 0.5em;
+						padding-bottom: 0.5em;
+
+						ul li a {
+							color: $grey;
+
+							&:hover {
+								color: $grey;
+							}
+
+							&.desc:after {
+								margin-left: 8px;
+								display: inline-block;
+								width: 0;
+								height: 0;
+								content: "";
+								vertical-align: -5px;
+								border: 6px solid;
+								border-right-color: transparent;
+								border-left-color: transparent;
+								border-bottom-color: transparent;
+							}
+
+							&.asc:after {
+								margin-left: 8px;
+								display: inline-block;
+								width: 0;
+								height: 0;
+								content: "";
+								vertical-align: 1px;
+								border: 6px solid;
+								border-right-color: transparent;
+								border-left-color: transparent;
+								border-top-color: transparent;
+							}
+						}
+					}
+
+					.sites {
+						padding-top: 1em;
+						
+						ul {
+							padding-bottom: 1em;
+
+							li {
+								.point {
+									width: 0.75em;
+									background-color: $blue;
+									height: 0.75em;
+									display: inline-block;
+									border-radius: 0.75em;
+									transition: opacity 0.3s;
+								}
+
+								&.complexity, &.size, &.activity, &.health {
+									margin-top: 0.75em;
+								}
+							}
+						}
+					}
 				}
 			}
 
 			.groups {
-				@extend .col-sm-2;
+				@extend .col-sm-3;
 
 				ul {
 					margin: 0;
