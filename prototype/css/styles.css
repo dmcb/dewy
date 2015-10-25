@@ -2470,9 +2470,45 @@ body {
                 margin-top: 1.5em; } }
     body section .main .groups ul {
       margin: 0;
-      padding: 0; }
+      padding-left: 0; }
       body section .main .groups ul li {
         display: inline; }
+        body section .main .groups ul li a {
+          display: block;
+          padding: 0.35em 0 0.35em 1.5em;
+          font-weight: bold; }
+          body section .main .groups ul li a.selected {
+            color: #666; }
+          body section .main .groups ul li a.folder:before {
+            margin-left: -1.25em;
+            margin-right: 0.25em;
+            display: inline-block;
+            width: 0;
+            height: 0;
+            content: "";
+            vertical-align: -1px;
+            border: 6px solid;
+            border-right-color: transparent;
+            border-top-color: transparent;
+            border-bottom-color: transparent; }
+          body section .main .groups ul li a.folder.open:before {
+            margin-left: -1.5em;
+            margin-right: 0.5em;
+            display: inline-block;
+            width: 0;
+            height: 0;
+            content: "";
+            vertical-align: -5px;
+            border: 6px solid;
+            border-right-color: transparent;
+            border-left-color: transparent;
+            border-bottom-color: transparent; }
+      body section .main .groups ul.folders li > ul li a {
+        padding-left: 2.5em; }
+      body section .main .groups ul.folders li > ul li > ul li a {
+        padding-left: 4.5em; }
+      body section .main .groups ul.folders li > ul li > ul li > ul li a {
+        padding-left: 6.5em; }
   body footer {
     position: absolute;
     bottom: 0;
