@@ -73,7 +73,7 @@ body {
 					@extend .row;
 
 					.tabs {
-						@extend .col-sm-8;
+						@extend .col-md-8;
 
 						ul {
 							margin: 0;
@@ -91,6 +91,10 @@ body {
 									border-left: solid 1px $light-blue;
 									border-right: solid 1px $light-blue;
 
+									@media (max-width: $screen-sm-max) {
+										border-bottom: solid 1px $light-blue;
+									}
+
 									&:hover {
 										text-decoration: none;
 										color: #fff;
@@ -107,7 +111,12 @@ body {
 					}
 
 					.search {
-						@extend .col-sm-4;
+						@extend .col-md-4;
+
+						@media (max-width: $screen-sm-max) {
+							padding-top: 1em;
+							padding-bottom: 1em;
+						}
 
 						form input {
 							width: 100%;
@@ -121,7 +130,7 @@ body {
 					ul {
 						margin: 0;
 						padding: 0;
-					@extend .row;
+						@extend .row;
 
 						li {
 							display: inline;
@@ -143,17 +152,24 @@ body {
 
 					.header {
 						background-color: $light-grey;
-						padding-top: 0.5em;
-						padding-bottom: 0.5em;
 
 						ul li a {
 							color: $grey;
+							display: inline-block;
+							width: 100%;
+							padding: 0.5em 0;
 
 							&:hover {
 								color: $grey;
 							}
 
 							&.desc:after {
+								@media (max-width: $screen-sm-max) {
+									display: block;
+									margin-top: 6px;
+									margin-left: 0;
+								}
+
 								margin-left: 8px;
 								display: inline-block;
 								width: 0;
@@ -167,6 +183,11 @@ body {
 							}
 
 							&.asc:after {
+								@media (max-width: $screen-sm-max) {
+									display: block;
+									margin-left: 0;
+								}
+
 								margin-left: 8px;
 								display: inline-block;
 								width: 0;
@@ -183,7 +204,7 @@ body {
 
 					.sites {
 						padding-top: 1em;
-						
+
 						ul {
 							padding-bottom: 1em;
 
@@ -198,7 +219,8 @@ body {
 								}
 
 								&.complexity, &.size, &.activity, &.health {
-									margin-top: 0.75em;
+									margin-top: 1.5em;
+									font-size: 0.7em;
 								}
 							}
 						}
