@@ -19,21 +19,24 @@ body {
 	background-attachment: fixed;
 
 	header {
+		border-top: 5px solid $blue;
+		background-color: $light-grey;
+
 		nav {
-			border-top: 5px solid $blue;
-			background-color: $light-grey;
+			@extend .container;
 
 			ul {
-				@extend .container;
+				@extend .row;
 				text-align: right;
+				margin-bottom: 0;
 
 				li {
 					display: inline;
 
 					a {
 						display: inline-block;
-						padding: 0.5em 1em;
-						margin-right: -1em;
+						padding: 1em $grid-gutter-width/2;
+						height: 45px;
 
 						&:hover {
 							text-decoration: none;
@@ -44,12 +47,16 @@ body {
 							max-width: 2em;
 							border-radius: 1em;
 							margin-right: 0.5em;
+							float: left;
+							margin-top: -5px;
 						}
 					}
 				}
 			}
 		}
+	}
 
+	.logo {
 		h1 {
 			@extend .container;
 
@@ -118,8 +125,40 @@ body {
 							padding-bottom: 1em;
 						}
 
-						form input {
-							width: 100%;
+						form {
+							position: relative;
+							border: solid 1px $light-blue;
+
+							input[type=text] {
+								width: 100%;
+								padding: 0.3em 0.5em;
+								border: none;
+								background-color: transparent;
+
+								&::-webkit-input-placeholder {
+									color: $dark-blue;
+								}
+								&:-moz-placeholder {
+									color: $dark-blue;
+									opacity: 1;
+								}
+								&::-moz-placeholder {
+									color: $dark-blue;
+									opacity: 1;
+								}
+								&:-ms-input-placeholder {
+									color: $dark-blue;
+								}
+							}
+
+							button {
+								position: absolute;
+								right: 0;
+								border: 0;
+								background-color: transparent;
+								color: $blue;
+								margin-top: 3px;
+							}
 						}
 					}
 				}
@@ -157,10 +196,32 @@ body {
 							color: $grey;
 							display: inline-block;
 							width: 100%;
-							padding: 0.5em 0;
+							height: 100%;
+							padding: 0.5em $grid-gutter-width/2;
+							box-sizing: content-box;
+							margin-left: -$grid-gutter-width/2;
+
+							@media (max-width: $screen-sm-max) {
+								font-size: 0.9em;
+
+								&:after {
+									margin-top: 6px;
+									display: block;
+									width: 0;
+									height: 0;
+									content: "";
+									vertical-align: -5px;
+									border: 6px solid;
+									border-top-color: transparent;
+									border-left-color: transparent;
+									border-right-color: transparent;
+									border-bottom-color: transparent;
+								}
+							}
 
 							&:hover {
-								color: $grey;
+								color: $light-grey;
+								background-color: $grey;
 							}
 
 							&.desc:after {
@@ -177,8 +238,8 @@ body {
 								content: "";
 								vertical-align: -5px;
 								border: 6px solid;
-								border-right-color: transparent;
 								border-left-color: transparent;
+								border-right-color: transparent;
 								border-bottom-color: transparent;
 							}
 
@@ -195,8 +256,8 @@ body {
 								content: "";
 								vertical-align: 1px;
 								border: 6px solid;
-								border-right-color: transparent;
 								border-left-color: transparent;
+								border-right-color: transparent;
 								border-top-color: transparent;
 							}
 						}
@@ -235,6 +296,9 @@ body {
 
 			.groups {
 				@extend .col-sm-3;
+				@media (max-width: $screen-xs-max) {
+					display: none;
+				}
 
 				ul {
 					margin: 0;
@@ -244,6 +308,9 @@ body {
 						display: inline;
 
 						a {
+							overflow: hidden;
+							text-overflow: ellipsis;
+							white-space: nowrap;
 							display: block;
 							padding: 0.35em 0 0.35em 1.5em;
 							font-weight: bold;
@@ -301,6 +368,32 @@ body {
 						padding-left: 6.5em;
 					}
 				}
+
+				.actions {
+					margin-top: 2em;
+
+					a {
+						color: $grey;
+						display: block;
+						background-color: $light-grey;
+						padding: 0.25em 0.5em;
+						margin-bottom: 0.25em;
+
+						&:before {
+							display: inline-block;
+							margin-right: 1em;
+							width: 0;
+							height: 0;
+							content: "+";
+							font-weight: 800;
+						}
+
+						&:hover {
+							color: $light-grey;
+							background-color: $grey;
+						}
+					}
+				}
 			}
 		}
 	}
@@ -321,7 +414,7 @@ body {
 				span, a {
 					display: inline-block;
 					padding: 0.5em 0;
-					margin-right: 0.25em;
+					margin-right: 1em;
 				}
 			}
 		}

@@ -1454,24 +1454,24 @@ address {
   font-style: normal;
   line-height: 1.428571429; }
 
-.container, body header nav ul, body header h1, body section, body footer ul {
+.container, body header nav, body .logo h1, body section, body footer ul {
   margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px; }
-  .container:before, body header nav ul:before, body header h1:before, body section:before, body footer ul:before, .container:after, body header nav ul:after, body header h1:after, body section:after, body footer ul:after {
+  .container:before, body header nav:before, body .logo h1:before, body section:before, body footer ul:before, .container:after, body header nav:after, body .logo h1:after, body section:after, body footer ul:after {
     content: " ";
     display: table; }
-  .container:after, body header nav ul:after, body header h1:after, body section:after, body footer ul:after {
+  .container:after, body header nav:after, body .logo h1:after, body section:after, body footer ul:after {
     clear: both; }
   @media (min-width: 768px) {
-    .container, body header nav ul, body header h1, body section, body footer ul {
+    .container, body header nav, body .logo h1, body section, body footer ul {
       width: 750px; } }
   @media (min-width: 992px) {
-    .container, body header nav ul, body header h1, body section, body footer ul {
+    .container, body header nav, body .logo h1, body section, body footer ul {
       width: 970px; } }
   @media (min-width: 1200px) {
-    .container, body header nav ul, body header h1, body section, body footer ul {
+    .container, body header nav, body .logo h1, body section, body footer ul {
       width: 1170px; } }
 
 .container-fluid {
@@ -1485,13 +1485,13 @@ address {
   .container-fluid:after {
     clear: both; }
 
-.row, body section .main, body section .main .view nav, body section .main .view .content ul {
+.row, body header nav ul, body section .main, body section .main .view nav, body section .main .view .content ul {
   margin-left: -15px;
   margin-right: -15px; }
-  .row:before, body section .main:before, body section .main .view nav:before, body section .main .view .content ul:before, .row:after, body section .main:after, body section .main .view nav:after, body section .main .view .content ul:after {
+  .row:before, body header nav ul:before, body section .main:before, body section .main .view nav:before, body section .main .view .content ul:before, .row:after, body header nav ul:after, body section .main:after, body section .main .view nav:after, body section .main .view .content ul:after {
     content: " ";
     display: table; }
-  .row:after, body section .main:after, body section .main .view nav:after, body section .main .view .content ul:after {
+  .row:after, body header nav ul:after, body section .main:after, body section .main .view nav:after, body section .main .view .content ul:after {
     clear: both; }
 
 .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, body section .main .view .content ul li.complexity, body section .main .view .content ul li.size, body section .main .view .content ul li.activity, body section .main .view .content ul li.health, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, body section .main .groups, .col-md-3, .col-lg-3, .col-xs-4, body section .main .view .content ul li.title, .col-sm-4, .col-md-4, body section .main .view nav .search, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, body section .main .view nav .tabs, .col-lg-8, .col-xs-9, .col-sm-9, body section .main .view, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
@@ -2349,25 +2349,28 @@ body {
   background: -o-radial-gradient(center center, 50% 70%, #fff 70%, #fcfcfc);
   background: -ms-radial-gradient(center center, 50% 70%, #fff 70%, #fcfcfc);
   background-attachment: fixed; }
-  body header nav {
+  body header {
     border-top: 5px solid #239CF9;
     background-color: #eee; }
     body header nav ul {
-      text-align: right; }
+      text-align: right;
+      margin-bottom: 0; }
       body header nav ul li {
         display: inline; }
         body header nav ul li a {
           display: inline-block;
-          padding: 0.5em 1em;
-          margin-right: -1em; }
+          padding: 1em 15px;
+          height: 45px; }
           body header nav ul li a:hover {
             text-decoration: none;
             background-color: #fff; }
           body header nav ul li a img {
             max-width: 2em;
             border-radius: 1em;
-            margin-right: 0.5em; }
-  body header h1 img {
+            margin-right: 0.5em;
+            float: left;
+            margin-top: -5px; }
+  body .logo h1 img {
     max-width: 148px; }
   body section {
     padding-bottom: 5em; }
@@ -2398,8 +2401,31 @@ body {
       body section .main .view nav .search {
         padding-top: 1em;
         padding-bottom: 1em; } }
-    body section .main .view nav .search form input {
-      width: 100%; }
+    body section .main .view nav .search form {
+      position: relative;
+      border: solid 1px #D0E2F0; }
+      body section .main .view nav .search form input[type=text] {
+        width: 100%;
+        padding: 0.3em 0.5em;
+        border: none;
+        background-color: transparent; }
+        body section .main .view nav .search form input[type=text]::-webkit-input-placeholder {
+          color: #337ab7; }
+        body section .main .view nav .search form input[type=text]:-moz-placeholder {
+          color: #337ab7;
+          opacity: 1; }
+        body section .main .view nav .search form input[type=text]::-moz-placeholder {
+          color: #337ab7;
+          opacity: 1; }
+        body section .main .view nav .search form input[type=text]:-ms-input-placeholder {
+          color: #337ab7; }
+      body section .main .view nav .search form button {
+        position: absolute;
+        right: 0;
+        border: 0;
+        background-color: transparent;
+        color: #239CF9;
+        margin-top: 3px; }
     body section .main .view .content {
       border: solid 1px #D0E2F0; }
       body section .main .view .content ul {
@@ -2416,9 +2442,28 @@ body {
           color: #666;
           display: inline-block;
           width: 100%;
-          padding: 0.5em 0; }
+          height: 100%;
+          padding: 0.5em 15px;
+          box-sizing: content-box;
+          margin-left: -15px; }
+          @media (max-width: 991px) {
+            body section .main .view .content .header ul li a {
+              font-size: 0.9em; }
+              body section .main .view .content .header ul li a:after {
+                margin-top: 6px;
+                display: block;
+                width: 0;
+                height: 0;
+                content: "";
+                vertical-align: -5px;
+                border: 6px solid;
+                border-top-color: transparent;
+                border-left-color: transparent;
+                border-right-color: transparent;
+                border-bottom-color: transparent; } }
           body section .main .view .content .header ul li a:hover {
-            color: #666; }
+            color: #eee;
+            background-color: #666; }
           body section .main .view .content .header ul li a.desc:after {
             margin-left: 8px;
             display: inline-block;
@@ -2427,8 +2472,8 @@ body {
             content: "";
             vertical-align: -5px;
             border: 6px solid;
-            border-right-color: transparent;
             border-left-color: transparent;
+            border-right-color: transparent;
             border-bottom-color: transparent; }
             @media (max-width: 991px) {
               body section .main .view .content .header ul li a.desc:after {
@@ -2443,8 +2488,8 @@ body {
             content: "";
             vertical-align: 1px;
             border: 6px solid;
-            border-right-color: transparent;
             border-left-color: transparent;
+            border-right-color: transparent;
             border-top-color: transparent; }
             @media (max-width: 991px) {
               body section .main .view .content .header ul li a.asc:after {
@@ -2468,12 +2513,18 @@ body {
               body section .main .view .content .sites ul li.complexity, body section .main .view .content .sites ul li.size, body section .main .view .content .sites ul li.activity, body section .main .view .content .sites ul li.health {
                 font-size: 0.6em;
                 margin-top: 1.5em; } }
+    @media (max-width: 767px) {
+      body section .main .groups {
+        display: none; } }
     body section .main .groups ul {
       margin: 0;
       padding-left: 0; }
       body section .main .groups ul li {
         display: inline; }
         body section .main .groups ul li a {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
           display: block;
           padding: 0.35em 0 0.35em 1.5em;
           font-weight: bold; }
@@ -2509,6 +2560,24 @@ body {
         padding-left: 4.5em; }
       body section .main .groups ul.folders li > ul li > ul li > ul li a {
         padding-left: 6.5em; }
+    body section .main .groups .actions {
+      margin-top: 2em; }
+      body section .main .groups .actions a {
+        color: #666;
+        display: block;
+        background-color: #eee;
+        padding: 0.25em 0.5em;
+        margin-bottom: 0.25em; }
+        body section .main .groups .actions a:before {
+          display: inline-block;
+          margin-right: 1em;
+          width: 0;
+          height: 0;
+          content: "+";
+          font-weight: 800; }
+        body section .main .groups .actions a:hover {
+          color: #eee;
+          background-color: #666; }
   body footer {
     position: absolute;
     bottom: 0;
@@ -2521,7 +2590,7 @@ body {
         body footer ul li span, body footer ul li a {
           display: inline-block;
           padding: 0.5em 0;
-          margin-right: 0.25em; }
+          margin-right: 1em; }
 
 a {
   color: #239CF9; }
