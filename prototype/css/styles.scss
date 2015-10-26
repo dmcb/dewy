@@ -61,7 +61,6 @@ body {
 			@extend .container;
 
 			img {
-				margin-left: -$grid-gutter-width/2;
 				max-width: 148px;
 			}
 		}
@@ -174,10 +173,9 @@ body {
 							button {
 								position: absolute;
 								right: 0;
-								border: 0;
-								background-color: transparent;
 								color: $blue;
 								margin-top: 3px;
+								background-color: transparent;
 							}
 						}
 					}
@@ -311,6 +309,43 @@ body {
 							}
 						}
 					}
+
+					.rules {
+						padding: $grid-gutter-width/2;
+
+						.rule, .rule-group > .rule-group {
+							padding-left: 2em;
+						}
+
+						.rule {
+							margin-top: 0.5em;
+							margin-bottom: 0.5em;
+
+							.buttons {
+								float: right;
+							}
+						}
+
+						.rule-group {
+							margin-top: 1.5em;
+							
+						}
+
+						.rule-group-heading {
+							margin-bottom: 1.5em;
+						}
+
+						input {
+							font-size: 0.85em;
+							border-width: 1px solid $grey;
+							padding: 0;
+						}
+
+						.total {
+							margin: 2em 0 0 0;
+							font-weight: bold;
+						}
+					}
 				}
 			}
 
@@ -394,21 +429,16 @@ body {
 				}
 
 				.actions {
-					a {
-						color: $grey;
+					button {
 						display: block;
-						background-color: $light-grey;
 						padding: 0.25em 1.5em;
 						margin-bottom: 0.25em;
+						width: 100%;
+						text-align: left;
 
 						span {
 							float: right;
 							margin-top: 1px;
-						}
-
-						&:hover {
-							color: $light-grey;
-							background-color: $grey;
 						}
 					}
 				}
@@ -458,5 +488,16 @@ a {
 
 	&:hover {
 		text-decoration: none;
+	}
+}
+
+button {
+	border: 0;
+	background-color: $light-grey;
+	color: $grey;
+
+	&:hover {
+		background-color: $grey;
+		color: $light-grey;
 	}
 }
