@@ -2371,7 +2371,6 @@ body {
             float: left;
             margin-top: -5px; }
   body .logo h1 img {
-    margin-left: -15px;
     max-width: 148px; }
   body section {
     padding-bottom: 5em; }
@@ -2433,10 +2432,9 @@ body {
       body section .main .view nav .search form button {
         position: absolute;
         right: 0;
-        border: 0;
-        background-color: transparent;
         color: #239CF9;
-        margin-top: 3px; }
+        margin-top: 3px;
+        background-color: transparent; }
     body section .main .view .content {
       border: solid 1px #D0E2F0; }
       body section .main .view .content ul {
@@ -2524,6 +2522,26 @@ body {
               body section .main .view .content .sites ul li.complexity, body section .main .view .content .sites ul li.size, body section .main .view .content .sites ul li.activity, body section .main .view .content .sites ul li.health {
                 font-size: 0.6em;
                 margin-top: 1.5em; } }
+      body section .main .view .content .rules {
+        padding: 15px; }
+        body section .main .view .content .rules .rule, body section .main .view .content .rules .rule-group > .rule-group {
+          padding-left: 2em; }
+        body section .main .view .content .rules .rule {
+          margin-top: 0.5em;
+          margin-bottom: 0.5em; }
+          body section .main .view .content .rules .rule .buttons {
+            float: right; }
+        body section .main .view .content .rules .rule-group {
+          margin-top: 1.5em; }
+        body section .main .view .content .rules .rule-group-heading {
+          margin-bottom: 1.5em; }
+        body section .main .view .content .rules input {
+          font-size: 0.85em;
+          border-width: 1px solid #666;
+          padding: 0; }
+        body section .main .view .content .rules .total {
+          margin: 2em 0 0 0;
+          font-weight: bold; }
     @media (max-width: 767px) {
       body section .main .context {
         display: none; } }
@@ -2573,18 +2591,15 @@ body {
         padding-left: 6.5em; }
       body section .main .context ul + .actions {
         margin-top: 2em; }
-    body section .main .context .actions a {
-      color: #666;
+    body section .main .context .actions button {
       display: block;
-      background-color: #eee;
       padding: 0.25em 1.5em;
-      margin-bottom: 0.25em; }
-      body section .main .context .actions a span {
+      margin-bottom: 0.25em;
+      width: 100%;
+      text-align: left; }
+      body section .main .context .actions button span {
         float: right;
         margin-top: 1px; }
-      body section .main .context .actions a:hover {
-        color: #eee;
-        background-color: #666; }
   body footer {
     position: absolute;
     bottom: 0;
@@ -2614,3 +2629,11 @@ a {
     border-bottom-color: transparent; }
   a:hover {
     text-decoration: none; }
+
+button {
+  border: 0;
+  background-color: #eee;
+  color: #666; }
+  button:hover {
+    background-color: #666;
+    color: #eee; }
