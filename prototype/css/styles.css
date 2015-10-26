@@ -1494,13 +1494,13 @@ address {
   .row:after, body header nav ul:after, body section .main:after, body section .main .view nav:after, body section .main .view .content ul:after {
     clear: both; }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, body section .main .view .content ul li.complexity, body section .main .view .content ul li.size, body section .main .view .content ul li.activity, body section .main .view .content ul li.health, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, body section .main .groups, .col-md-3, .col-lg-3, .col-xs-4, body section .main .view .content ul li.title, .col-sm-4, .col-md-4, body section .main .view nav .search, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, body section .main .view nav .tabs, .col-lg-8, .col-xs-9, .col-sm-9, body section .main .view, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, body section .main .view .content ul li.complexity, body section .main .view .content ul li.size, body section .main .view .content ul li.activity, body section .main .view .content ul li.health, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, body section .main .context, .col-md-3, .col-lg-3, .col-xs-4, body section .main .view .content ul li.title, .col-sm-4, .col-md-4, body section .main .view nav .search, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, body section .main .view nav .tabs, .col-lg-8, .col-xs-9, .col-sm-9, body section .main .view, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, body section .main h2, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px; }
 
-.col-xs-1, .col-xs-2, body section .main .view .content ul li.complexity, body section .main .view .content ul li.size, body section .main .view .content ul li.activity, body section .main .view .content ul li.health, .col-xs-3, .col-xs-4, body section .main .view .content ul li.title, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
+.col-xs-1, .col-xs-2, body section .main .view .content ul li.complexity, body section .main .view .content ul li.size, body section .main .view .content ul li.activity, body section .main .view .content ul li.health, .col-xs-3, .col-xs-4, body section .main .view .content ul li.title, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, body section .main h2 {
   float: left; }
 
 .col-xs-1 {
@@ -1536,7 +1536,7 @@ address {
 .col-xs-11 {
   width: 91.6666666667%; }
 
-.col-xs-12 {
+.col-xs-12, body section .main h2 {
   width: 100%; }
 
 .col-xs-pull-0 {
@@ -1657,7 +1657,7 @@ address {
   margin-left: 100%; }
 
 @media (min-width: 768px) {
-  .col-sm-1, .col-sm-2, .col-sm-3, body section .main .groups, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, body section .main .view, .col-sm-10, .col-sm-11, .col-sm-12 {
+  .col-sm-1, .col-sm-2, .col-sm-3, body section .main .context, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, body section .main .view, .col-sm-10, .col-sm-11, .col-sm-12 {
     float: left; }
 
   .col-sm-1 {
@@ -1666,7 +1666,7 @@ address {
   .col-sm-2 {
     width: 16.6666666667%; }
 
-  .col-sm-3, body section .main .groups {
+  .col-sm-3, body section .main .context {
     width: 25%; }
 
   .col-sm-4 {
@@ -2371,9 +2371,20 @@ body {
             float: left;
             margin-top: -5px; }
   body .logo h1 img {
+    margin-left: -15px;
     max-width: 148px; }
   body section {
     padding-bottom: 5em; }
+    body section .main h2 {
+      color: #337ab7;
+      font-size: 1.8em;
+      margin: 1em 0; }
+      body section .main h2 a {
+        color: #337ab7; }
+        body section .main h2 a:hover {
+          color: #239CF9; }
+        body section .main h2 a span {
+          margin-left: 0.25em; }
     body section .main .view nav .tabs ul {
       margin: 0;
       padding: 0; }
@@ -2433,7 +2444,7 @@ body {
         padding: 0; }
         body section .main .view .content ul li {
           display: inline; }
-          body section .main .view .content ul li.title h2 {
+          body section .main .view .content ul li.title h3 {
             margin: 0;
             font-size: 1.4em; }
       body section .main .view .content .header {
@@ -2514,23 +2525,23 @@ body {
                 font-size: 0.6em;
                 margin-top: 1.5em; } }
     @media (max-width: 767px) {
-      body section .main .groups {
+      body section .main .context {
         display: none; } }
-    body section .main .groups ul {
+    body section .main .context ul {
       margin: 0;
       padding-left: 0; }
-      body section .main .groups ul li {
+      body section .main .context ul li {
         display: inline; }
-        body section .main .groups ul li a {
+        body section .main .context ul li a {
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
           display: block;
           padding: 0.35em 0 0.35em 1.5em;
           font-weight: bold; }
-          body section .main .groups ul li a.selected {
+          body section .main .context ul li a.selected {
             color: #666; }
-          body section .main .groups ul li a.folder:before {
+          body section .main .context ul li a.folder:before {
             margin-left: -1.25em;
             margin-right: 0.25em;
             display: inline-block;
@@ -2542,7 +2553,7 @@ body {
             border-right-color: transparent;
             border-top-color: transparent;
             border-bottom-color: transparent; }
-          body section .main .groups ul li a.folder.open:before {
+          body section .main .context ul li a.folder.open:before {
             margin-left: -1.5em;
             margin-right: 0.5em;
             display: inline-block;
@@ -2554,30 +2565,26 @@ body {
             border-right-color: transparent;
             border-left-color: transparent;
             border-bottom-color: transparent; }
-      body section .main .groups ul.folders li > ul li a {
+      body section .main .context ul.folders li > ul li a {
         padding-left: 2.5em; }
-      body section .main .groups ul.folders li > ul li > ul li a {
+      body section .main .context ul.folders li > ul li > ul li a {
         padding-left: 4.5em; }
-      body section .main .groups ul.folders li > ul li > ul li > ul li a {
+      body section .main .context ul.folders li > ul li > ul li > ul li a {
         padding-left: 6.5em; }
-    body section .main .groups .actions {
-      margin-top: 2em; }
-      body section .main .groups .actions a {
-        color: #666;
-        display: block;
-        background-color: #eee;
-        padding: 0.25em 0.5em;
-        margin-bottom: 0.25em; }
-        body section .main .groups .actions a:before {
-          display: inline-block;
-          margin-right: 1em;
-          width: 0;
-          height: 0;
-          content: "+";
-          font-weight: 800; }
-        body section .main .groups .actions a:hover {
-          color: #eee;
-          background-color: #666; }
+      body section .main .context ul + .actions {
+        margin-top: 2em; }
+    body section .main .context .actions a {
+      color: #666;
+      display: block;
+      background-color: #eee;
+      padding: 0.25em 1.5em;
+      margin-bottom: 0.25em; }
+      body section .main .context .actions a span {
+        float: right;
+        margin-top: 1px; }
+      body section .main .context .actions a:hover {
+        color: #eee;
+        background-color: #666; }
   body footer {
     position: absolute;
     bottom: 0;

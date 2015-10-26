@@ -61,6 +61,7 @@ body {
 			@extend .container;
 
 			img {
+				margin-left: -$grid-gutter-width/2;
 				max-width: 148px;
 			}
 		}
@@ -72,6 +73,25 @@ body {
 
 		.main {
 			@extend .row;
+
+			h2 {
+				color: $dark-blue;
+				@extend .col-xs-12;
+				font-size: 1.8em;
+				margin: 1em 0;
+
+				a {
+					color: $dark-blue;
+
+					&:hover {
+						color: $blue;
+					}
+
+					span {
+						margin-left: 0.25em;
+					}
+				}
+			}
 
 			.view {
 				@extend .col-sm-9;
@@ -177,7 +197,7 @@ body {
 							&.title {
 								@extend .col-xs-4;
 
-								h2 {
+								h3 {
 									margin: 0;
 									font-size: 1.4em;
 								}
@@ -294,7 +314,7 @@ body {
 				}
 			}
 
-			.groups {
+			.context {
 				@extend .col-sm-3;
 				@media (max-width: $screen-xs-max) {
 					display: none;
@@ -367,25 +387,23 @@ body {
 					&.folders li > ul li > ul li > ul li a {
 						padding-left: 6.5em;
 					}
+
+					& + .actions {
+											margin-top: 2em;
+					}
 				}
 
 				.actions {
-					margin-top: 2em;
-
 					a {
 						color: $grey;
 						display: block;
 						background-color: $light-grey;
-						padding: 0.25em 0.5em;
+						padding: 0.25em 1.5em;
 						margin-bottom: 0.25em;
 
-						&:before {
-							display: inline-block;
-							margin-right: 1em;
-							width: 0;
-							height: 0;
-							content: "+";
-							font-weight: 800;
+						span {
+							float: right;
+							margin-top: 1px;
 						}
 
 						&:hover {
