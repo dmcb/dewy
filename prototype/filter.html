@@ -27,17 +27,17 @@
                 </h2>
                 <div class="view">
                     <div class="content">
-                        <div class="rules">
-                            <div class="rule-group-heading">
+                        <ul class="rules">
+                            <li class="rule-group-heading">
                                 <select>
                                     <option>Any</option>
                                     <option>All</option>
                                     <option>None</option>
                                 </select>
                                 of the following rules:
-                            </div>
-                            <div class="rule-group">
-                                <div class="rule">
+                            </li>
+                            <ul class="rule-group">
+                                <li class="rule">
                                     <select class="field">
                                         <option>Base URL</option>
                                         <option>Broken links</option>
@@ -91,8 +91,8 @@
                                             <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                                         </button>
                                     </div>
-                                </div>
-                                <div class="rule">
+                                </li>
+                                <li class="rule">
                                     <select class="field">
                                         <option>Base URL</option>
                                         <option>Broken links</option>
@@ -146,9 +146,8 @@
                                             <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                                         </button>
                                     </div>
-                                </div>
-                                <div class="rule">
-                                    <div class="rule-group-heading">
+                                </li>
+                                <li class="rule-group-heading">
                                         <select>
                                             <option>Any</option>
                                             <option selected="selected">All</option>
@@ -166,118 +165,120 @@
                                                 <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                                             </button>
                                         </div>
-                                    </div>
-                                    <div class="rule-group">
-                                        <div class="rule">
-                                            <select class="field">
-                                                <option>Base URL</option>
-                                                <option>Broken links</option>
-                                                <option>Content type</option>
-                                                <option>Date added to Dewey</option>
-                                                <option>Date last accessed</option>
-                                                <option>Date last edited</option>
-                                                <option>File size (private)</option>
-                                                <option>File size (public)</option>
-                                                <option>File size (total)</option>
-                                                <option>Maintenance mode</option>
-                                                <option>Module name</option>
-                                                <option>Module versions</option>
-                                                <option>Number of content types</option>
-                                                <option>Number of files (private)</option>
-                                                <option>Number of files (public)</option>
-                                                <option selected="selected">Number of files (total)</option>
-                                                <option>Number of hits in past day</option>
-                                                <option>Number of hits in past week</option>
-                                                <option>Number of hits in past month</option>
-                                                <option>Number of modules</option>
-                                                <option>Number of nodes</option>
-                                                <option>Number of roles</option>
-                                                <option>Number of themes</option>
-                                                <option>Number of users</option>
-                                                <option>Role</option>
-                                                <option>Tag</option>
-                                                <option>Text</option>
-                                                <option>Theme</option>
-                                                <option>Title</option>
-                                                <option>User email address</option>
-                                                <option>User name</option>
-                                            </select>
-                                            <select class="choice">
-                                                <option>is
-                                                <option>is not</option>
-                                                <option>is greater than</option>
-                                                <option>is less than</option>
-                                                <option selected="selected">is greater than or equal to</option>
-                                                <option>is less than or equal to</option>
-                                            <select>
-                                            <input type="text" />
-                                            <div class="buttons">
-                                                <button>
-                                                    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                                                </button>
-                                                <button>
-                                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                                </button>
-                                                <button>
-                                                    <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-                                                </button>
-                                            </div>
+                                </li>
+                                <ul class="rule-group">
+                                    <li class="rule">
+                                        <select class="field">
+                                            <option>Base URL</option>
+                                            <option>Broken links</option>
+                                            <option>Content type</option>
+                                            <option>Date added to Dewey</option>
+                                            <option>Date last accessed</option>
+                                            <option>Date last edited</option>
+                                            <option>File size (private)</option>
+                                            <option>File size (public)</option>
+                                            <option>File size (total)</option>
+                                            <option>Maintenance mode</option>
+                                            <option>Module name</option>
+                                            <option>Module versions</option>
+                                            <option>Number of content types</option>
+                                            <option>Number of files (private)</option>
+                                            <option>Number of files (public)</option>
+                                            <option selected="selected">Number of files (total)</option>
+                                            <option>Number of hits in past day</option>
+                                            <option>Number of hits in past week</option>
+                                            <option>Number of hits in past month</option>
+                                            <option>Number of modules</option>
+                                            <option>Number of nodes</option>
+                                            <option>Number of roles</option>
+                                            <option>Number of themes</option>
+                                            <option>Number of users</option>
+                                            <option>Role</option>
+                                            <option>Tag</option>
+                                            <option>Text</option>
+                                            <option>Theme</option>
+                                            <option>Title</option>
+                                            <option>User email address</option>
+                                            <option>User name</option>
+                                        </select>
+                                        <select class="choice">
+                                            <option>is
+                                            <option>is not</option>
+                                            <option>is greater than</option>
+                                            <option>is less than</option>
+                                            <option selected="selected">is greater than or equal to</option>
+                                            <option>is less than or equal to</option>
+                                        <select>
+                                        <input type="text" />
+                                        <div class="buttons">
+                                            <button>
+                                                <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                                            </button>
+                                            <button>
+                                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                            </button>
+                                            <button>
+                                                <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                                            </button>
                                         </div>
-                                        <div class="rule">
-                                            <select class="field">
-                                                <option>Base URL</option>
-                                                <option selected="selected">Broken links</option>
-                                                <option>Content type</option>
-                                                <option>Date added to Dewey</option>
-                                                <option>Date last accessed</option>
-                                                <option>Date last edited</option>
-                                                <option>File size (private)</option>
-                                                <option>File size (public)</option>
-                                                <option>File size (total)</option>
-                                                <option>Maintenance mode</option>
-                                                <option>Module name</option>
-                                                <option>Module versions</option>
-                                                <option>Number of content types</option>
-                                                <option>Number of files (private)</option>
-                                                <option>Number of files (public)</option>
-                                                <option>Number of files (total)</option>
-                                                <option>Number of hits in past day</option>
-                                                <option>Number of hits in past week</option>
-                                                <option>Number of hits in past month</option>
-                                                <option>Number of modules</option>
-                                                <option>Number of nodes</option>
-                                                <option>Number of roles</option>
-                                                <option>Number of themes</option>
-                                                <option>Number of users</option>
-                                                <option>Role</option>
-                                                <option>Tag</option>
-                                                <option>Text</option>
-                                                <option>Theme</option>
-                                                <option>Title</option>
-                                                <option>User email address</option>
-                                                <option>User name</option>
-                                            </select>
-                                            <select class="choice">
-                                                <option>are present</option>
-                                                <option>are not present</option>
-                                            <select>
-                                            <div class="buttons">
-                                                <button>
-                                                    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                                                </button>
-                                                <button>
-                                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                                </button>
-                                                <button>
-                                                    <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-                                                </button>
-                                            </div>
+                                    </li>
+                                    <li class="rule">
+                                        <select class="field">
+                                            <option>Base URL</option>
+                                            <option selected="selected">Broken links</option>
+                                            <option>Content type</option>
+                                            <option>Date added to Dewey</option>
+                                            <option>Date last accessed</option>
+                                            <option>Date last edited</option>
+                                            <option>File size (private)</option>
+                                            <option>File size (public)</option>
+                                            <option>File size (total)</option>
+                                            <option>Maintenance mode</option>
+                                            <option>Module name</option>
+                                            <option>Module versions</option>
+                                            <option>Number of content types</option>
+                                            <option>Number of files (private)</option>
+                                            <option>Number of files (public)</option>
+                                            <option>Number of files (total)</option>
+                                            <option>Number of hits in past day</option>
+                                            <option>Number of hits in past week</option>
+                                            <option>Number of hits in past month</option>
+                                            <option>Number of modules</option>
+                                            <option>Number of nodes</option>
+                                            <option>Number of roles</option>
+                                            <option>Number of themes</option>
+                                            <option>Number of users</option>
+                                            <option>Role</option>
+                                            <option>Tag</option>
+                                            <option>Text</option>
+                                            <option>Theme</option>
+                                            <option>Title</option>
+                                            <option>User email address</option>
+                                            <option>User name</option>
+                                        </select>
+                                        <select class="choice">
+                                            <option>are present</option>
+                                            <option>are not present</option>
+                                        <select>
+                                        <div class="buttons">
+                                            <button>
+                                                <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                                            </button>
+                                            <button>
+                                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                            </button>
+                                            <button>
+                                                <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                                            </button>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
+                                    </li>
+                                </ul>
+                            </ul>
                             <p class="total">3 sites matched under these rules</p>
-                        </div>
+                        </ul>
+                        <ul class="notifications">
+                            <label><input type="checkbox"> Configure notifications on this site filter</label>
+                        </ul>
                     </div>
                 </div>
                 <nav class="context">

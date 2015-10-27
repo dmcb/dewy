@@ -74,21 +74,26 @@ body {
 			@extend .row;
 
 			h2 {
-				color: $dark-blue;
+				color: $blue;
 				@extend .col-xs-12;
 				font-size: 1.8em;
 				margin: 1em 0;
+				float: none;
 
 				a {
-					color: $dark-blue;
+					color: $blue;
 
 					&:hover {
-						color: $blue;
+						color: $dark-blue;
 					}
 
 					span {
 						margin-left: 0.25em;
 					}
+				}
+
+				input {
+					border: solid 1px $light-blue;
 				}
 			}
 
@@ -182,8 +187,6 @@ body {
 				}
 
 				.content {
-					border: solid 1px $light-blue;
-
 					ul {
 						margin: 0;
 						padding: 0;
@@ -208,6 +211,9 @@ body {
 					}
 
 					.header {
+						border-top: solid 1px $light-blue;
+						border-left: solid 1px $light-blue;
+						border-right: solid 1px $light-blue;
 						background-color: $light-grey;
 
 						ul li a {
@@ -282,6 +288,9 @@ body {
 					}
 
 					.sites {
+						border-left: solid 1px $light-blue;
+						border-right: solid 1px $light-blue;
+						border-bottom: solid 1px $light-blue;
 						padding-top: 1em;
 
 						ul {
@@ -311,32 +320,59 @@ body {
 					}
 
 					.rules {
+						border: solid 1px $light-blue;
 						padding: $grid-gutter-width/2;
 
-						.rule, .rule-group > .rule-group {
+						.rule-group {
 							padding-left: 2em;
+							margin-top: 1.5em;
 						}
 
-						.rule {
-							margin-top: 0.75em;
-							margin-bottom: 0.75em;
+						.rule, .rule-group-heading {
+							display: block;
+							margin-top: 0.5em;
+							margin-bottom: 0.5em;
+
+							&:hover {
+								background-color: #fafafa;
+							}
+
+							&:after {
+								content: ".";
+								display: block;
+								height: 0;
+								clear: both;
+								visibility: hidden;
+							}
 
 							.buttons {
 								float: right;
 
 								button {
-									margin-left: 0.5em;
+									margin-left: 0.25em;
 								}
 							}
 						}
 
-						.rule-group {
-							margin-top: 1.5em;
-							
+						.rule {
+							@media (max-width: $screen-sm-max) {
+								select, input {
+									width: 100%;
+									margin-top: 0.5em;
+								}
+
+								.buttons {
+									margin-top: 0.5em;
+								}
+							}
 						}
 
 						.rule-group-heading {
 							margin-bottom: 1.5em;
+						}
+
+						select {
+							margin-top: 2px;
 						}
 
 						input {
@@ -349,6 +385,12 @@ body {
 							margin: 2em 0 0 0;
 							font-weight: bold;
 						}
+					}
+
+					.notifications {
+						margin-top: 2em;
+						border: solid 1px $light-blue;
+						padding: $grid-gutter-width/2;
 					}
 				}
 			}
