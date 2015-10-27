@@ -2527,10 +2527,12 @@ body {
         body section .main .view .content .rules .rule, body section .main .view .content .rules .rule-group > .rule-group {
           padding-left: 2em; }
         body section .main .view .content .rules .rule {
-          margin-top: 0.5em;
-          margin-bottom: 0.5em; }
+          margin-top: 0.75em;
+          margin-bottom: 0.75em; }
           body section .main .view .content .rules .rule .buttons {
             float: right; }
+            body section .main .view .content .rules .rule .buttons button {
+              margin-left: 0.5em; }
         body section .main .view .content .rules .rule-group {
           margin-top: 1.5em; }
         body section .main .view .content .rules .rule-group-heading {
