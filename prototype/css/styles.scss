@@ -8,8 +8,12 @@ $light-grey: #eee;
 $grey: #666;
 
 // Layout
+html {
+	height: 100%;
+}
+
 body {
-	min-height:100%;
+	height: 100%;
 	color: #333;
 	font-size: 10pt;
 	background: radial-gradient(center center, 50% 70%, #fff 70%, #fcfcfc);
@@ -17,6 +21,11 @@ body {
 	background: -o-radial-gradient(center center, 50% 70%, #fff 70%, #fcfcfc);
 	background: -ms-radial-gradient(center center, 50% 70%, #fff 70%, #fcfcfc);
 	background-attachment: fixed;
+
+	.wrapper {
+		min-height: 100%;
+		position: relative;
+	}
 
 	header {
 		border-top: 5px solid $blue;
