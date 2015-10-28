@@ -2362,13 +2362,15 @@ body {
       text-align: right;
       margin-bottom: 0; }
       body header nav ul li {
-        display: inline; }
+        display: inline;
+        position: relative; }
         body header nav ul li a {
           display: inline-block;
           padding: 1em 15px;
           height: 45px; }
           body header nav ul li a:hover {
             text-decoration: none;
+            color: #337ab7;
             background-color: #fff; }
           body header nav ul li a img {
             max-width: 2em;
@@ -2376,6 +2378,24 @@ body {
             margin-right: 0.5em;
             float: left;
             margin-top: -5px; }
+        body header nav ul li.dropped > a {
+          background-color: #fff;
+          color: #337ab7; }
+        body header nav ul li.dropped .dropdown {
+          display: block; }
+      body header nav ul.dropdown {
+        margin: 0;
+        padding: 0;
+        background-color: #eee;
+        position: absolute;
+        display: none;
+        right: 0;
+        text-align: left;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+        width: 100%;
+        z-index: 1; }
+        body header nav ul.dropdown li a {
+          display: block; }
   body .logo h1 img {
     max-width: 148px; }
   body section {

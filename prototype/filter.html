@@ -8,167 +8,40 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="css/styles.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="js/scripts.min.js"></script>
     </head>
     <body>
-        <header>
-            <nav>
-                <ul>
-                    <li><a href="">Add Drupal sites</a></li><li><a href="" class="drop"><img src="img/avatar.jpg" alt=""/>Signed in as dmcb</a></li>
-                </ul>
-            </nav>
-        </header>
-        <div class="logo">
-            <h1><img src="img/dewey.png" alt="Dewey"></h1>
-        </div>
-        <section>
-            <div class="main">
-                <h2>
-                    <input type="text" placeholder="Filter title" />
-                </h2>
-                <div class="view">
-                    <div class="content">
-                        <ul class="rules">
-                            <li class="rule-group-heading">
-                                <select>
-                                    <option>Any</option>
-                                    <option>All</option>
-                                    <option>None</option>
-                                </select>
-                                of the following rules:
-                            </li>
-                            <ul class="rule-group">
-                                <li class="rule">
-                                    <select class="field">
-                                        <option>Base URL</option>
-                                        <option>Broken links</option>
-                                        <option>Content type</option>
-                                        <option>Database</option>
-                                        <option>Date added to Dewey</option>
-                                        <option>Date last accessed</option>
-                                        <option>Date last edited</option>
-                                        <option>Drupal core</option>
-                                        <option>File size (private)</option>
-                                        <option>File size (public)</option>
-                                        <option>File size (total)</option>
-                                        <option>Maintenance mode</option>
-                                        <option>Module name</option>
-                                        <option>Module versions</option>
-                                        <option>Number of content types</option>
-                                        <option>Number of files (private)</option>
-                                        <option>Number of files (public)</option>
-                                        <option selected="selected">Number of files (total)</option>
-                                        <option>Number of hits in past day</option>
-                                        <option>Number of hits in past week</option>
-                                        <option>Number of hits in past month</option>
-                                        <option>Number of modules</option>
-                                        <option>Number of nodes</option>
-                                        <option>Number of roles</option>
-                                        <option>Number of themes</option>
-                                        <option>Number of users</option>
-                                        <option>Role</option>
-                                        <option>Tag</option>
-                                        <option>Text</option>
-                                        <option>Theme</option>
-                                        <option>Title</option>
-                                        <option>User email address</option>
-                                        <option>User name</option>
-                                    </select>
-                                    <select class="choice">
-                                        <option>is
-                                        <option>is not</option>
-                                        <option>is greater than</option>
-                                        <option>is less than</option>
-                                        <option selected="selected">is greater than or equal to</option>
-                                        <option>is less than or equal to</option>
-                                    <select>
-                                    <input type="text" />
-                                    <div class="buttons">
-                                        <button>
-                                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                                        </button>
-                                        <button>
-                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                        </button>
-                                        <button>
-                                            <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-                                        </button>
-                                    </div>
-                                </li>
-                                <li class="rule">
-                                    <select class="field">
-                                        <option>Base URL</option>
-                                        <option>Broken links</option>
-                                        <option selected="selected">Content type</option>
-                                        <option>Database</option>
-                                        <option>Date added to Dewey</option>
-                                        <option>Date last accessed</option>
-                                        <option>Date last edited</option>
-                                        <option>Drupal core</option>
-                                        <option>File size (private)</option>
-                                        <option>File size (public)</option>
-                                        <option>File size (total)</option>
-                                        <option>Maintenance mode</option>
-                                        <option>Module name</option>
-                                        <option>Module versions</option>
-                                        <option>Number of content types</option>
-                                        <option>Number of files (private)</option>
-                                        <option>Number of files (public)</option>
-                                        <option>Number of files (total)</option>
-                                        <option>Number of hits in past day</option>
-                                        <option>Number of hits in past week</option>
-                                        <option>Number of hits in past month</option>
-                                        <option>Number of modules</option>
-                                        <option>Number of nodes</option>
-                                        <option>Number of roles</option>
-                                        <option>Number of themes</option>
-                                        <option>Number of users</option>
-                                        <option>Role</option>
-                                        <option>Tag</option>
-                                        <option>Text</option>
-                                        <option>Theme</option>
-                                        <option>Title</option>
-                                        <option>User email address</option>
-                                        <option>User name</option>
-                                    </select>
-                                    <select class="choice">
-                                        <option>contains</option>
-                                        <option>does not contain</option>
-                                        <option>is</option>
-                                        <option>is not</option>
-                                        <option selected="selected">starts with</option>
-                                        <option>ends with</option>
-                                    <select>
-                                    <input type="text" value="program_uofc" />
-                                    <div class="buttons">
-                                        <button>
-                                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                                        </button>
-                                        <button>
-                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                        </button>
-                                        <button>
-                                            <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-                                        </button>
-                                    </div>
-                                </li>
+        <div class="wrapper">
+            <header>
+                <nav>
+                    <ul>
+                        <li><a href="">Add Drupal sites</a></li><li><a href="" class="drop"><img src="img/avatar.jpg" alt=""/>Signed in as dmcb</a><ul class="dropdown">
+                            <li><a href="">Profile</a></li>
+                            <li><a href="">Settings</a></li>
+                            <li><a href="">Sign out</a></li>
+                        </ul></li>
+                    </ul>
+                </nav>
+            </header>
+            <div class="logo">
+                <h1><img src="img/dewey.png" alt="Dewey"></h1>
+            </div>
+            <section>
+                <div class="main">
+                    <h2>
+                        <input type="text" placeholder="Filter title" />
+                    </h2>
+                    <div class="view">
+                        <div class="content">
+                            <ul class="rules">
                                 <li class="rule-group-heading">
-                                        <select>
-                                            <option>Any</option>
-                                            <option selected="selected">All</option>
-                                            <option>None</option>
-                                        </select>
-                                        of the following rules:
-                                        <div class="buttons">
-                                            <button>
-                                                <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                                            </button>
-                                            <button>
-                                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                            </button>
-                                            <button>
-                                                <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-                                            </button>
-                                        </div>
+                                    <select>
+                                        <option>Any</option>
+                                        <option>All</option>
+                                        <option>None</option>
+                                    </select>
+                                    of the following rules:
                                 </li>
                                 <ul class="rule-group">
                                     <li class="rule">
@@ -231,8 +104,8 @@
                                     <li class="rule">
                                         <select class="field">
                                             <option>Base URL</option>
-                                            <option selected="selected">Broken links</option>
-                                            <option>Content type</option>
+                                            <option>Broken links</option>
+                                            <option selected="selected">Content type</option>
                                             <option>Database</option>
                                             <option>Date added to Dewey</option>
                                             <option>Date last accessed</option>
@@ -265,9 +138,14 @@
                                             <option>User name</option>
                                         </select>
                                         <select class="choice">
-                                            <option>are present</option>
-                                            <option>are not present</option>
+                                            <option>contains</option>
+                                            <option>does not contain</option>
+                                            <option>is</option>
+                                            <option>is not</option>
+                                            <option selected="selected">starts with</option>
+                                            <option>ends with</option>
                                         <select>
+                                        <input type="text" value="program_uofc" />
                                         <div class="buttons">
                                             <button>
                                                 <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
@@ -280,30 +158,160 @@
                                             </button>
                                         </div>
                                     </li>
+                                    <li class="rule-group-heading">
+                                            <select>
+                                                <option>Any</option>
+                                                <option selected="selected">All</option>
+                                                <option>None</option>
+                                            </select>
+                                            of the following rules:
+                                            <div class="buttons">
+                                                <button>
+                                                    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                                                </button>
+                                                <button>
+                                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                                </button>
+                                                <button>
+                                                    <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                                                </button>
+                                            </div>
+                                    </li>
+                                    <ul class="rule-group">
+                                        <li class="rule">
+                                            <select class="field">
+                                                <option>Base URL</option>
+                                                <option>Broken links</option>
+                                                <option>Content type</option>
+                                                <option>Database</option>
+                                                <option>Date added to Dewey</option>
+                                                <option>Date last accessed</option>
+                                                <option>Date last edited</option>
+                                                <option>Drupal core</option>
+                                                <option>File size (private)</option>
+                                                <option>File size (public)</option>
+                                                <option>File size (total)</option>
+                                                <option>Maintenance mode</option>
+                                                <option>Module name</option>
+                                                <option>Module versions</option>
+                                                <option>Number of content types</option>
+                                                <option>Number of files (private)</option>
+                                                <option>Number of files (public)</option>
+                                                <option selected="selected">Number of files (total)</option>
+                                                <option>Number of hits in past day</option>
+                                                <option>Number of hits in past week</option>
+                                                <option>Number of hits in past month</option>
+                                                <option>Number of modules</option>
+                                                <option>Number of nodes</option>
+                                                <option>Number of roles</option>
+                                                <option>Number of themes</option>
+                                                <option>Number of users</option>
+                                                <option>Role</option>
+                                                <option>Tag</option>
+                                                <option>Text</option>
+                                                <option>Theme</option>
+                                                <option>Title</option>
+                                                <option>User email address</option>
+                                                <option>User name</option>
+                                            </select>
+                                            <select class="choice">
+                                                <option>is
+                                                <option>is not</option>
+                                                <option>is greater than</option>
+                                                <option>is less than</option>
+                                                <option selected="selected">is greater than or equal to</option>
+                                                <option>is less than or equal to</option>
+                                            <select>
+                                            <input type="text" />
+                                            <div class="buttons">
+                                                <button>
+                                                    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                                                </button>
+                                                <button>
+                                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                                </button>
+                                                <button>
+                                                    <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                                                </button>
+                                            </div>
+                                        </li>
+                                        <li class="rule">
+                                            <select class="field">
+                                                <option>Base URL</option>
+                                                <option selected="selected">Broken links</option>
+                                                <option>Content type</option>
+                                                <option>Database</option>
+                                                <option>Date added to Dewey</option>
+                                                <option>Date last accessed</option>
+                                                <option>Date last edited</option>
+                                                <option>Drupal core</option>
+                                                <option>File size (private)</option>
+                                                <option>File size (public)</option>
+                                                <option>File size (total)</option>
+                                                <option>Maintenance mode</option>
+                                                <option>Module name</option>
+                                                <option>Module versions</option>
+                                                <option>Number of content types</option>
+                                                <option>Number of files (private)</option>
+                                                <option>Number of files (public)</option>
+                                                <option>Number of files (total)</option>
+                                                <option>Number of hits in past day</option>
+                                                <option>Number of hits in past week</option>
+                                                <option>Number of hits in past month</option>
+                                                <option>Number of modules</option>
+                                                <option>Number of nodes</option>
+                                                <option>Number of roles</option>
+                                                <option>Number of themes</option>
+                                                <option>Number of users</option>
+                                                <option>Role</option>
+                                                <option>Tag</option>
+                                                <option>Text</option>
+                                                <option>Theme</option>
+                                                <option>Title</option>
+                                                <option>User email address</option>
+                                                <option>User name</option>
+                                            </select>
+                                            <select class="choice">
+                                                <option>are present</option>
+                                                <option>are not present</option>
+                                            <select>
+                                            <div class="buttons">
+                                                <button>
+                                                    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                                                </button>
+                                                <button>
+                                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                                </button>
+                                                <button>
+                                                    <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                                                </button>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </ul>
+                                <p class="total">3 sites matched under these rules</p>
                             </ul>
-                            <p class="total">3 sites matched under these rules</p>
-                        </ul>
-                        <ul class="notifications">
-                            <label><input type="checkbox"> Configure notifications on this site filter</label>
-                        </ul>
+                            <ul class="notifications">
+                                <label><input type="checkbox"> Configure notifications on this site filter</label>
+                            </ul>
+                        </div>
                     </div>
+                    <nav class="context">
+                        <div class="actions">
+                            <button>Save filter <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+                            <button>Cancel changes <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                            <button>Delete filter <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+                        </div>
+                    </nav>
                 </div>
-                <nav class="context">
-                    <div class="actions">
-                        <button>Save filter <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
-                        <button>Cancel changes <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                        <button>Delete filter <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
-                    </div>
-                </nav>
-            </div>
-        </section>
-        <footer>
-            <ul>
-                <li><span>&copy; 2015 Dewey</span></li>
-                <li><a href="">Contact</a></li>
-                <li><a href="">Help</a></li>
-            </ul>
-        </footer>
+            </section>
+            <footer>
+                <ul>
+                    <li><span>&copy; 2015 Dewey</span></li>
+                    <li><a href="">Contact</a></li>
+                    <li><a href="">Help</a></li>
+                </ul>
+            </footer>
+        </div>
     </body>
 </html>
