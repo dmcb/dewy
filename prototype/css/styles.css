@@ -2464,140 +2464,146 @@ body {
         color: #239CF9;
         margin-top: 3px;
         background-color: transparent; }
-    body section .main .view .content ul {
-      margin: 0;
-      padding: 0; }
-      body section .main .view .content ul li {
-        display: inline; }
-        body section .main .view .content ul li.title h3 {
-          margin: 0;
-          font-size: 1.4em; }
-    body section .main .view .content .header {
+    body section .main .view .content {
       border-top: solid 1px #D0E2F0;
       border-left: solid 1px #D0E2F0;
       border-right: solid 1px #D0E2F0;
-      background-color: #eee; }
-      body section .main .view .content .header ul li a {
-        color: #666;
-        display: inline-block;
-        width: 100%;
-        height: 100%;
-        padding: 0.5em 15px;
-        box-sizing: content-box;
-        margin-left: -15px; }
-        @media (max-width: 991px) {
-          body section .main .view .content .header ul li a {
-            font-size: 0.9em; }
-            body section .main .view .content .header ul li a:after {
-              margin-top: 6px;
-              display: block;
-              width: 0;
-              height: 0;
-              content: "";
-              vertical-align: -5px;
-              border: 6px solid;
-              border-top-color: transparent;
-              border-left-color: transparent;
-              border-right-color: transparent;
-              border-bottom-color: transparent; } }
-        body section .main .view .content .header ul li a:hover {
-          color: #eee;
-          background-color: #666; }
-        body section .main .view .content .header ul li a.desc:after {
-          margin-left: 8px;
-          display: inline-block;
-          width: 0;
-          height: 0;
-          content: "";
-          vertical-align: -5px;
-          border: 6px solid;
-          border-left-color: transparent;
-          border-right-color: transparent;
-          border-bottom-color: transparent; }
-          @media (max-width: 991px) {
-            body section .main .view .content .header ul li a.desc:after {
-              display: block;
-              margin-top: 6px;
-              margin-left: 0; } }
-        body section .main .view .content .header ul li a.asc:after {
-          margin-left: 8px;
-          display: inline-block;
-          width: 0;
-          height: 0;
-          content: "";
-          vertical-align: 1px;
-          border: 6px solid;
-          border-left-color: transparent;
-          border-right-color: transparent;
-          border-top-color: transparent; }
-          @media (max-width: 991px) {
-            body section .main .view .content .header ul li a.asc:after {
-              display: block;
-              margin-left: 0; } }
-    body section .main .view .content .sites {
-      border-left: solid 1px #D0E2F0;
-      border-right: solid 1px #D0E2F0;
       border-bottom: solid 1px #D0E2F0;
-      padding-top: 1em; }
-      body section .main .view .content .sites ul {
-        padding-bottom: 1em; }
-        body section .main .view .content .sites ul li .point {
-          width: 0.75em;
-          background-color: #239CF9;
-          height: 0.75em;
-          display: inline-block;
-          border-radius: 0.75em;
-          transition: opacity 0.3s; }
-        body section .main .view .content .sites ul li.complexity, body section .main .view .content .sites ul li.size, body section .main .view .content .sites ul li.activity, body section .main .view .content .sites ul li.health {
-          font-size: 0.8em;
-          margin-top: 0.75em; }
-          @media (max-width: 1199px) {
-            body section .main .view .content .sites ul li.complexity, body section .main .view .content .sites ul li.size, body section .main .view .content .sites ul li.activity, body section .main .view .content .sites ul li.health {
-              font-size: 0.6em;
-              margin-top: 1.5em; } }
-    body section .main .view .content .rules {
-      border: solid 1px #D0E2F0;
-      padding: 15px; }
-      body section .main .view .content .rules .rule-group {
-        padding-left: 2em;
-        margin-top: 1.5em; }
-      body section .main .view .content .rules .rule, body section .main .view .content .rules .rule-group-heading {
-        display: block;
-        margin-top: 0.5em;
-        margin-bottom: 0.5em; }
-        body section .main .view .content .rules .rule:hover, body section .main .view .content .rules .rule-group-heading:hover {
-          background-color: #fafafa; }
-        body section .main .view .content .rules .rule:after, body section .main .view .content .rules .rule-group-heading:after {
-          content: ".";
-          display: block;
-          height: 0;
-          clear: both;
-          visibility: hidden; }
-        body section .main .view .content .rules .rule .buttons, body section .main .view .content .rules .rule-group-heading .buttons {
-          float: right; }
-          body section .main .view .content .rules .rule .buttons button, body section .main .view .content .rules .rule-group-heading .buttons button {
-            margin-left: 0.25em; }
-      @media (max-width: 991px) {
-        body section .main .view .content .rules .rule select, body section .main .view .content .rules .rule input {
-          width: 100%;
-          margin-top: 0.5em; }
-        body section .main .view .content .rules .rule .buttons {
-          margin-top: 0.5em; } }
-      body section .main .view .content .rules .rule-group-heading {
-        margin-bottom: 1.5em; }
-      body section .main .view .content .rules select {
-        margin-top: 2px; }
-      body section .main .view .content .rules input {
-        font-size: 0.85em;
-        border-width: 1px solid #666;
+      overflow: scroll; }
+      body section .main .view .content ul {
+        margin: 0;
         padding: 0; }
-      body section .main .view .content .rules .total {
-        margin: 2em 0 0 0;
-        font-weight: bold; }
-    body section .main .view .content .notifications {
-      margin-top: 2em;
-      border: solid 1px #D0E2F0;
-      padding: 15px; }
+        body section .main .view .content ul li {
+          display: inline; }
+          body section .main .view .content ul li.title h3 {
+            margin: 0;
+            font-size: 1.4em; }
+      body section .main .view .content .header {
+        background-color: #eee; }
+        @media (max-width: 767px) {
+          body section .main .view .content .header {
+            min-width: 700px; } }
+        body section .main .view .content .header ul li a {
+          color: #666;
+          display: inline-block;
+          width: 100%;
+          height: 100%;
+          padding: 0.5em 15px;
+          box-sizing: content-box;
+          margin-left: -15px; }
+          @media (max-width: 991px) {
+            body section .main .view .content .header ul li a {
+              font-size: 0.9em; }
+              body section .main .view .content .header ul li a:after {
+                margin-top: 6px;
+                display: block;
+                width: 0;
+                height: 0;
+                content: "";
+                vertical-align: -5px;
+                border: 6px solid;
+                border-top-color: transparent;
+                border-left-color: transparent;
+                border-right-color: transparent;
+                border-bottom-color: transparent; } }
+          body section .main .view .content .header ul li a:hover {
+            color: #eee;
+            background-color: #666; }
+          body section .main .view .content .header ul li a.desc:after {
+            margin-left: 8px;
+            display: inline-block;
+            width: 0;
+            height: 0;
+            content: "";
+            vertical-align: -5px;
+            border: 6px solid;
+            border-left-color: transparent;
+            border-right-color: transparent;
+            border-bottom-color: transparent; }
+            @media (max-width: 991px) {
+              body section .main .view .content .header ul li a.desc:after {
+                display: block;
+                margin-top: 6px;
+                margin-left: 0; } }
+          body section .main .view .content .header ul li a.asc:after {
+            margin-left: 8px;
+            display: inline-block;
+            width: 0;
+            height: 0;
+            content: "";
+            vertical-align: 1px;
+            border: 6px solid;
+            border-left-color: transparent;
+            border-right-color: transparent;
+            border-top-color: transparent; }
+            @media (max-width: 991px) {
+              body section .main .view .content .header ul li a.asc:after {
+                display: block;
+                margin-left: 0; } }
+      body section .main .view .content .sites {
+        padding-top: 1em; }
+        @media (max-width: 767px) {
+          body section .main .view .content .sites {
+            min-width: 700px; } }
+        body section .main .view .content .sites ul {
+          padding-bottom: 1em; }
+          body section .main .view .content .sites ul li .point {
+            width: 0.75em;
+            background-color: #239CF9;
+            height: 0.75em;
+            display: inline-block;
+            border-radius: 0.75em;
+            transition: opacity 0.3s; }
+          body section .main .view .content .sites ul li.complexity, body section .main .view .content .sites ul li.size, body section .main .view .content .sites ul li.activity, body section .main .view .content .sites ul li.health {
+            font-size: 0.8em;
+            margin-top: 0.75em; }
+            @media (max-width: 1199px) {
+              body section .main .view .content .sites ul li.complexity, body section .main .view .content .sites ul li.size, body section .main .view .content .sites ul li.activity, body section .main .view .content .sites ul li.health {
+                font-size: 0.6em;
+                margin-top: 1.5em; } }
+      body section .main .view .content .rules {
+        border: solid 1px #D0E2F0;
+        padding: 15px; }
+        body section .main .view .content .rules .rule-group {
+          padding-left: 2em;
+          margin-top: 1.5em; }
+        body section .main .view .content .rules .rule, body section .main .view .content .rules .rule-group-heading {
+          display: block;
+          margin-top: 0.5em;
+          margin-bottom: 0.5em; }
+          body section .main .view .content .rules .rule:hover, body section .main .view .content .rules .rule-group-heading:hover {
+            background-color: #fafafa; }
+          body section .main .view .content .rules .rule:after, body section .main .view .content .rules .rule-group-heading:after {
+            content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden; }
+          body section .main .view .content .rules .rule .buttons, body section .main .view .content .rules .rule-group-heading .buttons {
+            float: right; }
+            body section .main .view .content .rules .rule .buttons button, body section .main .view .content .rules .rule-group-heading .buttons button {
+              margin-left: 0.25em; }
+        @media (max-width: 991px) {
+          body section .main .view .content .rules .rule select, body section .main .view .content .rules .rule input {
+            width: 100%;
+            margin-top: 0.5em; }
+          body section .main .view .content .rules .rule .buttons {
+            margin-top: 0.5em; } }
+        body section .main .view .content .rules .rule-group-heading {
+          margin-bottom: 1.5em; }
+        body section .main .view .content .rules select {
+          margin-top: 2px; }
+        body section .main .view .content .rules input {
+          font-size: 0.85em;
+          border-width: 1px solid #666;
+          padding: 0; }
+        body section .main .view .content .rules .total {
+          margin: 2em 0 0 0;
+          font-weight: bold; }
+      body section .main .view .content .notifications {
+        margin-top: 2em;
+        border: solid 1px #D0E2F0;
+        padding: 15px; }
     @media (max-width: 767px) {
       body section .main .context {
         display: none; } }

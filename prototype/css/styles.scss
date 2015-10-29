@@ -227,6 +227,12 @@ body {
 				}
 
 				.content {
+					border-top: solid 1px $light-blue;
+					border-left: solid 1px $light-blue;
+					border-right: solid 1px $light-blue;
+					border-bottom: solid 1px $light-blue;
+					overflow: scroll;
+
 					ul {
 						margin: 0;
 						padding: 0;
@@ -251,10 +257,11 @@ body {
 					}
 
 					.header {
-						border-top: solid 1px $light-blue;
-						border-left: solid 1px $light-blue;
-						border-right: solid 1px $light-blue;
 						background-color: $light-grey;
+
+						@media (max-width: $screen-xs-max) {
+							min-width: 700px;
+						}
 
 						ul li a {
 							color: $grey;
@@ -328,10 +335,12 @@ body {
 					}
 
 					.sites {
-						border-left: solid 1px $light-blue;
-						border-right: solid 1px $light-blue;
-						border-bottom: solid 1px $light-blue;
 						padding-top: 1em;
+
+
+						@media (max-width: $screen-xs-max) {
+							min-width: 700px;
+						}
 
 						ul {
 							padding-bottom: 1em;
