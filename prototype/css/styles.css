@@ -1485,40 +1485,40 @@ address {
   .container-fluid:after {
     clear: both; }
 
-.row, body header nav ul, body section .main, body section .main .view nav, body section .main .view .content ul {
+.row, body header nav ul, body section .main, body section .main .view nav, body section .main .view .content ul, body section .main .view .content ul div.variables ul {
   margin-left: -15px;
   margin-right: -15px; }
-  .row:before, body header nav ul:before, body section .main:before, body section .main .view nav:before, body section .main .view .content ul:before, .row:after, body header nav ul:after, body section .main:after, body section .main .view nav:after, body section .main .view .content ul:after {
+  .row:before, body header nav ul:before, body section .main:before, body section .main .view nav:before, body section .main .view .content ul:before, body section .main .view .content ul div.variables ul:before, .row:after, body header nav ul:after, body section .main:after, body section .main .view nav:after, body section .main .view .content ul:after, body section .main .view .content ul div.variables ul:after {
     content: " ";
     display: table; }
-  .row:after, body header nav ul:after, body section .main:after, body section .main .view nav:after, body section .main .view .content ul:after {
+  .row:after, body header nav ul:after, body section .main:after, body section .main .view nav:after, body section .main .view .content ul:after, body section .main .view .content ul div.variables ul:after {
     clear: both; }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, body section .main .view .content ul li.complexity, body section .main .view .content ul li.size, body section .main .view .content ul li.activity, body section .main .view .content ul li.health, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, body section .main .context, .col-md-3, .col-lg-3, .col-xs-4, body section .main .view .content ul li.title, .col-sm-4, .col-md-4, body section .main .view nav .search, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, body section .main .view nav .tabs, .col-lg-8, .col-xs-9, .col-sm-9, body section .main .view, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, body section .main h2, .col-sm-12, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, body section .main .view .content ul div.variables ul li.complexity, body section .main .view .content ul div.variables ul li.size, body section .main .view .content ul div.variables ul li.activity, body section .main .view .content ul div.variables ul li.health, .col-sm-3, body section .main .context, .col-md-3, body section .main .view .content ul li.title, .col-lg-3, .col-xs-4, .col-sm-4, body section .main .view .content ul li.title, .col-md-4, body section .main .view nav .search, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, body section .main .view .content ul li.title, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, body section .main .view .content ul div.variables, .col-md-8, body section .main .view nav .tabs, .col-lg-8, .col-xs-9, .col-sm-9, body section .main .view, .col-md-9, body section .main .view .content ul div.variables, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, body section .main h2, body section .main .view .content ul div.variables, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px; }
 
-.col-xs-1, .col-xs-2, body section .main .view .content ul li.complexity, body section .main .view .content ul li.size, body section .main .view .content ul li.activity, body section .main .view .content ul li.health, .col-xs-3, .col-xs-4, body section .main .view .content ul li.title, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, body section .main h2 {
+.col-xs-1, .col-xs-2, .col-xs-3, body section .main .view .content ul div.variables ul li.complexity, body section .main .view .content ul div.variables ul li.size, body section .main .view .content ul div.variables ul li.activity, body section .main .view .content ul div.variables ul li.health, .col-xs-4, .col-xs-5, .col-xs-6, body section .main .view .content ul li.title, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, body section .main h2, body section .main .view .content ul div.variables {
   float: left; }
 
 .col-xs-1 {
   width: 8.3333333333%; }
 
-.col-xs-2, body section .main .view .content ul li.complexity, body section .main .view .content ul li.size, body section .main .view .content ul li.activity, body section .main .view .content ul li.health {
+.col-xs-2 {
   width: 16.6666666667%; }
 
-.col-xs-3 {
+.col-xs-3, body section .main .view .content ul div.variables ul li.complexity, body section .main .view .content ul div.variables ul li.size, body section .main .view .content ul div.variables ul li.activity, body section .main .view .content ul div.variables ul li.health {
   width: 25%; }
 
-.col-xs-4, body section .main .view .content ul li.title {
+.col-xs-4 {
   width: 33.3333333333%; }
 
 .col-xs-5 {
   width: 41.6666666667%; }
 
-.col-xs-6 {
+.col-xs-6, body section .main .view .content ul li.title {
   width: 50%; }
 
 .col-xs-7 {
@@ -1536,7 +1536,7 @@ address {
 .col-xs-11 {
   width: 91.6666666667%; }
 
-.col-xs-12, body section .main h2 {
+.col-xs-12, body section .main h2, body section .main .view .content ul div.variables {
   width: 100%; }
 
 .col-xs-pull-0 {
@@ -1657,7 +1657,7 @@ address {
   margin-left: 100%; }
 
 @media (min-width: 768px) {
-  .col-sm-1, .col-sm-2, .col-sm-3, body section .main .context, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, body section .main .view, .col-sm-10, .col-sm-11, .col-sm-12 {
+  .col-sm-1, .col-sm-2, .col-sm-3, body section .main .context, .col-sm-4, body section .main .view .content ul li.title, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, body section .main .view .content ul div.variables, .col-sm-9, body section .main .view, .col-sm-10, .col-sm-11, .col-sm-12 {
     float: left; }
 
   .col-sm-1 {
@@ -1669,7 +1669,7 @@ address {
   .col-sm-3, body section .main .context {
     width: 25%; }
 
-  .col-sm-4 {
+  .col-sm-4, body section .main .view .content ul li.title {
     width: 33.3333333333%; }
 
   .col-sm-5 {
@@ -1681,7 +1681,7 @@ address {
   .col-sm-7 {
     width: 58.3333333333%; }
 
-  .col-sm-8 {
+  .col-sm-8, body section .main .view .content ul div.variables {
     width: 66.6666666667%; }
 
   .col-sm-9, body section .main .view {
@@ -1813,7 +1813,7 @@ address {
   .col-sm-offset-12 {
     margin-left: 100%; } }
 @media (min-width: 992px) {
-  .col-md-1, .col-md-2, .col-md-3, .col-md-4, body section .main .view nav .search, .col-md-5, .col-md-6, .col-md-7, .col-md-8, body section .main .view nav .tabs, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+  .col-md-1, .col-md-2, .col-md-3, body section .main .view .content ul li.title, .col-md-4, body section .main .view nav .search, .col-md-5, .col-md-6, .col-md-7, .col-md-8, body section .main .view nav .tabs, .col-md-9, body section .main .view .content ul div.variables, .col-md-10, .col-md-11, .col-md-12 {
     float: left; }
 
   .col-md-1 {
@@ -1822,7 +1822,7 @@ address {
   .col-md-2 {
     width: 16.6666666667%; }
 
-  .col-md-3 {
+  .col-md-3, body section .main .view .content ul li.title {
     width: 25%; }
 
   .col-md-4, body section .main .view nav .search {
@@ -1840,7 +1840,7 @@ address {
   .col-md-8, body section .main .view nav .tabs {
     width: 66.6666666667%; }
 
-  .col-md-9 {
+  .col-md-9, body section .main .view .content ul div.variables {
     width: 75%; }
 
   .col-md-10 {
@@ -2341,17 +2341,26 @@ address {
   .hidden-print {
     display: none !important; } }
 html {
-  height: 100%; }
+  height: 100%;
+  font-size: 10pt; }
 
 body {
   height: 100%;
   color: #333;
-  font-size: 10pt;
   background: radial-gradient(center center, 50% 70%, #fff 70%, #fcfcfc);
   background: -webkit-radial-gradient(center center, 50% 70%, #fff 70%, #fcfcfc);
   background: -o-radial-gradient(center center, 50% 70%, #fff 70%, #fcfcfc);
   background: -ms-radial-gradient(center center, 50% 70%, #fff 70%, #fcfcfc);
   background-attachment: fixed; }
+  @media (max-width: 1199px) {
+    body {
+      font-size: 0.94em; } }
+  @media (max-width: 991px) {
+    body {
+      font-size: 0.93em; } }
+  @media (max-width: 767px) {
+    body {
+      font-size: 0.85em; } }
   body .wrapper {
     min-height: 100%;
     position: relative; }
@@ -2475,15 +2484,24 @@ body {
         padding: 0; }
         body section .main .view .content ul li {
           display: inline; }
+          @media (max-width: 767px) {
+            body section .main .view .content ul li.title {
+              position: absolute;
+              z-index: 1; } }
           body section .main .view .content ul li.title h3 {
             margin: 0;
             font-size: 1.4em; }
+        @media (max-width: 767px) {
+          body section .main .view .content ul div.variables {
+            margin-left: 50%;
+            padding-left: 30px; } }
       body section .main .view .content .header {
         background-color: #eee; }
         @media (max-width: 767px) {
           body section .main .view .content .header {
-            min-width: 700px; } }
+            min-width: 383.5px; } }
         body section .main .view .content .header ul li a {
+          background-color: #eee;
           color: #666;
           display: inline-block;
           width: 100%;
@@ -2492,20 +2510,18 @@ body {
           box-sizing: content-box;
           margin-left: -15px; }
           @media (max-width: 991px) {
-            body section .main .view .content .header ul li a {
-              font-size: 0.9em; }
-              body section .main .view .content .header ul li a:after {
-                margin-top: 6px;
-                display: block;
-                width: 0;
-                height: 0;
-                content: "";
-                vertical-align: -5px;
-                border: 6px solid;
-                border-top-color: transparent;
-                border-left-color: transparent;
-                border-right-color: transparent;
-                border-bottom-color: transparent; } }
+            body section .main .view .content .header ul li a:after {
+              margin-top: 6px;
+              display: block;
+              width: 0;
+              height: 0;
+              content: "";
+              vertical-align: -5px;
+              border: 6px solid;
+              border-top-color: transparent;
+              border-left-color: transparent;
+              border-right-color: transparent;
+              border-bottom-color: transparent; } }
           body section .main .view .content .header ul li a:hover {
             color: #eee;
             background-color: #666; }
@@ -2544,23 +2560,26 @@ body {
         padding-top: 1em; }
         @media (max-width: 767px) {
           body section .main .view .content .sites {
-            min-width: 700px; } }
+            min-width: 383.5px; } }
         body section .main .view .content .sites ul {
           padding-bottom: 1em; }
-          body section .main .view .content .sites ul li .point {
-            width: 0.75em;
-            background-color: #239CF9;
-            height: 0.75em;
-            display: inline-block;
-            border-radius: 0.75em;
-            transition: opacity 0.3s; }
-          body section .main .view .content .sites ul li.complexity, body section .main .view .content .sites ul li.size, body section .main .view .content .sites ul li.activity, body section .main .view .content .sites ul li.health {
-            font-size: 0.8em;
-            margin-top: 0.75em; }
-            @media (max-width: 1199px) {
-              body section .main .view .content .sites ul li.complexity, body section .main .view .content .sites ul li.size, body section .main .view .content .sites ul li.activity, body section .main .view .content .sites ul li.health {
-                font-size: 0.6em;
-                margin-top: 1.5em; } }
+          body section .main .view .content .sites ul li {
+            background-color: #fff; }
+            body section .main .view .content .sites ul li .point {
+              width: 0.75em;
+              background-color: #239CF9;
+              height: 0.75em;
+              display: inline-block;
+              border-radius: 0.75em;
+              transition: opacity 0.3s; }
+            body section .main .view .content .sites ul li.complexity, body section .main .view .content .sites ul li.size, body section .main .view .content .sites ul li.activity, body section .main .view .content .sites ul li.health {
+              font-size: 0.8em;
+              margin-top: 0.75em; }
+              @media (max-width: 1199px) {
+                body section .main .view .content .sites ul li.complexity, body section .main .view .content .sites ul li.size, body section .main .view .content .sites ul li.activity, body section .main .view .content .sites ul li.health {
+                  margin-top: 1.5em; } }
+          body section .main .view .content .sites ul.variables {
+            padding-bottom: 0; }
       body section .main .view .content .rules {
         border: solid 1px #D0E2F0;
         padding: 15px; }
