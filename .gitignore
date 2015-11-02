@@ -10,4 +10,6 @@ app.js
 config.codekit
 *.scssc
 
-*.scssc
+# npm
+npm-debug.log
+node_modules/
