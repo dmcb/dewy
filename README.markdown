@@ -1,3 +1,7 @@
+![Dewy](static/img/dewy.png "Dewy")
+
+# Dewy website
+
 ## Installation
 
 * Install dependencies:
