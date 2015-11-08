@@ -57,7 +57,6 @@ router.get('/sites', function(req, res, next) {
     title: 'Dewy',
     sites: sites,
     filters: filters,
-    current_filter: 'Views',
     helpers: {
       dots: function(number, dot) {
         var dots = '';
