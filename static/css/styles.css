@@ -2709,7 +2709,8 @@ a {
     border-left-color: transparent;
     border-bottom-color: transparent; }
   a:hover {
-    text-decoration: none; }
+    text-decoration: none;
+    transition: color 0.3s ease, background-color 0.3s ease; }
 
 button {
   border: 0;
@@ -2717,4 +2718,5 @@ button {
   color: #666; }
   button:hover {
     background-color: #666;
-    color: #eee; }
+    color: #eee;
+    transition: color 0.3s ease, background-color 0.3s ease; }

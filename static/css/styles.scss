@@ -623,6 +623,7 @@ a {
 
 	&:hover {
 		text-decoration: none;
+		transition: color 0.3s ease, background-color 0.3s ease;
 	}
 }
 
@@ -634,5 +635,6 @@ button {
 	&:hover {
 		background-color: $grey;
 		color: $light-grey;
+		transition: color 0.3s ease, background-color 0.3s ease;
 	}
 }
