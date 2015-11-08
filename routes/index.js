@@ -57,10 +57,11 @@ router.get('/sites', function(req, res, next) {
     title: 'Dewy',
     sites: sites,
     filters: filters,
+    current_filter: 'Views',
     helpers: {
-      dots: function(n, dot) {
+      dots: function(number, dot) {
         var dots = '';
-        for (var i=0; i<n; i++)
+        for (var i=0; i<number; i++)
           dots += dot.fn(i);
         return dots;
       }
