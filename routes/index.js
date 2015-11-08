@@ -30,7 +30,15 @@ router.get('/sites', function(req, res, next) {
   ];
   res.render('sites', { 
     title: 'Dewy',
-    sites: sites
+    sites: sites,
+    helpers: {
+      dots: function(n, dot) {
+        var dots = '';
+        for (var i=0; i<n; i++)
+          dots += dot.fn(i);
+        return dots;
+      }
+    }
   });
 });
 

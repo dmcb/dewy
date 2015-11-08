@@ -40,30 +40,24 @@
                                     <div class="variables">
                                         <ul>
                                             <li class="complexity">
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                                <div class="point"></div>
+                                                {{#dots complexity}}
+                                                    <div class="point"></div>
+                                                {{/dots}}
                                             </li>
                                             <li class="size">
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                                <div class="point"></div>
+                                                {{#dots size}}
+                                                    <div class="point"></div>
+                                                {{/dots}}
                                             </li>
                                             <li class="activity">
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                                <div class="point"></div>
+                                                {{#dots activity}}
+                                                    <div class="point"></div>
+                                                {{/dots}}
                                             </li>
                                             <li class="health">
-                                                <div class="point"></div>
+                                                {{#dots health}}
+                                                    <div class="point"></div>
+                                                {{/dots}}
                                             </li>
                                         </ul>
                                     </div>
