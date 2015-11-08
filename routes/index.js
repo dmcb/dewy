@@ -28,9 +28,35 @@ router.get('/sites', function(req, res, next) {
       health: 4.55
     }
   ];
+  filters = [
+    {
+      title: "In development",
+      notifications: true
+    },
+    {
+      title: "Modules",
+      children: [
+        {
+          title: "Views"
+        },
+        {
+          title: "Big webform sites",
+          notifications: true
+        }
+      ]
+    },
+    {
+      title: "Really long title to serve as an edge case for the design",
+      notifications: true
+    },
+    {
+      title: "Anotherreallylongtitlewithoutbreaksthanksjerk"
+    }
+  ]
   res.render('sites', { 
     title: 'Dewy',
     sites: sites,
+    filters: filters,
     helpers: {
       dots: function(n, dot) {
         var dots = '';

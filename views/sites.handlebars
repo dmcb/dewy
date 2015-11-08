@@ -67,23 +67,11 @@
                         </div>
                     </div>
                     <nav class="context">
-                        <ul class="standard">
-                            <li><a href="">All sites</a></li>
-                        </ul>
-                        <ul class="tags">
-                            <li><a href=""><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> In development</a></li>
-                        </ul>
                         <ul class="folders">
-                            <li>
-                                <a href="" class="folder open">Modules</a>
-                                <ul>
-                                    <li><a href="">Views</a></li>
-                                    <li><a href="" class="selected">Big webform sites</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="">wcmdev.ucalgary.ca</a></li>
-                            <li><a href=""><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Really long title to serve as an edge case for the design</a></li>
-                            <li><a href="">Anotherreallylongtitlewithoutbreaksthanksjerk</a></li>
+                            <li><a href="">All sites</a></li>
+                            {{#filters}}
+                                {{> filter_menu_item}}
+                            {{/filters}}
                         </ul>
                         <div class="actions">
                             <button>Add folder <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
