@@ -11,7 +11,7 @@ var users = require('./routes/users');
 
 var app = express();
 var hbs = exphbs.create({
-  defaultLayout: 'main',
+  defaultLayout: 'index',
   helpers: {
     ifEquals: function(leftValue, rightValue, result) {
       if (leftValue != rightValue) {
