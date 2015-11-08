@@ -2,6 +2,17 @@
 
 # Dewy website
 
+## Development
+
+* Get nodedemon
+
+		npm install nodemon -g
+		
+* Use it to restart the app upon changes
+
+		nodemon app.js
+
+
 ## Installation
 
 * Install dependencies:

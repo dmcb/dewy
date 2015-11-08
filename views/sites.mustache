@@ -23,7 +23,7 @@
                         <div class="content">
                             <div class="header">
                                 <ul>
-                                    <li class="title"><a href="">3 sites</a></li>
+                                    <li class="title"><a href="">{{sites.length}} sites</a></li>
                                     <div class="variables">
                                         <ul>
                                             <li class="complexity"><a href="" class="desc">Complexity</a></li>
@@ -35,8 +35,9 @@
                                 </ul>
                             </div>
                             <div class="sites">
+                                {{#sites}}
                                 <ul>
-                                    <li class="title"><h3>Schulich</h3><span>schulich.ucalgary.ca</span></li>
+                                    <li class="title"><h3>{{title}}</h3><span>{{base_url}}</span></li>
                                     <div class="variables">
                                         <ul>
                                             <li class="complexity">
@@ -68,69 +69,7 @@
                                         </ul>
                                     </div>
                                 </ul>
-                                <ul>
-                                    <li class="title"><h3>Haskayne</h3><span>haskayne.ucalgary.ca</span></li>
-                                    <div class="variables">
-                                        <ul>
-                                            <li class="complexity">
-                                                <div class="point"></div>
-                                            </li>
-                                            <li class="size">
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                            </li>
-                                            <li class="activity">
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                            </li>
-                                            <li class="health">
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </ul>
-                                <ul>
-                                    <li class="title"><h3>Science</h3><span>ucalgary.ca/science</span></li>
-                                    <div class="variables">
-                                        <ul>
-                                            <li class="complexity">
-                                                <div class="point"></div>
-                                            </li>
-                                            <li class="size">
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                            </li>
-                                            <li class="activity">
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                            </li>
-                                            <li class="health">
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                                <div class="point"></div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </ul>
+                                {{/sites}}
                             </div>
                         </div>
                     </div>
