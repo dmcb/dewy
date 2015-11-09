@@ -1,0 +1,41 @@
+<li class="rule-group-heading">
+    <select>
+        <option>Any</option>
+        <option>All</option>
+        <option>None</option>
+    </select>
+    of the following rules:
+</li>
+{{#if rules}}
+<ul class="rule-group">
+    {{#rules}}
+    {{#if operator}}
+        {{> filter_tree}}
+    {{/if}}
+    {{#unless operator}}
+    <li class="rule">
+        <select class="field">
+            {{#@root.fields}}
+                <option {{#ifEquals ../field title}}selected="selected"{{/ifEquals}}>{{title}}</option>
+            {{/@root.fields}}
+        </select>
+        <select class="choice">
+            {{choices}}
+        <select>
+        <input type="text" />
+        <div class="buttons">
+            <button>
+                <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+            </button>
+            <button>
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </button>
+            <button>
+                <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+            </button>
+        </div>
+    </li>
+    {{/unless}}
+    {{/rules}}
+</ul>
+{{/if}}
