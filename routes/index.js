@@ -75,199 +75,342 @@ router.get('/filter', function(req, res, next) {
     {
       title: 'Base URL',
       choices: [
-        'contains',
-        'does not contain',
-        'is',
-        'is not',
-        'starts with',
-        'ends with'
+        {title: 'contains'},
+        {title: 'does not contain'},
+        {title: 'is'},
+        {title: 'is not'},
+        {title: 'starts with'},
+        {title: 'ends with'}
       ]
     },
     {
       title: 'Broken links',
-      choices: {
-
-      }
+      choices: [
+        {title: 'is'},
+        {title: 'is not'},
+        {title: 'is greater than'},
+        {title: 'is less than'},
+        {title: 'is greater than or equal to'},
+        {title: 'is less than or equal to'}
+      ]
     },
     {
       title: 'Content type',
-      choices: {
-
-      }
+      choices: [
+        {title: 'contains'},
+        {title: 'does not contain'},
+        {title: 'is'},
+        {title: 'is not'},
+        {title: 'starts with'},
+        {title: 'ends with'}
+      ]
     },
     {
       title: 'Database',
-      choices: {
-
-      }
+      choices: [
+        {title: 'is pending updates'},
+        {title: 'is updated'}
+      ]
     },
     {
       title: 'Date added to Dewy',
-      choices: {
-
-      }
+      choices: [
+        {title: 'is'},
+        {title: 'is not'},
+        {title: 'is after'},
+        {title: 'is before'},
+        {title: 'is in the last'},
+        {title: 'is not in the last'}
+      ]
     },
     {
       title: 'Date last accessed',
-      choices: {
-
-      }
+      choices: [
+        {title: 'is'},
+        {title: 'is not'},
+        {title: 'is after'},
+        {title: 'is before'},
+        {title: 'is in the last'},
+        {title: 'is not in the last'}
+      ]
     },
     {
       title: 'Date last edited',
-      choices: {
-
-      }
+      choices: [
+        {title: 'is'},
+        {title: 'is not'},
+        {title: 'is after'},
+        {title: 'is before'},
+        {title: 'is in the last'},
+        {title: 'is not in the last'}
+      ]
     },
     {
       title: 'Drupal core',
-      choices: {
-
-      }
+      choices: [
+        {title: 'is'},
+        {title: 'is not'},
+        {title: 'is greater than'},
+        {title: 'is less than'},
+        {title: 'is greater than or equal to'},
+        {title: 'is less than or equal to'}
+      ]
     },
     {
       title: 'File size (private)',
-      choices: {
-
-      }
+      choices: [
+        {title: 'is'},
+        {title: 'is not'},
+        {title: 'is greater than'},
+        {title: 'is less than'},
+        {title: 'is greater than or equal to'},
+        {title: 'is less than or equal to'}
+      ]
     },
     {
       title: 'File size (public)',
-      choices: {
-
-      }
+      choices: [
+        {title: 'is'},
+        {title: 'is not'},
+        {title: 'is greater than'},
+        {title: 'is less than'},
+        {title: 'is greater than or equal to'},
+        {title: 'is less than or equal to'}
+      ]
     },
     {
       title: 'File size (total)',
-      choices: {
-
-      }
+      choices: [
+        {title: 'is'},
+        {title: 'is not'},
+        {title: 'is greater than'},
+        {title: 'is less than'},
+        {title: 'is greater than or equal to'},
+        {title: 'is less than or equal to'}
+      ]
     },
     {
       title: 'Maintenance mode',
-      choices: {
-
-      }
+      choices: [
+        {title: 'is on'},
+        {title: 'is not on'}
+      ]
     },
     {
       title: 'Module name',
-      choices: {
-
-      }
+      choices: [
+        {title: 'contains'},
+        {title: 'does not contain'},
+        {title: 'is'},
+        {title: 'is not'},
+        {title: 'starts with'},
+        {title: 'ends with'}
+      ]
     },
     {
       title: 'Number of content types',
-      choices: {
-
-      }
+      choices: [
+        {title: 'is'},
+        {title: 'is not'},
+        {title: 'is greater than'},
+        {title: 'is less than'},
+        {title: 'is greater than or equal to'},
+        {title: 'is less than or equal to'}
+      ]
     },
     {
       title: 'Number of files (private)',
-      choices: {
-
-      }
+      choices: [
+        {title: 'is'},
+        {title: 'is not'},
+        {title: 'is greater than'},
+        {title: 'is less than'},
+        {title: 'is greater than or equal to'},
+        {title: 'is less than or equal to'}
+      ]
     },
     {
       title: 'Number of files (public)',
-      choices: {
-
-      }
+      choices: [
+        {title: 'is'},
+        {title: 'is not'},
+        {title: 'is greater than'},
+        {title: 'is less than'},
+        {title: 'is greater than or equal to'},
+        {title: 'is less than or equal to'}
+      ]
     },
     {
       title: 'Number of files (total)',
-      choices: {
-
-      }
+      choices: [
+        {title: 'is'},
+        {title: 'is not'},
+        {title: 'is greater than'},
+        {title: 'is less than'},
+        {title: 'is greater than or equal to'},
+        {title: 'is less than or equal to'}
+      ]
     },
     {
       title: 'Number of hits in past day',
-      choices: {
-
-      }
+      choices: [
+        {title: 'is'},
+        {title: 'is not'},
+        {title: 'is greater than'},
+        {title: 'is less than'},
+        {title: 'is greater than or equal to'},
+        {title: 'is less than or equal to'}
+      ]
     },
     {
       title: 'Number of hits in past week',
-      choices: {
-
-      }
+      choices: [
+        {title: 'is'},
+        {title: 'is not'},
+        {title: 'is greater than'},
+        {title: 'is less than'},
+        {title: 'is greater than or equal to'},
+        {title: 'is less than or equal to'}
+      ]
     },
     {
       title: 'Number of hits in past month',
-      choices: {
-
-      }
+      choices: [
+        {title: 'is'},
+        {title: 'is not'},
+        {title: 'is greater than'},
+        {title: 'is less than'},
+        {title: 'is greater than or equal to'},
+        {title: 'is less than or equal to'}
+      ]
     },
     {
       title: 'Number of modules',
-      choices: {
-
-      }
+      choices: [
+        {title: 'is'},
+        {title: 'is not'},
+        {title: 'is greater than'},
+        {title: 'is less than'},
+        {title: 'is greater than or equal to'},
+        {title: 'is less than or equal to'}
+      ]
     },
     {
       title: 'Number of nodes',
-      choices: {
-
-      }
+      choices: [
+        {title: 'is'},
+        {title: 'is not'},
+        {title: 'is greater than'},
+        {title: 'is less than'},
+        {title: 'is greater than or equal to'},
+        {title: 'is less than or equal to'}
+      ]
     },
     {
       title: 'Number of roles',
-      choices: {
-
-      }
+      choices: [
+        {title: 'is'},
+        {title: 'is not'},
+        {title: 'is greater than'},
+        {title: 'is less than'},
+        {title: 'is greater than or equal to'},
+        {title: 'is less than or equal to'}
+      ]
     },
     {
       title: 'Number of themes',
-      choices: {
-
-      }
+      choices: [
+        {title: 'is'},
+        {title: 'is not'},
+        {title: 'is greater than'},
+        {title: 'is less than'},
+        {title: 'is greater than or equal to'},
+        {title: 'is less than or equal to'}
+      ]
     },
     {
       title: 'Number of users',
-      choices: {
-
-      }
+      choices: [
+        {title: 'is'},
+        {title: 'is not'},
+        {title: 'is greater than'},
+        {title: 'is less than'},
+        {title: 'is greater than or equal to'},
+        {title: 'is less than or equal to'}
+      ]
     },
     {
       title: 'Role',
-      choices: {
-
-      }
+      choices: [
+        {title: 'contains'},
+        {title: 'does not contain'},
+        {title: 'is'},
+        {title: 'is not'},
+        {title: 'starts with'},
+        {title: 'ends with'}
+      ]
     },
     {
       title: 'Tag',
-      choices: {
-
-      }
+      choices: [
+        {title: 'is'},
+        {title: 'is not'}
+      ]
     },
     {
       title: 'Text',
-      choices: {
-
-      }
+      choices: [
+        {title: 'contains'},
+        {title: 'does not contain'},
+        {title: 'is'},
+        {title: 'is not'},
+        {title: 'starts with'},
+        {title: 'ends with'}
+      ]
     },
     {
       title: 'Theme',
-      choices: {
-
-      }
+      choices: [
+        {title: 'contains'},
+        {title: 'does not contain'},
+        {title: 'is'},
+        {title: 'is not'},
+        {title: 'starts with'},
+        {title: 'ends with'}
+      ]
     },
     {
       title: 'Title',
-      choices: {
-
-      }
+      choices: [
+        {title: 'contains'},
+        {title: 'does not contain'},
+        {title: 'is'},
+        {title: 'is not'},
+        {title: 'starts with'},
+        {title: 'ends with'}
+      ]
     },
     {
       title: 'User email address',
-      choices: {
-
-      }
+      choices: [
+        {title: 'contains'},
+        {title: 'does not contain'},
+        {title: 'is'},
+        {title: 'is not'},
+        {title: 'starts with'},
+        {title: 'ends with'}
+      ]
     },
     {
       title: 'User name',
-      choices: {
-
-      }
+      choices: [
+        {title: 'contains'},
+        {title: 'does not contain'},
+        {title: 'is'},
+        {title: 'is not'},
+        {title: 'starts with'},
+        {title: 'ends with'}
+      ]
     }
   ]
   filter = {
@@ -291,6 +434,15 @@ router.get('/filter', function(req, res, next) {
           {
             field: 'Tag',
             choice: 'are present'
+          },
+          {
+            operator: 'none',
+            rules: [
+              {
+                field: 'User email address',
+                choice: 'blah'
+              }
+            ]
           }
         ]
       }
