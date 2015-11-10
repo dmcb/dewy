@@ -246,6 +246,10 @@ body {
 					border-bottom: solid 1px $light-blue;
 					overflow: scroll;
 
+					& + .content {
+						margin-top: 2em;
+					}
+
 					ul {
 						margin: 0;
 						padding: 0;
@@ -408,8 +412,7 @@ body {
 						}
 					}
 
-					.rules {
-						border: solid 1px $light-blue;
+					.rules, .notifications {
 						padding: $grid-gutter-width/2;
 
 						.rule-group {
@@ -474,12 +477,6 @@ body {
 							margin: 2em 0 0 0;
 							font-weight: bold;
 						}
-					}
-
-					.notifications {
-						margin-top: 2em;
-						border: solid 1px $light-blue;
-						padding: $grid-gutter-width/2;
 					}
 				}
 			}

@@ -2479,6 +2479,8 @@ body {
       border-right: solid 1px #D0E2F0;
       border-bottom: solid 1px #D0E2F0;
       overflow: scroll; }
+      body section .main .view .content + .content {
+        margin-top: 2em; }
       body section .main .view .content ul {
         margin: 0;
         padding: 0; }
@@ -2580,49 +2582,44 @@ body {
                   margin-top: 1.5em; } }
           body section .main .view .content .sites ul.variables {
             padding-bottom: 0; }
-      body section .main .view .content .rules {
-        border: solid 1px #D0E2F0;
+      body section .main .view .content .rules, body section .main .view .content .notifications {
         padding: 15px; }
-        body section .main .view .content .rules .rule-group {
+        body section .main .view .content .rules .rule-group, body section .main .view .content .notifications .rule-group {
           padding-left: 2em;
           margin-top: 1.5em; }
-        body section .main .view .content .rules .rule, body section .main .view .content .rules .rule-group-heading {
+        body section .main .view .content .rules .rule, body section .main .view .content .rules .rule-group-heading, body section .main .view .content .notifications .rule, body section .main .view .content .notifications .rule-group-heading {
           display: block;
           margin-top: 0.5em;
           margin-bottom: 0.5em; }
-          body section .main .view .content .rules .rule:hover, body section .main .view .content .rules .rule-group-heading:hover {
+          body section .main .view .content .rules .rule:hover, body section .main .view .content .rules .rule-group-heading:hover, body section .main .view .content .notifications .rule:hover, body section .main .view .content .notifications .rule-group-heading:hover {
             background-color: #fafafa; }
-          body section .main .view .content .rules .rule:after, body section .main .view .content .rules .rule-group-heading:after {
+          body section .main .view .content .rules .rule:after, body section .main .view .content .rules .rule-group-heading:after, body section .main .view .content .notifications .rule:after, body section .main .view .content .notifications .rule-group-heading:after {
             content: ".";
             display: block;
             height: 0;
             clear: both;
             visibility: hidden; }
-          body section .main .view .content .rules .rule .buttons, body section .main .view .content .rules .rule-group-heading .buttons {
+          body section .main .view .content .rules .rule .buttons, body section .main .view .content .rules .rule-group-heading .buttons, body section .main .view .content .notifications .rule .buttons, body section .main .view .content .notifications .rule-group-heading .buttons {
             float: right; }
-            body section .main .view .content .rules .rule .buttons button, body section .main .view .content .rules .rule-group-heading .buttons button {
+            body section .main .view .content .rules .rule .buttons button, body section .main .view .content .rules .rule-group-heading .buttons button, body section .main .view .content .notifications .rule .buttons button, body section .main .view .content .notifications .rule-group-heading .buttons button {
               margin-left: 0.25em; }
         @media (max-width: 991px) {
-          body section .main .view .content .rules .rule select, body section .main .view .content .rules .rule input {
+          body section .main .view .content .rules .rule select, body section .main .view .content .rules .rule input, body section .main .view .content .notifications .rule select, body section .main .view .content .notifications .rule input {
             width: 100%;
             margin-top: 0.5em; }
-          body section .main .view .content .rules .rule .buttons {
+          body section .main .view .content .rules .rule .buttons, body section .main .view .content .notifications .rule .buttons {
             margin-top: 0.5em; } }
-        body section .main .view .content .rules .rule-group-heading {
+        body section .main .view .content .rules .rule-group-heading, body section .main .view .content .notifications .rule-group-heading {
           margin-bottom: 1.5em; }
-        body section .main .view .content .rules select {
+        body section .main .view .content .rules select, body section .main .view .content .notifications select {
           margin-top: 2px; }
-        body section .main .view .content .rules input {
+        body section .main .view .content .rules input, body section .main .view .content .notifications input {
           font-size: 0.85em;
           border-width: 1px solid #666;
           padding: 0; }
-        body section .main .view .content .rules .total {
+        body section .main .view .content .rules .total, body section .main .view .content .notifications .total {
           margin: 2em 0 0 0;
           font-weight: bold; }
-      body section .main .view .content .notifications {
-        margin-top: 2em;
-        border: solid 1px #D0E2F0;
-        padding: 15px; }
     @media (max-width: 767px) {
       body section .main .context {
         display: none; } }
