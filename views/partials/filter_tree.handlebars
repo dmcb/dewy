@@ -1,8 +1,8 @@
 <li class="rule-group-heading">
     <select>
-        <option>Any</option>
-        <option>All</option>
-        <option>None</option>
+        <option {{#ifEquals operator 'any'}}selected="selected"{{/ifEquals}}>Any</option>
+        <option {{#ifEquals operator 'all'}}selected="selected"{{/ifEquals}}>All</option>
+        <option {{#ifEquals operator 'none'}}selected="selected"{{/ifEquals}}>None</option>
     </select>
     of the following rules:
 </li>
@@ -20,7 +20,7 @@
             {{/@root.fields}}
         </select>
         <select class="choice">
-            {{choices}}
+
         <select>
         <input type="text" />
         <div class="buttons">
