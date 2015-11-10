@@ -2587,6 +2587,12 @@ body {
         body section .main .view .content .rules .rule-group, body section .main .view .content .notifications .rule-group {
           padding-left: 2em;
           margin-top: 1.5em; }
+          @media (max-width: 991px) {
+            body section .main .view .content .rules .rule-group, body section .main .view .content .notifications .rule-group {
+              background-color: rgba(0, 0, 0, 0.1);
+              padding: 0 15px;
+              margin-left: -15px;
+              margin-right: -15px; } }
         body section .main .view .content .rules .rule, body section .main .view .content .rules .rule-group-heading, body section .main .view .content .notifications .rule, body section .main .view .content .notifications .rule-group-heading {
           display: block;
           margin-top: 0.5em;

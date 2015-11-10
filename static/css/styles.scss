@@ -418,6 +418,13 @@ body {
 						.rule-group {
 							padding-left: 2em;
 							margin-top: 1.5em;
+
+							@media (max-width: $screen-sm-max) {
+								background-color: rgba(#000, 0.1);
+								padding: 0 $grid-gutter-width/2;
+								margin-left: -$grid-gutter-width/2;
+								margin-right: -$grid-gutter-width/2;
+							}
 						}
 
 						.rule, .rule-group-heading {

@@ -443,7 +443,11 @@ router.get('/filter', function(req, res, next) {
                 choice: 'blah'
               }
             ]
-          }
+          },
+          {
+            field: 'User email address',
+            choice: 'blah'
+          },
         ]
       }
     ]
