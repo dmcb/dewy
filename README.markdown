@@ -4,7 +4,7 @@
 
 ## Development
 
-* Get nodedemon
+* Get nodemon
 
 		npm install nodemon -g
 		
