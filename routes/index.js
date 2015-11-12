@@ -1,6 +1,18 @@
 var express = require('express');
 var router = express.Router();
 
+router.get('/signon', function(req, res, next) {
+  res.render('signon', { 
+    title: 'Dewy'
+  });
+});
+
+router.post('/signon', function(req, res, next) {
+  req.session.email = req.body.email;
+  res.send(req.session.email);
+});
+
+
 router.get('/sites', function(req, res, next) {
   sites = [
     {
