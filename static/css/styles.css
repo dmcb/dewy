@@ -2405,7 +2405,9 @@ body {
     body .logo h1 {
       margin-top: 0; }
       body .logo h1 img {
-        max-width: 148px; }
+        max-width: 148px;
+        position: absolute;
+        top: 16px; }
   body section {
     padding-bottom: 5em; }
     body section .main h2 {
@@ -2698,9 +2700,9 @@ body {
           margin-top: 0.5em; }
         body section #signon input#remember {
           width: auto;
-          margin-top: 1em; }
+          margin-top: 2em; }
       body section #signon button {
-        margin-top: 3em;
+        margin-top: 2em;
         width: 100%;
         background-color: #239CF9;
         color: #fff;
@@ -2730,7 +2732,8 @@ body {
     background-attachment: fixed; }
     body.splash .logo img {
       margin: 0 auto;
-      display: block; }
+      display: block;
+      position: static; }
     body.splash footer {
       background-color: transparent;
       color: #D0E2F0; }
