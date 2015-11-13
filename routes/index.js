@@ -3,7 +3,8 @@ var router = express.Router();
 
 router.get('/signon', function(req, res, next) {
   res.render('signon', { 
-    title: 'Dewy'
+    title: 'Dewy',
+    layout: 'splash'
   });
 });
 

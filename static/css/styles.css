@@ -1494,7 +1494,7 @@ address {
   .row:after, body header nav ul:after, body section .main:after, body section .main .view nav:after, body section .main .view .content ul:after, body section .main .view .content ul div.variables ul:after {
     clear: both; }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, body section .main .view .content ul div.variables ul li.complexity, body section .main .view .content ul div.variables ul li.size, body section .main .view .content ul div.variables ul li.activity, body section .main .view .content ul div.variables ul li.health, .col-sm-3, body section .main .context, .col-md-3, body section .main .view .content ul li.title, .col-lg-3, .col-xs-4, .col-sm-4, body section .main .view .content ul li.title, .col-md-4, body section .main .view nav .search, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, body section .main .view .content ul li.title, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, body section .main .view .content ul div.variables, .col-md-8, body section .main .view nav .tabs, .col-lg-8, .col-xs-9, .col-sm-9, body section .main .view, .col-md-9, body section .main .view .content ul div.variables, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, body section .main h2, body section .main .view .content ul div.variables, .col-sm-12, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, body section .main .view .content ul div.variables ul li.complexity, body section .main .view .content ul div.variables ul li.size, body section .main .view .content ul div.variables ul li.activity, body section .main .view .content ul div.variables ul li.health, .col-sm-3, body section .main .context, .col-md-3, body section .main .view .content ul li.title, .col-lg-3, .col-xs-4, .col-sm-4, body section .main .view .content ul li.title, .col-md-4, body section .main .view nav .search, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, body section .main .view .content ul li.title, .col-sm-6, .col-md-6, body section #signon, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, body section .main .view .content ul div.variables, body section #signon, .col-md-8, body section .main .view nav .tabs, .col-lg-8, .col-xs-9, .col-sm-9, body section .main .view, .col-md-9, body section .main .view .content ul div.variables, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, body section .main h2, body section .main .view .content ul div.variables, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -1657,7 +1657,7 @@ address {
   margin-left: 100%; }
 
 @media (min-width: 768px) {
-  .col-sm-1, .col-sm-2, .col-sm-3, body section .main .context, .col-sm-4, body section .main .view .content ul li.title, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, body section .main .view .content ul div.variables, .col-sm-9, body section .main .view, .col-sm-10, .col-sm-11, .col-sm-12 {
+  .col-sm-1, .col-sm-2, .col-sm-3, body section .main .context, .col-sm-4, body section .main .view .content ul li.title, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, body section .main .view .content ul div.variables, body section #signon, .col-sm-9, body section .main .view, .col-sm-10, .col-sm-11, .col-sm-12 {
     float: left; }
 
   .col-sm-1 {
@@ -1681,7 +1681,7 @@ address {
   .col-sm-7 {
     width: 58.3333333333%; }
 
-  .col-sm-8, body section .main .view .content ul div.variables {
+  .col-sm-8, body section .main .view .content ul div.variables, body section #signon {
     width: 66.6666666667%; }
 
   .col-sm-9, body section .main .view {
@@ -1780,7 +1780,7 @@ address {
   .col-sm-offset-1 {
     margin-left: 8.3333333333%; }
 
-  .col-sm-offset-2 {
+  .col-sm-offset-2, body section #signon {
     margin-left: 16.6666666667%; }
 
   .col-sm-offset-3 {
@@ -1813,7 +1813,7 @@ address {
   .col-sm-offset-12 {
     margin-left: 100%; } }
 @media (min-width: 992px) {
-  .col-md-1, .col-md-2, .col-md-3, body section .main .view .content ul li.title, .col-md-4, body section .main .view nav .search, .col-md-5, .col-md-6, .col-md-7, .col-md-8, body section .main .view nav .tabs, .col-md-9, body section .main .view .content ul div.variables, .col-md-10, .col-md-11, .col-md-12 {
+  .col-md-1, .col-md-2, .col-md-3, body section .main .view .content ul li.title, .col-md-4, body section .main .view nav .search, .col-md-5, .col-md-6, body section #signon, .col-md-7, .col-md-8, body section .main .view nav .tabs, .col-md-9, body section .main .view .content ul div.variables, .col-md-10, .col-md-11, .col-md-12 {
     float: left; }
 
   .col-md-1 {
@@ -1831,7 +1831,7 @@ address {
   .col-md-5 {
     width: 41.6666666667%; }
 
-  .col-md-6 {
+  .col-md-6, body section #signon {
     width: 50%; }
 
   .col-md-7 {
@@ -1939,7 +1939,7 @@ address {
   .col-md-offset-2 {
     margin-left: 16.6666666667%; }
 
-  .col-md-offset-3 {
+  .col-md-offset-3, body section #signon {
     margin-left: 25%; }
 
   .col-md-offset-4 {
@@ -2346,12 +2346,7 @@ html {
 
 body {
   height: 100%;
-  color: #333;
-  background: radial-gradient(center center, 50% 70%, #fff 70%, #fcfcfc);
-  background: -webkit-radial-gradient(center center, 50% 70%, #fff 70%, #fcfcfc);
-  background: -o-radial-gradient(center center, 50% 70%, #fff 70%, #fcfcfc);
-  background: -ms-radial-gradient(center center, 50% 70%, #fff 70%, #fcfcfc);
-  background-attachment: fixed; }
+  color: #333; }
   @media (max-width: 1199px) {
     body {
       font-size: 0.94em; } }
@@ -2405,8 +2400,12 @@ body {
         z-index: 1; }
         body header nav ul.dropdown li a {
           display: block; }
-  body .logo h1 img {
-    max-width: 148px; }
+  body .logo {
+    padding-top: 2em; }
+    body .logo h1 {
+      margin-top: 0; }
+      body .logo h1 img {
+        max-width: 148px; }
   body section {
     padding-bottom: 5em; }
     body section .main h2 {
@@ -2687,6 +2686,29 @@ body {
       body section .main .context .actions button span {
         float: right;
         margin-top: 1px; }
+    body section #signon {
+      margin-top: 5em;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 0.5em;
+      padding: 3em; }
+      body section #signon input {
+        width: 100%;
+        padding: 0.5em; }
+        body section #signon input + input {
+          margin-top: 0.5em; }
+        body section #signon input#remember {
+          width: auto;
+          margin-top: 1em; }
+      body section #signon button {
+        margin-top: 3em;
+        width: 100%;
+        background-color: #239CF9;
+        color: #fff;
+        padding: 0.5em;
+        border-radius: 0.25em;
+        font-size: 1.4em; }
+        body section #signon button:hover {
+          background-color: #337ab7; }
   body footer {
     position: absolute;
     bottom: 0;
@@ -2700,6 +2722,22 @@ body {
           display: inline-block;
           padding: 0.5em 0;
           margin-right: 1em; }
+  body.splash {
+    background: radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
+    background: -webkit-radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
+    background: -o-radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
+    background: -ms-radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
+    background-attachment: fixed; }
+    body.splash .logo img {
+      margin: 0 auto;
+      display: block; }
+    body.splash footer {
+      background-color: transparent;
+      color: #D0E2F0; }
+      body.splash footer ul li a {
+        color: #fff; }
+        body.splash footer ul li a:hover {
+          color: #D0E2F0; }
 
 a {
   color: #239CF9; }
@@ -2726,3 +2764,8 @@ button {
     background-color: #666;
     color: #eee;
     transition: color 0.3s ease, background-color 0.3s ease; }
+
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0; }
