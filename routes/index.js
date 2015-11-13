@@ -12,7 +12,6 @@ router.post('/signon', function(req, res, next) {
   res.send(req.session.email);
 });
 
-
 router.get('/sites', function(req, res, next) {
   sites = [
     {
