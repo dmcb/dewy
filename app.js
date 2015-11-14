@@ -11,6 +11,7 @@ var OAuth2Strategy = require('passport-oauth2');
 
 // Router handlers
 var routes = require('./routes/index');
+var authRoutes = require('./routes/auth');
 
 //  Express configuration
 var app = express();
@@ -41,7 +42,6 @@ app.use(session({
   cookie: { secure: true }
 }))
 
-
 // // Configure oauth2 in passport
 // passport.use(new OAuth2Strategy({
 //     authorizationURL: 'https://www.example.com/oauth2/authorize',
@@ -59,18 +59,8 @@ app.use(session({
 // app.use(passport.initialize());
 // app.use(passport.session());
 
-
-app.get('/signon/example',
-  passport.authenticate('oauth2'));
-
-app.get('/signon/example/callback',
-  passport.authenticate('oauth2', { failureRedirect: '/login' }),
-  function(req, res) {
-    // Successful authentication, redirect home.
-    res.redirect('/');
-  });
-
 app.use('/', routes);
+app.use('/', authRoutes);
 
 // 404
 app.use(function(req, res, next) {
