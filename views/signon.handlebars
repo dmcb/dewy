@@ -1,5 +1,10 @@
             <section>
                 <form method="post" action="/signon" id="signon">
+                {{#if error}}
+                <span class="messages">
+                    {{error}}
+                </span>
+                {{/if}}
                 <fieldset>
                     <input id="email" name="email" placeholder="Your email address" />
                     <input id="password" name="password" placeholder="Your password" type="password" />

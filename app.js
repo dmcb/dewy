@@ -5,9 +5,11 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var exphbs = require('express-handlebars');
+var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var passport = require('passport');
 var OAuth2Strategy = require('passport-oauth2');
+var flash = require('connect-flash');
 
 // Router handlers
 var routes = require('./routes/index');
@@ -35,12 +37,9 @@ app.use(express.static(path.join(__dirname, 'static')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: true }
-}))
+app.use(cookieParser('secret'));
+app.use(session({cookie: { maxAge: 60000 }}))
+app.use(flash());
 
 // // Configure oauth2 in passport
 // passport.use(new OAuth2Strategy({

@@ -2693,6 +2693,11 @@ body {
       background-color: rgba(255, 255, 255, 0.9);
       border-radius: 0.5em;
       padding: 3em; }
+      body section #signon span.messages {
+        display: block;
+        color: #239CF9;
+        font-weight: bold;
+        margin-bottom: 1.5em; }
       body section #signon input {
         width: 100%;
         padding: 0.5em; }

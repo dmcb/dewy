@@ -596,6 +596,13 @@ body {
 			border-radius: 0.5em;
 			padding: 3em;
 
+			span.messages {
+				display: block;
+				color: $blue;
+				font-weight: bold;
+				margin-bottom: 1.5em;
+			}
+
 			input {
 				width: 100%;
 				padding: 0.5em;

@@ -70,6 +70,10 @@ router.get('/sites', function(req, res, next) {
 });
 
 router.get('/filter', function(req, res, next) {
+  if (!req.user || req.user.status !== 'ENABLED') {
+    req.flash('error', 'You must sign on to view this page.');
+    return res.redirect('/signon');
+  }
   operators = ['any','all','none'];
   fields = [
     {
