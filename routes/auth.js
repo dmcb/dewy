@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var passport = require('passport');
 
 // router.get('/signon/example',
 //   passport.authenticate('oauth2'));
@@ -15,19 +16,29 @@ router.get('/signon', function(req, res, next) {
   res.render('signon', { 
     title: 'Dewy',
     layout: 'splash',
-    error: req.flash('error')[0]
+    message: req.flash('message')[0]
   });
 });
 
-router.post('/signon', function(req, res, next) {
-  req.session.email = req.body.email;
-  res.send(req.session.email);
+router.post('/signon', passport.authenticate('local', { failureRedirect: '/signon', failureFlash: true }), function (req, res, next) {
+  req.flash('message', 'Welcome back ' + req.user.name + '.');
+  res.redirect('/sites');
 });
+
+// router.post('/signon', function(req, res, next) {
+//   req.user = { 
+//     name: req.body.name, 
+//     uid: "1234567890"
+//   };
+//   req.flash('message', 'Welcome back ' + req.user.name + '.');
+//   res.redirect('/filter');
+// });
 
 // Logout the user, then redirect to the home page.
 router.get('/signoff', function(req, res) {
   req.logout();
-  res.redirect('/');
+  req.flash('message', 'You have successfully signed off.');
+  res.redirect('/signon');
 });
 
 module.exports = router;

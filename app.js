@@ -8,6 +8,7 @@ var exphbs = require('express-handlebars');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var passport = require('passport');
+var passportLocal = require('passport-local');
 var OAuth2Strategy = require('passport-oauth2');
 var flash = require('connect-flash');
 
@@ -41,6 +42,24 @@ app.use(cookieParser('secret'));
 app.use(session({cookie: { maxAge: 60000 }}))
 app.use(flash());
 
+// Configure Passport authentication
+passport.serializeUser(function (user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function (id, done) {
+  done(null, id);
+});
+
+var LocalStrategy = passportLocal.Strategy;
+passport.use(new LocalStrategy(
+  function (username, password, done) {
+    // Always return valid user for now
+    var user = { username: username, uid: "1234567890" };
+    return done(null, user);
+  }
+));
+
 // // Configure oauth2 in passport
 // passport.use(new OAuth2Strategy({
 //     authorizationURL: 'https://www.example.com/oauth2/authorize',
@@ -55,8 +74,8 @@ app.use(flash());
 //     });
 //   }
 // ));
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', routes);
 app.use('/', authRoutes);

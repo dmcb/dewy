@@ -1454,24 +1454,24 @@ address {
   font-style: normal;
   line-height: 1.428571429; }
 
-.container, body header nav, body .logo h1, body section, body footer ul {
+.container, body header nav, body .logo h1, body .message, body section, body footer ul {
   margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px; }
-  .container:before, body header nav:before, body .logo h1:before, body section:before, body footer ul:before, .container:after, body header nav:after, body .logo h1:after, body section:after, body footer ul:after {
+  .container:before, body header nav:before, body .logo h1:before, body .message:before, body section:before, body footer ul:before, .container:after, body header nav:after, body .logo h1:after, body .message:after, body section:after, body footer ul:after {
     content: " ";
     display: table; }
-  .container:after, body header nav:after, body .logo h1:after, body section:after, body footer ul:after {
+  .container:after, body header nav:after, body .logo h1:after, body .message:after, body section:after, body footer ul:after {
     clear: both; }
   @media (min-width: 768px) {
-    .container, body header nav, body .logo h1, body section, body footer ul {
+    .container, body header nav, body .logo h1, body .message, body section, body footer ul {
       width: 750px; } }
   @media (min-width: 992px) {
-    .container, body header nav, body .logo h1, body section, body footer ul {
+    .container, body header nav, body .logo h1, body .message, body section, body footer ul {
       width: 970px; } }
   @media (min-width: 1200px) {
-    .container, body header nav, body .logo h1, body section, body footer ul {
+    .container, body header nav, body .logo h1, body .message, body section, body footer ul {
       width: 1170px; } }
 
 .container-fluid {
@@ -2408,6 +2408,13 @@ body {
         max-width: 148px;
         position: absolute;
         top: 16px; }
+  body .message span {
+    padding: 0.5em 15px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #239CF9;
+    border-radius: 0.5em;
+    display: block; }
   body section {
     padding-bottom: 5em; }
     body section .main h2 {

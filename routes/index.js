@@ -2,6 +2,10 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/sites', function(req, res, next) {
+  if (!req.user) {
+    req.flash('error', 'You must sign on to view this page.');
+    return res.redirect('/signon');
+  }
   sites = [
     {
       title: 'Schulich',
@@ -58,6 +62,8 @@ router.get('/sites', function(req, res, next) {
     sites: sites,
     filters: filters,
     current_filter: '',
+    message: req.flash('message')[0],
+    user: req.user,
     helpers: {
       dots: function(number, dot) {
         var dots = '';
@@ -70,7 +76,7 @@ router.get('/sites', function(req, res, next) {
 });
 
 router.get('/filter', function(req, res, next) {
-  if (!req.user || req.user.status !== 'ENABLED') {
+  if (!req.user) {
     req.flash('error', 'You must sign on to view this page.');
     return res.redirect('/signon');
   }
