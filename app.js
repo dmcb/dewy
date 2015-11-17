@@ -55,7 +55,7 @@ var LocalStrategy = passportLocal.Strategy;
 passport.use(new LocalStrategy(
   function (username, password, done) {
     // Always return valid user for now
-    var user = { username: username, uid: "1234567890" };
+    var user = { username: username, id: "1234567890" };
     return done(null, user);
   }
 ));

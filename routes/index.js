@@ -466,7 +466,8 @@ router.get('/filter', function(req, res, next) {
     title: 'Dewy',
     fields: fields,
     filter: filter,
-    current_filter: 'In development'
+    current_filter: 'In development',
+    user: req.user
   });
 });
 

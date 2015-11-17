@@ -21,18 +21,9 @@ router.get('/signon', function(req, res, next) {
 });
 
 router.post('/signon', passport.authenticate('local', { failureRedirect: '/signon', failureFlash: true }), function (req, res, next) {
-  req.flash('message', 'Welcome back ' + req.user.name + '.');
+  req.flash('message', 'Welcome back ' + req.user.username + '.');
   res.redirect('/sites');
 });
-
-// router.post('/signon', function(req, res, next) {
-//   req.user = { 
-//     name: req.body.name, 
-//     uid: "1234567890"
-//   };
-//   req.flash('message', 'Welcome back ' + req.user.name + '.');
-//   res.redirect('/filter');
-// });
 
 // Logout the user, then redirect to the home page.
 router.get('/signoff', function(req, res) {
