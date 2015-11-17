@@ -21,7 +21,7 @@
 		
 * Run node:
 
-		node app.js
+		npm start
 		
 
 ## Usage
