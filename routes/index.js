@@ -1,47 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-function getFilter(filter) {
+function getFilters() {
   // Dummy function for now, will eventually pull from persistence layer
-  if (filter) {
-    return filter = {
-      title: filter,
-      url: filter
-    };
-  }
-}
-
-router.get('/sites/:filter?', function(req, res, next) {
-  if (!req.user) {
-    req.flash('error', 'You must sign on to view this page.');
-    return res.redirect('/signon');
-  }
-  sites = [
-    {
-      title: 'Schulich',
-      base_url: 'schulich.ucalgary.ca',
-      complexity: 3.53,
-      size: 10,
-      activity: 4.42,
-      health: 1
-    },
-    {
-      title: 'Haskayne',
-      base_url: 'haskayne.ucalgary.ca',
-      complexity: 1,
-      size: 4.17,
-      activity: 7.35,
-      health: 6.4
-    },
-    {
-      title: 'Science',
-      base_url: 'ucalgary.ca/science',
-      complexity: 1,
-      size: 6.12,
-      activity: 4.92,
-      health: 4.55
-    }
-  ];
   filters = [
     {
       title: 'In development',
@@ -72,11 +33,65 @@ router.get('/sites/:filter?', function(req, res, next) {
       url: 'anotherreallylongtitlewithoutbreaksthanksjerk',
     }
   ]
+  return filters;
+}
+
+function getFilter(filters, url) {
+  for (var i=0; i<filters.length; i++) {
+    if (filters[i].url == url) {
+      return filters[i];
+    }
+    else if (filters[i].children) {
+      result = getFilter(filters[i].children, url);
+      if (result) {
+        return result;
+      }
+    }
+  }
+}
+
+function getSites(filter) {
+  // Dummy function for now, will eventually pull from persistence layer
+  sites = [
+    {
+      title: 'Schulich',
+      base_url: 'schulich.ucalgary.ca',
+      complexity: 3.53,
+      size: 10,
+      activity: 4.42,
+      health: 1
+    },
+    {
+      title: 'Haskayne',
+      base_url: 'haskayne.ucalgary.ca',
+      complexity: 1,
+      size: 4.17,
+      activity: 7.35,
+      health: 6.4
+    },
+    {
+      title: 'Science',
+      base_url: 'ucalgary.ca/science',
+      complexity: 1,
+      size: 6.12,
+      activity: 4.92,
+      health: 4.55
+    }
+  ];
+  return sites;
+}
+
+router.get('/sites/:filter?', function(req, res, next) {
+  if (!req.user) {
+    req.flash('error', 'You must sign on to view this page.');
+    return res.redirect('/signon');
+  }
+
   res.render('sites', { 
     title: 'Dewy',
-    sites: sites,
-    filters: filters,
-    current_filter: getFilter(req.params.filter),
+    sites: getSites(req.params.filter),
+    filters: getFilters(),
+    current_filter: getFilter(filters, req.params.filter),
     message: req.flash('message')[0],
     user: req.user,
     helpers: {
