@@ -21,6 +21,10 @@ router.get('/signon', function(req, res, next) {
 });
 
 router.post('/signon', passport.authenticate('local', { failureRedirect: '/signon', failureFlash: true }), function (req, res, next) {
+  if (req.body.remember) {
+    // One month
+    req.session.cookie.maxAge = 30*24*60*60*1000;
+  }
   req.flash('message', 'Welcome back ' + req.user.username + '.');
   res.redirect('/sites');
 });
