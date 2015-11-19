@@ -1,6 +1,6 @@
             <section>
                 <div class="main">
-                    <h2>{{#if current_filter}}<a href="">{{current_filter}}<span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>{{/if}}{{#unless current_filter}}All sites{{/unless}}</h2>
+                    <h2>{{#if current_filter}}<a href="/filter/{{current_filter.url}}">{{current_filter.title}}<span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>{{/if}}{{#unless current_filter}}All sites{{/unless}}</h2>
                     <div class="view">
                         <nav>
                             <div class="tabs">
@@ -68,7 +68,7 @@
                     </div>
                     <nav class="context">
                         <ul class="folders">
-                            <li><a href="" {{#unless current_filter}}class="selected"{{/unless}}>All sites</a></li>
+                            <li><a href="/sites" {{#unless current_filter}}class="selected"{{/unless}}>All sites</a></li>
                             {{#filters}}
                                 {{> filter_menu_item}}
                             {{/filters}}

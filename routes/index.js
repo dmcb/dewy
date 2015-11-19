@@ -1,7 +1,17 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/sites', function(req, res, next) {
+function getFilter(filter) {
+  // Dummy function for now, will eventually pull from persistence layer
+  if (filter) {
+    return filter = {
+      title: filter,
+      url: filter
+    };
+  }
+}
+
+router.get('/sites/:filter?', function(req, res, next) {
   if (!req.user) {
     req.flash('error', 'You must sign on to view this page.');
     return res.redirect('/signon');
@@ -35,33 +45,38 @@ router.get('/sites', function(req, res, next) {
   filters = [
     {
       title: 'In development',
+      url: 'in-development',
       notifications: true
     },
     {
       title: 'Modules',
       children: [
         {
-          title: 'Views'
+          title: 'Views',
+          url: 'views'
         },
         {
           title: 'Big webform sites',
+          url: 'big-webform-sites',
           notifications: true
         }
       ]
     },
     {
       title: 'Really long title to serve as an edge case for the design',
+      url: 'really-long-title-to-serve-as-an-edge-case-for-the-design',
       notifications: true
     },
     {
-      title: 'Anotherreallylongtitlewithoutbreaksthanksjerk'
+      title: 'Anotherreallylongtitlewithoutbreaksthanksjerk',
+      url: 'anotherreallylongtitlewithoutbreaksthanksjerk',
     }
   ]
   res.render('sites', { 
     title: 'Dewy',
     sites: sites,
     filters: filters,
-    current_filter: '',
+    current_filter: getFilter(req.params.filter),
     message: req.flash('message')[0],
     user: req.user,
     helpers: {
@@ -75,7 +90,7 @@ router.get('/sites', function(req, res, next) {
   });
 });
 
-router.get('/filter', function(req, res, next) {
+router.get('/filter/:filter?', function(req, res, next) {
   if (!req.user) {
     req.flash('error', 'You must sign on to view this page.');
     return res.redirect('/signon');
