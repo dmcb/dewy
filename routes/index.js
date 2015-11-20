@@ -7,19 +7,67 @@ function getFilters() {
     {
       title: 'In development',
       url: 'in-development',
-      notifications: true
+      notifications: true,
+      operator: 'any',
+      rules: [
+        {
+          field: 'Maintenance mode',
+          choice: 'is on'
+        },
+        {
+          field: 'Tag',
+          choice: 'are present',
+          value: 'development'
+        }
+      ]
     },
     {
       title: 'Modules',
       children: [
         {
           title: 'Views',
-          url: 'views'
+          url: 'views',
+          operator: 'all',
+          rules: [
+            {
+              field: 'Module name',
+              choice: 'is',
+              value: 'views'
+            },
+            {
+              field: 'Content type',
+              choice: 'starts with',
+              value: 'view_reference'
+            }
+          ]
         },
         {
           title: 'Big webform sites',
           url: 'big-webform-sites',
-          notifications: true
+          notifications: true,
+          operator: 'all',
+          rules: [
+            {
+              field: 'Module name',
+              choice: 'contains',
+              value: 'webform'
+            },
+            {
+              operator: 'any',
+              rules: [
+                {
+                  field: 'Number of hits in past month',
+                  choice: 'is greater than',
+                  value: 7000
+                },
+                {
+                  field: 'Number of nodes',
+                  choice: 'is greater than',
+                  value: 5000
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -38,7 +86,7 @@ function getFilters() {
 
 function getFilter(filters, url) {
   for (var i=0; i<filters.length; i++) {
-    if (filters[i].url == url) {
+    if (filters[i].url && filters[i].url == url) {
       return filters[i];
     }
     else if (filters[i].children) {
@@ -453,50 +501,11 @@ router.get('/filter/:filter?', function(req, res, next) {
       ]
     }
   ]
-  filter = {
-    operator: 'any',
-    rules: [
-      {
-        field: 'Broken links',
-        choice: 'is greater than or equal to'
-      },
-      {
-        field: 'Content type',
-        choice: 'starts with'
-      },
-      {
-        operator: 'all',
-        rules: [
-          {
-            field: 'Maintenance mode',
-            choice: 'is on'
-          },
-          {
-            field: 'Tag',
-            choice: 'are present'
-          },
-          {
-            operator: 'none',
-            rules: [
-              {
-                field: 'User email address',
-                choice: 'blah'
-              }
-            ]
-          },
-          {
-            field: 'User email address',
-            choice: 'blah'
-          },
-        ]
-      }
-    ]
-  }
+
   res.render('filter', { 
     title: 'Dewy',
     fields: fields,
-    filter: filter,
-    current_filter: 'In development',
+    current_filter: getFilter(filters, req.params.filter),
     user: req.user
   });
 });

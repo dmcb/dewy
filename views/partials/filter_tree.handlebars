@@ -1,3 +1,4 @@
+{{#if operator}}
 <li class="rule-group-heading">
     <select>
         <option {{#ifEquals operator 'any'}}selected="selected"{{/ifEquals}}>Any</option>
@@ -6,6 +7,7 @@
     </select>
     of the following rules:
 </li>
+{{/if}}
 {{#if rules}}
 <ul class="rule-group">
     {{#rules}}

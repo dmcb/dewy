@@ -1,15 +1,15 @@
             <section>
                 <div class="main">
                     <h2>
-                        <input type="text" placeholder="Filter title" value="{{current_filter}}" />
+                        <input type="text" placeholder="Filter title" value="{{current_filter.title}}" />
                     </h2>
                     <div class="view">
                         <div class="content">
                             <ul class="rules">
-                                {{#filter}}
+                                {{#current_filter}}
                                 {{> filter_tree}}
                                 <p class="total">3 sites matched under these rules</p>
-                                {{/filter}}
+                                {{/current_filter}}
                             </ul>
                         </div>
                         <div class="content">
