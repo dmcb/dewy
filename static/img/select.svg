@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="221px" height="287px" viewBox="0 0 221 287" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.2 (15855) - http://www.bohemiancoding.com/sketch -->
+    <title>select</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#377BB5" offset="0%"></stop>
+            <stop stop-color="#2E9EF6" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <rect id="Rectangle" fill="url(#linearGradient-1)" sketch:type="MSShapeGroup" x="0" y="0" width="221" height="287"></rect>
+        <path d="M76,104.03252 L110.46748,69 L145.5,104.03252" id="Line" stroke="#FFFFFF" stroke-width="26" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+        <path d="M76,219.780488 L110.219512,185 L145,219.780488" id="Line" stroke="#FFFFFF" stroke-width="26" stroke-linecap="square" sketch:type="MSShapeGroup" transform="translate(110.500000, 202.390244) scale(1, -1) translate(-110.500000, -202.390244) "></path>
+    </g>
+</svg>
