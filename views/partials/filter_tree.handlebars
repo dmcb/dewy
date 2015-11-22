@@ -1,9 +1,9 @@
 {{#if operator}}
 <li class="rule-group-heading">
     <select>
-        <option {{#ifEquals operator 'any'}}selected="selected"{{/ifEquals}}>Any</option>
-        <option {{#ifEquals operator 'all'}}selected="selected"{{/ifEquals}}>All</option>
-        <option {{#ifEquals operator 'none'}}selected="selected"{{/ifEquals}}>None</option>
+        {{#@root.operators}}
+            <option {{#ifEquals ../operator .}}selected="selected"{{/ifEquals}}>{{.}}</option>
+        {{/@root.operators}}
     </select>
     of the following rules:
 </li>
@@ -22,9 +22,9 @@
             {{/@root.fields}}
         </select>
         <select class="choice">
-
+            
         <select>
-        <input type="text" />
+        <input type="text" value="{{value}}"/>
         <div class="buttons">
             <button>
                 <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
