@@ -14,7 +14,17 @@ router.get('/filter/:filter?', function(req, res, next) {
     operators: Filter.getOperators(),
     fields: Filter.getFields(),
     current_filter: Filter.get(filters, req.params.filter),
-    user: req.user
+    user: req.user,
+    helpers: {
+      choices: function(field, choice) {
+        var options;
+        choices = Filter.getChoicesByField(Filter.getFields(), field);
+        for (var i=0; i<choices.length; i++) {
+          options += choice.fn(choices[i]);
+        }
+        return options;
+      }
+    }
   });
 });
 
