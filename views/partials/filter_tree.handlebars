@@ -22,7 +22,9 @@
             {{/@root.fields}}
         </select>
         <select class="choice">
-            
+            {{#choices ../field}}
+                <option {{#ifEquals ../choice title}}selected="selected"{{/ifEquals}}>{{title}}</option>
+            {{/choices}}
         <select>
         <input type="text" value="{{value}}"/>
         <div class="buttons">

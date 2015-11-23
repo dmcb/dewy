@@ -1,9 +1,11 @@
 exports.get = function(filters, url) {
+  // Comb through filters to get matching one
   for (var i=0; i<filters.length; i++) {
     if (filters[i].url && filters[i].url == url) {
       return filters[i];
     }
     else if (filters[i].children) {
+      // Comb through children recursively until a match is made
       result = this.get(filters[i].children, url);
       if (result) {
         return result;
@@ -15,6 +17,14 @@ exports.get = function(filters, url) {
 exports.getByUser = function(user) {
   // Dummy function for now, will eventually pull from persistence layer
   return filters;
+}
+
+exports.getChoicesByField = function(fields, field) {
+  for (var i=0; i<fields.length; i++) {
+    if (fields[i].title == field) {
+      return fields[i].choices;
+    }
+  }
 }
 
 exports.getFields = function() {
