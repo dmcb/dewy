@@ -23,10 +23,12 @@
         </select>
         <select class="choice">
             {{#choices ../field}}
-                <option {{#ifEquals ../choice title}}selected="selected"{{/ifEquals}}>{{title}}</option>
+                <option {{#ifEquals ../choice .}}selected="selected"{{/ifEquals}}>{{.}}</option>
             {{/choices}}
         <select>
+        {{#value ../field}}
         <input type="text" value="{{value}}"/>
+        {{/value}}
         <div class="buttons">
             <button>
                 <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
