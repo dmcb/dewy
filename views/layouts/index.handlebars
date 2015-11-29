@@ -11,21 +11,16 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="/js/scripts.min.js"></script>
     </head>
-    <body>
+    <body {{#unless user}}class="splash"{{/unless}}>
         <div class="wrapper">
-            <header>
-                <nav>
-                    <ul>
-                        <li><a href="">Add Drupal sites</a></li><li><a href="" class="drop"><img src="/img/avatar.jpg" alt=""/>Signed in as {{user.username}}</a><ul class="dropdown">
-                            <li><a href="">Profile</a></li>
-                            <li><a href="">Settings</a></li>
-                            <li><a href="/signoff">Sign off</a></li>
-                        </ul></li>
-                    </ul>
-                </nav>
-            </header>
+            {{#if user}}
+                {{> main_menu}}
+            {{/if}}
             <div class="logo">
-                <h1><img src="/img/dewy.png" alt="Dewy"></h1>
+                <h1>
+                    {{#if user}}<img src="/img/dewy.png" alt="Dewy">{{/if}}
+                    {{#unless user}}<img src="/img/dewy_white.png" alt="Dewy">{{/unless}}
+                </h1>
             </div>
             {{#if message}}
             <div class="message">

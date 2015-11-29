@@ -15,7 +15,6 @@ var passport = require('passport');
 router.get('/signon', function(req, res, next) {
   res.render('signon', { 
     title: 'Dewy',
-    layout: 'splash',
     message: req.flash('message')[0]
   });
 });
