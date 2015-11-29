@@ -2359,6 +2359,24 @@ body {
   body .wrapper {
     min-height: 100%;
     position: relative; }
+    body .wrapper.splash {
+      background: radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
+      background: -webkit-radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
+      background: -o-radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
+      background: -ms-radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
+      background-attachment: fixed; }
+      body .wrapper.splash .logo img {
+        margin: 0 auto;
+        padding-top: 1em;
+        display: block;
+        position: static; }
+      body .wrapper.splash footer {
+        background-color: transparent;
+        color: #D0E2F0; }
+        body .wrapper.splash footer ul li a {
+          color: #fff; }
+          body .wrapper.splash footer ul li a:hover {
+            color: #D0E2F0; }
   body header {
     border-top: 5px solid #239CF9;
     background-color: #eee; }
@@ -2400,14 +2418,12 @@ body {
         z-index: 1; }
         body header nav ul.dropdown li a {
           display: block; }
-  body .logo {
-    padding-top: 2em; }
-    body .logo h1 {
-      margin-top: 0; }
-      body .logo h1 img {
-        max-width: 148px;
-        position: absolute;
-        top: 16px; }
+  body .logo h1 {
+    margin-top: 0; }
+    body .logo h1 img {
+      max-width: 148px;
+      position: absolute;
+      top: 16px; }
   body .message span {
     padding: 0.5em 15px;
     font-weight: bold;
@@ -2706,7 +2722,7 @@ body {
         float: right;
         margin-top: 1px; }
     body section #signon {
-      margin-top: 5em;
+      margin-top: 3em;
       background-color: rgba(255, 255, 255, 0.9);
       border-radius: 0.5em;
       padding: 3em; }
@@ -2746,23 +2762,6 @@ body {
           display: inline-block;
           padding: 0.5em 0;
           margin-right: 1em; }
-  body.splash {
-    background: radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
-    background: -webkit-radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
-    background: -o-radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
-    background: -ms-radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
-    background-attachment: fixed; }
-    body.splash .logo img {
-      margin: 0 auto;
-      display: block;
-      position: static; }
-    body.splash footer {
-      background-color: transparent;
-      color: #D0E2F0; }
-      body.splash footer ul li a {
-        color: #fff; }
-        body.splash footer ul li a:hover {
-          color: #D0E2F0; }
 
 a {
   color: #239CF9; }

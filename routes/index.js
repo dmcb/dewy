@@ -3,12 +3,6 @@ var router = express.Router();
 var Filter = require('../models/filters');
 var Site = require('../models/sites');
 
-router.get('/partials/:partial?', function(req, res, next) {
-  res.render('partials/' + req.params.partial, {
-    layout: null
-  });
-});
-
 router.get('/filter/:filter?', function(req, res, next) {
   if (!req.user) {
     req.flash('error', 'You must sign on to view this page.');

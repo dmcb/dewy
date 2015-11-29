@@ -1,6 +1,7 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="dewy">
     <head>
+        <base href="/">
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>{{ title }}</title>
@@ -9,32 +10,12 @@
 
         <link rel="stylesheet" href="/css/styles.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-        <script src="/js/scripts.min.js"></script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
+        <script src="/js/app.js"></script>
+        <script src="/js/controllers.js"></script>
+        <script src="/js/scripts.js"></script>
     </head>
-    <body {{#unless user}}class="splash"{{/unless}}>
-        <div class="wrapper">
-            {{#if user}}
-                {{> main_menu}}
-            {{/if}}
-            <div class="logo">
-                <h1>
-                    {{#if user}}<img src="/img/dewy.png" alt="Dewy">{{/if}}
-                    {{#unless user}}<img src="/img/dewy_white.png" alt="Dewy">{{/unless}}
-                </h1>
-            </div>
-            {{#if message}}
-            <div class="message">
-                <span>{{message}}</span>
-            </div>
-            {{/if}}
-            {{{body}}}
-            <footer>
-                <ul>
-                    <li><span>&copy; 2015 Dewy</span></li>
-                    <li><a href="">Contact</a></li>
-                    <li><a href="">Help</a></li>
-                </ul>
-            </footer>
-        </div>
+    <body ng-view>
     </body>
 </html>
