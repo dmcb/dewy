@@ -374,7 +374,7 @@ body {
 								background-color: $grey;
 							}
 
-							&.desc:after {
+							&.selected.desc:after {
 								@media (max-width: $screen-sm-max) {
 									display: block;
 									margin-top: 6px;
@@ -393,7 +393,7 @@ body {
 								border-bottom-color: transparent;
 							}
 
-							&.asc:after {
+							&.selected.asc:after {
 								@media (max-width: $screen-sm-max) {
 									display: block;
 									margin-left: 0;
