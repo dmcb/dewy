@@ -20,8 +20,8 @@ controllers.controller('signonController', ['$scope',
 	function ($scope) {
 }]);
 
-controllers.controller('sitesController', ['$scope', '$routeParams', 'filterFactory',
-	function ($scope, $routeParams, filterFactory) {
+controllers.controller('sitesController', ['$scope', '$routeParams', 'filterFactory', 'sitesFactory',
+	function ($scope, $routeParams, filterFactory, sitesFactory) {
 		$scope.getNumber = function(number) {
 			return new Array(Math.round(number));
 		}
@@ -42,34 +42,5 @@ controllers.controller('sitesController', ['$scope', '$routeParams', 'filterFact
 
 		$scope.filters = filterFactory.getByUser(null);
 		$scope.currentFilter = filterFactory.getFilter($scope.filters, $routeParams.filter);
-
-		// $http.get('http://dewy.io/api/sites').success(function(data) {
-		// 	$scope.sites = data;
-		// });
-		$scope.sites = [
-			{
-				title: 'Photography Blog',
-				base_url: 'photographybyderek.ca/blog',
-				complexity: 3.53,
-				size: 10,
-				activity: 4.42,
-				health: 1
-			},
-			{
-				title: 'Derek McBurney',
-				base_url: 'derekmcburney.com',
-				complexity: 1,
-				size: 4.17,
-				activity: 7.35,
-				health: 6.4
-			},
-			{
-				title: 'my world, my choice!',
-				base_url: 'myworldmychoice.org',
-				complexity: 1,
-				size: 6.12,
-				activity: 4.92,
-				health: 4.55
-			}
-		];
+		$scope.sites = sitesFactory.getByFilter(null, $scope.currentFilter);
 }]);
