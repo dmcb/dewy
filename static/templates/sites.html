@@ -58,9 +58,7 @@
                     <nav class="context">
                         <ul class="folders">
                             <li><a href="/sites" &&#unless current_filter**class="selected"&&/unless**>All sites</a></li>
-                            &&#filters**
-                                &&> filter_menu_item**
-                            &&/filters**
+                            <li ng-repeat="filter in filters" ng-include="'templates/filter_menu_item.html'"></li>
                         </ul>
                         <div class="actions">
                             <button>Add folder <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>

@@ -20,25 +20,27 @@ controllers.controller('signonController', ['$scope', '$http',
 	function ($scope, $http) {
 }]);
 
-controllers.controller('sitesController', ['$scope', '$http',
-	function ($scope, $http) {
+controllers.controller('sitesController', ['$scope', '$http', '$routeParams',
+	function ($scope, $http, $routeParams) {
 		$scope.getNumber = function(number) {
 			return new Array(Math.round(number));
 		}
 		$scope.changeSorting = function(column) {
-            var sort = $scope.sort;
- 
-            if (sort.column == column) {
-                sort.descending = !sort.descending;
-            } else {
-                sort.column = column;
-                sort.descending = false;
-            }
-        };
+			var sort = $scope.sort;
+
+			if (sort.column == column) {
+				sort.descending = !sort.descending;
+			} else {
+				sort.column = column;
+				sort.descending = false;
+			}
+		};
 		$scope.sort = {
 			column: 'title',
 			descending: false
 		};
+
+		$scope.currentFilter = $routeParams.filter;
 		// $http.get('http://dewy.io/api/sites').success(function(data) {
 		// 	$scope.sites = data;
 		// });
@@ -68,4 +70,83 @@ controllers.controller('sitesController', ['$scope', '$http',
 				health: 4.55
 			}
 		];
+
+		$scope.filters = [
+			{
+				title: 'In development',
+				url: 'in-development',
+				notifications: true,
+				operator: 'any',
+				rules: [
+					{
+						field: 'Maintenance mode',
+						choice: 'is on'
+					},
+					{
+						field: 'Tag',
+						choice: 'are present',
+						value: 'development'
+					}
+				]
+			},
+			{
+				title: 'Modules',
+				children: [
+					{
+						title: 'Views',
+						url: 'views',
+						operator: 'all',
+						rules: [
+							{
+								field: 'Module name',
+								choice: 'is',
+								value: 'views'
+							},
+							{
+								field: 'Content type',
+								choice: 'starts with',
+								value: 'view_reference'
+							}
+						]
+					},
+					{
+						title: 'Big webform sites',
+						url: 'big-webform-sites',
+						notifications: true,
+						operator: 'all',
+						rules: [
+							{
+								field: 'Module name',
+								choice: 'contains',
+								value: 'webform'
+							},
+							{
+								operator: 'any',
+								rules: [
+									{
+										field: 'Number of hits in past month',
+										choice: 'is greater than',
+										value: 7000
+									},
+									{
+										field: 'Number of nodes',
+										choice: 'is greater than',
+										value: 5000
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				title: 'Really long title to serve as an edge case for the design',
+				url: 'really-long-title-to-serve-as-an-edge-case-for-the-design',
+				notifications: true
+			},
+			{
+				title: 'Anotherreallylongtitlewithoutbreaksthanksjerk',
+				url: 'anotherreallylongtitlewithoutbreaksthanksjerk',
+			}
+		]
 }]);
