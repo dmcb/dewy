@@ -40,7 +40,7 @@ controllers.controller('sitesController', ['$scope', '$http', '$routeParams',
 			descending: false
 		};
 
-		$scope.currentFilter = $routeParams.filter;
+
 		// $http.get('http://dewy.io/api/sites').success(function(data) {
 		// 	$scope.sites = data;
 		// });
@@ -149,4 +149,23 @@ controllers.controller('sitesController', ['$scope', '$http', '$routeParams',
 				url: 'anotherreallylongtitlewithoutbreaksthanksjerk',
 			}
 		]
+
+		$scope.getFilter = function(filters, url) {
+			for (var i=0; i<filters.length; i++) {
+				if (filters[i].url && filters[i].url == url) {
+					return filters[i];
+				}
+				else if (filters[i].children) {
+					// Comb through children recursively until a match is made
+					result = this.getFilter(filters[i].children, url);
+					if (result) {
+						return result;
+					}
+				}
+			}
+		}
+
+		if ($routeParams.filter) {
+			$scope.currentFilter = $scope.getFilter($scope.filters, $routeParams.filter);
+		}
 }]);

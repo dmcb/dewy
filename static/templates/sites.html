@@ -1,5 +1,5 @@
                 <div class="main" ng-controller="sitesController">
-					<h2>&&#if current_filter**<a href="/filter/&&current_filter.url**">&&current_filter.title**<span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>&&/if**&&#unless current_filter**All sites&&/unless**</h2>
+					<h2><a href="/filter/{{currentFilter.url}}" ng-if="currentFilter">{{currentFilter.title}}<span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a><span ng-if="!currentFilter">All sites</span></h2>
                     <div class="view">
                         <nav>
                             <div class="tabs">
