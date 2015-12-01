@@ -2492,11 +2492,12 @@ body {
           opacity: 1; }
         body section .main .view nav .search form input[type=text]:-ms-input-placeholder {
           color: #337ab7; }
-      body section .main .view nav .search form button {
+      body section .main .view nav .search form span {
         position: absolute;
         right: 0;
         color: #239CF9;
-        margin-top: 3px;
+        margin-top: 7px;
+        margin-right: 7px;
         background-color: transparent; }
     body section .main .view .content {
       border-top: solid 1px #D0E2F0;
