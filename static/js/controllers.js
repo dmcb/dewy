@@ -20,6 +20,28 @@ controllers.controller('signonController', ['$scope',
 	function ($scope) {
 }]);
 
+controllers.controller('filterController', ['$scope', '$routeParams', 'filterFactory',
+	function ($scope, $routeParams, filterFactory) {
+		$scope.getChoices = function(field) {
+			for (var i=0; i<$scope.fields.length; i++) {
+				if ($scope.fields[i].title == field) {
+					return $scope.fields[i].choices;
+				}
+			}
+		}
+		$scope.hasValue = function(field) {
+			for (var i=0; i<$scope.fields.length; i++) {
+				if ($scope.fields[i].title == field) {
+					return $scope.fields[i].value;
+				}
+			}
+		}
+		$scope.operators = ['any', 'all', 'none'];
+		$scope.fields = filterFactory.getFields();
+		$scope.filters = filterFactory.getByUser(null);
+		$scope.currentFilter = filterFactory.getFilter($scope.filters, $routeParams.filter);
+}]);
+
 controllers.controller('sitesController', ['$scope', '$routeParams', 'filterFactory', 'sitesFactory',
 	function ($scope, $routeParams, filterFactory, sitesFactory) {
 		$scope.getNumber = function(number) {
@@ -35,11 +57,11 @@ controllers.controller('sitesController', ['$scope', '$routeParams', 'filterFact
 				sort.descending = false;
 			}
 		};
+
 		$scope.sort = {
 			column: 'title',
 			descending: false
 		};
-
 		$scope.filters = filterFactory.getByUser(null);
 		$scope.currentFilter = filterFactory.getFilter($scope.filters, $routeParams.filter);
 		$scope.sites = sitesFactory.getByFilter(null, $scope.currentFilter);

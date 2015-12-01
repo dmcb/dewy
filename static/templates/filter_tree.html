@@ -1,0 +1,31 @@
+<li class="rule-group-heading" ng-if="rule.operator">
+    <select ng-model="rule.operator">
+        <option ng-repeat="operator in operators">{{operator}}</option>
+    </select>
+    of the following rules:
+</li>
+<ul class="rule-group">
+    <li class="rule" ng-repeat="rule in rule.rules">
+        <div ng-if="rule.operator" ng-include="'templates/filter_tree.html'"></div>
+        <div ng-if="!rule.operator">
+            <select class="field" ng-model="rule.field">
+                <option ng-repeat="field in fields">{{field.title}}</option>
+            </select>
+            <select class="choice" ng-model="rule.choice">
+                <option ng-repeat="choice in getChoices(rule.field)">{{choice}}</option>
+            <select>
+            <input type="text" value="{{rule.value}}" ng-show="hasValue(rule.field)" />
+            <div class="buttons">
+                <button>
+                    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                </button>
+                <button>
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </button>
+                <button>
+                    <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+    </li>
+</ul>

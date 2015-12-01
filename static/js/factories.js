@@ -3,6 +3,381 @@ var factories = angular.module('dewyFactories', []);
 factories.factory('filterFactory', ['$http', function($http) {
 	var filterFactory = {};
 
+	fields = [
+		{
+			title: 'Base URL',
+			choices: [
+				'contains',
+				'does not contain',
+				'is',
+				'is not',
+				'starts with',
+				'ends with'
+			],
+			value: 'string'
+		},
+		{
+			title: 'Content type',
+			choices: [
+				'contains',
+				'does not contain',
+				'is',
+				'is not',
+				'starts with',
+				'ends with'
+			],
+			value: 'string'
+		},
+		{
+			title: 'Database',
+			choices: [
+				'is pending updates',
+				'is updated'
+			],
+			value: false
+		},
+		{
+			title: 'Date added to Dewy',
+			choices: [
+				'is',
+				'is not',
+				'is after',
+				'is before',
+				'is in the last',
+				'is not in the last'
+			],
+			value: 'date'
+		},
+		{
+			title: 'Date last accessed',
+			choices: [
+				'is',
+				'is not',
+				'is after',
+				'is before',
+				'is in the last',
+				'is not in the last'
+			],
+			value: 'date'
+		},
+		{
+			title: 'Date last edited',
+			choices: [
+				'is',
+				'is not',
+				'is after',
+				'is before',
+				'is in the last',
+				'is not in the last'
+			],
+			value: 'date'
+		},
+		{
+			title: 'Drupal core',
+			choices: [
+				'is',
+				'is not',
+				'is greater than',
+				'is less than',
+				'is greater than or equal to',
+				'is less than or equal to'
+			],
+			value: false
+		},
+		{
+			title: 'File size (private)',
+			choices: [
+				'is',
+				'is not',
+				'is greater than',
+				'is less than',
+				'is greater than or equal to',
+				'is less than or equal to'
+			],
+			value: 'number'
+		},
+		{
+			title: 'File size (public)',
+			choices: [
+				'is',
+				'is not',
+				'is greater than',
+				'is less than',
+				'is greater than or equal to',
+				'is less than or equal to'
+			],
+			value: 'integer'
+		},
+		{
+			title: 'File size (total)',
+			choices: [
+				'is',
+				'is not',
+				'is greater than',
+				'is less than',
+				'is greater than or equal to',
+				'is less than or equal to'
+			],
+			value: 'integer'
+		},
+		{
+			title: 'Maintenance mode',
+			choices: [
+				'is on',
+				'is not on'
+			],
+			value: false
+		},
+		{
+			title: 'Module name',
+			choices: [
+				'contains',
+				'does not contain',
+				'is',
+				'is not',
+				'starts with',
+				'ends with'
+			],
+			value: 'string'
+		},
+		{
+			title: 'Number of broken links',
+			choices: [
+				'is',
+				'is not',
+				'is greater than',
+				'is less than',
+				'is greater than or equal to',
+				'is less than or equal to'
+			],
+			value: 'integer'
+		},
+		{
+			title: 'Number of content types',
+			choices: [
+				'is',
+				'is not',
+				'is greater than',
+				'is less than',
+				'is greater than or equal to',
+				'is less than or equal to'
+			],
+			value: 'integer'
+		},
+		{
+			title: 'Number of files (private)',
+			choices: [
+				'is',
+				'is not',
+				'is greater than',
+				'is less than',
+				'is greater than or equal to',
+				'is less than or equal to'
+			],
+			value: 'integer'
+		},
+		{
+			title: 'Number of files (public)',
+			choices: [
+				'is',
+				'is not',
+				'is greater than',
+				'is less than',
+				'is greater than or equal to',
+				'is less than or equal to'
+			],
+			value: 'integer'
+		},
+		{
+			title: 'Number of files (total)',
+			choices: [
+				'is',
+				'is not',
+				'is greater than',
+				'is less than',
+				'is greater than or equal to',
+				'is less than or equal to'
+			],
+			value: 'integer'
+		},
+		{
+			title: 'Number of hits in past day',
+			choices: [
+				'is',
+				'is not',
+				'is greater than',
+				'is less than',
+				'is greater than or equal to',
+				'is less than or equal to'
+			],
+			value: 'integer'
+		},
+		{
+			title: 'Number of hits in past week',
+			choices: [
+				'is',
+				'is not',
+				'is greater than',
+				'is less than',
+				'is greater than or equal to',
+				'is less than or equal to'
+			],
+			value: 'integer'
+		},
+		{
+			title: 'Number of hits in past month',
+			choices: [
+				'is',
+				'is not',
+				'is greater than',
+				'is less than',
+				'is greater than or equal to',
+				'is less than or equal to'
+			],
+			value: 'integer'
+		},
+		{
+			title: 'Number of modules',
+			choices: [
+				'is',
+				'is not',
+				'is greater than',
+				'is less than',
+				'is greater than or equal to',
+				'is less than or equal to'
+			],
+			value: 'integer'
+		},
+		{
+			title: 'Number of nodes',
+			choices: [
+				'is',
+				'is not',
+				'is greater than',
+				'is less than',
+				'is greater than or equal to',
+				'is less than or equal to'
+			],
+			value: 'integer'
+		},
+		{
+			title: 'Number of roles',
+			choices: [
+				'is',
+				'is not',
+				'is greater than',
+				'is less than',
+				'is greater than or equal to',
+				'is less than or equal to'
+			],
+			value: 'integer'
+		},
+		{
+			title: 'Number of themes',
+			choices: [
+				'is',
+				'is not',
+				'is greater than',
+				'is less than',
+				'is greater than or equal to',
+				'is less than or equal to'
+			],
+			value: 'integer'
+		},
+		{
+			title: 'Number of users',
+			choices: [
+				'is',
+				'is not',
+				'is greater than',
+				'is less than',
+				'is greater than or equal to',
+				'is less than or equal to'
+			],
+			value: 'integer'
+		},
+		{
+			title: 'Role',
+			choices: [
+				'contains',
+				'does not contain',
+				'is',
+				'is not',
+				'starts with',
+				'ends with'
+			],
+			value: 'string'
+		},
+		{
+			title: 'Tag',
+			choices: [
+				'is',
+				'is not'
+			],
+			value: 'string'
+		},
+		{
+			title: 'Text',
+			choices: [
+				'contains',
+				'does not contain',
+				'is',
+				'is not',
+				'starts with',
+				'ends with'
+			],
+			value: 'string'
+		},
+		{
+			title: 'Theme',
+			choices: [
+				'contains',
+				'does not contain',
+				'is',
+				'is not',
+				'starts with',
+				'ends with'
+			],
+			value: 'string'
+		},
+		{
+			title: 'Title',
+			choices: [
+				'contains',
+				'does not contain',
+				'is',
+				'is not',
+				'starts with',
+				'ends with'
+			],
+			value: 'string'
+		},
+		{
+			title: 'User email address',
+			choices: [
+				'contains',
+				'does not contain',
+				'is',
+				'is not',
+				'starts with',
+				'ends with'
+			],
+			value: 'string'
+		},
+		{
+			title: 'User name',
+			choices: [
+				'contains',
+				'does not contain',
+				'is',
+				'is not',
+				'starts with',
+				'ends with'
+			],
+			value: 'string'
+		}
+	]
+
 	filters = [
 		{
 			title: 'In development',
@@ -16,7 +391,7 @@ factories.factory('filterFactory', ['$http', function($http) {
 				},
 				{
 					field: 'Tag',
-					choice: 'are present',
+					choice: 'is',
 					value: 'development'
 				}
 			]
@@ -81,6 +456,10 @@ factories.factory('filterFactory', ['$http', function($http) {
 			url: 'anotherreallylongtitlewithoutbreaksthanksjerk',
 		}
 	]
+
+	filterFactory.getFields = function() {
+		return fields;
+	}
 
 	filterFactory.getFilter = function(filters, url) {
 		for (var i=0; i<filters.length; i++) {
