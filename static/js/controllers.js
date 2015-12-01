@@ -16,12 +16,12 @@ controllers.controller('appController', ['$scope', '$http', '$route',
 		}
 }]);
 
-controllers.controller('signonController', ['$scope', '$http',
-	function ($scope, $http) {
+controllers.controller('signonController', ['$scope',
+	function ($scope) {
 }]);
 
-controllers.controller('sitesController', ['$scope', '$http', '$routeParams',
-	function ($scope, $http, $routeParams) {
+controllers.controller('sitesController', ['$scope', '$routeParams', 'filterFactory',
+	function ($scope, $routeParams, filterFactory) {
 		$scope.getNumber = function(number) {
 			return new Array(Math.round(number));
 		}
@@ -40,6 +40,8 @@ controllers.controller('sitesController', ['$scope', '$http', '$routeParams',
 			descending: false
 		};
 
+		$scope.filters = filterFactory.getByUser(null);
+		$scope.currentFilter = filterFactory.getFilter($scope.filters, $routeParams.filter);
 
 		// $http.get('http://dewy.io/api/sites').success(function(data) {
 		// 	$scope.sites = data;
@@ -70,102 +72,4 @@ controllers.controller('sitesController', ['$scope', '$http', '$routeParams',
 				health: 4.55
 			}
 		];
-
-		$scope.filters = [
-			{
-				title: 'In development',
-				url: 'in-development',
-				notifications: true,
-				operator: 'any',
-				rules: [
-					{
-						field: 'Maintenance mode',
-						choice: 'is on'
-					},
-					{
-						field: 'Tag',
-						choice: 'are present',
-						value: 'development'
-					}
-				]
-			},
-			{
-				title: 'Modules',
-				children: [
-					{
-						title: 'Views',
-						url: 'views',
-						operator: 'all',
-						rules: [
-							{
-								field: 'Module name',
-								choice: 'is',
-								value: 'views'
-							},
-							{
-								field: 'Content type',
-								choice: 'starts with',
-								value: 'view_reference'
-							}
-						]
-					},
-					{
-						title: 'Big webform sites',
-						url: 'big-webform-sites',
-						notifications: true,
-						operator: 'all',
-						rules: [
-							{
-								field: 'Module name',
-								choice: 'contains',
-								value: 'webform'
-							},
-							{
-								operator: 'any',
-								rules: [
-									{
-										field: 'Number of hits in past month',
-										choice: 'is greater than',
-										value: 7000
-									},
-									{
-										field: 'Number of nodes',
-										choice: 'is greater than',
-										value: 5000
-									}
-								]
-							}
-						]
-					}
-				]
-			},
-			{
-				title: 'Really long title to serve as an edge case for the design',
-				url: 'really-long-title-to-serve-as-an-edge-case-for-the-design',
-				notifications: true
-			},
-			{
-				title: 'Anotherreallylongtitlewithoutbreaksthanksjerk',
-				url: 'anotherreallylongtitlewithoutbreaksthanksjerk',
-			}
-		]
-
-		$scope.getFilter = function(filters, url) {
-			for (var i=0; i<filters.length; i++) {
-				if (filters[i].url && filters[i].url == url) {
-					return filters[i];
-				}
-				else if (filters[i].children) {
-					// Comb through children recursively until a match is made
-					result = this.getFilter(filters[i].children, url);
-					if (result) {
-						return result;
-					}
-				}
-			}
-		}
-
-		if ($routeParams.filter) {
-			$scope.currentFilter = $scope.getFilter($scope.filters, $routeParams.filter);
-		}
 }]);

@@ -1,6 +1,7 @@
 var app = angular.module('dewy', [
 	'ngRoute',
-	'dewyControllers'
+	'dewyControllers',
+	'dewyFactories',
 ])
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {

@@ -57,7 +57,7 @@
                     </div>
                     <nav class="context">
                         <ul class="folders">
-                            <li><a href="/sites" &&#unless current_filter**class="selected"&&/unless**>All sites</a></li>
+                            <li><a href="/sites" ng-class="{selected: !currentFilter}">All sites</a></li>
                             <li ng-repeat="filter in filters" ng-include="'templates/filter_menu_item.html'"></li>
                         </ul>
                         <div class="actions">
