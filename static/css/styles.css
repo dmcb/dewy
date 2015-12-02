@@ -2445,7 +2445,8 @@ body {
         body section .main h2 a span {
           margin-left: 0.25em; }
       body section .main h2 input {
-        border: solid 1px #D0E2F0;
+        border: none;
+        padding: 0;
         width: 100%; }
     body section .main .view nav .tabs ul {
       margin: 0;
