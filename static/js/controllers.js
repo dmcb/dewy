@@ -36,6 +36,12 @@ controllers.controller('filterController', ['$scope', '$routeParams', 'filterFac
 				}
 			}
 		}
+		$scope.updateChoice = function(rule) {
+			choices = $scope.getChoices(rule.field);
+			if (choices.indexOf(rule.choice) == -1) {
+				rule.choice = choices[0];
+			}
+		}
 		$scope.operators = ['any', 'all', 'none'];
 		$scope.fields = filterFactory.getFields();
 		$scope.filters = filterFactory.getByUser(null);
