@@ -2,6 +2,7 @@ var factories = angular.module('dewyFactories', []);
 
 factories.factory('filterFactory', ['$http', function($http) {
 	var filterFactory = {};
+	var serviceUrl = "/api/filters";
 
 	fields = [
 		{
@@ -457,6 +458,10 @@ factories.factory('filterFactory', ['$http', function($http) {
 		}
 	]
 
+	filterFactory.delete = function(filter) {
+
+	}
+
 	filterFactory.getFields = function() {
 		return fields;
 	}
@@ -478,6 +483,13 @@ factories.factory('filterFactory', ['$http', function($http) {
 
 	filterFactory.getByUser = function(user) {
   		return filters;
+	}
+
+	filterFactory.update = function(filter) {
+		$http.post(serviceUrl, filter)
+			.success(function (response) {
+				console.log(response);
+			});
 	}
 
 	return filterFactory;

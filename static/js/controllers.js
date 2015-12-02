@@ -20,8 +20,14 @@ controllers.controller('signonController', ['$scope',
 	function ($scope) {
 }]);
 
-controllers.controller('filterController', ['$scope', '$routeParams', 'filterFactory',
-	function ($scope, $routeParams, filterFactory) {
+controllers.controller('filterController', ['$scope', '$http', '$routeParams', 'filterFactory',
+	function ($scope, $http, $routeParams, filterFactory) {
+		$scope.cancel = function() {
+			window.history.back();
+		}
+		$scope.deleteFilter = function() {
+			filterFactory.delete($scope.currentFilter);
+		}
 		$scope.getChoices = function(field) {
 			for (var i=0; i<$scope.fields.length; i++) {
 				if ($scope.fields[i].title == field) {
@@ -35,6 +41,9 @@ controllers.controller('filterController', ['$scope', '$routeParams', 'filterFac
 					return $scope.fields[i].value;
 				}
 			}
+		}
+		$scope.saveFilter = function() {
+			filterFactory.update($scope.currentFilter);
 		}
 		$scope.updateChoice = function(rule) {
 			choices = $scope.getChoices(rule.field);
