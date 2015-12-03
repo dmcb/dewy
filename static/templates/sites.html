@@ -31,7 +31,7 @@
                                 </ul>
                             </div>
                             <div class="sites">
-                                <ul ng-repeat="site in sites | filter:query | orderBy:sort.column:sort.descending">
+                                <ul ng-repeat="site in sites | filter:query | orderBy:sort.column:sort.descending" class="site">
                                     <li class="title"><h3>{{site.title}}</h3><span>{{site.base_url}}</span></li>
                                     <div class="variables">
                                         <ul>

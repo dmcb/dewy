@@ -2800,3 +2800,29 @@ fieldset {
   border: none;
   margin: 0;
   padding: 0; }
+
+.rule.ng-enter,
+.rule.ng-leave,
+.site.ng-enter,
+.site.ng-leave {
+  -webkit-transition: 400ms ease all;
+  -moz-transition: 400ms ease all;
+  -ms-transition: 400ms ease all;
+  -o-transition: 400ms ease all;
+  transition: 400ms ease all;
+  position: relative;
+  display: block; }
+
+.rule.ng-enter.ng-enter-active,
+.rule.ng-leave,
+.site.ng-enter.ng-enter-active,
+.site.ng-leave {
+  opacity: 1;
+  top: 0; }
+
+.rule.ng-leave.ng-leave-active,
+.rule.ng-enter,
+.site.ng-leave.ng-leave-active,
+.site.ng-enter {
+  opacity: 0;
+  top: -50px; }
