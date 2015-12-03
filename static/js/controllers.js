@@ -121,10 +121,8 @@ controllers.controller('filterController', ['$scope', '$http', '$routeParams', '
 			$scope.newFilter = true;
 			$scope.currentFilter = {
 				operator: 'any',
-				index: 0,
 				rules: [
 					{
-						index: 1,
 						field: 'Base URL',
 						choice: 'contains'
 					}
