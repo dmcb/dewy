@@ -2590,25 +2590,32 @@ body {
         @media (max-width: 767px) {
           body section .main .view .content .sites {
             min-width: 383.5px; } }
-        body section .main .view .content .sites ul {
+        body section .main .view .content .sites .noresults, body section .main .view .content .sites ul {
           padding-bottom: 1em; }
-          body section .main .view .content .sites ul li {
-            background-color: #fff; }
-            body section .main .view .content .sites ul li .point {
-              width: 0.75em;
-              background-color: #239CF9;
-              height: 0.75em;
-              display: inline-block;
-              border-radius: 0.75em;
-              transition: opacity 0.3s; }
-            body section .main .view .content .sites ul li.complexity, body section .main .view .content .sites ul li.size, body section .main .view .content .sites ul li.activity, body section .main .view .content .sites ul li.health {
-              font-size: 0.8em;
-              margin-top: 0.75em; }
-              @media (max-width: 1199px) {
-                body section .main .view .content .sites ul li.complexity, body section .main .view .content .sites ul li.size, body section .main .view .content .sites ul li.activity, body section .main .view .content .sites ul li.health {
-                  margin-top: 1.5em; } }
-          body section .main .view .content .sites ul.variables {
-            padding-bottom: 0; }
+        body section .main .view .content .sites .noresults {
+          display: block;
+          text-align: center;
+          margin: 0;
+          color: #337ab7; }
+          body section .main .view .content .sites .noresults span {
+            margin-right: 0.5em; }
+        body section .main .view .content .sites ul li {
+          background-color: #fff; }
+          body section .main .view .content .sites ul li .point {
+            width: 0.75em;
+            background-color: #239CF9;
+            height: 0.75em;
+            display: inline-block;
+            border-radius: 0.75em;
+            transition: opacity 0.3s; }
+          body section .main .view .content .sites ul li.complexity, body section .main .view .content .sites ul li.size, body section .main .view .content .sites ul li.activity, body section .main .view .content .sites ul li.health {
+            font-size: 0.8em;
+            margin-top: 0.75em; }
+            @media (max-width: 1199px) {
+              body section .main .view .content .sites ul li.complexity, body section .main .view .content .sites ul li.size, body section .main .view .content .sites ul li.activity, body section .main .view .content .sites ul li.health {
+                margin-top: 1.5em; } }
+        body section .main .view .content .sites ul.variables {
+          padding-bottom: 0; }
       body section .main .view .content .rules, body section .main .view .content .notifications {
         padding: 15px; }
         body section .main .view .content .rules .rule-group, body section .main .view .content .notifications .rule-group {
@@ -2804,7 +2811,9 @@ fieldset {
 .rule.ng-enter,
 .rule.ng-leave,
 .site.ng-enter,
-.site.ng-leave {
+.site.ng-leave,
+.noresults.ng-enter,
+.noresults.ng-leave {
   -webkit-transition: 400ms ease all;
   -moz-transition: 400ms ease all;
   -ms-transition: 400ms ease all;
@@ -2826,3 +2835,11 @@ fieldset {
 .site.ng-enter {
   opacity: 0;
   top: -50px; }
+
+.noresults.ng-enter.ng-enter-active,
+.noresults.ng-leave {
+  opacity: 1; }
+
+.noresults.ng-leave.ng-leave-active,
+.noresults.ng-enter {
+  opacity: 0; }

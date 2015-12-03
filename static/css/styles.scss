@@ -422,9 +422,22 @@ body {
 							min-width: $screen-xs-max/2;
 						}
 
-						ul {
+						.noresults, ul {
 							padding-bottom: 1em;
+						}
 
+						.noresults {
+							display: block;
+							text-align: center;
+							margin: 0;
+							color: $dark-blue;
+
+							span {
+								margin-right: 0.5em;
+							}
+						}
+
+						ul {
 							li {
 								background-color: #fff;
 
@@ -759,7 +772,9 @@ fieldset {
 .rule.ng-enter, 
 .rule.ng-leave,
 .site.ng-enter, 
-.site.ng-leave
+.site.ng-leave,
+.noresults.ng-enter, 
+.noresults.ng-leave
 { 
     -webkit-transition: 400ms ease all;
     -moz-transition: 400ms ease all;
@@ -786,4 +801,16 @@ fieldset {
 {
     opacity: 0;
     top: -50px;
+}
+
+.noresults.ng-enter.ng-enter-active, 
+.noresults.ng-leave,
+{
+    opacity: 1;
+}
+
+.noresults.ng-leave.ng-leave-active,
+.noresults.ng-enter,
+{
+    opacity: 0;
 }
