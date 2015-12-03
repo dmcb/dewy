@@ -19,7 +19,7 @@
                         <div class="content">
                             <div class="header">
                                 <ul>
-                                    <li class="title"><a href="" ng-class="{selected: sort.column=='title', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('title')">{{sites.length}} sites</a></li>
+                                    <li class="title"><a href="" ng-class="{selected: sort.column=='title', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('title')">{{filteredSites.length}} sites</a></li>
                                     <div class="variables">
                                         <ul>
                                             <li class="complexity"><a href="" ng-class="{selected: sort.column=='complexity', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('complexity')">Complexity</a></li>
@@ -31,7 +31,7 @@
                                 </ul>
                             </div>
                             <div class="sites">
-                                <ul ng-repeat="site in sites | filter:query | orderBy:sort.column:sort.descending" class="site">
+                                <ul ng-repeat="site in filteredSites = (sites | filter:query) | orderBy:sort.column:sort.descending" class="site">
                                     <li class="title"><h3>{{site.title}}</h3><span>{{site.base_url}}</span></li>
                                     <div class="variables">
                                         <ul>
