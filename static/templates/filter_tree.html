@@ -18,7 +18,7 @@
             <select class="choice" ng-model="rule.choice" ng-options="choice as choice for choice in getChoices(rule.field)"></select>
             <input type="text" value="{{rule.value}}" ng-show="hasValue(rule.field)" />
             <div class="buttons">
-                <button ng-click="deleteRule(rule)" ng-if="multipleRules"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                <button ng-click="deleteRule(rule)"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
                 </button>
                 <button ng-click="addRule(rule)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 </button>
