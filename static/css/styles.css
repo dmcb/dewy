@@ -2790,6 +2790,10 @@ button {
     background-color: #666;
     color: #eee;
     transition: color 0.3s ease, background-color 0.3s ease; }
+  button:active {
+    background-color: #239CF9;
+    color: #fff;
+    transition: color 0 ease, background-color 0 ease; }
 
 fieldset {
   border: none;

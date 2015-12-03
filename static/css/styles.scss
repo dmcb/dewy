@@ -740,6 +740,12 @@ button {
 		color: $light-grey;
 		transition: color 0.3s ease, background-color 0.3s ease;
 	}
+
+	&:active {
+		background-color: $blue;
+		color: #fff;
+		transition: color 0 ease, background-color 0 ease;
+	}
 }
 
 fieldset {
