@@ -131,10 +131,10 @@ controllers.controller('filterController', ['$scope', '$http', '$routeParams', '
 		}
 }]);
 
-controllers.controller('sitesController', ['$scope', '$routeParams', 'filterFactory', 'sitesFactory',
-	function ($scope, $routeParams, filterFactory, sitesFactory) {
+controllers.controller('sitesController', ['$scope', '$location', '$routeParams', 'filterFactory', 'sitesFactory',
+	function ($scope, $location, $routeParams, filterFactory, sitesFactory) {
 		$scope.addFilter = function() {
-			window.location.href = '/filter';
+			$location.path('filter');
 		}
 		$scope.getNumber = function(number) {
 			return new Array(Math.round(number));
