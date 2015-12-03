@@ -22,11 +22,72 @@ controllers.controller('signonController', ['$scope',
 
 controllers.controller('filterController', ['$scope', '$http', '$routeParams', 'filterFactory',
 	function ($scope, $http, $routeParams, filterFactory) {
+		$scope.addRule = function(rule) {
+			// New rule
+			var newRule = {
+				field: 'Base URL',
+				choice: 'contains'
+			}
+			function walk(target) {
+				var rules = target.rules, i;
+				if (rules) {
+					i = rules.length;
+					while (i--) {
+						if (rules[i] == rule) {
+							return rules.splice(i+1, 0, newRule);
+						} else {
+							walk(rules[i])
+						}
+					}
+				}
+			}
+			walk($scope.currentFilter);
+		}
+		$scope.addRuleGroup = function(rule) {
+			// New rule group
+			var newRuleGroup = {
+				operator: 'any',
+				rules: [{
+					field: 'Base URL',
+					choice: 'contains'
+				}]
+			}
+			function walk(target) {
+				var rules = target.rules, i;
+				if (rules) {
+					i = rules.length;
+					while (i--) {
+						if (rules[i] == rule) {
+							return rules.splice(i+1, 0, newRuleGroup);
+						} else {
+							walk(rules[i])
+						}
+					}
+				}
+			}
+			walk($scope.currentFilter);
+		}
 		$scope.cancel = function() {
 			window.history.back();
 		}
 		$scope.deleteFilter = function() {
 			filterFactory.delete($scope.currentFilter);
+		}
+		$scope.deleteRule = function(rule) {
+			function walk(target) {
+				var rules = target.rules, i;
+				if (rules) {
+					i = rules.length;
+					while (i--) {
+						if (rules[i] == rule) {
+							return rules.splice(i, 1);
+						} else {
+							walk(rules[i])
+						}
+					}
+				}
+			}
+			walk($scope.currentFilter);
 		}
 		$scope.getChoices = function(field) {
 			for (var i=0; i<$scope.fields.length; i++) {
@@ -55,10 +116,28 @@ controllers.controller('filterController', ['$scope', '$http', '$routeParams', '
 		$scope.fields = filterFactory.getFields();
 		$scope.filters = filterFactory.getByUser(null);
 		$scope.currentFilter = filterFactory.getFilter($scope.filters, $routeParams.filter);
+		// If no filter is selected, begin a new one
+		if (!$scope.currentFilter) {
+			$scope.newFilter = true;
+			$scope.currentFilter = {
+				operator: 'any',
+				index: 0,
+				rules: [
+					{
+						index: 1,
+						field: 'Base URL',
+						choice: 'contains'
+					}
+				]
+			}
+		}
 }]);
 
 controllers.controller('sitesController', ['$scope', '$routeParams', 'filterFactory', 'sitesFactory',
 	function ($scope, $routeParams, filterFactory, sitesFactory) {
+		$scope.addFilter = function() {
+			window.location.href = '/filter';
+		}
 		$scope.getNumber = function(number) {
 			return new Array(Math.round(number));
 		}

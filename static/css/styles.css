@@ -2785,7 +2785,8 @@ a {
 button {
   border: 0;
   background-color: #eee;
-  color: #666; }
+  color: #666;
+  border-radius: 6px; }
   button:hover {
     background-color: #666;
     color: #eee;

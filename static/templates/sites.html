@@ -59,8 +59,8 @@
                             <li ng-repeat="filter in filters" ng-include="'templates/filter_menu_item.html'"></li>
                         </ul>
                         <div class="actions">
-                            <button>Add folder <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
-                            <button>Add filter <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
+                            <button ng-click="addFolder()">Add folder <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
+                            <button ng-click="addFilter()">Add filter <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
                         </div>
                     </nav>
                 </div>

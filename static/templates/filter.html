@@ -18,7 +18,7 @@
                         <div class="actions">
                             <button ng-click="saveFilter()">Save filter <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
                             <button ng-click="cancel()">Cancel changes <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                            <button ng-cllick="deleteFilter()">Delete filter <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+                            <button ng-cllick="deleteFilter()" ng-if="!newFilter">Delete filter <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
                         </div>
                     </nav>
                 </div>
