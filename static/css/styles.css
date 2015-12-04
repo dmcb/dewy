@@ -2823,23 +2823,23 @@ fieldset {
   display: block; }
 
 .rule.ng-enter.ng-enter-active,
-.rule.ng-leave,
-.site.ng-enter.ng-enter-active,
-.site.ng-leave {
+.rule.ng-leave {
   opacity: 1;
   top: 0; }
 
 .rule.ng-leave.ng-leave-active,
-.rule.ng-enter,
-.site.ng-leave.ng-leave-active,
-.site.ng-enter {
+.rule.ng-enter {
   opacity: 0;
   top: -50px; }
 
 .noresults.ng-enter.ng-enter-active,
-.noresults.ng-leave {
+.noresults.ng-leave,
+.site.ng-enter.ng-enter-active,
+.site.ng-leave {
   opacity: 1; }
 
 .noresults.ng-leave.ng-leave-active,
-.noresults.ng-enter {
+.noresults.ng-enter,
+.site.ng-leave.ng-leave-active,
+.site.ng-enter {
   opacity: 0; }
