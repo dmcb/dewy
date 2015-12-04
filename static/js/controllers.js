@@ -112,23 +112,23 @@ controllers.controller('filterController', ['$scope', '$http', '$routeParams', '
 				rule.choice = choices[0];
 			}
 		}
-		$scope.operators = ['any', 'all', 'none'];
-		$scope.fields = filterFactory.getFields();
-		$scope.filters = filterFactory.getByUser(null);
-		$scope.currentFilter = filterFactory.getFilter($scope.filters, $routeParams.filter);
-		// If no filter is selected, begin a new one
-		if (!$scope.currentFilter) {
-			$scope.newFilter = true;
-			$scope.currentFilter = {
-				operator: 'any',
-				rules: [
-					{
-						field: 'Base URL',
-						choice: 'contains'
-					}
-				]
-			}
-		}
+
+		filterFactory.getOperators().then(function(result) {
+			$scope.operators = result;
+		});
+
+		filterFactory.getFields().then(function(result) {
+			$scope.fields = result;
+		});
+
+		filterFactory.getAll(null).then(function(result) {
+			$scope.filters = result;
+		});
+
+		filterFactory.getFilter($routeParams.filter).then(function(result) {
+			$scope.currentFilter = result;
+		});
+
 }]);
 
 controllers.controller('sitesController', ['$scope', '$location', '$routeParams', 'filterFactory', 'sitesFactory',
@@ -154,7 +154,16 @@ controllers.controller('sitesController', ['$scope', '$location', '$routeParams'
 			column: 'title',
 			descending: false
 		};
-		$scope.filters = filterFactory.getByUser(null);
-		$scope.currentFilter = filterFactory.getFilter($scope.filters, $routeParams.filter);
-		$scope.sites = sitesFactory.getByFilter(null, $scope.currentFilter);
+
+		filterFactory.getAll(null).then(function(result) {
+			$scope.filters = result;
+		});
+
+		filterFactory.getFilter($routeParams.filter).then(function(result) {
+			$scope.currentFilter = result;
+		});
+
+		sitesFactory.getAll(null, $scope.currentFilter).then(function(result) {
+			$scope.sites = result;
+		});
 }]);

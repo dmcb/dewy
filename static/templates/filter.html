@@ -4,7 +4,7 @@
                     </h2>
                     <div class="view">
                         <div class="content">
-                            <ul class="rules" ng-init="rule=currentFilter" ng-include="'templates/filter_tree.html'">
+                            <ul class="rules" ng-init="rule=currentFilter" ng-if="currentFilter" ng-include="'templates/filter_tree.html'">
                                 <p class="total">3 sites matched under these rules</p>
                             </ul>
                         </div>

@@ -1,12 +1,13 @@
-exports.get = function(filters, url) {
+exports.get = function(user, url, filterSet) {
+  filterSet = typeof filterSet !== 'undefined' ? filterSet : filters;
   // Comb through filters to get matching one
-  for (var i=0; i<filters.length; i++) {
-    if (filters[i].url && filters[i].url == url) {
-      return filters[i];
+  for (var i=0; i<filterSet.length; i++) {
+    if (filterSet[i].url && filterSet[i].url == url) {
+      return filterSet[i];
     }
-    else if (filters[i].children) {
+    else if (filterSet[i].children) {
       // Comb through children recursively until a match is made
-      result = this.get(filters[i].children, url);
+      result = this.get(null, url, filterSet[i].children);
       if (result) {
         return result;
       }
@@ -14,7 +15,7 @@ exports.get = function(filters, url) {
   }
 }
 
-exports.getByUser = function(user) {
+exports.getAll = function(user) {
   // Dummy function for now, will eventually pull from persistence layer
   return filters;
 }
@@ -57,18 +58,6 @@ fields = [
       'ends with'
     ],
     value: 'string'
-  },
-  {
-    title: 'Broken links',
-    choices: [
-      'is',
-      'is not',
-      'is greater than',
-      'is less than',
-      'is greater than or equal to',
-      'is less than or equal to'
-    ],
-    value: 'integer'
   },
   {
     title: 'Content type',
@@ -193,6 +182,18 @@ fields = [
       'ends with'
     ],
     value: 'string'
+  },
+  {
+    title: 'Number of broken links',
+    choices: [
+      'is',
+      'is not',
+      'is greater than',
+      'is less than',
+      'is greater than or equal to',
+      'is less than or equal to'
+    ],
+    value: 'integer'
   },
   {
     title: 'Number of content types',
@@ -433,7 +434,7 @@ filters = [
       },
       {
         field: 'Tag',
-        choice: 'are present',
+        choice: 'is',
         value: 'development'
       }
     ]
@@ -499,4 +500,8 @@ filters = [
   }
 ]
 
-operators = ['any','all','none'];
+operators = [
+  'any',
+  'all',
+  'none'
+];
