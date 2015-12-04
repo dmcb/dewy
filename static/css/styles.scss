@@ -769,9 +769,18 @@ fieldset {
 }
 
 // Animations
+.site.ng-enter {
+    -webkit-transition: 0 ease all;
+    -moz-transition: 0 ease all;
+    -ms-transition: 0 ease all;
+    -o-transition: 0 ease all;
+    transition: 0 ease all;
+    position: relative;
+    display: block;
+}
+
 .rule.ng-enter, 
 .rule.ng-leave,
-.site.ng-enter, 
 .site.ng-leave,
 .noresults.ng-enter, 
 .noresults.ng-leave
