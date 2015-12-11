@@ -74,5 +74,11 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 					return sitesFactory.getAll(null, currentFilter);
 				}]
 			}
+		}).
+		otherwise({
+			controller: function() {
+				window.location.replace('/signon');
+			},
+			template : '<div></div>'
 		});
 }]);
