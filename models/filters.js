@@ -125,7 +125,7 @@ fields = [
       'is greater than or equal to',
       'is less than or equal to'
     ],
-    value: false
+    value: 'number'
   },
   {
     title: 'File size (private)',
