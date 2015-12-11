@@ -20,16 +20,7 @@ var apiRoutes = require('./routes/api');
 // Express configuration
 var app = express();
 var hbs = exphbs.create({
-  defaultLayout: 'index',
-  helpers: {
-    ifEquals: function(leftValue, rightValue, result) {
-      if (leftValue != rightValue) {
-          return result.inverse(this);
-      } else {
-          return result.fn(this);
-      }
-    }
-  }
+  defaultLayout: 'app'
 });
 app.engine('.handlebars', hbs.engine);
 app.set('views', path.join(__dirname, 'views'));

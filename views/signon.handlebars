@@ -6,9 +6,11 @@
             </div>
             <section>
                 <form method="post" action="/signon" id="signon">
-                <span class="messages" ng-show="message">
+                {{#if message}}
+                <span class="messages">
                     {{message}}
                 </span>
+                {{/if}}
                 <fieldset>
                     <input id="username" name="username" placeholder="Your username" />
                     <input id="password" name="password" placeholder="Your password" type="password" />

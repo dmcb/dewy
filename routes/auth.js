@@ -15,7 +15,8 @@ var passport = require('passport');
 router.get('/signon', function(req, res, next) {
   res.render('signon', { 
     title: 'Dewy',
-    message: req.flash('message')[0]
+    message: req.flash('message')[0],
+    layout: 'site'
   });
 });
 
@@ -24,7 +25,6 @@ router.post('/signon', passport.authenticate('local', { failureRedirect: '/signo
     // One month
     req.session.cookie.maxAge = 30*24*60*60*1000;
   }
-  req.flash('message', 'Welcome back ' + req.user.username + '.');
   res.redirect('/sites');
 });
 

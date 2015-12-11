@@ -2,21 +2,10 @@ var controllers = angular.module('dewyControllers', []);
 
 controllers.controller('appController', ['$scope', '$http', '$route', 'authFactory',
 	function ($scope, $http, $route, authFactory) {
-		if ($route.current.page == 'filter') {
-			$scope.page = 'templates/filter.html';
-		}
-		else if ($route.current.page == 'sites') {
-			$scope.page = 'templates/sites.html';
-		}
-
 		$scope.user = null;
 		$scope.setUser = function(user) {
 			$scope.user = user;
 		}
-}]);
-
-controllers.controller('signonController', ['$scope',
-	function ($scope) {
 }]);
 
 controllers.controller('filterController', ['$scope', '$http', '$routeParams', 'filterFactory',

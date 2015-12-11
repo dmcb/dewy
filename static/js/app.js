@@ -10,30 +10,19 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 	$locationProvider.html5Mode(true);
     $routeProvider.
     	when('/filter', {
-			templateUrl: 'templates/app.html',
-			controller: 'appController',
-			page: 'filter'
+			templateUrl: 'templates/filter.html',
+			controller: 'filterController',
 		}).
 		when('/filter/:filter', {
-			templateUrl: 'templates/app.html',
-			controller: 'appController',
-			page: 'filter'
-		}).
-		when('/signon', {
-			templateUrl: 'templates/signon.html',
-			controller: 'signonController'
+			templateUrl: 'templates/filter.html',
+			controller: 'filterController',
 		}).
 		when('/sites', {
-			templateUrl: 'templates/app.html',
-			controller: 'appController',
-			page: 'sites'
+			templateUrl: 'templates/sites.html',
+			controller: 'sitesController',
 		}).
 		when('/sites/:filter', {
-			templateUrl: 'templates/app.html',
-			controller: 'appController',
-			page: 'sites'
-		}).
-		otherwise({
-			redirectTo: '/signon'
+			templateUrl: 'templates/sites.html',
+			controller: 'sitesController',
 		});
 }]);
