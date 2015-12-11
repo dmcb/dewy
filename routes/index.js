@@ -3,7 +3,7 @@ var router = express.Router();
 
 router.get('/filter/:filter?', function(req, res, next) {
   if (!req.user) {
-    req.flash('error', 'You must sign on to view this page.');
+    req.flash('message', 'You must sign on to view this page.');
     return res.redirect('/signon');
   }
   res.render();
@@ -11,7 +11,7 @@ router.get('/filter/:filter?', function(req, res, next) {
 
 router.get('/sites/:filter?', function(req, res, next) {
   if (!req.user) {
-    req.flash('error', 'You must sign on to view this page.');
+    req.flash('message', 'You must sign on to view this page.');
     return res.redirect('/signon');
   }
   res.render();
