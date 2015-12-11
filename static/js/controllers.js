@@ -8,8 +8,8 @@ controllers.controller('appController', ['$scope', '$http', '$route', 'authFacto
 		}
 }]);
 
-controllers.controller('filterController', ['$scope', '$http', '$routeParams', 'filterFactory',
-	function ($scope, $http, $routeParams, filterFactory) {
+controllers.controller('filterController', ['$scope', '$http', 'filterFactory', 'operators', 'fields', 'filters', 'currentFilter',
+	function ($scope, $http, filterFactory, operators, fields, filters, currentFilter) {
 		$scope.addRule = function(rule) {
 			// New rule
 			var newRule = {
@@ -101,26 +101,14 @@ controllers.controller('filterController', ['$scope', '$http', '$routeParams', '
 			}
 		}
 
-		filterFactory.getOperators().then(function(result) {
-			$scope.operators = result;
-		});
-
-		filterFactory.getFields().then(function(result) {
-			$scope.fields = result;
-		});
-
-		filterFactory.getAll(null).then(function(result) {
-			$scope.filters = result;
-		});
-
-		filterFactory.getFilter($routeParams.filter).then(function(result) {
-			$scope.currentFilter = result;
-		});
-
+		$scope.operators = operators;
+		$scope.fields = fields;
+		$scope.filters = filters;
+		$scope.currentFilter = currentFilter;
 }]);
 
-controllers.controller('sitesController', ['$scope', '$location', '$routeParams', 'filterFactory', 'sitesFactory',
-	function ($scope, $location, $routeParams, filterFactory, sitesFactory) {
+controllers.controller('sitesController', ['$scope', '$location', 'filters', 'currentFilter', 'sites',
+	function ($scope, $location, filters, currentFilter, sites) {
 		$scope.addFilter = function() {
 			$location.path('filter');
 		}
@@ -143,15 +131,7 @@ controllers.controller('sitesController', ['$scope', '$location', '$routeParams'
 			descending: false
 		};
 
-		filterFactory.getAll(null).then(function(result) {
-			$scope.filters = result;
-		});
-
-		filterFactory.getFilter($routeParams.filter).then(function(result) {
-			$scope.currentFilter = result;
-		});
-
-		sitesFactory.getAll(null, $scope.currentFilter).then(function(result) {
-			$scope.sites = result;
-		});
+		$scope.filters = filters;
+		$scope.currentFilter = currentFilter;
+		$scope.sites = sites;
 }]);
