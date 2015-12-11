@@ -1,5 +1,24 @@
 var factories = angular.module('dewyFactories', []);
 
+factories.factory('authFactory', ['$http', 'Session', function($http, Session) {
+	var authService = {};
+
+	authService.login = function (credentials) {
+		return $http
+			.post('/login', credentials)
+			.then(function (res) {
+				Session.create(res.data.id, res.data.user.id);
+				return res.data.user;
+		});
+	};
+
+	authService.isAuthenticated = function () {
+		return !!Session.userid;
+	};
+
+	return authService;
+}]);
+
 factories.factory('filterFactory', ['$http', function($http) {
 	var filterFactory = {};
 	var apiUrl = "/api/1.0";

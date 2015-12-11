@@ -1,7 +1,7 @@
 var controllers = angular.module('dewyControllers', []);
 
-controllers.controller('appController', ['$scope', '$http', '$route',
-	function ($scope, $http, $route) {
+controllers.controller('appController', ['$scope', '$http', '$route', 'authFactory',
+	function ($scope, $http, $route, authFactory) {
 		if ($route.current.page == 'filter') {
 			$scope.page = 'templates/filter.html';
 		}
@@ -9,10 +9,9 @@ controllers.controller('appController', ['$scope', '$http', '$route',
 			$scope.page = 'templates/sites.html';
 		}
 
-		// Need to get this from session
-		// Dummy data for now
-		$scope.user = {
-			username: 'Derek'
+		$scope.user = null;
+		$scope.setUser = function(user) {
+			$scope.user = user;
 		}
 }]);
 
