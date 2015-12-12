@@ -13,6 +13,15 @@ exports.get = function(user, url, filterSet) {
       }
     }
   }
+
+  newFilter = {
+    operator: 'any',
+    rules: [{
+      field: 'Base URL',
+      choice: 'contains',
+    }]
+  }
+  return newFilter;
 }
 
 exports.getAll = function(user) {
