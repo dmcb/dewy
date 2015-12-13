@@ -2,30 +2,29 @@
     <select ng-model="rule.operator" ng-options="operator as operator for operator in operators"></select>
     of the following rules:
     <div class="buttons" ng-if="$parent.$index">
-        <button ng-click="deleteRule(rule)"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-        </button>
-        <button ng-click="addRule(rule)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-        </button>
-        <button ng-click="addRuleGroup(rule)"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-        </button>
+        <a class="button" href="" ng-click="deleteRule(rule)"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
+        <a class="button" href="" ng-click="addRule(rule)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+        <a class="button" href="" ng-click="addRuleGroup(rule)"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></a>
     </div>
 </li>
 <ul class="rule-group">
-    <li class="rule" ng-repeat="rule in rule.rules">
+    <li class="rule" ng-repeat="rule in rule.rules" ng-form="rulesform">
         <div ng-if="rule.operator" ng-include="'templates/filter_tree.html'"></div>
         <div ng-if="!rule.operator">
             <select class="field" ng-model="rule.field" ng-options="field.title as field.title for field in fields" ng-change="updateChoice(rule)"></select>
             <select class="choice" ng-model="rule.choice" ng-options="choice as choice for choice in getChoices(rule.field)"></select>
-            <input type="text" ng-model="rule.value" ng-if="valueIsType(rule.field, 'string')" required />
-            <input type="number" ng-model="rule.value" ng-if="valueIsType(rule.field, 'integer')" min="0" integer required />
-            <select ng-model="rule.value" ng-options="tag.id as tag.title for tag in tags" ng-if="valueIsType(rule.field, 'tag')" /></select>
+            <input name="value" type="text" ng-model="rule.value" ng-if="valueIsType(rule.field, 'string')" required />
+            <input name="value" type="number" ng-model="rule.value" ng-if="valueIsType(rule.field, 'integer')" min="0" required />
+            <select name="value" ng-model="rule.value" ng-options="tag.id as tag.title for tag in tags" ng-if="valueIsType(rule.field, 'tag')" /></select>
             <div class="buttons">
-                <button ng-click="deleteRule(rule)"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                </button>
-                <button ng-click="addRule(rule)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                </button>
-                <button ng-click="addRuleGroup(rule)"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-                </button>
+                <a class="button" href="" ng-click="deleteRule(rule)"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
+                <a class="button" href="" ng-click="addRule(rule)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                <a class="button" href="" ng-click="addRuleGroup(rule)"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></a>
+            </div>
+            <div class="error">
+                <span ng-show="rulesform.value.$error.required && (rulesform.value.$touched || form.$submitted)">Please enter a value.</span>
+                <span ng-show="rulesform.value.$error.number">You must enter a number.</span>
+                <span ng-show="rulesform.value.$error.min">The value cannot be less than 0.</span>
             </div>
         </div>
     </li>

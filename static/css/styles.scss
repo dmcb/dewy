@@ -164,7 +164,7 @@ body {
 		.main {
 			@extend .row;
 
-			h2 {
+			h2, #titleerror {
 				color: $blue;
 				@extend .col-xs-12;
 				font-size: 1.8em;
@@ -188,6 +188,12 @@ body {
 					padding: 0;
 					width: 100%;
 				}
+			}
+
+			#titleerror {
+				margin-top: -1em;
+				display: block;
+				font-size: 0.8em;
 			}
 
 			.view {
@@ -497,7 +503,7 @@ body {
 							.buttons {
 								float: right;
 
-								button {
+								button, a.button {
 									margin-left: 0.25em;
 								}
 							}
@@ -549,6 +555,13 @@ body {
 						.total {
 							margin: 2em 0 0 0;
 							font-weight: bold;
+						}
+
+						.error span {
+							font-size: 0.8em;
+							color: $blue;
+							margin-top: 0.5em;
+							display: block;
 						}
 					}
 				}
@@ -629,17 +642,17 @@ body {
 					}
 
 					& + .actions {
-											margin-top: 2em;
+						margin-top: 2em;
 					}
 				}
 
 				.actions {
-					button {
-						display: block;
-						padding: 0.25em 1.5em;
+					button, a.button {
 						margin-bottom: 0.25em;
 						width: 100%;
 						text-align: left;
+						display: block;
+						padding: 0.25em 1.5em;
 
 						span {
 							float: right;
@@ -743,11 +756,13 @@ a {
 	}
 }
 
-button {
+button, a.button {
 	border: 0;
 	background-color: $light-grey;
 	color: $grey;
 	border-radius: 6px;
+	display: inline;
+	padding: 0.25em 0.5em;
 
 	&:hover {
 		background-color: $grey;

@@ -1494,13 +1494,13 @@ address {
   .row:after, body header nav ul:after, body section .main:after, body section .main .view nav:after, body section .main .view .content ul:after, body section .main .view .content ul div.variables ul:after {
     clear: both; }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, body section .main .view .content ul div.variables ul li.complexity, body section .main .view .content ul div.variables ul li.size, body section .main .view .content ul div.variables ul li.activity, body section .main .view .content ul div.variables ul li.health, .col-sm-3, body section .main .context, .col-md-3, body section .main .view .content ul li.title, .col-lg-3, .col-xs-4, .col-sm-4, body section .main .view .content ul li.title, .col-md-4, body section .main .view nav .search, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, body section .main .view .content ul li.title, .col-sm-6, .col-md-6, body section #signon, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, body section .main .view .content ul div.variables, body section #signon, .col-md-8, body section .main .view nav .tabs, .col-lg-8, .col-xs-9, .col-sm-9, body section .main .view, .col-md-9, body section .main .view .content ul div.variables, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, body section .main h2, body section .main .view .content ul div.variables, .col-sm-12, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, body section .main .view .content ul div.variables ul li.complexity, body section .main .view .content ul div.variables ul li.size, body section .main .view .content ul div.variables ul li.activity, body section .main .view .content ul div.variables ul li.health, .col-sm-3, body section .main .context, .col-md-3, body section .main .view .content ul li.title, .col-lg-3, .col-xs-4, .col-sm-4, body section .main .view .content ul li.title, .col-md-4, body section .main .view nav .search, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, body section .main .view .content ul li.title, .col-sm-6, .col-md-6, body section #signon, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, body section .main .view .content ul div.variables, body section #signon, .col-md-8, body section .main .view nav .tabs, .col-lg-8, .col-xs-9, .col-sm-9, body section .main .view, .col-md-9, body section .main .view .content ul div.variables, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, body section .main h2, body section .main #titleerror, body section .main .view .content ul div.variables, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px; }
 
-.col-xs-1, .col-xs-2, .col-xs-3, body section .main .view .content ul div.variables ul li.complexity, body section .main .view .content ul div.variables ul li.size, body section .main .view .content ul div.variables ul li.activity, body section .main .view .content ul div.variables ul li.health, .col-xs-4, .col-xs-5, .col-xs-6, body section .main .view .content ul li.title, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, body section .main h2, body section .main .view .content ul div.variables {
+.col-xs-1, .col-xs-2, .col-xs-3, body section .main .view .content ul div.variables ul li.complexity, body section .main .view .content ul div.variables ul li.size, body section .main .view .content ul div.variables ul li.activity, body section .main .view .content ul div.variables ul li.health, .col-xs-4, .col-xs-5, .col-xs-6, body section .main .view .content ul li.title, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, body section .main h2, body section .main #titleerror, body section .main .view .content ul div.variables {
   float: left; }
 
 .col-xs-1 {
@@ -1536,7 +1536,7 @@ address {
 .col-xs-11 {
   width: 91.6666666667%; }
 
-.col-xs-12, body section .main h2, body section .main .view .content ul div.variables {
+.col-xs-12, body section .main h2, body section .main #titleerror, body section .main .view .content ul div.variables {
   width: 100%; }
 
 .col-xs-pull-0 {
@@ -2433,21 +2433,25 @@ body {
     display: block; }
   body section {
     padding-bottom: 5em; }
-    body section .main h2 {
+    body section .main h2, body section .main #titleerror {
       color: #239CF9;
       font-size: 1.8em;
       margin: 1em 0;
       float: none; }
-      body section .main h2 a {
+      body section .main h2 a, body section .main #titleerror a {
         color: #239CF9; }
-        body section .main h2 a:hover {
+        body section .main h2 a:hover, body section .main #titleerror a:hover {
           color: #337ab7; }
-        body section .main h2 a span {
+        body section .main h2 a span, body section .main #titleerror a span {
           margin-left: 0.25em; }
-      body section .main h2 input {
+      body section .main h2 input, body section .main #titleerror input {
         border: none;
         padding: 0;
         width: 100%; }
+    body section .main #titleerror {
+      margin-top: -1em;
+      display: block;
+      font-size: 0.8em; }
     body section .main .view nav .tabs ul {
       margin: 0;
       padding: 0; }
@@ -2639,7 +2643,7 @@ body {
             visibility: hidden; }
           body section .main .view .content .rules .rule .buttons, body section .main .view .content .rules .rule-group-heading .buttons, body section .main .view .content .notifications .rule .buttons, body section .main .view .content .notifications .rule-group-heading .buttons {
             float: right; }
-            body section .main .view .content .rules .rule .buttons button, body section .main .view .content .rules .rule-group-heading .buttons button, body section .main .view .content .notifications .rule .buttons button, body section .main .view .content .notifications .rule-group-heading .buttons button {
+            body section .main .view .content .rules .rule .buttons button, body section .main .view .content .rules .rule .buttons a.button, body section .main .view .content .rules .rule-group-heading .buttons button, body section .main .view .content .rules .rule-group-heading .buttons a.button, body section .main .view .content .notifications .rule .buttons button, body section .main .view .content .notifications .rule .buttons a.button, body section .main .view .content .notifications .rule-group-heading .buttons button, body section .main .view .content .notifications .rule-group-heading .buttons a.button {
               margin-left: 0.25em; }
         @media (max-width: 991px) {
           body section .main .view .content .rules .rule select, body section .main .view .content .rules .rule input, body section .main .view .content .notifications .rule select, body section .main .view .content .notifications .rule input {
@@ -2672,6 +2676,11 @@ body {
         body section .main .view .content .rules .total, body section .main .view .content .notifications .total {
           margin: 2em 0 0 0;
           font-weight: bold; }
+        body section .main .view .content .rules .error span, body section .main .view .content .notifications .error span {
+          font-size: 0.8em;
+          color: #239CF9;
+          margin-top: 0.5em;
+          display: block; }
     @media (max-width: 767px) {
       body section .main .context {
         display: none; } }
@@ -2721,13 +2730,13 @@ body {
         padding-left: 6.5em; }
       body section .main .context ul + .actions {
         margin-top: 2em; }
-    body section .main .context .actions button {
-      display: block;
-      padding: 0.25em 1.5em;
+    body section .main .context .actions button, body section .main .context .actions a.button {
       margin-bottom: 0.25em;
       width: 100%;
-      text-align: left; }
-      body section .main .context .actions button span {
+      text-align: left;
+      display: block;
+      padding: 0.25em 1.5em; }
+      body section .main .context .actions button span, body section .main .context .actions a.button span {
         float: right;
         margin-top: 1px; }
     body section #signon {
@@ -2789,16 +2798,18 @@ a {
     text-decoration: none;
     transition: color 0.3s ease, background-color 0.3s ease; }
 
-button {
+button, a.button {
   border: 0;
   background-color: #eee;
   color: #666;
-  border-radius: 6px; }
-  button:hover {
+  border-radius: 6px;
+  display: inline;
+  padding: 0.25em 0.5em; }
+  button:hover, a.button:hover {
     background-color: #666;
     color: #eee;
     transition: color 0.3s ease, background-color 0.3s ease; }
-  button:active {
+  button:active, a.button:active {
     background-color: #239CF9;
     color: #fff;
     transition: color 0 ease, background-color 0 ease; }
