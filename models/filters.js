@@ -444,7 +444,7 @@ filters = [
       {
         field: 'Tag',
         choice: 'is',
-        value: 'development'
+        value: '1'
       }
     ]
   },
