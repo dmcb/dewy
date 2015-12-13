@@ -2451,7 +2451,7 @@ body {
     body section .main #titleerror {
       margin-top: -1em;
       display: block;
-      font-size: 0.8em; }
+      font-size: 0.9em; }
     body section .main .view nav .tabs ul {
       margin: 0;
       padding: 0; }
@@ -2677,7 +2677,7 @@ body {
           margin: 2em 0 0 0;
           font-weight: bold; }
         body section .main .view .content .rules .error span, body section .main .view .content .notifications .error span {
-          font-size: 0.8em;
+          font-size: 0.9em;
           color: #239CF9;
           margin-top: 0.5em;
           display: block; }
