@@ -78,3 +78,17 @@ factories.factory('sitesFactory', ['$http', function($http) {
 
 	return sitesFactory;
 }]);
+
+factories.factory('tagFactory', ['$http', function($http) {
+	var tagFactory = {};
+	var apiUrl = "/api/1.0";
+
+	tagFactory.getAll = function(user) {
+		return $http.get(apiUrl  + '/tags')
+			.then(function (response) {
+				return response.data;
+			});
+	}
+
+	return tagFactory;
+}]);

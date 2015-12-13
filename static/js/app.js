@@ -24,6 +24,9 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 				}],
 				currentFilter: ['$route', 'filterFactory', function($route, filterFactory) {
 					return filterFactory.getFilter($route.current.params.filter);
+				}],
+				tags: ['tagFactory', function(tagFactory) {
+					return tagFactory.getAll(null);
 				}]
 			}
 		}).
@@ -42,6 +45,9 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 				}],
 				currentFilter: ['$route', 'filterFactory', function($route, filterFactory) {
 					return filterFactory.getFilter($route.current.params.filter);
+				}],
+				tags: ['tagFactory', function(tagFactory) {
+					return tagFactory.getAll(null);
 				}]
 			}
 		}).

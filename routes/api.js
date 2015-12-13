@@ -3,6 +3,7 @@ var router = express.Router();
 var util = require('util');
 var filters = require('../models/filters');
 var sites = require('../models/sites');
+var tags = require('../models/tags');
 
 router.get('/api/1.0/fields', function (req, res, next) {
   res.send(filters.getFields());
@@ -27,6 +28,10 @@ router.get('/api/1.0/operators', function (req, res, next) {
 
 router.get('/api/1.0/sites/:filter?', function (req, res, next) {
   res.send(sites.getAll(null, req.params.filter));
+});
+
+router.get('/api/1.0/tags', function (req, res, next) {
+  res.send(tags.getAll(null));
 });
 
 module.exports = router;

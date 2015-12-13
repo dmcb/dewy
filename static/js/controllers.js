@@ -8,8 +8,8 @@ controllers.controller('appController', ['$scope', '$http', '$route', 'authFacto
 		}
 }]);
 
-controllers.controller('filterController', ['$scope', '$http', 'filterFactory', 'operators', 'fields', 'filters', 'currentFilter',
-	function ($scope, $http, filterFactory, operators, fields, filters, currentFilter) {
+controllers.controller('filterController', ['$scope', '$http', 'filterFactory', 'operators', 'fields', 'filters', 'currentFilter', 'tags',
+	function ($scope, $http, filterFactory, operators, fields, filters, currentFilter, tags) {
 		$scope.addRule = function(rule) {
 			// New rule
 			var newRule = {
@@ -84,13 +84,6 @@ controllers.controller('filterController', ['$scope', '$http', 'filterFactory', 
 				}
 			}
 		}
-		$scope.hasValue = function(field) {
-			for (var i=0; i<$scope.fields.length; i++) {
-				if ($scope.fields[i].title == field) {
-					return $scope.fields[i].value;
-				}
-			}
-		}
 		$scope.saveFilter = function() {
 			filterFactory.update($scope.currentFilter);
 		}
@@ -99,12 +92,34 @@ controllers.controller('filterController', ['$scope', '$http', 'filterFactory', 
 			if (choices.indexOf(rule.choice) == -1) {
 				rule.choice = choices[0];
 			}
+			// Reset value when the field changes
+			rule.value = null;
+
+			// Set default value
+			for (var i=0; i<$scope.fields.length; i++) {
+				if ($scope.fields[i].title == rule.field) {
+					if ($scope.fields[i].value == 'tag') {
+						rule.value = $scope.tags[0].id;
+					}
+					else if ($scope.fields[i].value == 'integer') {
+						rule.value = 0;
+					}
+				}
+			}
+		}
+		$scope.valueIsType = function(field, type) {
+			for (var i=0; i<$scope.fields.length; i++) {
+				if ($scope.fields[i].title == field) {
+					return ($scope.fields[i].value == type) ? true : false;
+				}
+			}
 		}
 
 		$scope.operators = operators;
 		$scope.fields = fields;
 		$scope.filters = filters;
 		$scope.currentFilter = currentFilter;
+		$scope.tags = tags;
 }]);
 
 controllers.controller('sitesController', ['$scope', '$location', 'filters', 'currentFilter', 'sites',

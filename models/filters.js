@@ -146,7 +146,7 @@ fields = [
       'is greater than or equal to',
       'is less than or equal to'
     ],
-    value: 'number'
+    value: 'integer'
   },
   {
     title: 'File size (public)',
@@ -366,7 +366,7 @@ fields = [
       'is',
       'is not'
     ],
-    value: 'string'
+    value: 'tag'
   },
   {
     title: 'Text',
