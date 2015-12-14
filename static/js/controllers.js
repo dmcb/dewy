@@ -96,7 +96,9 @@ controllers.controller('filterController', ['$scope', '$http', 'filterFactory', 
 			}
 		}
 		$scope.saveFilter = function() {
-			filterFactory.update($scope.currentFilter);
+			if ($scope.form.$valid) {
+				filterFactory.update($scope.currentFilter);
+			}
 		}
 		$scope.updateChoice = function(rule) {
 			choices = $scope.getChoices(rule.field);
