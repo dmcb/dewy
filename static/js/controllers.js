@@ -10,35 +10,22 @@ controllers.controller('appController', ['$scope', '$http', '$route', 'authFacto
 
 controllers.controller('filterController', ['$scope', '$http', 'filterFactory', 'operators', 'fields', 'filters', 'currentFilter', 'tags',
 	function ($scope, $http, filterFactory, operators, fields, filters, currentFilter, tags) {
-		$scope.addRule = function(rule) {
+		$scope.addRule = function(rule, group) {
 			// New rule
-			var newRule = {
-				field: 'Base URL',
-				choice: 'contains'
-			}
-			function walk(target) {
-				var rules = target.rules, i;
-				if (rules) {
-					i = rules.length;
-					while (i--) {
-						if (rules[i] == rule) {
-							return rules.splice(i+1, 0, newRule);
-						} else {
-							walk(rules[i])
-						}
-					}
+			var newRule;
+			if (group) {
+				newRule = {
+					operator: 'any',
+					rules: [{
+						field: 'Base URL',
+						choice: 'contains'
+					}]
 				}
-			}
-			walk($scope.currentFilter);
-		}
-		$scope.addRuleGroup = function(rule) {
-			// New rule group
-			var newRuleGroup = {
-				operator: 'any',
-				rules: [{
+			} else {
+				newRule = {
 					field: 'Base URL',
 					choice: 'contains'
-				}]
+				}
 			}
 			function walk(target) {
 				var rules = target.rules, i;
@@ -46,7 +33,13 @@ controllers.controller('filterController', ['$scope', '$http', 'filterFactory', 
 					i = rules.length;
 					while (i--) {
 						if (rules[i] == rule) {
-							return rules.splice(i+1, 0, newRuleGroup);
+							$scope.currentFilter.count++;
+							// If your adding from a rule group, insert into that group
+							if (rules[i].rules) {
+								return rules[i].rules.splice(0, 0, newRule);
+							} else {
+								return rules.splice(i+1, 0, newRule);
+							}
 						} else {
 							walk(rules[i])
 						}
@@ -68,9 +61,27 @@ controllers.controller('filterController', ['$scope', '$http', 'filterFactory', 
 					i = rules.length;
 					while (i--) {
 						if (rules[i] == rule) {
-							return rules.splice(i, 1);
+							var deletedRule = rules.splice(i, 1);
+							// If the rule being deleted has child rules, move them up
+							if (deletedRule[0].rules) {
+								var j = deletedRule[0].rules.length;
+								while (j--) {
+									rules.splice(i, 0, deletedRule[0].rules[j]);
+								}
+							} else {
+								// Rule is not a group
+								$scope.currentFilter.count--;
+							}
+							// If the rule is the last in a group, flag it as empty
+							if (!rules.length) {
+								return 'empty'
+							}
+							return;
 						} else {
-							walk(rules[i])
+							// If the group is now empty, delete it
+							if (walk(rules[i]) == 'empty') {
+								$scope.deleteRule(rules[i]);
+							}
 						}
 					}
 				}

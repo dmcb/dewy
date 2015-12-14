@@ -44,6 +44,21 @@ factories.factory('filterFactory', ['$http', function($http) {
 	filterFactory.getFilter = function(url) {
 		return $http.get(apiUrl + '/filters/' + url)
 			.then(function (response) {
+				// Count the number of rules
+				var count = 0;
+				function walk(target) {
+					var rules = target.rules, i;
+					if (rules) {
+						i = rules.length;
+						while (i--) {
+							walk(rules[i])
+						}
+					} else {
+						count++;
+					}
+				}
+				walk(response.data);
+				response.data.count = count;
 				return response.data;
 			});
 	}
