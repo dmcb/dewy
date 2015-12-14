@@ -1,18 +1,18 @@
 <li class="rule-group-heading" ng-if="rule.operator">
     <select ng-model="rule.operator" ng-options="operator as operator for operator in operators"></select>
     of the following rules:
-    <div class="buttons" ng-if="rule.parent" ng-include="'templates/rule_buttons.html'"></div>
+    <div class="buttons" ng-if="rule._parent" ng-include="'templates/rule_buttons.html'"></div>
 </li>
 <ul class="rule-group">
-    <li class="rule" ng-repeat="childRule in rule.rules" ng-form="rulesform">
-        <div ng-if="childRule.operator" ng-init="childRule.parent=rule; rule=childRule" ng-include="'templates/filter_tree.html'"></div>
-        <div ng-if="!childRule.operator">
-            <select class="field" ng-model="childRule.field" ng-options="field.title as field.title for field in fields" ng-change="updateChoice(childRule)"></select>
-            <select class="choice" ng-model="childRule.choice" ng-options="choice as choice for choice in getChoices(childRule.field)"></select>
-            <input name="value" type="text" ng-model="childRule.value" ng-if="valueIsType(childRule.field, 'string')" required />
-            <input name="value" type="number" ng-model="childRule.value" ng-if="valueIsType(childRule.field, 'integer')" min="0" required />
-            <select name="value" ng-model="childRule.value" ng-options="tag.id as tag.title for tag in tags" ng-if="valueIsType(childRule.field, 'tag')" /></select>
-            <div class="buttons" ng-init="childRule.parent=rule; rule=childRule" ng-include="'templates/rule_buttons.html'"></div>
+    <li class="rule" ng-repeat="rule in rule.rules" ng-form="rulesform">
+        <div ng-if="rule.operator" ng-init="rule._parent=true" ng-include="'templates/filter_tree.html'"></div>
+        <div ng-if="!rule.operator">
+            <select class="field" ng-model="rule.field" ng-options="field.title as field.title for field in fields" ng-change="updateChoice(rule)"></select>
+            <select class="choice" ng-model="rule.choice" ng-options="choice as choice for choice in getChoices(rule.field)"></select>
+            <input name="value" type="text" ng-model="rule.value" ng-if="valueIsType(rule.field, 'string')" required />
+            <input name="value" type="number" ng-model="rule.value" ng-if="valueIsType(rule.field, 'integer')" min="0" required />
+            <select name="value" ng-model="rule.value" ng-options="tag.id as tag.title for tag in tags" ng-if="valueIsType(rule.field, 'tag')" /></select>
+            <div class="buttons" ng-init="rule._parent=true" ng-include="'templates/rule_buttons.html'"></div>
             <div class="error">
                 <span ng-show="rulesform.value.$error.required && (rulesform.value.$touched || form.$submitted)">Please enter a value.</span>
                 <span ng-show="rulesform.value.$error.number">You must enter a number.</span>
