@@ -1494,13 +1494,13 @@ address {
   .row:after, body header nav ul:after, body section .main:after, body section .main .view nav:after, body section .main .view .content ul:after, body section .main .view .content ul div.variables ul:after {
     clear: both; }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, body section .main .view .content ul div.variables ul li.complexity, body section .main .view .content ul div.variables ul li.size, body section .main .view .content ul div.variables ul li.activity, body section .main .view .content ul div.variables ul li.health, .col-sm-3, body section .main .context, .col-md-3, body section .main .view .content ul li.title, .col-lg-3, .col-xs-4, .col-sm-4, body section .main .view .content ul li.title, .col-md-4, body section .main .view nav .search, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, body section .main .view .content ul li.title, .col-sm-6, .col-md-6, body section #signon, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, body section .main .view .content ul div.variables, body section #signon, .col-md-8, body section .main .view nav .tabs, .col-lg-8, .col-xs-9, .col-sm-9, body section .main .view, .col-md-9, body section .main .view .content ul div.variables, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, body section .main h2, body section .main .view .content ul div.variables, .col-sm-12, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, body section .main .view .content ul div.variables ul li.complexity, body section .main .view .content ul div.variables ul li.size, body section .main .view .content ul div.variables ul li.activity, body section .main .view .content ul div.variables ul li.health, .col-sm-3, body section .main .context, .col-md-3, body section .main .view .content ul li.title, .col-lg-3, .col-xs-4, .col-sm-4, body section .main .view .content ul li.title, .col-md-4, body section .main .view nav .search, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, body section .main .view .content ul li.title, .col-sm-6, .col-md-6, body section #signon, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, body section .main .view .content ul div.variables, body section #signon, .col-md-8, body section .main .view nav .tabs, .col-lg-8, .col-xs-9, .col-sm-9, body section .main .view, .col-md-9, body section .main .view .content ul div.variables, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, body section .main h2, body section .main #titleerror, body section .main .view .content ul div.variables, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px; }
 
-.col-xs-1, .col-xs-2, .col-xs-3, body section .main .view .content ul div.variables ul li.complexity, body section .main .view .content ul div.variables ul li.size, body section .main .view .content ul div.variables ul li.activity, body section .main .view .content ul div.variables ul li.health, .col-xs-4, .col-xs-5, .col-xs-6, body section .main .view .content ul li.title, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, body section .main h2, body section .main .view .content ul div.variables {
+.col-xs-1, .col-xs-2, .col-xs-3, body section .main .view .content ul div.variables ul li.complexity, body section .main .view .content ul div.variables ul li.size, body section .main .view .content ul div.variables ul li.activity, body section .main .view .content ul div.variables ul li.health, .col-xs-4, .col-xs-5, .col-xs-6, body section .main .view .content ul li.title, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, body section .main h2, body section .main #titleerror, body section .main .view .content ul div.variables {
   float: left; }
 
 .col-xs-1 {
@@ -1536,7 +1536,7 @@ address {
 .col-xs-11 {
   width: 91.6666666667%; }
 
-.col-xs-12, body section .main h2, body section .main .view .content ul div.variables {
+.col-xs-12, body section .main h2, body section .main #titleerror, body section .main .view .content ul div.variables {
   width: 100%; }
 
 .col-xs-pull-0 {
@@ -2359,6 +2359,24 @@ body {
   body .wrapper {
     min-height: 100%;
     position: relative; }
+    body .wrapper.splash {
+      background: radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
+      background: -webkit-radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
+      background: -o-radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
+      background: -ms-radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
+      background-attachment: fixed; }
+      body .wrapper.splash .logo img {
+        margin: 0 auto;
+        padding-top: 1em;
+        display: block;
+        position: static; }
+      body .wrapper.splash footer {
+        background-color: transparent;
+        color: #D0E2F0; }
+        body .wrapper.splash footer ul li a {
+          color: #fff; }
+          body .wrapper.splash footer ul li a:hover {
+            color: #D0E2F0; }
   body header {
     border-top: 5px solid #239CF9;
     background-color: #eee; }
@@ -2400,14 +2418,12 @@ body {
         z-index: 1; }
         body header nav ul.dropdown li a {
           display: block; }
-  body .logo {
-    padding-top: 2em; }
-    body .logo h1 {
-      margin-top: 0; }
-      body .logo h1 img {
-        max-width: 148px;
-        position: absolute;
-        top: 16px; }
+  body .logo h1 {
+    margin-top: 0; }
+    body .logo h1 img {
+      max-width: 148px;
+      position: absolute;
+      top: 16px; }
   body .message span {
     padding: 0.5em 15px;
     font-weight: bold;
@@ -2417,20 +2433,25 @@ body {
     display: block; }
   body section {
     padding-bottom: 5em; }
-    body section .main h2 {
+    body section .main h2, body section .main #titleerror {
       color: #239CF9;
       font-size: 1.8em;
       margin: 1em 0;
       float: none; }
-      body section .main h2 a {
+      body section .main h2 a, body section .main #titleerror a {
         color: #239CF9; }
-        body section .main h2 a:hover {
+        body section .main h2 a:hover, body section .main #titleerror a:hover {
           color: #337ab7; }
-        body section .main h2 a span {
+        body section .main h2 a span, body section .main #titleerror a span {
           margin-left: 0.25em; }
-      body section .main h2 input {
-        border: solid 1px #D0E2F0;
+      body section .main h2 input, body section .main #titleerror input {
+        border: none;
+        padding: 0;
         width: 100%; }
+    body section .main #titleerror {
+      margin-top: -1em;
+      display: block;
+      font-size: 0.9em; }
     body section .main .view nav .tabs ul {
       margin: 0;
       padding: 0; }
@@ -2476,11 +2497,12 @@ body {
           opacity: 1; }
         body section .main .view nav .search form input[type=text]:-ms-input-placeholder {
           color: #337ab7; }
-      body section .main .view nav .search form button {
+      body section .main .view nav .search form span {
         position: absolute;
         right: 0;
         color: #239CF9;
-        margin-top: 3px;
+        margin-top: 7px;
+        margin-right: 7px;
         background-color: transparent; }
     body section .main .view .content {
       border-top: solid 1px #D0E2F0;
@@ -2536,7 +2558,7 @@ body {
           body section .main .view .content .header ul li a:hover {
             color: #eee;
             background-color: #666; }
-          body section .main .view .content .header ul li a.desc:after {
+          body section .main .view .content .header ul li a.selected.desc:after {
             margin-left: 8px;
             display: inline-block;
             width: 0;
@@ -2548,11 +2570,11 @@ body {
             border-right-color: transparent;
             border-bottom-color: transparent; }
             @media (max-width: 991px) {
-              body section .main .view .content .header ul li a.desc:after {
+              body section .main .view .content .header ul li a.selected.desc:after {
                 display: block;
                 margin-top: 6px;
                 margin-left: 0; } }
-          body section .main .view .content .header ul li a.asc:after {
+          body section .main .view .content .header ul li a.selected.asc:after {
             margin-left: 8px;
             display: inline-block;
             width: 0;
@@ -2564,7 +2586,7 @@ body {
             border-right-color: transparent;
             border-top-color: transparent; }
             @media (max-width: 991px) {
-              body section .main .view .content .header ul li a.asc:after {
+              body section .main .view .content .header ul li a.selected.asc:after {
                 display: block;
                 margin-left: 0; } }
       body section .main .view .content .sites {
@@ -2572,25 +2594,32 @@ body {
         @media (max-width: 767px) {
           body section .main .view .content .sites {
             min-width: 383.5px; } }
-        body section .main .view .content .sites ul {
+        body section .main .view .content .sites .noresults, body section .main .view .content .sites ul {
           padding-bottom: 1em; }
-          body section .main .view .content .sites ul li {
-            background-color: #fff; }
-            body section .main .view .content .sites ul li .point {
-              width: 0.75em;
-              background-color: #239CF9;
-              height: 0.75em;
-              display: inline-block;
-              border-radius: 0.75em;
-              transition: opacity 0.3s; }
-            body section .main .view .content .sites ul li.complexity, body section .main .view .content .sites ul li.size, body section .main .view .content .sites ul li.activity, body section .main .view .content .sites ul li.health {
-              font-size: 0.8em;
-              margin-top: 0.75em; }
-              @media (max-width: 1199px) {
-                body section .main .view .content .sites ul li.complexity, body section .main .view .content .sites ul li.size, body section .main .view .content .sites ul li.activity, body section .main .view .content .sites ul li.health {
-                  margin-top: 1.5em; } }
-          body section .main .view .content .sites ul.variables {
-            padding-bottom: 0; }
+        body section .main .view .content .sites .noresults {
+          display: block;
+          text-align: center;
+          margin: 0;
+          color: #337ab7; }
+          body section .main .view .content .sites .noresults span {
+            margin-right: 0.5em; }
+        body section .main .view .content .sites ul li {
+          background-color: #fff; }
+          body section .main .view .content .sites ul li .point {
+            width: 0.75em;
+            background-color: #239CF9;
+            height: 0.75em;
+            display: inline-block;
+            border-radius: 0.75em;
+            transition: opacity 0.3s; }
+          body section .main .view .content .sites ul li.complexity, body section .main .view .content .sites ul li.size, body section .main .view .content .sites ul li.activity, body section .main .view .content .sites ul li.health {
+            font-size: 0.8em;
+            margin-top: 0.75em; }
+            @media (max-width: 1199px) {
+              body section .main .view .content .sites ul li.complexity, body section .main .view .content .sites ul li.size, body section .main .view .content .sites ul li.activity, body section .main .view .content .sites ul li.health {
+                margin-top: 1.5em; } }
+        body section .main .view .content .sites ul.variables {
+          padding-bottom: 0; }
       body section .main .view .content .rules, body section .main .view .content .notifications {
         padding: 15px; }
         body section .main .view .content .rules .rule-group, body section .main .view .content .notifications .rule-group {
@@ -2614,7 +2643,7 @@ body {
             visibility: hidden; }
           body section .main .view .content .rules .rule .buttons, body section .main .view .content .rules .rule-group-heading .buttons, body section .main .view .content .notifications .rule .buttons, body section .main .view .content .notifications .rule-group-heading .buttons {
             float: right; }
-            body section .main .view .content .rules .rule .buttons button, body section .main .view .content .rules .rule-group-heading .buttons button, body section .main .view .content .notifications .rule .buttons button, body section .main .view .content .notifications .rule-group-heading .buttons button {
+            body section .main .view .content .rules .rule .buttons button, body section .main .view .content .rules .rule .buttons a.button, body section .main .view .content .rules .rule-group-heading .buttons button, body section .main .view .content .rules .rule-group-heading .buttons a.button, body section .main .view .content .notifications .rule .buttons button, body section .main .view .content .notifications .rule .buttons a.button, body section .main .view .content .notifications .rule-group-heading .buttons button, body section .main .view .content .notifications .rule-group-heading .buttons a.button {
               margin-left: 0.25em; }
         @media (max-width: 991px) {
           body section .main .view .content .rules .rule select, body section .main .view .content .rules .rule input, body section .main .view .content .notifications .rule select, body section .main .view .content .notifications .rule input {
@@ -2647,6 +2676,11 @@ body {
         body section .main .view .content .rules .total, body section .main .view .content .notifications .total {
           margin: 2em 0 0 0;
           font-weight: bold; }
+        body section .main .view .content .rules .error span, body section .main .view .content .notifications .error span {
+          font-size: 0.9em;
+          color: #239CF9;
+          margin-top: 0.5em;
+          display: block; }
     @media (max-width: 767px) {
       body section .main .context {
         display: none; } }
@@ -2696,17 +2730,17 @@ body {
         padding-left: 6.5em; }
       body section .main .context ul + .actions {
         margin-top: 2em; }
-    body section .main .context .actions button {
-      display: block;
-      padding: 0.25em 1.5em;
+    body section .main .context .actions button, body section .main .context .actions a.button {
       margin-bottom: 0.25em;
       width: 100%;
-      text-align: left; }
-      body section .main .context .actions button span {
+      text-align: left;
+      display: block;
+      padding: 0.25em 1.5em; }
+      body section .main .context .actions button span, body section .main .context .actions a.button span {
         float: right;
         margin-top: 1px; }
     body section #signon {
-      margin-top: 5em;
+      margin-top: 3em;
       background-color: rgba(255, 255, 255, 0.9);
       border-radius: 0.5em;
       padding: 3em; }
@@ -2746,23 +2780,6 @@ body {
           display: inline-block;
           padding: 0.5em 0;
           margin-right: 1em; }
-  body.splash {
-    background: radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
-    background: -webkit-radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
-    background: -o-radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
-    background: -ms-radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
-    background-attachment: fixed; }
-    body.splash .logo img {
-      margin: 0 auto;
-      display: block;
-      position: static; }
-    body.splash footer {
-      background-color: transparent;
-      color: #D0E2F0; }
-      body.splash footer ul li a {
-        color: #fff; }
-        body.splash footer ul li a:hover {
-          color: #D0E2F0; }
 
 a {
   color: #239CF9; }
@@ -2781,16 +2798,67 @@ a {
     text-decoration: none;
     transition: color 0.3s ease, background-color 0.3s ease; }
 
-button {
+button, a.button {
   border: 0;
   background-color: #eee;
-  color: #666; }
-  button:hover {
+  color: #666;
+  border-radius: 6px;
+  display: inline;
+  padding: 0.25em 0.5em; }
+  button:hover, a.button:hover {
     background-color: #666;
     color: #eee;
     transition: color 0.3s ease, background-color 0.3s ease; }
+  button:active, a.button:active {
+    background-color: #239CF9;
+    color: #fff;
+    transition: color 0 ease, background-color 0 ease; }
 
 fieldset {
   border: none;
   margin: 0;
   padding: 0; }
+
+.site.ng-enter {
+  -webkit-transition: 0 ease all;
+  -moz-transition: 0 ease all;
+  -ms-transition: 0 ease all;
+  -o-transition: 0 ease all;
+  transition: 0 ease all;
+  position: relative;
+  display: block; }
+
+.rule.ng-enter,
+.rule.ng-leave,
+.site.ng-leave,
+.noresults.ng-enter,
+.noresults.ng-leave {
+  -webkit-transition: 400ms ease all;
+  -moz-transition: 400ms ease all;
+  -ms-transition: 400ms ease all;
+  -o-transition: 400ms ease all;
+  transition: 400ms ease all;
+  position: relative;
+  display: block; }
+
+.rule.ng-enter.ng-enter-active,
+.rule.ng-leave {
+  opacity: 1;
+  top: 0; }
+
+.rule.ng-leave.ng-leave-active,
+.rule.ng-enter {
+  opacity: 0;
+  top: -50px; }
+
+.noresults.ng-enter.ng-enter-active,
+.noresults.ng-leave,
+.site.ng-enter.ng-enter-active,
+.site.ng-leave {
+  opacity: 1; }
+
+.noresults.ng-leave.ng-leave-active,
+.noresults.ng-enter,
+.site.ng-leave.ng-leave-active,
+.site.ng-enter {
+  opacity: 0; }

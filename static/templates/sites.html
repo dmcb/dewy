@@ -1,0 +1,67 @@
+                <div class="main">
+					<h2><a href="/filter/{{currentFilter.url}}" ng-if="currentFilter">{{currentFilter.title}}<span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a><span ng-if="!currentFilter">All sites</span></h2>
+                    <div class="view">
+                        <nav>
+                            <div class="tabs">
+                                <ul>
+                                    <li class="selected"><a href="">Site comparison</a></li>
+                                    <li><a href="">Site content</a></li>
+                                    <li><a href="">Site modules</a></li>
+                                </ul>
+                            </div>
+                            <div class="search">
+                                <form>
+                                    <input type="text" placeholder="Search sites" ng-model="query" />
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                </form>
+                            </div>
+                        </nav>
+                        <div class="content">
+                            <div class="header">
+                                <ul>
+                                    <li class="title"><a href="" ng-class="{selected: sort.column=='title', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('title')">{{filteredSites.length}} sites</a></li>
+                                    <div class="variables">
+                                        <ul>
+                                            <li class="complexity"><a href="" ng-class="{selected: sort.column=='complexity', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('complexity')">Complexity</a></li>
+                                            <li class="size"><a href="" ng-class="{selected: sort.column=='size', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('size')">Size</a></li>
+                                            <li class="activity"><a href="" ng-class="{selected: sort.column=='activity', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('activity')">Activity</a></li>
+                                            <li class="health"><a href="" ng-class="{selected: sort.column=='health', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('health')">Health</a></li>
+                                        </ul>
+                                    </div>
+                                </ul>
+                            </div>
+                            <div class="sites">
+                                <div ng-if="!filteredSites.length && query" class="noresults"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span><span>No sites meet your criteria.</span></div>
+                                <ul ng-repeat="site in filteredSites = (sites | filter:query) | orderBy:sort.column:sort.descending" class="site">
+                                    <li class="title"><h3>{{site.title}}</h3><span>{{site.base_url}}</span></li>
+                                    <div class="variables">
+                                        <ul>
+                                            <li class="complexity">
+                                                <div class="point" ng-repeat="i in getNumber(site.complexity) track by $index"></div>
+                                            </li>
+                                            <li class="size">
+                                                <div class="point" ng-repeat="i in getNumber(site.size) track by $index"></div>
+                                            </li>
+                                            <li class="activity">
+                                                <div class="point" ng-repeat="i in getNumber(site.activity) track by $index"></div>
+                                            </li>
+                                            <li class="health">
+                                                <div class="point" ng-repeat="i in getNumber(site.health) track by $index"></div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <nav class="context">
+                        <ul class="folders">
+                            <li><a href="/sites" ng-class="{selected: !currentFilter}">All sites</a></li>
+                            <li ng-repeat="filter in filters" ng-include="'templates/filter_menu_item.html'"></li>
+                        </ul>
+                        <div class="actions">
+                            <button ng-click="addFolder()">Add folder <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
+                            <button ng-click="addFilter()">Add filter <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
+                        </div>
+                    </nav>
+                </div>

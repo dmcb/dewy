@@ -32,6 +32,34 @@ body {
 	.wrapper {
 		min-height: 100%;
 		position: relative;
+
+		&.splash {
+			background: radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
+			background: -webkit-radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
+			background: -o-radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
+			background: -ms-radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
+			background-attachment: fixed;
+
+			.logo img {
+				margin: 0 auto;
+				padding-top: 1em;
+				display: block;
+				position: static;
+			}
+
+			footer {
+				background-color: transparent;
+				color: $light-blue;
+
+				ul li a {
+					color: #fff;
+
+					&:hover {
+						color: $light-blue;
+					}
+				}
+			}
+		}
 	}
 
 	header {
@@ -104,7 +132,6 @@ body {
 	}
 
 	.logo {
-		padding-top: 2em;
 		h1 {
 			@extend .container;
 			margin-top: 0;
@@ -137,7 +164,7 @@ body {
 		.main {
 			@extend .row;
 
-			h2 {
+			h2, #titleerror {
 				color: $blue;
 				@extend .col-xs-12;
 				font-size: 1.8em;
@@ -157,9 +184,16 @@ body {
 				}
 
 				input {
-					border: solid 1px $light-blue;
+					border: none;
+					padding: 0;
 					width: 100%;
 				}
+			}
+
+			#titleerror {
+				margin-top: -1em;
+				display: block;
+				font-size: 0.9em;
 			}
 
 			.view {
@@ -240,11 +274,12 @@ body {
 								}
 							}
 
-							button {
+							span {
 								position: absolute;
 								right: 0;
 								color: $blue;
-								margin-top: 3px;
+								margin-top: 7px;
+								margin-right: 7px;
 								background-color: transparent;
 							}
 						}
@@ -347,7 +382,7 @@ body {
 								background-color: $grey;
 							}
 
-							&.desc:after {
+							&.selected.desc:after {
 								@media (max-width: $screen-sm-max) {
 									display: block;
 									margin-top: 6px;
@@ -366,7 +401,7 @@ body {
 								border-bottom-color: transparent;
 							}
 
-							&.asc:after {
+							&.selected.asc:after {
 								@media (max-width: $screen-sm-max) {
 									display: block;
 									margin-left: 0;
@@ -393,9 +428,22 @@ body {
 							min-width: $screen-xs-max/2;
 						}
 
-						ul {
+						.noresults, ul {
 							padding-bottom: 1em;
+						}
 
+						.noresults {
+							display: block;
+							text-align: center;
+							margin: 0;
+							color: $dark-blue;
+
+							span {
+								margin-right: 0.5em;
+							}
+						}
+
+						ul {
 							li {
 								background-color: #fff;
 
@@ -455,7 +503,7 @@ body {
 							.buttons {
 								float: right;
 
-								button {
+								button, a.button {
 									margin-left: 0.25em;
 								}
 							}
@@ -507,6 +555,13 @@ body {
 						.total {
 							margin: 2em 0 0 0;
 							font-weight: bold;
+						}
+
+						.error span {
+							font-size: 0.9em;
+							color: $blue;
+							margin-top: 0.5em;
+							display: block;
 						}
 					}
 				}
@@ -587,17 +642,17 @@ body {
 					}
 
 					& + .actions {
-											margin-top: 2em;
+						margin-top: 2em;
 					}
 				}
 
 				.actions {
-					button {
-						display: block;
-						padding: 0.25em 1.5em;
+					button, a.button {
 						margin-bottom: 0.25em;
 						width: 100%;
 						text-align: left;
+						display: block;
+						padding: 0.25em 1.5em;
 
 						span {
 							float: right;
@@ -609,7 +664,7 @@ body {
 		}
 
 		#signon {
-			margin-top: 5em;
+			margin-top: 3em;
 			@extend .col-md-6;
 			@extend .col-md-offset-3;
 			@extend .col-sm-8;
@@ -676,33 +731,6 @@ body {
 			}
 		}
 	}
-
-	&.splash {
-		background: radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
-		background: -webkit-radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
-		background: -o-radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
-		background: -ms-radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
-		background-attachment: fixed;
-
-		.logo img {
-			margin: 0 auto;
-			display: block;
-			position: static;
-		}
-
-		footer {
-			background-color: transparent;
-			color: $light-blue;
-
-			ul li a {
-				color: #fff;
-
-				&:hover {
-					color: $light-blue;
-				}
-			}
-		}
-	}
 }
 
 // Elements
@@ -728,15 +756,24 @@ a {
 	}
 }
 
-button {
+button, a.button {
 	border: 0;
 	background-color: $light-grey;
 	color: $grey;
+	border-radius: 6px;
+	display: inline;
+	padding: 0.25em 0.5em;
 
 	&:hover {
 		background-color: $grey;
 		color: $light-grey;
 		transition: color 0.3s ease, background-color 0.3s ease;
+	}
+
+	&:active {
+		background-color: $blue;
+		color: #fff;
+		transition: color 0 ease, background-color 0 ease;
 	}
 }
 
@@ -744,4 +781,60 @@ fieldset {
 	border: none;
 	margin: 0;
 	padding: 0;
+}
+
+// Animations
+.site.ng-enter {
+    -webkit-transition: 0 ease all;
+    -moz-transition: 0 ease all;
+    -ms-transition: 0 ease all;
+    -o-transition: 0 ease all;
+    transition: 0 ease all;
+    position: relative;
+    display: block;
+}
+
+.rule.ng-enter, 
+.rule.ng-leave,
+.site.ng-leave,
+.noresults.ng-enter, 
+.noresults.ng-leave
+{ 
+    -webkit-transition: 400ms ease all;
+    -moz-transition: 400ms ease all;
+    -ms-transition: 400ms ease all;
+    -o-transition: 400ms ease all;
+    transition: 400ms ease all;
+    position: relative;
+    display: block;
+} 
+
+.rule.ng-enter.ng-enter-active, 
+.rule.ng-leave,
+{
+    opacity: 1;
+    top: 0;
+}
+
+.rule.ng-leave.ng-leave-active,
+.rule.ng-enter,
+{
+    opacity: 0;
+    top: -50px;
+}
+
+.noresults.ng-enter.ng-enter-active, 
+.noresults.ng-leave,
+.site.ng-enter.ng-enter-active,
+.site.ng-leave
+{
+    opacity: 1;
+}
+
+.noresults.ng-leave.ng-leave-active,
+.noresults.ng-enter,
+.site.ng-leave.ng-leave-active,
+.site.ng-enter
+{
+    opacity: 0;
 }

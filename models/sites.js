@@ -1,4 +1,4 @@
-exports.getByFilter = function(user, filter) {
+exports.getAll = function(user, filter) {
   // Dummy function for now, will eventually pull from persistence layer
   return sites;
 }

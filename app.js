@@ -15,20 +15,12 @@ var flash = require('connect-flash');
 // Router handlers
 var routes = require('./routes/index');
 var authRoutes = require('./routes/auth');
+var apiRoutes = require('./routes/api');
 
 // Express configuration
 var app = express();
 var hbs = exphbs.create({
-  defaultLayout: 'index',
-  helpers: {
-    ifEquals: function(leftValue, rightValue, result) {
-      if (leftValue != rightValue) {
-          return result.inverse(this);
-      } else {
-          return result.fn(this);
-      }
-    }
-  }
+  defaultLayout: 'app'
 });
 app.engine('.handlebars', hbs.engine);
 app.set('views', path.join(__dirname, 'views'));
@@ -79,6 +71,7 @@ app.use(passport.session());
 
 app.use('/', routes);
 app.use('/', authRoutes);
+app.use('/', apiRoutes);
 
 // 404
 app.use(function(req, res, next) {
