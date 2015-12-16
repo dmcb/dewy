@@ -100,23 +100,39 @@ controllers.controller('filterController', ['$scope', '$http', 'filterFactory', 
 				filterFactory.update($scope.currentFilter);
 			}
 		}
-		$scope.updateChoice = function(rule) {
+		$scope.updateChoice = function(rule, oldRule) {
+			console.log(rule);
+			console.log(oldRule);
 			choices = $scope.getChoices(rule.field);
 			if (choices.indexOf(rule.choice) == -1) {
 				rule.choice = choices[0];
 			}
-			// Reset value when the field changes
-			rule.value = null;
 
-			// Set default value
+			// Get field from rule
 			for (var i=0; i<$scope.fields.length; i++) {
 				if ($scope.fields[i].title == rule.field) {
-					if ($scope.fields[i].value == 'tag') {
-						rule.value = $scope.tags[0].id;
-					}
-					else if ($scope.fields[i].value == 'integer') {
-						rule.value = 0;
-					}
+					field = $scope.fields[i];
+					console.log(field);
+				}
+			}
+			// Get old field from rule
+			for (var i=0; i<$scope.fields.length; i++) {
+				if ($scope.fields[i].title == oldRule) {
+					oldField = $scope.fields[i];
+					console.log(oldField);
+				}
+			}
+
+			// If field value type changes, reset value, provide default
+			if (field.value != oldField.value) {
+				if (field.value == 'tag') {
+					rule.value = $scope.tags[0].id;
+				}
+				else if (field.value == 'integer') {
+					rule.value = 0;
+				}
+				else {
+					rule.value = null;
 				}
 			}
 		}
