@@ -1,19 +1,28 @@
                 <div class="main">
-                    <form name="form" ng-submit="saveFilter()">
+                    <form name="filterForm" ng-submit="saveFilter()">
                         <h2>
                             <input name="title" type="text" placeholder="Filter title" ng-model="currentFilter.title" value="{{currentFilter.title}}" required autofocus />
                         </h2>
-                        <span id="titleerror" ng-show="form.title.$error.required && (form.title.$touched || form.$submitted)">A title is required.</span>
+                        <span id="titleerror" ng-show="filterForm.title.$error.required && (filterForm.title.$touched || filterForm.$submitted)">A title is required.</span>
                         <div class="view">
                             <div class="content">
                                 <ul class="rules" ng-init="rule=currentFilter" ng-if="currentFilter" ng-include="'templates/filter_tree.html'">
-                                    <p class="total">3 sites matched under these rules</p>
                                 </ul>
+                                <p class="total">3 sites matched under these rules</p>
                             </div>
                             <div class="content">
-                                <ul class="notifications">
-                                    <label><input type="checkbox"> Configure notifications on this site filter</label>
-                                </ul>
+                                <div class="notifications">
+                                    <label><input type="checkbox" ng-model="currentFilter.notify"/> Configure notifications on this site filter</label>
+                                    <ul class="notification-choices" ng-if="currentFilter.notify" >
+                                        <li><label><input type="checkbox" ng-model="currentFilter.notifications['appears']" /> Send an email when a site first appears in this filter</label></li>
+                                        <li><label><input type="checkbox" ng-model="currentFilter.notifications.disappears" /> Send an email when a site first disappears from this filter</label></li>
+                                        <li>
+                                            <label><input type="checkbox" /> Send an email when the total number of sites </label>
+                                            <select ng-model="currentFilter.notifications.total" ng-options="choice as choice for choice in notificationChoices"></select>
+                                            <input name="value" type="number" min="0" required />
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                         <nav class="context">

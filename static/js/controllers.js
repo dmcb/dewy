@@ -96,7 +96,7 @@ controllers.controller('filterController', ['$scope', '$http', 'filterFactory', 
 			}
 		}
 		$scope.saveFilter = function() {
-			if ($scope.form.$valid) {
+			if ($scope.filterForm.$valid) {
 				filterFactory.update($scope.currentFilter);
 			}
 		}
@@ -149,6 +149,14 @@ controllers.controller('filterController', ['$scope', '$http', 'filterFactory', 
 		$scope.filters = filters;
 		$scope.currentFilter = currentFilter;
 		$scope.tags = tags;
+		$scope.notificationChoices = [
+			'is',
+			'is not',
+			'is greater than',
+			'is less than',
+			'is greater than or equal to',
+			'is less than or equal to'
+		];
 }]);
 
 controllers.controller('sitesController', ['$scope', '$location', 'filters', 'currentFilter', 'sites',

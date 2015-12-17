@@ -16,6 +16,8 @@ exports.get = function(user, url, filterSet) {
 
   newFilter = {
     operator: 'any',
+    notify: false,
+    notifications: [],
     rules: [{
       field: 'Base URL',
       choice: 'contains',
@@ -434,7 +436,8 @@ filters = [
   {
     title: 'In development',
     url: 'in-development',
-    notifications: true,
+    notify: true,
+    notifications: [],
     operator: 'any',
     rules: [
       {
@@ -471,7 +474,8 @@ filters = [
       {
         title: 'Big webform sites',
         url: 'big-webform-sites',
-        notifications: true,
+        notify: true,
+        notifications: [],
         operator: 'all',
         rules: [
           {
@@ -501,7 +505,8 @@ filters = [
   {
     title: 'Really long title to serve as an edge case for the design',
     url: 'really-long-title-to-serve-as-an-edge-case-for-the-design',
-    notifications: true
+    notify: true,
+    notifications: []
   },
   {
     title: 'Anotherreallylongtitlewithoutbreaksthanksjerk',

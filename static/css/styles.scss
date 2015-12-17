@@ -472,19 +472,25 @@ body {
 						}
 					}
 
-					.rules, .notifications {
+					.rules, .notifications, .total {
 						padding: $grid-gutter-width/2;
 
-						.rule-group {
+						.rule-group, .notification-choices {
 							padding-left: 2em;
 							margin-top: 1.5em;
+						}
 
+						.rule-group {
 							@media (max-width: $screen-sm-max) {
 								background-color: rgba($blue, 0.2);
 								padding: 0 $grid-gutter-width/2;
 								margin-left: -$grid-gutter-width/2;
 								margin-right: -$grid-gutter-width/2;
 							}
+						}
+
+						.notification-choices li {
+							display: block;
 						}
 
 						.rule, .rule-group-heading {
