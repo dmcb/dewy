@@ -2633,6 +2633,8 @@ body {
             margin-right: -15px; } }
         body section .main .view .content .rules .notification-choices li, body section .main .view .content .notifications .notification-choices li, body section .main .view .content .total .notification-choices li {
           display: block; }
+          body section .main .view .content .rules .notification-choices li select, body section .main .view .content .rules .notification-choices li input, body section .main .view .content .notifications .notification-choices li select, body section .main .view .content .notifications .notification-choices li input, body section .main .view .content .total .notification-choices li select, body section .main .view .content .total .notification-choices li input {
+            margin: 0; }
         body section .main .view .content .rules .rule, body section .main .view .content .rules .rule-group-heading, body section .main .view .content .notifications .rule, body section .main .view .content .notifications .rule-group-heading, body section .main .view .content .total .rule, body section .main .view .content .total .rule-group-heading {
           display: block;
           margin-top: 0.5em;

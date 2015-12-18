@@ -491,6 +491,10 @@ body {
 
 						.notification-choices li {
 							display: block;
+
+							select, input {
+								margin: 0;
+							}
 						}
 
 						.rule, .rule-group-heading {
