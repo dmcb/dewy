@@ -14,15 +14,6 @@ exports.get = function(user, url, filterSet) {
     }
   }
 
-  newFilter = {
-    operator: 'any',
-    notify: false,
-    notifications: [],
-    rules: [{
-      field: 'Base URL',
-      choice: 'contains',
-    }]
-  }
   return newFilter;
 }
 
@@ -436,8 +427,16 @@ filters = [
   {
     title: 'In development',
     url: 'in-development',
-    notify: true,
-    notifications: [],
+    notifications: {
+      disappears: {
+        enabled: true
+      },
+      total: {
+        enabled: true,
+        choice: 'is greater than',
+        value: 4
+      }
+    },
     operator: 'any',
     rules: [
       {
@@ -474,8 +473,11 @@ filters = [
       {
         title: 'Big webform sites',
         url: 'big-webform-sites',
-        notify: true,
-        notifications: [],
+        notifications: {
+          appears: {
+            enabled: true
+          }
+        },
         operator: 'all',
         rules: [
           {
@@ -505,7 +507,6 @@ filters = [
   {
     title: 'Really long title to serve as an edge case for the design',
     url: 'really-long-title-to-serve-as-an-edge-case-for-the-design',
-    notify: true,
     notifications: []
   },
   {
@@ -513,6 +514,14 @@ filters = [
     url: 'anotherreallylongtitlewithoutbreaksthanksjerk',
   }
 ]
+
+newFilter = {
+  operator: 'any',
+  rules: [{
+    field: 'Base URL',
+    choice: 'contains',
+  }]
+}
 
 operators = [
   'any',

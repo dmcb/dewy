@@ -11,17 +11,7 @@
                                 <p class="total">3 sites matched under these rules</p>
                             </div>
                             <div class="content">
-                                <div class="notifications">
-                                    <label><input type="checkbox" ng-model="currentFilter.notify"/> Configure notifications on this site filter</label>
-                                    <ul class="notification-choices" ng-if="currentFilter.notify" >
-                                        <li><label><input type="checkbox" ng-model="currentFilter.notifications['appears']" /> Send an email when a site first appears in this filter</label></li>
-                                        <li><label><input type="checkbox" ng-model="currentFilter.notifications.disappears" /> Send an email when a site first disappears from this filter</label></li>
-                                        <li>
-                                            <label><input type="checkbox" /> Send an email when the total number of sites </label>
-                                            <select ng-model="currentFilter.notifications.total" ng-options="choice as choice for choice in notificationChoices"></select>
-                                            <input name="value" type="number" min="0" required />
-                                        </li>
-                                    </ul>
+                                <div class="notifications" ng-include="'templates/notifications.html'">
                                 </div>
                             </div>
                         </div>
