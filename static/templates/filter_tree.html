@@ -10,7 +10,8 @@
             <select class="field" ng-model="rule.field" ng-options="field.title as field.title for field in fields" ng-change="updateChoice(rule, '{{rule.field}}')"></select>
             <select class="choice" ng-model="rule.choice" ng-options="choice as choice for choice in getChoices(rule.field)"></select>
             <input name="value" type="text" ng-model="rule.value" ng-if="valueIsType(rule.field, 'string')" required />
-            <input name="value" type="number" ng-model="rule.value" ng-if="valueIsType(rule.field, 'integer')" min="0" required />
+            <input name="value" type="number" ng-model="rule.value" ng-if="valueIsType(rule.field, 'integer')" min="0" ng-pattern="/^[0-9]*$/" required />
+            <input name="value" type="number" ng-model="rule.value" ng-if="valueIsType(rule.field, 'number')" min="0" required />
             <input name="value" type="date" data-format="yyyy-MM-dd" ng-model="rule.value" ng-if="valueIsType(rule.field, 'date')" required />
             <select name="value" ng-model="rule.value" ng-options="tag.id as tag.title for tag in tags" ng-if="valueIsType(rule.field, 'tag')" /></select>
             <select class="detail" ng-model="rule.detail" ng-if="getDetails(rule.field)" ng-options="detail as detail for detail in getDetails(rule.field)"></select>
@@ -20,6 +21,7 @@
                 <span ng-show="rulesForm.value.$error.number">You must enter a number.</span>
                 <span ng-show="rulesForm.value.$error.min">The value cannot be less than 0.</span>
                 <span ng-show="rulesForm.value.$error.date">You must enter a date of format YYYY-MM-DD.</span>
+                <span ng-show="rulesForm.value.$error.pattern">You must enter an integer.</span>
             </div>
         </div>
     </li>
