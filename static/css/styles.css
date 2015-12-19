@@ -1454,35 +1454,35 @@ address {
   font-style: normal;
   line-height: 1.428571429; }
 
-.container, body header nav, body .logo h1, body .message, body section, body footer ul {
+.container {
   margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px; }
-  .container:before, body header nav:before, body .logo h1:before, body .message:before, body section:before, body footer ul:before, .container:after, body header nav:after, body .logo h1:after, body .message:after, body section:after, body footer ul:after {
+  .container:before, .container:after {
     content: " ";
     display: table; }
-  .container:after, body header nav:after, body .logo h1:after, body .message:after, body section:after, body footer ul:after {
+  .container:after {
     clear: both; }
   @media (min-width: 768px) {
-    .container, body header nav, body .logo h1, body .message, body section, body footer ul {
+    .container {
       width: 750px; } }
   @media (min-width: 992px) {
-    .container, body header nav, body .logo h1, body .message, body section, body footer ul {
+    .container {
       width: 970px; } }
   @media (min-width: 1200px) {
-    .container, body header nav, body .logo h1, body .message, body section, body footer ul {
+    .container {
       width: 1170px; } }
 
-.container-fluid {
+.container-fluid, body header nav, body .logo h1, body .message, body section, body footer ul {
   margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px; }
-  .container-fluid:before, .container-fluid:after {
+  .container-fluid:before, body header nav:before, body .logo h1:before, body .message:before, body section:before, body footer ul:before, .container-fluid:after, body header nav:after, body .logo h1:after, body .message:after, body section:after, body footer ul:after {
     content: " ";
     display: table; }
-  .container-fluid:after {
+  .container-fluid:after, body header nav:after, body .logo h1:after, body .message:after, body section:after, body footer ul:after {
     clear: both; }
 
 .row, body header nav ul, body section .main, body section .main .view nav, body section .main .view .content ul, body section .main .view .content ul div.variables ul {
@@ -2380,58 +2380,64 @@ body {
   body header {
     border-top: 5px solid #239CF9;
     background-color: #eee; }
-    body header nav ul {
-      text-align: right;
-      margin-bottom: 0; }
-      body header nav ul li {
-        display: inline;
-        position: relative; }
-        body header nav ul li a {
-          display: inline-block;
-          padding: 1em 15px;
-          height: 45px; }
-          body header nav ul li a:hover {
-            text-decoration: none;
-            color: #337ab7;
-            background-color: #fff; }
-          body header nav ul li a img {
-            max-width: 2em;
-            border-radius: 1em;
-            margin-right: 0.5em;
-            float: left;
-            margin-top: -5px; }
-        body header nav ul li.dropped > a {
-          background-color: #fff;
-          color: #337ab7; }
-        body header nav ul li.dropped .dropdown {
-          display: block; }
-      body header nav ul.dropdown {
-        margin: 0;
-        padding: 0;
-        background-color: #eee;
-        position: absolute;
-        display: none;
-        right: 0;
-        text-align: left;
-        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
-        width: 100%;
-        z-index: 1; }
-        body header nav ul.dropdown li a {
-          display: block; }
+    body header nav {
+      max-width: 1200px; }
+      body header nav ul {
+        text-align: right;
+        margin-bottom: 0; }
+        body header nav ul li {
+          display: inline;
+          position: relative; }
+          body header nav ul li a {
+            display: inline-block;
+            padding: 1em 15px;
+            height: 45px; }
+            body header nav ul li a:hover {
+              text-decoration: none;
+              color: #337ab7;
+              background-color: #fff; }
+            body header nav ul li a img {
+              max-width: 2em;
+              border-radius: 1em;
+              margin-right: 0.5em;
+              float: left;
+              margin-top: -5px; }
+          body header nav ul li.dropped > a {
+            background-color: #fff;
+            color: #337ab7; }
+          body header nav ul li.dropped .dropdown {
+            display: block; }
+        body header nav ul.dropdown {
+          margin: 0;
+          padding: 0;
+          background-color: #eee;
+          position: absolute;
+          display: none;
+          right: 0;
+          text-align: left;
+          box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+          width: 100%;
+          z-index: 1; }
+          body header nav ul.dropdown li a {
+            display: block; }
   body .logo h1 {
+    max-width: 1200px;
     margin-top: 0; }
     body .logo h1 img {
       max-width: 148px;
       position: absolute;
       top: 16px; }
-  body .message span {
-    padding: 0.5em 15px;
-    font-weight: bold;
-    color: #fff;
-    background-color: #239CF9;
-    border-radius: 0.5em;
-    display: block; }
+  body .message {
+    max-width: 1200px; }
+    body .message span {
+      padding: 0.5em 15px;
+      font-weight: bold;
+      color: #fff;
+      background-color: #239CF9;
+      border-radius: 0.5em;
+      display: block; }
   body section {
+    max-width: 1200px;
     padding-bottom: 5em; }
     body section .main h2, body section .main #titleerror {
       color: #239CF9;
@@ -2685,64 +2691,66 @@ body {
           color: #239CF9;
           margin-top: 0.5em;
           display: block; }
-    @media (max-width: 767px) {
-      body section .main .context {
-        display: none; } }
-    body section .main .context ul {
-      margin: 0;
+    body section .main .context {
       padding-left: 0; }
-      body section .main .context ul li {
-        display: inline; }
-        body section .main .context ul li a {
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          display: block;
-          padding: 0.35em 0 0.35em 1.5em;
-          font-weight: bold; }
-          body section .main .context ul li a.selected {
-            color: #666; }
-          body section .main .context ul li a.folder:before {
-            margin-left: -1.25em;
-            margin-right: 0.25em;
-            display: inline-block;
-            width: 0;
-            height: 0;
-            content: "";
-            vertical-align: -1px;
-            border: 6px solid;
-            border-right-color: transparent;
-            border-top-color: transparent;
-            border-bottom-color: transparent; }
-          body section .main .context ul li a.folder.open:before {
-            margin-left: -1.5em;
-            margin-right: 0.5em;
-            display: inline-block;
-            width: 0;
-            height: 0;
-            content: "";
-            vertical-align: -5px;
-            border: 6px solid;
-            border-right-color: transparent;
-            border-left-color: transparent;
-            border-bottom-color: transparent; }
-      body section .main .context ul.folders li > ul li a {
-        padding-left: 2.5em; }
-      body section .main .context ul.folders li > ul li > ul li a {
-        padding-left: 4.5em; }
-      body section .main .context ul.folders li > ul li > ul li > ul li a {
-        padding-left: 6.5em; }
-      body section .main .context ul + .actions {
-        margin-top: 2em; }
-    body section .main .context .actions button, body section .main .context .actions a.button {
-      margin-bottom: 0.25em;
-      width: 100%;
-      text-align: left;
-      display: block;
-      padding: 0.25em 1.5em; }
-      body section .main .context .actions button span, body section .main .context .actions a.button span {
-        float: right;
-        margin-top: 1px; }
+      @media (max-width: 767px) {
+        body section .main .context {
+          display: none; } }
+      body section .main .context ul {
+        margin: 0;
+        padding-left: 0; }
+        body section .main .context ul li {
+          display: inline; }
+          body section .main .context ul li a {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            display: block;
+            padding: 0.35em 0 0.35em 1.5em;
+            font-weight: bold; }
+            body section .main .context ul li a.selected {
+              color: #666; }
+            body section .main .context ul li a.folder:before {
+              margin-left: -1.25em;
+              margin-right: 0.25em;
+              display: inline-block;
+              width: 0;
+              height: 0;
+              content: "";
+              vertical-align: -1px;
+              border: 6px solid;
+              border-right-color: transparent;
+              border-top-color: transparent;
+              border-bottom-color: transparent; }
+            body section .main .context ul li a.folder.open:before {
+              margin-left: -1.5em;
+              margin-right: 0.5em;
+              display: inline-block;
+              width: 0;
+              height: 0;
+              content: "";
+              vertical-align: -5px;
+              border: 6px solid;
+              border-right-color: transparent;
+              border-left-color: transparent;
+              border-bottom-color: transparent; }
+        body section .main .context ul.folders li > ul li a {
+          padding-left: 2.5em; }
+        body section .main .context ul.folders li > ul li > ul li a {
+          padding-left: 4.5em; }
+        body section .main .context ul.folders li > ul li > ul li > ul li a {
+          padding-left: 6.5em; }
+        body section .main .context ul + .actions {
+          margin-top: 2em; }
+      body section .main .context .actions button, body section .main .context .actions a.button {
+        margin-bottom: 0.25em;
+        width: 100%;
+        text-align: left;
+        display: block;
+        padding: 0.25em 1.5em; }
+        body section .main .context .actions button span, body section .main .context .actions a.button span {
+          float: right;
+          margin-top: 1px; }
     body section #signon {
       margin-top: 3em;
       background-color: rgba(255, 255, 255, 0.9);
@@ -2777,6 +2785,7 @@ body {
     background-color: #eee;
     width: 100%; }
     body footer ul {
+      max-width: 1200px;
       margin-bottom: 0; }
       body footer ul li {
         display: inline; }

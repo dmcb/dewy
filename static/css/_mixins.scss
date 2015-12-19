@@ -1,0 +1,4 @@
+@mixin full-width() {
+    @extend .container-fluid;
+    max-width: 1200px;
+}

@@ -1,4 +1,5 @@
 @import 'bootstrap-sass-3.3.5/stylesheets/bootstrap-custom';
+@import 'mixins';
 
 // Colours
 $blue: #239CF9;
@@ -67,7 +68,7 @@ body {
 		background-color: $light-grey;
 
 		nav {
-			@extend .container;
+			@include full-width();
 
 			ul {
 				@extend .row;
@@ -133,7 +134,7 @@ body {
 
 	.logo {
 		h1 {
-			@extend .container;
+			@include full-width();
 			margin-top: 0;
 
 			img {
@@ -145,7 +146,7 @@ body {
 	}
 
 	.message {
-		@extend .container;
+		@include full-width();
 
 		span {
 			padding: 0.5em $grid-gutter-width/2;
@@ -158,7 +159,7 @@ body {
 	}
 
 	section {
-		@extend .container;
+		@include full-width();
 		padding-bottom: 5em;
 
 		.main {
@@ -579,6 +580,7 @@ body {
 
 			.context {
 				@extend .col-sm-3;
+				padding-left: 0;
 				@media (max-width: $screen-xs-max) {
 					display: none;
 				}
@@ -727,7 +729,7 @@ body {
 		width: 100%;
 
 		ul {
-			@extend .container;
+			@include full-width();
 			margin-bottom: 0;
 
 			li {
