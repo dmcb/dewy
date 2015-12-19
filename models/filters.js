@@ -174,7 +174,7 @@ fields = [
     value: false
   },
   {
-    title: 'Module name',
+    title: 'Module',
     choices: [
       'contains',
       'does not contain',
@@ -183,7 +183,20 @@ fields = [
       'starts with',
       'ends with'
     ],
-    value: 'string'
+    value: 'string',
+    details: [
+      'and is available',
+      'and is enabled',
+      'and is disabled'
+    ]
+  },
+  {
+    title: 'Modules',
+    choices: [
+      'are up-to-date',
+      'are out-of-date'
+    ],
+    value: false
   },
   {
     title: 'Number of broken links',
@@ -383,7 +396,13 @@ fields = [
       'starts with',
       'ends with'
     ],
-    value: 'string'
+    value: 'string',
+    details: [
+      'and is available',
+      'and is default',
+      'and is enabled',
+      'and is disabled'
+    ]
   },
   {
     title: 'Title',
@@ -428,6 +447,9 @@ filters = [
     title: 'In development',
     url: 'in-development',
     notifications: {
+      appears: {
+        enabled: false
+      },
       disappears: {
         enabled: true
       },
@@ -456,12 +478,24 @@ filters = [
       {
         title: 'Views',
         url: 'views',
+        notifications: {
+          appears: {
+            enabled: false
+          },
+          disappears: {
+            enabled: false
+          },
+          total: {
+            enabled: false,
+          }
+        },
         operator: 'all',
         rules: [
           {
-            field: 'Module name',
+            field: 'Module',
             choice: 'is',
-            value: 'views'
+            value: 'views',
+            detail: 'and is available'
           },
           {
             field: 'Content type',
@@ -476,14 +510,21 @@ filters = [
         notifications: {
           appears: {
             enabled: true
+          },
+          disappears: {
+            enabled: false
+          },
+          total: {
+            enabled: false,
           }
         },
         operator: 'all',
         rules: [
           {
-            field: 'Module name',
+            field: 'Module',
             choice: 'contains',
-            value: 'webform'
+            value: 'webform',
+            detail: 'and is enabled'
           },
           {
             operator: 'any',
@@ -507,11 +548,32 @@ filters = [
   {
     title: 'Really long title to serve as an edge case for the design',
     url: 'really-long-title-to-serve-as-an-edge-case-for-the-design',
-    notifications: []
+    notifications: {
+      appears: {
+        enabled: false
+      },
+      disappears: {
+        enabled: false
+      },
+      total: {
+        enabled: false,
+      }
+    },
   },
   {
     title: 'Anotherreallylongtitlewithoutbreaksthanksjerk',
     url: 'anotherreallylongtitlewithoutbreaksthanksjerk',
+    notifications: {
+      appears: {
+        enabled: false
+      },
+      disappears: {
+        enabled: false
+      },
+      total: {
+        enabled: false,
+      }
+    },
   }
 ]
 

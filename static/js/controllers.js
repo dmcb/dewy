@@ -95,31 +95,39 @@ controllers.controller('filterController', ['$scope', '$http', 'filterFactory', 
 				}
 			}
 		}
+		$scope.getDetails = function(field) {
+			for (var i=0; i<$scope.fields.length; i++) {
+				if ($scope.fields[i].title == field) {
+					return $scope.fields[i].details;
+				}
+			}
+		}
 		$scope.saveFilter = function() {
 			if ($scope.filterForm.$valid) {
 				filterFactory.update($scope.currentFilter);
 			}
 		}
 		$scope.updateChoice = function(rule, oldRule) {
-			console.log(rule);
-			console.log(oldRule);
 			choices = $scope.getChoices(rule.field);
 			if (choices.indexOf(rule.choice) == -1) {
 				rule.choice = choices[0];
+			}
+
+			details = $scope.getDetails(rule.field);
+			if (details.indexOf(rule.choice) == -1) {
+				rule.detail = details[0];
 			}
 
 			// Get field from rule
 			for (var i=0; i<$scope.fields.length; i++) {
 				if ($scope.fields[i].title == rule.field) {
 					field = $scope.fields[i];
-					console.log(field);
 				}
 			}
 			// Get old field from rule
 			for (var i=0; i<$scope.fields.length; i++) {
 				if ($scope.fields[i].title == oldRule) {
 					oldField = $scope.fields[i];
-					console.log(oldField);
 				}
 			}
 
