@@ -114,8 +114,10 @@ controllers.controller('filterController', ['$scope', '$http', 'filterFactory', 
 			}
 
 			details = $scope.getDetails(rule.field);
-			if (details.indexOf(rule.choice) == -1) {
-				rule.detail = details[0];
+			if (details) {
+				if (details.indexOf(rule.choice) == -1) {
+					rule.detail = details[0];
+				}
 			}
 
 			// Get field from rule
