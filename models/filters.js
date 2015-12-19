@@ -50,6 +50,22 @@ exports.getValueByField = function(fields, field) {
 
 fields = [
   {
+    title: 'Aggregate CSS',
+    choices: [
+      'is on',
+      'is not on'
+    ],
+    value: false
+  },
+  {
+    title: 'Aggregate JS',
+    choices: [
+      'is on',
+      'is not on'
+    ],
+    value: false
+  },
+  {
     title: 'Base URL',
     choices: [
       'contains',
@@ -60,6 +76,14 @@ fields = [
       'ends with'
     ],
     value: 'string'
+  },
+  {
+    title: 'Caching for anonymous',
+    choices: [
+      'is on',
+      'is not on'
+    ],
+    value: false
   },
   {
     title: 'Content type',
@@ -80,6 +104,18 @@ fields = [
       'is updated'
     ],
     value: false
+  },
+  {
+    title: 'Database file size',
+    choices: [
+      'is',
+      'is not',
+      'is greater than',
+      'is less than',
+      'is greater than or equal to',
+      'is less than or equal to'
+    ],
+    value: 'integer'
   },
   {
     title: 'Date added to Dewy',
@@ -120,14 +156,14 @@ fields = [
   {
     title: 'Drupal core',
     choices: [
+      'contains',
+      'does not contain',
       'is',
       'is not',
-      'is greater than',
-      'is less than',
-      'is greater than or equal to',
-      'is less than or equal to'
+      'starts with',
+      'ends with'
     ],
-    value: 'number'
+    value: 'string'
   },
   {
     title: 'File size (private)',
@@ -154,7 +190,7 @@ fields = [
     value: 'integer'
   },
   {
-    title: 'File size (total)',
+    title: 'File size (db+private+public)',
     choices: [
       'is',
       'is not',
@@ -355,6 +391,18 @@ fields = [
     value: 'integer'
   },
   {
+    title: 'PHP version',
+    choices: [
+      'contains',
+      'does not contain',
+      'is',
+      'is not',
+      'starts with',
+      'ends with'
+    ],
+    value: 'string'
+  },
+  {
     title: 'Role',
     choices: [
       'contains',
@@ -439,6 +487,23 @@ fields = [
       'ends with'
     ],
     value: 'string'
+  },
+  {
+    title: 'Variable',
+    choices: [
+      'contains',
+      'does not contain',
+      'is',
+      'is not',
+      'starts with',
+      'ends with'
+    ],
+    value: 'string',
+    details: [
+      'and has a setting',
+      'and is true',
+      'and is false'
+    ]
   }
 ]
 
