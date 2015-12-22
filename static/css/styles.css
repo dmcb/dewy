@@ -1474,33 +1474,33 @@ address {
     .container {
       width: 1170px; } }
 
-.container-fluid, body header nav, body .logo h1, body .message, body section, body footer ul {
+.container-fluid, header nav, h1, .message, section.app, section.signon, section.introduction, section.signup, section.feature .feature, footer ul {
   margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px; }
-  .container-fluid:before, body header nav:before, body .logo h1:before, body .message:before, body section:before, body footer ul:before, .container-fluid:after, body header nav:after, body .logo h1:after, body .message:after, body section:after, body footer ul:after {
+  .container-fluid:before, header nav:before, h1:before, .message:before, section.app:before, section.signon:before, section.introduction:before, section.signup:before, section.feature .feature:before, footer ul:before, .container-fluid:after, header nav:after, h1:after, .message:after, section.app:after, section.signon:after, section.introduction:after, section.signup:after, section.feature .feature:after, footer ul:after {
     content: " ";
     display: table; }
-  .container-fluid:after, body header nav:after, body .logo h1:after, body .message:after, body section:after, body footer ul:after {
+  .container-fluid:after, header nav:after, h1:after, .message:after, section.app:after, section.signon:after, section.introduction:after, section.signup:after, section.feature .feature:after, footer ul:after {
     clear: both; }
 
-.row, body header nav ul, body section .main, body section .main .view nav, body section .main .view .content ul, body section .main .view .content ul div.variables ul {
+.row, header nav ul, section.feature .feature .getstarted, section.feature .feature .views, section.feature .feature .querying, section.feature .feature .notifications, section .main, section .main .view nav, section .main .view .content ul, section .main .view .content ul div.variables ul {
   margin-left: -15px;
   margin-right: -15px; }
-  .row:before, body header nav ul:before, body section .main:before, body section .main .view nav:before, body section .main .view .content ul:before, body section .main .view .content ul div.variables ul:before, .row:after, body header nav ul:after, body section .main:after, body section .main .view nav:after, body section .main .view .content ul:after, body section .main .view .content ul div.variables ul:after {
+  .row:before, header nav ul:before, section.feature .feature .getstarted:before, section.feature .feature .views:before, section.feature .feature .querying:before, section.feature .feature .notifications:before, section .main:before, section .main .view nav:before, section .main .view .content ul:before, section .main .view .content ul div.variables ul:before, .row:after, header nav ul:after, section.feature .feature .getstarted:after, section.feature .feature .views:after, section.feature .feature .querying:after, section.feature .feature .notifications:after, section .main:after, section .main .view nav:after, section .main .view .content ul:after, section .main .view .content ul div.variables ul:after {
     content: " ";
     display: table; }
-  .row:after, body header nav ul:after, body section .main:after, body section .main .view nav:after, body section .main .view .content ul:after, body section .main .view .content ul div.variables ul:after {
+  .row:after, header nav ul:after, section.feature .feature .getstarted:after, section.feature .feature .views:after, section.feature .feature .querying:after, section.feature .feature .notifications:after, section .main:after, section .main .view nav:after, section .main .view .content ul:after, section .main .view .content ul div.variables ul:after {
     clear: both; }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, body section .main .view .content ul div.variables ul li.complexity, body section .main .view .content ul div.variables ul li.size, body section .main .view .content ul div.variables ul li.activity, body section .main .view .content ul div.variables ul li.health, .col-sm-3, body section .main .context, .col-md-3, body section .main .view .content ul li.title, .col-lg-3, .col-xs-4, .col-sm-4, body section .main .view .content ul li.title, .col-md-4, body section .main .view nav .search, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, body section .main .view .content ul li.title, .col-sm-6, .col-md-6, body section #signon, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, body section .main .view .content ul div.variables, body section #signon, .col-md-8, body section .main .view nav .tabs, .col-lg-8, .col-xs-9, .col-sm-9, body section .main .view, .col-md-9, body section .main .view .content ul div.variables, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, body section .main h2, body section .main #titleerror, body section .main .view .content ul div.variables, .col-sm-12, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, section .main .view .content ul div.variables ul li.complexity, section .main .view .content ul div.variables ul li.size, section .main .view .content ul div.variables ul li.activity, section .main .view .content ul div.variables ul li.health, .col-sm-3, section .main .context, .col-md-3, section .main .view .content ul li.title, .col-lg-3, .col-xs-4, .col-sm-4, section .main .view .content ul li.title, .col-md-4, section .main .view nav .search, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, section .main .view .content ul li.title, .col-sm-6, .col-md-6, section.feature .feature .getstarted .content, section.feature .feature .views .content, section.feature .feature .querying .content, section.feature .feature .notifications .content, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, section .main .view .content ul div.variables, .col-md-8, section .main .view nav .tabs, .col-lg-8, .col-xs-9, .col-sm-9, section .main .view, .col-md-9, section .main .view .content ul div.variables, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, section .main h2, section .main #titleerror, section .main .view .content ul div.variables, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px; }
 
-.col-xs-1, .col-xs-2, .col-xs-3, body section .main .view .content ul div.variables ul li.complexity, body section .main .view .content ul div.variables ul li.size, body section .main .view .content ul div.variables ul li.activity, body section .main .view .content ul div.variables ul li.health, .col-xs-4, .col-xs-5, .col-xs-6, body section .main .view .content ul li.title, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, body section .main h2, body section .main #titleerror, body section .main .view .content ul div.variables {
+.col-xs-1, .col-xs-2, .col-xs-3, section .main .view .content ul div.variables ul li.complexity, section .main .view .content ul div.variables ul li.size, section .main .view .content ul div.variables ul li.activity, section .main .view .content ul div.variables ul li.health, .col-xs-4, .col-xs-5, .col-xs-6, section .main .view .content ul li.title, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, section .main h2, section .main #titleerror, section .main .view .content ul div.variables {
   float: left; }
 
 .col-xs-1 {
@@ -1509,7 +1509,7 @@ address {
 .col-xs-2 {
   width: 16.6666666667%; }
 
-.col-xs-3, body section .main .view .content ul div.variables ul li.complexity, body section .main .view .content ul div.variables ul li.size, body section .main .view .content ul div.variables ul li.activity, body section .main .view .content ul div.variables ul li.health {
+.col-xs-3, section .main .view .content ul div.variables ul li.complexity, section .main .view .content ul div.variables ul li.size, section .main .view .content ul div.variables ul li.activity, section .main .view .content ul div.variables ul li.health {
   width: 25%; }
 
 .col-xs-4 {
@@ -1518,7 +1518,7 @@ address {
 .col-xs-5 {
   width: 41.6666666667%; }
 
-.col-xs-6, body section .main .view .content ul li.title {
+.col-xs-6, section .main .view .content ul li.title {
   width: 50%; }
 
 .col-xs-7 {
@@ -1536,7 +1536,7 @@ address {
 .col-xs-11 {
   width: 91.6666666667%; }
 
-.col-xs-12, body section .main h2, body section .main #titleerror, body section .main .view .content ul div.variables {
+.col-xs-12, section .main h2, section .main #titleerror, section .main .view .content ul div.variables {
   width: 100%; }
 
 .col-xs-pull-0 {
@@ -1657,7 +1657,7 @@ address {
   margin-left: 100%; }
 
 @media (min-width: 768px) {
-  .col-sm-1, .col-sm-2, .col-sm-3, body section .main .context, .col-sm-4, body section .main .view .content ul li.title, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, body section .main .view .content ul div.variables, body section #signon, .col-sm-9, body section .main .view, .col-sm-10, .col-sm-11, .col-sm-12 {
+  .col-sm-1, .col-sm-2, .col-sm-3, section .main .context, .col-sm-4, section .main .view .content ul li.title, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, section .main .view .content ul div.variables, .col-sm-9, section .main .view, .col-sm-10, .col-sm-11, .col-sm-12 {
     float: left; }
 
   .col-sm-1 {
@@ -1666,10 +1666,10 @@ address {
   .col-sm-2 {
     width: 16.6666666667%; }
 
-  .col-sm-3, body section .main .context {
+  .col-sm-3, section .main .context {
     width: 25%; }
 
-  .col-sm-4, body section .main .view .content ul li.title {
+  .col-sm-4, section .main .view .content ul li.title {
     width: 33.3333333333%; }
 
   .col-sm-5 {
@@ -1681,10 +1681,10 @@ address {
   .col-sm-7 {
     width: 58.3333333333%; }
 
-  .col-sm-8, body section .main .view .content ul div.variables, body section #signon {
+  .col-sm-8, section .main .view .content ul div.variables {
     width: 66.6666666667%; }
 
-  .col-sm-9, body section .main .view {
+  .col-sm-9, section .main .view {
     width: 75%; }
 
   .col-sm-10 {
@@ -1780,7 +1780,7 @@ address {
   .col-sm-offset-1 {
     margin-left: 8.3333333333%; }
 
-  .col-sm-offset-2, body section #signon {
+  .col-sm-offset-2 {
     margin-left: 16.6666666667%; }
 
   .col-sm-offset-3 {
@@ -1813,7 +1813,7 @@ address {
   .col-sm-offset-12 {
     margin-left: 100%; } }
 @media (min-width: 992px) {
-  .col-md-1, .col-md-2, .col-md-3, body section .main .view .content ul li.title, .col-md-4, body section .main .view nav .search, .col-md-5, .col-md-6, body section #signon, .col-md-7, .col-md-8, body section .main .view nav .tabs, .col-md-9, body section .main .view .content ul div.variables, .col-md-10, .col-md-11, .col-md-12 {
+  .col-md-1, .col-md-2, .col-md-3, section .main .view .content ul li.title, .col-md-4, section .main .view nav .search, .col-md-5, .col-md-6, section.feature .feature .getstarted .content, section.feature .feature .views .content, section.feature .feature .querying .content, section.feature .feature .notifications .content, .col-md-7, .col-md-8, section .main .view nav .tabs, .col-md-9, section .main .view .content ul div.variables, .col-md-10, .col-md-11, .col-md-12 {
     float: left; }
 
   .col-md-1 {
@@ -1822,25 +1822,25 @@ address {
   .col-md-2 {
     width: 16.6666666667%; }
 
-  .col-md-3, body section .main .view .content ul li.title {
+  .col-md-3, section .main .view .content ul li.title {
     width: 25%; }
 
-  .col-md-4, body section .main .view nav .search {
+  .col-md-4, section .main .view nav .search {
     width: 33.3333333333%; }
 
   .col-md-5 {
     width: 41.6666666667%; }
 
-  .col-md-6, body section #signon {
+  .col-md-6, section.feature .feature .getstarted .content, section.feature .feature .views .content, section.feature .feature .querying .content, section.feature .feature .notifications .content {
     width: 50%; }
 
   .col-md-7 {
     width: 58.3333333333%; }
 
-  .col-md-8, body section .main .view nav .tabs {
+  .col-md-8, section .main .view nav .tabs {
     width: 66.6666666667%; }
 
-  .col-md-9, body section .main .view .content ul div.variables {
+  .col-md-9, section .main .view .content ul div.variables {
     width: 75%; }
 
   .col-md-10 {
@@ -1939,7 +1939,7 @@ address {
   .col-md-offset-2 {
     margin-left: 16.6666666667%; }
 
-  .col-md-offset-3, body section #signon {
+  .col-md-offset-3 {
     margin-left: 25%; }
 
   .col-md-offset-4 {
@@ -2346,7 +2346,8 @@ html {
 
 body {
   height: 100%;
-  color: #444; }
+  background-color: #239CF9;
+  color: #666; }
   @media (max-width: 1199px) {
     body {
       font-size: 0.94em; } }
@@ -2356,443 +2357,474 @@ body {
   @media (max-width: 767px) {
     body {
       font-size: 0.85em; } }
-  body .wrapper {
-    min-height: 100%;
-    position: relative; }
-    body .wrapper.splash {
+  body.index {
+    background-color: #FFF; }
+    body.index .wrapper {
       background: radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
       background: -webkit-radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
       background: -o-radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
       background: -ms-radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
-      background-attachment: fixed; }
-      body .wrapper.splash .logo img {
-        margin: 0 auto;
-        padding-top: 1em;
-        display: block;
-        position: static; }
-      body .wrapper.splash footer {
+      background-attachment: fixed;
+      color: #FFF; }
+      body.index .wrapper header, body.index .wrapper footer {
         background-color: transparent;
         color: #D0E2F0; }
-        body .wrapper.splash footer ul li a {
-          color: #fff; }
-          body .wrapper.splash footer ul li a:hover {
-            color: #D0E2F0; }
-  body header {
-    border-top: 5px solid #239CF9;
-    background-color: #eee; }
-    body header nav {
-      max-width: 1200px; }
-      body header nav ul {
-        text-align: right;
-        margin-bottom: 0; }
-        body header nav ul li {
-          display: inline;
-          position: relative; }
-          body header nav ul li a {
-            display: inline-block;
-            padding: 1em 15px;
-            height: 45px; }
-            body header nav ul li a:hover {
-              text-decoration: none;
-              color: #337ab7;
-              background-color: #fff; }
-            body header nav ul li a img {
-              max-width: 2em;
-              border-radius: 1em;
-              margin-right: 0.5em;
-              float: left;
-              margin-top: -5px; }
-          body header nav ul li.dropped > a {
-            background-color: #fff;
-            color: #337ab7; }
-          body header nav ul li.dropped .dropdown {
-            display: block; }
-        body header nav ul.dropdown {
-          margin: 0;
-          padding: 0;
-          background-color: #eee;
-          position: absolute;
-          display: none;
-          right: 0;
-          text-align: left;
-          box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
-          width: 100%;
-          z-index: 1; }
-          body header nav ul.dropdown li a {
-            display: block; }
-  body .logo h1 {
-    max-width: 1200px;
-    margin-top: 0; }
-    body .logo h1 img {
-      max-width: 148px;
-      position: absolute;
-      top: 16px; }
-  body .message {
-    max-width: 1200px; }
-    body .message span {
-      padding: 0.5em 15px;
-      font-weight: bold;
-      color: #fff;
-      background-color: #239CF9;
-      border-radius: 0.5em;
-      display: block; }
-  body section {
-    max-width: 1200px;
-    padding-bottom: 5em; }
-    body section .main h2, body section .main #titleerror {
-      color: #239CF9;
-      font-size: 1.8em;
-      margin: 1em 0;
-      float: none; }
-      body section .main h2 a, body section .main #titleerror a {
-        color: #239CF9; }
-        body section .main h2 a:hover, body section .main #titleerror a:hover {
-          color: #337ab7; }
-        body section .main h2 a span, body section .main #titleerror a span {
-          margin-left: 0.25em; }
-      body section .main h2 input, body section .main #titleerror input {
-        border: none;
-        padding: 0;
-        width: 100%; }
-    body section .main #titleerror {
-      margin-top: -1em;
-      display: block;
-      font-size: 0.9em; }
-    body section .main .view nav .tabs ul {
-      margin: 0;
-      padding: 0; }
-      body section .main .view nav .tabs ul li {
-        display: inline; }
-        body section .main .view nav .tabs ul li a {
-          color: #337ab7;
+        body.index .wrapper header ul li a, body.index .wrapper footer ul li a {
+          color: #FFF; }
+          body.index .wrapper header ul li a:hover, body.index .wrapper footer ul li a:hover {
+            color: #D0E2F0;
+            background-color: transparent; }
+      body.index .wrapper header {
+        border-top-color: #FFF; }
+  body .wrapper {
+    min-height: 100%;
+    position: relative;
+    background-color: #FFF; }
+
+header {
+  border-top: 5px solid #239CF9;
+  background-color: #EEE; }
+  header nav {
+    max-width: 1400px; }
+    header nav ul {
+      text-align: right;
+      margin-bottom: 0; }
+      header nav ul li {
+        display: inline;
+        position: relative; }
+        header nav ul li a {
           display: inline-block;
-          padding: 0.5em 1em;
-          background-color: #fff;
-          border-top: solid 1px #D0E2F0;
-          border-left: solid 1px #D0E2F0;
-          border-right: solid 1px #D0E2F0; }
-          @media (max-width: 991px) {
-            body section .main .view nav .tabs ul li a {
-              border-bottom: solid 1px #D0E2F0; } }
-          body section .main .view nav .tabs ul li a:hover {
+          padding: 1em 15px;
+          height: 45px; }
+          header nav ul li a:hover {
             text-decoration: none;
-            color: #fff;
-            background-color: #337ab7; }
-        body section .main .view nav .tabs ul li.selected a {
-          color: #fff;
-          background-color: #337ab7; }
-    @media (max-width: 991px) {
-      body section .main .view nav .search {
-        padding-top: 1em;
-        padding-bottom: 1em; } }
-    body section .main .view nav .search form {
-      position: relative;
-      border: solid 1px #D0E2F0; }
-      body section .main .view nav .search form input[type=text] {
-        width: 100%;
-        padding: 0.3em 0.5em;
-        border: none;
-        background-color: transparent; }
-        body section .main .view nav .search form input[type=text]::-webkit-input-placeholder {
-          color: #337ab7; }
-        body section .main .view nav .search form input[type=text]:-moz-placeholder {
-          color: #337ab7;
-          opacity: 1; }
-        body section .main .view nav .search form input[type=text]::-moz-placeholder {
-          color: #337ab7;
-          opacity: 1; }
-        body section .main .view nav .search form input[type=text]:-ms-input-placeholder {
-          color: #337ab7; }
-      body section .main .view nav .search form span {
+            color: #337AB7;
+            background-color: #FFF; }
+          header nav ul li a img {
+            max-width: 2em;
+            border-radius: 1em;
+            margin-right: 0.5em;
+            float: left;
+            margin-top: -5px; }
+        header nav ul li.dropped > a {
+          background-color: #FFF;
+          color: #337AB7; }
+        header nav ul li.dropped .dropdown {
+          display: block; }
+      header nav ul.dropdown {
+        margin: 0;
+        padding: 0;
+        background-color: #EEE;
         position: absolute;
+        display: none;
         right: 0;
-        color: #239CF9;
-        margin-top: 7px;
-        margin-right: 7px;
-        background-color: transparent; }
-    body section .main .view .content {
+        text-align: left;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+        width: 100%;
+        z-index: 1; }
+        header nav ul.dropdown li a {
+          display: block; }
+
+h1 {
+  max-width: 1400px;
+  margin-top: 0; }
+  h1 img {
+    max-width: 148px;
+    position: absolute;
+    top: 16px; }
+
+.message {
+  max-width: 1280px; }
+  .message span {
+    padding: 0.5em 15px;
+    font-weight: bold;
+    color: #FFF;
+    background-color: #239CF9;
+    border-radius: 0.5em;
+    display: block; }
+
+section.app, section.signon {
+  padding-top: 2em;
+  padding-bottom: 5em;
+  max-width: 1280px; }
+section.introduction, section.signup {
+  max-width: 960px;
+  padding-top: 3em;
+  padding-bottom: 3em; }
+  section.introduction h2, section.signup h2 {
+    font-size: 4em; }
+  section.introduction p, section.signup p {
+    font-size: 1.5em; }
+section.feature {
+  background-color: #FFF;
+  color: #666; }
+  section.feature h2 {
+    margin-top: 0;
+    font-size: 3em; }
+  section.feature p {
+    font-size: 1.25em; }
+  section.feature .feature {
+    max-width: 960px; }
+    section.feature .feature .getstarted, section.feature .feature .views, section.feature .feature .querying, section.feature .feature .notifications {
+      padding-top: 2em;
+      padding-bottom: 2em; }
+section .main h2, section .main #titleerror {
+  color: #239CF9;
+  font-size: 1.8em;
+  margin: 1em 0;
+  float: none; }
+  section .main h2 a, section .main #titleerror a {
+    color: #239CF9; }
+    section .main h2 a:hover, section .main #titleerror a:hover {
+      color: #337AB7; }
+    section .main h2 a span, section .main #titleerror a span {
+      margin-left: 0.25em; }
+  section .main h2 input, section .main #titleerror input {
+    border: none;
+    padding: 0;
+    width: 100%; }
+section .main #titleerror {
+  margin-top: -1em;
+  display: block;
+  font-size: 0.9em; }
+section .main .view nav .tabs ul {
+  margin: 0;
+  padding: 0; }
+  section .main .view nav .tabs ul li {
+    display: inline; }
+    section .main .view nav .tabs ul li a {
+      color: #337AB7;
+      display: inline-block;
+      padding: 0.5em 1em;
+      background-color: #FFF;
       border-top: solid 1px #D0E2F0;
       border-left: solid 1px #D0E2F0;
-      border-right: solid 1px #D0E2F0;
-      border-bottom: solid 1px #D0E2F0;
-      overflow: scroll; }
-      body section .main .view .content + .content {
-        margin-top: 2em; }
-      body section .main .view .content ul {
-        margin: 0;
-        padding: 0; }
-        body section .main .view .content ul li {
-          display: inline; }
-          @media (max-width: 767px) {
-            body section .main .view .content ul li.title {
-              position: absolute;
-              z-index: 1; } }
-          body section .main .view .content ul li.title h3 {
-            margin: 0;
-            font-size: 1.4em; }
-        @media (max-width: 767px) {
-          body section .main .view .content ul div.variables {
-            margin-left: 50%;
-            padding-left: 30px; } }
-      body section .main .view .content .header {
-        background-color: #eee; }
-        @media (max-width: 767px) {
-          body section .main .view .content .header {
-            min-width: 383.5px; } }
-        body section .main .view .content .header ul li a {
-          background-color: #eee;
-          color: #666;
-          display: inline-block;
-          width: 100%;
-          height: 100%;
-          padding: 0.5em 15px;
-          box-sizing: content-box;
-          margin-left: -15px; }
-          @media (max-width: 991px) {
-            body section .main .view .content .header ul li a:after {
-              margin-top: 6px;
-              display: block;
-              width: 0;
-              height: 0;
-              content: "";
-              vertical-align: -5px;
-              border: 6px solid;
-              border-top-color: transparent;
-              border-left-color: transparent;
-              border-right-color: transparent;
-              border-bottom-color: transparent; } }
-          body section .main .view .content .header ul li a:hover {
-            color: #eee;
-            background-color: #666; }
-          body section .main .view .content .header ul li a.selected.desc:after {
-            margin-left: 8px;
-            display: inline-block;
-            width: 0;
-            height: 0;
-            content: "";
-            vertical-align: -5px;
-            border: 6px solid;
-            border-left-color: transparent;
-            border-right-color: transparent;
-            border-bottom-color: transparent; }
-            @media (max-width: 991px) {
-              body section .main .view .content .header ul li a.selected.desc:after {
-                display: block;
-                margin-top: 6px;
-                margin-left: 0; } }
-          body section .main .view .content .header ul li a.selected.asc:after {
-            margin-left: 8px;
-            display: inline-block;
-            width: 0;
-            height: 0;
-            content: "";
-            vertical-align: 1px;
-            border: 6px solid;
-            border-left-color: transparent;
-            border-right-color: transparent;
-            border-top-color: transparent; }
-            @media (max-width: 991px) {
-              body section .main .view .content .header ul li a.selected.asc:after {
-                display: block;
-                margin-left: 0; } }
-      body section .main .view .content .sites {
-        padding-top: 1em; }
-        @media (max-width: 767px) {
-          body section .main .view .content .sites {
-            min-width: 383.5px; } }
-        body section .main .view .content .sites .noresults, body section .main .view .content .sites ul {
-          padding-bottom: 1em; }
-        body section .main .view .content .sites .noresults {
-          display: block;
-          text-align: center;
-          margin: 0;
-          color: #337ab7; }
-          body section .main .view .content .sites .noresults span {
-            margin-right: 0.5em; }
-        body section .main .view .content .sites ul li {
-          background-color: #fff; }
-          body section .main .view .content .sites ul li .point {
-            width: 0.75em;
-            background-color: #239CF9;
-            height: 0.75em;
-            display: inline-block;
-            border-radius: 0.75em;
-            transition: opacity 0.3s; }
-          body section .main .view .content .sites ul li.complexity, body section .main .view .content .sites ul li.size, body section .main .view .content .sites ul li.activity, body section .main .view .content .sites ul li.health {
-            font-size: 0.8em;
-            margin-top: 0.75em; }
-            @media (max-width: 1199px) {
-              body section .main .view .content .sites ul li.complexity, body section .main .view .content .sites ul li.size, body section .main .view .content .sites ul li.activity, body section .main .view .content .sites ul li.health {
-                margin-top: 1.5em; } }
-        body section .main .view .content .sites ul.variables {
-          padding-bottom: 0; }
-      body section .main .view .content .rules, body section .main .view .content .notifications, body section .main .view .content .total {
-        padding: 15px; }
-        body section .main .view .content .rules .rule-group, body section .main .view .content .rules .notification-choices, body section .main .view .content .notifications .rule-group, body section .main .view .content .notifications .notification-choices, body section .main .view .content .total .rule-group, body section .main .view .content .total .notification-choices {
-          padding-left: 2em;
-          margin-top: 1.5em; }
-        @media (max-width: 991px) {
-          body section .main .view .content .rules .rule-group, body section .main .view .content .notifications .rule-group, body section .main .view .content .total .rule-group {
-            background-color: rgba(35, 156, 249, 0.2);
-            padding: 0 15px;
-            margin-left: -15px;
-            margin-right: -15px; } }
-        body section .main .view .content .rules .notification-choices li, body section .main .view .content .notifications .notification-choices li, body section .main .view .content .total .notification-choices li {
-          display: block; }
-          body section .main .view .content .rules .notification-choices li select, body section .main .view .content .rules .notification-choices li input, body section .main .view .content .notifications .notification-choices li select, body section .main .view .content .notifications .notification-choices li input, body section .main .view .content .total .notification-choices li select, body section .main .view .content .total .notification-choices li input {
-            margin: 0; }
-        body section .main .view .content .rules .rule, body section .main .view .content .rules .rule-group-heading, body section .main .view .content .notifications .rule, body section .main .view .content .notifications .rule-group-heading, body section .main .view .content .total .rule, body section .main .view .content .total .rule-group-heading {
-          display: block;
-          margin-top: 0.5em;
-          margin-bottom: 0.5em; }
-          body section .main .view .content .rules .rule:after, body section .main .view .content .rules .rule-group-heading:after, body section .main .view .content .notifications .rule:after, body section .main .view .content .notifications .rule-group-heading:after, body section .main .view .content .total .rule:after, body section .main .view .content .total .rule-group-heading:after {
-            content: ".";
-            display: block;
-            height: 0;
-            clear: both;
-            visibility: hidden; }
-          body section .main .view .content .rules .rule .buttons, body section .main .view .content .rules .rule-group-heading .buttons, body section .main .view .content .notifications .rule .buttons, body section .main .view .content .notifications .rule-group-heading .buttons, body section .main .view .content .total .rule .buttons, body section .main .view .content .total .rule-group-heading .buttons {
-            float: right; }
-            body section .main .view .content .rules .rule .buttons button, body section .main .view .content .rules .rule .buttons a.button, body section .main .view .content .rules .rule-group-heading .buttons button, body section .main .view .content .rules .rule-group-heading .buttons a.button, body section .main .view .content .notifications .rule .buttons button, body section .main .view .content .notifications .rule .buttons a.button, body section .main .view .content .notifications .rule-group-heading .buttons button, body section .main .view .content .notifications .rule-group-heading .buttons a.button, body section .main .view .content .total .rule .buttons button, body section .main .view .content .total .rule .buttons a.button, body section .main .view .content .total .rule-group-heading .buttons button, body section .main .view .content .total .rule-group-heading .buttons a.button {
-              margin-left: 0.25em; }
-        @media (max-width: 991px) {
-          body section .main .view .content .rules .rule select, body section .main .view .content .rules .rule input, body section .main .view .content .notifications .rule select, body section .main .view .content .notifications .rule input, body section .main .view .content .total .rule select, body section .main .view .content .total .rule input {
-            width: 100%;
-            margin-top: 0.5em; }
-          body section .main .view .content .rules .rule .buttons, body section .main .view .content .notifications .rule .buttons, body section .main .view .content .total .rule .buttons {
-            margin-top: 0.5em; } }
-        body section .main .view .content .rules .rule-group-heading, body section .main .view .content .notifications .rule-group-heading, body section .main .view .content .total .rule-group-heading {
-          margin-bottom: 1.5em; }
-        body section .main .view .content .rules select, body section .main .view .content .rules input, body section .main .view .content .notifications select, body section .main .view .content .notifications input, body section .main .view .content .total select, body section .main .view .content .total input {
-          font-size: 0.85em;
-          border-width: solid 1px #D0E2F0;
-          padding: 0.25em 2.5em 0.25em 1em;
-          color: #666;
-          border: solid 1px #D0E2F0;
-          border-radius: 0.5em;
-          margin: 2px 2px 0 0; }
-        body section .main .view .content .rules select, body section .main .view .content .notifications select, body section .main .view .content .total select {
-          -webkit-appearance: none;
-          -moz-appearance: none;
-          appearance: none;
-          cursor: pointer;
-          background: #fff url(/img/select.svg);
-          background-size: contain;
-          background-position: top right;
-          background-repeat: no-repeat; }
-        body section .main .view .content .rules input, body section .main .view .content .notifications input, body section .main .view .content .total input {
-          padding-right: 1em;
-          background-color: #fff; }
-        body section .main .view .content .rules .total, body section .main .view .content .notifications .total, body section .main .view .content .total .total {
-          margin: 2em 0 0 0;
-          font-weight: bold; }
-        body section .main .view .content .rules .error span, body section .main .view .content .notifications .error span, body section .main .view .content .total .error span {
-          font-size: 0.9em;
-          color: #239CF9;
-          margin-top: 0.5em;
-          display: block; }
-    body section .main .context {
-      padding-left: 0; }
-      @media (max-width: 767px) {
-        body section .main .context {
-          display: none; } }
-      body section .main .context ul {
-        margin: 0;
-        padding-left: 0; }
-        body section .main .context ul li {
-          display: inline; }
-          body section .main .context ul li a {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            display: block;
-            padding: 0.35em 0 0.35em 1.5em;
-            font-weight: bold; }
-            body section .main .context ul li a.selected {
-              color: #666; }
-            body section .main .context ul li a.folder:before {
-              margin-left: -1.25em;
-              margin-right: 0.25em;
-              display: inline-block;
-              width: 0;
-              height: 0;
-              content: "";
-              vertical-align: -1px;
-              border: 6px solid;
-              border-right-color: transparent;
-              border-top-color: transparent;
-              border-bottom-color: transparent; }
-            body section .main .context ul li a.folder.open:before {
-              margin-left: -1.5em;
-              margin-right: 0.5em;
-              display: inline-block;
-              width: 0;
-              height: 0;
-              content: "";
-              vertical-align: -5px;
-              border: 6px solid;
-              border-right-color: transparent;
-              border-left-color: transparent;
-              border-bottom-color: transparent; }
-        body section .main .context ul.folders li > ul li a {
-          padding-left: 2.5em; }
-        body section .main .context ul.folders li > ul li > ul li a {
-          padding-left: 4.5em; }
-        body section .main .context ul.folders li > ul li > ul li > ul li a {
-          padding-left: 6.5em; }
-        body section .main .context ul + .actions {
-          margin-top: 2em; }
-      body section .main .context .actions button, body section .main .context .actions a.button {
-        margin-bottom: 0.25em;
-        width: 100%;
-        text-align: left;
-        display: block;
-        padding: 0.25em 1.5em; }
-        body section .main .context .actions button span, body section .main .context .actions a.button span {
-          float: right;
-          margin-top: 1px; }
-    body section #signon {
-      margin-top: 3em;
-      background-color: rgba(255, 255, 255, 0.9);
-      border-radius: 0.5em;
-      padding: 3em; }
-      body section #signon span.messages {
-        display: block;
-        color: #239CF9;
-        font-weight: bold;
-        margin-bottom: 1.5em; }
-      body section #signon input {
-        width: 100%;
-        padding: 0.5em; }
-        body section #signon input + input {
-          margin-top: 0.5em; }
-        body section #signon input#remember {
-          width: auto;
-          margin-top: 2em; }
-      body section #signon button {
-        margin-top: 2em;
-        width: 100%;
-        background-color: #239CF9;
-        color: #fff;
-        padding: 0.5em;
-        border-radius: 0.25em;
-        font-size: 1.4em; }
-        body section #signon button:hover {
-          background-color: #337ab7; }
-  body footer {
+      border-right: solid 1px #D0E2F0; }
+      @media (max-width: 991px) {
+        section .main .view nav .tabs ul li a {
+          border-bottom: solid 1px #D0E2F0; } }
+      section .main .view nav .tabs ul li a:hover {
+        text-decoration: none;
+        color: #FFF;
+        background-color: #337AB7; }
+    section .main .view nav .tabs ul li.selected a {
+      color: #FFF;
+      background-color: #337AB7; }
+@media (max-width: 991px) {
+  section .main .view nav .search {
+    padding-top: 1em;
+    padding-bottom: 1em; } }
+section .main .view nav .search form {
+  position: relative;
+  border: solid 1px #D0E2F0; }
+  section .main .view nav .search form input[type=text] {
+    width: 100%;
+    padding: 0.3em 0.5em;
+    border: none;
+    background-color: transparent; }
+    section .main .view nav .search form input[type=text]::-webkit-input-placeholder {
+      color: #337AB7; }
+    section .main .view nav .search form input[type=text]:-moz-placeholder {
+      color: #337AB7;
+      opacity: 1; }
+    section .main .view nav .search form input[type=text]::-moz-placeholder {
+      color: #337AB7;
+      opacity: 1; }
+    section .main .view nav .search form input[type=text]:-ms-input-placeholder {
+      color: #337AB7; }
+  section .main .view nav .search form span {
     position: absolute;
-    bottom: 0;
-    background-color: #eee;
-    width: 100%; }
-    body footer ul {
-      max-width: 1200px;
-      margin-bottom: 0; }
-      body footer ul li {
-        display: inline; }
-        body footer ul li span, body footer ul li a {
+    right: 0;
+    color: #239CF9;
+    margin-top: 7px;
+    margin-right: 7px;
+    background-color: transparent; }
+section .main .view .content {
+  border-top: solid 1px #D0E2F0;
+  border-left: solid 1px #D0E2F0;
+  border-right: solid 1px #D0E2F0;
+  border-bottom: solid 1px #D0E2F0;
+  overflow: scroll; }
+  section .main .view .content + .content {
+    margin-top: 2em; }
+  section .main .view .content ul {
+    margin: 0;
+    padding: 0; }
+    section .main .view .content ul li {
+      display: inline; }
+      @media (max-width: 767px) {
+        section .main .view .content ul li.title {
+          position: absolute;
+          z-index: 1; } }
+      section .main .view .content ul li.title h3 {
+        margin: 0;
+        font-size: 1.4em; }
+    @media (max-width: 767px) {
+      section .main .view .content ul div.variables {
+        margin-left: 50%;
+        padding-left: 30px; } }
+  section .main .view .content .header {
+    background-color: #EEE; }
+    @media (max-width: 767px) {
+      section .main .view .content .header {
+        min-width: 383.5px; } }
+    section .main .view .content .header ul li a {
+      background-color: #EEE;
+      color: #666;
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      padding: 0.5em 15px;
+      box-sizing: content-box;
+      margin-left: -15px; }
+      @media (max-width: 991px) {
+        section .main .view .content .header ul li a:after {
+          margin-top: 6px;
+          display: block;
+          width: 0;
+          height: 0;
+          content: "";
+          vertical-align: -5px;
+          border: 6px solid;
+          border-top-color: transparent;
+          border-left-color: transparent;
+          border-right-color: transparent;
+          border-bottom-color: transparent; } }
+      section .main .view .content .header ul li a:hover {
+        color: #EEE;
+        background-color: #666; }
+      section .main .view .content .header ul li a.selected.desc:after {
+        margin-left: 8px;
+        display: inline-block;
+        width: 0;
+        height: 0;
+        content: "";
+        vertical-align: -5px;
+        border: 6px solid;
+        border-left-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent; }
+        @media (max-width: 991px) {
+          section .main .view .content .header ul li a.selected.desc:after {
+            display: block;
+            margin-top: 6px;
+            margin-left: 0; } }
+      section .main .view .content .header ul li a.selected.asc:after {
+        margin-left: 8px;
+        display: inline-block;
+        width: 0;
+        height: 0;
+        content: "";
+        vertical-align: 1px;
+        border: 6px solid;
+        border-left-color: transparent;
+        border-right-color: transparent;
+        border-top-color: transparent; }
+        @media (max-width: 991px) {
+          section .main .view .content .header ul li a.selected.asc:after {
+            display: block;
+            margin-left: 0; } }
+  section .main .view .content .sites {
+    padding-top: 1em; }
+    @media (max-width: 767px) {
+      section .main .view .content .sites {
+        min-width: 383.5px; } }
+    section .main .view .content .sites .noresults, section .main .view .content .sites ul {
+      padding-bottom: 1em; }
+    section .main .view .content .sites .noresults {
+      display: block;
+      text-align: center;
+      margin: 0;
+      color: #337AB7; }
+      section .main .view .content .sites .noresults span {
+        margin-right: 0.5em; }
+    section .main .view .content .sites ul li {
+      background-color: #FFF; }
+      section .main .view .content .sites ul li .point {
+        width: 0.75em;
+        background-color: #239CF9;
+        height: 0.75em;
+        display: inline-block;
+        border-radius: 0.75em;
+        transition: opacity 0.3s; }
+      section .main .view .content .sites ul li.complexity, section .main .view .content .sites ul li.size, section .main .view .content .sites ul li.activity, section .main .view .content .sites ul li.health {
+        font-size: 0.8em;
+        margin-top: 0.75em; }
+        @media (max-width: 1199px) {
+          section .main .view .content .sites ul li.complexity, section .main .view .content .sites ul li.size, section .main .view .content .sites ul li.activity, section .main .view .content .sites ul li.health {
+            margin-top: 1.5em; } }
+    section .main .view .content .sites ul.variables {
+      padding-bottom: 0; }
+  section .main .view .content .rules, section .main .view .content .notifications, section .main .view .content .total {
+    padding: 15px; }
+    section .main .view .content .rules .rule-group, section .main .view .content .rules .notification-choices, section .main .view .content .notifications .rule-group, section .main .view .content .notifications .notification-choices, section .main .view .content .total .rule-group, section .main .view .content .total .notification-choices {
+      padding-left: 2em;
+      margin-top: 1.5em; }
+    @media (max-width: 991px) {
+      section .main .view .content .rules .rule-group, section .main .view .content .notifications .rule-group, section .main .view .content .total .rule-group {
+        background-color: rgba(35, 156, 249, 0.2);
+        padding: 0 15px;
+        margin-left: -15px;
+        margin-right: -15px; } }
+    section .main .view .content .rules .notification-choices li, section .main .view .content .notifications .notification-choices li, section .main .view .content .total .notification-choices li {
+      display: block; }
+      section .main .view .content .rules .notification-choices li select, section .main .view .content .rules .notification-choices li input, section .main .view .content .notifications .notification-choices li select, section .main .view .content .notifications .notification-choices li input, section .main .view .content .total .notification-choices li select, section .main .view .content .total .notification-choices li input {
+        margin: 0; }
+    section .main .view .content .rules .rule, section .main .view .content .rules .rule-group-heading, section .main .view .content .notifications .rule, section .main .view .content .notifications .rule-group-heading, section .main .view .content .total .rule, section .main .view .content .total .rule-group-heading {
+      display: block;
+      margin-top: 0.5em;
+      margin-bottom: 0.5em; }
+      section .main .view .content .rules .rule:after, section .main .view .content .rules .rule-group-heading:after, section .main .view .content .notifications .rule:after, section .main .view .content .notifications .rule-group-heading:after, section .main .view .content .total .rule:after, section .main .view .content .total .rule-group-heading:after {
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden; }
+      section .main .view .content .rules .rule .buttons, section .main .view .content .rules .rule-group-heading .buttons, section .main .view .content .notifications .rule .buttons, section .main .view .content .notifications .rule-group-heading .buttons, section .main .view .content .total .rule .buttons, section .main .view .content .total .rule-group-heading .buttons {
+        float: right; }
+        section .main .view .content .rules .rule .buttons button, section .main .view .content .rules .rule .buttons a.button, section .main .view .content .rules .rule-group-heading .buttons button, section .main .view .content .rules .rule-group-heading .buttons a.button, section .main .view .content .notifications .rule .buttons button, section .main .view .content .notifications .rule .buttons a.button, section .main .view .content .notifications .rule-group-heading .buttons button, section .main .view .content .notifications .rule-group-heading .buttons a.button, section .main .view .content .total .rule .buttons button, section .main .view .content .total .rule .buttons a.button, section .main .view .content .total .rule-group-heading .buttons button, section .main .view .content .total .rule-group-heading .buttons a.button {
+          margin-left: 0.25em; }
+    @media (max-width: 991px) {
+      section .main .view .content .rules .rule select, section .main .view .content .rules .rule input, section .main .view .content .notifications .rule select, section .main .view .content .notifications .rule input, section .main .view .content .total .rule select, section .main .view .content .total .rule input {
+        width: 100%;
+        margin-top: 0.5em; }
+      section .main .view .content .rules .rule .buttons, section .main .view .content .notifications .rule .buttons, section .main .view .content .total .rule .buttons {
+        margin-top: 0.5em; } }
+    section .main .view .content .rules .rule-group-heading, section .main .view .content .notifications .rule-group-heading, section .main .view .content .total .rule-group-heading {
+      margin-bottom: 1.5em; }
+    section .main .view .content .rules select, section .main .view .content .rules input, section .main .view .content .notifications select, section .main .view .content .notifications input, section .main .view .content .total select, section .main .view .content .total input {
+      font-size: 0.85em;
+      border-width: solid 1px #D0E2F0;
+      padding: 0.25em 2.5em 0.25em 1em;
+      color: #666;
+      border: solid 1px #D0E2F0;
+      border-radius: 0.5em;
+      margin: 2px 2px 0 0; }
+    section .main .view .content .rules select, section .main .view .content .notifications select, section .main .view .content .total select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      cursor: pointer;
+      background: #FFF url(/img/select.svg);
+      background-size: contain;
+      background-position: top right;
+      background-repeat: no-repeat; }
+    section .main .view .content .rules input, section .main .view .content .notifications input, section .main .view .content .total input {
+      padding-right: 1em;
+      background-color: #FFF; }
+    section .main .view .content .rules .total, section .main .view .content .notifications .total, section .main .view .content .total .total {
+      margin: 2em 0 0 0;
+      font-weight: bold; }
+    section .main .view .content .rules .error span, section .main .view .content .notifications .error span, section .main .view .content .total .error span {
+      font-size: 0.9em;
+      color: #239CF9;
+      margin-top: 0.5em;
+      display: block; }
+section .main .context {
+  padding-left: 0; }
+  @media (max-width: 767px) {
+    section .main .context {
+      display: none; } }
+  section .main .context ul {
+    margin: 0;
+    padding-left: 0; }
+    section .main .context ul li {
+      display: inline; }
+      section .main .context ul li a {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: block;
+        padding: 0.35em 0 0.35em 1.5em;
+        font-weight: bold; }
+        section .main .context ul li a.selected {
+          color: #666; }
+        section .main .context ul li a.folder:before {
+          margin-left: -1.25em;
+          margin-right: 0.25em;
           display: inline-block;
-          padding: 0.5em 0;
-          margin-right: 1em; }
+          width: 0;
+          height: 0;
+          content: "";
+          vertical-align: -1px;
+          border: 6px solid;
+          border-right-color: transparent;
+          border-top-color: transparent;
+          border-bottom-color: transparent; }
+        section .main .context ul li a.folder.open:before {
+          margin-left: -1.5em;
+          margin-right: 0.5em;
+          display: inline-block;
+          width: 0;
+          height: 0;
+          content: "";
+          vertical-align: -5px;
+          border: 6px solid;
+          border-right-color: transparent;
+          border-left-color: transparent;
+          border-bottom-color: transparent; }
+    section .main .context ul.folders li > ul li a {
+      padding-left: 2.5em; }
+    section .main .context ul.folders li > ul li > ul li a {
+      padding-left: 4.5em; }
+    section .main .context ul.folders li > ul li > ul li > ul li a {
+      padding-left: 6.5em; }
+    section .main .context ul + .actions {
+      margin-top: 2em; }
+  section .main .context .actions button, section .main .context .actions a.button {
+    margin-bottom: 0.25em;
+    width: 100%;
+    text-align: left;
+    display: block;
+    padding: 0.25em 1.5em; }
+    section .main .context .actions button span, section .main .context .actions a.button span {
+      float: right;
+      margin-top: 1px; }
+section form#signon {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 0.5em;
+  padding: 3em;
+  color: #666;
+  max-width: 600px;
+  margin: 3em auto 0 auto; }
+  section form#signon span.messages {
+    display: block;
+    color: #239CF9;
+    font-weight: bold;
+    margin-bottom: 1.5em; }
+  section form#signon input {
+    width: 100%;
+    padding: 0.5em; }
+    section form#signon input + input {
+      margin-top: 0.5em; }
+    section form#signon input#remember {
+      width: auto;
+      margin-top: 2em; }
+  section form#signon button {
+    margin-top: 2em;
+    width: 100%;
+    background-color: #239CF9;
+    color: #FFF;
+    padding: 0.5em;
+    border-radius: 0.25em;
+    font-size: 1.4em; }
+    section form#signon button:hover {
+      background-color: #337AB7; }
+
+footer {
+  position: absolute;
+  bottom: 0;
+  background-color: #EEE;
+  width: 100%; }
+  footer ul {
+    max-width: 1280px;
+    margin-bottom: 0; }
+    footer ul li {
+      display: inline; }
+      footer ul li span, footer ul li a {
+        display: inline-block;
+        padding: 0.5em 0;
+        margin-right: 1em; }
 
 a {
   color: #239CF9; }
@@ -2813,18 +2845,18 @@ a {
 
 button, a.button {
   border: 0;
-  background-color: #eee;
+  background-color: #EEE;
   color: #666;
   border-radius: 6px;
   display: inline;
   padding: 0.25em 0.5em; }
   button:hover, a.button:hover {
     background-color: #666;
-    color: #eee;
+    color: #EEE;
     transition: color 0.3s ease, background-color 0.3s ease; }
   button:active, a.button:active {
     background-color: #239CF9;
-    color: #fff;
+    color: #FFF;
     transition: color 0 ease, background-color 0 ease; }
 
 fieldset {

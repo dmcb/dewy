@@ -1,31 +1,17 @@
-        <div class="wrapper splash">
-            <div class="logo">
-                <h1>
-                    <img src="/img/dewy_white.png" alt="Dewy">
-                </h1>
-            </div>
-            <section>
-                <form method="post" action="/signon" id="signon">
-                {{#if message}}
-                <span class="messages">
-                    {{message}}
-                </span>
-                {{/if}}
-                <fieldset>
-                    <input id="username" name="username" placeholder="Your username" />
-                    <input id="password" name="password" placeholder="Your password" type="password" />
-                </fieldset>
-                <label class="remember">
-                    <input id="remember" name="remember" type="checkbox" value="on" />
-                    <span>Remember me</span>
-                </label>
-                <button type="submit">Sign on</button>
-            </section>
-            <footer>
-                <ul>
-                    <li><span>&copy; 2015 Dewy</span></li>
-                    <li><a href="">Contact</a></li>
-                    <li><a href="">Help</a></li>
-                </ul>
-            </footer>
-        </div>
+        <section class="signon">
+            <form method="post" action="/signon" id="signon">
+            {{#if message}}
+            <span class="messages">
+                {{message}}
+            </span>
+            {{/if}}
+            <fieldset>
+                <input id="username" name="username" placeholder="Your username" />
+                <input id="password" name="password" placeholder="Your password" type="password" />
+            </fieldset>
+            <label class="remember">
+                <input id="remember" name="remember" type="checkbox" value="on" />
+                <span>Remember me</span>
+            </label>
+            <button type="submit">Sign on</button>
+        </section>
