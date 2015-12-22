@@ -138,7 +138,7 @@ h1 {
 	margin-top: 0;
 
 	img {
-		max-width: 148px;
+		max-width: 96px;
 		position: absolute;
 		top: 16px;
 	}
@@ -787,6 +787,10 @@ footer {
 }
 
 // Elements
+h1,h2 {
+	font-family: "katarine-web";
+}
+
 a {
 	color: $blue;
 

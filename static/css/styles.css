@@ -2429,7 +2429,7 @@ h1 {
   max-width: 1400px;
   margin-top: 0; }
   h1 img {
-    max-width: 148px;
+    max-width: 96px;
     position: absolute;
     top: 16px; }
 
@@ -2825,6 +2825,9 @@ footer {
         display: inline-block;
         padding: 0.5em 0;
         margin-right: 1em; }
+
+h1, h2 {
+  font-family: "katarine-web"; }
 
 a {
   color: #239CF9; }
