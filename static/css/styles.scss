@@ -196,11 +196,29 @@ section {
 
 			.getstarted, .views, .querying, .notifications {
 				@extend .row;
-				padding-top: 2em;
-				padding-bottom: 2em;
+				padding-top: 3em;
+				border-bottom: 1px solid $light-blue;
+				background-color: #FFF;
 
 				.content {
 					@extend .col-md-6;
+					padding-bottom: 3em;
+				}
+
+				.image {
+					padding: 25px 25px 0 25px;
+					overflow: hidden;
+					@extend .col-xs-12;
+
+					.screenshot {
+						-webkit-box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.5);
+						-moz-box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.5);
+						box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.5);
+						max-width: 490px;
+						margin-left: auto;
+						margin-right: auto;
+						display: block;
+					}
 				}
 			}
 		}

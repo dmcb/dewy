@@ -1494,13 +1494,13 @@ address {
   .row:after, header nav ul:after, section.feature .feature .getstarted:after, section.feature .feature .views:after, section.feature .feature .querying:after, section.feature .feature .notifications:after, section .main:after, section .main .view nav:after, section .main .view .content ul:after, section .main .view .content ul div.variables ul:after {
     clear: both; }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, section .main .view .content ul div.variables ul li.complexity, section .main .view .content ul div.variables ul li.size, section .main .view .content ul div.variables ul li.activity, section .main .view .content ul div.variables ul li.health, .col-sm-3, section .main .context, .col-md-3, section .main .view .content ul li.title, .col-lg-3, .col-xs-4, .col-sm-4, section .main .view .content ul li.title, .col-md-4, section .main .view nav .search, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, section .main .view .content ul li.title, .col-sm-6, .col-md-6, section.feature .feature .getstarted .content, section.feature .feature .views .content, section.feature .feature .querying .content, section.feature .feature .notifications .content, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, section .main .view .content ul div.variables, .col-md-8, section .main .view nav .tabs, .col-lg-8, .col-xs-9, .col-sm-9, section .main .view, .col-md-9, section .main .view .content ul div.variables, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, section .main h2, section .main #titleerror, section .main .view .content ul div.variables, .col-sm-12, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, section .main .view .content ul div.variables ul li.complexity, section .main .view .content ul div.variables ul li.size, section .main .view .content ul div.variables ul li.activity, section .main .view .content ul div.variables ul li.health, .col-sm-3, section .main .context, .col-md-3, section .main .view .content ul li.title, .col-lg-3, .col-xs-4, .col-sm-4, section .main .view .content ul li.title, .col-md-4, section .main .view nav .search, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, section .main .view .content ul li.title, .col-sm-6, .col-md-6, section.feature .feature .getstarted .content, section.feature .feature .views .content, section.feature .feature .querying .content, section.feature .feature .notifications .content, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, section .main .view .content ul div.variables, .col-md-8, section .main .view nav .tabs, .col-lg-8, .col-xs-9, .col-sm-9, section .main .view, .col-md-9, section .main .view .content ul div.variables, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, section.feature .feature .getstarted .image, section.feature .feature .views .image, section.feature .feature .querying .image, section.feature .feature .notifications .image, section .main h2, section .main #titleerror, section .main .view .content ul div.variables, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px; }
 
-.col-xs-1, .col-xs-2, .col-xs-3, section .main .view .content ul div.variables ul li.complexity, section .main .view .content ul div.variables ul li.size, section .main .view .content ul div.variables ul li.activity, section .main .view .content ul div.variables ul li.health, .col-xs-4, .col-xs-5, .col-xs-6, section .main .view .content ul li.title, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, section .main h2, section .main #titleerror, section .main .view .content ul div.variables {
+.col-xs-1, .col-xs-2, .col-xs-3, section .main .view .content ul div.variables ul li.complexity, section .main .view .content ul div.variables ul li.size, section .main .view .content ul div.variables ul li.activity, section .main .view .content ul div.variables ul li.health, .col-xs-4, .col-xs-5, .col-xs-6, section .main .view .content ul li.title, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, section.feature .feature .getstarted .image, section.feature .feature .views .image, section.feature .feature .querying .image, section.feature .feature .notifications .image, section .main h2, section .main #titleerror, section .main .view .content ul div.variables {
   float: left; }
 
 .col-xs-1 {
@@ -1536,7 +1536,7 @@ address {
 .col-xs-11 {
   width: 91.6666666667%; }
 
-.col-xs-12, section .main h2, section .main #titleerror, section .main .view .content ul div.variables {
+.col-xs-12, section.feature .feature .getstarted .image, section.feature .feature .views .image, section.feature .feature .querying .image, section.feature .feature .notifications .image, section .main h2, section .main #titleerror, section .main .view .content ul div.variables {
   width: 100%; }
 
 .col-xs-pull-0 {
@@ -2466,8 +2466,22 @@ section.feature {
   section.feature .feature {
     max-width: 960px; }
     section.feature .feature .getstarted, section.feature .feature .views, section.feature .feature .querying, section.feature .feature .notifications {
-      padding-top: 2em;
-      padding-bottom: 2em; }
+      padding-top: 3em;
+      border-bottom: 1px solid #D0E2F0;
+      background-color: #FFF; }
+      section.feature .feature .getstarted .content, section.feature .feature .views .content, section.feature .feature .querying .content, section.feature .feature .notifications .content {
+        padding-bottom: 3em; }
+      section.feature .feature .getstarted .image, section.feature .feature .views .image, section.feature .feature .querying .image, section.feature .feature .notifications .image {
+        padding: 25px 25px 0 25px;
+        overflow: hidden; }
+        section.feature .feature .getstarted .image .screenshot, section.feature .feature .views .image .screenshot, section.feature .feature .querying .image .screenshot, section.feature .feature .notifications .image .screenshot {
+          -webkit-box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.5);
+          -moz-box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.5);
+          max-width: 490px;
+          margin-left: auto;
+          margin-right: auto;
+          display: block; }
 section .main h2, section .main #titleerror {
   color: #239CF9;
   font-size: 1.8em;
