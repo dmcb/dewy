@@ -2474,6 +2474,10 @@ section.feature {
       section.feature .feature .getstarted .image, section.feature .feature .views .image, section.feature .feature .querying .image, section.feature .feature .notifications .image {
         padding: 25px 25px 0 25px;
         overflow: hidden; }
+        @media (max-width: 767px) {
+          section.feature .feature .getstarted .image, section.feature .feature .views .image, section.feature .feature .querying .image, section.feature .feature .notifications .image {
+            overflow: auto;
+            padding: 0; } }
         section.feature .feature .getstarted .image .screenshot, section.feature .feature .views .image .screenshot, section.feature .feature .querying .image .screenshot, section.feature .feature .notifications .image .screenshot {
           -webkit-box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.5);
           -moz-box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.5);
@@ -2482,6 +2486,12 @@ section.feature {
           margin-left: auto;
           margin-right: auto;
           display: block; }
+          @media (max-width: 767px) {
+            section.feature .feature .getstarted .image .screenshot, section.feature .feature .views .image .screenshot, section.feature .feature .querying .image .screenshot, section.feature .feature .notifications .image .screenshot {
+              -webkit-box-shadow: 0px 0px 0px 0px transparent;
+              -moz-box-shadow: 0px 0px 0px 0px transparent;
+              box-shadow: 0px 0px 0px 0px transparent;
+              max-width: 100%; } }
 section .main h2, section .main #titleerror {
   color: #239CF9;
   font-size: 1.8em;
