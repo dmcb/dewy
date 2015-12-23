@@ -185,14 +185,50 @@ section {
 		h2 {
 			margin-top: 0;
 			font-size: 3em;
+			@extend .col-xs-12;
 		}
 
 		p {
 			font-size: 1.25em;
+			@extend .col-md-6;
+		}
+
+		ul {
+			padding: 0;
+
+			li {
+				margin-top: 3em;
+				display: block;
+				@extend .col-md-4;
+
+				.step {
+					display: block;
+					background-color: $blue;
+					color: #FFF;
+					border-radius: 1.5em;
+					height: 1.5em;
+					width: 1.5em;
+					margin-left: auto;
+					margin-right: auto;
+					text-align: center;
+					font-size: 1.5em;
+				}
+
+				.instruction {
+					text-align: center;
+					display: block;
+					margin-top: 2em;
+					font-weight: bold;
+				}
+			}
 		}
 
 		.feature {
 			@include full-width(960px);
+
+			.getstarted {
+				padding-bottom: 5em;
+			}
 
 			.getstarted, .views, .querying, .notifications {
 				@extend .row;
@@ -201,7 +237,6 @@ section {
 				background-color: #FFF;
 
 				.content {
-					@extend .col-md-6;
 					padding-bottom: 3em;
 				}
 
