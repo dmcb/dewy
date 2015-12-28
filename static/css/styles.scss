@@ -69,7 +69,7 @@ header {
 	background-color: $light-grey;
 
 	nav {
-		@include full-width(1400px);
+		@extend .container;
 
 		ul {
 			@extend .row;
@@ -134,7 +134,7 @@ header {
 }
 
 h1 {
-	@include full-width(1400px);
+	@extend .container;
 	margin-top: 0;
 
 	img {
@@ -145,7 +145,7 @@ h1 {
 }
 
 .message {
-	@include full-width();
+	@extend .container;
 
 	span {
 		padding: 0.5em $grid-gutter-width/2;
@@ -159,13 +159,23 @@ h1 {
 
 section {
 	&.app, &.signon {
+		@extend .container;
+
 		padding-top: 2em;
 		padding-bottom: 5em;
-		@include full-width();
 	}
 
 	&.introduction, &.signup {
-		@include full-width(960px);
+		@extend .container;
+
+		.content {
+			@extend .row;
+			@extend .col-md-10;
+			@extend .col-md-offset-1;
+		}
+	}
+
+	&.introduction {
 		padding-top: 3em;
 		padding-bottom: 3em;
 
@@ -175,6 +185,15 @@ section {
 
 		p {
 			font-size: 1.5em;
+		}
+	}
+
+	&.signup {
+		padding-top: 1em;
+		padding-bottom: 8em;
+
+		h2 {
+			font-size: 3em;
 		}
 	}
 
@@ -194,12 +213,13 @@ section {
 		}
 
 		ul {
+			@extend .col-xs-12;
 			padding: 0;
 
 			li {
 				margin-top: 3em;
 				display: block;
-				@extend .col-md-4;
+				@extend .col-sm-4;
 
 				.step {
 					display: block;
@@ -224,7 +244,7 @@ section {
 		}
 
 		.feature {
-			@include full-width(960px);
+			@extend .container;
 
 			.getstarted {
 				padding-bottom: 5em;
@@ -232,22 +252,24 @@ section {
 
 			.getstarted, .views, .querying, .notifications {
 				@extend .row;
+				@extend .col-md-10;
+				@extend .col-md-offset-1;
 				padding-top: 3em;
 				border-bottom: 1px solid $light-blue;
 				background-color: #FFF;
 
 				.content {
+					@extend .row;
 					padding-bottom: 3em;
 				}
 
 				.image {
 					padding: 25px 25px 0 25px;
 					overflow: hidden;
-					@extend .col-xs-12;
+					@extend .row;
 
 					@media (max-width: $screen-xs-max) {
 						overflow: auto;
-						padding: 0;
 					}
 
 					.screenshot {
@@ -787,7 +809,7 @@ section {
 		}
 	}
 
-	form#signon {
+	form#signon, form#signup {
 		background-color: rgba(#FFF, 0.9);
 		border-radius: 0.5em;
 		padding: 3em;
@@ -839,7 +861,7 @@ footer {
 	width: 100%;
 
 	ul {
-		@include full-width();
+		@extend .container;
 		margin-bottom: 0;
 
 		li {

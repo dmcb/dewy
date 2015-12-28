@@ -10,8 +10,8 @@
                     <div class="content">
                         <h2>How It Works</h2>
                         <ul>
-                            <li><span class="step">1</span><span class="instruction">Sign up for Dewy and get a unique key.</span></li>
-                            <li><span class="step">2</span><span class="instruction">Install the Drupal module to any site you want insight into.</span></li>
+                            <li><span class="step">1</span><span class="instruction"><a href="">Sign up for Dewy</a> and get a unique key.</span></li>
+                            <li><span class="step">2</span><span class="instruction">Install the <a href="https://www.drupal.org/project/dewy">Drupal module</a> to any site you want insight into.</span></li>
                             <li><span class="step">3</span><span class="instruction">Get all the details on all your sites.</span></li>
                         </ul>
                     </div>
@@ -44,8 +44,19 @@
         </section>
         <section class="signup">
             <div class="content">
-                <form>
-                    <h2>Get started</h2>
+                <h2>Sign up for Dewy</h2>
+                <form method="post" action="/" id="signup">
+                {{#if message}}
+                <span class="messages">
+                    {{message}}
+                </span>
+                {{/if}}
+                <fieldset>
+                    <input id="username" name="username" placeholder="Your username" />
+                    <input id="email" name="email" placeholder="Your email" />
+                    <input id="password" name="password" placeholder="Your password" type="password" />
+                </fieldset>
+                <button type="submit">Sign up</button>
                 </form>
             </div>
         </section>

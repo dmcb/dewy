@@ -1454,53 +1454,53 @@ address {
   font-style: normal;
   line-height: 1.428571429; }
 
-.container {
+.container, header nav, h1, .message, section.app, section.signon, section.introduction, section.signup, section.feature .feature, footer ul {
   margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px; }
-  .container:before, .container:after {
+  .container:before, header nav:before, h1:before, .message:before, section.app:before, section.signon:before, section.introduction:before, section.signup:before, section.feature .feature:before, footer ul:before, .container:after, header nav:after, h1:after, .message:after, section.app:after, section.signon:after, section.introduction:after, section.signup:after, section.feature .feature:after, footer ul:after {
     content: " ";
     display: table; }
-  .container:after {
+  .container:after, header nav:after, h1:after, .message:after, section.app:after, section.signon:after, section.introduction:after, section.signup:after, section.feature .feature:after, footer ul:after {
     clear: both; }
   @media (min-width: 768px) {
-    .container {
+    .container, header nav, h1, .message, section.app, section.signon, section.introduction, section.signup, section.feature .feature, footer ul {
       width: 750px; } }
   @media (min-width: 992px) {
-    .container {
+    .container, header nav, h1, .message, section.app, section.signon, section.introduction, section.signup, section.feature .feature, footer ul {
       width: 970px; } }
   @media (min-width: 1200px) {
-    .container {
+    .container, header nav, h1, .message, section.app, section.signon, section.introduction, section.signup, section.feature .feature, footer ul {
       width: 1170px; } }
 
-.container-fluid, header nav, h1, .message, section.app, section.signon, section.introduction, section.signup, section.feature .feature, footer ul {
+.container-fluid {
   margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px; }
-  .container-fluid:before, header nav:before, h1:before, .message:before, section.app:before, section.signon:before, section.introduction:before, section.signup:before, section.feature .feature:before, footer ul:before, .container-fluid:after, header nav:after, h1:after, .message:after, section.app:after, section.signon:after, section.introduction:after, section.signup:after, section.feature .feature:after, footer ul:after {
+  .container-fluid:before, .container-fluid:after {
     content: " ";
     display: table; }
-  .container-fluid:after, header nav:after, h1:after, .message:after, section.app:after, section.signon:after, section.introduction:after, section.signup:after, section.feature .feature:after, footer ul:after {
+  .container-fluid:after {
     clear: both; }
 
-.row, header nav ul, section.feature .feature .getstarted, section.feature .feature .views, section.feature .feature .querying, section.feature .feature .notifications, section .main, section .main .view nav, section .main .view .content ul, section .main .view .content ul div.variables ul {
+.row, header nav ul, section.introduction .content, section.signup .content, section.feature .feature .getstarted, section.feature .feature .views, section.feature .feature .querying, section.feature .feature .notifications, section.feature .feature .getstarted .content, section.feature .feature .views .content, section.feature .feature .querying .content, section.feature .feature .notifications .content, section.feature .feature .getstarted .image, section.feature .feature .views .image, section.feature .feature .querying .image, section.feature .feature .notifications .image, section .main, section .main .view nav, section .main .view .content ul, section .main .view .content ul div.variables ul {
   margin-left: -15px;
   margin-right: -15px; }
-  .row:before, header nav ul:before, section.feature .feature .getstarted:before, section.feature .feature .views:before, section.feature .feature .querying:before, section.feature .feature .notifications:before, section .main:before, section .main .view nav:before, section .main .view .content ul:before, section .main .view .content ul div.variables ul:before, .row:after, header nav ul:after, section.feature .feature .getstarted:after, section.feature .feature .views:after, section.feature .feature .querying:after, section.feature .feature .notifications:after, section .main:after, section .main .view nav:after, section .main .view .content ul:after, section .main .view .content ul div.variables ul:after {
+  .row:before, header nav ul:before, section.introduction .content:before, section.signup .content:before, section.feature .feature .getstarted:before, section.feature .feature .views:before, section.feature .feature .querying:before, section.feature .feature .notifications:before, section.feature .feature .getstarted .content:before, section.feature .feature .views .content:before, section.feature .feature .querying .content:before, section.feature .feature .notifications .content:before, section.feature .feature .getstarted .image:before, section.feature .feature .views .image:before, section.feature .feature .querying .image:before, section.feature .feature .notifications .image:before, section .main:before, section .main .view nav:before, section .main .view .content ul:before, section .main .view .content ul div.variables ul:before, .row:after, header nav ul:after, section.introduction .content:after, section.signup .content:after, section.feature .feature .getstarted:after, section.feature .feature .views:after, section.feature .feature .querying:after, section.feature .feature .notifications:after, section.feature .feature .getstarted .content:after, section.feature .feature .views .content:after, section.feature .feature .querying .content:after, section.feature .feature .notifications .content:after, section.feature .feature .getstarted .image:after, section.feature .feature .views .image:after, section.feature .feature .querying .image:after, section.feature .feature .notifications .image:after, section .main:after, section .main .view nav:after, section .main .view .content ul:after, section .main .view .content ul div.variables ul:after {
     content: " ";
     display: table; }
-  .row:after, header nav ul:after, section.feature .feature .getstarted:after, section.feature .feature .views:after, section.feature .feature .querying:after, section.feature .feature .notifications:after, section .main:after, section .main .view nav:after, section .main .view .content ul:after, section .main .view .content ul div.variables ul:after {
+  .row:after, header nav ul:after, section.introduction .content:after, section.signup .content:after, section.feature .feature .getstarted:after, section.feature .feature .views:after, section.feature .feature .querying:after, section.feature .feature .notifications:after, section.feature .feature .getstarted .content:after, section.feature .feature .views .content:after, section.feature .feature .querying .content:after, section.feature .feature .notifications .content:after, section.feature .feature .getstarted .image:after, section.feature .feature .views .image:after, section.feature .feature .querying .image:after, section.feature .feature .notifications .image:after, section .main:after, section .main .view nav:after, section .main .view .content ul:after, section .main .view .content ul div.variables ul:after {
     clear: both; }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, section .main .view .content ul div.variables ul li.complexity, section .main .view .content ul div.variables ul li.size, section .main .view .content ul div.variables ul li.activity, section .main .view .content ul div.variables ul li.health, .col-sm-3, section .main .context, .col-md-3, section .main .view .content ul li.title, .col-lg-3, .col-xs-4, .col-sm-4, section .main .view .content ul li.title, .col-md-4, section.feature ul li, section .main .view nav .search, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, section .main .view .content ul li.title, .col-sm-6, .col-md-6, section.feature p, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, section .main .view .content ul div.variables, .col-md-8, section .main .view nav .tabs, .col-lg-8, .col-xs-9, .col-sm-9, section .main .view, .col-md-9, section .main .view .content ul div.variables, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, section.feature h2, section.feature .feature .getstarted .image, section.feature .feature .views .image, section.feature .feature .querying .image, section.feature .feature .notifications .image, section .main h2, section .main #titleerror, section .main .view .content ul div.variables, .col-sm-12, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, section .main .view .content ul div.variables ul li.complexity, section .main .view .content ul div.variables ul li.size, section .main .view .content ul div.variables ul li.activity, section .main .view .content ul div.variables ul li.health, .col-sm-3, section .main .context, .col-md-3, section .main .view .content ul li.title, .col-lg-3, .col-xs-4, .col-sm-4, section.feature ul li, section .main .view .content ul li.title, .col-md-4, section .main .view nav .search, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, section .main .view .content ul li.title, .col-sm-6, .col-md-6, section.feature p, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, section .main .view .content ul div.variables, .col-md-8, section .main .view nav .tabs, .col-lg-8, .col-xs-9, .col-sm-9, section .main .view, .col-md-9, section .main .view .content ul div.variables, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, section.introduction .content, section.signup .content, section.feature .feature .getstarted, section.feature .feature .views, section.feature .feature .querying, section.feature .feature .notifications, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, section.feature h2, section.feature ul, section .main h2, section .main #titleerror, section .main .view .content ul div.variables, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px; }
 
-.col-xs-1, .col-xs-2, .col-xs-3, section .main .view .content ul div.variables ul li.complexity, section .main .view .content ul div.variables ul li.size, section .main .view .content ul div.variables ul li.activity, section .main .view .content ul div.variables ul li.health, .col-xs-4, .col-xs-5, .col-xs-6, section .main .view .content ul li.title, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, section.feature h2, section.feature .feature .getstarted .image, section.feature .feature .views .image, section.feature .feature .querying .image, section.feature .feature .notifications .image, section .main h2, section .main #titleerror, section .main .view .content ul div.variables {
+.col-xs-1, .col-xs-2, .col-xs-3, section .main .view .content ul div.variables ul li.complexity, section .main .view .content ul div.variables ul li.size, section .main .view .content ul div.variables ul li.activity, section .main .view .content ul div.variables ul li.health, .col-xs-4, .col-xs-5, .col-xs-6, section .main .view .content ul li.title, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, section.feature h2, section.feature ul, section .main h2, section .main #titleerror, section .main .view .content ul div.variables {
   float: left; }
 
 .col-xs-1 {
@@ -1536,7 +1536,7 @@ address {
 .col-xs-11 {
   width: 91.6666666667%; }
 
-.col-xs-12, section.feature h2, section.feature .feature .getstarted .image, section.feature .feature .views .image, section.feature .feature .querying .image, section.feature .feature .notifications .image, section .main h2, section .main #titleerror, section .main .view .content ul div.variables {
+.col-xs-12, section.feature h2, section.feature ul, section .main h2, section .main #titleerror, section .main .view .content ul div.variables {
   width: 100%; }
 
 .col-xs-pull-0 {
@@ -1657,7 +1657,7 @@ address {
   margin-left: 100%; }
 
 @media (min-width: 768px) {
-  .col-sm-1, .col-sm-2, .col-sm-3, section .main .context, .col-sm-4, section .main .view .content ul li.title, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, section .main .view .content ul div.variables, .col-sm-9, section .main .view, .col-sm-10, .col-sm-11, .col-sm-12 {
+  .col-sm-1, .col-sm-2, .col-sm-3, section .main .context, .col-sm-4, section.feature ul li, section .main .view .content ul li.title, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, section .main .view .content ul div.variables, .col-sm-9, section .main .view, .col-sm-10, .col-sm-11, .col-sm-12 {
     float: left; }
 
   .col-sm-1 {
@@ -1669,7 +1669,7 @@ address {
   .col-sm-3, section .main .context {
     width: 25%; }
 
-  .col-sm-4, section .main .view .content ul li.title {
+  .col-sm-4, section.feature ul li, section .main .view .content ul li.title {
     width: 33.3333333333%; }
 
   .col-sm-5 {
@@ -1813,7 +1813,7 @@ address {
   .col-sm-offset-12 {
     margin-left: 100%; } }
 @media (min-width: 992px) {
-  .col-md-1, .col-md-2, .col-md-3, section .main .view .content ul li.title, .col-md-4, section.feature ul li, section .main .view nav .search, .col-md-5, .col-md-6, section.feature p, .col-md-7, .col-md-8, section .main .view nav .tabs, .col-md-9, section .main .view .content ul div.variables, .col-md-10, .col-md-11, .col-md-12 {
+  .col-md-1, .col-md-2, .col-md-3, section .main .view .content ul li.title, .col-md-4, section .main .view nav .search, .col-md-5, .col-md-6, section.feature p, .col-md-7, .col-md-8, section .main .view nav .tabs, .col-md-9, section .main .view .content ul div.variables, .col-md-10, section.introduction .content, section.signup .content, section.feature .feature .getstarted, section.feature .feature .views, section.feature .feature .querying, section.feature .feature .notifications, .col-md-11, .col-md-12 {
     float: left; }
 
   .col-md-1 {
@@ -1825,7 +1825,7 @@ address {
   .col-md-3, section .main .view .content ul li.title {
     width: 25%; }
 
-  .col-md-4, section.feature ul li, section .main .view nav .search {
+  .col-md-4, section .main .view nav .search {
     width: 33.3333333333%; }
 
   .col-md-5 {
@@ -1843,7 +1843,7 @@ address {
   .col-md-9, section .main .view .content ul div.variables {
     width: 75%; }
 
-  .col-md-10 {
+  .col-md-10, section.introduction .content, section.signup .content, section.feature .feature .getstarted, section.feature .feature .views, section.feature .feature .querying, section.feature .feature .notifications {
     width: 83.3333333333%; }
 
   .col-md-11 {
@@ -1933,7 +1933,7 @@ address {
   .col-md-offset-0 {
     margin-left: 0%; }
 
-  .col-md-offset-1 {
+  .col-md-offset-1, section.introduction .content, section.signup .content, section.feature .feature .getstarted, section.feature .feature .views, section.feature .feature .querying, section.feature .feature .notifications {
     margin-left: 8.3333333333%; }
 
   .col-md-offset-2 {
@@ -2384,77 +2384,75 @@ body {
 header {
   border-top: 5px solid #239CF9;
   background-color: #EEE; }
-  header nav {
-    max-width: 1400px; }
-    header nav ul {
-      text-align: right;
-      margin-bottom: 0; }
-      header nav ul li {
-        display: inline;
-        position: relative; }
-        header nav ul li a {
-          display: inline-block;
-          padding: 1em 15px;
-          height: 45px; }
-          header nav ul li a:hover {
-            text-decoration: none;
-            color: #337AB7;
-            background-color: #FFF; }
-          header nav ul li a img {
-            max-width: 2em;
-            border-radius: 1em;
-            margin-right: 0.5em;
-            float: left;
-            margin-top: -5px; }
-        header nav ul li.dropped > a {
-          background-color: #FFF;
-          color: #337AB7; }
-        header nav ul li.dropped .dropdown {
-          display: block; }
-      header nav ul.dropdown {
-        margin: 0;
-        padding: 0;
-        background-color: #EEE;
-        position: absolute;
-        display: none;
-        right: 0;
-        text-align: left;
-        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
-        width: 100%;
-        z-index: 1; }
-        header nav ul.dropdown li a {
-          display: block; }
+  header nav ul {
+    text-align: right;
+    margin-bottom: 0; }
+    header nav ul li {
+      display: inline;
+      position: relative; }
+      header nav ul li a {
+        display: inline-block;
+        padding: 1em 15px;
+        height: 45px; }
+        header nav ul li a:hover {
+          text-decoration: none;
+          color: #337AB7;
+          background-color: #FFF; }
+        header nav ul li a img {
+          max-width: 2em;
+          border-radius: 1em;
+          margin-right: 0.5em;
+          float: left;
+          margin-top: -5px; }
+      header nav ul li.dropped > a {
+        background-color: #FFF;
+        color: #337AB7; }
+      header nav ul li.dropped .dropdown {
+        display: block; }
+    header nav ul.dropdown {
+      margin: 0;
+      padding: 0;
+      background-color: #EEE;
+      position: absolute;
+      display: none;
+      right: 0;
+      text-align: left;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+      width: 100%;
+      z-index: 1; }
+      header nav ul.dropdown li a {
+        display: block; }
 
 h1 {
-  max-width: 1400px;
   margin-top: 0; }
   h1 img {
     max-width: 96px;
     position: absolute;
     top: 16px; }
 
-.message {
-  max-width: 1280px; }
-  .message span {
-    padding: 0.5em 15px;
-    font-weight: bold;
-    color: #FFF;
-    background-color: #239CF9;
-    border-radius: 0.5em;
-    display: block; }
+.message span {
+  padding: 0.5em 15px;
+  font-weight: bold;
+  color: #FFF;
+  background-color: #239CF9;
+  border-radius: 0.5em;
+  display: block; }
 
 section.app, section.signon {
   padding-top: 2em;
-  padding-bottom: 5em;
-  max-width: 1280px; }
-section.introduction, section.signup {
-  max-width: 960px;
+  padding-bottom: 5em; }
+section.introduction {
   padding-top: 3em;
   padding-bottom: 3em; }
-  section.introduction h2, section.signup h2 {
+  section.introduction h2 {
     font-size: 4em; }
-  section.introduction p, section.signup p {
+  section.introduction p {
     font-size: 1.5em; }
+section.signup {
+  padding-top: 1em;
+  padding-bottom: 8em; }
+  section.signup h2 {
+    font-size: 3em; }
 section.feature {
   background-color: #FFF;
   color: #666; }
@@ -2484,39 +2482,36 @@ section.feature {
         display: block;
         margin-top: 2em;
         font-weight: bold; }
-  section.feature .feature {
-    max-width: 960px; }
-    section.feature .feature .getstarted {
-      padding-bottom: 5em; }
-    section.feature .feature .getstarted, section.feature .feature .views, section.feature .feature .querying, section.feature .feature .notifications {
-      padding-top: 3em;
-      border-bottom: 1px solid #D0E2F0;
-      background-color: #FFF; }
-      section.feature .feature .getstarted .content, section.feature .feature .views .content, section.feature .feature .querying .content, section.feature .feature .notifications .content {
-        padding-bottom: 3em; }
-      section.feature .feature .getstarted .image, section.feature .feature .views .image, section.feature .feature .querying .image, section.feature .feature .notifications .image {
-        padding: 25px 25px 0 25px;
-        overflow: hidden; }
+  section.feature .feature .getstarted {
+    padding-bottom: 5em; }
+  section.feature .feature .getstarted, section.feature .feature .views, section.feature .feature .querying, section.feature .feature .notifications {
+    padding-top: 3em;
+    border-bottom: 1px solid #D0E2F0;
+    background-color: #FFF; }
+    section.feature .feature .getstarted .content, section.feature .feature .views .content, section.feature .feature .querying .content, section.feature .feature .notifications .content {
+      padding-bottom: 3em; }
+    section.feature .feature .getstarted .image, section.feature .feature .views .image, section.feature .feature .querying .image, section.feature .feature .notifications .image {
+      padding: 25px 25px 0 25px;
+      overflow: hidden; }
+      @media (max-width: 767px) {
+        section.feature .feature .getstarted .image, section.feature .feature .views .image, section.feature .feature .querying .image, section.feature .feature .notifications .image {
+          overflow: auto; } }
+      section.feature .feature .getstarted .image .screenshot, section.feature .feature .views .image .screenshot, section.feature .feature .querying .image .screenshot, section.feature .feature .notifications .image .screenshot {
+        -webkit-box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.5);
+        -moz-box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.5);
+        box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.5);
+        max-width: 490px;
+        margin-left: auto;
+        display: block; }
+        @media (max-width: 1199px) {
+          section.feature .feature .getstarted .image .screenshot, section.feature .feature .views .image .screenshot, section.feature .feature .querying .image .screenshot, section.feature .feature .notifications .image .screenshot {
+            margin-right: auto; } }
         @media (max-width: 767px) {
-          section.feature .feature .getstarted .image, section.feature .feature .views .image, section.feature .feature .querying .image, section.feature .feature .notifications .image {
-            overflow: auto;
-            padding: 0; } }
-        section.feature .feature .getstarted .image .screenshot, section.feature .feature .views .image .screenshot, section.feature .feature .querying .image .screenshot, section.feature .feature .notifications .image .screenshot {
-          -webkit-box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.5);
-          -moz-box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.5);
-          box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.5);
-          max-width: 490px;
-          margin-left: auto;
-          display: block; }
-          @media (max-width: 1199px) {
-            section.feature .feature .getstarted .image .screenshot, section.feature .feature .views .image .screenshot, section.feature .feature .querying .image .screenshot, section.feature .feature .notifications .image .screenshot {
-              margin-right: auto; } }
-          @media (max-width: 767px) {
-            section.feature .feature .getstarted .image .screenshot, section.feature .feature .views .image .screenshot, section.feature .feature .querying .image .screenshot, section.feature .feature .notifications .image .screenshot {
-              -webkit-box-shadow: 0px 0px 0px 0px transparent;
-              -moz-box-shadow: 0px 0px 0px 0px transparent;
-              box-shadow: 0px 0px 0px 0px transparent;
-              max-width: 100%; } }
+          section.feature .feature .getstarted .image .screenshot, section.feature .feature .views .image .screenshot, section.feature .feature .querying .image .screenshot, section.feature .feature .notifications .image .screenshot {
+            -webkit-box-shadow: 0px 0px 0px 0px transparent;
+            -moz-box-shadow: 0px 0px 0px 0px transparent;
+            box-shadow: 0px 0px 0px 0px transparent;
+            max-width: 100%; } }
 section .main h2, section .main #titleerror {
   color: #239CF9;
   font-size: 1.8em;
@@ -2829,27 +2824,27 @@ section .main .context {
     section .main .context .actions button span, section .main .context .actions a.button span {
       float: right;
       margin-top: 1px; }
-section form#signon {
+section form#signon, section form#signup {
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 0.5em;
   padding: 3em;
   color: #666;
   max-width: 600px;
   margin: 3em auto 0 auto; }
-  section form#signon span.messages {
+  section form#signon span.messages, section form#signup span.messages {
     display: block;
     color: #239CF9;
     font-weight: bold;
     margin-bottom: 1.5em; }
-  section form#signon input {
+  section form#signon input, section form#signup input {
     width: 100%;
     padding: 0.5em; }
-    section form#signon input + input {
+    section form#signon input + input, section form#signup input + input {
       margin-top: 0.5em; }
-    section form#signon input#remember {
+    section form#signon input#remember, section form#signup input#remember {
       width: auto;
       margin-top: 2em; }
-  section form#signon button {
+  section form#signon button, section form#signup button {
     margin-top: 2em;
     width: 100%;
     background-color: #239CF9;
@@ -2857,7 +2852,7 @@ section form#signon {
     padding: 0.5em;
     border-radius: 0.25em;
     font-size: 1.4em; }
-    section form#signon button:hover {
+    section form#signon button:hover, section form#signup button:hover {
       background-color: #337AB7; }
 
 footer {
@@ -2866,7 +2861,6 @@ footer {
   background-color: #EEE;
   width: 100%; }
   footer ul {
-    max-width: 1280px;
     margin-bottom: 0; }
     footer ul li {
       display: inline; }
