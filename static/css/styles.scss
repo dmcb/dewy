@@ -299,7 +299,7 @@ section {
 	.main {
 		@extend .row;
 
-		h2, #titleerror {
+		h2, #titleerror, #nameerror {
 			color: $blue;
 			@extend .col-xs-12;
 			font-size: 1.8em;
@@ -325,7 +325,7 @@ section {
 			}
 		}
 
-		#titleerror {
+		#titleerror, #nameerror {
 			margin-top: -1em;
 			display: block;
 			font-size: 0.9em;
@@ -811,7 +811,7 @@ section {
 
 	form.signon, form.signup {
 		@extend .row;
-		color: $grey;
+		color: #FFF;
 		margin-top: 3em;
 
 		fieldset {
@@ -820,7 +820,6 @@ section {
 
 			span.messages {
 				display: block;
-				color: $blue;
 				font-weight: bold;
 				margin-bottom: 1.5em;
 			}
@@ -830,6 +829,7 @@ section {
 				padding: 0.5em;
 				border-radius: 0.25em;
 				border: none;
+				color: $grey;
 
 				& + input {
 					margin-top: 0.5em;
@@ -840,7 +840,6 @@ section {
 				margin-top: 0.5em;
 				display: block;
 				width: 100%;
-				color: #fff;
 
 				input {
 					width: auto;
@@ -855,7 +854,7 @@ section {
 			color: #FFF;
 			padding: 0.25em;
 			border-radius: 0.5em;
-			border: solid 4px #FFF;
+			border: solid 0.25em #FFF;
 			font-size: 1.2em;
 			background-color: transparent;
 

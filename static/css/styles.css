@@ -1494,13 +1494,13 @@ address {
   .row:after, header nav ul:after, section.introduction .content:after, section.signup .content:after, section.feature .feature .getstarted:after, section.feature .feature .views:after, section.feature .feature .querying:after, section.feature .feature .notifications:after, section.feature .feature .getstarted .content:after, section.feature .feature .views .content:after, section.feature .feature .querying .content:after, section.feature .feature .notifications .content:after, section.feature .feature .getstarted .image:after, section.feature .feature .views .image:after, section.feature .feature .querying .image:after, section.feature .feature .notifications .image:after, section .main:after, section .main .view nav:after, section .main .view .content ul:after, section .main .view .content ul div.variables ul:after, section form.signon:after, section form.signup:after {
     clear: both; }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, section .main .view .content ul div.variables ul li.complexity, section .main .view .content ul div.variables ul li.size, section .main .view .content ul div.variables ul li.activity, section .main .view .content ul div.variables ul li.health, .col-sm-3, section .main .context, .col-md-3, section .main .view .content ul li.title, .col-lg-3, .col-xs-4, .col-sm-4, section.feature ul li, section .main .view .content ul li.title, .col-md-4, section .main .view nav .search, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, section .main .view .content ul li.title, section form.signon button, section form.signup button, .col-sm-6, section form.signon fieldset, section form.signup fieldset, .col-md-6, section.feature p, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, section .main .view .content ul div.variables, .col-md-8, section .main .view nav .tabs, .col-lg-8, .col-xs-9, .col-sm-9, section .main .view, .col-md-9, section .main .view .content ul div.variables, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, section.introduction .content, section.signup .content, section.feature .feature .getstarted, section.feature .feature .views, section.feature .feature .querying, section.feature .feature .notifications, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, section.feature h2, section.feature ul, section .main h2, section .main #titleerror, section .main .view .content ul div.variables, .col-sm-12, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, section .main .view .content ul div.variables ul li.complexity, section .main .view .content ul div.variables ul li.size, section .main .view .content ul div.variables ul li.activity, section .main .view .content ul div.variables ul li.health, .col-sm-3, section .main .context, .col-md-3, section .main .view .content ul li.title, .col-lg-3, .col-xs-4, .col-sm-4, section.feature ul li, section .main .view .content ul li.title, .col-md-4, section .main .view nav .search, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, section .main .view .content ul li.title, section form.signon button, section form.signup button, .col-sm-6, section form.signon fieldset, section form.signup fieldset, .col-md-6, section.feature p, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, section .main .view .content ul div.variables, .col-md-8, section .main .view nav .tabs, .col-lg-8, .col-xs-9, .col-sm-9, section .main .view, .col-md-9, section .main .view .content ul div.variables, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, section.introduction .content, section.signup .content, section.feature .feature .getstarted, section.feature .feature .views, section.feature .feature .querying, section.feature .feature .notifications, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, section.feature h2, section.feature ul, section .main h2, section .main #titleerror, section .main #nameerror, section .main .view .content ul div.variables, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px; }
 
-.col-xs-1, .col-xs-2, .col-xs-3, section .main .view .content ul div.variables ul li.complexity, section .main .view .content ul div.variables ul li.size, section .main .view .content ul div.variables ul li.activity, section .main .view .content ul div.variables ul li.health, .col-xs-4, .col-xs-5, .col-xs-6, section .main .view .content ul li.title, section form.signon button, section form.signup button, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, section.feature h2, section.feature ul, section .main h2, section .main #titleerror, section .main .view .content ul div.variables {
+.col-xs-1, .col-xs-2, .col-xs-3, section .main .view .content ul div.variables ul li.complexity, section .main .view .content ul div.variables ul li.size, section .main .view .content ul div.variables ul li.activity, section .main .view .content ul div.variables ul li.health, .col-xs-4, .col-xs-5, .col-xs-6, section .main .view .content ul li.title, section form.signon button, section form.signup button, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, section.feature h2, section.feature ul, section .main h2, section .main #titleerror, section .main #nameerror, section .main .view .content ul div.variables {
   float: left; }
 
 .col-xs-1 {
@@ -1536,7 +1536,7 @@ address {
 .col-xs-11 {
   width: 91.6666666667%; }
 
-.col-xs-12, section.feature h2, section.feature ul, section .main h2, section .main #titleerror, section .main .view .content ul div.variables {
+.col-xs-12, section.feature h2, section.feature ul, section .main h2, section .main #titleerror, section .main #nameerror, section .main .view .content ul div.variables {
   width: 100%; }
 
 .col-xs-pull-0 {
@@ -2512,22 +2512,22 @@ section.feature {
             -moz-box-shadow: 0px 0px 0px 0px transparent;
             box-shadow: 0px 0px 0px 0px transparent;
             max-width: 100%; } }
-section .main h2, section .main #titleerror {
+section .main h2, section .main #titleerror, section .main #nameerror {
   color: #239CF9;
   font-size: 1.8em;
   margin: 1em 0;
   float: none; }
-  section .main h2 a, section .main #titleerror a {
+  section .main h2 a, section .main #titleerror a, section .main #nameerror a {
     color: #239CF9; }
-    section .main h2 a:hover, section .main #titleerror a:hover {
+    section .main h2 a:hover, section .main #titleerror a:hover, section .main #nameerror a:hover {
       color: #337AB7; }
-    section .main h2 a span, section .main #titleerror a span {
+    section .main h2 a span, section .main #titleerror a span, section .main #nameerror a span {
       margin-left: 0.25em; }
-  section .main h2 input, section .main #titleerror input {
+  section .main h2 input, section .main #titleerror input, section .main #nameerror input {
     border: none;
     padding: 0;
     width: 100%; }
-section .main #titleerror {
+section .main #titleerror, section .main #nameerror {
   margin-top: -1em;
   display: block;
   font-size: 0.9em; }
@@ -2825,25 +2825,24 @@ section .main .context {
       float: right;
       margin-top: 1px; }
 section form.signon, section form.signup {
-  color: #666;
+  color: #FFF;
   margin-top: 3em; }
   section form.signon fieldset span.messages, section form.signup fieldset span.messages {
     display: block;
-    color: #239CF9;
     font-weight: bold;
     margin-bottom: 1.5em; }
   section form.signon fieldset input, section form.signup fieldset input {
     width: 100%;
     padding: 0.5em;
     border-radius: 0.25em;
-    border: none; }
+    border: none;
+    color: #666; }
     section form.signon fieldset input + input, section form.signup fieldset input + input {
       margin-top: 0.5em; }
   section form.signon fieldset label.remember, section form.signup fieldset label.remember {
     margin-top: 0.5em;
     display: block;
-    width: 100%;
-    color: #fff; }
+    width: 100%; }
     section form.signon fieldset label.remember input, section form.signup fieldset label.remember input {
       width: auto; }
   section form.signon button, section form.signup button {
@@ -2851,7 +2850,7 @@ section form.signon, section form.signup {
     color: #FFF;
     padding: 0.25em;
     border-radius: 0.5em;
-    border: solid 4px #FFF;
+    border: solid 0.25em #FFF;
     font-size: 1.2em;
     background-color: transparent; }
     section form.signon button:hover, section form.signup button:hover {

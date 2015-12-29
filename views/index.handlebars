@@ -46,12 +46,12 @@
             <div class="content">
                 <h2>Sign up for Dewy</h2>
                 <form method="post" action="#signup" class="signup">
-                {{#if message}}
-                <span class="messages">
-                    {{message}}
-                </span>
-                {{/if}}
                 <fieldset>
+                    {{#if message}}
+                    <span class="messages">
+                        {{message}}
+                    </span>
+                    {{/if}}
                     <input id="username" name="username" placeholder="Your username" />
                     <input id="email" name="email" placeholder="Your email" />
                     <input id="password" name="password" placeholder="Your password" type="password" />
