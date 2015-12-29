@@ -2785,7 +2785,7 @@ section .main .context {
           color: #666; }
         section .main .context ul li a.folder:before {
           margin-left: -1.25em;
-          margin-right: 0.25em;
+          margin-right: 0.4em;
           display: inline-block;
           width: 0;
           height: 0;
@@ -2797,7 +2797,7 @@ section .main .context {
           border-bottom-color: transparent; }
         section .main .context ul li a.folder.open:before {
           margin-left: -1.5em;
-          margin-right: 0.5em;
+          margin-right: 0.65em;
           display: inline-block;
           width: 0;
           height: 0;

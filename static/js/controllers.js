@@ -182,9 +182,6 @@ controllers.controller('sitesController', ['$scope', '$location', 'filters', 'cu
 		$scope.addFilter = function() {
 			$location.path('filter');
 		}
-		$scope.getNumber = function(number) {
-			return new Array(Math.round(number));
-		}
 		$scope.changeSorting = function(column) {
 			var sort = $scope.sort;
 
@@ -195,6 +192,13 @@ controllers.controller('sitesController', ['$scope', '$location', 'filters', 'cu
 				sort.descending = false;
 			}
 		};
+		$scope.getNumber = function(number) {
+			return new Array(Math.round(number));
+		}
+		$scope.openFolder = function(filter) {
+			$scope.folders[filter] = !$scope.folders[filter];
+			sessionStorage.folders = JSON.stringify($scope.folders);
+		}
 
 		$scope.sort = {
 			column: 'title',
@@ -204,6 +208,11 @@ controllers.controller('sitesController', ['$scope', '$location', 'filters', 'cu
 		$scope.filters = filters;
 		$scope.currentFilter = currentFilter;
 		$scope.sites = sites;
+		if (sessionStorage.folders) {
+			$scope.folders = JSON.parse(sessionStorage.folders);
+		} else {
+			$scope.folders = {};
+		}
 }]);
 
 controllers.controller('userController', ['$scope',

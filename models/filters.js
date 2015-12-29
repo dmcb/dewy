@@ -509,6 +509,7 @@ fields = [
 
 filters = [
   {
+    id: '1',
     title: 'In development',
     url: 'in-development',
     notifications: {
@@ -538,6 +539,7 @@ filters = [
     ]
   },
   {
+    id: '2',
     title: 'Modules',
     children: [
       {
@@ -570,6 +572,7 @@ filters = [
         ]
       },
       {
+        id: '3',
         title: 'Big webform sites',
         url: 'big-webform-sites',
         notifications: {
@@ -611,6 +614,7 @@ filters = [
     ]
   },
   {
+    id: '4',
     title: 'Really long title to serve as an edge case for the design',
     url: 'really-long-title-to-serve-as-an-edge-case-for-the-design',
     notifications: {
@@ -626,6 +630,7 @@ filters = [
     },
   },
   {
+    id: '5',
     title: 'Anotherreallylongtitlewithoutbreaksthanksjerk',
     url: 'anotherreallylongtitlewithoutbreaksthanksjerk',
     notifications: {
