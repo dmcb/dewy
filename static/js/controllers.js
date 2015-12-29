@@ -205,3 +205,10 @@ controllers.controller('sitesController', ['$scope', '$location', 'filters', 'cu
 		$scope.currentFilter = currentFilter;
 		$scope.sites = sites;
 }]);
+
+controllers.controller('userController', ['$scope',
+	function ($scope) {
+		$scope.cancel = function() {
+			window.history.back();
+		}
+}]);

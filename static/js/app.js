@@ -81,6 +81,10 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 				}]
 			}
 		}).
+		when('/user', {
+			templateUrl: 'templates/user.html',
+			controller: 'userController',
+		}).
 		otherwise({
 			controller: function() {
 				window.location.replace('/signon');
