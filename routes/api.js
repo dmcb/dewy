@@ -34,4 +34,9 @@ router.get('/api/1.0/tags', function (req, res, next) {
   res.send(tags.getAll(null));
 });
 
+router.post('/api/1.0/users', function (req, res, next) {
+  console.log(util.inspect(req.body, {showHidden: false, depth: null}));
+  res.send();
+});
+
 module.exports = router;

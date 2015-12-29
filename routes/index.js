@@ -25,6 +25,21 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
+  // Package signup information into JSON to send to API
+  var signup = { 
+    username: req.body.username, 
+    email: req.body.email,
+    password: req.body.password
+  };
+  var request = require('request');
+  request({
+    uri: 'http://dewy.io/api/1.0/users',
+    method: 'POST',
+    form: signup
+  }, function(error, response, body) {
+    console.log(body);
+  });
+
   res.render('index', {
     title: 'Dewy | Take back Drupal with powerful reporting, queries and notifications',
     layout: 'site'
