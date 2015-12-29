@@ -24,4 +24,11 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.post('/', function(req, res, next) {
+  res.render('index', {
+    title: 'Dewy | Take back Drupal with powerful reporting, queries and notifications',
+    layout: 'site'
+  });
+});
+
 module.exports = router;

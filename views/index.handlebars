@@ -10,8 +10,8 @@
                     <div class="content">
                         <h2>How It Works</h2>
                         <ul>
-                            <li><span class="step">1</span><span class="instruction"><a href="">Sign up for Dewy</a> and get a unique key.</span></li>
-                            <li><span class="step">2</span><span class="instruction">Install the <a href="https://www.drupal.org/project/dewy">Drupal module</a> to any site you want insight into.</span></li>
+                            <li><span class="step">1</span><span class="instruction"><a class="scroll" href="#signup">Sign up for Dewy</a> and get a unique key.</span></li>
+                            <li><span class="step">2</span><span class="instruction">Install the <a href="https://www.drupal.org/project/dewy">Drupal module</a> with that key to any site you want insight into.</span></li>
                             <li><span class="step">3</span><span class="instruction">Get all the details on all your sites.</span></li>
                         </ul>
                     </div>
@@ -42,10 +42,10 @@
                 </div>
             </div>
         </section>
-        <section class="signup">
+        <section class="signup" id="signup">
             <div class="content">
                 <h2>Sign up for Dewy</h2>
-                <form method="post" action="/" id="signup">
+                <form method="post" action="#signup" class="signup">
                 {{#if message}}
                 <span class="messages">
                     {{message}}
@@ -55,8 +55,8 @@
                     <input id="username" name="username" placeholder="Your username" />
                     <input id="email" name="email" placeholder="Your email" />
                     <input id="password" name="password" placeholder="Your password" type="password" />
+                    <button type="submit">Sign up</button>
                 </fieldset>
-                <button type="submit">Sign up</button>
                 </form>
             </div>
         </section>

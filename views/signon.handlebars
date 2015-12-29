@@ -1,5 +1,5 @@
         <section class="signon">
-            <form method="post" action="/signon" id="signon">
+            <form method="post" action="/signon" class="signon">
             {{#if message}}
             <span class="messages">
                 {{message}}
@@ -8,11 +8,11 @@
             <fieldset>
                 <input id="username" name="username" placeholder="Your username" />
                 <input id="password" name="password" placeholder="Your password" type="password" />
+                <label class="remember">
+                    <input id="remember" name="remember" type="checkbox" value="on" />
+                    <span>Remember me</span>
+                </label>
+                <button type="submit">Sign on</button>
             </fieldset>
-            <label class="remember">
-                <input id="remember" name="remember" type="checkbox" value="on" />
-                <span>Remember me</span>
-            </label>
-            <button type="submit">Sign on</button>
             </form>
         </section>
