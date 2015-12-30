@@ -648,6 +648,17 @@ filters = [
 ]
 
 newFilter = {
+  notifications: {
+    appears: {
+      enabled: false
+    },
+    disappears: {
+      enabled: false
+    },
+    total: {
+      enabled: false
+    }
+  },
   operator: 'any',
   rules: [{
     field: 'Base URL',
