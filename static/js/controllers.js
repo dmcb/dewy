@@ -207,6 +207,9 @@ controllers.controller('sitesController', ['$scope', '$location', 'filters', 'cu
 
 		$scope.filters = filters;
 		$scope.currentFilter = currentFilter;
+		if ($location.path() != '/sites' && !currentFilter.url) {
+			$location.path('sites');
+		}
 		$scope.sites = sites;
 		if (sessionStorage.folders) {
 			$scope.folders = JSON.parse(sessionStorage.folders);
