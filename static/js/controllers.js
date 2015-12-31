@@ -180,6 +180,7 @@ controllers.controller('filterController', ['$scope', '$http', 'filterFactory', 
 		];
 		$scope.sortableOptions = {
 			connectWith: ".rule-group",
+			handle: ".handle",
 			helper: "clone",
 			opacity: 0.75,
 			placeholder: "rule-group-placeholder",

@@ -2713,8 +2713,9 @@ section .main .view .content {
       padding-bottom: 0; }
   section .main .view .content .rules, section .main .view .content .notifications, section .main .view .content .total {
     padding: 15px; }
-    section .main .view .content .rules .rule-group, section .main .view .content .rules .notification-choices, section .main .view .content .notifications .rule-group, section .main .view .content .notifications .notification-choices, section .main .view .content .total .rule-group, section .main .view .content .total .notification-choices {
-      padding-left: 2em;
+    section .main .view .content .rules div > .rule-group, section .main .view .content .rules .notification-choices, section .main .view .content .notifications div > .rule-group, section .main .view .content .notifications .notification-choices, section .main .view .content .total div > .rule-group, section .main .view .content .total .notification-choices {
+      padding-left: 1.5em; }
+    section .main .view .content .rules .notification-choices, section .main .view .content .notifications .notification-choices, section .main .view .content .total .notification-choices {
       margin-top: 1.5em; }
     @media (max-width: 767px) {
       section .main .view .content .rules .rule-group, section .main .view .content .notifications .rule-group, section .main .view .content .total .rule-group {
@@ -2746,18 +2747,29 @@ section .main .view .content {
         float: right; }
         section .main .view .content .rules .rule .buttons button, section .main .view .content .rules .rule .buttons a.button, section .main .view .content .rules .rule-group-heading .buttons button, section .main .view .content .rules .rule-group-heading .buttons a.button, section .main .view .content .notifications .rule .buttons button, section .main .view .content .notifications .rule .buttons a.button, section .main .view .content .notifications .rule-group-heading .buttons button, section .main .view .content .notifications .rule-group-heading .buttons a.button, section .main .view .content .total .rule .buttons button, section .main .view .content .total .rule .buttons a.button, section .main .view .content .total .rule-group-heading .buttons button, section .main .view .content .total .rule-group-heading .buttons a.button {
           margin-left: 0.25em; }
+          @media (max-width: 767px) {
+            section .main .view .content .rules .rule .buttons button, section .main .view .content .rules .rule .buttons a.button, section .main .view .content .rules .rule-group-heading .buttons button, section .main .view .content .rules .rule-group-heading .buttons a.button, section .main .view .content .notifications .rule .buttons button, section .main .view .content .notifications .rule .buttons a.button, section .main .view .content .notifications .rule-group-heading .buttons button, section .main .view .content .notifications .rule-group-heading .buttons a.button, section .main .view .content .total .rule .buttons button, section .main .view .content .total .rule .buttons a.button, section .main .view .content .total .rule-group-heading .buttons button, section .main .view .content .total .rule-group-heading .buttons a.button {
+              background-color: #FFF; } }
+      section .main .view .content .rules .rule .handle, section .main .view .content .rules .rule-group-heading .handle, section .main .view .content .notifications .rule .handle, section .main .view .content .notifications .rule-group-heading .handle, section .main .view .content .total .rule .handle, section .main .view .content .total .rule-group-heading .handle {
+        color: #EEE; }
+        @media (max-width: 767px) {
+          section .main .view .content .rules .rule .handle, section .main .view .content .rules .rule-group-heading .handle, section .main .view .content .notifications .rule .handle, section .main .view .content .notifications .rule-group-heading .handle, section .main .view .content .total .rule .handle, section .main .view .content .total .rule-group-heading .handle {
+            color: #666; } }
+        section .main .view .content .rules .rule .handle:hover, section .main .view .content .rules .rule-group-heading .handle:hover, section .main .view .content .notifications .rule .handle:hover, section .main .view .content .notifications .rule-group-heading .handle:hover, section .main .view .content .total .rule .handle:hover, section .main .view .content .total .rule-group-heading .handle:hover {
+          cursor: grab;
+          cursor: -webkit-grab;
+          cursor: -moz-grab; }
+    section .main .view .content .rules .rule-group-heading.top, section .main .view .content .notifications .rule-group-heading.top, section .main .view .content .total .rule-group-heading.top {
+      margin-top: 0; }
+    section .main .view .content .rules .rule-group-heading, section .main .view .content .notifications .rule-group-heading, section .main .view .content .total .rule-group-heading {
+      margin-top: 15px;
+      margin-bottom: 15px; }
     @media (max-width: 767px) {
       section .main .view .content .rules .rule select, section .main .view .content .rules .rule input, section .main .view .content .notifications .rule select, section .main .view .content .notifications .rule input, section .main .view .content .total .rule select, section .main .view .content .total .rule input {
         width: 100%;
         margin-top: 0.5em; }
       section .main .view .content .rules .rule .buttons, section .main .view .content .notifications .rule .buttons, section .main .view .content .total .rule .buttons {
         margin-top: 0.5em; } }
-    section .main .view .content .rules .rule:hover, section .main .view .content .notifications .rule:hover, section .main .view .content .total .rule:hover {
-      cursor: grab;
-      cursor: -webkit-grab;
-      cursor: -moz-grab; }
-    section .main .view .content .rules .rule-group-heading, section .main .view .content .notifications .rule-group-heading, section .main .view .content .total .rule-group-heading {
-      margin-bottom: 1.5em; }
     section .main .view .content .rules select, section .main .view .content .rules input, section .main .view .content .notifications select, section .main .view .content .notifications input, section .main .view .content .total select, section .main .view .content .total input {
       font-size: 0.85em; }
     section .main .view .content .rules .total, section .main .view .content .notifications .total, section .main .view .content .total .total {

@@ -619,8 +619,12 @@ section {
 				.rules, .notifications, .total {
 					padding: $grid-gutter-width/2;
 
-					.rule-group, .notification-choices {
-						padding-left: 2em;
+
+					div > .rule-group, .notification-choices {
+						padding-left: 1.5em;
+					}
+
+					.notification-choices {
 						margin-top: 1.5em;
 					}
 
@@ -667,8 +671,35 @@ section {
 
 							button, a.button {
 								margin-left: 0.25em;
+
+								@media (max-width: $screen-xs-max) {
+									background-color: #FFF;
+								}
 							}
 						}
+
+						.handle {
+							color: $light-grey;
+
+							@media (max-width: $screen-xs-max) {
+								color: $grey;
+							}
+
+							&:hover {
+								cursor: grab;
+								cursor: -webkit-grab; 
+								cursor: -moz-grab;
+							}
+						}
+					}
+
+					.rule-group-heading.top {
+						margin-top: 0;
+					}
+
+					.rule-group-heading {
+						margin-top: $grid-gutter-width/2;
+						margin-bottom: $grid-gutter-width/2;
 					}
 
 					.rule {
@@ -682,18 +713,6 @@ section {
 								margin-top: 0.5em;
 							}
 						}
-
-
-						&:hover {
-							// border-left: 8px solid $blue;
-							cursor: grab;
-							cursor: -webkit-grab; 
-							cursor: -moz-grab;
-						}
-					}
-
-					.rule-group-heading {
-						margin-bottom: 1.5em;
 					}
 
 					select, input {
