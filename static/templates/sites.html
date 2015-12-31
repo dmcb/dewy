@@ -1,5 +1,18 @@
                 <div class="main">
 					<h2><a href="/filter/{{currentFilter.url}}" ng-if="currentFilter">{{currentFilter.title}}<span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a><span ng-if="!currentFilter">All sites</span></h2>
+                    <nav class="context">
+                        <select class="folders">
+                            <option>Menu goes here!</option>
+                        </select>
+                        <ul class="folders">
+                            <li><a href="/sites" ng-class="{selected: !currentFilter}">All sites</a></li>
+                            <li ng-repeat="filter in filters" ng-include="'templates/filter_menu_item.html'"></li>
+                        </ul>
+                        <div class="actions">
+                            <button ng-click="addFolder()">Add folder <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
+                            <button ng-click="addFilter()">Add filter <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
+                        </div>
+                    </nav>
                     <div class="view">
                         <nav>
                             <div class="tabs">
@@ -54,14 +67,4 @@
                             </div>
                         </div>
                     </div>
-                    <nav class="context">
-                        <ul class="folders">
-                            <li><a href="/sites" ng-class="{selected: !currentFilter}">All sites</a></li>
-                            <li ng-repeat="filter in filters" ng-include="'templates/filter_menu_item.html'"></li>
-                        </ul>
-                        <div class="actions">
-                            <button ng-click="addFolder()">Add folder <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
-                            <button ng-click="addFilter()">Add filter <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
-                        </div>
-                    </nav>
                 </div>

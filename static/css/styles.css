@@ -1454,35 +1454,35 @@ address {
   font-style: normal;
   line-height: 1.428571429; }
 
-.container, header nav, h1, .message, section.app, section.signon, section.introduction, section.signup, section.feature .feature, footer ul {
+.container {
   margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px; }
-  .container:before, header nav:before, h1:before, .message:before, section.app:before, section.signon:before, section.introduction:before, section.signup:before, section.feature .feature:before, footer ul:before, .container:after, header nav:after, h1:after, .message:after, section.app:after, section.signon:after, section.introduction:after, section.signup:after, section.feature .feature:after, footer ul:after {
+  .container:before, .container:after {
     content: " ";
     display: table; }
-  .container:after, header nav:after, h1:after, .message:after, section.app:after, section.signon:after, section.introduction:after, section.signup:after, section.feature .feature:after, footer ul:after {
+  .container:after {
     clear: both; }
   @media (min-width: 768px) {
-    .container, header nav, h1, .message, section.app, section.signon, section.introduction, section.signup, section.feature .feature, footer ul {
+    .container {
       width: 750px; } }
   @media (min-width: 992px) {
-    .container, header nav, h1, .message, section.app, section.signon, section.introduction, section.signup, section.feature .feature, footer ul {
+    .container {
       width: 970px; } }
   @media (min-width: 1200px) {
-    .container, header nav, h1, .message, section.app, section.signon, section.introduction, section.signup, section.feature .feature, footer ul {
+    .container {
       width: 1170px; } }
 
-.container-fluid {
+.container-fluid, header nav, h1, .message, section.app, section.signon, section.introduction, section.signup, section.feature .feature, footer ul {
   margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px; }
-  .container-fluid:before, .container-fluid:after {
+  .container-fluid:before, header nav:before, h1:before, .message:before, section.app:before, section.signon:before, section.introduction:before, section.signup:before, section.feature .feature:before, footer ul:before, .container-fluid:after, header nav:after, h1:after, .message:after, section.app:after, section.signon:after, section.introduction:after, section.signup:after, section.feature .feature:after, footer ul:after {
     content: " ";
     display: table; }
-  .container-fluid:after {
+  .container-fluid:after, header nav:after, h1:after, .message:after, section.app:after, section.signon:after, section.introduction:after, section.signup:after, section.feature .feature:after, footer ul:after {
     clear: both; }
 
 .row, header nav ul, section.introduction .content, section.signup .content, section.feature .feature .getstarted, section.feature .feature .views, section.feature .feature .querying, section.feature .feature .notifications, section.feature .feature .getstarted .content, section.feature .feature .views .content, section.feature .feature .querying .content, section.feature .feature .notifications .content, section.feature .feature .getstarted .image, section.feature .feature .views .image, section.feature .feature .querying .image, section.feature .feature .notifications .image, section .main, section .main .view nav, section .main .view .content ul, section .main .view .content ul div.variables ul, section form.signon, section form.signup {
@@ -1494,13 +1494,13 @@ address {
   .row:after, header nav ul:after, section.introduction .content:after, section.signup .content:after, section.feature .feature .getstarted:after, section.feature .feature .views:after, section.feature .feature .querying:after, section.feature .feature .notifications:after, section.feature .feature .getstarted .content:after, section.feature .feature .views .content:after, section.feature .feature .querying .content:after, section.feature .feature .notifications .content:after, section.feature .feature .getstarted .image:after, section.feature .feature .views .image:after, section.feature .feature .querying .image:after, section.feature .feature .notifications .image:after, section .main:after, section .main .view nav:after, section .main .view .content ul:after, section .main .view .content ul div.variables ul:after, section form.signon:after, section form.signup:after {
     clear: both; }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, section .main .view .content ul div.variables ul li.complexity, section .main .view .content ul div.variables ul li.size, section .main .view .content ul div.variables ul li.activity, section .main .view .content ul div.variables ul li.health, .col-sm-3, section .main .context, .col-md-3, section .main .view .content ul li.title, .col-lg-3, .col-xs-4, .col-sm-4, section.feature ul li, section .main .view .content ul li.title, .col-md-4, section .main .view nav .search, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, section .main .view .content ul li.title, section form.signon button, section form.signup button, .col-sm-6, section form.signon fieldset, section form.signup fieldset, .col-md-6, section.feature p, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, section .main .view .content ul div.variables, .col-md-8, section .main .view nav .tabs, .col-lg-8, .col-xs-9, .col-sm-9, section .main .view, .col-md-9, section .main .view .content ul div.variables, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, section.introduction .content, section.signup .content, section.feature .feature .getstarted, section.feature .feature .views, section.feature .feature .querying, section.feature .feature .notifications, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, section.feature h2, section.feature ul, section .main h2, section .main #titleerror, section .main #nameerror, section .main .view .content ul div.variables, .col-sm-12, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, section .main .view .content ul div.variables ul li.complexity, section .main .view .content ul div.variables ul li.size, section .main .view .content ul div.variables ul li.activity, section .main .view .content ul div.variables ul li.health, .col-sm-3, .col-md-3, section .main .view .content ul li.title, section .main .context, .col-lg-3, .col-xs-4, .col-sm-4, section.feature ul li, section .main .view .content ul li.title, section .main .context .actions button, section .main .context .actions a.button, .col-md-4, section .main .view nav .search, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, section .main .view .content ul li.title, section form.signon button, section form.signup button, .col-sm-6, section form.signon fieldset, section form.signup fieldset, .col-md-6, section.feature p, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, section .main .view .content ul div.variables, .col-md-8, section .main .view nav .tabs, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, section .main .view, section .main .view .content ul div.variables, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, section.introduction .content, section.signup .content, section.feature .feature .getstarted, section.feature .feature .views, section.feature .feature .querying, section.feature .feature .notifications, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, section.feature h2, section.feature ul, section .main h2, section .main #titleerror, section .main #nameerror, section .main .view .content ul div.variables, section .main .context .actions button, section .main .context .actions a.button, .col-sm-12, .col-md-12, section .main .context .actions button, section .main .context .actions a.button, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px; }
 
-.col-xs-1, .col-xs-2, .col-xs-3, section .main .view .content ul div.variables ul li.complexity, section .main .view .content ul div.variables ul li.size, section .main .view .content ul div.variables ul li.activity, section .main .view .content ul div.variables ul li.health, .col-xs-4, .col-xs-5, .col-xs-6, section .main .view .content ul li.title, section form.signon button, section form.signup button, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, section.feature h2, section.feature ul, section .main h2, section .main #titleerror, section .main #nameerror, section .main .view .content ul div.variables {
+.col-xs-1, .col-xs-2, .col-xs-3, section .main .view .content ul div.variables ul li.complexity, section .main .view .content ul div.variables ul li.size, section .main .view .content ul div.variables ul li.activity, section .main .view .content ul div.variables ul li.health, .col-xs-4, .col-xs-5, .col-xs-6, section .main .view .content ul li.title, section form.signon button, section form.signup button, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, section.feature h2, section.feature ul, section .main h2, section .main #titleerror, section .main #nameerror, section .main .view .content ul div.variables, section .main .context .actions button, section .main .context .actions a.button {
   float: left; }
 
 .col-xs-1 {
@@ -1536,7 +1536,7 @@ address {
 .col-xs-11 {
   width: 91.6666666667%; }
 
-.col-xs-12, section.feature h2, section.feature ul, section .main h2, section .main #titleerror, section .main #nameerror, section .main .view .content ul div.variables {
+.col-xs-12, section.feature h2, section.feature ul, section .main h2, section .main #titleerror, section .main #nameerror, section .main .view .content ul div.variables, section .main .context .actions button, section .main .context .actions a.button {
   width: 100%; }
 
 .col-xs-pull-0 {
@@ -1657,7 +1657,7 @@ address {
   margin-left: 100%; }
 
 @media (min-width: 768px) {
-  .col-sm-1, .col-sm-2, .col-sm-3, section .main .context, .col-sm-4, section.feature ul li, section .main .view .content ul li.title, .col-sm-5, .col-sm-6, section form.signon fieldset, section form.signup fieldset, .col-sm-7, .col-sm-8, section .main .view .content ul div.variables, .col-sm-9, section .main .view, .col-sm-10, .col-sm-11, .col-sm-12 {
+  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, section.feature ul li, section .main .view .content ul li.title, section .main .context .actions button, section .main .context .actions a.button, .col-sm-5, .col-sm-6, section form.signon fieldset, section form.signup fieldset, .col-sm-7, .col-sm-8, section .main .view .content ul div.variables, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
     float: left; }
 
   .col-sm-1 {
@@ -1666,10 +1666,10 @@ address {
   .col-sm-2 {
     width: 16.6666666667%; }
 
-  .col-sm-3, section .main .context {
+  .col-sm-3 {
     width: 25%; }
 
-  .col-sm-4, section.feature ul li, section .main .view .content ul li.title {
+  .col-sm-4, section.feature ul li, section .main .view .content ul li.title, section .main .context .actions button, section .main .context .actions a.button {
     width: 33.3333333333%; }
 
   .col-sm-5 {
@@ -1684,7 +1684,7 @@ address {
   .col-sm-8, section .main .view .content ul div.variables {
     width: 66.6666666667%; }
 
-  .col-sm-9, section .main .view {
+  .col-sm-9 {
     width: 75%; }
 
   .col-sm-10 {
@@ -1813,7 +1813,7 @@ address {
   .col-sm-offset-12 {
     margin-left: 100%; } }
 @media (min-width: 992px) {
-  .col-md-1, .col-md-2, .col-md-3, section .main .view .content ul li.title, .col-md-4, section .main .view nav .search, .col-md-5, .col-md-6, section.feature p, .col-md-7, .col-md-8, section .main .view nav .tabs, .col-md-9, section .main .view .content ul div.variables, .col-md-10, section.introduction .content, section.signup .content, section.feature .feature .getstarted, section.feature .feature .views, section.feature .feature .querying, section.feature .feature .notifications, .col-md-11, .col-md-12 {
+  .col-md-1, .col-md-2, .col-md-3, section .main .view .content ul li.title, section .main .context, .col-md-4, section .main .view nav .search, .col-md-5, .col-md-6, section.feature p, .col-md-7, .col-md-8, section .main .view nav .tabs, .col-md-9, section .main .view, section .main .view .content ul div.variables, .col-md-10, section.introduction .content, section.signup .content, section.feature .feature .getstarted, section.feature .feature .views, section.feature .feature .querying, section.feature .feature .notifications, .col-md-11, .col-md-12, section .main .context .actions button, section .main .context .actions a.button {
     float: left; }
 
   .col-md-1 {
@@ -1822,7 +1822,7 @@ address {
   .col-md-2 {
     width: 16.6666666667%; }
 
-  .col-md-3, section .main .view .content ul li.title {
+  .col-md-3, section .main .view .content ul li.title, section .main .context {
     width: 25%; }
 
   .col-md-4, section .main .view nav .search {
@@ -1840,7 +1840,7 @@ address {
   .col-md-8, section .main .view nav .tabs {
     width: 66.6666666667%; }
 
-  .col-md-9, section .main .view .content ul div.variables {
+  .col-md-9, section .main .view, section .main .view .content ul div.variables {
     width: 75%; }
 
   .col-md-10, section.introduction .content, section.signup .content, section.feature .feature .getstarted, section.feature .feature .views, section.feature .feature .querying, section.feature .feature .notifications {
@@ -1849,7 +1849,7 @@ address {
   .col-md-11 {
     width: 91.6666666667%; }
 
-  .col-md-12 {
+  .col-md-12, section .main .context .actions button, section .main .context .actions a.button {
     width: 100%; }
 
   .col-md-pull-0 {
@@ -1861,7 +1861,7 @@ address {
   .col-md-pull-2 {
     right: 16.6666666667%; }
 
-  .col-md-pull-3 {
+  .col-md-pull-3, section .main .view {
     right: 25%; }
 
   .col-md-pull-4 {
@@ -1918,7 +1918,7 @@ address {
   .col-md-push-8 {
     left: 66.6666666667%; }
 
-  .col-md-push-9 {
+  .col-md-push-9, section .main .context {
     left: 75%; }
 
   .col-md-push-10 {
@@ -2124,10 +2124,10 @@ address {
 
   .col-lg-offset-12 {
     margin-left: 100%; } }
-.clearfix:before, .clearfix:after {
+.clearfix:before, section .main .context:before, .clearfix:after, section .main .context:after {
   content: " ";
   display: table; }
-.clearfix:after {
+.clearfix:after, section .main .context:after {
   clear: both; }
 
 .center-block {
@@ -2384,63 +2384,71 @@ body {
 header {
   border-top: 5px solid #239CF9;
   background-color: #EEE; }
-  header nav ul {
-    text-align: right;
-    margin-bottom: 0; }
-    header nav ul li {
-      display: inline;
-      position: relative; }
-      header nav ul li a {
-        display: inline-block;
-        padding: 1em 15px;
-        height: 45px; }
-        header nav ul li a:hover {
-          text-decoration: none;
-          color: #337AB7;
-          background-color: #FFF; }
-        header nav ul li a img {
-          max-width: 2em;
-          border-radius: 1em;
-          margin-right: 0.5em;
-          float: left;
-          margin-top: -5px; }
-      header nav ul li.dropped > a {
-        background-color: #FFF;
-        color: #337AB7; }
-      header nav ul li.dropped .dropdown {
-        display: block; }
-    header nav ul.dropdown {
-      margin: 0;
-      padding: 0;
-      background-color: #EEE;
-      position: absolute;
-      display: none;
-      right: 0;
-      text-align: left;
-      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
-      width: 100%;
-      z-index: 1; }
-      header nav ul.dropdown li a {
-        display: block; }
+  header nav {
+    max-width: 1400px; }
+    header nav ul {
+      text-align: right;
+      margin-bottom: 0; }
+      header nav ul li {
+        display: inline;
+        position: relative; }
+        header nav ul li a {
+          display: inline-block;
+          padding: 1em 15px;
+          height: 45px; }
+          header nav ul li a:hover {
+            text-decoration: none;
+            color: #337AB7;
+            background-color: #FFF; }
+          header nav ul li a img {
+            max-width: 2em;
+            border-radius: 1em;
+            margin-right: 0.5em;
+            float: left;
+            margin-top: -5px; }
+        header nav ul li.dropped > a {
+          background-color: #FFF;
+          color: #337AB7; }
+        header nav ul li.dropped .dropdown {
+          display: block; }
+      header nav ul.dropdown {
+        margin: 0;
+        padding: 0;
+        background-color: #EEE;
+        position: absolute;
+        display: none;
+        right: 0;
+        text-align: left;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+        width: 100%;
+        z-index: 1; }
+        header nav ul.dropdown li a {
+          display: block; }
 
 h1 {
+  max-width: 1400px;
   margin-top: 0; }
   h1 img {
     max-width: 96px;
     position: absolute;
     top: 16px; }
 
-.message span {
-  padding: 0.5em 15px;
-  font-weight: bold;
-  color: #FFF;
-  background-color: #239CF9;
-  border-radius: 0.5em;
-  display: block; }
+.message {
+  max-width: 1400px; }
+  .message span {
+    padding: 0.5em 15px;
+    font-weight: bold;
+    color: #FFF;
+    background-color: #239CF9;
+    border-radius: 0.5em;
+    display: block; }
 
 section.app, section.signon {
+  max-width: 1400px;
   padding-top: 2em;
   padding-bottom: 5em; }
+section.introduction, section.signup {
+  max-width: 1400px; }
 section.introduction {
   padding-top: 3em;
   padding-bottom: 3em; }
@@ -2482,36 +2490,38 @@ section.feature {
         display: block;
         margin-top: 2em;
         font-weight: bold; }
-  section.feature .feature .getstarted {
-    padding-bottom: 5em; }
-  section.feature .feature .getstarted, section.feature .feature .views, section.feature .feature .querying, section.feature .feature .notifications {
-    padding-top: 3em;
-    border-bottom: 1px solid #D0E2F0;
-    background-color: #FFF; }
-    section.feature .feature .getstarted .content, section.feature .feature .views .content, section.feature .feature .querying .content, section.feature .feature .notifications .content {
-      padding-bottom: 3em; }
-    section.feature .feature .getstarted .image, section.feature .feature .views .image, section.feature .feature .querying .image, section.feature .feature .notifications .image {
-      padding: 25px 25px 0 25px;
-      overflow: hidden; }
-      @media (max-width: 767px) {
-        section.feature .feature .getstarted .image, section.feature .feature .views .image, section.feature .feature .querying .image, section.feature .feature .notifications .image {
-          overflow: auto; } }
-      section.feature .feature .getstarted .image .screenshot, section.feature .feature .views .image .screenshot, section.feature .feature .querying .image .screenshot, section.feature .feature .notifications .image .screenshot {
-        -webkit-box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.5);
-        -moz-box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.5);
-        box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.5);
-        max-width: 490px;
-        margin-left: auto;
-        display: block; }
-        @media (max-width: 1199px) {
-          section.feature .feature .getstarted .image .screenshot, section.feature .feature .views .image .screenshot, section.feature .feature .querying .image .screenshot, section.feature .feature .notifications .image .screenshot {
-            margin-right: auto; } }
+  section.feature .feature {
+    max-width: 1400px; }
+    section.feature .feature .getstarted {
+      padding-bottom: 5em; }
+    section.feature .feature .getstarted, section.feature .feature .views, section.feature .feature .querying, section.feature .feature .notifications {
+      padding-top: 3em;
+      border-bottom: 1px solid #D0E2F0;
+      background-color: #FFF; }
+      section.feature .feature .getstarted .content, section.feature .feature .views .content, section.feature .feature .querying .content, section.feature .feature .notifications .content {
+        padding-bottom: 3em; }
+      section.feature .feature .getstarted .image, section.feature .feature .views .image, section.feature .feature .querying .image, section.feature .feature .notifications .image {
+        padding: 25px 25px 0 25px;
+        overflow: hidden; }
         @media (max-width: 767px) {
-          section.feature .feature .getstarted .image .screenshot, section.feature .feature .views .image .screenshot, section.feature .feature .querying .image .screenshot, section.feature .feature .notifications .image .screenshot {
-            -webkit-box-shadow: 0px 0px 0px 0px transparent;
-            -moz-box-shadow: 0px 0px 0px 0px transparent;
-            box-shadow: 0px 0px 0px 0px transparent;
-            max-width: 100%; } }
+          section.feature .feature .getstarted .image, section.feature .feature .views .image, section.feature .feature .querying .image, section.feature .feature .notifications .image {
+            overflow: auto; } }
+        section.feature .feature .getstarted .image .screenshot, section.feature .feature .views .image .screenshot, section.feature .feature .querying .image .screenshot, section.feature .feature .notifications .image .screenshot {
+          -webkit-box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.5);
+          -moz-box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.5);
+          max-width: 490px;
+          margin-left: auto;
+          display: block; }
+          @media (max-width: 1199px) {
+            section.feature .feature .getstarted .image .screenshot, section.feature .feature .views .image .screenshot, section.feature .feature .querying .image .screenshot, section.feature .feature .notifications .image .screenshot {
+              margin-right: auto; } }
+          @media (max-width: 767px) {
+            section.feature .feature .getstarted .image .screenshot, section.feature .feature .views .image .screenshot, section.feature .feature .querying .image .screenshot, section.feature .feature .notifications .image .screenshot {
+              -webkit-box-shadow: 0px 0px 0px 0px transparent;
+              -moz-box-shadow: 0px 0px 0px 0px transparent;
+              box-shadow: 0px 0px 0px 0px transparent;
+              max-width: 100%; } }
 section .main h2, section .main #titleerror, section .main #nameerror {
   color: #239CF9;
   font-size: 1.8em;
@@ -2526,7 +2536,9 @@ section .main h2, section .main #titleerror, section .main #nameerror {
   section .main h2 input, section .main #titleerror input, section .main #nameerror input {
     border: none;
     padding: 0;
-    width: 100%; }
+    width: 100%;
+    color: #239CF9;
+    font-size: 1em; }
 section .main #titleerror, section .main #nameerror {
   margin-top: -1em;
   display: block;
@@ -2704,7 +2716,7 @@ section .main .view .content {
     section .main .view .content .rules .rule-group, section .main .view .content .rules .notification-choices, section .main .view .content .notifications .rule-group, section .main .view .content .notifications .notification-choices, section .main .view .content .total .rule-group, section .main .view .content .total .notification-choices {
       padding-left: 2em;
       margin-top: 1.5em; }
-    @media (max-width: 991px) {
+    @media (max-width: 767px) {
       section .main .view .content .rules .rule-group, section .main .view .content .notifications .rule-group, section .main .view .content .total .rule-group {
         background-color: rgba(35, 156, 249, 0.2);
         padding: 0 15px;
@@ -2734,7 +2746,7 @@ section .main .view .content {
         float: right; }
         section .main .view .content .rules .rule .buttons button, section .main .view .content .rules .rule .buttons a.button, section .main .view .content .rules .rule-group-heading .buttons button, section .main .view .content .rules .rule-group-heading .buttons a.button, section .main .view .content .notifications .rule .buttons button, section .main .view .content .notifications .rule .buttons a.button, section .main .view .content .notifications .rule-group-heading .buttons button, section .main .view .content .notifications .rule-group-heading .buttons a.button, section .main .view .content .total .rule .buttons button, section .main .view .content .total .rule .buttons a.button, section .main .view .content .total .rule-group-heading .buttons button, section .main .view .content .total .rule-group-heading .buttons a.button {
           margin-left: 0.25em; }
-    @media (max-width: 991px) {
+    @media (max-width: 767px) {
       section .main .view .content .rules .rule select, section .main .view .content .rules .rule input, section .main .view .content .notifications .rule select, section .main .view .content .notifications .rule input, section .main .view .content .total .rule select, section .main .view .content .total .rule input {
         width: 100%;
         margin-top: 0.5em; }
@@ -2747,25 +2759,7 @@ section .main .view .content {
     section .main .view .content .rules .rule-group-heading, section .main .view .content .notifications .rule-group-heading, section .main .view .content .total .rule-group-heading {
       margin-bottom: 1.5em; }
     section .main .view .content .rules select, section .main .view .content .rules input, section .main .view .content .notifications select, section .main .view .content .notifications input, section .main .view .content .total select, section .main .view .content .total input {
-      font-size: 0.85em;
-      border-width: solid 1px #D0E2F0;
-      padding: 0.25em 2.5em 0.25em 1em;
-      color: #666;
-      border: solid 1px #D0E2F0;
-      border-radius: 0.5em;
-      margin: 0px 2px 0 0; }
-    section .main .view .content .rules select, section .main .view .content .notifications select, section .main .view .content .total select {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      cursor: pointer;
-      background: #FFF url(/img/select.svg);
-      background-size: contain;
-      background-position: top right;
-      background-repeat: no-repeat; }
-    section .main .view .content .rules input, section .main .view .content .notifications input, section .main .view .content .total input {
-      padding-right: 1em;
-      background-color: #FFF; }
+      font-size: 0.85em; }
     section .main .view .content .rules .total, section .main .view .content .notifications .total, section .main .view .content .total .total {
       margin: 2em 0 0 0;
       font-weight: bold; }
@@ -2776,24 +2770,34 @@ section .main .view .content {
       display: block; }
 section .main .context {
   padding-left: 0; }
-  @media (max-width: 767px) {
+  @media (max-width: 991px) {
     section .main .context {
-      display: none; } }
-  section .main .context ul {
+      padding-left: 15px;
+      padding-bottom: 1em; } }
+  section .main .context select.folders {
+    display: none;
+    width: 100%; }
+    @media (max-width: 991px) {
+      section .main .context select.folders {
+        display: inline; } }
+  section .main .context ul.folders {
     margin: 0;
     padding-left: 0; }
-    section .main .context ul li {
+    @media (max-width: 991px) {
+      section .main .context ul.folders {
+        display: none; } }
+    section .main .context ul.folders li {
       display: inline; }
-      section .main .context ul li a {
+      section .main .context ul.folders li a {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
         display: block;
         padding: 0.35em 0 0.35em 1.5em;
         font-weight: bold; }
-        section .main .context ul li a.selected {
+        section .main .context ul.folders li a.selected {
           color: #666; }
-        section .main .context ul li a.folder:before {
+        section .main .context ul.folders li a.folder:before {
           margin-left: -1.25em;
           margin-right: 0.4em;
           display: inline-block;
@@ -2805,7 +2809,7 @@ section .main .context {
           border-right-color: transparent;
           border-top-color: transparent;
           border-bottom-color: transparent; }
-        section .main .context ul li a.folder.open:before {
+        section .main .context ul.folders li a.folder.open:before {
           margin-left: -1.5em;
           margin-right: 0.65em;
           display: inline-block;
@@ -2817,20 +2821,21 @@ section .main .context {
           border-right-color: transparent;
           border-left-color: transparent;
           border-bottom-color: transparent; }
-    section .main .context ul.folders li > ul li a {
+    section .main .context ul.folders.folders li > ul li a {
       padding-left: 2.5em; }
-    section .main .context ul.folders li > ul li > ul li a {
+    section .main .context ul.folders.folders li > ul li > ul li a {
       padding-left: 4.5em; }
-    section .main .context ul.folders li > ul li > ul li > ul li a {
+    section .main .context ul.folders.folders li > ul li > ul li > ul li a {
       padding-left: 6.5em; }
-    section .main .context ul + .actions {
+    section .main .context ul.folders + .actions {
       margin-top: 2em; }
+      @media (max-width: 991px) {
+        section .main .context ul.folders + .actions {
+          margin-top: 1em; } }
   section .main .context .actions button, section .main .context .actions a.button {
     margin-bottom: 0.25em;
-    width: 100%;
     text-align: left;
-    display: block;
-    padding: 0.25em 1.5em; }
+    display: block; }
     section .main .context .actions button span, section .main .context .actions a.button span {
       float: right;
       margin-top: 1px; }
@@ -2873,6 +2878,7 @@ footer {
   background-color: #EEE;
   width: 100%; }
   footer ul {
+    max-width: 1400px;
     margin-bottom: 0; }
     footer ul li {
       display: inline; }
@@ -2921,6 +2927,28 @@ fieldset {
   border: none;
   margin: 0;
   padding: 0; }
+
+select, input {
+  font-size: 0.85em;
+  border-width: solid 1px #D0E2F0;
+  padding: 0.25em 2.5em 0.25em 1em;
+  color: #666;
+  border: solid 1px #D0E2F0;
+  border-radius: 0.5em;
+  margin: 0px 2px 0 0; }
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  background: #FFF url(/img/select.svg);
+  background-size: contain;
+  background-position: top right;
+  background-repeat: no-repeat; }
+
+input {
+  background-color: #FFF; }
 
 .site.ng-enter {
   -webkit-transition: 0 ease all;

@@ -69,7 +69,8 @@ header {
 	background-color: $light-grey;
 
 	nav {
-		@extend .container;
+		@extend .container-fluid;
+		max-width: 1400px;
 
 		ul {
 			@extend .row;
@@ -134,7 +135,8 @@ header {
 }
 
 h1 {
-	@extend .container;
+	@extend .container-fluid;
+	max-width: 1400px;
 	margin-top: 0;
 
 	img {
@@ -145,7 +147,8 @@ h1 {
 }
 
 .message {
-	@extend .container;
+	@extend .container-fluid;
+	max-width: 1400px;
 
 	span {
 		padding: 0.5em $grid-gutter-width/2;
@@ -159,14 +162,16 @@ h1 {
 
 section {
 	&.app, &.signon {
-		@extend .container;
+		@extend .container-fluid;
+		max-width: 1400px;
 
 		padding-top: 2em;
 		padding-bottom: 5em;
 	}
 
 	&.introduction, &.signup {
-		@extend .container;
+		@extend .container-fluid;
+		max-width: 1400px;
 
 		.content {
 			@extend .row;
@@ -244,7 +249,8 @@ section {
 		}
 
 		.feature {
-			@extend .container;
+			@extend .container-fluid;
+			max-width: 1400px;
 
 			.getstarted {
 				padding-bottom: 5em;
@@ -322,6 +328,8 @@ section {
 				border: none;
 				padding: 0;
 				width: 100%;
+				color: $blue;
+				font-size: 1em;
 			}
 		}
 
@@ -332,7 +340,8 @@ section {
 		}
 
 		.view {
-			@extend .col-sm-9;
+			@extend .col-md-9;
+			@extend .col-md-pull-3;
 
 			nav {
 				@extend .row;
@@ -616,7 +625,7 @@ section {
 					}
 
 					.rule-group {
-						@media (max-width: $screen-sm-max) {
+						@media (max-width: $screen-xs-max) {
 							background-color: rgba($blue, 0.2);
 							padding: 0 $grid-gutter-width/2;
 							margin-left: -$grid-gutter-width/2;
@@ -663,7 +672,7 @@ section {
 					}
 
 					.rule {
-						@media (max-width: $screen-sm-max) {
+						@media (max-width: $screen-xs-max) {
 							select, input {
 								width: 100%;
 								margin-top: 0.5em;
@@ -689,28 +698,6 @@ section {
 
 					select, input {
 						font-size: 0.85em;
-						border-width: solid 1px $light-blue;
-						padding: 0.25em 2.5em 0.25em 1em;
-						color: $grey;
-						border: solid 1px $light-blue;
-						border-radius: 0.5em;
-						margin: 0px 2px 0 0;
-					}
-
-					select {
-						-webkit-appearance: none;
-						-moz-appearance: none;
-						appearance: none;
-						cursor: pointer;
-						background: #FFF url(/img/select.svg);
-						background-size: contain;
-						background-position: top right;
-						background-repeat: no-repeat;
-					}
-
-					input {
-						padding-right: 1em;
-						background-color: #FFF;
 					}
 
 					.total {
@@ -729,15 +716,32 @@ section {
 		}
 
 		.context {
-			@extend .col-sm-3;
+			@extend .col-md-3;
+			@extend .col-md-push-9;
+			@extend .clearfix;
 			padding-left: 0;
-			@media (max-width: $screen-xs-max) {
-				display: none;
+
+			@media (max-width: $screen-sm-max) {
+				padding-left: $grid-gutter-width/2;
+				padding-bottom: 1em;
 			}
 
-			ul {
+			select.folders {
+				display: none;
+				width: 100%;
+
+				@media (max-width: $screen-sm-max) {
+					display: inline;
+				}
+			}
+
+			ul.folders {
 				margin: 0;
 				padding-left: 0;
+
+				@media (max-width: $screen-sm-max) {
+					display: none;
+				}
 
 				li {
 					display: inline;
@@ -805,16 +809,24 @@ section {
 
 				& + .actions {
 					margin-top: 2em;
+
+					@media (max-width: $screen-sm-max) {
+						margin-top: 1em;
+					}
 				}
 			}
 
 			.actions {
 				button, a.button {
 					margin-bottom: 0.25em;
-					width: 100%;
+
 					text-align: left;
 					display: block;
-					padding: 0.25em 1.5em;
+					// padding: 0.25em 1.5em;
+
+					@extend .col-md-12;
+					@extend .col-sm-4;
+					@extend .col-xs-12;
 
 					span {
 						float: right;
@@ -889,7 +901,8 @@ footer {
 	width: 100%;
 
 	ul {
-		@extend .container;
+		@extend .container-fluid;
+		max-width: 1400px;
 		margin-bottom: 0;
 
 		li {
@@ -956,6 +969,31 @@ fieldset {
 	border: none;
 	margin: 0;
 	padding: 0;
+}
+
+select, input {
+	font-size: 0.85em;
+	border-width: solid 1px $light-blue;
+	padding: 0.25em 2.5em 0.25em 1em;
+	color: $grey;
+	border: solid 1px $light-blue;
+	border-radius: 0.5em;
+	margin: 0px 2px 0 0;
+}
+
+select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	cursor: pointer;
+	background: #FFF url(/img/select.svg);
+	background-size: contain;
+	background-position: top right;
+	background-repeat: no-repeat;
+}
+
+input {
+	background-color: #FFF;
 }
 
 // Animations
