@@ -180,6 +180,9 @@ controllers.controller('filterController', ['$scope', '$http', 'filterFactory', 
 		];
 		$scope.sortableOptions = {
 			connectWith: ".rule-group",
+			helper: "clone",
+			opacity: 0.75,
+			placeholder: "rule-group-placeholder",
 			stop: function(e, ui) {
 				// Check if there are rule groups to delete because they are now empty after a move
 				$scope.deleteRule(null);
