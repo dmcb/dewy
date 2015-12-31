@@ -1,6 +1,7 @@
 var app = angular.module('dewy', [
 	'ngRoute',
 	'ngAnimate',
+	'ui.sortable',
 	'dewyControllers',
 	'dewyFactories',
 	'dewyServices'

@@ -2734,6 +2734,10 @@ section .main .view .content {
         margin-top: 0.5em; }
       section .main .view .content .rules .rule .buttons, section .main .view .content .notifications .rule .buttons, section .main .view .content .total .rule .buttons {
         margin-top: 0.5em; } }
+    section .main .view .content .rules .rule:hover, section .main .view .content .notifications .rule:hover, section .main .view .content .total .rule:hover {
+      cursor: grab;
+      cursor: -webkit-grab;
+      cursor: -moz-grab; }
     section .main .view .content .rules .rule-group-heading, section .main .view .content .notifications .rule-group-heading, section .main .view .content .total .rule-group-heading {
       margin-bottom: 1.5em; }
     section .main .view .content .rules select, section .main .view .content .rules input, section .main .view .content .notifications select, section .main .view .content .notifications input, section .main .view .content .total select, section .main .view .content .total input {
@@ -2743,7 +2747,7 @@ section .main .view .content {
       color: #666;
       border: solid 1px #D0E2F0;
       border-radius: 0.5em;
-      margin: 2px 2px 0 0; }
+      margin: 0px 2px 0 0; }
     section .main .view .content .rules select, section .main .view .content .notifications select, section .main .view .content .total select {
       -webkit-appearance: none;
       -moz-appearance: none;

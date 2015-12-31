@@ -175,6 +175,9 @@ controllers.controller('filterController', ['$scope', '$http', 'filterFactory', 
 			'is greater than or equal to',
 			'is less than or equal to'
 		];
+		$scope.sortableOptions = {
+			connectWith: ".rule-group",
+		};
 }]);
 
 controllers.controller('sitesController', ['$scope', '$location', 'filters', 'currentFilter', 'sites',

@@ -3,7 +3,7 @@
     of the following rules:
     <div class="buttons" ng-if="rule._parent" ng-include="'templates/rule_buttons.html'"></div>
 </li>
-<ul class="rule-group">
+<ul class="rule-group" ui-sortable="sortableOptions" ng-model="rule.rules">
     <li class="rule" ng-repeat="rule in rule.rules" ng-form="rulesForm">
         <div ng-if="rule.operator" ng-init="rule._parent=true" ng-include="'templates/filter_tree.html'"></div>
         <div ng-if="!rule.operator">

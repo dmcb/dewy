@@ -665,6 +665,14 @@ section {
 								margin-top: 0.5em;
 							}
 						}
+
+
+						&:hover {
+							// border-left: 8px solid $blue;
+							cursor: grab;
+							cursor: -webkit-grab; 
+							cursor: -moz-grab;
+						}
 					}
 
 					.rule-group-heading {
@@ -678,7 +686,7 @@ section {
 						color: $grey;
 						border: solid 1px $light-blue;
 						border-radius: 0.5em;
-						margin: 2px 2px 0 0;
+						margin: 0px 2px 0 0;
 					}
 
 					select {
