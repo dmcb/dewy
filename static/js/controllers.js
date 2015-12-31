@@ -59,6 +59,9 @@ controllers.controller('filterController', ['$scope', '$http', 'filterFactory', 
 				var rules = target.rules, i;
 				if (rules) {
 					i = rules.length;
+					if (!i) {
+						return 'empty';
+					}
 					while (i--) {
 						if (rules[i] == rule) {
 							var deletedRule = rules.splice(i, 1);
@@ -177,6 +180,10 @@ controllers.controller('filterController', ['$scope', '$http', 'filterFactory', 
 		];
 		$scope.sortableOptions = {
 			connectWith: ".rule-group",
+			stop: function(e, ui) {
+				// Check if there are rule groups to delete because they are now empty after a move
+				$scope.deleteRule(null);
+			}
 		};
 }]);
 
