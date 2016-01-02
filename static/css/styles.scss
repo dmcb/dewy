@@ -498,6 +498,13 @@ section {
 							li {
 								&.complexity, &.size, &.activity, &.health {
 									@extend .col-xs-3;
+
+									a {
+										width: 100%;
+										display: block;
+										padding-top: 0.5em;
+										padding-bottom: 0.5em;
+									}
 								}
 							}
 						}
@@ -518,8 +525,8 @@ section {
 						width: 100%;
 						height: 100%;
 						padding: 0.5em $grid-gutter-width/2;
-						box-sizing: content-box;
 						margin-left: -$grid-gutter-width/2;
+						box-sizing: content-box;
 
 						@media (max-width: $screen-sm-max) {
 							&:after {
@@ -588,7 +595,7 @@ section {
 						min-width: $screen-xs-max/2;
 					}
 
-					.noresults, ul {
+					.noresults {
 						padding-bottom: 1em;
 					}
 
@@ -603,31 +610,67 @@ section {
 						}
 					}
 
-					ul {
-						li {
-							background-color: #FFF;
+					.site {
+						ul {
+							margin-top: 0.5em;
+							margin-bottom: 0.5em;
 
-							.point {
-								width: 0.75em;
-								background-color: $blue;
-								height: 0.75em;
-								display: inline-block;
-								border-radius: 0.75em;
-								transition: opacity 0.3s;
+							li {
+								background-color: #FFF;
+
+								.point {
+									width: 0.75em;
+									background-color: $blue;
+									height: 0.75em;
+									display: inline-block;
+									border-radius: 0.75em;
+									transition: opacity 0.3s;
+								}
+
+								&.title a {
+									color: $grey;
+
+									&:hover {
+										color: #000;
+									} 
+								}
+
+								&.complexity, &.size, &.activity, &.health {
+									font-size: 0.8em;
+
+									@media (max-width: $screen-md-max) {
+										margin-top: 1.5em;
+									}
+
+									a:hover .point {
+										background-color: $dark-blue;
+									}
+								}
 							}
 
-							&.complexity, &.size, &.activity, &.health {
-								font-size: 0.8em;
-								margin-top: 0.75em;
-
-								@media (max-width: $screen-md-max) {
-									margin-top: 1.5em;
-								}
+							&.variables {
+								padding-bottom: 0;
 							}
 						}
 
-						&.variables {
-							padding-bottom: 0;
+						div.detail-view {
+							background-color: $light-grey;
+							padding: 1em $grid-gutter-width/2;
+							margin-top: 1em;
+
+							&:before {
+								display: inline-block;
+								width: 0;
+								height: 0;
+								content: "";
+								border: 1em solid;
+								border-right-color: transparent;
+								border-left-color: transparent;
+								border-top-color: transparent;
+								color: $light-grey;
+								position: absolute;
+								margin-top: -2.5em;
+							}
 						}
 					}
 				}
@@ -1032,7 +1075,9 @@ input {
 }
 
 // Animations
-.site.ng-enter {
+div.site.ng-enter,
+.detail-view.ng-leave,
+{
     -webkit-transition: 0 ease all;
     -moz-transition: 0 ease all;
     -ms-transition: 0 ease all;
@@ -1044,7 +1089,8 @@ input {
 
 .rule.ng-enter, 
 .rule.ng-leave,
-.site.ng-leave,
+.detail-view.ng-enter, 
+div.site.ng-leave,
 .noresults.ng-enter, 
 .noresults.ng-leave
 { 
@@ -1073,16 +1119,20 @@ input {
 
 .noresults.ng-enter.ng-enter-active, 
 .noresults.ng-leave,
-.site.ng-enter.ng-enter-active,
-.site.ng-leave
+div.site.ng-enter.ng-enter-active,
+div.site.ng-leave,
+.detail-view.ng-enter.ng-enter-active, 
+.detail-view.ng-leave,
 {
     opacity: 1;
 }
 
 .noresults.ng-leave.ng-leave-active,
 .noresults.ng-enter,
-.site.ng-leave.ng-leave-active,
-.site.ng-enter
+div.site.ng-leave.ng-leave-active,
+div.site.ng-enter,
+.detail-view.ng-leave.ng-leave-active,
+.detail-view.ng-enter,
 {
     opacity: 0;
 }

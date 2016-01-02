@@ -1,3 +1,11 @@
+exports.get = function(user, siteId) {
+  for (var i=0; i<sites.length; i++) {
+    if (sites[i].id == siteId) {
+      return sites[i];
+    }
+  }
+}
+
 exports.getAll = function(user, filter) {
   // Dummy function for now, will eventually pull from persistence layer
   return sites;
@@ -5,6 +13,7 @@ exports.getAll = function(user, filter) {
 
 sites = [
   {
+    id: 1,
     title: 'Photography Blog',
     base_url: 'photographybyderek.ca/blog',
     complexity: 3.53,
@@ -13,6 +22,7 @@ sites = [
     health: 1
   },
   {
+    id: 2,
     title: 'Derek McBurney',
     base_url: 'derekmcburney.com',
     complexity: 1,
@@ -21,6 +31,7 @@ sites = [
     health: 6.4
   },
   {
+    id: 3,
     title: 'my world, my choice!',
     base_url: 'myworldmychoice.org',
     complexity: 1,

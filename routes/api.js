@@ -26,6 +26,10 @@ router.get('/api/1.0/operators', function (req, res, next) {
   res.send(filters.getOperators());
 });
 
+router.get('/api/1.0/site/:site?', function (req, res, next) {
+  res.send(sites.get(null, req.params.site));
+});
+
 router.get('/api/1.0/sites/:filter?', function (req, res, next) {
   res.send(sites.getAll(null, req.params.filter));
 });

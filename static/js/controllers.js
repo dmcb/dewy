@@ -191,8 +191,8 @@ controllers.controller('filterController', ['$scope', '$http', 'filterFactory', 
 		};
 }]);
 
-controllers.controller('sitesController', ['$scope', '$location', 'filters', 'currentFilter', 'sites',
-	function ($scope, $location, filters, currentFilter, sites) {
+controllers.controller('sitesController', ['$scope', '$location', 'sitesFactory', 'filters', 'currentFilter', 'sites',
+	function ($scope, $location, sitesFactory, filters, currentFilter, sites) {
 		$scope.addFilter = function() {
 			$location.path('filter');
 		}
@@ -208,6 +208,12 @@ controllers.controller('sitesController', ['$scope', '$location', 'filters', 'cu
 		};
 		$scope.getNumber = function(number) {
 			return new Array(Math.round(number));
+		}
+		$scope.openDetails = function(index, detail) {
+			if (!$scope.sites[index].details) {
+				$scope.sites[index].details = sitesFactory.get(null, $scope.sites[index].id);
+			}
+			$scope.openSite = {id: $scope.sites[index].id, detail: detail};
 		}
 		$scope.openFolder = function(filter) {
 			$scope.folders[filter] = !$scope.folders[filter];
@@ -225,6 +231,8 @@ controllers.controller('sitesController', ['$scope', '$location', 'filters', 'cu
 			$location.path('sites');
 		}
 		$scope.sites = sites;
+
+		// Grab session data if it exists
 		if (sessionStorage.folders) {
 			$scope.folders = JSON.parse(sessionStorage.folders);
 		} else {

@@ -45,23 +45,28 @@
                             </div>
                             <div class="sites">
                                 <div ng-if="!filteredSites.length && query" class="noresults"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span><span>No sites meet your criteria.</span></div>
-                                <ul ng-repeat="site in filteredSites = (sites | filter:query) | orderBy:sort.column:sort.descending" class="site">
-                                    <li class="title"><h3>{{site.title}}</h3><span>{{site.base_url}}</span></li>
-                                    <div class="variables">
-                                        <ul>
-                                            <li class="complexity">
-                                                <div class="point" ng-repeat="i in getNumber(site.complexity) track by $index"></div>
-                                            </li>
-                                            <li class="size">
-                                                <div class="point" ng-repeat="i in getNumber(site.size) track by $index"></div>
-                                            </li>
-                                            <li class="activity">
-                                                <div class="point" ng-repeat="i in getNumber(site.activity) track by $index"></div>
-                                            </li>
-                                            <li class="health">
-                                                <div class="point" ng-repeat="i in getNumber(site.health) track by $index"></div>
-                                            </li>
-                                        </ul>
+                                <div ng-repeat="site in filteredSites = (sites | filter:query) | orderBy:sort.column:sort.descending" class="site">
+                                    <ul>
+                                        <li class="title"><a href="" ng-click="openDetails(sites.indexOf(site))"><h3>{{site.title}}</h3><span>{{site.base_url}}</span></a></li>
+                                        <div class="variables">
+                                            <ul>
+                                                <li class="complexity">
+                                                    <a href="" ng-click="openDetails(sites.indexOf(site), 'complexity')"><div class="point" ng-repeat="i in getNumber(site.complexity) track by $index"></div></a>
+                                                </li>
+                                                <li class="size">
+                                                    <a href="" ng-click="openDetails(sites.indexOf(site), 'size')"><div class="point" ng-repeat="i in getNumber(site.size) track by $index"></div></a>
+                                                </li>
+                                                <li class="activity">
+                                                    <a href="" ng-click="openDetails(sites.indexOf(site), 'activity')"><div class="point" ng-repeat="i in getNumber(site.activity) track by $index"></div></a>
+                                                </li>
+                                                <li class="health">
+                                                    <a href="" ng-click="openDetails(sites.indexOf(site), 'health')"><div class="point" ng-repeat="i in getNumber(site.health) track by $index"></div></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </ul>
+                                    <div class="detail-view {{openSite.detail}}" ng-if="openSite.id == site.id">
+                                        {{site.details}}
                                     </div>
                                 </ul>
                             </div>

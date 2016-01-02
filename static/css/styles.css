@@ -2629,6 +2629,11 @@ section .main .view .content {
       section .main .view .content ul div.variables {
         margin-left: 50%;
         padding-left: 30px; } }
+    section .main .view .content ul div.variables ul li.complexity a, section .main .view .content ul div.variables ul li.size a, section .main .view .content ul div.variables ul li.activity a, section .main .view .content ul div.variables ul li.health a {
+      width: 100%;
+      display: block;
+      padding-top: 0.5em;
+      padding-bottom: 0.5em; }
   section .main .view .content .header {
     background-color: #EEE; }
     @media (max-width: 767px) {
@@ -2641,8 +2646,8 @@ section .main .view .content {
       width: 100%;
       height: 100%;
       padding: 0.5em 15px;
-      box-sizing: content-box;
-      margin-left: -15px; }
+      margin-left: -15px;
+      box-sizing: content-box; }
       @media (max-width: 991px) {
         section .main .view .content .header ul li a:after {
           margin-top: 6px;
@@ -2695,7 +2700,7 @@ section .main .view .content {
     @media (max-width: 767px) {
       section .main .view .content .sites {
         min-width: 383.5px; } }
-    section .main .view .content .sites .noresults, section .main .view .content .sites ul {
+    section .main .view .content .sites .noresults {
       padding-bottom: 1em; }
     section .main .view .content .sites .noresults {
       display: block;
@@ -2704,23 +2709,47 @@ section .main .view .content {
       color: #337AB7; }
       section .main .view .content .sites .noresults span {
         margin-right: 0.5em; }
-    section .main .view .content .sites ul li {
-      background-color: #FFF; }
-      section .main .view .content .sites ul li .point {
-        width: 0.75em;
-        background-color: #239CF9;
-        height: 0.75em;
+    section .main .view .content .sites .site ul {
+      margin-top: 0.5em;
+      margin-bottom: 0.5em; }
+      section .main .view .content .sites .site ul li {
+        background-color: #FFF; }
+        section .main .view .content .sites .site ul li .point {
+          width: 0.75em;
+          background-color: #239CF9;
+          height: 0.75em;
+          display: inline-block;
+          border-radius: 0.75em;
+          transition: opacity 0.3s; }
+        section .main .view .content .sites .site ul li.title a {
+          color: #666; }
+          section .main .view .content .sites .site ul li.title a:hover {
+            color: #000; }
+        section .main .view .content .sites .site ul li.complexity, section .main .view .content .sites .site ul li.size, section .main .view .content .sites .site ul li.activity, section .main .view .content .sites .site ul li.health {
+          font-size: 0.8em; }
+          @media (max-width: 1199px) {
+            section .main .view .content .sites .site ul li.complexity, section .main .view .content .sites .site ul li.size, section .main .view .content .sites .site ul li.activity, section .main .view .content .sites .site ul li.health {
+              margin-top: 1.5em; } }
+          section .main .view .content .sites .site ul li.complexity a:hover .point, section .main .view .content .sites .site ul li.size a:hover .point, section .main .view .content .sites .site ul li.activity a:hover .point, section .main .view .content .sites .site ul li.health a:hover .point {
+            background-color: #337AB7; }
+      section .main .view .content .sites .site ul.variables {
+        padding-bottom: 0; }
+    section .main .view .content .sites .site div.detail-view {
+      background-color: #EEE;
+      padding: 1em 15px;
+      margin-top: 1em; }
+      section .main .view .content .sites .site div.detail-view:before {
         display: inline-block;
-        border-radius: 0.75em;
-        transition: opacity 0.3s; }
-      section .main .view .content .sites ul li.complexity, section .main .view .content .sites ul li.size, section .main .view .content .sites ul li.activity, section .main .view .content .sites ul li.health {
-        font-size: 0.8em;
-        margin-top: 0.75em; }
-        @media (max-width: 1199px) {
-          section .main .view .content .sites ul li.complexity, section .main .view .content .sites ul li.size, section .main .view .content .sites ul li.activity, section .main .view .content .sites ul li.health {
-            margin-top: 1.5em; } }
-    section .main .view .content .sites ul.variables {
-      padding-bottom: 0; }
+        width: 0;
+        height: 0;
+        content: "";
+        border: 1em solid;
+        border-right-color: transparent;
+        border-left-color: transparent;
+        border-top-color: transparent;
+        color: #EEE;
+        position: absolute;
+        margin-top: -2.5em; }
   section .main .view .content .rules, section .main .view .content .notifications, section .main .view .content .total {
     padding: 15px; }
     section .main .view .content .rules div > .rule-group, section .main .view .content .rules .notification-choices, section .main .view .content .notifications div > .rule-group, section .main .view .content .notifications .notification-choices, section .main .view .content .total div > .rule-group, section .main .view .content .total .notification-choices {
@@ -2972,7 +3001,8 @@ select {
 input {
   background-color: #FFF; }
 
-.site.ng-enter {
+div.site.ng-enter,
+.detail-view.ng-leave {
   -webkit-transition: 0 ease all;
   -moz-transition: 0 ease all;
   -ms-transition: 0 ease all;
@@ -2983,7 +3013,8 @@ input {
 
 .rule.ng-enter,
 .rule.ng-leave,
-.site.ng-leave,
+.detail-view.ng-enter,
+div.site.ng-leave,
 .noresults.ng-enter,
 .noresults.ng-leave {
   -webkit-transition: 400ms ease all;
@@ -3006,12 +3037,16 @@ input {
 
 .noresults.ng-enter.ng-enter-active,
 .noresults.ng-leave,
-.site.ng-enter.ng-enter-active,
-.site.ng-leave {
+div.site.ng-enter.ng-enter-active,
+div.site.ng-leave,
+.detail-view.ng-enter.ng-enter-active,
+.detail-view.ng-leave {
   opacity: 1; }
 
 .noresults.ng-leave.ng-leave-active,
 .noresults.ng-enter,
-.site.ng-leave.ng-leave-active,
-.site.ng-enter {
+div.site.ng-leave.ng-leave-active,
+div.site.ng-enter,
+.detail-view.ng-leave.ng-leave-active,
+.detail-view.ng-enter {
   opacity: 0; }
