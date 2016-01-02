@@ -2562,7 +2562,6 @@ section .main .view nav .tabs ul {
       color: #337AB7;
       display: inline-block;
       padding: 0.5em 1em;
-      background-color: #FFF;
       border-top: solid 1px #D0E2F0;
       border-left: solid 1px #D0E2F0;
       border-right: solid 1px #D0E2F0; }
@@ -2602,8 +2601,8 @@ section .main .view nav .search form {
     position: absolute;
     right: 0;
     color: #239CF9;
-    margin-top: 7px;
-    margin-right: 7px;
+    margin-top: 4px;
+    margin-right: 6px;
     background-color: transparent; }
 section .main .view .content {
   border-top: solid 1px #D0E2F0;
@@ -2642,7 +2641,7 @@ section .main .view .content {
     section .main .view .content .header ul li a {
       background-color: #EEE;
       color: #666;
-      display: inline-block;
+      display: block;
       width: 100%;
       height: 100%;
       padding: 0.5em 15px;
@@ -2695,61 +2694,62 @@ section .main .view .content {
           section .main .view .content .header ul li a.selected.asc:after {
             display: block;
             margin-left: 0; } }
-  section .main .view .content .sites {
-    padding-top: 1em; }
+  @media (max-width: 767px) {
+    section .main .view .content .sites {
+      min-width: 383.5px; } }
+  section .main .view .content .sites .noresults {
+    padding-bottom: 1em; }
+  section .main .view .content .sites .noresults {
+    display: block;
+    text-align: center;
+    margin: 0;
+    color: #337AB7; }
+    section .main .view .content .sites .noresults span {
+      margin-right: 0.5em; }
+  section .main .view .content .sites .site ul li {
+    padding-top: 0.75em;
+    padding-bottom: 0.75em;
+    height: 4.5em; }
+    section .main .view .content .sites .site ul li .point {
+      width: 0.75em;
+      background-color: #239CF9;
+      height: 0.75em;
+      display: inline-block;
+      border-radius: 0.75em;
+      transition: opacity 0.3s;
+      font-size: 0.8em; }
+    section .main .view .content .sites .site ul li.title {
+      background-color: #FFF; }
+      section .main .view .content .sites .site ul li.title a {
+        color: #666; }
+        section .main .view .content .sites .site ul li.title a:hover {
+          color: #000; }
+    section .main .view .content .sites .site ul li.complexity a:hover .point, section .main .view .content .sites .site ul li.size a:hover .point, section .main .view .content .sites .site ul li.activity a:hover .point, section .main .view .content .sites .site ul li.health a:hover .point {
+      background-color: #337AB7; }
+    section .main .view .content .sites .site ul li.open:before {
+      display: inline-block;
+      width: 0;
+      height: 0;
+      content: "";
+      border: 0.75em solid;
+      border-right-color: transparent;
+      border-left-color: transparent;
+      border-top-color: transparent;
+      color: #EEE;
+      position: absolute;
+      margin-top: -2.5em;
+      margin-left: -0.37em;
+      bottom: -1px; }
+  section .main .view .content .sites .site ul.variables {
+    padding-bottom: 0; }
+  section .main .view .content .sites .site div.detail-view {
+    background-color: #EEE;
+    padding: 1em 15px; }
     @media (max-width: 767px) {
-      section .main .view .content .sites {
-        min-width: 383.5px; } }
-    section .main .view .content .sites .noresults {
-      padding-bottom: 1em; }
-    section .main .view .content .sites .noresults {
-      display: block;
-      text-align: center;
-      margin: 0;
-      color: #337AB7; }
-      section .main .view .content .sites .noresults span {
-        margin-right: 0.5em; }
-    section .main .view .content .sites .site ul {
-      margin-top: 0.5em;
-      margin-bottom: 0.5em; }
-      section .main .view .content .sites .site ul li {
-        background-color: #FFF; }
-        section .main .view .content .sites .site ul li .point {
-          width: 0.75em;
-          background-color: #239CF9;
-          height: 0.75em;
-          display: inline-block;
-          border-radius: 0.75em;
-          transition: opacity 0.3s; }
-        section .main .view .content .sites .site ul li.title a {
-          color: #666; }
-          section .main .view .content .sites .site ul li.title a:hover {
-            color: #000; }
-        section .main .view .content .sites .site ul li.complexity, section .main .view .content .sites .site ul li.size, section .main .view .content .sites .site ul li.activity, section .main .view .content .sites .site ul li.health {
-          font-size: 0.8em; }
-          @media (max-width: 1199px) {
-            section .main .view .content .sites .site ul li.complexity, section .main .view .content .sites .site ul li.size, section .main .view .content .sites .site ul li.activity, section .main .view .content .sites .site ul li.health {
-              margin-top: 1.5em; } }
-          section .main .view .content .sites .site ul li.complexity a:hover .point, section .main .view .content .sites .site ul li.size a:hover .point, section .main .view .content .sites .site ul li.activity a:hover .point, section .main .view .content .sites .site ul li.health a:hover .point {
-            background-color: #337AB7; }
-      section .main .view .content .sites .site ul.variables {
-        padding-bottom: 0; }
-    section .main .view .content .sites .site div.detail-view {
-      background-color: #EEE;
-      padding: 1em 15px;
-      margin-top: 1em; }
-      section .main .view .content .sites .site div.detail-view:before {
-        display: inline-block;
-        width: 0;
-        height: 0;
-        content: "";
-        border: 1em solid;
-        border-right-color: transparent;
-        border-left-color: transparent;
-        border-top-color: transparent;
-        color: #EEE;
-        position: absolute;
-        margin-top: -2.5em; }
+      section .main .view .content .sites .site div.detail-view {
+        margin-right: -50%; }
+        section .main .view .content .sites .site div.detail-view ul {
+          position: absolute; } }
   section .main .view .content .rules, section .main .view .content .notifications, section .main .view .content .total {
     padding: 15px; }
     section .main .view .content .rules div > .rule-group, section .main .view .content .rules .notification-choices, section .main .view .content .notifications div > .rule-group, section .main .view .content .notifications .notification-choices, section .main .view .content .total div > .rule-group, section .main .view .content .total .notification-choices {
@@ -3014,6 +3014,7 @@ div.site.ng-enter,
 .rule.ng-enter,
 .rule.ng-leave,
 .detail-view.ng-enter,
+.detail-view ul.ng-enter,
 div.site.ng-leave,
 .noresults.ng-enter,
 .noresults.ng-leave {
@@ -3026,12 +3027,16 @@ div.site.ng-leave,
   display: block; }
 
 .rule.ng-enter.ng-enter-active,
-.rule.ng-leave {
+.rule.ng-leave,
+.detail-view ul.ng-enter.ng-enter-active,
+.detail-view ul.ng-leave {
   opacity: 1;
   top: 0; }
 
 .rule.ng-leave.ng-leave-active,
-.rule.ng-enter {
+.rule.ng-enter,
+.detail-view ul.ng-leave.ng-leave-active,
+.detail-view ul.ng-enter {
   opacity: 0;
   top: -50px; }
 

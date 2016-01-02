@@ -47,26 +47,46 @@
                                 <div ng-if="!filteredSites.length && query" class="noresults"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span><span>No sites meet your criteria.</span></div>
                                 <div ng-repeat="site in filteredSites = (sites | filter:query) | orderBy:sort.column:sort.descending" class="site">
                                     <ul>
-                                        <li class="title"><a href="" ng-click="openDetails(sites.indexOf(site))"><h3>{{site.title}}</h3><span>{{site.base_url}}</span></a></li>
+                                        <li class="title" ng-class="{open: openSite.id == site.id && !openSite.detail}"><a href="" ng-click="openDetails(sites.indexOf(site))"><h3>{{site.title}}</h3><span>{{site.base_url}}</span></a></li>
                                         <div class="variables">
                                             <ul>
-                                                <li class="complexity">
+                                                <li class="complexity" ng-class="{open: openSite.id == site.id && openSite.detail == 'complexity'}">
                                                     <a href="" ng-click="openDetails(sites.indexOf(site), 'complexity')"><div class="point" ng-repeat="i in getNumber(site.complexity) track by $index"></div></a>
                                                 </li>
-                                                <li class="size">
+                                                <li class="size" ng-class="{open: openSite.id == site.id && openSite.detail == 'size'}">
                                                     <a href="" ng-click="openDetails(sites.indexOf(site), 'size')"><div class="point" ng-repeat="i in getNumber(site.size) track by $index"></div></a>
                                                 </li>
-                                                <li class="activity">
+                                                <li class="activity" ng-class="{open: openSite.id == site.id && openSite.detail == 'activity'}">
                                                     <a href="" ng-click="openDetails(sites.indexOf(site), 'activity')"><div class="point" ng-repeat="i in getNumber(site.activity) track by $index"></div></a>
                                                 </li>
-                                                <li class="health">
+                                                <li class="health" ng-class="{open: openSite.id == site.id && openSite.detail == 'health'}">
                                                     <a href="" ng-click="openDetails(sites.indexOf(site), 'health')"><div class="point" ng-repeat="i in getNumber(site.health) track by $index"></div></a>
                                                 </li>
                                             </ul>
                                         </div>
                                     </ul>
-                                    <div class="detail-view {{openSite.detail}}" ng-if="openSite.id == site.id">
-                                        {{site.details}}
+                                    <div class="detail-view" ng-if="openSite.id == site.id">
+                                        <ul ng-if="openSite.detail == 'complexity'">
+                                            <li><span class="number">{{}}</span> modules enabled</li>
+                                            <li><span class="number">{{}}</span> modules available</li>
+                                            <li><span class="number">{{}}</span> content types</li>
+                                            <li><span class="number">{{}}</span> roles</li>
+                                        </ul>
+                                        <ul ng-if="openSite.detail == 'size'">
+                                            <li><span class="number">{{}}</span> nodes</li>
+                                            <li><span class="number">{{}}</span> users</li>
+                                            <li><span class="number">{{}}</span> files</li>
+                                            <li><span class="number">{{}}</span> words</li>
+                                        </ul>
+                                        <ul ng-if="openSite.detail == 'activity'">
+                                            <li><span class="number">{{}}</span> since last visit</li>
+                                            <li><span class="number">{{}}</span> since last access</li>
+                                            <li><span class="number">{{}}</span> since last modification</li>
+                                        </ul>
+                                        <ul ng-if="openSite.detail == 'health'">
+                                            <li><span class="number">{{}}</span> modules out of date</li>
+                                            <li><span class="number">{{}}</span> database updates pending</li>
+                                        </ul>
                                     </div>
                                 </ul>
                             </div>

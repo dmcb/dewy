@@ -376,7 +376,6 @@ section {
 								color: $dark-blue;
 								display: inline-block;
 								padding: 0.5em 1em;
-								background-color: #FFF;
 								border-top: solid 1px $light-blue;
 								border-left: solid 1px $light-blue;
 								border-right: solid 1px $light-blue;
@@ -438,8 +437,8 @@ section {
 							position: absolute;
 							right: 0;
 							color: $blue;
-							margin-top: 7px;
-							margin-right: 7px;
+							margin-top: 4px;
+							margin-right: 6px;
 							background-color: transparent;
 						}
 					}
@@ -521,7 +520,7 @@ section {
 					ul li a {
 						background-color: $light-grey;
 						color: $grey;
-						display: inline-block;
+						display: block;
 						width: 100%;
 						height: 100%;
 						padding: 0.5em $grid-gutter-width/2;
@@ -589,8 +588,6 @@ section {
 				}
 
 				.sites {
-					padding-top: 1em;
-
 					@media (max-width: $screen-xs-max) {
 						min-width: $screen-xs-max/2;
 					}
@@ -612,11 +609,10 @@ section {
 
 					.site {
 						ul {
-							margin-top: 0.5em;
-							margin-bottom: 0.5em;
-
 							li {
-								background-color: #FFF;
+								padding-top: 0.75em;
+								padding-bottom: 0.75em;
+								height: 4.5em;
 
 								.point {
 									width: 0.75em;
@@ -625,26 +621,41 @@ section {
 									display: inline-block;
 									border-radius: 0.75em;
 									transition: opacity 0.3s;
+									font-size: 0.8em;
 								}
 
-								&.title a {
-									color: $grey;
+								&.title {
+									background-color: #FFF;
 
-									&:hover {
-										color: #000;
-									} 
+									a {
+										color: $grey;
+
+										&:hover {
+											color: #000;
+										} 
+									}
 								}
 
 								&.complexity, &.size, &.activity, &.health {
-									font-size: 0.8em;
-
-									@media (max-width: $screen-md-max) {
-										margin-top: 1.5em;
-									}
-
 									a:hover .point {
 										background-color: $dark-blue;
 									}
+								}
+
+								&.open:before {
+									display: inline-block;
+									width: 0;
+									height: 0;
+									content: "";
+									border: 0.75em solid;
+									border-right-color: transparent;
+									border-left-color: transparent;
+									border-top-color: transparent;
+									color: $light-grey;
+									position: absolute;
+									margin-top: -2.5em;
+									margin-left: -0.37em;
+									bottom: -1px;
 								}
 							}
 
@@ -656,20 +667,13 @@ section {
 						div.detail-view {
 							background-color: $light-grey;
 							padding: 1em $grid-gutter-width/2;
-							margin-top: 1em;
 
-							&:before {
-								display: inline-block;
-								width: 0;
-								height: 0;
-								content: "";
-								border: 1em solid;
-								border-right-color: transparent;
-								border-left-color: transparent;
-								border-top-color: transparent;
-								color: $light-grey;
-								position: absolute;
-								margin-top: -2.5em;
+							@media (max-width: $screen-xs-max) {
+								margin-right: -50%;
+
+								ul {
+									position: absolute;
+								}
 							}
 						}
 					}
@@ -1090,6 +1094,7 @@ div.site.ng-enter,
 .rule.ng-enter, 
 .rule.ng-leave,
 .detail-view.ng-enter, 
+.detail-view ul.ng-enter,
 div.site.ng-leave,
 .noresults.ng-enter, 
 .noresults.ng-leave
@@ -1105,6 +1110,8 @@ div.site.ng-leave,
 
 .rule.ng-enter.ng-enter-active, 
 .rule.ng-leave,
+.detail-view ul.ng-enter.ng-enter-active, 
+.detail-view ul.ng-leave,
 {
     opacity: 1;
     top: 0;
@@ -1112,6 +1119,8 @@ div.site.ng-leave,
 
 .rule.ng-leave.ng-leave-active,
 .rule.ng-enter,
+.detail-view ul.ng-leave.ng-leave-active,
+.detail-view ul.ng-enter,
 {
     opacity: 0;
     top: -50px;
@@ -1123,6 +1132,7 @@ div.site.ng-enter.ng-enter-active,
 div.site.ng-leave,
 .detail-view.ng-enter.ng-enter-active, 
 .detail-view.ng-leave,
+
 {
     opacity: 1;
 }
@@ -1133,6 +1143,7 @@ div.site.ng-leave.ng-leave-active,
 div.site.ng-enter,
 .detail-view.ng-leave.ng-leave-active,
 .detail-view.ng-enter,
+
 {
     opacity: 0;
 }
