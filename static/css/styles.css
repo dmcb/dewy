@@ -2623,7 +2623,10 @@ section .main .view .content {
           z-index: 1; } }
       section .main .view .content ul li.title h3 {
         margin: 0;
-        font-size: 1.4em; }
+        font-size: 1.3em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap; }
     @media (max-width: 767px) {
       section .main .view .content ul div.variables {
         margin-left: 50%;
