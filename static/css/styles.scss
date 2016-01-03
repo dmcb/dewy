@@ -611,7 +611,7 @@ section {
 					}
 
 					.site {
-						ul {
+						ul.site {
 							li {
 								padding-top: 0.75em;
 								padding-bottom: 0.75em;
@@ -670,6 +670,16 @@ section {
 						div.detail-view {
 							background-color: $light-grey;
 							padding: 1em $grid-gutter-width/2;
+
+							.tags {
+								margin-bottom: 0.5em;
+								
+								li {
+									margin-right: 1em;
+									display: block;
+									float: left;
+								}
+							}
 
 							@media (max-width: $screen-xs-max) {
 								margin-right: -50%;
@@ -1097,7 +1107,7 @@ div.site.ng-enter,
 .rule.ng-enter, 
 .rule.ng-leave,
 .detail-view.ng-enter, 
-.detail-view ul.ng-enter,
+.detail-view div.ng-enter,
 div.site.ng-leave,
 .noresults.ng-enter, 
 .noresults.ng-leave
@@ -1113,8 +1123,8 @@ div.site.ng-leave,
 
 .rule.ng-enter.ng-enter-active, 
 .rule.ng-leave,
-.detail-view ul.ng-enter.ng-enter-active, 
-.detail-view ul.ng-leave,
+.detail-view div.ng-enter.ng-enter-active, 
+.detail-view div.ng-leave,
 {
     opacity: 1;
     top: 0;
@@ -1122,8 +1132,8 @@ div.site.ng-leave,
 
 .rule.ng-leave.ng-leave-active,
 .rule.ng-enter,
-.detail-view ul.ng-leave.ng-leave-active,
-.detail-view ul.ng-enter,
+.detail-view div.ng-leave.ng-leave-active,
+.detail-view div.ng-enter,
 {
     opacity: 0;
     top: -50px;

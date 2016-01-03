@@ -46,7 +46,7 @@
                             <div class="sites">
                                 <div ng-if="!filteredSites.length && query" class="noresults"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span><span>No sites meet your criteria.</span></div>
                                 <div ng-repeat="site in filteredSites = (sites | filter:query) | orderBy:sort.column:sort.descending" class="site">
-                                    <ul>
+                                    <ul class="site">
                                         <li class="title" ng-class="{open: openSite.id == site.id && !openSite.detail}"><a href="" ng-click="openDetails(sites.indexOf(site))"><h3>{{site.title}}</h3><span>{{site.base_url}}</span></a></li>
                                         <div class="variables">
                                             <ul>
@@ -66,6 +66,15 @@
                                         </div>
                                     </ul>
                                     <div class="detail-view" ng-if="openSite.id == site.id">
+                                        <div ng-if="!openSite.detail">
+                                            <ul class="tags" ng-if="openSite.details.tags.length">
+                                                <li ng-repeat="tag in openSite.details.tags">{{tag}} <a href=""><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></li>
+                                            </ul>
+                                            <form>
+                                                <input placeholder="Tags seperated by commas" />
+                                                <button>Add tags</button>
+                                            </form>
+                                        </div>
                                         <ul ng-if="openSite.detail == 'complexity'">
                                             <li><span class="number">{{}}</span> modules enabled</li>
                                             <li><span class="number">{{}}</span> modules available</li>

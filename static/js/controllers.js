@@ -211,9 +211,13 @@ controllers.controller('sitesController', ['$scope', '$location', 'sitesFactory'
 		}
 		$scope.openDetails = function(index, detail) {
 			if (!$scope.sites[index].details) {
-				$scope.sites[index].details = sitesFactory.get(null, $scope.sites[index].id);
+				sitesFactory.get(null, $scope.sites[index].id).then(function(details) {
+					$scope.sites[index].details = details;
+					$scope.openSite = {id: $scope.sites[index].id, details: $scope.sites[index].details, detail: detail};
+				});
+			} else {
+				$scope.openSite = {id: $scope.sites[index].id, details: $scope.sites[index].details, detail: detail};
 			}
-			$scope.openSite = {id: $scope.sites[index].id, detail: detail};
 		}
 		$scope.openFolder = function(filter) {
 			$scope.folders[filter] = !$scope.folders[filter];

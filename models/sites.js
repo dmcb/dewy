@@ -8,10 +8,25 @@ exports.get = function(user, siteId) {
 
 exports.getAll = function(user, filter) {
   // Dummy function for now, will eventually pull from persistence layer
-  return sites;
+  return sitesList;
 }
 
 sites = [
+  {
+    id: 1,
+    tags: ['awesome', 'development'],
+  },
+  {
+    id: 2,
+    tags: ['awesome'],
+  },
+  {
+    id: 3,
+    tags: [],
+  }
+];
+
+sitesList = [
   {
     id: 1,
     title: 'Photography Blog',

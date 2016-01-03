@@ -2709,11 +2709,11 @@ section .main .view .content {
     color: #337AB7; }
     section .main .view .content .sites .noresults span {
       margin-right: 0.5em; }
-  section .main .view .content .sites .site ul li {
+  section .main .view .content .sites .site ul.site li {
     padding-top: 0.75em;
     padding-bottom: 0.75em;
     height: 4.5em; }
-    section .main .view .content .sites .site ul li .point {
+    section .main .view .content .sites .site ul.site li .point {
       width: 0.75em;
       background-color: #239CF9;
       height: 0.75em;
@@ -2721,15 +2721,15 @@ section .main .view .content {
       border-radius: 0.75em;
       transition: opacity 0.3s;
       font-size: 0.8em; }
-    section .main .view .content .sites .site ul li.title {
+    section .main .view .content .sites .site ul.site li.title {
       background-color: #FFF; }
-      section .main .view .content .sites .site ul li.title a {
+      section .main .view .content .sites .site ul.site li.title a {
         color: #666; }
-        section .main .view .content .sites .site ul li.title a:hover {
+        section .main .view .content .sites .site ul.site li.title a:hover {
           color: #000; }
-    section .main .view .content .sites .site ul li.complexity a:hover .point, section .main .view .content .sites .site ul li.size a:hover .point, section .main .view .content .sites .site ul li.activity a:hover .point, section .main .view .content .sites .site ul li.health a:hover .point {
+    section .main .view .content .sites .site ul.site li.complexity a:hover .point, section .main .view .content .sites .site ul.site li.size a:hover .point, section .main .view .content .sites .site ul.site li.activity a:hover .point, section .main .view .content .sites .site ul.site li.health a:hover .point {
       background-color: #337AB7; }
-    section .main .view .content .sites .site ul li.open:before {
+    section .main .view .content .sites .site ul.site li.open:before {
       display: inline-block;
       width: 0;
       height: 0;
@@ -2743,11 +2743,17 @@ section .main .view .content {
       margin-top: -2.5em;
       margin-left: -0.37em;
       bottom: -1px; }
-  section .main .view .content .sites .site ul.variables {
+  section .main .view .content .sites .site ul.site.variables {
     padding-bottom: 0; }
   section .main .view .content .sites .site div.detail-view {
     background-color: #EEE;
     padding: 1em 15px; }
+    section .main .view .content .sites .site div.detail-view .tags {
+      margin-bottom: 0.5em; }
+      section .main .view .content .sites .site div.detail-view .tags li {
+        margin-right: 1em;
+        display: block;
+        float: left; }
     @media (max-width: 767px) {
       section .main .view .content .sites .site div.detail-view {
         margin-right: -50%; }
@@ -3017,7 +3023,7 @@ div.site.ng-enter,
 .rule.ng-enter,
 .rule.ng-leave,
 .detail-view.ng-enter,
-.detail-view ul.ng-enter,
+.detail-view div.ng-enter,
 div.site.ng-leave,
 .noresults.ng-enter,
 .noresults.ng-leave {
@@ -3031,15 +3037,15 @@ div.site.ng-leave,
 
 .rule.ng-enter.ng-enter-active,
 .rule.ng-leave,
-.detail-view ul.ng-enter.ng-enter-active,
-.detail-view ul.ng-leave {
+.detail-view div.ng-enter.ng-enter-active,
+.detail-view div.ng-leave {
   opacity: 1;
   top: 0; }
 
 .rule.ng-leave.ng-leave-active,
 .rule.ng-enter,
-.detail-view ul.ng-leave.ng-leave-active,
-.detail-view ul.ng-enter {
+.detail-view div.ng-leave.ng-leave-active,
+.detail-view div.ng-enter {
   opacity: 0;
   top: -50px; }
 
