@@ -2823,11 +2823,8 @@ section .main .view .content {
     section .main .view .content .rules .total, section .main .view .content .notifications .total, section .main .view .content .total .total {
       margin: 2em 0 0 0;
       font-weight: bold; }
-    section .main .view .content .rules .error span, section .main .view .content .notifications .error span, section .main .view .content .total .error span {
-      font-size: 0.9em;
-      color: #239CF9;
-      margin-top: 0.5em;
-      display: block; }
+    section .main .view .content .rules .error span, section .main .view .content .notifications .error .rules span span, section .main .view .content .total .error .rules span span, section .main .view .content .notifications .error span, section .main .view .content .rules .error .notifications span span, section .main .view .content .total .error .notifications span span, section .main .view .content .total .error span, section .main .view .content .rules .error .total span span, section .main .view .content .notifications .error .total span span {
+      margin-top: 0.5em; }
 section .main .context {
   padding-left: 0; }
   @media (max-width: 991px) {
@@ -2982,6 +2979,11 @@ button, a.button {
     background-color: #239CF9;
     color: #FFF;
     transition: color 0 ease, background-color 0 ease; }
+
+span.error, section .main .view .content .rules .error span, section .main .view .content .notifications .error span, section .main .view .content .total .error span {
+  font-size: 0.9em;
+  color: #239CF9;
+  display: block; }
 
 fieldset {
   border: none;

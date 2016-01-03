@@ -70,9 +70,10 @@
                                             <ul class="tags" ng-if="openSite.details.tags.length">
                                                 <li ng-repeat="tag in openSite.details.tags">{{tag}} <a href=""><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></li>
                                             </ul>
-                                            <form>
-                                                <input placeholder="Tags seperated by commas" />
-                                                <button>Add tags</button>
+                                            <form name="tagForm{{sites.indexOf(site)}}" ng-submit="addTags(sites.indexOf(site))">
+                                                <input placeholder="Tags seperated by commas" name="tags" ng-model="tags" required />
+                                                <button type="submit">Add tags</button>
+                                                <span class="error" ng-show="tagForm{{sites.indexOf(site)}}.tags.$error.required && (tagForm{{sites.indexOf(site)}}.tags.$touched || tagForm{{sites.indexOf(site)}}.$submitted)">Please enter a tag.</span>
                                             </form>
                                         </div>
                                         <ul ng-if="openSite.detail == 'complexity'">

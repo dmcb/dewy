@@ -801,10 +801,8 @@ section {
 					}
 
 					.error span {
-						font-size: 0.9em;
-						color: $blue;
 						margin-top: 0.5em;
-						display: block;
+						@extend .error;
 					}
 				}
 			}
@@ -1058,6 +1056,12 @@ button, a.button {
 		color: #FFF;
 		transition: color 0 ease, background-color 0 ease;
 	}
+}
+
+span.error {
+	font-size: 0.9em;
+	color: $blue;
+	display: block;
 }
 
 fieldset {
