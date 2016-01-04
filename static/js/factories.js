@@ -112,5 +112,9 @@ factories.factory('tagFactory', ['$http', function($http) {
 			});
 	}
 
+	tagFactory.delete = function(id, sites) {
+		console.log(apiUrl + '/tags/' + id);
+	}
+
 	return tagFactory;
 }]);
