@@ -191,8 +191,8 @@ controllers.controller('filterController', ['$scope', '$http', 'filterFactory', 
 		};
 }]);
 
-controllers.controller('sitesController', ['$scope', '$location', 'sitesFactory', 'tagFactory', 'filters', 'currentFilter', 'sites',
-	function ($scope, $location, sitesFactory, tagFactory, filters, currentFilter, sites) {
+controllers.controller('sitesController', ['$scope', '$location', 'sitesFactory', 'filters', 'currentFilter', 'sites',
+	function ($scope, $location, sitesFactory, filters, currentFilter, sites) {
 		$scope.addFilter = function() {
 			$location.path('filter');
 		}
@@ -222,8 +222,8 @@ controllers.controller('sitesController', ['$scope', '$location', 'sitesFactory'
 			}
 		};
 		$scope.deleteTag = function(tagIndex, siteIndex) {
-			var tag = $scope.sites[siteIndex].details.tags.splice(tagIndex, 1);
-			tagFactory.delete(tag[0], [$scope.sites[siteIndex].id]);
+			$scope.sites[siteIndex].details.tags.splice(tagIndex, 1);
+			sitesFactory.setTags($scope.sites[siteIndex]);
 		}
 		$scope.getNumber = function(number) {
 			return new Array(Math.round(number));

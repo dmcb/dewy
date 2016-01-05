@@ -63,7 +63,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 					return null;
 				},
 				sites: ['sitesFactory', function(sitesFactory, currentFilter) {
-					return sitesFactory.getAll(null, currentFilter);
+					return sitesFactory.getAll(null, null);
 				}]
 			}
 		}).
@@ -78,7 +78,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 					return filterFactory.getFilter($route.current.params.filter);
 				}],
 				sites: ['sitesFactory', function(sitesFactory, currentFilter) {
-					return sitesFactory.getAll(null, currentFilter);
+					return sitesFactory.getAll(null, currentFilter.id);
 				}]
 			}
 		}).

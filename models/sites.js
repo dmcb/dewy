@@ -6,7 +6,7 @@ exports.get = function(user, siteId) {
   }
 }
 
-exports.getAll = function(user, filter) {
+exports.getAll = function(user, filterId) {
   // Dummy function for now, will eventually pull from persistence layer
   return sitesList;
 }

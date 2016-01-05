@@ -85,14 +85,25 @@ factories.factory('sitesFactory', ['$http', function($http) {
 	var apiUrl = "/api/1.0";
 
 	sitesFactory.get = function(user, siteId, detail) {
-		return $http.get(apiUrl + '/site/' + siteId)
+		return $http.get(apiUrl + '/sites/' + siteId)
 			.then(function (response) {
 				return response.data;
 			});
 	}
 
 	sitesFactory.getAll = function(user, filter) {
-		return $http.get(apiUrl + '/sites/' + filter)
+		return $http.get(apiUrl + '/sites/_filter/' + filter)
+			.then(function (response) {
+				return response.data;
+			});
+	}
+
+	sitesFactory.setTags = function(site) {
+		var update = {
+			type: 'tags',
+			tags: site.details.tags
+		};
+		return $http.put(apiUrl + '/sites/' + site.id, update)
 			.then(function (response) {
 				return response.data;
 			});
@@ -110,10 +121,6 @@ factories.factory('tagFactory', ['$http', function($http) {
 			.then(function (response) {
 				return response.data;
 			});
-	}
-
-	tagFactory.delete = function(id, sites) {
-		console.log(apiUrl + '/tags/' + id);
 	}
 
 	return tagFactory;
