@@ -77,7 +77,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 				currentFilter: ['$route', 'filterFactory', function($route, filterFactory) {
 					return filterFactory.getFilter($route.current.params.filter);
 				}],
-				sites: ['sitesFactory', function(sitesFactory, currentFilter) {
+				sites: ['sitesFactory', 'currentFilter', function(sitesFactory, currentFilter) {
 					return sitesFactory.getAll(null, currentFilter.id);
 				}]
 			}
