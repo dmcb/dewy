@@ -196,16 +196,17 @@ controllers.controller('sitesController', ['$scope', '$location', 'sitesFactory'
 		$scope.addFilter = function() {
 			$location.path('filter');
 		}
-		$scope.addTags = function(index) {
-			var formName = 'tagForm' + index;
+		$scope.addTags = function(siteIndex) {
+			var formName = 'tagForm' + siteIndex;
 			if (this[formName].$valid) {
 				tags = this.tags.split(',');
 				for (i=0; i<tags.length; i++) {
 					tag = tags[i].trim();
-					if (tag != "" && $scope.sites[index].details.tags.indexOf(tag) == -1) {
-						$scope.sites[index].details.tags.push(tag);
+					if (tag != "" && $scope.sites[siteIndex].details.tags.indexOf(tag) == -1) {
+						$scope.sites[siteIndex].details.tags.push(tag);
 					}
 				}
+				sitesFactory.setTags($scope.sites[siteIndex]);
 				this.tags = null;
 				this[formName].$setPristine();
 				this[formName].tags.$setUntouched();
