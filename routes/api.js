@@ -9,6 +9,11 @@ router.get('/api/1.0/fields', function (req, res, next) {
   res.send(filters.getFields());
 });
 
+router.delete('/api/1.0/filters/:filter', function (req, res, next) {
+  console.log(util.inspect(req.body, {showHidden: false, depth: null}));
+  res.send();
+});
+
 router.get('/api/1.0/filters', function (req, res, next) {
   res.send(filters.getAll(null));
 });
@@ -18,6 +23,11 @@ router.get('/api/1.0/filters/:filter', function (req, res, next) {
 });
 
 router.post('/api/1.0/filters', function (req, res, next) {
+  console.log(util.inspect(req.body, {showHidden: false, depth: null}));
+  res.send();
+});
+
+router.put('/api/1.0/filters/:filter', function (req, res, next) {
   console.log(util.inspect(req.body, {showHidden: false, depth: null}));
   res.send();
 });

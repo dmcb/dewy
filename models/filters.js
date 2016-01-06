@@ -543,6 +543,7 @@ filters = [
     title: 'Modules',
     children: [
       {
+        id: '3',
         title: 'Views',
         url: 'views',
         notifications: {
@@ -572,7 +573,7 @@ filters = [
         ]
       },
       {
-        id: '3',
+        id: '4',
         title: 'Big webform sites',
         url: 'big-webform-sites',
         notifications: {
@@ -614,7 +615,7 @@ filters = [
     ]
   },
   {
-    id: '4',
+    id: '5',
     title: 'Really long title to serve as an edge case for the design',
     url: 'really-long-title-to-serve-as-an-edge-case-for-the-design',
     notifications: {
@@ -630,7 +631,7 @@ filters = [
     },
   },
   {
-    id: '5',
+    id: '6',
     title: 'Anotherreallylongtitlewithoutbreaksthanksjerk',
     url: 'anotherreallylongtitlewithoutbreaksthanksjerk',
     notifications: {

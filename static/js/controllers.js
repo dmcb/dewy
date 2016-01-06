@@ -52,7 +52,10 @@ controllers.controller('filterController', ['$scope', '$http', 'filterFactory', 
 			window.history.back();
 		}
 		$scope.deleteFilter = function() {
-			filterFactory.delete($scope.currentFilter);
+			filterFactory.delete($scope.currentFilter.id)
+				.then(function (response) {
+					window.history.back();
+				});
 		}
 		$scope.deleteRule = function(rule) {
 			function walk(target) {
@@ -107,7 +110,11 @@ controllers.controller('filterController', ['$scope', '$http', 'filterFactory', 
 		}
 		$scope.saveFilter = function() {
 			if ($scope.filterForm.$valid) {
-				filterFactory.update($scope.currentFilter);
+				if ($scope.currentFilter.id) {
+					filterFactory.update($scope.currentFilter);
+				} else {
+					filterFactory.create($scope.currentFilter);
+				}
 			}
 		}
 		$scope.updateChoice = function(rule, oldRule) {

@@ -23,8 +23,15 @@ factories.factory('filterFactory', ['$http', function($http) {
 	var filterFactory = {};
 	var apiUrl = "/api/1.0";
 
-	filterFactory.delete = function(filter) {
+	filterFactory.create = function(filter) {
+		return $http.post(apiUrl + '/filters', filter)
+			.then(function (response) {
+				console.log(response);
+			});
+	}
 
+	filterFactory.delete = function(filterId) {
+		return $http.delete(apiUrl + '/filters/' + filterId);
 	}
 
 	filterFactory.getAll = function(user) {
@@ -71,7 +78,7 @@ factories.factory('filterFactory', ['$http', function($http) {
 	}
 
 	filterFactory.update = function(filter) {
-		return $http.post(apiUrl + '/filters', filter)
+		return $http.put(apiUrl + '/filters/' + filter.id, filter)
 			.then(function (response) {
 				console.log(response);
 			});
