@@ -191,8 +191,8 @@ controllers.controller('filterController', ['$scope', '$http', 'filterFactory', 
 		};
 }]);
 
-controllers.controller('sitesController', ['$scope', '$location', 'sitesFactory', 'filters', 'currentFilter', 'sites',
-	function ($scope, $location, sitesFactory, filters, currentFilter, sites) {
+controllers.controller('sitesController', ['$scope', '$location', 'sitesFactory', 'filters', 'sitesAndFilter',
+	function ($scope, $location, sitesFactory, filters, sitesAndFilter) {
 		$scope.addFilter = function() {
 			$location.path('filter');
 		}
@@ -250,11 +250,11 @@ controllers.controller('sitesController', ['$scope', '$location', 'sitesFactory'
 		};
 
 		$scope.filters = filters;
-		$scope.currentFilter = currentFilter;
-		if ($location.path() != '/sites' && !currentFilter.url) {
+		$scope.currentFilter = sitesAndFilter.currentFilter;
+		if ($location.path() != '/sites' && !$scope.currentFilter.url) {
 			$location.path('sites');
 		}
-		$scope.sites = sites;
+		$scope.sites = sitesAndFilter.sites;
 
 		// Grab session data if it exists
 		if (sessionStorage.folders) {

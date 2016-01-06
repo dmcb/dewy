@@ -59,11 +59,14 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 				filters: ['filterFactory', function(filterFactory) {
 					return filterFactory.getAll(null);
 				}],
-				currentFilter: function() {
-					return null;
-				},
-				sites: ['sitesFactory', function(sitesFactory, currentFilter) {
-					return sitesFactory.getAll(null, null);
+				sitesAndFilter: ['sitesFactory', function(sitesFactory, currentFilter) {
+					return sitesFactory.getAll(null, null).
+					then(function(sites) {
+						return {
+							currentFilter: null,
+							sites: sites
+						}
+					});
 				}]
 			}
 		}).
@@ -74,12 +77,18 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 				filters: ['filterFactory', function(filterFactory) {
 					return filterFactory.getAll(null);
 				}],
-				currentFilter: ['$route', 'filterFactory', function($route, filterFactory) {
-					return filterFactory.getFilter($route.current.params.filter);
+				sitesAndFilter: ['$route', 'filterFactory', 'sitesFactory', function($route, filterFactory, sitesFactory) {
+					return filterFactory.getFilter($route.current.params.filter).
+					then(function(currentFilter) {
+						return sitesFactory.getAll(null, currentFilter.id).
+						then(function(sites) {
+							return {
+								currentFilter: currentFilter,
+								sites: sites,
+							}
+						});
+					});
 				}],
-				sites: ['sitesFactory', 'currentFilter', function(sitesFactory, currentFilter) {
-					return sitesFactory.getAll(null, currentFilter.id);
-				}]
 			}
 		}).
 		when('/user', {
