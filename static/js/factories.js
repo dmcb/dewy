@@ -21,7 +21,7 @@ factories.factory('authFactory', ['$http', 'Session', function($http, Session) {
 
 factories.factory('filterFactory', ['$http', function($http) {
 	var filterFactory = {};
-	var apiUrl = "/api/1.0";
+	var apiUrl = "http://api.dewy.io/1.0";
 
 	filterFactory.create = function(filter) {
 		return $http.post(apiUrl + '/filters', filter)
@@ -89,7 +89,7 @@ factories.factory('filterFactory', ['$http', function($http) {
 
 factories.factory('sitesFactory', ['$http', function($http) {
 	var sitesFactory = {};
-	var apiUrl = "/api/1.0";
+	var apiUrl = "http://api.dewy.io/1.0";
 
 	sitesFactory.get = function(user, siteId, detail) {
 		return $http.get(apiUrl + '/sites/' + siteId)
@@ -121,7 +121,7 @@ factories.factory('sitesFactory', ['$http', function($http) {
 
 factories.factory('tagFactory', ['$http', function($http) {
 	var tagFactory = {};
-	var apiUrl = "/api/1.0";
+	var apiUrl = "http://api.dewy.io/1.0";
 
 	tagFactory.getAll = function(user) {
 		return $http.get(apiUrl + '/tags')

@@ -15,7 +15,6 @@ var flash = require('connect-flash');
 // Router handlers
 var routes = require('./routes/index');
 var authRoutes = require('./routes/auth');
-var apiRoutes = require('./routes/api');
 
 // Express configuration
 var app = express();
@@ -71,7 +70,6 @@ app.use(passport.session());
 
 app.use('/', routes);
 app.use('/', authRoutes);
-app.use('/', apiRoutes);
 
 // 404
 app.use(function(req, res, next) {
