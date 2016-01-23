@@ -42,7 +42,7 @@ factories.factory('filterFactory', ['$http', function($http) {
 	}
 
 	filterFactory.getFields = function() {
-		return $http.get(apiUrl + '/fields', {cache: true})
+		return $http.get(apiUrl + '/fields/values', {cache: true})
 			.then(function (response) {
 				return response.data;
 			});
@@ -71,7 +71,7 @@ factories.factory('filterFactory', ['$http', function($http) {
 	}
 
 	filterFactory.getOperators = function() {
-		return $http.get(apiUrl + '/operators', {cache: true})
+		return $http.get(apiUrl + '/field/operators', {cache: true})
 			.then(function (response) {
 				return response.data;
 			});
