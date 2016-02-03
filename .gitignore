@@ -6,3 +6,6 @@ config.codekit
 # npm
 npm-debug.log
 node_modules/
+
+# Environment-specific
+config.json
