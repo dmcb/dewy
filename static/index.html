@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en" ng-app="dewy">
+    <head>
+        <base href="/">
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>dewy | Take back Drupal</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="https://use.typekit.net/nxo7wkc.js"></script>
+        <script>try{Typekit.load({ async: true });}catch(e){}</script>
+        <link rel="stylesheet" href="/css/styles.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+        <script src="https://rawgithub.com/angular-ui/ui-sortable/master/src/sortable.js"></script>
+        <script src="/js/app.js"></script>
+        <script src="/js/services.js"></script>
+        <script src="/js/factories.js"></script>
+        <script src="/js/controllers.js"></script>
+        <script src="/js/scripts.js"></script>
+    </head>
+    <body ng-controller="appController" ng-class="{index: isIndex()}">
+        <div class="wrapper">
+            <header>
+                <nav class="floating">
+                    <ul>
+                        <li><a class="scroll" href="#signup">Sign up</a></li><li><a href="/signon" class="important">Sign on</a></li>
+                    </ul>
+                </nav>
+                <div class="logo">
+                    <h1>
+                        <a href="/"><img src="/img/dewy-white.png" alt="Dewy" ng-if="isIndex()"><img src="/img/dewy.png" alt="Dewy" ng-if="!isIndex()"></a>
+                    </h1>
+                </div>
+            </header>
+            <div class="app" ng-view>
+                <section class="introduction">
+                    <div class="content">
+                        <h2>Take back Drupal.</h2>
+                        <p>The days of guessing what Drupal sites are doing at your Higher-Ed institution, multi-site organization or digital agency are over.</p>
+                    </div>
+                </section>
+                <section class="feature">
+                    <div class="feature">
+                        <div class="getstarted">
+                            <div class="content">
+                                <h2>How It Works</h2>
+                                <ul>
+                                    <li><span class="step">1</span><span class="instruction"><a class="scroll" href="#signup">Sign up for Dewy</a> and get a unique key.</span></li>
+                                    <li><span class="step">2</span><span class="instruction">Install the <a href="https://www.drupal.org/project/dewy">Drupal module</a> with that key to any site you want insight into.</span></li>
+                                    <li><span class="step">3</span><span class="instruction">Get all the details on all your sites.</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="views">
+                            <div class="content">
+                                <h2>See it all</h2>
+                                <p>Bring your sites into Dewy and discover what sites are big or small, active or stale, loved or needing love. Helpful views bring your sites into focus.</p>
+                            </div>
+                            <div class="image">
+                                <img src="/img/preview_view.png" alt="Views" class="screenshot" />
+                            </div>
+                        </div>
+                        <div class="querying">
+                            <div class="content">
+                                <h2>Powerful querying</h2>
+                                <p>Ever been in a meeting where someone asked how many Drupal sites are live? With webforms? Version 3.24? And get over 1000 hits a month? Any question, no matter how complex, answered in a few clicks.</p>
+                            </div>
+                            <div class="image">
+                                <img src="/img/preview_query.png" alt="Queries" class="screenshot" />
+                            </div>
+                        </div>
+                        <div class="notifications">
+                            <div class="content">
+                                <h2>Notifications and integration</h2>
+                                <p>Seeing is one thing, doing is another. Let your sites tell you when they need your attention. Talk to the Dewy API to create powerful workflows.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="signup" id="signup">
+                    <div class="content">
+                        <h2>Sign up for Dewy</h2>
+                        <form method="post" action="#signup" class="signup">
+                        <fieldset>
+                            <input id="username" name="username" placeholder="Your username" />
+                            <input id="email" name="email" placeholder="Your email" />
+                            <input id="password" name="password" placeholder="Your password" />
+                            <button type="submit">Sign up</button>
+                        </fieldset>
+                        </form>
+                    </div>
+                </section>
+            </div>
+            <footer>
+                <ul>
+                    <li><span>&copy; 2015 Dewy</span></li>
+                    <li><a href="">Contact</a></li>
+                    <li><a href="">Help</a></li>
+                </ul>
+            </footer>
+        </div>
+    </body>
+</html>

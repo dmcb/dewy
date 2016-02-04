@@ -52,6 +52,10 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 				}]
 			}
 		}).
+		when('/signon', {
+			templateUrl: 'templates/signon.html',
+			controller: 'signonController',
+		}).
 		when('/sites', {
 			templateUrl: 'templates/sites.html',
 			controller: 'sitesController',
@@ -95,9 +99,12 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 			templateUrl: 'templates/user.html',
 			controller: 'userController',
 		}).
+		when('/', {
+			templateUrl: 'templates/index.html',
+		}).
 		otherwise({
 			controller: function() {
-				window.location.replace('/signon');
+				window.location.replace('/');
 			},
 			template : '<div></div>'
 		});
