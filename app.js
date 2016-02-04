@@ -15,7 +15,7 @@ app.all('/auth/*', function(req, res) {
 
     // Create API endpoint URL
     var endpoint = 'http://api.dewy.io/1.0/' + req.params[0];
-    console.log(req.method + ':' + endpoint);
+    console.log(req.method + ': ' + endpoint);
 
     // Add OAuth information to request
     var apiRequest = req.body;

@@ -1,0 +1,14 @@
+                <div class="content" ng-controller="signupController">
+                    <h2>Sign up for Dewy</h2>
+                    <form ng-submit="submit()" class="signup">
+                    <fieldset>
+                        <input id="username" name="username" ng-model="username" placeholder="Your username" value="{{username}}" />
+                        <span class="error" ng-if="error.username">{{ error.username }}</span>
+                        <input id="email" name="email" ng-model="email" placeholder="Your email" value="{{email}}" />
+                        <span class="error" ng-if="error.email">{{ error.email }}</span>
+                        <input id="password" name="password" ng-model="password" placeholder="Your password" type="password" />
+                        <span class="error" ng-if="error.password">{{ error.password }}</span>
+                        <button type="submit">Sign up</button>
+                    </fieldset>
+                    </form>
+                </div>
