@@ -42,17 +42,17 @@
                     </div>
                 </div>
             </section>
-            <section class="signup" id="signup">
+            <section class="signup" id="signup" ng-controller="signupController">
                 <div class="content">
                     <h2>Sign up for Dewy</h2>
-                    <form method="post" action="#signup" class="signup">
+                    <form ng-submit="submit()" class="signup">
                     <fieldset>
                         <span class="messages" ng-if="message">
                             {{message}}
                         </span>
-                        <input id="username" name="username" placeholder="Your username" value="{{username}}" />
-                        <input id="email" name="email" placeholder="Your email" value="{{email}}" />
-                        <input id="password" name="password" placeholder="Your password" type="password" />
+                        <input id="username" name="username" ng-model="username" placeholder="Your username" value="{{username}}" />
+                        <input id="email" name="email" ng-model="email" placeholder="Your email" value="{{email}}" />
+                        <input id="password" name="password" ng-model="password" placeholder="Your password" type="password" />
                         <button type="submit">Sign up</button>
                     </fieldset>
                     </form>
