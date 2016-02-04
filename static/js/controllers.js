@@ -221,7 +221,11 @@ controllers.controller('signupController', ['$scope', '$http',
 			$http.post(url, user)
 				.success(function(result) {
 					console.log(result);
-					$scope.error = result;
+					if (result.message == 'error') {
+						$scope.error = result.data;
+					} else {
+						// Authenticate
+					}
 				})
 				.error(function(error) {
 					console.log(error);
