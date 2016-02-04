@@ -31,8 +31,8 @@ app.all('/auth/*', function(req, res) {
         method: req.method,
         json: apiRequest
     }, function(error, response, body) {
-        if (error) {
-            res.send(error);
+        if (error || response.statusCode != '200') {
+            res.status(response.statusCode).send(error);
         }
         else {
             res.send(body);
