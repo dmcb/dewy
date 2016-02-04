@@ -1,9 +1,15 @@
 {
-  "name": "express",
+  "name": "Dewy",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-sass": "^1.1.0",
+    "node-sass": "^3.4.2"
   },
   "dependencies": {
     "body-parser": "^1.13.2",

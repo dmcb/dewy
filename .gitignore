@@ -1,7 +1,5 @@
 # Development
 .sass-cache
-config.codekit
-*.scssc
 
 # npm
 npm-debug.log
