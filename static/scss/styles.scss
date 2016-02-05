@@ -216,12 +216,6 @@ section {
         h2 {
             font-size: 3em;
         }
-
-        span.error {
-            margin-top: 0.25em;
-            margin-bottom: 0.5em;
-            color: #fff;
-        }
     }
 
     &.feature {
@@ -941,6 +935,12 @@ section {
         color: #FFF;
         margin-top: 3em;
 
+        span.error {
+            margin-top: 0.25em;
+            margin-bottom: 0.5em;
+            color: #fff;
+        }
+
         fieldset {
             @extend .col-sm-6;
             @extend .col-sm-offset-3;
@@ -1069,6 +1069,10 @@ span.error {
     color: $blue;
     display: block;
     transition: 400ms;
+
+    &.ng-enter {
+        transition: 0;
+    }
 
     &.ng-enter, &.ng-leave-active {
         opacity: 0;
