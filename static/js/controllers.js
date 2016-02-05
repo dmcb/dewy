@@ -1,16 +1,11 @@
 var controllers = angular.module('dewyControllers', []);
 
-controllers.controller('appController', ['$scope', '$location', '$http', '$route', 'authFactory',
-	function ($scope, $location, $http, $route, authFactory) {
+controllers.controller('appController', ['$scope', '$location', '$http', '$route',
+	function ($scope, $location, $http, $route) {
 		$scope.isIndex = function() {
 			if ($location.path() == '/' || $location.path() == '/signon') {
 				return true;
 			}
-		}
-
-		$scope.user = null;
-		$scope.setUser = function(user) {
-			$scope.user = user;
 		}
 }]);
 

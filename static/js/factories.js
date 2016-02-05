@@ -1,22 +1,21 @@
 var factories = angular.module('dewyFactories', []);
 
-factories.factory('authFactory', ['$http', 'Session', function($http, Session) {
-	var authService = {};
+factories.factory('authInterceptor', ['$q', function($q) {
+	var authInterceptor = {};
 
-	authService.login = function (credentials) {
-		return $http
-			.post('/login', credentials)
-			.then(function (res) {
-				Session.create(res.data.id, res.data.user.id);
-				return res.data.user;
-		});
+	authInterceptor.response = function(response) {
+		return response;
 	};
 
-	authService.isAuthenticated = function () {
-		return !!Session.userid;
+	authInterceptor.responseError = function(rejection) {
+		if (rejection.status == 401) {
+			// Unauthorized
+			// Do a login or something
+		}
+		return rejection;
 	};
 
-	return authService;
+	return authInterceptor;
 }]);
 
 factories.factory('filterFactory', ['$http', function($http) {
