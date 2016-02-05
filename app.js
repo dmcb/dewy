@@ -2,6 +2,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
+var forge = require("node-forge");
 var config = require('./config');
 var app = express();
 
@@ -12,6 +13,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Provide OAuth proxy for Angular app
 app.all('/auth/*', function(req, res) {
+
+    // Encrypt password
+    if (req.body.password) {
+        req.body.password = forge.md.sha1.create().update(req.body.password).digest().toHex();
+    }
 
     // If no API path is given, we are authenticating the user against the API
     if (!req.params[0]) {
