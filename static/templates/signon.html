@@ -9,7 +9,7 @@
                 <input id="password" name="password" ng-model="password" placeholder="Your password" type="password" required />
                 <span class="error" ng-if="form.password.$error.required && (form.password.$touched || form.$submitted)">A password is required.</span>
                 <label class="remember">
-                    <input id="remember" name="remember" type="checkbox" value="on" />
+                    <input id="remember" name="remember" ng-model="remember" type="checkbox" value="on" />
                     <span>Remember me</span>
                 </label>
                 <button type="submit">Sign on</button>

@@ -209,18 +209,18 @@ controllers.controller('signonController', ['$scope', '$http',
 		$scope.submit = function() {
 			if ($scope.form.$valid) {
 				var url = 'http://dewy.io/auth/';
-				var user = {
+				var body = 
+				$http.post(url, {
 					username: $scope.username,
-					password: $scope.password
-				}
-				$http.post(url, user)
-					.success(function(result) {
-						console.log(result);
-						// Authenticate
-					})
-					.error(function(error) {
-						$scope.message = error.data;
-					});
+					password: $scope.password,
+					remember: $scope.remember
+				}).success(function(result) {
+					console.log(result);
+					// Authenticate
+				})
+				.error(function(error) {
+					$scope.message = error.data;
+				});
 			}
 		}
 }]);
