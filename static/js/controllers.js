@@ -199,19 +199,20 @@ controllers.controller('filterController', ['$scope', '$http', 'filterFactory', 
 		};
 }]);
 
-controllers.controller('signonController', ['$scope', '$http',
-	function ($scope, $http) {
+controllers.controller('signonController', ['$scope', '$http', '$window',
+	function ($scope, $http, $window) {
 		$scope.submit = function() {
 			if ($scope.form.$valid) {
 				var url = 'http://dewy.io/auth/';
-				var body = 
+				// Authenticate
 				$http.post(url, {
 					username: $scope.username,
 					password: $scope.password,
 					remember: $scope.remember
 				}).success(function(result) {
 					console.log(result);
-					// Authenticate
+					// Create session
+					$window.localStorage.token = result;
 				})
 				.error(function(error) {
 					$scope.message = error.data;
