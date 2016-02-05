@@ -23,7 +23,8 @@ app.all('/auth/*', function(req, res) {
     if (!req.params[0]) {
         var endPoint = 'http://api.dewy.io/1.0/oauth/token';
         var encodedClient = new Buffer(config.client.client_id + ':' + config.client.client_secret).toString('base64');
-        var apiRequest = {
+        var request = require('request');
+        request({
             uri: endPoint,
             method: req.method,
             body: 'grant_type=password&username=' + req.body.username + '&password=' + req.body.password,
@@ -31,7 +32,23 @@ app.all('/auth/*', function(req, res) {
                 'Authorization': 'Basic ' + encodedClient,
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
-        }
+        }, function(error, response, body) {
+            if (error) {
+                res.status(response.statusCode).send({"message": "error", "data": error});
+            }
+            else {
+                if (response.statusCode == '503') {
+                    res.status(response.statusCode).send({"message": "error", "data": "Dewy could not authenticate at this time."});
+                }
+                else if (response.statusCode == '400') {
+                    res.status(response.statusCode).send({"message": "error", "data": "Your username and password combination is incorrect, please try again."});
+                } 
+                else {
+                    res.status(response.statusCode).send({"message": "success", "data": "Authenticated."});
+                    // Store cookie
+                }
+            }
+        });
     }
     // Otherwise, construct API call
     else {
@@ -43,25 +60,29 @@ app.all('/auth/*', function(req, res) {
         // }
         var header = null;
         var endPoint = 'http://api.dewy.io/1.0/' + req.params[0];
-        var apiRequest = {
+        var request = require('request');
+        request({
             uri: endPoint,
             method: req.method,
             json: req.body,
             header: header
-        }
+        }, function(error, response, body) {
+            if (error) {
+                res.status(response.statusCode).send({"message": "error", "data": error});
+            }
+            else {
+                if (body.message == 'error') {
+                    res.status(response.statusCode).send({"message": "error", "data": body.data});
+                } else {
+                    res.status(response.statusCode).send({"message": "success", "data": body.data});
+                }
+            }
+        });
     }
 
     // Send request, return results to Angular app
     console.log(req.method + ': ' + endPoint);
-    var request = require('request');
-    request(apiRequest, function(error, response, body) {
-        if (error) {
-            res.status(response.statusCode).send(error);
-        }
-        else {
-            res.status(response.statusCode).send(body);
-        }
-    });
+
 });
 
 // Send all remaining routes to Angular app

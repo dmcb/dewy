@@ -216,14 +216,10 @@ controllers.controller('signonController', ['$scope', '$http',
 				$http.post(url, user)
 					.success(function(result) {
 						console.log(result);
-						if (result.message == 'error') {
-							$scope.error = result.data;
-						} else {
-							// Authenticate
-						}
+						// Authenticate
 					})
 					.error(function(error) {
-						console.log(error);
+						$scope.message = error.data;
 					});
 			}
 		}
@@ -241,15 +237,15 @@ controllers.controller('signupController', ['$scope', '$http',
 				}
 				$http.post(url, user)
 					.success(function(result) {
-						console.log(result);
 						if (result.message == 'error') {
 							$scope.error = result.data;
 						} else {
+							console.log(result);
 							// Authenticate
 						}
 					})
 					.error(function(error) {
-						console.log(error);
+						$scope.message = error.data;
 					});
 			}
 		}
