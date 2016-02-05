@@ -13,24 +13,42 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Provide OAuth proxy for Angular app
 app.all('/auth/*', function(req, res) {
 
-    // Create API endpoint URL
-    var endpoint = 'http://api.dewy.io/1.0/' + req.params[0];
-    console.log(req.method + ': ' + endpoint);
+    // If no API path is given, we are authenticating the user against the API
+    if (!req.params[0]) {
+        var endPoint = 'http://api.dewy.io/1.0/oauth/token';
+        var encodedClient = new Buffer(config.client.client_id + ':' + config.client.client_secret).toString('base64');
+        var apiRequest = {
+            uri: endPoint,
+            method: req.method,
+            body: 'grant_type=password&username=' + req.body.username + '&password=' + req.body.password,
+            headers: {
+                'Authorization': 'Basic ' + encodedClient,
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }
+    }
+    // Otherwise, construct API call
+    else {
+        // If we have a token, decrypt and add OAuth information to request
+        // if TOKEN {
+        //     var header = {
+        //         Authorization: 'Bearer ' + access_token
+        //     }
+        // }
+        var header = null;
+        var endPoint = 'http://api.dewy.io/1.0/' + req.params[0];
+        var apiRequest = {
+            uri: endPoint,
+            method: req.method,
+            json: req.body,
+            header: header
+        }
+    }
 
-    // Add OAuth information to request
-    var apiRequest = req.body;
-    apiRequest['grant_type'] = 'password';
-    apiRequest['client_id'] = config.client.client_id;
-    apiRequest['client_secret'] = config.client.client_secret;
-    console.log(apiRequest);
-
-    // Make request, send results to Angular app
+    // Send request, return results to Angular app
+    console.log(req.method + ': ' + endPoint);
     var request = require('request');
-    request({
-        uri: endpoint,
-        method: req.method,
-        json: apiRequest
-    }, function(error, response, body) {
+    request(apiRequest, function(error, response, body) {
         if (error) {
             res.status(response.statusCode).send(error);
         }

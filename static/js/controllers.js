@@ -204,9 +204,27 @@ controllers.controller('filterController', ['$scope', '$http', 'filterFactory', 
 		};
 }]);
 
-controllers.controller('signonController', ['$scope',
-	function ($scope) {
-
+controllers.controller('signonController', ['$scope', '$http',
+	function ($scope, $http) {
+		$scope.submit = function() {
+			var url = 'http://dewy.io/auth/';
+			var user = {
+				username: $scope.username,
+				password: $scope.password
+			}
+			$http.post(url, user)
+				.success(function(result) {
+					console.log(result);
+					if (result.message == 'error') {
+						$scope.error = result.data;
+					} else {
+						// Authenticate
+					}
+				})
+				.error(function(error) {
+					console.log(error);
+				});
+		}
 }]);
 
 controllers.controller('signupController', ['$scope', '$http',
