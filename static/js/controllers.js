@@ -199,8 +199,8 @@ controllers.controller('filterController', ['$scope', '$http', 'filterFactory', 
 		};
 }]);
 
-controllers.controller('signonController', ['$scope', '$http', '$window',
-	function ($scope, $http, $window) {
+controllers.controller('signonController', ['$scope', '$location', '$http', '$window',
+	function ($scope, $location, $http, $window) {
 		$scope.submit = function() {
 			if ($scope.form.$valid) {
 				var url = 'http://dewy.io/auth/';
@@ -215,6 +215,7 @@ controllers.controller('signonController', ['$scope', '$http', '$window',
 						$window.localStorage.token = result.data;
 					}
 					$window.sessionStorage.token = result.data;
+					$location.path("/sites");
 				})
 				.error(function(error) {
 					$scope.message = error.data;
@@ -225,8 +226,8 @@ controllers.controller('signonController', ['$scope', '$http', '$window',
 		}
 }]);
 
-controllers.controller('signupController', ['$scope', '$http',
-	function ($scope, $http) {
+controllers.controller('signupController', ['$scope', '$location', '$http', '$window',
+	function ($scope, $location, $http, $window) {
 		$scope.submit = function() {
 			if ($scope.form.$valid) {
 				var url = 'http://dewy.io/auth/users';
@@ -241,7 +242,8 @@ controllers.controller('signupController', ['$scope', '$http',
 							$scope.error = result.data;
 						} else {
 							console.log(result);
-							// Authenticate
+							// Authenticated, create session
+							$window.sessionStorage.token = result.data;
 						}
 					})
 					.error(function(error) {

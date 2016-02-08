@@ -1,6 +1,6 @@
 var factories = angular.module('dewyFactories', []);
 
-factories.factory('authInterceptor', ['$q', '$window', function($q, $window) {
+factories.factory('authInterceptor', ['$location', '$q', '$window', function($location, $q, $window) {
 	var authInterceptor = {};
 
 	authInterceptor.request = function(config) {
@@ -13,12 +13,13 @@ factories.factory('authInterceptor', ['$q', '$window', function($q, $window) {
 		return config;
 	}
 
-	authInterceptor.response = function(response) {
-		if (response.status == 401) {
+	authInterceptor.responseError = function(responseError) {
+		if (responseError.status == 401) {
 			// Unauthorized
-			// Do a login or something
+			console.log('Access denied');
+			$location.path("/signon");
 		}
-		return response;
+		return $q.reject(responseError);
 	};
 
 	return authInterceptor;
@@ -26,7 +27,7 @@ factories.factory('authInterceptor', ['$q', '$window', function($q, $window) {
 
 factories.factory('filterFactory', ['$http', function($http) {
 	var filterFactory = {};
-	var apiUrl = "http://api.dewy.io/1.0";
+	var apiUrl = "http://dewy.io/auth";
 
 	filterFactory.create = function(filter) {
 		return $http.post(apiUrl + '/filters', filter)
@@ -42,14 +43,14 @@ factories.factory('filterFactory', ['$http', function($http) {
 	filterFactory.getAll = function(user) {
 		return $http.get(apiUrl + '/filters')
 			.then(function (response) {
-				return response.data;
+				return response.data.data;
 			});
 	}
 
 	filterFactory.getFields = function() {
 		return $http.get(apiUrl + '/fields/values', {cache: true})
 			.then(function (response) {
-				return response.data;
+				return response.data.data;
 			});
 	}
 
@@ -69,16 +70,16 @@ factories.factory('filterFactory', ['$http', function($http) {
 						count++;
 					}
 				}
-				walk(response.data);
-				response.data.count = count;
-				return response.data;
+				walk(response.data.data);
+				response.data.data.count = count;
+				return response.data.data;
 			});
 	}
 
 	filterFactory.getOperators = function() {
 		return $http.get(apiUrl + '/field/operators', {cache: true})
 			.then(function (response) {
-				return response.data;
+				return response.data.data;
 			});
 	}
 
@@ -94,19 +95,19 @@ factories.factory('filterFactory', ['$http', function($http) {
 
 factories.factory('sitesFactory', ['$http', function($http) {
 	var sitesFactory = {};
-	var apiUrl = "http://api.dewy.io/1.0";
+	var apiUrl = "http://dewy.io/auth";
 
 	sitesFactory.get = function(user, siteId, detail) {
 		return $http.get(apiUrl + '/sites/' + siteId)
 			.then(function (response) {
-				return response.data;
+				return response.data.data;
 			});
 	}
 
 	sitesFactory.getAll = function(user, filter) {
 		return $http.get(apiUrl + '/sites/_filter/' + filter)
 			.then(function (response) {
-				return response.data;
+				return response.data.data;
 			});
 	}
 
@@ -117,7 +118,7 @@ factories.factory('sitesFactory', ['$http', function($http) {
 		};
 		return $http.put(apiUrl + '/sites/' + site.id, update)
 			.then(function (response) {
-				return response.data;
+				return response.data.data;
 			});
 	}
 
@@ -126,12 +127,12 @@ factories.factory('sitesFactory', ['$http', function($http) {
 
 factories.factory('tagFactory', ['$http', function($http) {
 	var tagFactory = {};
-	var apiUrl = "http://api.dewy.io/1.0";
+	var apiUrl = "http://dewy.io/auth";
 
 	tagFactory.getAll = function(user) {
 		return $http.get(apiUrl + '/tags')
 			.then(function (response) {
-				return response.data;
+				return response.data.data;
 			});
 	}
 
