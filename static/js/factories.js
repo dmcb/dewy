@@ -43,14 +43,14 @@ factories.factory('filterFactory', ['$http', function($http) {
 	filterFactory.getAll = function() {
 		return $http.get(apiUrl + '/filters')
 			.then(function (response) {
-				return response.data.data;
+				return response.data;
 			});
 	}
 
 	filterFactory.getFields = function() {
 		return $http.get(apiUrl + '/fields/values', {cache: true})
 			.then(function (response) {
-				return response.data.data;
+				return response.data;
 			});
 	}
 
@@ -79,7 +79,7 @@ factories.factory('filterFactory', ['$http', function($http) {
 	filterFactory.getOperators = function() {
 		return $http.get(apiUrl + '/fields/operators', {cache: true})
 			.then(function (response) {
-				return response.data.data;
+				return response.data;
 			});
 	}
 
@@ -100,21 +100,21 @@ factories.factory('sitesFactory', ['$http', function($http) {
 	sitesFactory.get = function(siteId, detail) {
 		return $http.get(apiUrl + '/sites/' + siteId)
 			.then(function (response) {
-				return response.data.data;
+				return response.data;
 			});
 	}
 
 	sitesFactory.getAll = function(filter) {
 		return $http.get(apiUrl + '/sites/_filter/' + filter)
 			.then(function (response) {
-				return response.data.data;
+				return response.data;
 			});
 	}
 
 	sitesFactory.getTags = function() {
 		return $http.get(apiUrl + '/sites/_tags')
 			.then(function (response) {
-				return response.data.data;
+				return response.data;
 			});
 	}
 
@@ -125,7 +125,7 @@ factories.factory('sitesFactory', ['$http', function($http) {
 		};
 		return $http.put(apiUrl + '/sites/' + site.id, update)
 			.then(function (response) {
-				return response.data.data;
+				return response.data;
 			});
 	}
 
