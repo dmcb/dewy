@@ -27,8 +27,8 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 				currentFilter: ['$route', 'filterFactory', function($route, filterFactory) {
 					return filterFactory.getFilter($route.current.params.filter);
 				}],
-				tags: ['tagFactory', function(tagFactory) {
-					return tagFactory.getAll(null);
+				tags: ['sitesFactory', function(sitesFactory) {
+					return sitesFactory.getTags();
 				}]
 			}
 		}).
@@ -48,8 +48,8 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 				currentFilter: ['$route', 'filterFactory', function($route, filterFactory) {
 					return filterFactory.getFilter($route.current.params.filter);
 				}],
-				tags: ['tagFactory', function(tagFactory) {
-					return tagFactory.getAll(null);
+				tags: ['sitesFactory', function(sitesFactory) {
+					return sitesFactory.getTags();
 				}]
 			}
 		}).

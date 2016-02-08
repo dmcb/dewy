@@ -70,14 +70,14 @@ factories.factory('filterFactory', ['$http', function($http) {
 						count++;
 					}
 				}
-				walk(response.data.data);
-				response.data.data.count = count;
-				return response.data.data;
+				walk(response.data);
+				response.data.count = count;
+				return response.data;
 			});
 	}
 
 	filterFactory.getOperators = function() {
-		return $http.get(apiUrl + '/field/operators', {cache: true})
+		return $http.get(apiUrl + '/fields/operators', {cache: true})
 			.then(function (response) {
 				return response.data.data;
 			});
@@ -111,6 +111,13 @@ factories.factory('sitesFactory', ['$http', function($http) {
 			});
 	}
 
+	sitesFactory.getTags = function() {
+		return $http.get(apiUrl + '/sites/_tags')
+			.then(function (response) {
+				return response.data.data;
+			});
+	}
+
 	sitesFactory.setTags = function(site) {
 		var update = {
 			type: 'tags',
@@ -123,18 +130,4 @@ factories.factory('sitesFactory', ['$http', function($http) {
 	}
 
 	return sitesFactory;
-}]);
-
-factories.factory('tagFactory', ['$http', function($http) {
-	var tagFactory = {};
-	var apiUrl = "http://dewy.io/auth";
-
-	tagFactory.getAll = function(user) {
-		return $http.get(apiUrl + '/tags')
-			.then(function (response) {
-				return response.data.data;
-			});
-	}
-
-	return tagFactory;
 }]);
