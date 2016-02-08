@@ -10,7 +10,6 @@ var app = angular.module('dewy', [
 app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($httpProvider, $routeProvider, $locationProvider) {
 	$locationProvider.html5Mode(true);
 	$httpProvider.interceptors.push('authInterceptor');
-	$httpProvider.defaults.withCredentials = true;
     $routeProvider.
     	when('/filter', {
 			templateUrl: 'templates/filter.html',

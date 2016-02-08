@@ -7,6 +7,8 @@ factories.factory('authInterceptor', ['$q', '$window', function($q, $window) {
 		config.headers = config.headers || {};
 		if ($window.localStorage.token) {
 			config.headers.Authorization = 'Bearer ' + $window.localStorage.token;
+		} else if ($window.sessionStorage.token) {
+			config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
 		}
 		return config;
 	}

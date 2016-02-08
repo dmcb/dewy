@@ -40,37 +40,42 @@ app.post('/auth/', function(req, res) {
             }
             else {
                 var token = jwt.encode(body, config.jwt.secret);
-                var options = {};
-                if (req.body.remember) {
-                    options.maxAge = 1000 * 60 * 60 * 24 * 30;
-                }
-                res.cookie('token', token, options);
-                res.status(response.statusCode).send({"message": "success", "data": "Authenticated."});
+                res.status(response.statusCode).send({"message": "success", "data": token});
             }
         }
     });
 });
 
 app.all('/auth/*', function(req, res) {
-    // If we have a token, decrypt and add OAuth information to request
-    // if TOKEN {
-    //     var header = {
-    //         Authorization: 'Bearer ' + access_token
-    //     }
-    // }
-    var header = null;
+    // Check if a JWT was passed from the Angular app to this proxy API
+    var headers = {};
+    if (req.headers.authorization) {
+        // Get JWT token from header
+        var token = req.headers.authorization.substr('Bearer '.length);
+
+        // Decode JWT and send OAuth header to actual API
+        try {
+            var payload = JSON.parse(jwt.decode(token, config.jwt.secret));
+            headers.Authorization = 'Bearer ' + payload['access_token'];
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
     var endPoint = 'http://api.dewy.io/1.0/' + req.params[0];
     var request = require('request');
     request({
         uri: endPoint,
         method: req.method,
         json: req.body,
-        header: header
+        headers: headers
     }, function(error, response, body) {
         if (error) {
+            console.log(error);
             res.status(response.statusCode).send({"message": "error", "data": error});
         }
         else {
+            console.log(body);
             if (body.message == 'error') {
                 res.status(response.statusCode).send({"message": "error", "data": body.data});
             } else {

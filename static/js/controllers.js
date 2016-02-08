@@ -210,12 +210,16 @@ controllers.controller('signonController', ['$scope', '$http', '$window',
 					password: $scope.password,
 					remember: $scope.remember
 				}).success(function(result) {
-					console.log(result);
-					// Create session
-					$window.localStorage.token = result;
+					// Authenticated, create session
+					if ($scope.remember) {
+						$window.localStorage.token = result.data;
+					}
+					$window.sessionStorage.token = result.data;
 				})
 				.error(function(error) {
 					$scope.message = error.data;
+					delete $window.localStorage.token;
+					delete $window.sessionStorage.token;
 				});
 			}
 		}
