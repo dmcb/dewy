@@ -40,7 +40,7 @@ factories.factory('filterFactory', ['$http', function($http) {
 		return $http.delete(apiUrl + '/filters/' + filterId);
 	}
 
-	filterFactory.getAll = function(user) {
+	filterFactory.getAll = function() {
 		return $http.get(apiUrl + '/filters')
 			.then(function (response) {
 				return response.data.data;
@@ -97,14 +97,14 @@ factories.factory('sitesFactory', ['$http', function($http) {
 	var sitesFactory = {};
 	var apiUrl = "http://dewy.io/auth";
 
-	sitesFactory.get = function(user, siteId, detail) {
+	sitesFactory.get = function(siteId, detail) {
 		return $http.get(apiUrl + '/sites/' + siteId)
 			.then(function (response) {
 				return response.data.data;
 			});
 	}
 
-	sitesFactory.getAll = function(user, filter) {
+	sitesFactory.getAll = function(filter) {
 		return $http.get(apiUrl + '/sites/_filter/' + filter)
 			.then(function (response) {
 				return response.data.data;

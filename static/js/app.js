@@ -22,7 +22,7 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 					return filterFactory.getFields();
 				}],
 				filters: ['filterFactory', function(filterFactory) {
-					return filterFactory.getAll(null);
+					return filterFactory.getAll();
 				}],
 				currentFilter: ['$route', 'filterFactory', function($route, filterFactory) {
 					return filterFactory.getFilter($route.current.params.filter);
@@ -43,7 +43,7 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 					return filterFactory.getFields();
 				}],
 				filters: ['filterFactory', function(filterFactory) {
-					return filterFactory.getAll(null);
+					return filterFactory.getAll();
 				}],
 				currentFilter: ['$route', 'filterFactory', function($route, filterFactory) {
 					return filterFactory.getFilter($route.current.params.filter);
@@ -62,7 +62,7 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 			controller: 'sitesController',
 			resolve: {
 				filters: ['filterFactory', function(filterFactory) {
-					return filterFactory.getAll(null);
+					return filterFactory.getAll();
 				}],
 				sitesAndFilter: ['sitesFactory', function(sitesFactory, currentFilter) {
 					return sitesFactory.getAll(null, null).
@@ -80,7 +80,7 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 			controller: 'sitesController',
 			resolve: {
 				filters: ['filterFactory', function(filterFactory) {
-					return filterFactory.getAll(null);
+					return filterFactory.getAll();
 				}],
 				sitesAndFilter: ['$route', 'filterFactory', 'sitesFactory', function($route, filterFactory, sitesFactory) {
 					return filterFactory.getFilter($route.current.params.filter).
