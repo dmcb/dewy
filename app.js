@@ -55,26 +55,28 @@ app.all('/auth/*', function(req, res) {
         catch (err) {
             console.log(err);
         }
+        
+        var endPoint = 'http://api.dewy.io/1.0/' + req.params[0];
+        var request = require('request');
+        request({
+            uri: endPoint,
+            method: req.method,
+            json: req.body,
+            headers: headers
+        }, function(error, response, body) {
+            if (error) {
+                res.status(response.statusCode).send(error);
+            }
+            else {
+                res.status(response.statusCode).send(body);
+            }
+        });
+
+        // Send request, return results to Angular app
+        console.log(req.method + ': ' + endPoint);
+    } else {
+        res.status(401).end();
     }
-    var endPoint = 'http://api.dewy.io/1.0/' + req.params[0];
-    var request = require('request');
-    request({
-        uri: endPoint,
-        method: req.method,
-        json: req.body,
-        headers: headers
-    }, function(error, response, body) {
-        if (error) {
-            res.status(response.statusCode).send(error);
-        }
-        else {
-            res.status(response.statusCode).send(body);
-        }
-    });
-
-    // Send request, return results to Angular app
-    console.log(req.method + ': ' + endPoint);
-
 });
 
 // Send all remaining routes to Angular app
