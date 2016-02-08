@@ -212,13 +212,17 @@ controllers.controller('signonController', ['$scope', '$location', '$http', '$wi
 				}).success(function(result) {
 					// Authenticated, create session
 					if ($scope.remember) {
-						$window.localStorage.token = result.data;
+						$window.localStorage.token = result;
 					}
-					$window.sessionStorage.token = result.data;
+					$window.sessionStorage.token = result;
 					$location.path("/sites");
 				})
-				.error(function(error) {
-					$scope.message = error.data;
+				.error(function(error, status) {
+					if (status == '400') {
+						$scope.message = 'Your username and password combination is incorrect, please try again.';
+					} else {
+						$scope.message = 'Dewy could not authenticate at this time.';
+					}
 					delete $window.localStorage.token;
 					delete $window.sessionStorage.token;
 				});
@@ -231,24 +235,18 @@ controllers.controller('signupController', ['$scope', '$location', '$http', '$wi
 		$scope.submit = function() {
 			if ($scope.form.$valid) {
 				var url = 'http://dewy.io/auth/users';
-				var user = {
+				$http.post(url, {
 					username: $scope.username,
 					email: $scope.email,
 					password: $scope.password
-				}
-				$http.post(url, user)
-					.success(function(result) {
-						if (result.message == 'error') {
-							$scope.error = result.data;
-						} else {
-							console.log(result);
-							// Authenticated, create session
-							$window.sessionStorage.token = result.data;
-						}
-					})
-					.error(function(error) {
-						$scope.message = error.data;
-					});
+				})
+				.success(function(result) {
+					// Authenticated, create session
+					$window.sessionStorage.token = result;
+				})
+				.error(function(error) {
+					$scope.error = error;
+				});
 			}
 		}
 }]);

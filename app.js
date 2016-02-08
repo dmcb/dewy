@@ -13,7 +13,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Provide OAuth proxy for Angular app
 app.post('/auth/', function(req, res) {
-    console.log(req.body);
     var endPoint = 'http://api.dewy.io/1.0/oauth/token';
     var encodedClient = new Buffer(config.client.client_id + ':' + config.client.client_secret).toString('base64');
     var request = require('request');
@@ -27,18 +26,15 @@ app.post('/auth/', function(req, res) {
         }
     }, function(error, response, body) {
         if (error) {
-            res.status(response.statusCode).send({"message": "error", "data": error});
+            res.status(response.statusCode).send(error);
         }
         else {
-            if (response.statusCode == '400') {
-                res.status(response.statusCode).send({"message": "error", "data": "Your username and password combination is incorrect, please try again."});
-            } 
-            else if (response.statusCode != '200') {
-                res.status(response.statusCode).send({"message": "error", "data": "Dewy could not authenticate at this time."});
+            if (response.statusCode == '200') {
+               var token = jwt.encode(body, config.jwt.secret);
+                res.send(token);             
             }
             else {
-                var token = jwt.encode(body, config.jwt.secret);
-                res.status(response.statusCode).send({"message": "success", "data": token});
+                res.status(response.statusCode).end();
             }
         }
     });
@@ -69,15 +65,10 @@ app.all('/auth/*', function(req, res) {
         headers: headers
     }, function(error, response, body) {
         if (error) {
-            console.log(error);
-            res.status(response.statusCode).send({"message": "error", "data": error});
+            res.status(response.statusCode).send(error);
         }
         else {
-            if (body.message == 'error') {
-                res.status(response.statusCode).send({"message": "error", "data": body.data});
-            } else {
-                res.status(response.statusCode).send({"message": "success", "data": body.data});
-            }
+            res.status(response.statusCode).send(body);
         }
     });
 
