@@ -2,7 +2,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
-var forge = require('node-forge');
 var jwt = require('jwt-simple');
 var config = require('./config');
 var app = express();
@@ -18,7 +17,6 @@ app.post('/auth/', function(req, res) {
     var endPoint = 'http://api.dewy.io/1.0/oauth/token';
     var encodedClient = new Buffer(config.client.client_id + ':' + config.client.client_secret).toString('base64');
     var request = require('request');
-    req.body.password = forge.md.sha1.create().update(req.body.password).digest().toHex();
     request({
         uri: endPoint,
         method: req.method,
@@ -75,7 +73,6 @@ app.all('/auth/*', function(req, res) {
             res.status(response.statusCode).send({"message": "error", "data": error});
         }
         else {
-            console.log(body);
             if (body.message == 'error') {
                 res.status(response.statusCode).send({"message": "error", "data": body.data});
             } else {

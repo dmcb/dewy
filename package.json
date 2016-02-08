@@ -1,5 +1,5 @@
 {
-  "name": "Dewy",
+  "name": "dewy",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -15,7 +15,6 @@
     "body-parser": "^1.13.2",
     "express": "^4.13.1",
     "jwt-simple": "^0.4.1",
-    "node-forge": "^0.6.38",
     "nodemon": "^1.8.1",
     "request": "2.69.0"
   }
