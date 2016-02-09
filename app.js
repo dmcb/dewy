@@ -52,11 +52,13 @@ app.all('/auth/*', function(req, res) {
             var payload = JSON.parse(jwt.decode(token, config.jwt.secret));
             headers.Authorization = 'Bearer ' + payload['access_token'];
         }
-        catch (err) {
-            console.log(err);
+        catch (error) {
+            console.log(error);
         }
         
+        // Send request, return results to Angular app
         var endPoint = 'http://api.dewy.io/1.0/' + req.params[0];
+        console.log(req.method + ': ' + endPoint);
         var request = require('request');
         request({
             uri: endPoint,
@@ -65,15 +67,13 @@ app.all('/auth/*', function(req, res) {
             headers: headers
         }, function(error, response, body) {
             if (error) {
+                console.log(error);
                 res.status(response.statusCode).send(error);
             }
             else {
                 res.status(response.statusCode).send(body);
             }
         });
-
-        // Send request, return results to Angular app
-        console.log(req.method + ': ' + endPoint);
     } else {
         res.status(401).end();
     }

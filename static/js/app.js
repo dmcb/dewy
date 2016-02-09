@@ -65,7 +65,7 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 					return filterFactory.getAll();
 				}],
 				sitesAndFilter: ['sitesFactory', function(sitesFactory, currentFilter) {
-					return sitesFactory.getAll(null, null).
+					return sitesFactory.getAll().
 					then(function(sites) {
 						return {
 							currentFilter: null,
@@ -85,7 +85,8 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 				sitesAndFilter: ['$route', 'filterFactory', 'sitesFactory', function($route, filterFactory, sitesFactory) {
 					return filterFactory.getFilter($route.current.params.filter).
 					then(function(currentFilter) {
-						return sitesFactory.getAll(null, currentFilter.id).
+						console.log(currentFilter);
+						return sitesFactory.getAll(currentFilter.fid).
 						then(function(sites) {
 							return {
 								currentFilter: currentFilter,

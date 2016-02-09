@@ -53,7 +53,7 @@ controllers.controller('filterController', ['$scope', '$http', 'filterFactory', 
 			window.history.back();
 		}
 		$scope.deleteFilter = function() {
-			filterFactory.delete($scope.currentFilter.id)
+			filterFactory.delete($scope.currentFilter.fid)
 				.then(function (response) {
 					window.history.back();
 				});
@@ -111,7 +111,7 @@ controllers.controller('filterController', ['$scope', '$http', 'filterFactory', 
 		}
 		$scope.saveFilter = function() {
 			if ($scope.filterForm.$valid) {
-				if ($scope.currentFilter.id) {
+				if ($scope.currentFilter.fid) {
 					filterFactory.update($scope.currentFilter);
 				} else {
 					filterFactory.create($scope.currentFilter);

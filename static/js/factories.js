@@ -29,15 +29,15 @@ factories.factory('filterFactory', ['$http', function($http) {
 	var filterFactory = {};
 	var apiUrl = "http://dewy.io/auth";
 
-	filterFactory.create = function(filter) {
-		return $http.post(apiUrl + '/filters', filter)
+	filterFactory.create = function(filterDoc) {
+		return $http.post(apiUrl + '/filters', filterDoc)
 			.then(function (response) {
 				console.log(response);
 			});
 	}
 
-	filterFactory.delete = function(filterId) {
-		return $http.delete(apiUrl + '/filters/' + filterId);
+	filterFactory.delete = function(fid) {
+		return $http.delete(apiUrl + '/filters/' + fid);
 	}
 
 	filterFactory.getAll = function() {
@@ -54,8 +54,8 @@ factories.factory('filterFactory', ['$http', function($http) {
 			});
 	}
 
-	filterFactory.getFilter = function(url) {
-		return $http.get(apiUrl + '/filters/' + url)
+	filterFactory.getFilter = function(fid) {
+		return $http.get(apiUrl + '/filters/' + fid)
 			.then(function (response) {
 				// Count the number of rules
 				var count = 0;
@@ -83,8 +83,8 @@ factories.factory('filterFactory', ['$http', function($http) {
 			});
 	}
 
-	filterFactory.update = function(filter) {
-		return $http.put(apiUrl + '/filters/' + filter.id, filter)
+	filterFactory.update = function(filterDoc) {
+		return $http.put(apiUrl + '/filters/' + filterDoc.fid, filterDoc)
 			.then(function (response) {
 				console.log(response);
 			});
