@@ -47,25 +47,25 @@
                                 <div ng-if="!filteredSites.length && query" class="noresults"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span><span>No sites meet your criteria.</span></div>
                                 <div ng-repeat="site in filteredSites = (sites | filter:query) | orderBy:sort.column:sort.descending" class="site">
                                     <ul class="site">
-                                        <li class="title" ng-class="{open: openSite.id == site.id && !openSite.detail}"><a href="" ng-click="openDetails(sites.indexOf(site))"><h3>{{site.title}}</h3><span>{{site.base_url}}</span></a></li>
+                                        <li class="title" ng-class="{open: openSite.sid == site.sid && !openSite.detail}"><a href="" ng-click="openDetails(sites.indexOf(site))"><h3>{{site.title}}</h3><span>{{site.baseurl}}</span></a></li>
                                         <div class="variables">
                                             <ul>
-                                                <li class="complexity" ng-class="{open: openSite.id == site.id && openSite.detail == 'complexity'}">
+                                                <li class="complexity" ng-class="{open: openSite.sid == site.sid && openSite.detail == 'complexity'}">
                                                     <a href="" ng-click="openDetails(sites.indexOf(site), 'complexity')"><div class="point" ng-repeat="i in getNumber(site.complexity) track by $index"></div></a>
                                                 </li>
-                                                <li class="size" ng-class="{open: openSite.id == site.id && openSite.detail == 'size'}">
+                                                <li class="size" ng-class="{open: openSite.sid == site.sid && openSite.detail == 'size'}">
                                                     <a href="" ng-click="openDetails(sites.indexOf(site), 'size')"><div class="point" ng-repeat="i in getNumber(site.size) track by $index"></div></a>
                                                 </li>
-                                                <li class="activity" ng-class="{open: openSite.id == site.id && openSite.detail == 'activity'}">
+                                                <li class="activity" ng-class="{open: openSite.sid == site.sid && openSite.detail == 'activity'}">
                                                     <a href="" ng-click="openDetails(sites.indexOf(site), 'activity')"><div class="point" ng-repeat="i in getNumber(site.activity) track by $index"></div></a>
                                                 </li>
-                                                <li class="health" ng-class="{open: openSite.id == site.id && openSite.detail == 'health'}">
+                                                <li class="health" ng-class="{open: openSite.sid == site.sid && openSite.detail == 'health'}">
                                                     <a href="" ng-click="openDetails(sites.indexOf(site), 'health')"><div class="point" ng-repeat="i in getNumber(site.health) track by $index"></div></a>
                                                 </li>
                                             </ul>
                                         </div>
                                     </ul>
-                                    <div class="detail-view" ng-if="openSite.id == site.id">
+                                    <div class="detail-view" ng-if="openSite.sid == site.sid">
                                         <div ng-if="!openSite.detail">
                                             <ul class="tags" ng-if="openSite.details.tags.length">
                                                 <li ng-repeat="tag in openSite.details.tags">{{tag}} <a href="" ng-click="deleteTag($index, sites.indexOf(site))"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></li>

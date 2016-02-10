@@ -640,6 +640,11 @@ div.app {
                                             &:hover {
                                                 color: #000;
                                             } 
+
+                                            span {
+                                                font-size: 0.7em;
+                                                white-space: nowrap;
+                                            }
                                         }
                                     }
 

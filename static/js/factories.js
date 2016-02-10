@@ -97,15 +97,15 @@ factories.factory('sitesFactory', ['$http', function($http) {
 	var sitesFactory = {};
 	var apiUrl = "http://dewy.io/auth";
 
-	sitesFactory.get = function(siteId, detail) {
-		return $http.get(apiUrl + '/sites/' + siteId)
+	sitesFactory.get = function(sid, detail) {
+		return $http.get(apiUrl + '/sites/' + sid)
 			.then(function (response) {
 				return response.data;
 			});
 	}
 
-	sitesFactory.getAll = function(filter) {
-		return $http.get(apiUrl + '/sites/_filter/' + filter)
+	sitesFactory.getAll = function(fid) {
+		return $http.get(apiUrl + '/sites/_filter/' + fid)
 			.then(function (response) {
 				return response.data;
 			});

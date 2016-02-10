@@ -291,12 +291,12 @@ controllers.controller('sitesController', ['$scope', '$location', 'sitesFactory'
 		}
 		$scope.openDetails = function(index, detail) {
 			if (!$scope.sites[index].details) {
-				sitesFactory.get(null, $scope.sites[index].id).then(function(details) {
+				sitesFactory.get($scope.sites[index].sid).then(function(details) {
 					$scope.sites[index].details = details;
-					$scope.openSite = {id: $scope.sites[index].id, details: $scope.sites[index].details, detail: detail};
+					$scope.openSite = {sid: $scope.sites[index].sid, details: $scope.sites[index].details, detail: detail};
 				});
 			} else {
-				$scope.openSite = {id: $scope.sites[index].id, details: $scope.sites[index].details, detail: detail};
+				$scope.openSite = {sid: $scope.sites[index].sid, details: $scope.sites[index].details, detail: detail};
 			}
 		}
 		$scope.openFolder = function(filter) {
@@ -315,6 +315,7 @@ controllers.controller('sitesController', ['$scope', '$location', 'sitesFactory'
 			$location.path('sites');
 		}
 		$scope.sites = sitesAndFilter.sites;
+		console.log($scope.sites);
 
 		// Grab session data if it exists
 		if (sessionStorage.folders) {
