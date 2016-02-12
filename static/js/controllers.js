@@ -315,7 +315,6 @@ controllers.controller('sitesController', ['$scope', '$location', 'sitesFactory'
 			$location.path('sites');
 		}
 		$scope.sites = sitesAndFilter.sites;
-		console.log($scope.sites);
 
 		// Grab session data if it exists
 		if (sessionStorage.folders) {

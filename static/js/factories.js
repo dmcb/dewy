@@ -107,6 +107,47 @@ factories.factory('sitesFactory', ['$http', function($http) {
 	sitesFactory.getAll = function(fid) {
 		return $http.get(apiUrl + '/sites/_filter/' + fid)
 			.then(function (response) {
+
+				// Loop through all sites and determine absolute values of attributes
+				var attributes = {'complexity': [], 'size': [], 'activity': [], 'health': []};
+
+				for (var i in response.data) {
+					response.data[i].complexity = Math.log(response.data[i].attributes.modules + response.data[i].attributes.contentTypes + response.data[i].attributes.roles);
+					response.data[i].size = Math.log(response.data[i].attributes.nodes + response.data[i].attributes.words + response.data[i].attributes.users + response.data[i].attributes.diskSize);
+					response.data[i].activity = Math.log(response.data[i].attributes.avgLastAccess + response.data[i].attributes.avgLastModified);
+					response.data[i].health = Math.log(3);
+
+					for (var attribute in attributes) {
+						if (attributes[attribute]['maximum'] == null) {
+							attributes[attribute]['maximum'] = response.data[i][attribute];
+						} else if (attributes[attribute]['maximum'] < response.data[i][attribute]) {
+							attributes[attribute]['maximum'] = response.data[i][attribute];
+						}
+						if (attributes[attribute]['minimum'] == null) {
+							attributes[attribute]['minimum'] = response.data[i][attribute];
+						} else if (attributes[attribute]['minimum'] > response.data[i][attribute]) {
+							attributes[attribute]['minimum'] = response.data[i][attribute];
+						}
+					}
+				}
+
+				// Determine how much value is in a dot from range of attribute values
+				for (var attribute in attributes) {
+					attributes[attribute]['increment'] = (attributes[attribute]['maximum'] - attributes[attribute]['minimum']) / 9;
+				}
+
+				// Set normalized values
+				for (var i in response.data) {
+					for (var attribute in attributes) {
+						if (!attributes[attribute]['increment']) {
+							response.data[i][attribute] = 1;
+						} 
+						else {
+							response.data[i][attribute] = ((response.data[i][attribute] - attributes[attribute]['minimum']) / attributes[attribute]['increment']) + 1;
+						}
+					}
+				}
+
 				return response.data;
 			});
 	}
