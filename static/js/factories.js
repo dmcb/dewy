@@ -161,10 +161,9 @@ factories.factory('sitesFactory', ['$http', function($http) {
 
 	sitesFactory.setTags = function(site) {
 		var update = {
-			type: 'tags',
-			tags: site.details.tags
+			tags: site.tags
 		};
-		return $http.put(apiUrl + '/sites/' + site.id, update)
+		return $http.put(apiUrl + '/sites/' + site.sid, update)
 			.then(function (response) {
 				return response.data;
 			});

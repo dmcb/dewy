@@ -67,8 +67,8 @@
                                     </ul>
                                     <div class="detail-view" ng-if="openSite.sid == site.sid">
                                         <div ng-if="!openSite.detail">
-                                            <ul class="tags" ng-if="openSite.details.tags.length">
-                                                <li ng-repeat="tag in openSite.details.tags">{{tag}} <a href="" ng-click="deleteTag($index, sites.indexOf(site))"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></li>
+                                            <ul class="tags" ng-if="openSite.tags.length">
+                                                <li ng-repeat="tag in openSite.tags">{{tag}} <a href="" ng-click="deleteTag($index, sites.indexOf(site))"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></li>
                                             </ul>
                                             <form name="tagForm{{sites.indexOf(site)}}" ng-submit="addTags(sites.indexOf(site))">
                                                 <input placeholder="Tags seperated by commas" name="tags" ng-model="tags" required />

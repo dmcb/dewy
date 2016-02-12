@@ -262,8 +262,12 @@ controllers.controller('sitesController', ['$scope', '$location', 'sitesFactory'
 				tags = this.tags.split(',');
 				for (i=0; i<tags.length; i++) {
 					tag = tags[i].trim();
-					if (tag != "" && $scope.sites[siteIndex].details.tags.indexOf(tag) == -1) {
-						$scope.sites[siteIndex].details.tags.push(tag);
+					if (!$scope.sites[siteIndex].tags) {
+						$scope.sites[siteIndex].tags = [];
+					}
+					if (tag != "" && $scope.sites[siteIndex].tags.indexOf(tag) == -1) {
+						$scope.sites[siteIndex].tags.push(tag);
+						console.log($scope.sites[siteIndex].tags);
 					}
 				}
 				sitesFactory.setTags($scope.sites[siteIndex]);
@@ -283,7 +287,7 @@ controllers.controller('sitesController', ['$scope', '$location', 'sitesFactory'
 			}
 		};
 		$scope.deleteTag = function(tagIndex, siteIndex) {
-			$scope.sites[siteIndex].details.tags.splice(tagIndex, 1);
+			$scope.sites[siteIndex].tags.splice(tagIndex, 1);
 			sitesFactory.setTags($scope.sites[siteIndex]);
 		}
 		$scope.getNumber = function(number) {
@@ -293,10 +297,10 @@ controllers.controller('sitesController', ['$scope', '$location', 'sitesFactory'
 			if (!$scope.sites[index].details) {
 				sitesFactory.get($scope.sites[index].sid).then(function(details) {
 					$scope.sites[index].details = details;
-					$scope.openSite = {sid: $scope.sites[index].sid, details: $scope.sites[index].details, detail: detail};
+					$scope.openSite = {sid: $scope.sites[index].sid, tags: $scope.sites[index].tags, details: $scope.sites[index].details, detail: detail};
 				});
 			} else {
-				$scope.openSite = {sid: $scope.sites[index].sid, details: $scope.sites[index].details, detail: detail};
+				$scope.openSite = {sid: $scope.sites[index].sid, tags: $scope.sites[index].tags, details: $scope.sites[index].details, detail: detail};
 			}
 		}
 		$scope.openFolder = function(filter) {
