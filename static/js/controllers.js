@@ -294,13 +294,20 @@ controllers.controller('sitesController', ['$scope', '$location', 'sitesFactory'
 			return new Array(Math.round(number));
 		}
 		$scope.openDetails = function(index, detail) {
-			if (!$scope.sites[index].details) {
-				sitesFactory.get($scope.sites[index].sid).then(function(details) {
-					$scope.sites[index].details = details;
+			// If the site is already open to that same site and view, close the view
+			if ($scope.openSite && $scope.openSite.sid == $scope.sites[index].sid && $scope.openSite.detail == detail) {
+				$scope.openSite = null;
+			}
+			else {
+				// If details haven't been already loaded for the site, go grab the site
+				if (!('details' in $scope.sites[index])) {
+					sitesFactory.get($scope.sites[index].sid).then(function(details) {
+						$scope.sites[index].details = details;
+						$scope.openSite = {sid: $scope.sites[index].sid, tags: $scope.sites[index].tags, details: $scope.sites[index].details, detail: detail};
+					});
+				} else {
 					$scope.openSite = {sid: $scope.sites[index].sid, tags: $scope.sites[index].tags, details: $scope.sites[index].details, detail: detail};
-				});
-			} else {
-				$scope.openSite = {sid: $scope.sites[index].sid, tags: $scope.sites[index].tags, details: $scope.sites[index].details, detail: detail};
+				}
 			}
 		}
 		$scope.openFolder = function(filter) {
