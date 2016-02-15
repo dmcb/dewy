@@ -1,6 +1,6 @@
 var factories = angular.module('dewyFactories', []);
 
-factories.factory('authInterceptor', ['$location', '$q', '$window', function($location, $q, $window) {
+factories.factory('authInterceptor', ['authService', '$location', '$q', '$window', function(authService, $location, $q, $window) {
 	var authInterceptor = {};
 
 	authInterceptor.request = function(config) {
@@ -15,49 +15,40 @@ factories.factory('authInterceptor', ['$location', '$q', '$window', function($lo
 	}
 
 	authInterceptor.responseError = function(responseError) {
-		// If no longer authorized, destroy the session and go back to sign on
-		delete $window.localStorage.token;
-		delete $window.sessionStorage.token;
-		delete $window.localStorage.user;
-		delete $window.sessionStorage.user;
+		// If no longer authorized, sign off
 		if (responseError.status == 401) {
 			console.log('Access denied');
-			$location.path("/signon");
+			authService.signOff();
 		}
 		return $q.reject(responseError);
-	};
+	}
 
 	return authInterceptor;
 }]);
 
-factories.factory('authResolver', ['$rootScope', '$location', '$q', '$window', function($rootScope, $location, $q, $window) {
-	var authResolver = {};
+factories.factory('authService', ['dewySession', '$location', '$rootScope', function(dewySession, $location, $rootScope) {
+	var authService = {};
 
-	authResolver.resolve = function(protected) {
-		// var deferred = $q.defer();
-		// if (protected) {
-		// 	if ($window.localStorage.user) {
-		// 		var currentUser = JSON.parse($window.localStorage.user);
-		// 		deferred.resolve(currentUser);
-		// 	}
-		// 	else if ($window.sessionStorage.user) {
-		// 		var currentUser = JSON.parse($window.sessionStorage.user);
-		// 		deferred.resolve(currentUser);
-		// 	}
-		// 	else {
-		// 		deferred.reject();
-		// 		$location.path("/signon");
-		// 	}
-		// } else {
-		// 	if ($window.localStorage.user || $window.sessionStorage.user) {
-		// 		deferred.reject();
-		// 		$location.path("/sites");
-		// 	}
-		// }
-		// return deferred.promise;
+	authService.currentUser = function() {
+		return dewySession.get();
 	}
 
-	return authResolver;
+	authService.isAuthenticated = function() {
+		return !!dewySession.get();
+	}
+
+	authService.signOff = function() {
+		dewySession.destroy();
+		$location.path('/signon');
+	}
+
+	authService.signOn = function(result, remember) {
+		dewySession.create(result);
+		$rootScope.$broadcast('auth-signon-success');
+		$location.path('/sites');
+	};
+
+	return authService;
 }]);
 
 factories.factory('filterFactory', ['$http', function($http) {

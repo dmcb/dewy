@@ -1,23 +1,15 @@
 var controllers = angular.module('dewyControllers', []);
 
-controllers.controller('appController', ['$scope', '$location', '$http', '$route', '$window',
-	function ($scope, $location, $http, $route, $window) {
+controllers.controller('appController', ['$scope', '$location', 'authService',
+	function ($scope, $location, authService) {
 		$scope.isIndex = function() {
 			if ($location.path() == '/' || $location.path() == '/signon') {
 				return true;
 			}
 		}
 		$scope.signOff = function() {
-			delete $window.localStorage.token;
-			delete $window.sessionStorage.token;
-			delete $window.localStorage.user;
-			delete $window.sessionStorage.user;
-			$location.path('/signon');
+			authService.signOff();
 		}
-
-        if ($window.sessionStorage.user) {
-    		$scope.currentUser = JSON.parse($window.sessionStorage.user);
-        }
 }]);
 
 controllers.controller('filterController', ['$scope', '$http', 'filterFactory', 'operators', 'fields', 'filters', 'currentFilter', 'tags',
@@ -210,8 +202,8 @@ controllers.controller('filterController', ['$scope', '$http', 'filterFactory', 
 		};
 }]);
 
-controllers.controller('signonController', ['$scope', '$rootScope', '$location', '$http', '$window',
-	function ($scope, $rootScope, $location, $http, $window) {
+controllers.controller('signonController', ['authService', '$scope', '$http',
+	function (authService, $scope, $http) {
 		$scope.submit = function() {
 			if ($scope.form.$valid) {
 				$scope.message = null;
@@ -222,15 +214,7 @@ controllers.controller('signonController', ['$scope', '$rootScope', '$location',
 					password: $scope.password,
 					remember: $scope.remember
 				}).success(function(result) {
-					// Authenticated, create session
-					if ($scope.remember) {
-						$window.localStorage.token = result;
-					}
-					$window.sessionStorage.token = result;
-                    // Dummy user for now, will have authentication return user in addition to token
-                    $window.sessionStorage.user = JSON.stringify({username: 'Derek', gravatar: '53fb5bc11270849b7a1e279b21ef00e5'});
-					$rootScope.$broadcast('auth-signon-success');
-					$location.path('/sites');
+					authService.signOn({token: result, user: {username: 'Derek', gravatar: '53fb5bc11270849b7a1e279b21ef00e5'}}, $scope.remember);
 				})
 				.error(function(error, status) {
 					if (status == '400') {
@@ -238,15 +222,13 @@ controllers.controller('signonController', ['$scope', '$rootScope', '$location',
 					} else {
 						$scope.message = 'Dewy could not authenticate at this time.';
 					}
-					delete $window.localStorage.token;
-					delete $window.sessionStorage.token;
 				});
 			}
 		}
 }]);
 
-controllers.controller('signupController', ['$scope', '$rootScope', '$location', '$http', '$window',
-	function ($scope, $rootScope, $location, $http, $window) {
+controllers.controller('signupController', ['authService', '$scope', '$http',
+	function (authService, $scope, $http) {
 		$scope.submit = function() {
 			if ($scope.form.$valid) {
 				$scope.message = null;
@@ -257,10 +239,7 @@ controllers.controller('signupController', ['$scope', '$rootScope', '$location',
 					password: $scope.password
 				})
 				.success(function(result) {
-					// Authenticated, create session
-					$window.sessionStorage.token = result;
-					$rootScope.$broadcast('auth-signon-success');
-					$location.path('/sites');
+					authService.signOn({token: result, user: {username: 'Derek', gravatar: '53fb5bc11270849b7a1e279b21ef00e5'}});
 				})
 				.error(function(error, status) {
 					if (status != '400') {

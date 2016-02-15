@@ -16,9 +16,6 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 			controller: 'filterController',
 			requiresAuthorization: true,
 			resolve: {
-				auth: ['authResolver', function(authResolver) {
-					return authResolver.resolve(true);
-				}],
 				operators: ['filterFactory', function(filterFactory) {
 					return filterFactory.getOperators();
 				}],
@@ -41,9 +38,6 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 			controller: 'filterController',
 			requiresAuthorization: true,
 			resolve: {
-				auth: ['authResolver', function(authResolver) {
-					return authResolver.resolve(true);
-				}],
 				operators: ['filterFactory', function(filterFactory) {
 					return filterFactory.getOperators();
 				}],
@@ -64,21 +58,13 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 		when('/signon', {
 			templateUrl: 'templates/signon.html',
 			controller: 'signonController',
-			requiresAuthorization: false,
-			resolve: {
-				auth: ['authResolver', function(authResolver) {
-					return authResolver.resolve(false);
-				}]
-			}
+			requiresAuthorization: false
 		}).
 		when('/sites', {
 			templateUrl: 'templates/sites.html',
 			controller: 'sitesController',
 			requiresAuthorization: true,
 			resolve: {
-				auth: ['authResolver', function(authResolver) {
-					return authResolver.resolve(true);
-				}],
 				filters: ['filterFactory', function(filterFactory) {
 					return filterFactory.getAll();
 				}],
@@ -98,9 +84,6 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 			controller: 'sitesController',
 			requiresAuthorization: true,
 			resolve: {
-				auth: ['authResolver', function(authResolver) {
-					return authResolver.resolve(true);
-				}],
 				filters: ['filterFactory', function(filterFactory) {
 					return filterFactory.getAll();
 				}],
@@ -122,21 +105,11 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 		when('/user', {
 			templateUrl: 'templates/user.html',
 			controller: 'userController',
-			requiresAuthorization: true,
-			resolve: {
-				auth: ['authResolver', function(authResolver) {
-					return authResolver.resolve(true);
-				}]
-			}
+			requiresAuthorization: true
 		}).
 		when('/', {
 			templateUrl: 'templates/index.html',
-			requiresAuthorization: false,
-			resolve: {
-				auth: ['authResolver', function(authResolver) {
-					return authResolver.resolve(false);
-				}]
-			}
+			requiresAuthorization: false
 		}).
 		otherwise({
 			controller: function() {
@@ -146,20 +119,22 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 		});
 }]);
 
-app.run(['$rootScope', '$location', '$window', function($rootScope, $location, $window) {
+app.run(['authService', '$rootScope', '$location', '$window', function(authService, $rootScope, $location, $window) {
 	$rootScope.$on('$routeChangeStart', function (event, next) {
 		if (next.requiresAuthorization) {
-			// if (!authService.isAuthenticated()) {
-			if (!$window.localStorage.user && !$window.sessionStorage.user) {
+			if (!authService.isAuthenticated()) {
 				event.preventDefault();
 				$location.path('/signon');
+			} else {
+				$rootScope.currentUser = authService.currentUser();
 			}
 		}
 		else {
-			// if (authService.isAuthenticated()) {
-			if ($window.localStorage.user || $window.sessionStorage.user) {
+			if (authService.isAuthenticated()) {
 				event.preventDefault();
 				$location.path('/sites');
+			} else {
+				$rootScope.currentUser = null;
 			}
 		}
 	});
