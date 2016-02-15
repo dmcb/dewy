@@ -7,6 +7,10 @@ controllers.controller('appController', ['$scope', '$location', '$http', '$route
 				return true;
 			}
 		}
+		$scope.currentUser = null;
+		$scope.setCurrentUser = function (user) {
+			$scope.currentUser = user;
+		};
 }]);
 
 controllers.controller('filterController', ['$scope', '$http', 'filterFactory', 'operators', 'fields', 'filters', 'currentFilter', 'tags',
@@ -216,6 +220,8 @@ controllers.controller('signonController', ['$scope', '$rootScope', '$location',
 						$window.localStorage.token = result;
 					}
 					$window.sessionStorage.token = result;
+                    // Dummy user for now, will have authentication return user in addition to token
+                    $scope.setCurrentUser({username: 'Derek', gravatar: '53fb5bc11270849b7a1e279b21ef00e5'});
 					$rootScope.$broadcast('auth-signon-success');
 					$location.path("/sites");
 				})

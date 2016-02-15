@@ -58,6 +58,17 @@ body {
 
             header {
                 border-top-color: #FFF;
+
+                nav ul li a {
+                    height: auto;
+                    margin-top: $grid-gutter-width/2;
+                    padding: 0.25em $grid-gutter-width/2;
+
+                    &.important {
+                        border: 3px #FFF solid;
+                        border-radius: 0.5em;
+                    }
+                }
             }
         }
     }
@@ -76,17 +87,6 @@ header {
     nav {
         @extend .container-fluid;
         max-width: 1400px;
-
-        &.floating ul li a {
-            height: auto;
-            margin-top: $grid-gutter-width/2;
-            padding: 0.25em $grid-gutter-width/2;
-
-            &.important {
-                border: 3px #FFF solid;
-                border-radius: 0.5em;
-            }
-        }
 
         ul {
             // @extend .row;
