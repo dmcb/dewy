@@ -199,11 +199,12 @@ controllers.controller('filterController', ['$scope', '$http', 'filterFactory', 
 		};
 }]);
 
-controllers.controller('signonController', ['$scope', '$location', '$http', '$window',
-	function ($scope, $location, $http, $window) {
+controllers.controller('signonController', ['$scope', '$rootScope', '$location', '$http', '$window',
+	function ($scope, $rootScope, $location, $http, $window) {
 		$scope.submit = function() {
 			if ($scope.form.$valid) {
-				var url = 'http://dewy.io/auth/';
+				$scope.message = null;
+				var url = 'http://dewy.io/auth/signon';
 				// Authenticate
 				$http.post(url, {
 					username: $scope.username,
@@ -215,6 +216,7 @@ controllers.controller('signonController', ['$scope', '$location', '$http', '$wi
 						$window.localStorage.token = result;
 					}
 					$window.sessionStorage.token = result;
+					$rootScope.$broadcast('auth-signon-success');
 					$location.path("/sites");
 				})
 				.error(function(error, status) {
@@ -230,11 +232,12 @@ controllers.controller('signonController', ['$scope', '$location', '$http', '$wi
 		}
 }]);
 
-controllers.controller('signupController', ['$scope', '$location', '$http', '$window',
-	function ($scope, $location, $http, $window) {
+controllers.controller('signupController', ['$scope', '$rootScope', '$location', '$http', '$window',
+	function ($scope, $rootScope, $location, $http, $window) {
 		$scope.submit = function() {
 			if ($scope.form.$valid) {
-				var url = 'http://dewy.io/auth/users';
+				$scope.message = null;
+				var url = 'http://dewy.io/auth/signup';
 				$http.post(url, {
 					username: $scope.username,
 					email: $scope.email,
@@ -243,9 +246,15 @@ controllers.controller('signupController', ['$scope', '$location', '$http', '$wi
 				.success(function(result) {
 					// Authenticated, create session
 					$window.sessionStorage.token = result;
+					$rootScope.$broadcast('auth-signon-success');
+					$location.path("/sites");
 				})
-				.error(function(error) {
-					$scope.error = error;
+				.error(function(error, status) {
+					if (status != '400') {
+						$scope.message = 'Dewy could not sign you up at this time.';
+					} else {
+						$scope.error = error;
+					}
 				});
 			}
 		}

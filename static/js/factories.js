@@ -27,7 +27,7 @@ factories.factory('authInterceptor', ['$location', '$q', '$window', function($lo
 
 factories.factory('filterFactory', ['$http', function($http) {
 	var filterFactory = {};
-	var apiUrl = "http://dewy.io/auth";
+	var apiUrl = "http://dewy.io/api";
 
 	filterFactory.create = function(filterDoc) {
 		return $http.post(apiUrl + '/filters', filterDoc)
@@ -95,7 +95,7 @@ factories.factory('filterFactory', ['$http', function($http) {
 
 factories.factory('sitesFactory', ['$http', function($http) {
 	var sitesFactory = {};
-	var apiUrl = "http://dewy.io/auth";
+	var apiUrl = "http://dewy.io/api";
 
 	sitesFactory.get = function(sid, detail) {
 		return $http.get(apiUrl + '/sites/' + sid)
