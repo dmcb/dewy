@@ -33,7 +33,7 @@
                     <ul ng-if="currentUser">
                         <li><a href="">Manage sites</a></li><li><a href="" class="drop"><img src="http://www.gravatar.com/avatar/{{currentUser.gravatar}}?s=58" alt=""/>Signed in as {{currentUser.username}}</a><ul class="dropdown">
                             <li><a href="/user">Account</a></li>
-                            <li><a href="/signoff" target="_self">Sign off</a></li>
+                            <li><a href="" ng-click="signOff()">Sign off</a></li>
                         </ul></li>
                     </ul>
                 </nav>

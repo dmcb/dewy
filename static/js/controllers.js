@@ -7,6 +7,14 @@ controllers.controller('appController', ['$scope', '$location', '$http', '$route
 				return true;
 			}
 		}
+		$scope.signOff = function() {
+			delete $window.localStorage.token;
+			delete $window.sessionStorage.token;
+			delete $window.localStorage.user;
+			delete $window.sessionStorage.user;
+			$location.path('/signon');
+		}
+
         if ($window.sessionStorage.user) {
     		$scope.currentUser = JSON.parse($window.sessionStorage.user);
         }
@@ -222,7 +230,7 @@ controllers.controller('signonController', ['$scope', '$rootScope', '$location',
                     // Dummy user for now, will have authentication return user in addition to token
                     $window.sessionStorage.user = JSON.stringify({username: 'Derek', gravatar: '53fb5bc11270849b7a1e279b21ef00e5'});
 					$rootScope.$broadcast('auth-signon-success');
-					$location.path("/sites");
+					$location.path('/sites');
 				})
 				.error(function(error, status) {
 					if (status == '400') {
@@ -252,7 +260,7 @@ controllers.controller('signupController', ['$scope', '$rootScope', '$location',
 					// Authenticated, create session
 					$window.sessionStorage.token = result;
 					$rootScope.$broadcast('auth-signon-success');
-					$location.path("/sites");
+					$location.path('/sites');
 				})
 				.error(function(error, status) {
 					if (status != '400') {

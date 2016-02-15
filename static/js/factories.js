@@ -4,6 +4,7 @@ factories.factory('authInterceptor', ['$location', '$q', '$window', function($lo
 	var authInterceptor = {};
 
 	authInterceptor.request = function(config) {
+		// If there's a JWT in session, add it to all requests
 		config.headers = config.headers || {};
 		if ($window.localStorage.token) {
 			config.headers.Authorization = 'Bearer ' + $window.localStorage.token;
@@ -14,8 +15,12 @@ factories.factory('authInterceptor', ['$location', '$q', '$window', function($lo
 	}
 
 	authInterceptor.responseError = function(responseError) {
+		// If no longer authorized, destroy the session and go back to sign on
+		delete $window.localStorage.token;
+		delete $window.sessionStorage.token;
+		delete $window.localStorage.user;
+		delete $window.sessionStorage.user;
 		if (responseError.status == 401) {
-			// Unauthorized
 			console.log('Access denied');
 			$location.path("/signon");
 		}
@@ -23,6 +28,36 @@ factories.factory('authInterceptor', ['$location', '$q', '$window', function($lo
 	};
 
 	return authInterceptor;
+}]);
+
+factories.factory('authResolver', ['$rootScope', '$location', '$q', '$window', function($rootScope, $location, $q, $window) {
+	var authResolver = {};
+
+	authResolver.resolve = function(protected) {
+		// var deferred = $q.defer();
+		// if (protected) {
+		// 	if ($window.localStorage.user) {
+		// 		var currentUser = JSON.parse($window.localStorage.user);
+		// 		deferred.resolve(currentUser);
+		// 	}
+		// 	else if ($window.sessionStorage.user) {
+		// 		var currentUser = JSON.parse($window.sessionStorage.user);
+		// 		deferred.resolve(currentUser);
+		// 	}
+		// 	else {
+		// 		deferred.reject();
+		// 		$location.path("/signon");
+		// 	}
+		// } else {
+		// 	if ($window.localStorage.user || $window.sessionStorage.user) {
+		// 		deferred.reject();
+		// 		$location.path("/sites");
+		// 	}
+		// }
+		// return deferred.promise;
+	}
+
+	return authResolver;
 }]);
 
 factories.factory('filterFactory', ['$http', function($http) {

@@ -14,7 +14,11 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
     	when('/filter', {
 			templateUrl: 'templates/filter.html',
 			controller: 'filterController',
+			requiresAuthorization: true,
 			resolve: {
+				auth: ['authResolver', function(authResolver) {
+					return authResolver.resolve(true);
+				}],
 				operators: ['filterFactory', function(filterFactory) {
 					return filterFactory.getOperators();
 				}],
@@ -35,7 +39,11 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 		when('/filter/:filter', {
 			templateUrl: 'templates/filter.html',
 			controller: 'filterController',
+			requiresAuthorization: true,
 			resolve: {
+				auth: ['authResolver', function(authResolver) {
+					return authResolver.resolve(true);
+				}],
 				operators: ['filterFactory', function(filterFactory) {
 					return filterFactory.getOperators();
 				}],
@@ -56,11 +64,21 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 		when('/signon', {
 			templateUrl: 'templates/signon.html',
 			controller: 'signonController',
+			requiresAuthorization: false,
+			resolve: {
+				auth: ['authResolver', function(authResolver) {
+					return authResolver.resolve(false);
+				}]
+			}
 		}).
 		when('/sites', {
 			templateUrl: 'templates/sites.html',
 			controller: 'sitesController',
+			requiresAuthorization: true,
 			resolve: {
+				auth: ['authResolver', function(authResolver) {
+					return authResolver.resolve(true);
+				}],
 				filters: ['filterFactory', function(filterFactory) {
 					return filterFactory.getAll();
 				}],
@@ -78,7 +96,11 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 		when('/sites/:filter', {
 			templateUrl: 'templates/sites.html',
 			controller: 'sitesController',
+			requiresAuthorization: true,
 			resolve: {
+				auth: ['authResolver', function(authResolver) {
+					return authResolver.resolve(true);
+				}],
 				filters: ['filterFactory', function(filterFactory) {
 					return filterFactory.getAll();
 				}],
@@ -100,9 +122,21 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 		when('/user', {
 			templateUrl: 'templates/user.html',
 			controller: 'userController',
+			requiresAuthorization: true,
+			resolve: {
+				auth: ['authResolver', function(authResolver) {
+					return authResolver.resolve(true);
+				}]
+			}
 		}).
 		when('/', {
 			templateUrl: 'templates/index.html',
+			requiresAuthorization: false,
+			resolve: {
+				auth: ['authResolver', function(authResolver) {
+					return authResolver.resolve(false);
+				}]
+			}
 		}).
 		otherwise({
 			controller: function() {
@@ -110,4 +144,23 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 			},
 			template : '<div></div>'
 		});
+}]);
+
+app.run(['$rootScope', '$location', '$window', function($rootScope, $location, $window) {
+	$rootScope.$on('$routeChangeStart', function (event, next) {
+		if (next.requiresAuthorization) {
+			// if (!authService.isAuthenticated()) {
+			if (!$window.localStorage.user && !$window.sessionStorage.user) {
+				event.preventDefault();
+				$location.path('/signon');
+			}
+		}
+		else {
+			// if (authService.isAuthenticated()) {
+			if ($window.localStorage.user || $window.sessionStorage.user) {
+				event.preventDefault();
+				$location.path('/sites');
+			}
+		}
+	});
 }]);
