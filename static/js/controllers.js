@@ -1,16 +1,15 @@
 var controllers = angular.module('dewyControllers', []);
 
-controllers.controller('appController', ['$scope', '$location', '$http', '$route',
-	function ($scope, $location, $http, $route) {
+controllers.controller('appController', ['$scope', '$location', '$http', '$route', '$window',
+	function ($scope, $location, $http, $route, $window) {
 		$scope.isIndex = function() {
 			if ($location.path() == '/' || $location.path() == '/signon') {
 				return true;
 			}
 		}
-		$scope.currentUser = null;
-		$scope.setCurrentUser = function (user) {
-			$scope.currentUser = user;
-		};
+        if ($window.sessionStorage.user) {
+    		$scope.currentUser = JSON.parse($window.sessionStorage.user);
+        }
 }]);
 
 controllers.controller('filterController', ['$scope', '$http', 'filterFactory', 'operators', 'fields', 'filters', 'currentFilter', 'tags',
@@ -221,7 +220,7 @@ controllers.controller('signonController', ['$scope', '$rootScope', '$location',
 					}
 					$window.sessionStorage.token = result;
                     // Dummy user for now, will have authentication return user in addition to token
-                    $scope.setCurrentUser({username: 'Derek', gravatar: '53fb5bc11270849b7a1e279b21ef00e5'});
+                    $window.sessionStorage.user = JSON.stringify({username: 'Derek', gravatar: '53fb5bc11270849b7a1e279b21ef00e5'});
 					$rootScope.$broadcast('auth-signon-success');
 					$location.path("/sites");
 				})
