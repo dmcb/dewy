@@ -185,7 +185,11 @@ factories.factory('sitesFactory', ['$http', function($http) {
 	sitesFactory.getTags = function() {
 		return $http.get(apiUrl + '/sites/_tags')
 			.then(function (response) {
-				return response.data;
+				var tags = [];
+				for (var i in response.data) {
+					tags.push(response.data[i].key[1]);
+				}
+				return tags;
 			});
 	}
 

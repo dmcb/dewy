@@ -145,7 +145,7 @@ controllers.controller('filterController', ['$scope', 'filterFactory', 'operator
 			// If field value type changes, reset value, provide default
 			if (field.value != oldField.value) {
 				if (field.value == 'tag') {
-					rule.value = $scope.tags[0].id;
+					rule.value = $scope.tags[0];
 				}
 				else if (field.value == 'integer') {
 					rule.value = 0;
