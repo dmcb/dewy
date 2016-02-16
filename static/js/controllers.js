@@ -2,18 +2,13 @@ var controllers = angular.module('dewyControllers', []);
 
 controllers.controller('appController', ['$scope', '$location', 'authService',
 	function ($scope, $location, authService) {
-		$scope.isIndex = function() {
-			if ($location.path() == '/' || $location.path() == '/signon') {
-				return true;
-			}
-		}
 		$scope.signOff = function() {
 			authService.signOff();
 		}
 }]);
 
-controllers.controller('filterController', ['$scope', '$http', 'filterFactory', 'operators', 'fields', 'filters', 'currentFilter', 'tags',
-	function ($scope, $http, filterFactory, operators, fields, filters, currentFilter, tags) {
+controllers.controller('filterController', ['$scope', 'filterFactory', 'operators', 'fields', 'filters', 'currentFilter', 'tags',
+	function ($scope, filterFactory, operators, fields, filters, currentFilter, tags) {
 		$scope.addRule = function(rule, group) {
 			// New rule
 			var newRule;
@@ -214,7 +209,7 @@ controllers.controller('signonController', ['authService', '$scope', '$http',
 					password: $scope.password,
 					remember: $scope.remember
 				}).success(function(result) {
-					authService.signOn({token: result, user: {username: 'Derek', gravatar: '53fb5bc11270849b7a1e279b21ef00e5'}}, $scope.remember);
+					authService.signOn(result, $scope.remember);
 				})
 				.error(function(error, status) {
 					if (status == '400') {
@@ -239,7 +234,7 @@ controllers.controller('signupController', ['authService', '$scope', '$http',
 					password: $scope.password
 				})
 				.success(function(result) {
-					authService.signOn({token: result, user: {username: 'Derek', gravatar: '53fb5bc11270849b7a1e279b21ef00e5'}});
+					authService.signOn(result);
 				})
 				.error(function(error, status) {
 					if (status != '400') {

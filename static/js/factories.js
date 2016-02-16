@@ -30,11 +30,15 @@ factories.factory('authService', ['dewySession', '$location', '$rootScope', func
 	var authService = {};
 
 	authService.currentUser = function() {
-		return dewySession.get();
+		return dewySession.getUser();
 	}
 
 	authService.isAuthenticated = function() {
-		return !!dewySession.get();
+		return !!dewySession.getToken();
+	}
+
+	authService.setUser = function(user) {
+		dewySession.setUser(user);
 	}
 
 	authService.signOff = function() {

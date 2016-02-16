@@ -58,7 +58,8 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 		when('/signon', {
 			templateUrl: 'templates/signon.html',
 			controller: 'signonController',
-			requiresAuthorization: false
+			requiresAuthorization: false,
+			indexPage: true
 		}).
 		when('/sites', {
 			templateUrl: 'templates/sites.html',
@@ -109,7 +110,8 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 		}).
 		when('/', {
 			templateUrl: 'templates/index.html',
-			requiresAuthorization: false
+			requiresAuthorization: false,
+			indexPage: true
 		}).
 		otherwise({
 			controller: function() {
@@ -119,7 +121,7 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 		});
 }]);
 
-app.run(['authService', '$rootScope', '$location', '$window', function(authService, $rootScope, $location, $window) {
+app.run(['authService', '$rootScope', '$location', '$http', '$window', function(authService, $rootScope, $location, $http, $window) {
 	$rootScope.$on('$routeChangeStart', function (event, next) {
 		if (next.requiresAuthorization) {
 			if (!authService.isAuthenticated()) {
@@ -127,6 +129,14 @@ app.run(['authService', '$rootScope', '$location', '$window', function(authServi
 				$location.path('/signon');
 			} else {
 				$rootScope.currentUser = authService.currentUser();
+				if (!$rootScope.currentUser) {
+					$http.get('http://dewy.io/api/users')
+					.success(function(result) {
+						authService.setUser(result);
+						$rootScope.currentUser = result;
+					})
+				}
+				$rootScope.indexPage = next.indexPage;
 			}
 		}
 		else {
@@ -135,6 +145,7 @@ app.run(['authService', '$rootScope', '$location', '$window', function(authServi
 				$location.path('/sites');
 			} else {
 				$rootScope.currentUser = null;
+				$rootScope.indexPage = next.indexPage;
 			}
 		}
 	});

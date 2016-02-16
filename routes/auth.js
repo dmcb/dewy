@@ -21,7 +21,7 @@ router.post('/signon', function(req, res) {
         }
         else {
             if (response.statusCode == '200') {
-               var token = jwt.encode(body, config.jwt.secret);
+                var token = jwt.encode(body, config.jwt.secret);
                 res.send(token);             
             }
             else {

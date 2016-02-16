@@ -23,7 +23,7 @@
         <script src="/js/controllers.js"></script>
         <script src="/js/scripts.js"></script>
     </head>
-    <body ng-controller="appController" ng-class="{index: isIndex()}">
+    <body ng-controller="appController" ng-class="{index: indexPage}">
         <div class="wrapper">
             <header>
                 <nav>
@@ -39,7 +39,7 @@
                 </nav>
                 <div class="logo">
                     <h1>
-                        <a href="/"><img src="/img/dewy-white.png" alt="Dewy" ng-if="isIndex()"><img src="/img/dewy.png" alt="Dewy" ng-if="!isIndex()"></a>
+                        <a href="/"><img src="/img/dewy-white.png" alt="Dewy" ng-if="indexPage"><img src="/img/dewy.png" alt="Dewy" ng-if="!indexPage"></a>
                     </h1>
                 </div>
             </header>
