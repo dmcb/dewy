@@ -55,6 +55,19 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 				}]
 			}
 		}).
+		when('/manage', {
+			templateUrl: 'templates/manage.html',
+			controller: 'manageController',
+			requiresAuthorization: true,
+			resolve: {
+				sites: ['sitesFactory', function(sitesFactory) {
+					return sitesFactory.getOffline();
+				}],
+				user: ['userFactory', function(userFactory) {
+					return userFactory.get();
+				}]
+			}
+		}).
 		when('/signon', {
 			templateUrl: 'templates/signon.html',
 			controller: 'signonController',

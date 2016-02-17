@@ -1,0 +1,28 @@
+                <section class="main">
+                    <h2>Manage sites</h2>
+
+                    <h3>Add a site</h3>
+                    <p>To add a site to Dewy, you must first download and enable the Dewy module on any site you wish to add. <a href="">Download the module from Drupal.org</a>.
+
+                    <h3>Your API Key</h3>
+                    <p>Your API key is what links sites to your account. Keep it confidential. You can reset your API key to clear all sites' ability to associate with your account.</p>
+                    <div class="apikey">
+                        <input type="text" value="{{user.apikey}}" />
+                        <a class="button" href=""><span class="glyphicon glyphicon-copy" aria-hidden="true"></span></a>
+                        <button ng-click="resetKey()">Reset API Key <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></button>
+                    </div>
+
+                    <h3>Offline sites</h3>
+                    <p>The following sites are linked to your account but aren't able to report to Dewy.</p>
+
+                    <div ng-repeat="site in sites" class="sites">
+                        <ul class="site">
+                            <li class="baseurl">{{site.baseurl}}</li>
+                            <li class="reported">Last reported {{site.audited.date}}</li>
+                            <li class="enabled">Enabled {{site.enabled}}</li>
+                            <li class="error" ng-if="site.enabled == 1">Error {{site.audited.error}}</li>
+                            <a class="button" href="{{site.baseurl}}/admin/config/system/dewy" target="_blank"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
+                            <a class="button" href="" ng-click="deleteSite(site)"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
+                        </ul>
+                    </div>
+                </section>

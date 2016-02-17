@@ -197,6 +197,18 @@ controllers.controller('filterController', ['$scope', 'filterFactory', 'operator
 		};
 }]);
 
+controllers.controller('manageController', ['$scope', 'sites', 'user',
+	function ($scope, sites, user) {
+		$scope.deleteSite = function(site) {
+
+		}
+		$scope.resetKey = function() {
+
+		}
+		$scope.sites = sites;
+		$scope.user = user;
+}]);
+
 controllers.controller('signonController', ['authService', '$scope', '$http',
 	function (authService, $scope, $http) {
 		$scope.submit = function() {

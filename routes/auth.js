@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var config = require('../config');
 var jwt = require('jwt-simple');
-var app = express();
 
 authenticateWithDewy = function() {
     return function(req, res, next) {

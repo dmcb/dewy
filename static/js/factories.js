@@ -182,6 +182,13 @@ factories.factory('sitesFactory', ['$http', function($http) {
 			});
 	}
 
+	sitesFactory.getOffline = function() {
+		return $http.get(apiUrl + '/sites/_offline')
+			.then(function (response) {
+				return response.data;
+			});
+	}
+
 	sitesFactory.getTags = function() {
 		return $http.get(apiUrl + '/sites/_tags')
 			.then(function (response) {
@@ -204,4 +211,18 @@ factories.factory('sitesFactory', ['$http', function($http) {
 	}
 
 	return sitesFactory;
+}]);
+
+factories.factory('userFactory', ['$http', function($http) {
+	var userFactory = {};
+	var apiUrl = "http://dewy.io/api";
+
+	userFactory.get = function() {
+		return $http.get(apiUrl + '/users')
+			.then(function (response) {
+				return response.data;
+			});
+	}
+
+	return userFactory;
 }]);
