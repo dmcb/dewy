@@ -4,13 +4,27 @@
 
 ## Installation
 
+* Configure OAuth client and JWT encryption:
+
+        cp config.json.default config.json
+
 * Install dependencies:
 
-		npm install
-		
+        npm install
+        
 * Run node:
 
-		npm start
+        npm start
+
+## Development
+
+* Run bower to download packages:
+
+        bower install
+
+* Run grunt to compile assets
+
+        grunt
 
 ## Usage
 

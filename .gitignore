@@ -1,9 +1,12 @@
-# Development
+# Sass junk
 .sass-cache
 
-# npm
+# Node junk
 npm-debug.log
-node_modules/
+node_modules
 
-# Environment-specific
+# Bower junk
+bower_components
+
+# Environment-specific configuration
 config.json

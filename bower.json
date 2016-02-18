@@ -1,0 +1,21 @@
+{
+  "name": "dewy",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Derek McBurney <d.mcburney@icloud.com>"
+  ],
+  "homepage": "https://github.com/dmcb/dewy",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "singularity": "^1.6.2"
+  }
+}
