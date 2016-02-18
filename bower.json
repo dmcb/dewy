@@ -16,6 +16,7 @@
     "tests"
   ],
   "dependencies": {
-    "singularity": "^1.6.2"
+    "singularity": "^1.6.2",
+    "angular-ui-sortable": "^0.13.4"
   }
 }

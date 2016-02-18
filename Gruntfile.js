@@ -5,8 +5,11 @@ module.exports = function(grunt) {
     bower_concat: {
       all: {
         dest: {
-          'js': 'static/js/vendor/bower.js'
+          'js': 'src/js/bower.js'
         },
+        include: [
+          'angular-ui-sortable'
+        ],
         bowerOptions: {
           relative: false
         }
@@ -14,14 +17,18 @@ module.exports = function(grunt) {
     },
 
     uglify: {
-       bower: {
-        options: {
-          mangle: true,
-          compress: true
-        },
-        files: {
-          'static/js/vendor/bower.min.js': 'static/js/vendor/bower.js'
-        }
+      options: {
+        sourceMap: true,
+        mangle: true,
+        compress: true
+      },
+      dist : {
+        files: [{
+          expand: true,
+          cwd: 'src/js',
+          src: ['*.js'],
+          dest: 'static/js/',
+        }]
       }
     },
 
@@ -31,11 +38,13 @@ module.exports = function(grunt) {
       },
       dist: {
         options: {
-          outputStyle: 'compressed'
+          sourceMap: true,
+          outputStyle: 'compressed',
+
         },
         files: [{
           expand: true,
-          cwd: 'static/scss/',
+          cwd: 'src/scss/',
           src: ['*.scss'],
           dest: 'static/css/',
           ext: '.css'
@@ -44,20 +53,25 @@ module.exports = function(grunt) {
     },
 
     watch: {
-      grunt: { files: ['Gruntfile.js'] },
+      grunt: {files: ['Gruntfile.js']},
+
+      scripts: {
+        files: 'src/js/*.js',
+        tasks: ['uglify']
+      },
 
       sass: {
-        files: 'static/scss/*.scss',
+        files: 'src/scss/*.scss',
         tasks: ['sass'],
         options: {
           livereload: true,
-        },
+        }
       }
     }
   });
 
   require('load-grunt-tasks')(grunt);
 
-  grunt.registerTask('build', ['bower_concat', 'uglify:bower', 'sass']);
+  grunt.registerTask('build', ['bower_concat', 'uglify', 'sass']);
   grunt.registerTask('default', ['build','watch']);
 }
