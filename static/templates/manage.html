@@ -7,9 +7,9 @@
                     <h3>Your API Key</h3>
                     <p>Your API key is what links sites to your account. Keep it confidential. You can reset your API key to clear all sites' ability to associate with your account.</p>
                     <div class="apikey">
-                        <input type="text" value="{{user.apikey}}" />
+                        <input type="text" ng-model="apikey" ng-change="getKey()" />
                         <a class="button" href=""><span class="glyphicon glyphicon-copy" aria-hidden="true"></span></a>
-                        <button ng-click="resetKey()">Reset API Key <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></button>
+                        <button ng-click="resetKey(currentUser.uid)">Reset API Key <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></button>
                     </div>
 
                     <h3>Offline sites</h3>
@@ -22,7 +22,7 @@
                             <li class="enabled">Enabled {{site.enabled}}</li>
                             <li class="error" ng-if="site.enabled == 1">Error {{site.audited.error}}</li>
                             <a class="button" href="{{site.baseurl}}/admin/config/system/dewy" target="_blank"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
-                            <a class="button" href="" ng-click="deleteSite(site)"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
+                            <a class="button" href="" ng-click="deleteSite(site.sid)"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
                         </ul>
                     </div>
                 </section>

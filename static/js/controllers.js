@@ -197,16 +197,21 @@ controllers.controller('filterController', ['$scope', 'filterFactory', 'operator
 		};
 }]);
 
-controllers.controller('manageController', ['$scope', 'sites', 'user',
-	function ($scope, sites, user) {
-		$scope.deleteSite = function(site) {
-
+controllers.controller('manageController', ['$scope', 'sites', 'user', 'sitesFactory', 'userFactory',
+	function ($scope, sites, user, sitesFactory, userFactory) {
+		$scope.getKey = function() {
+			$scope.apikey = user.apikey;
 		}
-		$scope.resetKey = function() {
-
+		$scope.deleteSite = function(sid) {
+			sitesFactory.delete(sid);
+		}
+		$scope.resetKey = function(uid) {
+			userFactory.resetKey(uid).then(function(apikey) {
+				$scope.apikey = apikey;
+			});
 		}
 		$scope.sites = sites;
-		$scope.user = user;
+		$scope.apikey = user.apikey;
 }]);
 
 controllers.controller('signonController', ['authService', '$scope', '$http',

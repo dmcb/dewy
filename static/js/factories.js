@@ -127,6 +127,10 @@ factories.factory('sitesFactory', ['$http', function($http) {
 	var sitesFactory = {};
 	var apiUrl = "http://dewy.io/api";
 
+	sitesFactory.delete = function(sid) {
+		return $http.delete(apiUrl + '/sites/' + sid);
+	}
+
 	sitesFactory.get = function(sid, detail) {
 		return $http.get(apiUrl + '/sites/' + sid)
 			.then(function (response) {
@@ -221,6 +225,16 @@ factories.factory('userFactory', ['$http', function($http) {
 		return $http.get(apiUrl + '/users')
 			.then(function (response) {
 				return response.data;
+			});
+	}
+
+	userFactory.resetKey = function(uid) {
+		var update = {
+			key: true
+		}
+		return $http.put(apiUrl + '/users/' + uid, update)
+			.then(function (response) {
+				return response.data.apikey;
 			});
 	}
 
