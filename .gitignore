@@ -1,12 +1,16 @@
-# Sass junk
+# Sass
 .sass-cache
 
-# Node junk
+# Node
 npm-debug.log
 node_modules
 
-# Bower junk
+# Bower
 bower_components
+
+# Source maps
+static/css/*.map
+static/js/*.map
 
 # Environment-specific configuration
 config.json

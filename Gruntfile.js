@@ -56,12 +56,12 @@ module.exports = function(grunt) {
       grunt: {files: ['Gruntfile.js']},
 
       scripts: {
-        files: 'src/js/*.js',
+        files: 'src/js/**/*.js',
         tasks: ['uglify']
       },
 
       sass: {
-        files: 'src/scss/*.scss',
+        files: 'src/scss/**/*.scss',
         tasks: ['sass'],
         options: {
           livereload: true,

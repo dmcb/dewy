@@ -4,17 +4,13 @@
 
 ## Installation
 
-* Configure OAuth client and JWT encryption:
+* Configure OAuth client secret and JWT encryption:
 
         cp config.json.default config.json
 
 * Install dependencies:
 
         npm install
-        
-* Run node:
-
-        npm start
 
 ## Development
 
@@ -27,5 +23,9 @@
         grunt
 
 ## Usage
+
+* Run node:
+
+        npm start
 
 * Go to localhost:3000 to visit the site
