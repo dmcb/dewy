@@ -203,6 +203,12 @@ controllers.controller('manageController', ['$scope', 'sites', 'user', 'sitesFac
 			$scope.apikey = user.apikey;
 		}
 		$scope.deleteSite = function(sid) {
+			i = $scope.sites.length;
+			while (i--) {
+				if ($scope.sites[i].sid == sid) {
+					var deletedSite = $scope.sites.splice(i, 1);
+				}
+			}
 			sitesFactory.delete(sid);
 		}
 		$scope.resetKey = function(uid) {
