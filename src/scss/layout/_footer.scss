@@ -1,0 +1,16 @@
+footer {
+    position: absolute;
+    bottom: 0;
+    background-color: $light-grey;
+    width: 100%;
+
+    ul li {
+        display: inline;
+
+        span, a {
+            display: inline-block;
+            padding: 0.5em 0;
+            margin-right: 1em;
+        }
+    }
+}
