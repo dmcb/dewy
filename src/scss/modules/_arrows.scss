@@ -1,0 +1,23 @@
+@mixin add-arrow($direction, $size) {
+    margin-left: 0.25em;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    width: 0;
+    height: 0;
+    content: "";
+    border: $size solid;
+    border-left-color: transparent;
+    border-right-color: transparent;
+
+    @if $direction != down {
+        border-top-color: transparent;
+    }
+    @if $direction != up {
+        border-bottom-color: transparent;
+    }
+
+    @if $direction == down {
+        top: $size;
+    }
+}

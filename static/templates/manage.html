@@ -1,32 +1,34 @@
-                <section class="main">
-                    <h2>Manage sites</h2>
+<div class="shell">
+    <section class="main">
+        <h2>Manage sites</h2>
 
-                    <h3>Add a site</h3>
-                    <p>To add a site to Dewy, you must first download and enable the Dewy module on any site you wish to add. <a href="">Download the module from Drupal.org</a>.
+        <h3>Add a site</h3>
+        <p>To add a site to Dewy, you must first download and enable the Dewy module on any site you wish to add. <a href="">Download the module from Drupal.org</a>.
 
-                    <h3>Your API Key</h3>
-                    <p>Your API key is what links sites to your account. Keep it confidential. You can reset your API key to clear all sites' ability to associate with your account.</p>
-                    <div class="apikey">
-                        <input type="text" ng-model="apikey" ng-change="getKey()" id="apikey" />
-                        <button ng-click="resetKey(currentUser.uid)">Reset API Key <span class="glyphicon glyphicon-random" aria-hidden="true"></span></button>
-                    </div>
+        <h3>Your API Key</h3>
+        <p>Your API key is what links sites to your account. Keep it confidential. You can reset your API key to clear all sites' ability to associate with your account.</p>
+        <div class="apikey">
+            <input type="text" ng-model="apikey" ng-change="getKey()" id="apikey" />
+            <button ng-click="resetKey(currentUser.uid)">Reset API Key <span class="glyphicon glyphicon-random" aria-hidden="true"></span></button>
+        </div>
 
-                    <h3>Offline sites</h3>
-                    <p>The following sites are linked to your account but aren't able to report to Dewy.</p>
+        <h3>Offline sites</h3>
+        <p>The following sites are linked to your account but aren't able to report to Dewy.</p>
 
-                    <div ng-repeat="site in sites" class="sites">
-                        <ul class="site">
-                            <li class="baseurl">{{site.baseurl}}</li>
-                            <li class="added">Added to Dewy on {{site.dateAdded}}</li>
-                            <li class="reported" ng-if="site.audited.date">Last audited {{site.audited.date}}</li>
-                            <li class="reported" ng-if="!site.audited.date">Never been audited</li>
-                            <li class="status error" ng-if="site.enabled == 1 && site.audited.error">Error {{site.audited.error}}</li>
-                            <li class="status waiting" ng-if="site.enabled == 1 && !site.audited.error">Waiting to be audited</li>
-                            <li class="status disabled" ng-if="site.enabled == 0">Site disabled from reporting to Dewy</li>
+        <div ng-repeat="site in sites" class="sites">
+            <ul class="site">
+                <li class="baseurl">{{site.baseurl}}</li>
+                <li class="added">Added to Dewy on {{site.dateAdded}}</li>
+                <li class="reported" ng-if="site.audited.date">Last audited {{site.audited.date}}</li>
+                <li class="reported" ng-if="!site.audited.date">Never been audited</li>
+                <li class="status error" ng-if="site.enabled == 1 && site.audited.error">Error {{site.audited.error}}</li>
+                <li class="status waiting" ng-if="site.enabled == 1 && !site.audited.error">Waiting to be audited</li>
+                <li class="status disabled" ng-if="site.enabled == 0">Site disabled from reporting to Dewy</li>
 
-                            <a class="button" href="{{site.baseurl}}/user" target="_blank">Visit site <span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
-                            <a class="button" href="" ng-click="auditSite(site.sid)">Attempt audit <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a>
-                            <a class="button" href="" ng-click="deleteSite(site.sid)">Remove site from Dewy <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
-                        </ul>
-                    </div>
-                </section>
+                <a class="button" href="{{site.baseurl}}/user" target="_blank">Visit site <span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
+                <a class="button" href="" ng-click="auditSite(site.sid)">Attempt audit <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a>
+                <a class="button" href="" ng-click="deleteSite(site.sid)">Remove site from Dewy <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+            </ul>
+        </div>
+    </section>
+</div>

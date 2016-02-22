@@ -1,0 +1,12 @@
+.shell {
+    max-width: $desktop-extra-large;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+
+    @include breakpoint($mobile-large) {
+        padding-left: gutter-span(1);
+        padding-right: gutter-span(1);
+    }
+}

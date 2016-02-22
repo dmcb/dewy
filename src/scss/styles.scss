@@ -1,137 +1,196 @@
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/variables";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/mixins";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/normalize";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/print";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/glyphicons";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/scaffolding";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/type";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/grid";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/utilities";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/responsive-utilities";
+// Third-party
+@import '../../bower_components/reset-css/_reset';
 @import '../../bower_components/breakpoint-sass/stylesheets/breakpoint';
 @import '../../bower_components/singularity/stylesheets/singularitygs';
-@import 'mixins';
-@import 'colours';
+@import '../../bower_components/singularity/stylesheets/singularitygs/helpers/clearfix';
+
+// Variables
+@import 'variables/breakpoints';
+@import 'variables/colours';
+@import 'variables/typography';
+
+// Modules
+@import 'modules/arrows';
+
+// Partials
+@import 'partials/glyphicons';
+@import 'partials/elements';
+@import 'partials/shell';
 
 // Layout
+* {
+    box-sizing: border-box;
+}
+
 html {
     height: 100%;
-    font-size: 10pt;
 }
 
 body {
+    @include add-grid(24);
+    @include add-gutter(1/3);
+
     height: 100%;
     background-color: $blue;
     color: $grey;
+    font-size: 10px;
+    font-family: $body-font;
 
-    @media (max-width: $screen-md-max) {
-        font-size: 0.94em;
+    @include breakpoint($mobile-large) {
+        font-size: 11px;
     }
 
-    @media (max-width: $screen-sm-max) {
-        font-size: 0.93em;
+    @include breakpoint($tablet) {
+        font-size: 12px;
     }
 
-    @media (max-width: $screen-xs-max) {
-        font-size: 0.85em;
+    @include breakpoint($desktop) {
+        font-size: 13px;
     }
 
-    &.index {
-        background-color: #FFF;
+    @include breakpoint($desktop-medium) {
+        font-size: 14px;
+    }
 
-        .wrapper {
-            background: radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
-            background: -webkit-radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
-            background: -o-radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
-            background: -ms-radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
-            background-attachment: fixed;
+    @include breakpoint($desktop-large) {
+        font-size: 15px;
+    }
 
-            color: #FFF;
-
-            header, footer {
-                background-color: transparent;
-                color: $light-blue;
-
-                ul li a {
-                    color: #FFF;
-
-                    &:hover {
-                        color: $light-blue;
-                        background-color: transparent;
-                    }
-
-                    &.important:hover {
-                        background-color: #FFF;
-                        color: $blue;
-                    }
-                }
-            }
-
-            header {
-                border-top-color: #FFF;
-
-                nav ul li a {
-                    height: auto;
-                    margin-top: $grid-gutter-width/2;
-                    padding: 0.25em $grid-gutter-width/2;
-
-                    &.important {
-                        border: 3px #FFF solid;
-                        border-radius: 0.5em;
-                    }
-                }
-            }
-        }
+    @include breakpoint($desktop-extra-large) {
+        font-size: 16px;
     }
 
     .wrapper {
         min-height: 100%;
         position: relative;
-        background-color: #FFF;
+        background-color: $white;
+        @include clearfix;
+    }
+
+    &.index {
+        background-color: $white;
+        color: $white;
+
+        .wrapper {
+            background: radial-gradient(center center, 50% 70%, $blue 70%, $darkish-blue);
+            background: -webkit-radial-gradient(center center, 50% 70%, $blue 70%, $darkish-blue);
+            background: -o-radial-gradient(center center, 50% 70%, $blue 70%, $darkish-blue);
+            background: -ms-radial-gradient(center center, 50% 70%, $blue 70%, $darkish-blue);
+            background-attachment: fixed;
+        }
+
+        header, footer {
+            background-color: transparent;
+            color: $light-blue;
+
+            ul li a {
+                color: $white;
+
+                &:hover {
+                    color: $light-blue;
+                    background-color: transparent;
+                }
+            }
+        }
+
+        header {
+            border-top-color: $white;
+
+            #menu-toggle {
+                color: $white;
+            }
+        }
     }
 }
 
 header {
+    @include clearfix;
     border-top: 5px solid $blue;
     background-color: $light-grey;
 
     nav {
-        @extend .container-fluid;
-        max-width: 1400px;
+        #menu-toggle-value + div {
+            display: none;
+
+            @include breakpoint($tablet) {
+                display: block;
+            }
+        }
+
+        #menu-toggle-value:checked + div {
+            display: block;
+        }
 
         ul {
-            // @extend .row;
             text-align: right;
-            margin-bottom: 0;
+
+            @include breakpoint($tablet) {
+                @include grid-span(24,1);
+            }
 
             li {
                 display: inline;
                 position: relative;
 
                 a {
-                    display: inline-block;
-                    padding: 1em $grid-gutter-width/2;
-                    height: 45px;
+                    text-align: center;
+                    display: block;
+                    padding: 0.75em 1em;
+                    margin-top: 0.5em;
+                    width: 100%;
+
+                    font-size: 1.2em;
+
+                    @include breakpoint($tablet) {
+                        display: inline-block;
+                        width: auto;
+                        background-color: transparent;
+                        border-radius: none;
+                        margin-top: 0;
+                        font-size: 1em;
+                    }
+
+                    &.icon {
+                        padding-left: 3.5em;
+                    }
 
                     &:hover {
-                        text-decoration: none;
-                        color: $dark-blue;
-                        background-color: #FFF;
+                        color: $blue;
+                        background-color: $white;
+
+                        @include breakpoint($tablet) {
+                            color: $dark-blue;
+                            background-color: transparent;
+                        }
                     }
 
                     img {
                         max-width: 2em;
                         border-radius: 1em;
                         margin-right: 0.5em;
-                        float: left;
-                        margin-top: -5px;
+                        left: 1em;
+                        margin-top: -0.5em;
+                        position: absolute;
+                    }
+
+                    &.drop {
+                        padding-right: 1.9em;
+                        display: none;
+
+                        @include breakpoint($tablet) {
+                            display: inline-block;
+                        }
+
+                        &:after {
+                            @include add-arrow(down, 0.4em);
+                        }
                     }
                 }
 
                 &.dropped {
 
                     > a {
-                        background-color: #FFF;
+                        background-color: $white;
                         color: $dark-blue;
                     }
                         
@@ -145,420 +204,517 @@ header {
                 margin: 0;
                 padding: 0;
                 background-color: $light-grey;
-                position: absolute;
-                display: none;
-                right: 0;
-                text-align: left;
-                box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
                 width: 100%;
                 z-index: 1;
 
                 li a {
                     display: block;
+
+                    @include breakpoint($tablet) {
+                        text-align: left;
+                    }
                 }
-            }
-        }
-    }
-}
 
-h1 {
-    @extend .container-fluid;
-    max-width: 1400px;
-    margin-top: 0;
-
-    img {
-        max-width: 96px;
-        position: absolute;
-        top: 16px;
-    }
-}
-
-.message {
-    @extend .container-fluid;
-    max-width: 1400px;
-
-    span {
-        padding: 0.5em $grid-gutter-width/2;
-        font-weight: bold;
-        color: #FFF;
-        background-color: $blue;
-        border-radius: 0.5em;
-        display: block;
-    }
-}
-
-div.app {
-    section {
-        &.introduction, &.signup, &.signon, &.main {
-            @extend .container-fluid;
-            max-width: 1400px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        &.signon {
-            padding-top: 2em;
-            padding-bottom: 5em;
-        }
-
-        &.introduction, &.signup {
-
-            .content {
-                @extend .row;
-                @extend .col-md-10;
-                @extend .col-md-offset-1;
-            }
-        }
-
-        &.introduction {
-            padding-top: 3em;
-            padding-bottom: 3em;
-
-            h2 {
-                font-size: 4em;
-            }
-
-            p {
-                font-size: 1.5em;
-            }
-        }
-
-        &.signup {
-            padding-top: 1em;
-            padding-bottom: 8em;
-
-            h2 {
-                font-size: 3em;
-            }
-        }
-
-        &.feature {
-            background-color: #FFF;
-            color: $grey;
-
-            h2 {
-                margin-top: 0;
-                font-size: 3em;
-                @extend .col-xs-12;
-            }
-
-            p {
-                font-size: 1.25em;
-                @extend .col-md-6;
-            }
-
-            ul {
-                @extend .col-xs-12;
-                padding: 0;
-
-                li {
-                    margin-top: 3em;
-                    display: block;
-                    @extend .col-sm-4;
-
-                    .step {
-                        display: block;
-                        background-color: $blue;
-                        color: #FFF;
-                        border-radius: 1.5em;
-                        height: 1.5em;
-                        width: 1.5em;
-                        margin-left: auto;
-                        margin-right: auto;
-                        text-align: center;
-                        font-size: 1.5em;
-                    }
-
-                    .instruction {
-                        text-align: center;
-                        display: block;
-                        margin-top: 2em;
-                        font-weight: bold;
-                    }
+                @include breakpoint($tablet) {
+                    position: absolute;
+                    display: none;
+                    right: 0;
+                    text-align: left;
+                    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
                 }
             }
 
-            .feature {
-                @extend .container-fluid;
-                max-width: 1400px;
+            &.home {
+                margin-top: 1em;
+                margin-bottom: 1em;
 
-                .getstarted {
-                    padding-bottom: 5em;
-                }
-
-                .getstarted, .views, .querying, .notifications {
-                    @extend .row;
-                    @extend .col-md-10;
-                    @extend .col-md-offset-1;
-                    padding-top: 3em;
-                    border-bottom: 1px solid $light-blue;
-                    background-color: #FFF;
-
-                    .content {
-                        @extend .row;
-                        padding-bottom: 3em;
-                    }
-
-                    .image {
-                        padding: 25px 25px 0 25px;
-                        overflow: hidden;
-                        @extend .row;
-
-                        @media (max-width: $screen-xs-max) {
-                            overflow: auto;
-                        }
-
-                        .screenshot {
-                            -webkit-box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.5);
-                            -moz-box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.5);
-                            box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.5);
-                            max-width: 490px;
-                            margin-left: auto;
-                            display: block;
-
-                            @media (max-width: $screen-md-max) {
-                                margin-right: auto;
-                            }
-
-                            @media (max-width: $screen-xs-max) {
-                                -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
-                                -moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
-                                box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
-                                max-width: 100%;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        &.main {
-            @extend .row;
-
-            h2, #titleerror, #nameerror {
-                color: $blue;
-                @extend .col-xs-12;
-                font-size: 1.8em;
-                margin: 1em 0;
-                float: none;
-
-                a {
-                    color: $blue;
+                li a {
+                    border-radius: 0.25em;
 
                     &:hover {
-                        color: $dark-blue;
+                        background-color: $white;
+                        color: $blue;
+                    }
+
+                    @include breakpoint($tablet) {
+                        &:hover {
+                            background-color: transparent;
+                            color: $light-blue;
+                        }
+
+                        &.important {
+                            border: 3px $white solid;
+                            border-radius: 0.6em;
+                            padding: 0.25em 1em;
+
+                            &:hover {
+                                background-color: $white;
+                                color: $blue;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .logo {
+            @include grid-span(4,1);
+            margin-top: 0.75em;
+
+            @include breakpoint($tablet) {
+                position: absolute;
+            }
+
+            img {
+                max-width: 72px;
+
+                @include breakpoint($tablet) {
+                    max-width: 80px;
+                }
+
+                @include breakpoint($desktop) {
+                    max-width: 96px;
+                }
+
+                @include breakpoint($desktop-extra-large) {
+                    max-width: 112px;
+                }
+            }
+        }
+
+        #menu-toggle {
+            color: $blue;
+            cursor: pointer;
+            float: right;
+            margin-top: 1em;
+
+            span {
+                font-size: 2em;
+            }
+        
+            @include breakpoint($tablet) {
+                display: none;
+            }
+        }
+
+        #menu-toggle-value {
+            visibility: hidden;
+            height: 0;
+            width: 0;
+            position: absolute;
+        }
+    }
+}
+
+section {
+    &.signon {
+        padding-top: 2em;
+        padding-bottom: 5em;
+    }
+
+    &.introduction, &.feature, &.feature section, &.signup, &.signon, &.main {
+        @include grid-span(24,1);
+        @include clearfix;
+        clear: both;
+    }
+
+    &.introduction, &.feature section, &.signup, &.signon {
+        padding-top: 3em;
+
+        @include breakpoint($mobile-large) {
+            @include grid-span(20,3);
+            clear: both;
+        }
+
+        @include breakpoint($desktop) {
+            @include grid-span(18,4);
+            clear: both;
+        }
+    }
+
+    &.introduction {
+        padding-top: 3em;
+        padding-bottom: 3em;
+
+        p {
+            margin-top: 1em;
+            font-size: 1.4em;
+
+            @include breakpoint($tablet) {
+                @include grid-span(16,1);
+            }
+
+            @include breakpoint($desktop) {
+                @include grid-span(14,1);
+            }
+
+            @include breakpoint($desktop-large) {
+                @include grid-span(12,1);
+            }
+        }
+    }
+
+    &.feature {
+        background-color: $white;
+        color: $grey;
+
+        h2, p {
+            @include breakpoint($tablet) {
+                @include grid-span(12,1);
+            }
+
+            @include breakpoint($desktop) {
+                @include grid-span(10,1);
+            }
+
+            @include breakpoint($desktop-large) {
+                @include grid-span(8,1);
+            }
+        }
+
+        p {
+            margin-top: 2em;
+            font-size: 1.1em;
+            clear: both;
+        }
+
+        ul {
+            clear: both;
+        }
+
+        .image {
+            padding: 2em 2em 0 2em;
+            @include grid-span(24,1);
+
+            @include breakpoint($tablet) {
+                overflow: hidden;
+                @include grid-span(10,15);
+            }
+
+            @include breakpoint($desktop) {
+                @include grid-span(13,12);
+                margin-right: -2em;
+            }
+
+            @include breakpoint($desktop-large) {
+                @include grid-span(15,10);
+                margin-right: -2em;
+            }
+
+            .screenshot {
+                -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+                -moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+                box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+                width: 100%;
+
+                @include breakpoint($tablet) {
+                    -webkit-box-shadow: 0px 0px 2em 0px rgba(0,0,0,0.5);
+                    -moz-box-shadow: 0px 0px 2em 0px rgba(0,0,0,0.5);
+                    box-shadow: 0px 0px 2em 0px rgba(0,0,0,0.5);
+                }
+            }
+        }
+
+        section {
+            border-bottom: solid 1px $light-blue;
+
+            &.getstarted {
+                padding-bottom: 5em;
+                border-bottom: none;
+
+                ul {
+                    padding: 0;
+
+                    li {
+                        margin-top: 3em;
+                        display: block;
+                        
+                        @include breakpoint($tablet) {
+                            @include float-span(8);
+
+                            &:last-child {
+                                @include float-span(8,'last');
+                            }
+                        }
+
+                        .step {
+                            display: block;
+                            background-color: $blue;
+                            color: $white;
+                            border-radius: 1.5em;
+                            height: 1.5em;
+                            width: 1.5em;
+                            margin-left: auto;
+                            margin-right: auto;
+                            text-align: center;
+                            font-size: 1.5em;
+                        }
+
+                        .instruction {
+                            text-align: center;
+                            display: block;
+                            margin-top: 2em;
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.signup {
+        padding-top: 1em;
+        padding-bottom: 8em;
+    }
+
+    &.main {
+        padding-top: 1em;
+        padding-bottom: 4em;
+
+        h2, #titleerror, #nameerror {
+            color: $blue;
+            font-size: 1.8em;
+            margin: 1em 0;
+            float: none;
+
+            a {
+                color: $blue;
+                position: relative;
+
+                &:hover {
+                    color: $dark-blue;
+                }
+
+                span {
+                    margin-left: 0.5em;
+                    top: 5px;
+                    position: absolute;
+                }
+            }
+
+            input {
+                border: none;
+                padding: 0;
+                width: 100%;
+                color: $blue;
+                margin-top: -4px;
+            }
+        }
+
+        #titleerror, #nameerror {
+            margin-top: -1em;
+            display: block;
+            font-size: 0.9em;
+        }
+
+        .view {
+            @include grid-span(24,1);
+
+            @include breakpoint($desktop) {
+                @include grid-span(18.75,1);
+            }
+
+            .tabs {
+                text-align: center;
+
+                @include breakpoint($tablet) {
+                    text-align: left;
+                    @include grid-span(12,1);
+                }
+
+                ul {
+                    margin: 0;
+                    padding: 0;
+
+                    li {
+                        display: inline;
+
+                        a {
+                            color: $dark-blue;
+                            display: inline-block;
+                            padding: 0.5em 1em;
+                            border: solid 1px $light-blue;
+
+                            @include breakpoint($tablet) {
+                                border-bottom: none;
+                            }
+
+                            &:hover {
+                                text-decoration: none;
+                                color: $white;
+                                background-color: $dark-blue;
+                            }
+                        }
+
+                        &.selected a {
+                            color: $white;
+                            background-color: $dark-blue;
+                        }
+                    }
+                }
+            }
+
+            .search {
+                padding-top: 1em;
+                padding-bottom: 1em;
+
+                @include breakpoint($tablet) {
+                    @include grid-span(10,15);
+                    padding-top: 0;
+                    padding-bottom: 0;
+                }
+
+                form {
+                    position: relative;
+                    border: solid 1px $light-blue;
+
+                    input[type=text] {
+                        width: 100%;
+                        padding: 0.3em 0.5em;
+                        border: none;
+                        background-color: transparent;
+
+                        &::-webkit-input-placeholder {
+                            color: $dark-blue;
+                        }
+                        &:-moz-placeholder {
+                            color: $dark-blue;
+                            opacity: 1;
+                        }
+                        &::-moz-placeholder {
+                            color: $dark-blue;
+                            opacity: 1;
+                        }
+                        &:-ms-input-placeholder {
+                            color: $dark-blue;
+                        }
                     }
 
                     span {
-                        margin-left: 0.25em;
+                        position: absolute;
+                        right: 0;
+                        color: $blue;
+                        margin-top: 4px;
+                        margin-right: 6px;
+                        background-color: transparent;
                     }
-                }
-
-                input {
-                    border: none;
-                    padding: 0;
-                    width: 100%;
-                    color: $blue;
-                    font-size: 1em;
                 }
             }
 
-            #titleerror, #nameerror {
-                margin-top: -1em;
-                display: block;
-                font-size: 0.9em;
-            }
+            .content {
+                clear: both;
+                border-top: solid 1px $light-blue;
+                border-left: solid 1px $light-blue;
+                border-right: solid 1px $light-blue;
+                border-bottom: solid 1px $light-blue;
+                overflow: scroll;
 
-            .view {
-                @extend .col-md-9;
-                @extend .col-md-pull-3;
+                @include breakpoint($tablet) {
+                    overflow: hidden;
+                }
 
-                nav {
-                    @extend .row;
+                & + .content {
+                    margin-top: 2em;
+                }
 
-                    .tabs {
-                        @extend .col-md-8;
+                ul.site {
+                    li.title {
+                        background-color: $white;
+                        width: 50%;
+                        position: absolute;
+                        z-index: 1;
 
-                        ul {
-                            margin: 0;
-                            padding: 0;
-
-                            li {
-                                display: inline;
-
-                                a {
-                                    color: $dark-blue;
-                                    display: inline-block;
-                                    padding: 0.5em 1em;
-                                    border-top: solid 1px $light-blue;
-                                    border-left: solid 1px $light-blue;
-                                    border-right: solid 1px $light-blue;
-
-                                    @media (max-width: $screen-sm-max) {
-                                        border-bottom: solid 1px $light-blue;
-                                    }
-
-                                    &:hover {
-                                        text-decoration: none;
-                                        color: #FFF;
-                                        background-color: $dark-blue;
-                                    }
-                                }
-
-                                &.selected a {
-                                    color: #FFF;
-                                    background-color: $dark-blue;
-                                }
-                            }
-                        }
-                    }
-
-                    .search {
-                        @extend .col-md-4;
-
-                        @media (max-width: $screen-sm-max) {
-                            padding-top: 1em;
-                            padding-bottom: 1em;
+                        &:after {
+                            background: -webkit-linear-gradient(90deg, rgba($grey, 0.5), rgba($grey, 0));
+                            background: -moz-linear-gradient(90deg, rgba($grey, 0.5), rgba($grey, 0));
+                            background: -o-linear-gradient(90deg, rgba($grey, 0.5), rgba($grey, 0));
+                            background: linear-gradient(90deg, rgba($grey, 0.5), rgba($grey, 0));
+                            position: absolute;
+                            content: "";
+                            top: 0;
+                            right: -1em;
+                            width: 1em;
+                            height: 3.5em;
+                            z-index: 1;
                         }
 
-                        form {
+                        @include breakpoint($tablet) {
+                            @include grid-span(10,1);
                             position: relative;
-                            border: solid 1px $light-blue;
+                            z-index: 0;
 
-                            input[type=text] {
-                                width: 100%;
-                                padding: 0.3em 0.5em;
-                                border: none;
-                                background-color: transparent;
-
-                                &::-webkit-input-placeholder {
-                                    color: $dark-blue;
-                                }
-                                &:-moz-placeholder {
-                                    color: $dark-blue;
-                                    opacity: 1;
-                                }
-                                &::-moz-placeholder {
-                                    color: $dark-blue;
-                                    opacity: 1;
-                                }
-                                &:-ms-input-placeholder {
-                                    color: $dark-blue;
-                                }
-                            }
-
-                            span {
-                                position: absolute;
-                                right: 0;
-                                color: $blue;
-                                margin-top: 4px;
-                                margin-right: 6px;
-                                background-color: transparent;
+                            &:after {
+                                display: none;
                             }
                         }
+
+                        h3 {
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                        }
                     }
-                }
+                        
+                    ul.variables {
+                        margin-left: 40%;
+                        width: 75%;
 
-                .content {
-                    border-top: solid 1px $light-blue;
-                    border-left: solid 1px $light-blue;
-                    border-right: solid 1px $light-blue;
-                    border-bottom: solid 1px $light-blue;
-                    overflow: scroll;
-
-                    & + .content {
-                        margin-top: 2em;
-                    }
-
-                    ul {
-                        margin: 0;
-                        padding: 0;
-                        @extend .row;
+                        @include breakpoint($tablet) {
+                            @include grid-span(14,11);
+                            z-index: 0;
+                        }
 
                         li {
-                            display: inline;
+                            width: 25%;
+                            float: left;
 
-                            &.title {
-                                @extend .col-md-3;
-                                @extend .col-sm-4;
-                                @extend .col-xs-6;
+                            @include breakpoint($tablet) {
+                                @include float-span(6);
 
-                                @media (max-width: $screen-xs-max) {
-                                    position: absolute;
-                                    z-index: 1;
-                                }
-
-                                h3 {
-                                    margin: 0;
-                                    font-size: 1.3em;
-                                    overflow: hidden;
-                                    text-overflow: ellipsis;
-                                    white-space: nowrap;
+                                &:nth-child(4) {
+                                    @include float-span(6,'last');
                                 }
                             }
-                        }
-                            
-                        div.variables {
-                            @extend .col-md-9;
-                            @extend .col-sm-8;
-                            @extend .col-xs-12;
 
-                            @media (max-width: $screen-xs-max) {
-                                margin-left: 50%;
-                                padding-left: $grid-gutter-width;
-                            }
-
-                            ul {
-                                @extend .row;
-
-                                li {
-                                    &.complexity, &.size, &.activity, &.health {
-                                        @extend .col-xs-3;
-
-                                        a {
-                                            width: 100%;
-                                            display: block;
-                                            padding-top: 0.5em;
-                                            padding-bottom: 0.5em;
-                                        }
-                                    }
-                                }
+                            a {
+                                width: 100%;
+                                display: block;
+                                padding-left: 1em;
+                                padding-right: 0;
                             }
                         }
                     }
 
-                    .header {
-                        background-color: $light-grey;
+                    li {
+                        position: relative;
 
-                        @media (max-width: $screen-xs-max) {
-                            min-width: $screen-xs-max/2;
+                        a {
+                            padding: 0.75em 1em;
+                        }
+                    }
+                }
+
+                .header {
+                    @include clearfix;
+                    background-color: $light-grey;
+                    width: 150%;
+
+                    @include breakpoint($tablet) {
+                        width: 100%;
+                    }
+
+                    ul li {
+                        &.title:after {
+                            height: 2em;
                         }
 
-                        ul li a {
+                        a {
                             background-color: $light-grey;
                             color: $grey;
                             display: block;
                             width: 100%;
                             height: 100%;
-                            padding: 0.5em $grid-gutter-width/2;
-                            margin-left: -$grid-gutter-width/2;
-                            box-sizing: content-box;
-
-                            @media (max-width: $screen-sm-max) {
-                                &:after {
-                                    margin-top: 6px;
-                                    display: block;
-                                    width: 0;
-                                    height: 0;
-                                    content: "";
-                                    vertical-align: -5px;
-                                    border: 6px solid;
-                                    border-top-color: transparent;
-                                    border-left-color: transparent;
-                                    border-right-color: transparent;
-                                    border-bottom-color: transparent;
-                                }
-                            }
+                            padding: 0.5em 1em;
 
                             &:hover {
                                 color: $light-grey;
@@ -566,449 +722,472 @@ div.app {
                             }
 
                             &.selected.desc:after {
-                                @media (max-width: $screen-sm-max) {
-                                    display: block;
-                                    margin-top: 6px;
-                                    margin-left: 0;
+                                @include add-arrow(down, 0.4em);
+                                top: 0.8em;
+                            }
+
+                            &.selected.asc:after {
+                            @include add-arrow(up, 0.4em);
+                                top: 0.4em;
+                            }
+                        }
+                    }
+                }
+
+                .sites {
+                    clear: both;
+                    width: 150%;
+
+                    @include breakpoint($tablet) {
+                        width: 100%;
+                    }
+
+                    .noresults {
+                        padding-top: 1em;
+                        padding-bottom: 1em;
+                    }
+
+                    .noresults {
+                        display: block;
+                        text-align: center;
+                        margin: 0;
+                        color: $dark-blue;
+
+                        span {
+                            margin-right: 0.5em;
+                        }
+                    }
+
+                    .site {
+                        ul.site {
+                            @include clearfix;
+                            clear: both;
+                            height: 3.5em;
+
+                            li {
+                                .point {
+                                    width: 0.75em;
+                                    background-color: $blue;
+                                    height: 0.75em;
+                                    display: inline-block;
+                                    border-radius: 0.75em;
+                                    transition: opacity 0.3s;
+                                    font-size: 0.8em;
                                 }
 
-                                margin-left: 8px;
+                                &.title {
+                                    background-color: $white;
+
+                                    a {
+                                        display: block;
+                                        color: $grey;
+                                        padding-right: 0;
+
+                                        &:hover {
+                                            color: #000;
+                                        } 
+
+                                        span {
+                                            font-size: 0.85em;
+                                            white-space: nowrap;
+                                        }
+                                    }
+
+                                    &.open:before {
+                                        @include add-arrow(up, 0.75em);
+                                        color: $light-grey;
+                                        top: 2em;
+                                        margin-left: 1em;
+                                    }
+                                }
+
+                                &.complexity, &.size, &.activity, &.health {
+                                    a:hover .point {
+                                        background-color: $dark-blue;
+                                    }
+
+                                    &.open:before {
+                                        @include add-arrow(up, 0.75em);
+                                        color: $light-grey;
+                                        top: 2em;
+                                    }
+                                }
+                            }
+                        }
+
+                        div.detail-view {
+                            @include clearfix;
+                            clear: both;
+                            background-color: $light-grey;
+                            padding: 1em;
+                            width: 115%;
+
+                            @include breakpoint($tablet) {
+                                width: 100%;
+                            }
+
+                            .tags {
+                                margin-bottom: 0.5em;
+                                
+                                li {
+                                    margin-right: 1em;
+                                    display: block;
+                                    float: left;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .rules, .notifications, .total {
+                    padding: 1em;
+
+
+                    div > .rule-group, .notification-choices {
+                        margin-top: 1em;
+                        padding-left: 1.5em;
+                    }
+
+                    .notification-choices {
+                        margin-top: 1.5em;
+                    }
+
+                    .rule-group {
+                        background-color: rgba($blue, 0.2);
+                        padding: 0.5em 1.5em;
+                        margin-left: -1.5em;
+                        margin-right: -1.5em;
+
+                        @include breakpoint($tablet) {
+                            background-color: transparent;
+                            padding: 0;
+                            margin-left: 0;
+                            margin-right: 0;
+                        }
+                    }
+
+                    .rule-group-placeholder {
+                        height: 3px;
+                        background-color: $blue;
+                        display: block;
+                        margin: -5px 0 -5px 0;
+                        padding: 0;
+                    }
+
+                    .notification-choices li {
+                        display: block;
+
+                        select, input {
+                            margin: 0;
+                        }
+                    }
+
+                    .rule, .rule-group-heading {
+                        position: relative;
+                        display: block;
+                        margin-top: 0.5em;
+                        margin-bottom: 0.5em;
+
+                        &:after {
+                            content: ".";
+                            display: block;
+                            height: 0;
+                            clear: both;
+                            visibility: hidden;
+                        }
+
+                        .buttons {
+                            margin-top: 0.5em;
+                            margin-bottom: 1em;
+                            text-align: center;
+
+                            @include breakpoint($tablet) {
+                                margin-top: 0;
+                                position: absolute;
+                                right: 0;
+                                top: 0;
+                            }
+
+                            button, a.button {
+                                margin-left: 0.25em;
+                                background-color: $white;
+
+                                @include breakpoint($tablet) {
+                                    background-color: $light-grey;
+
+                                    &:hover {
+                                        background-color: $grey;
+                                    }
+                                }
+                            }
+                        }
+
+                        .handle {
+                            display: none;
+
+                            @include breakpoint($tablet) {
+                                color: $light-grey;
+                                display: inline-block;
+                            }
+
+                            &:hover {
+                                cursor: grab;
+                                cursor: -webkit-grab; 
+                                cursor: -moz-grab;
+                            }
+                        }
+                    }
+
+                    .rule-group-heading.top {
+                        margin-top: 0;
+                    }
+
+                    .rule-group-heading {
+                        margin-top: 0.5em;
+                        margin-bottom: 0.5em;
+
+                        span.label {
+                            margin-top: 1em;
+                            margin-bottom: 0.5em;
+                            font-weight: bold;
+                            display: block;
+
+                            @include breakpoint($tablet) {
+                                display: inline;
+                                margin-top: 0;
+                                margin-bottom: 0;
+                                font-size: 0.85em;
+                            }
+                        }
+                    }
+
+                    .rule {
+                        width: 100%;
+                        margin-top: 0.5em;
+
+                        @include breakpoint($tablet) {
+                            select, input {
+                                width: auto;
+                                margin-top: 0;
+                            }
+                        }
+                    }
+
+                    select, input {
+                        @include breakpoint($tablet) {
+                            font-size: 0.85em;
+                        }
+                    }
+
+                    .total {
+                        margin: 2em 0 0 0;
+                        font-weight: bold;
+                    }
+
+                    .error span {
+                        margin-top: 0.5em;
+                        @extend .error;
+                    }
+                }
+            }
+        }
+
+        .context {
+            @include grid-span(24,1);
+            padding-bottom: 1em;
+
+            @include breakpoint($desktop) {
+                @include grid-span(5,20);
+            }
+
+            select.folders {
+                display: inline;
+                width: 100%;
+
+                @include breakpoint($desktop) {
+                    display: none;
+                }
+            }
+
+            ul.folders {
+                margin: 0;
+                padding-left: 0;
+                display: none;
+
+                @include breakpoint($desktop) {
+                    display: block;
+                }
+
+                li {
+                    display: inline;
+
+                    a {
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        display: block;
+                        padding: 0.35em 0 0.35em 1.5em;
+                        font-weight: bold;
+                        // border-left: 1px solid $light-blue;
+
+                        &.selected {
+                            // border-left: none;
+                            // border-top: 1px solid $light-blue;
+                            // border-bottom: 1px solid $light-blue;
+                            // border-right: 1px solid $light-blue;
+                            color: $grey;
+                        }
+
+                        &.folder {
+                            &:before {
+                                margin-left: -1.25em;
+                                margin-right: 0.4em;
+                                display: inline-block;
+                                width: 0;
+                                height: 0;
+                                content: "";
+                                vertical-align: -1px;
+                                border: 6px solid;
+                                border-right-color: transparent;
+                                border-top-color: transparent;
+                                border-bottom-color: transparent;
+                            }
+
+                            &.open:before {
+                                margin-left: -1.5em;
+                                margin-right: 0.65em;
                                 display: inline-block;
                                 width: 0;
                                 height: 0;
                                 content: "";
                                 vertical-align: -5px;
                                 border: 6px solid;
-                                border-left-color: transparent;
                                 border-right-color: transparent;
+                                border-left-color: transparent;
                                 border-bottom-color: transparent;
                             }
-
-                            &.selected.asc:after {
-                                @media (max-width: $screen-sm-max) {
-                                    display: block;
-                                    margin-left: 0;
-                                }
-
-                                margin-left: 8px;
-                                display: inline-block;
-                                width: 0;
-                                height: 0;
-                                content: "";
-                                vertical-align: 1px;
-                                border: 6px solid;
-                                border-left-color: transparent;
-                                border-right-color: transparent;
-                                border-top-color: transparent;
-                            }
                         }
                     }
+                }
 
-                    .sites {
-                        @media (max-width: $screen-xs-max) {
-                            min-width: $screen-xs-max/2;
-                        }
+                &.folders li > ul li a {
+                    padding-left: 2.5em;
+                }
 
-                        .noresults {
-                            padding-top: 1em;
-                            padding-bottom: 1em;
-                        }
+                &.folders li > ul li > ul li a {
+                    padding-left: 4.5em;
+                }
 
-                        .noresults {
-                            display: block;
-                            text-align: center;
-                            margin: 0;
-                            color: $dark-blue;
+                &.folders li > ul li > ul li > ul li a {
+                    padding-left: 6.5em;
+                }
 
-                            span {
-                                margin-right: 0.5em;
-                            }
-                        }
+                & + .actions {
+                    margin-top: 1em;
 
-                        .site {
-                            ul.site {
-                                li {
-                                    padding-top: 0.75em;
-                                    padding-bottom: 0.75em;
-                                    height: 4.5em;
-
-                                    .point {
-                                        width: 0.75em;
-                                        background-color: $blue;
-                                        height: 0.75em;
-                                        display: inline-block;
-                                        border-radius: 0.75em;
-                                        transition: opacity 0.3s;
-                                        font-size: 0.8em;
-                                    }
-
-                                    &.title {
-                                        background-color: #FFF;
-
-                                        a {
-                                            color: $grey;
-
-                                            &:hover {
-                                                color: #000;
-                                            } 
-
-                                            span {
-                                                font-size: 0.7em;
-                                                white-space: nowrap;
-                                            }
-                                        }
-                                    }
-
-                                    &.complexity, &.size, &.activity, &.health {
-                                        a:hover .point {
-                                            background-color: $dark-blue;
-                                        }
-                                    }
-
-                                    &.open:before {
-                                        display: inline-block;
-                                        width: 0;
-                                        height: 0;
-                                        content: "";
-                                        border: 0.75em solid;
-                                        border-right-color: transparent;
-                                        border-left-color: transparent;
-                                        border-top-color: transparent;
-                                        color: $light-grey;
-                                        position: absolute;
-                                        margin-top: -2.5em;
-                                        margin-left: -0.37em;
-                                        bottom: -1px;
-                                    }
-                                }
-
-                                &.variables {
-                                    padding-bottom: 0;
-                                }
-                            }
-
-                            div.detail-view {
-                                background-color: $light-grey;
-                                padding: 1em $grid-gutter-width/2;
-
-                                .tags {
-                                    margin-bottom: 0.5em;
-                                    
-                                    li {
-                                        margin-right: 1em;
-                                        display: block;
-                                        float: left;
-                                    }
-                                }
-
-                                @media (max-width: $screen-xs-max) {
-                                    margin-right: -50%;
-
-                                    ul {
-                                        position: absolute;
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    .rules, .notifications, .total {
-                        padding: $grid-gutter-width/2;
-
-
-                        div > .rule-group, .notification-choices {
-                            padding-left: 1.5em;
-                        }
-
-                        .notification-choices {
-                            margin-top: 1.5em;
-                        }
-
-                        .rule-group {
-                            @media (max-width: $screen-xs-max) {
-                                background-color: rgba($blue, 0.2);
-                                padding: 0 $grid-gutter-width/2;
-                                margin-left: -$grid-gutter-width/2;
-                                margin-right: -$grid-gutter-width/2;
-                            }
-                        }
-
-                        .rule-group-placeholder {
-                            height: 3px;
-                            background-color: $blue;
-                            display: block;
-                            margin: -5px 0 -5px 0;
-                            padding: 0;
-                        }
-
-                        .notification-choices li {
-                            display: block;
-
-                            select, input {
-                                margin: 0;
-                            }
-                        }
-
-                        .rule, .rule-group-heading {
-                            display: block;
-                            margin-top: 0.5em;
-                            margin-bottom: 0.5em;
-
-                            &:after {
-                                content: ".";
-                                display: block;
-                                height: 0;
-                                clear: both;
-                                visibility: hidden;
-                            }
-
-                            .buttons {
-                                float: right;
-
-                                button, a.button {
-                                    margin-left: 0.25em;
-
-                                    @media (max-width: $screen-xs-max) {
-                                        background-color: #FFF;
-                                    }
-                                }
-                            }
-
-                            .handle {
-                                color: $light-grey;
-
-                                @media (max-width: $screen-xs-max) {
-                                    color: $grey;
-                                }
-
-                                &:hover {
-                                    cursor: grab;
-                                    cursor: -webkit-grab; 
-                                    cursor: -moz-grab;
-                                }
-                            }
-                        }
-
-                        .rule-group-heading.top {
-                            margin-top: 0;
-                        }
-
-                        .rule-group-heading {
-                            margin-top: $grid-gutter-width/2;
-                            margin-bottom: $grid-gutter-width/2;
-                        }
-
-                        .rule {
-                            @media (max-width: $screen-xs-max) {
-                                select, input {
-                                    width: 100%;
-                                    margin-top: 0.5em;
-                                }
-
-                                .buttons {
-                                    margin-top: 0.5em;
-                                }
-                            }
-                        }
-
-                        select, input {
-                            font-size: 0.85em;
-                        }
-
-                        .total {
-                            margin: 2em 0 0 0;
-                            font-weight: bold;
-                        }
-
-                        .error span {
-                            margin-top: 0.5em;
-                            @extend .error;
-                        }
+                    @include breakpoint($tablet) {
+                        margin-top: 2em;
                     }
                 }
             }
 
-            .context {
-                @extend .col-md-3;
-                @extend .col-md-push-9;
-                @extend .clearfix;
-                padding-left: 0;
-
-                @media (max-width: $screen-sm-max) {
-                    padding-left: $grid-gutter-width/2;
-                    padding-bottom: 1em;
-                }
-
-                select.folders {
-                    display: none;
+            .actions {
+                button, a.button {
+                    margin-bottom: 0.5em;
+                    text-align: left;
+                    display: block;
                     width: 100%;
 
-                    @media (max-width: $screen-sm-max) {
-                        display: inline;
-                    }
-                }
-
-                ul.folders {
-                    margin: 0;
-                    padding-left: 0;
-
-                    @media (max-width: $screen-sm-max) {
-                        display: none;
-                    }
-
-                    li {
-                        display: inline;
-
-                        a {
-                            overflow: hidden;
-                            text-overflow: ellipsis;
-                            white-space: nowrap;
-                            display: block;
-                            padding: 0.35em 0 0.35em 1.5em;
-                            font-weight: bold;
-                            // border-left: 1px solid $light-blue;
-
-                            &.selected {
-                                // border-left: none;
-                                // border-top: 1px solid $light-blue;
-                                // border-bottom: 1px solid $light-blue;
-                                // border-right: 1px solid $light-blue;
-                                color: $grey;
-                            }
-
-                            &.folder {
-                                &:before {
-                                    margin-left: -1.25em;
-                                    margin-right: 0.4em;
-                                    display: inline-block;
-                                    width: 0;
-                                    height: 0;
-                                    content: "";
-                                    vertical-align: -1px;
-                                    border: 6px solid;
-                                    border-right-color: transparent;
-                                    border-top-color: transparent;
-                                    border-bottom-color: transparent;
-                                }
-
-                                &.open:before {
-                                    margin-left: -1.5em;
-                                    margin-right: 0.65em;
-                                    display: inline-block;
-                                    width: 0;
-                                    height: 0;
-                                    content: "";
-                                    vertical-align: -5px;
-                                    border: 6px solid;
-                                    border-right-color: transparent;
-                                    border-left-color: transparent;
-                                    border-bottom-color: transparent;
-                                }
-                            }
-                        }
-                    }
-
-                    &.folders li > ul li a {
-                        padding-left: 2.5em;
-                    }
-
-                    &.folders li > ul li > ul li a {
-                        padding-left: 4.5em;
-                    }
-
-                    &.folders li > ul li > ul li > ul li a {
-                        padding-left: 6.5em;
-                    }
-
-                    & + .actions {
-                        margin-top: 2em;
-
-                        @media (max-width: $screen-sm-max) {
-                            margin-top: 1em;
-                        }
-                    }
-                }
-
-                .actions {
-                    button, a.button {
+                    @include breakpoint($tablet) {
                         margin-bottom: 0.25em;
+                        @include float-span(8);
 
-                        text-align: left;
-                        display: block;
-                        // padding: 0.25em 1.5em;
-
-                        @extend .col-md-12;
-                        @extend .col-sm-4;
-                        @extend .col-xs-12;
-
-                        span {
-                            float: right;
-                            margin-top: 1px;
+                        &:nth-child(3n) {
+                            @include float-span(8,'last');
                         }
+                    }
+
+                    @include breakpoint($desktop) {
+                        @include grid-span(24,1);
+
+                        &:nth-child(3n) {
+                            @include grid-span(24,1);
+                        }
+                    }
+
+                    span {
+                        float: right;
+                        margin-top: 1px;
                     }
                 }
             }
         }
+    }
 
-        form.signon, form.signup {
-            @extend .row;
-            color: #FFF;
-            margin-top: 3em;
+    form.signon, form.signup {
+        @include clearfix;
+        color: $white;
+        margin-top: 3em;
 
-            span.error {
-                margin-top: 0.25em;
-                margin-bottom: 0.5em;
-                color: #fff;
+        span.error {
+            margin-top: 0.25em;
+            margin-bottom: 0.5em;
+            color: $white;
+        }
+
+        fieldset {
+            @include grid-span(24,1);
+
+            @include breakpoint($tablet) {
+                @include grid-span(16,5);
             }
 
-            fieldset {
-                @extend .col-sm-6;
-                @extend .col-sm-offset-3;
+            @include breakpoint($desktop) {
+                @include grid-span(12,7);
+            }
 
-                span.messages {
-                    display: block;
-                    font-weight: bold;
-                    margin-bottom: 1.5em;
+            span.messages {
+                display: block;
+                font-weight: bold;
+                margin-bottom: 1.5em;
+            }
+
+            input {
+                width: 100%;
+                padding: 0.5em;
+                border-radius: 0.25em;
+                border: none;
+                color: $grey;
+
+                & + input {
+                    margin-top: 0.5em;
                 }
+            }
+
+            label.remember {
+                margin-top: 0.5em;
+                display: block;
+                width: 100%;
 
                 input {
-                    width: 100%;
-                    padding: 0.5em;
-                    border-radius: 0.25em;
-                    border: none;
-                    color: $grey;
-
-                    & + input {
-                        margin-top: 0.5em;
-                    }
-                }
-
-                label.remember {
-                    margin-top: 0.5em;
-                    display: block;
-                    width: 100%;
-
-                    input {
-                        width: auto;
-                    }
+                    width: auto;
                 }
             }
+        }
 
-            button {
-                @extend .col-xs-6;
-                @extend .col-xs-offset-3;
-                margin-top: 2em;
-                color: #FFF;
-                padding: 0.25em;
-                border-radius: 0.5em;
-                border: solid 0.25em #FFF;
-                font-size: 1.2em;
-                background-color: transparent;
+        button {
+            @include grid-span(12,7);
+            margin-top: 2em;
+            color: $white;
+            padding: 0.25em;
+            border-radius: 0.5em;
+            border: solid 0.25em $white;
+            font-size: 1.2em;
+            background-color: transparent;
 
-                &:hover {
-                    background-color: #FFF;
-                    color: $blue;
-                }
+            &:hover {
+                background-color: $white;
+                color: $blue;
             }
         }
     }
@@ -1020,116 +1199,15 @@ footer {
     background-color: $light-grey;
     width: 100%;
 
-    ul {
-        @extend .container-fluid;
-        max-width: 1400px;
-        margin-bottom: 0;
+    ul li {
+        display: inline;
 
-        li {
-            display: inline;
-
-            span, a {
-                display: inline-block;
-                padding: 0.5em 0;
-                margin-right: 1em;
-            }
+        span, a {
+            display: inline-block;
+            padding: 0.5em 0;
+            margin-right: 1em;
         }
     }
-}
-
-// Elements
-h1,h2 {
-    font-family: "katarine-web";
-}
-
-a {
-    color: $blue;
-
-    &.drop:after {
-        margin-left: 4px;
-        display: inline-block;
-        width: 0;
-        height: 0;
-        content: "";
-        vertical-align: -5px;
-        border: 6px solid;
-        border-right-color: transparent;
-        border-left-color: transparent;
-        border-bottom-color: transparent;
-    }
-
-    &:hover {
-        text-decoration: none;
-        transition: color 0.3s ease, background-color 0.3s ease;
-    }
-}
-
-button, a.button {
-    border: 0;
-    background-color: $light-grey;
-    color: $grey;
-    border-radius: 6px;
-    display: inline;
-    padding: 0.25em 0.5em;
-
-    &:hover {
-        background-color: $grey;
-        color: $light-grey;
-        transition: color 0.3s ease, background-color 0.3s ease;
-    }
-
-    &:active {
-        background-color: $blue;
-        color: #FFF;
-        transition: color 0 ease, background-color 0 ease;
-    }
-}
-
-span.error {
-    font-size: 0.9em;
-    color: $blue;
-    display: block;
-    transition: 400ms;
-
-    &.ng-enter {
-        transition: 0;
-    }
-
-    &.ng-enter, &.ng-leave-active {
-        opacity: 0;
-        margin-left: -1em;
-    }
-}
-
-fieldset {
-    border: none;
-    margin: 0;
-    padding: 0;
-}
-
-select, input {
-    font-size: 0.85em;
-    border-width: solid 1px $light-blue;
-    padding: 0.25em 2.5em 0.25em 1em;
-    color: $grey;
-    border: solid 1px $light-blue;
-    border-radius: 0.5em;
-    margin: 0px 2px 0 0;
-}
-
-select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    cursor: pointer;
-    background: #FFF url(/img/select.svg);
-    background-size: contain;
-    background-position: top right;
-    background-repeat: no-repeat;
-}
-
-input {
-    background-color: #FFF;
 }
 
 // Animations

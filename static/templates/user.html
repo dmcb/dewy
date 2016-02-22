@@ -1,16 +1,18 @@
-                <section class="main">
-                    <form name="userForm" ng-submit="">
-                        <h2>
-                            <input name="name" type="text" placeholder="Username" ng-model="user.name" value="{{user.name}}" required autofocus />
-                        </h2>
-                        <span id="nameerror" ng-show="userForm.name.$error.required && (userForm.name.$touched || userForm.$submitted)">A username is required.</span>
-                        <nav class="context">
-                            <div class="actions">
-                                <button type="submit">Save changes <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
-                                <a class="button" href="" ng-click="cancel()">Cancel changes <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-                            </div>
-                        </nav>
-                        <div class="view">
-                        </div>
-                    </form>
-                </section>
+<div class="shell">
+    <section class="main">
+        <form name="userForm" ng-submit="">
+            <h2>
+                <input name="name" type="text" placeholder="Username" ng-model="user.name" value="{{user.name}}" required autofocus />
+            </h2>
+            <span id="nameerror" ng-show="userForm.name.$error.required && (userForm.name.$touched || userForm.$submitted)">A username is required.</span>
+            <nav class="context">
+                <div class="actions">
+                    <button type="submit">Save changes <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+                    <a class="button" href="" ng-click="cancel()">Cancel changes <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                </div>
+            </nav>
+            <div class="view">
+            </div>
+        </form>
+    </section>
+</div>

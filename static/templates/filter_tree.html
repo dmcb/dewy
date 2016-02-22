@@ -1,7 +1,7 @@
 <li class="rule-group-heading" ng-class="{top: !rule._parent}" ng-if="rule.operator">
     <a class="handle" ng-if="rule._parent"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></a>
     <select ng-model="rule.operator" ng-options="operator as operator for operator in operators"></select>
-    of the following rules:
+    <span class="label">of the following rules:</span>
     <div class="buttons" ng-if="rule._parent" ng-include="'templates/rule_buttons.html'"></div>
 </li>
 <ul class="rule-group" ui-sortable="sortableOptions" ng-model="rule.rules">

@@ -1,26 +1,28 @@
-                <section class="main">
-                    <form name="filterForm" ng-submit="saveFilter()">
-                        <h2>
-                            <input name="title" type="text" placeholder="Filter title" ng-model="currentFilter.title" value="{{currentFilter.title}}" required autofocus />
-                        </h2>
-                        <span id="titleerror" ng-show="filterForm.title.$error.required && (filterForm.title.$touched || filterForm.$submitted)">A title is required.</span>
-                        <nav class="context">
-                            <div class="actions">
-                                <button type="submit">Save filter <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
-                                <a class="button" href="" ng-click="cancel()">Cancel changes <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-                                <a class="button" href="" ng-click="deleteFilter()" ng-if="!newFilter">Delete filter <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
-                            </div>
-                        </nav>
-                        <div class="view">
-                            <div class="content">
-                                <ul class="rules" ng-init="rule=currentFilter" ng-if="currentFilter" ng-include="'templates/filter_tree.html'">
-                                </ul>
-                                <p class="total">3 sites matched under these rules</p>
-                            </div>
-                            <div class="content">
-                                <div class="notifications" ng-include="'templates/notifications.html'">
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </section>
+<div class="shell">
+    <section class="main">
+        <form name="filterForm" ng-submit="saveFilter()">
+            <h2>
+                <input name="title" type="text" placeholder="Filter title" ng-model="currentFilter.title" value="{{currentFilter.title}}" required autofocus />
+            </h2>
+            <span id="titleerror" ng-show="filterForm.title.$error.required && (filterForm.title.$touched || filterForm.$submitted)">A title is required.</span>
+            <nav class="context">
+                <div class="actions">
+                    <button type="submit">Save filter <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+                    <a class="button" href="" ng-click="cancel()">Cancel changes <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                    <a class="button" href="" ng-click="deleteFilter()" ng-if="!newFilter">Delete filter <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                </div>
+            </nav>
+            <div class="view">
+                <div class="content">
+                    <ul class="rules" ng-init="rule=currentFilter" ng-if="currentFilter" ng-include="'templates/filter_tree.html'">
+                    </ul>
+                    <p class="total">3 sites matched under these rules</p>
+                </div>
+                <div class="content">
+                    <div class="notifications" ng-include="'templates/notifications.html'">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+</div>
