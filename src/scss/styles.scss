@@ -31,7 +31,7 @@ section {
         clear: both;
     }
 
-    &.introduction, &.feature section, &.signup, &.signon {
+    &.introduction, &.feature section, &.signup, &.signon, &.add-site, &.api-key, &.offline-sites {
         padding-top: 3em;
 
         @include breakpoint($mobile-large) {
@@ -177,13 +177,82 @@ section.feature {
     }
 }
 
+section.add-site {
+    padding-top: 0;
+}
+
+section.api-key {
+    form {
+        margin-top: 2em;    
+    }
+
+    input {
+        border: 1px solid $light-blue;
+        text-align: center;
+        border-radius: 0;
+    }
+}
+
+section.offline-sites {
+    ul.offline-site {
+        clear: both;
+        margin-top: 3em;
+
+        li {
+            display: block;
+        }
+
+        .baseurl {
+            font-weight: bold;
+            margin-bottom: 0.5em;
+        }
+
+        .status {
+            font-weight: bold;
+
+            &.error {
+                color: red;
+            }
+
+            &.waiting {
+                color: $blue;
+            }
+        }
+
+        .buttons {
+            padding-top: 1.5em;
+            clear: both;
+            text-align: center;
+        }
+
+        @include breakpoint($tablet) {
+            .added {
+                @include grid-span(8,1);
+            }
+
+            .reported {
+                @include grid-span(8,9);
+            }
+
+            .status {
+                @include grid-span(8,17);
+                text-align: right;
+            }
+
+            .buttons {
+                text-align: left;
+            }
+        }
+    }
+}
+
 section.main {
     padding-top: 1em;
-    padding-bottom: 4em;
+    padding-bottom: 8em;
 
     h2, #titleerror, #nameerror {
         color: $blue;
-        font-size: 1.8em;
+        font-size: 2.5em;
         margin: 1em 0;
         float: none;
 
@@ -357,12 +426,6 @@ section.main {
                             display: none;
                         }
                     }
-
-                    h3 {
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                        white-space: nowrap;
-                    }
                 }
                     
                 ul.variables {
@@ -498,8 +561,17 @@ section.main {
                                     } 
 
                                     span {
-                                        font-size: 0.85em;
                                         white-space: nowrap;
+
+                                        &.title {
+                                            display: block;
+                                            overflow: hidden;
+                                            text-overflow: ellipsis;
+                                        }
+
+                                        &.url {
+                                            font-size: 0.8em;
+                                        }
                                     }
                                 }
 

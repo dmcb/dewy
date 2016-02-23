@@ -45,7 +45,7 @@
                     <div ng-if="!filteredSites.length && query" class="noresults"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span><span>No sites meet your criteria.</span></div>
                     <div ng-repeat="site in filteredSites = (sites | filter:query) | orderBy:sort.column:sort.descending" class="site">
                         <ul class="site">
-                            <li class="title" ng-class="{open: openSite.sid == site.sid && !openSite.detail}"><a href="" ng-click="openDetails(sites.indexOf(site))"><h3>{{site.title}}</h3><span>{{site.baseurl}}</span></a></li>
+                            <li class="title" ng-class="{open: openSite.sid == site.sid && !openSite.detail}"><a href="" ng-click="openDetails(sites.indexOf(site))"><span class="title">{{site.title}}</span><span class="url">{{site.baseurl}}</span></a></li>
                             <ul class="variables">
                                 <li class="complexity" ng-class="{open: openSite.sid == site.sid && openSite.detail == 'complexity'}">
                                     <a href="" ng-click="openDetails(sites.indexOf(site), 'complexity')"><div class="point" ng-repeat="i in getNumber(site.complexity) track by $index"></div></a>

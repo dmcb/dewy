@@ -15,6 +15,7 @@ body {
     color: $grey;
     font-size: 10px;
     font-family: $body-font;
+    line-height: 1.2em;
 
     @include breakpoint($mobile-large) {
         font-size: 11px;

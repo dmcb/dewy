@@ -1,5 +1,5 @@
 // Elements
-h1, h2 {
+h1, h2, h3 {
     font-family: $header-font;
 }
 
@@ -9,6 +9,12 @@ h1 {
 
 h2 {
     font-size: 3em;
+}
+
+h3 {
+    font-size: 2em;
+    border-bottom: 1px solid $light-grey;
+    margin-bottom: 0.5em;
 }
 
 p {
@@ -71,6 +77,37 @@ fieldset {
     border: none;
     margin: 0;
     padding: 0;
+
+    @include layout(24) {
+        @include grid-span(24,1);
+
+        @include breakpoint($tablet) {
+            @include grid-span(16,5);
+        }
+
+        @include breakpoint($desktop) {
+            @include grid-span(12,7);
+        }
+    }
+
+    input {
+        width: 100%;
+        padding: 0.5em;
+        border-radius: 0.25em;
+        border: none;
+        color: $grey;
+
+        & + input {
+            margin-top: 0.5em;
+        }
+    }
+
+    button {
+        margin-top: 2em;
+        @include layout(24) {
+            @include grid-span(12,7);
+        }
+    }
 }
 
 select, input {
