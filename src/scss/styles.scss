@@ -182,6 +182,8 @@ section.add-site {
 }
 
 section.api-key {
+    @include clearfix;
+
     form {
         margin-top: 2em;    
     }
@@ -200,6 +202,7 @@ section.offline-sites {
 
         li {
             display: block;
+            margin-top: 0.5em;
         }
 
         .baseurl {
@@ -211,7 +214,7 @@ section.offline-sites {
             font-weight: bold;
 
             &.error {
-                color: red;
+                color: $red;
             }
 
             &.waiting {
@@ -226,6 +229,13 @@ section.offline-sites {
         }
 
         @include breakpoint($tablet) {
+            border: 1px solid $light-blue;
+            padding: 1em;
+
+            li {
+                margin-top: 0;
+            }
+
             .added {
                 @include grid-span(8,1);
             }
