@@ -127,6 +127,19 @@ factories.factory('sitesFactory', ['$http', function($http) {
 	var sitesFactory = {};
 	var apiUrl = "http://dewy.io/api";
 
+	sitesFactory.audit = function(sid) {
+		var update = {
+			audit: true
+		};
+		return $http.put(apiUrl + '/sites/' + sid, update)
+			.success(function (response) {
+				return response.data;
+			})
+			.error(function (error, status) {
+				return error;
+			});
+	}
+
 	sitesFactory.delete = function(sid) {
 		return $http.delete(apiUrl + '/sites/' + sid);
 	}

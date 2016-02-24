@@ -199,6 +199,15 @@ controllers.controller('filterController', ['$scope', 'filterFactory', 'operator
 
 controllers.controller('manageController', ['$scope', 'sites', 'user', 'sitesFactory', 'userFactory',
 	function ($scope, sites, user, sitesFactory, userFactory) {
+		$scope.auditSite = function(sid) {
+			return sitesFactory.audit(sid)
+			.error(function(error, status) {
+				console.log(error);
+			})
+			.success(function(result) {
+				console.log(result);
+			});
+		}
 		$scope.getKey = function() {
 			$scope.apikey = user.apikey;
 		}
