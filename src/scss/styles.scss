@@ -23,7 +23,6 @@
 @import 'layout/footer';
 @import 'layout/signup-and-on';
 
-
 section {
     &.introduction, &.feature, &.feature section, &.signup, &.signon, &.main {
         @include grid-span(24,1);
@@ -45,7 +44,6 @@ section {
         }
     }
 }
-
 
 section.introduction {
     padding-top: 3em;
@@ -196,59 +194,56 @@ section.api-key {
 }
 
 section.offline-sites {
-    ul.offline-site {
+    .offline-site {
+        @include clearfix;
         clear: both;
-        margin-top: 4em;
+        margin-top: 2em;
 
-        li {
-            display: block;
-            margin-top: 0.5em;
-        }
-
-        .baseurl {
-            font-weight: bold;
-            margin-bottom: 0.5em;
-        }
-
-        .status {
-            font-weight: bold;
-
-            &.error {
-                color: $red;
+        ul {
+            li {
+                display: block;
+                margin-top: 0.5em;
             }
 
-            &.waiting {
-                color: $blue;
+            .baseurl {
+                font-weight: bold;
+                margin-bottom: 0.5em;
+            }
+
+            .status {
+                font-weight: bold;
+
+                &.error {
+                    color: $red;
+                }
+
+                &.waiting {
+                    color: $blue;
+                }
+            }
+
+            .buttons {
+                padding-top: 1.5em;
+                clear: both;
+                text-align: center;
+            }
+
+            @include breakpoint($tablet) {
+                @include grid-span(16,1);
             }
         }
 
         .buttons {
-            padding-top: 1.5em;
-            clear: both;
-            text-align: center;
+            margin-top: 1em;
+
+            @include breakpoint($tablet) {
+                @include grid-span(8,17);
+            }
         }
 
-        @include breakpoint($tablet) {
-            li {
-                margin-top: 0;
-            }
-
-            .added {
-                @include grid-span(8,1);
-            }
-
-            .reported {
-                @include grid-span(8,9);
-            }
-
-            .status {
-                @include grid-span(8,17);
-                text-align: right;
-            }
-
-            .buttons {
-                text-align: left;
-            }
+        @include breakpoint($desktop) {
+            @include grid-span(20,3);
+            clear: both;
         }
     }
 }
@@ -883,13 +878,7 @@ section.main {
 
     .actions {
         button, a.button {
-            margin-bottom: 0.5em;
-            text-align: left;
-            display: block;
-            width: 100%;
-
             @include breakpoint($tablet) {
-                margin-bottom: 0.25em;
                 @include float-span(8);
 
                 &:nth-child(3n) {

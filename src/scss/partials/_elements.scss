@@ -37,12 +37,14 @@ button, a.button {
     background-color: $light-grey;
     color: $grey;
     border-radius: 0.25em;
-    display: inline-block;
+    display: block;
     padding: 0.75em;
+    text-align: left;
+    margin-bottom: 0.5em;
 
     @include breakpoint($tablet) {
+        margin-bottom: 0.25em;
         padding: 0.25em 0.5em;
-        display: inline;
     }
 
     &:hover {
@@ -55,6 +57,11 @@ button, a.button {
         background-color: $blue;
         color: #FFF;
         transition: color 0 ease, background-color 0 ease;
+    }
+
+    span {
+        float: right;
+        margin-top: 1px;
     }
 }
 
