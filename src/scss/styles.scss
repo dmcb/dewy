@@ -695,6 +695,11 @@ section.main {
                         button, a.button {
                             margin-left: 0.25em;
                             background-color: $white;
+                            display: inline-block;
+
+                            span { 
+                                float: none;
+                            }
 
                             @include breakpoint($tablet) {
                                 background-color: $light-grey;
@@ -878,6 +883,8 @@ section.main {
 
     .actions {
         button, a.button {
+            width: 100%;
+            
             @include breakpoint($tablet) {
                 @include float-span(8);
 
