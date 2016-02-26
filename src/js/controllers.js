@@ -7,8 +7,8 @@ controllers.controller('appController', ['$scope', '$location', 'authService',
 		}
 }]);
 
-controllers.controller('filterController', ['$scope', 'filterFactory', 'operators', 'fields', 'filters', 'currentFilter', 'tags',
-	function ($scope, filterFactory, operators, fields, filters, currentFilter, tags) {
+controllers.controller('filterController', ['$scope', '$location', 'filterFactory', 'operators', 'fields', 'filters', 'currentFilter', 'tags',
+	function ($scope, $location, filterFactory, operators, fields, filters, currentFilter, tags) {
 		$scope.addRule = function(rule, group) {
 			// New rule
 			var newRule;
@@ -110,9 +110,15 @@ controllers.controller('filterController', ['$scope', 'filterFactory', 'operator
 		$scope.saveFilter = function() {
 			if ($scope.filterForm.$valid) {
 				if ($scope.currentFilter.fid) {
-					filterFactory.update($scope.currentFilter);
+					filterFactory.update($scope.currentFilter)
+					.then(function (response) {
+						$location.path('sites/' + response.data.fid);
+					});
 				} else {
-					filterFactory.create($scope.currentFilter);
+					filterFactory.create($scope.currentFilter)
+					.then(function (response) {
+						$location.path('sites/' + response.data.fid);
+					});
 				}
 			}
 		}

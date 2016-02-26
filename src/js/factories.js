@@ -62,7 +62,7 @@ factories.factory('filterFactory', ['$http', function($http) {
 	filterFactory.create = function(filterDoc) {
 		return $http.post(apiUrl + '/filters', filterDoc)
 			.then(function (response) {
-				console.log(response);
+				return response;
 			});
 	}
 
@@ -116,7 +116,7 @@ factories.factory('filterFactory', ['$http', function($http) {
 	filterFactory.update = function(filterDoc) {
 		return $http.put(apiUrl + '/filters/' + filterDoc.fid, filterDoc)
 			.then(function (response) {
-				console.log(response);
+				return response;
 			});
 	}
 
