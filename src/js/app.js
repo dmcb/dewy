@@ -82,15 +82,9 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 				filters: ['filterFactory', function(filterFactory) {
 					return filterFactory.getAll();
 				}],
-				sitesAndFilter: ['sitesFactory', function(sitesFactory, currentFilter) {
-					return sitesFactory.getAll().
-					then(function(sites) {
-						return {
-							currentFilter: null,
-							sites: sites
-						}
-					});
-				}]
+				currentFilter: function() {
+					return null;
+				}
 			}
 		}).
 		when('/sites/:filter', {
@@ -101,19 +95,9 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 				filters: ['filterFactory', function(filterFactory) {
 					return filterFactory.getAll();
 				}],
-				sitesAndFilter: ['$route', 'filterFactory', 'sitesFactory', function($route, filterFactory, sitesFactory) {
-					return filterFactory.getFilter($route.current.params.filter).
-					then(function(currentFilter) {
-						console.log(currentFilter);
-						return sitesFactory.getAll(currentFilter.fid).
-						then(function(sites) {
-							return {
-								currentFilter: currentFilter,
-								sites: sites,
-							}
-						});
-					});
-				}],
+				currentFilter: ['$route', 'filterFactory', function($route, filterFactory) {
+					return filterFactory.getFilter($route.current.params.filter);
+				}]
 			}
 		}).
 		when('/user', {

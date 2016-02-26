@@ -1,0 +1,68 @@
+<div class="content" ng-controller="sitesOverviewController">
+    <div class="header">
+        <ul class="site">
+            <li class="title"><a href="" ng-class="{selected: sort.column=='title', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('title')">{{filteredSites.length}} sites</a></li>
+            <ul class="variables">
+                <li class="complexity"><a href="" ng-class="{selected: sort.column=='complexity', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('complexity')">Complexity</a></li>
+                <li class="size"><a href="" ng-class="{selected: sort.column=='size', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('size')">Size</a></li>
+                <li class="activity"><a href="" ng-class="{selected: sort.column=='activity', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('activity')">Activity</a></li>
+                <li class="health"><a href="" ng-class="{selected: sort.column=='health', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('health')">Health</a></li>
+            </ul>
+        </ul>
+    </div>
+    <div class="sites">
+        <div ng-if="!filteredSites.length && query" class="noresults"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span><span>No sites meet your criteria.</span></div>
+        <div ng-repeat="site in filteredSites = (sites | filter:query) | orderBy:sort.column:sort.descending" class="site">
+            <ul class="site">
+                <li class="title" ng-class="{open: openSite.sid == site.sid && !openSite.detail}"><a href="" ng-click="openDetails(sites.indexOf(site))"><span class="title">{{site.title}}</span><span class="url">{{site.baseurl}}</span></a></li>
+                <ul class="variables">
+                    <li class="complexity" ng-class="{open: openSite.sid == site.sid && openSite.detail == 'complexity'}">
+                        <a href="" ng-click="openDetails(sites.indexOf(site), 'complexity')"><div class="point" ng-repeat="i in getNumber(site.complexity) track by $index"></div></a>
+                    </li>
+                    <li class="size" ng-class="{open: openSite.sid == site.sid && openSite.detail == 'size'}">
+                        <a href="" ng-click="openDetails(sites.indexOf(site), 'size')"><div class="point" ng-repeat="i in getNumber(site.size) track by $index"></div></a>
+                    </li>
+                    <li class="activity" ng-class="{open: openSite.sid == site.sid && openSite.detail == 'activity'}">
+                        <a href="" ng-click="openDetails(sites.indexOf(site), 'activity')"><div class="point" ng-repeat="i in getNumber(site.activity) track by $index"></div></a>
+                    </li>
+                    <li class="health" ng-class="{open: openSite.sid == site.sid && openSite.detail == 'health'}">
+                        <a href="" ng-click="openDetails(sites.indexOf(site), 'health')"><div class="point" ng-repeat="i in getNumber(site.health) track by $index"></div></a>
+                    </li>
+                </ul>
+            </ul>
+            <div class="detail-view" ng-if="openSite.sid == site.sid">
+                <div ng-if="!openSite.detail">
+                    <ul class="tags" ng-if="openSite.tags.length">
+                        <li ng-repeat="tag in openSite.tags">{{tag}} <a href="" ng-click="deleteTag($index, sites.indexOf(site))"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></li>
+                    </ul>
+                    <form name="tagForm{{sites.indexOf(site)}}" ng-submit="addTags(sites.indexOf(site))">
+                        <input placeholder="Tags seperated by commas" name="tags" ng-model="tags" required />
+                        <button type="submit">Add tags</button>
+                        <span class="error" ng-show="tagForm{{sites.indexOf(site)}}.tags.$error.required && (tagForm{{sites.indexOf(site)}}.tags.$touched || tagForm{{sites.indexOf(site)}}.$submitted)">Please enter a tag.</span>
+                    </form>
+                </div>
+                <ul ng-if="openSite.detail == 'complexity'">
+                    <li><span class="number">{{}}</span> modules enabled</li>
+                    <li><span class="number">{{}}</span> modules available</li>
+                    <li><span class="number">{{}}</span> content types</li>
+                    <li><span class="number">{{}}</span> roles</li>
+                </ul>
+                <ul ng-if="openSite.detail == 'size'">
+                    <li><span class="number">{{}}</span> nodes</li>
+                    <li><span class="number">{{}}</span> users</li>
+                    <li><span class="number">{{}}</span> files</li>
+                    <li><span class="number">{{}}</span> words</li>
+                </ul>
+                <ul ng-if="openSite.detail == 'activity'">
+                    <li><span class="number">{{}}</span> since last visit</li>
+                    <li><span class="number">{{}}</span> since last access</li>
+                    <li><span class="number">{{}}</span> since last modification</li>
+                </ul>
+                <ul ng-if="openSite.detail == 'health'">
+                    <li><span class="number">{{}}</span> modules out of date</li>
+                    <li><span class="number">{{}}</span> database updates pending</li>
+                </ul>
+            </div>
+        </ul>
+    </div>
+</div>

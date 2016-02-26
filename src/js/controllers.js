@@ -279,31 +279,92 @@ controllers.controller('signupController', ['authService', '$scope', '$http',
 		}
 }]);
 
-controllers.controller('sitesController', ['$scope', '$location', 'sitesFactory', 'filters', 'sitesAndFilter',
-	function ($scope, $location, sitesFactory, filters, sitesAndFilter) {
-		$scope.addFilter = function() {
-			$location.path('filter');
+controllers.controller('sitesController', ['$scope', '$location', 'sitesFactory', 'filters', 'currentFilter',
+	function ($scope, $location, sitesFactory, filters, currentFilter) {
+		$scope.changeView = function(view) {
+			$scope.$emit('viewChange', view);
+			sessionStorage.view = JSON.stringify(view);
 		}
-		$scope.addTags = function(siteIndex) {
-			var formName = 'tagForm' + siteIndex;
-			if (this[formName].$valid) {
-				tags = this.tags.split(',');
-				for (i=0; i<tags.length; i++) {
-					tag = tags[i].trim();
-					if (!$scope.sites[siteIndex].tags) {
-						$scope.sites[siteIndex].tags = [];
-					}
-					if (tag != "" && $scope.sites[siteIndex].tags.indexOf(tag) == -1) {
-						$scope.sites[siteIndex].tags.push(tag);
-						console.log($scope.sites[siteIndex].tags);
-					}
+		$scope.openFolder = function(filter) {
+			$scope.folders[filter] = !$scope.folders[filter];
+			sessionStorage.folders = JSON.stringify($scope.folders);
+		}
+
+		// If filter specified in URL is invalid, redirect to all sites
+		$scope.currentFilter = currentFilter;
+		if ($location.path() != '/sites' && !$scope.currentFilter.url) {
+			$location.path('sites');
+		}
+
+		// Observe view changes
+		$scope.$on('viewChange', function(event, view) {
+			if (view == 'overview') {
+				if (currentFilter) {
+					sitesFactory.getAll(currentFilter.fid)
+					.then(function (sites) {
+						$scope.sites = sites;
+						$scope.viewPage = 'templates/sites_overview.html';
+					});
 				}
-				sitesFactory.setTags($scope.sites[siteIndex]);
-				this.tags = null;
-				this[formName].$setPristine();
-				this[formName].tags.$setUntouched();
+				else {
+					sitesFactory.getAll()
+					.then(function (sites) {
+						$scope.sites = sites;
+						$scope.viewPage = 'templates/sites_overview.html';
+					});
+				}
 			}
+			else if (view == 'modules') {
+				$scope.viewPage = 'templates/sites_modules.html';
+			}
+			else if (view == 'users') {
+				$scope.viewPage = 'templates/sites_users.html';
+			}
+			else if (view == 'content') {
+				$scope.viewPage = 'templates/sites_content.html';
+			}
+			$scope.view = view;
+		})
+
+		// Grab session folder data if it exists
+		if (sessionStorage.folders) {
+			$scope.folders = JSON.parse(sessionStorage.folders);
+		} else {
+			$scope.folders = {};
 		}
+
+		// Grab session view data if it exists
+		if (sessionStorage.view) {
+			$scope.$emit('viewChange', JSON.parse(sessionStorage.view));
+		} else {
+			$scope.$emit('viewChange', 'overview');
+		}
+
+        $scope.filters = filters;
+}]);
+
+controllers.controller('sitesOverviewController', ['$scope', 'sitesFactory', 
+	function ($scope, sitesFactory) {
+        $scope.addTags = function(siteIndex) {
+            var formName = 'tagForm' + siteIndex;
+            if (this[formName].$valid) {
+                tags = this.tags.split(',');
+                for (i=0; i<tags.length; i++) {
+                    tag = tags[i].trim();
+                    if (!$scope.sites[siteIndex].tags) {
+                        $scope.sites[siteIndex].tags = [];
+                    }
+                    if (tag != "" && $scope.sites[siteIndex].tags.indexOf(tag) == -1) {
+                        $scope.sites[siteIndex].tags.push(tag);
+                        console.log($scope.sites[siteIndex].tags);
+                    }
+                }
+                sitesFactory.setTags($scope.sites[siteIndex]);
+                this.tags = null;
+                this[formName].$setPristine();
+                this[formName].tags.$setUntouched();
+            }
+        }
 		$scope.changeSorting = function(column) {
 			var sort = $scope.sort;
 
@@ -313,54 +374,36 @@ controllers.controller('sitesController', ['$scope', '$location', 'sitesFactory'
 				sort.column = column;
 				sort.descending = false;
 			}
-		};
-		$scope.deleteTag = function(tagIndex, siteIndex) {
-			$scope.sites[siteIndex].tags.splice(tagIndex, 1);
-			sitesFactory.setTags($scope.sites[siteIndex]);
 		}
-		$scope.getNumber = function(number) {
-			return new Array(Math.round(number));
-		}
-		$scope.openDetails = function(index, detail) {
-			// If the site is already open to that same site and view, close the view
-			if ($scope.openSite && $scope.openSite.sid == $scope.sites[index].sid && $scope.openSite.detail == detail) {
-				$scope.openSite = null;
-			}
-			else {
-				// If details haven't been already loaded for the site, go grab the site
-				if (!('details' in $scope.sites[index])) {
-					sitesFactory.get($scope.sites[index].sid).then(function(details) {
-						$scope.sites[index].details = details;
-						$scope.openSite = {sid: $scope.sites[index].sid, tags: $scope.sites[index].tags, details: $scope.sites[index].details, detail: detail};
-					});
-				} else {
-					$scope.openSite = {sid: $scope.sites[index].sid, tags: $scope.sites[index].tags, details: $scope.sites[index].details, detail: detail};
-				}
-			}
-		}
-		$scope.openFolder = function(filter) {
-			$scope.folders[filter] = !$scope.folders[filter];
-			sessionStorage.folders = JSON.stringify($scope.folders);
-		}
+        $scope.deleteTag = function(tagIndex, siteIndex) {
+            $scope.sites[siteIndex].tags.splice(tagIndex, 1);
+            sitesFactory.setTags($scope.sites[siteIndex]);
+        }
+        $scope.getNumber = function(number) {
+            return new Array(Math.round(number));
+        }
+        $scope.openDetails = function(index, detail) {
+            // If the site is already open to that same site and view, close the view
+            if ($scope.openSite && $scope.openSite.sid == $scope.sites[index].sid && $scope.openSite.detail == detail) {
+                $scope.openSite = null;
+            }
+            else {
+                // If details haven't been already loaded for the site, go grab the site
+                if (!('details' in $scope.sites[index])) {
+                    sitesFactory.get($scope.sites[index].sid).then(function(details) {
+                        $scope.sites[index].details = details;
+                        $scope.openSite = {sid: $scope.sites[index].sid, tags: $scope.sites[index].tags, details: $scope.sites[index].details, detail: detail};
+                    });
+                } else {
+                    $scope.openSite = {sid: $scope.sites[index].sid, tags: $scope.sites[index].tags, details: $scope.sites[index].details, detail: detail};
+                }
+            }
+        }
 
-		$scope.sort = {
-			column: 'title',
-			descending: false
-		};
-
-		$scope.filters = filters;
-		$scope.currentFilter = sitesAndFilter.currentFilter;
-		if ($location.path() != '/sites' && !$scope.currentFilter.url) {
-			$location.path('sites');
-		}
-		$scope.sites = sitesAndFilter.sites;
-
-		// Grab session data if it exists
-		if (sessionStorage.folders) {
-			$scope.folders = JSON.parse(sessionStorage.folders);
-		} else {
-			$scope.folders = {};
-		}
+        $scope.sort = {
+            column: 'title',
+            descending: false
+        };
 }]);
 
 controllers.controller('userController', ['$scope',
