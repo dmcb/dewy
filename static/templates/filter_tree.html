@@ -10,7 +10,7 @@
         <div ng-if="!rule.operator">
             <a class="handle"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></a>
             <select class="field" ng-model="rule.field" ng-options="field.title as field.title for field in fields" ng-change="updateChoice(rule, '{{rule.field}}')"></select>
-            <select class="choice" ng-model="rule.choice" ng-options="choice as choice for choice in getChoices(rule.field)"></select>
+            <select class="choice" ng-model="rule.choice" ng-options="choice.id as choice.label for choice in getChoices(rule.field)"></select>
             <input name="value" type="text" ng-model="rule.value" ng-if="valueIsType(rule.field, 'string')" required />
             <input name="value" type="number" ng-model="rule.value" ng-if="valueIsType(rule.field, 'integer')" min="0" ng-pattern="/^[0-9]*$/" required />
             <input name="value" type="number" ng-model="rule.value" ng-if="valueIsType(rule.field, 'number')" min="0" required />
