@@ -4,7 +4,8 @@ var app = angular.module('dewy', [
 	'ui.sortable',
 	'dewyControllers',
 	'dewyFactories',
-	'dewyServices'
+	'dewyServices',
+	'dewyDirectives'
 ])
 
 app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($httpProvider, $routeProvider, $locationProvider) {
