@@ -217,6 +217,10 @@ section.offline-sites {
                     color: $red;
                 }
 
+                &.disabled {
+                    color: $orange;
+                }
+
                 &.waiting {
                     color: $blue;
                 }
