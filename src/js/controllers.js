@@ -124,8 +124,12 @@ controllers.controller('filterController', ['$scope', '$location', 'filterFactor
 		}
 		$scope.updateChoice = function(rule, oldRule) {
 			choices = $scope.getChoices(rule.field);
-			if (choices.indexOf(rule.choice) == -1) {
-				rule.choice = choices[0];
+			var oldChoice = rule.choice;
+			rule.choice = choices[0].id;
+			for (var i=0; i<choices.length; i++) {
+				if (choices[i].id == oldChoice) {
+					rule.choice = choices[i].id;
+				}
 			}
 
 			details = $scope.getDetails(rule.field);
