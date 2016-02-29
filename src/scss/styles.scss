@@ -729,17 +729,8 @@ section.main {
                             cursor: -moz-grab;
                         }
                     }
-                }
 
-                .rule-group-heading.top {
-                    margin-top: 0;
-                }
-
-                .rule-group-heading {
-                    margin-top: 0.5em;
-                    margin-bottom: 0.5em;
-
-                    span.label {
+                    span {
                         margin-top: 1em;
                         margin-bottom: 0.5em;
                         font-weight: bold;
@@ -752,6 +743,15 @@ section.main {
                             font-size: 0.85em;
                         }
                     }
+                }
+
+                .rule-group-heading.top {
+                    margin-top: 0;
+                }
+
+                .rule-group-heading {
+                    margin-top: 0.5em;
+                    margin-bottom: 0.5em;
                 }
 
                 .rule {

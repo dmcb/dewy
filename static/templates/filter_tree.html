@@ -15,6 +15,7 @@
             <input name="value" type="number" ng-model="rule.value" ng-if="valueIsType(rule.field, 'integer')" min="0" ng-pattern="/^[0-9]*$/" required />
             <input name="value" type="number" ng-model="rule.value" ng-if="valueIsType(rule.field, 'number')" min="0" required />
             <input name="value" type="date" data-format="yyyy-MM-dd" ng-model="rule.value.date1" ng-if="valueIsType(rule.field, 'date') && rule.choice != 'is in the last' && rule.choice != 'is not in the last'" required format-date />
+            <span ng-if="valueIsType(rule.field, 'date') && rule.choice == 'is between'">and</span>
             <input name="value2" type="date" data-format="yyyy-MM-dd" ng-model="rule.value.date2" ng-if="valueIsType(rule.field, 'date') && rule.choice == 'is between'" required format-date />
             <input name="value" type="number" ng-model="rule.value.time" ng-if="valueIsType(rule.field, 'date') && (rule.choice == 'is in the last' || rule.choice == 'is not in the last')" min="0" ng-pattern="/^[0-9]*$/" required />
             <select name="value2"ng-model="rule.value.timeUnit" ng-if="valueIsType(rule.field, 'date') && (rule.choice == 'is in the last' || rule.choice == 'is not in the last')">
