@@ -12,29 +12,7 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 	$locationProvider.html5Mode(true);
 	$httpProvider.interceptors.push('authInterceptor');
     $routeProvider.
-    	when('/filter', {
-			templateUrl: 'templates/filter.html',
-			controller: 'filterController',
-			requiresAuthorization: true,
-			resolve: {
-				operators: ['filterFactory', function(filterFactory) {
-					return filterFactory.getOperators();
-				}],
-				fields: ['filterFactory', function(filterFactory) {
-					return filterFactory.getFields();
-				}],
-				filters: ['filterFactory', function(filterFactory) {
-					return filterFactory.getAll();
-				}],
-				currentFilter: ['$route', 'filterFactory', function($route, filterFactory) {
-					return filterFactory.getFilter($route.current.params.filter);
-				}],
-				tags: ['sitesFactory', function(sitesFactory) {
-					return sitesFactory.getTags();
-				}]
-			}
-		}).
-		when('/filter/:filter', {
+		when('/filter/:filter?', {
 			templateUrl: 'templates/filter.html',
 			controller: 'filterController',
 			requiresAuthorization: true,
@@ -75,20 +53,7 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 			requiresAuthorization: false,
 			indexPage: true
 		}).
-		when('/sites', {
-			templateUrl: 'templates/sites.html',
-			controller: 'sitesController',
-			requiresAuthorization: true,
-			resolve: {
-				filters: ['filterFactory', function(filterFactory) {
-					return filterFactory.getAll();
-				}],
-				currentFilter: function() {
-					return null;
-				}
-			}
-		}).
-		when('/sites/:filter', {
+		when('/sites/:filter?', {
 			templateUrl: 'templates/sites.html',
 			controller: 'sitesController',
 			requiresAuthorization: true,
@@ -97,7 +62,12 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 					return filterFactory.getAll();
 				}],
 				currentFilter: ['$route', 'filterFactory', function($route, filterFactory) {
-					return filterFactory.getFilter($route.current.params.filter);
+					if ($route.current.params.filter) {
+						return filterFactory.getFilter($route.current.params.filter);
+					}
+					else {
+						return null;
+					}
 				}]
 			}
 		}).
