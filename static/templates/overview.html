@@ -6,7 +6,7 @@
                 <option value="">All sites</option>
             </select>
             <ul class="folders">
-                <li><a href="/sites" ng-class="{selected: !currentFilter}">All sites</a></li>
+                <li><a href="/{{view}}" ng-class="{selected: !currentFilter}">All sites</a></li>
                 <li ng-repeat="filter in filters" ng-include="'templates/filter_menu_item.html'"></li>
             </ul>
             <div class="actions">
@@ -17,10 +17,22 @@
         <div class="view">
             <div class="tabs">
                 <ul>
-                    <li ng-class="{selected: view == 'overview'}"><a href="" ng-click="changeView('overview')">Overview</a></li>
-                    <li ng-class="{selected: view == 'modules'}"><a href="" ng-click="changeView('modules')">Modules</a></li>
-                    <li ng-class="{selected: view == 'users'}"><a href="" ng-click="changeView('users')">Users</a></li>
-                    <li ng-class="{selected: view == 'content'}"><a href="" ng-click="changeView('content')">Content</a></li>
+                    <li ng-class="{selected: view == 'sites'}">
+                        <a href="/sites" ng-if="!currentFilter">Sites</a>
+                        <a href="/sites/{{currentFilter.fid}}" ng-if="currentFilter">Sites</a>
+                    </li>
+                    <li ng-class="{selected: view == 'modules'}">
+                        <a href="/modules" ng-if="!currentFilter">Modules</a>
+                        <a href="/modules/{{currentFilter.fid}}" ng-if="currentFilter">Modules</a>
+                    </li>
+                    <li ng-class="{selected: view == 'users'}">
+                        <a href="/users" ng-if="!currentFilter">Users</a>
+                        <a href="/users/{{currentFilter.fid}}" ng-if="currentFilter">Users</a>
+                    </li>
+                    <li ng-class="{selected: view == 'content'}">
+                        <a href="/content" ng-if="!currentFilter">Content</a>
+                        <a href="/content/{{currentFilter.fid}}" ng-if="currentFilter">Content</a>
+                    </li>
                 </ul>
             </div>
             <div class="search">

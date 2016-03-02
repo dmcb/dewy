@@ -289,19 +289,15 @@ controllers.controller('signupController', ['authService', '$scope', '$http',
 		}
 }]);
 
-controllers.controller('sitesController', ['$scope', '$location', 'sitesFactory', 'filters', 'currentFilter',
-	function ($scope, $location, sitesFactory, filters, currentFilter) {
+controllers.controller('overviewController', ['$scope', '$location', 'sitesFactory', 'filters', 'data',
+	function ($scope, $location, sitesFactory, filters, data) {
 		$scope.changeFilter = function(fid) {
 			if (fid) {
-				$location.path('sites/' + fid);
+				$location.path($scope.view + '/' + fid);
 			}
 			else {
-				$location.path('sites');
+				$location.path($scope.view);
 			}
-		}
-		$scope.changeView = function(view) {
-			$scope.$emit('viewChange', view);
-			sessionStorage.view = JSON.stringify(view);
 		}
 		$scope.openFolder = function(filter) {
 			$scope.folders[filter] = !$scope.folders[filter];
@@ -309,40 +305,27 @@ controllers.controller('sitesController', ['$scope', '$location', 'sitesFactory'
 		}
 
 		// If filter specified in URL is invalid, redirect to all sites
-		$scope.currentFilter = currentFilter;
-		if ($location.path() != '/sites' && !$scope.currentFilter.url) {
-			$location.path('sites');
+		$scope.currentFilter = data.currentFilter;
+		if ($location.path() != '/' + data.view && !('url' in $scope.currentFilter)) {
+			$location.path(data.view);
 		}
 
-		// Observe view changes
-		$scope.$on('viewChange', function(event, view) {
-			if (view == 'overview') {
-				if (currentFilter) {
-					sitesFactory.getAll(currentFilter.fid)
-					.then(function (sites) {
-						$scope.sites = sites;
-						$scope.viewPage = 'templates/sites_overview.html';
-					});
-				}
-				else {
-					sitesFactory.getAll()
-					.then(function (sites) {
-						$scope.sites = sites;
-						$scope.viewPage = 'templates/sites_overview.html';
-					});
-				}
-			}
-			else if (view == 'modules') {
-				$scope.viewPage = 'templates/sites_modules.html';
-			}
-			else if (view == 'users') {
-				$scope.viewPage = 'templates/sites_users.html';
-			}
-			else if (view == 'content') {
-				$scope.viewPage = 'templates/sites_content.html';
-			}
-			$scope.view = view;
-		})
+		// Load view
+		$scope.view = data.view;
+		if ($scope.view == 'sites') {
+			$scope.sites = data.sites;
+			$scope.viewPage = 'templates/overview_sites.html';
+		}
+		else if ($scope.view == 'modules') {
+			$scope.sites = data.sites;
+			$scope.viewPage = 'templates/overview_modules.html';
+		}
+		else if ($scope.view == 'users') {
+			$scope.viewPage = 'templates/overview_users.html';
+		}
+		else if ($scope.view == 'content') {
+			$scope.viewPage = 'templates/overview_content.html';
+		}
 
 		// Grab session folder data if it exists
 		if (sessionStorage.folders) {
@@ -351,17 +334,18 @@ controllers.controller('sitesController', ['$scope', '$location', 'sitesFactory'
 			$scope.folders = {};
 		}
 
-		// Grab session view data if it exists
-		if (sessionStorage.view) {
-			$scope.$emit('viewChange', JSON.parse(sessionStorage.view));
-		} else {
-			$scope.$emit('viewChange', 'overview');
-		}
-
         $scope.filters = filters;
 }]);
 
-controllers.controller('sitesOverviewController', ['$scope', 'sitesFactory', 
+controllers.controller('overviewContentController', ['$scope',
+	function ($scope) {
+}]);
+
+controllers.controller('overviewModulesController', ['$scope',
+	function ($scope) {
+}]);
+
+controllers.controller('overviewSitesController', ['$scope', 'sitesFactory', 
 	function ($scope, sitesFactory) {
         $scope.addTags = function(siteIndex) {
             var formName = 'tagForm' + siteIndex;
@@ -422,6 +406,10 @@ controllers.controller('sitesOverviewController', ['$scope', 'sitesFactory',
             column: 'title',
             descending: false
         };
+}]);
+
+controllers.controller('overviewUsersController', ['$scope',
+	function ($scope) {
 }]);
 
 controllers.controller('userController', ['$scope',

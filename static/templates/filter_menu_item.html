@@ -1,4 +1,4 @@
-<a href="/sites/{{filter.fid}}" ng-class="{selected: currentFilter.fid==filter.fid&&!filter.children}" ng-if="!filter.children"><span class="glyphicon glyphicon-envelope" aria-hidden="true" ng-if="filter.notifications.appears.enabled || filter.notifications.disappears.enabled || filter.notifications.total.enabled"></span> {{filter.title}}</a>
+<a href="/{{view}}/{{filter.fid}}" ng-class="{selected: currentFilter.fid==filter.fid&&!filter.children}" ng-if="!filter.children"><span class="glyphicon glyphicon-envelope" aria-hidden="true" ng-if="filter.notifications.appears.enabled || filter.notifications.disappears.enabled || filter.notifications.total.enabled"></span> {{filter.title}}</a>
 <a href="" ng-model="open" ng-if="filter.children" ng-click="openFolder(filter.id)" ng-class="{folder: filter.children, open: folders[filter.id]}">sdfs</a>
 <ul ng-if="filter.children&&folders[filter.id]" class="folders">
     <li ng-repeat="filter in filter.children" ng-include="'templates/filter_menu_item.html'"></li>
