@@ -291,6 +291,14 @@ controllers.controller('signupController', ['authService', '$scope', '$http',
 
 controllers.controller('sitesController', ['$scope', '$location', 'sitesFactory', 'filters', 'currentFilter',
 	function ($scope, $location, sitesFactory, filters, currentFilter) {
+		$scope.changeFilter = function(fid) {
+			if (fid) {
+				$location.path('sites/' + fid);
+			}
+			else {
+				$location.path('sites');
+			}
+		}
 		$scope.changeView = function(view) {
 			$scope.$emit('viewChange', view);
 			sessionStorage.view = JSON.stringify(view);
