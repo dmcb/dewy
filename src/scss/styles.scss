@@ -253,6 +253,7 @@ section.offline-sites {
 }
 
 section.main {
+    position: relative;
     padding-top: 1em;
     padding-bottom: 8em;
 
@@ -283,6 +284,14 @@ section.main {
             width: 100%;
             color: $blue;
             margin-top: -4px;
+        }
+
+        @include breakpoint($tablet) {
+            width: grid-span(15,1);
+        }
+
+        @include breakpoint($desktop) {
+            width: auto;
         }
     }
 
@@ -797,6 +806,7 @@ section.main {
     select.folders {
         display: inline;
         width: 100%;
+        margin-bottom: 2em;
 
         @include breakpoint($desktop) {
             display: none;
@@ -810,6 +820,7 @@ section.main {
 
         @include breakpoint($desktop) {
             display: block;
+            margin-bottom: 2em;
         }
 
         li {
@@ -875,27 +886,25 @@ section.main {
         &.folders li > ul li > ul li > ul li a {
             padding-left: 6.5em;
         }
-
-        & + .actions {
-            margin-top: 1em;
-
-            @include breakpoint($tablet) {
-                margin-top: 2em;
-            }
-        }
     }
 
     .actions {
+        @include breakpoint($tablet) {
+            position: absolute;
+            width: grid-span(8,17);
+            right: 0;
+            top: 0;
+            margin-top: 3em;
+        }
+
+        @include breakpoint($desktop) {
+            position: static;
+            width: auto;
+            margin-top: 0;
+        }
+
         button, a.button {
             width: 100%;
-            
-            @include breakpoint($tablet) {
-                @include float-span(8);
-
-                &:nth-child(3n) {
-                    @include float-span(8,'last');
-                }
-            }
 
             @include breakpoint($desktop) {
                 @include grid-span(24,1);
