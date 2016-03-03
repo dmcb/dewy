@@ -5,10 +5,10 @@
             <h3>User information</h3>
             <form name="userForm">
                 <fieldset>
-                    <label>Your profile picture <img class="gravatar" src="http://www.gravatar.com/avatar/{{currentUser.gravatar}}?s=192" alt="Gravatar"/><span>Change your profile picture at <a href="http://gravatar.com" target="_blank">Gravatar</a></label>
-                    <label>Your username <input type="text" ng-model="username" id="username" required /></label>
+                    <label>Your profile picture</label><img class="gravatar" src="http://www.gravatar.com/avatar/{{currentUser.gravatar}}?s=192" alt="Gravatar"/><span>Change your profile picture at <a href="http://gravatar.com" target="_blank">Gravatar</a>
+                    <label>Your username</label><input type="text" ng-model="username" id="username" required />
                     <span class="error" ng-if="userForm.username.$error.required && (userForm.username.$touched || userForm.$submitted)">A username is required.</span>
-                    <label>Your email <input type="text" ng-model="email" id="email" /></label>
+                    <label>Your email</label><input type="text" ng-model="email" id="email" />
                     <button ng-click="">Update profile <span class="glyphicon glyphicon-save" aria-hidden="true"></span></button>
                 </fieldset>
             </form>
@@ -17,9 +17,10 @@
             <h3>Your password</h3>
             <form>
                 <fieldset>
-                    <label>Existing password<input type="password" ng-model="passwordExisting" id="password-existing" /></label>
-                    <label>New password<input type="password" ng-model="passwordNew" id="password-new" /></label>
-                    <label>Confirm password<input type="password" ng-model="passwordConfirm" id="password-confirm"/></label>
+                    <label>Existing password</label><input type="password" ng-model="passwordExisting" id="password-existing" />
+                    <hr/>
+                    <label>New password</label><input type="password" ng-model="passwordNew" id="password-new" />
+                    <label>Confirm password</label><input type="password" ng-model="passwordConfirm" id="password-confirm"/>
                     <button ng-click="">Change password <span class="glyphicon glyphicon-save" aria-hidden="true"></span></button>
                 </fieldset>
             </form>

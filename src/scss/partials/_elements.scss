@@ -31,6 +31,17 @@ a {
     }
 }
 
+strong {
+    font-weight: bold;
+}
+
+hr {
+    margin: 1.5em -2em;
+    border: none;
+    height: 1px;
+    background-color: $light-grey;
+}
+
 button, a.button {
     font-size: 1em;
     border: 0;

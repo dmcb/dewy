@@ -270,6 +270,7 @@ section.user-info {
     img.gravatar {
         max-width: 96px;
         border-radius: 50%;
+        vertical-align: middle;
     }
 }
 
@@ -289,20 +290,24 @@ section.user-info, section.your-password {
     label {
         @include clearfix;
         clear: both;
-        display: block;
+        display: inline-block;
         margin-top: 0.5em;
+    }
 
-        input {
-            float: right;
-            width: 70%;
-        }
+    input {
+        float: right;
+        width: 70%;
+    }
+
+    button {
+        clear: both;
     }
 }
 
 section.main {
     position: relative;
     padding-top: 1em;
-    padding-bottom: 8em;
+    padding-bottom: 6em;
 
     h2, #titleerror, #nameerror {
         color: $blue;
