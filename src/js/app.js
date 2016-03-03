@@ -12,6 +12,11 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 	$locationProvider.html5Mode(true);
 	$httpProvider.interceptors.push('authInterceptor');
     $routeProvider.
+		when('/account', {
+			templateUrl: 'templates/account.html',
+			controller: 'accountController',
+			requiresAuthorization: true
+		}).
 		when('/content/:filter?', {
 			templateUrl: 'templates/overview.html',
 			controller: 'overviewController',
@@ -157,11 +162,6 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 					}
 				}]
 			}
-		}).
-		when('/user', {
-			templateUrl: 'templates/user.html',
-			controller: 'userController',
-			requiresAuthorization: true
 		}).
 		when('/users/:filter?', {
 			templateUrl: 'templates/overview.html',

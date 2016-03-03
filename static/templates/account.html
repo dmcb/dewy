@@ -1,0 +1,36 @@
+<div class="shell">
+    <section class="main">
+        <h2>Your account, {{currentUser.username}}</h2>
+        <section class="user-info">
+            <h3>User information</h3>
+            <form name="userForm">
+                <fieldset>
+                    <label>Your profile picture <img class="gravatar" src="http://www.gravatar.com/avatar/{{currentUser.gravatar}}?s=192" alt="Gravatar"/><span>Change your profile picture at <a href="http://gravatar.com" target="_blank">Gravatar</a></label>
+                    <label>Your username <input type="text" ng-model="username" id="username" required /></label>
+                    <span class="error" ng-if="userForm.username.$error.required && (userForm.username.$touched || userForm.$submitted)">A username is required.</span>
+                    <label>Your email <input type="text" ng-model="email" id="email" /></label>
+                    <button ng-click="">Update profile <span class="glyphicon glyphicon-save" aria-hidden="true"></span></button>
+                </fieldset>
+            </form>
+        </section>
+        <section class="your-password">
+            <h3>Your password</h3>
+            <form>
+                <fieldset>
+                    <label>Existing password<input type="password" ng-model="passwordExisting" id="password-existing" /></label>
+                    <label>New password<input type="password" ng-model="passwordNew" id="password-new" /></label>
+                    <label>Confirm password<input type="password" ng-model="passwordConfirm" id="password-confirm"/></label>
+                    <button ng-click="">Change password <span class="glyphicon glyphicon-save" aria-hidden="true"></span></button>
+                </fieldset>
+            </form>
+        </section>
+        <section class="subscription">
+            <h3>Subscription</h3>
+            <ul>
+                <li class="">On Dewy since <strong>whenever</strong></li>
+                <li class="">Subscription type <strong>trial</strong></li>
+                <li class="">Subscription expires <strong>sometime</strong></li>
+            </ul>
+        </section>
+    </section>
+</div>

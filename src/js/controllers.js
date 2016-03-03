@@ -1,5 +1,15 @@
 var controllers = angular.module('dewyControllers', []);
 
+controllers.controller('accountController', ['$scope', '$rootScope',
+	function ($scope, $rootScope) {
+		$scope.cancel = function() {
+			window.history.back();
+		}
+
+		$scope.username == $rootScope.currentUser.username;
+		$scope.email == $rootScope.currentUser.email;
+}]);
+
 controllers.controller('appController', ['$scope', '$location', 'authService',
 	function ($scope, $location, authService) {
 		$scope.signOff = function() {
@@ -410,11 +420,4 @@ controllers.controller('overviewSitesController', ['$scope', 'sitesFactory',
 
 controllers.controller('overviewUsersController', ['$scope',
 	function ($scope) {
-}]);
-
-controllers.controller('userController', ['$scope',
-	function ($scope) {
-		$scope.cancel = function() {
-			window.history.back();
-		}
 }]);

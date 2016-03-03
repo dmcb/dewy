@@ -30,7 +30,7 @@ section {
         clear: both;
     }
 
-    &.introduction, &.feature section, &.signup, &.signon, &.add-site, &.api-key, &.offline-sites {
+    &.introduction, &.feature section, &.signup, &.signon, &.add-site, &.api-key, &.offline-sites, &.user-info, &.your-password, &.subscription {
         padding-top: 3em;
 
         @include breakpoint($mobile-large) {
@@ -175,11 +175,11 @@ section.feature {
     }
 }
 
-section.add-site {
+section.add-site, section.user-info {
     padding-top: 0;
 }
 
-section.api-key {
+section.add-site, section.api-key, section.offline-sites, section.user-info, section.your-password, section.subscription {
     @include clearfix;
 
     form {
@@ -188,8 +188,24 @@ section.api-key {
 
     input {
         border: 1px solid $light-blue;
-        text-align: center;
         border-radius: 0;
+    }
+
+    &.api-key input {
+        text-align: center;
+    }
+
+    ul {
+        margin-top: 2em;
+        li {
+            display: block;
+            margin-top: 0.5em;
+        }
+
+        @include breakpoint($desktop) {
+            @include grid-span(20,3);
+            clear: both;
+        }
     }
 }
 
@@ -200,10 +216,7 @@ section.offline-sites {
         margin-top: 2em;
 
         ul {
-            li {
-                display: block;
-                margin-top: 0.5em;
-            }
+            margin-top: 0;
 
             .baseurl {
                 font-weight: bold;
@@ -249,6 +262,13 @@ section.offline-sites {
             @include grid-span(20,3);
             clear: both;
         }
+    }
+}
+
+section.user-info {
+    img.gravatar {
+        max-width: 96px;
+        border-radius: 50%;
     }
 }
 

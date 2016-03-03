@@ -41,6 +41,7 @@ button, a.button {
     padding: 0.75em;
     text-align: left;
     margin-bottom: 0.5em;
+    cursor: pointer;
 
     @include breakpoint($tablet) {
         margin-bottom: 0.25em;
