@@ -197,6 +197,7 @@ section.add-site, section.api-key, section.offline-sites, section.user-info, sec
 
     ul {
         margin-top: 2em;
+
         li {
             display: block;
             margin-top: 0.5em;
@@ -269,6 +270,32 @@ section.user-info {
     img.gravatar {
         max-width: 96px;
         border-radius: 50%;
+    }
+}
+
+section.user-info, section.your-password {
+
+    fieldset {
+        @include layout(24) {
+            @include grid-span(24,1);
+
+            @include breakpoint($desktop) {
+                @include grid-span(16,5);
+            }
+        }
+    }
+
+
+    label {
+        @include clearfix;
+        clear: both;
+        display: block;
+        margin-top: 0.5em;
+
+        input {
+            float: right;
+            width: 70%;
+        }
     }
 }
 
