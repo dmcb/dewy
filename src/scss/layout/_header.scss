@@ -161,18 +161,26 @@ header {
             }
 
             img {
-                max-width: 72px;
+                max-height: 36px;
 
                 @include breakpoint($tablet) {
-                    max-width: 80px;
+                    max-height: 33px;
                 }
 
                 @include breakpoint($desktop) {
-                    max-width: 96px;
+                    max-height: 35px;
+                }
+
+                @include breakpoint($desktop-medium) {
+                    max-height: 37px;
+                }
+
+                @include breakpoint($desktop-large) {
+                    max-height: 41px;
                 }
 
                 @include breakpoint($desktop-extra-large) {
-                    max-width: 112px;
+                    max-height: 43px;
                 }
             }
         }
