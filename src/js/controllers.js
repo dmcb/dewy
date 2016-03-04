@@ -217,8 +217,8 @@ controllers.controller('filterController', ['$scope', '$location', 'filterFactor
 		};
 }]);
 
-controllers.controller('manageController', ['$scope', 'sites', 'user', 'sitesFactory', 'userFactory',
-	function ($scope, sites, user, sitesFactory, userFactory) {
+controllers.controller('manageController', ['$scope', '$moment', 'sites', 'user', 'sitesFactory', 'userFactory',
+	function ($scope, $moment, sites, user, sitesFactory, userFactory) {
 		$scope.auditSite = function(sid) {
 			return sitesFactory.audit(sid)
 			.error(function(error, status) {
@@ -246,6 +246,12 @@ controllers.controller('manageController', ['$scope', 'sites', 'user', 'sitesFac
 			});
 		}
 		$scope.sites = sites;
+		for (site in $scope.sites) {
+			$scope.sites[site].dateAdded = $moment($scope.sites[site].dateAdded * 1000).fromNow();
+			if ('audited' in $scope.sites[site]) {
+				$scope.sites[site].audited.date = $moment($scope.sites[site].audited.date * 1000).fromNow();
+			}
+		}
 		$scope.apikey = user.apikey;
 }]);
 

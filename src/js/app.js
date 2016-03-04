@@ -2,6 +2,7 @@ var app = angular.module('dewy', [
 	'ngRoute',
 	'ngAnimate',
 	'ui.sortable',
+	'angular-momentjs',
 	'dewyControllers',
 	'dewyFactories',
 	'dewyServices',

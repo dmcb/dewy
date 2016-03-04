@@ -8,8 +8,13 @@ module.exports = function(grunt) {
           'js': 'src/js/bower.js'
         },
         include: [
-          'angular-ui-sortable'
+          'angular-ui-sortable',
+          'moment',
+          'angular-momentjs'
         ],
+        mainFiles: {
+          'moment': 'moment.js'
+        },
         bowerOptions: {
           relative: false
         }
