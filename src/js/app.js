@@ -16,11 +16,13 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 		when('/account', {
 			templateUrl: 'templates/account.html',
 			controller: 'accountController',
+			menuItem: 'account',
 			requiresAuthorization: true
 		}).
 		when('/content/:filter?', {
 			templateUrl: 'templates/overview.html',
 			controller: 'overviewController',
+			menuItem: 'overview',
 			requiresAuthorization: true,
 			resolve: {
 				filters: ['filterFactory', function(filterFactory) {
@@ -78,6 +80,7 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 		when('/manage', {
 			templateUrl: 'templates/manage.html',
 			controller: 'manageController',
+			menuItem: 'manage',
 			requiresAuthorization: true,
 			resolve: {
 				sites: ['sitesFactory', function(sitesFactory) {
@@ -91,6 +94,7 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 		when('/modules/:filter?', {
 			templateUrl: 'templates/overview.html',
 			controller: 'overviewController',
+			menuItem: 'overview',
 			requiresAuthorization: true,
 			resolve: {
 				filters: ['filterFactory', function(filterFactory) {
@@ -132,6 +136,7 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 		when('/sites/:filter?', {
 			templateUrl: 'templates/overview.html',
 			controller: 'overviewController',
+			menuItem: 'overview',
 			requiresAuthorization: true,
 			resolve: {
 				filters: ['filterFactory', function(filterFactory) {
@@ -167,6 +172,7 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 		when('/users/:filter?', {
 			templateUrl: 'templates/overview.html',
 			controller: 'overviewController',
+			menuItem: 'overview',
 			requiresAuthorization: true,
 			resolve: {
 				filters: ['filterFactory', function(filterFactory) {
@@ -228,6 +234,7 @@ app.run(['authService', '$rootScope', '$location', '$http', '$window', function(
 					})
 				}
 				$rootScope.indexPage = next.indexPage;
+				$rootScope.menuItem = next.menuItem;
 			}
 		}
 		else {
@@ -237,6 +244,7 @@ app.run(['authService', '$rootScope', '$location', '$http', '$window', function(
 			} else {
 				$rootScope.currentUser = null;
 				$rootScope.indexPage = next.indexPage;
+				$rootScope.menuItem = next.menuItem;
 			}
 		}
 	});
