@@ -219,26 +219,27 @@ controllers.controller('filterController', ['$scope', '$location', 'filterFactor
 
 controllers.controller('manageController', ['$scope', '$moment', 'sites', 'user', 'sitesFactory', 'userFactory',
 	function ($scope, $moment, sites, user, sitesFactory, userFactory) {
-		$scope.auditSite = function(sid) {
-			return sitesFactory.audit(sid)
+		$scope.auditSite = function(index) {
+			return sitesFactory.audit($scope.sites[index].sid)
 			.error(function(error, status) {
+				$scope.sites[index].audited.date = $moment().fromNow();
+				$scope.sites[index].audited.error = error.statusCode;
 				console.log(error);
 			})
 			.success(function(result) {
+				// Todo: add more visual feedback for user
 				console.log(result);
+				var successfulSite = $scope.sites.splice(index, 1);
 			});
 		}
 		$scope.getKey = function() {
 			$scope.apikey = user.apikey;
 		}
-		$scope.deleteSite = function(sid) {
-			i = $scope.sites.length;
-			while (i--) {
-				if ($scope.sites[i].sid == sid) {
-					var deletedSite = $scope.sites.splice(i, 1);
-				}
-			}
-			sitesFactory.delete(sid);
+		$scope.deleteSite = function(index) {
+			sitesFactory.delete($scope.sites[index].sid)
+			.success(function(result) {
+				var deletedSite = $scope.sites.splice(index, 1);
+			});
 		}
 		$scope.resetKey = function(uid) {
 			userFactory.resetKey(uid).then(function(apikey) {

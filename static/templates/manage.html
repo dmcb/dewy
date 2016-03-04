@@ -18,7 +18,7 @@
         <section class="offline-sites">
             <h3>Offline sites</h3>
             <p>The following sites are linked to your account but aren't able to report to Dewy.</p>
-            <div ng-repeat="site in sites"  class="offline-site">
+            <div ng-repeat="site in sites" class="offline-site">
                 <ul>
                     <li class="baseurl">{{site.baseurl}}</li>
                     <li class="added">Added to Dewy {{site.dateAdded}}</li>
@@ -30,8 +30,8 @@
                 </ul>
                 <div class="buttons">
                     <a class="button" href="{{site.baseurl}}/user" target="_blank">Visit site <span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
-                    <a class="button" href="" ng-click="auditSite(site.sid)">Attempt audit <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a>
-                    <a class="button" href="" ng-click="deleteSite(site.sid)">Remove from Dewy <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                    <a class="button" href="" ng-click="auditSite($index)">Attempt audit <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a>
+                    <a class="button" href="" ng-click="deleteSite($index)">Remove from Dewy <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
                 </div>
             </div>
         </section>
