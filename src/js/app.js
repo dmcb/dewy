@@ -236,6 +236,7 @@ app.run(['authService', '$rootScope', '$location', '$http', '$window', function(
 				$rootScope.indexPage = next.indexPage;
 				$rootScope.menuItem = next.menuItem;
 			}
+			$rootScope.isViewLoading = true;
 		}
 		else {
 			if (authService.isAuthenticated()) {
@@ -247,5 +248,11 @@ app.run(['authService', '$rootScope', '$location', '$http', '$window', function(
 				$rootScope.menuItem = next.menuItem;
 			}
 		}
+	});
+	$rootScope.$on('$routeChangeSuccess', function() {
+		$rootScope.isViewLoading = false;
+	});
+	$rootScope.$on('$routeChangeError', function() {
+		$rootScope.isViewLoading = false;
 	});
 }]);
