@@ -215,6 +215,7 @@ section.offline-sites {
         @include clearfix;
         clear: both;
         margin-top: 2em;
+        position: relative;
 
         ul {
             margin-top: 0;
@@ -990,7 +991,7 @@ div.site.ng-enter,
 .detail-view div.ng-enter,
 div.site.ng-leave,
 .noresults.ng-enter, 
-.noresults.ng-leave
+.noresults.ng-leave,
 { 
     transition: 400ms ease all;
     position: relative;
@@ -1021,7 +1022,8 @@ div.site.ng-enter.ng-enter-active,
 div.site.ng-leave,
 .detail-view.ng-enter.ng-enter-active, 
 .detail-view.ng-leave,
-
+.load.ng-enter.ng-enter-active span,
+.load.ng-leave span,
 {
     opacity: 1;
 }
@@ -1032,7 +1034,8 @@ div.site.ng-leave.ng-leave-active,
 div.site.ng-enter,
 .detail-view.ng-leave.ng-leave-active,
 .detail-view.ng-enter,
-
+.load.ng-leave.ng-leave-active span,
+.load.ng-enter span,
 {
     opacity: 0;
 }

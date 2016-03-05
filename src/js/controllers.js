@@ -217,19 +217,33 @@ controllers.controller('filterController', ['$scope', '$location', 'filterFactor
 		};
 }]);
 
-controllers.controller('manageController', ['$scope', '$moment', 'sites', 'user', 'sitesFactory', 'userFactory',
-	function ($scope, $moment, sites, user, sitesFactory, userFactory) {
+controllers.controller('manageController', ['$scope', '$timeout', '$moment', 'sites', 'user', 'sitesFactory', 'userFactory',
+	function ($scope, $timeout, $moment, sites, user, sitesFactory, userFactory) {
 		$scope.auditSite = function(index) {
+			$scope.sites[index].auditingMessage = 'Auditing...';
+			$scope.sites[index].auditing = true;
+
 			return sitesFactory.audit($scope.sites[index].sid)
 			.error(function(error, status) {
+				$scope.sites[index].auditingMessage = 'Error: ' + $scope.sites[index].audited.error;
+				$scope.sites[index].auditingStatus = 'error'; 
+				$timeout(function() {
+					$scope.sites[index].auditing = false;
+					$scope.sites[index].auditingStatus = 'auditing';
+				},1500);
 				$scope.sites[index].audited.date = $moment().fromNow();
 				$scope.sites[index].audited.error = error.statusCode;
-				console.log(error);
 			})
 			.success(function(result) {
 				// Todo: add more visual feedback for user
 				console.log(result);
-				var successfulSite = $scope.sites.splice(index, 1);
+				$scope.sites[index].auditingMessage = 'Success';
+				$scope.sites[index].auditingStatus = 'success';
+				$timeout(function() {
+					$scope.sites[index].auditing = false;
+					$scope.sites[index].auditingStatus = 'auditing';
+					var successfulSite = $scope.sites.splice(index, 1);
+				},1500);
 			});
 		}
 		$scope.getKey = function() {

@@ -19,6 +19,7 @@
             <h3>Offline sites</h3>
             <p>The following sites are linked to your account but aren't able to report to Dewy.</p>
             <div ng-repeat="site in sites" class="offline-site">
+                <div class="load" ng-if="site.auditing"><span class="load-message" ng-class="{error: site.auditingStatus == 'error', success: site.auditingStatus == 'success'}">{{site.auditingMessage}}</span></div>
                 <ul>
                     <li class="baseurl">{{site.baseurl}}</li>
                     <li class="added">Added to Dewy {{site.dateAdded}}</li>
