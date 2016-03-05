@@ -233,8 +233,8 @@ app.run(['authService', '$rootScope', '$location', '$http', '$window', function(
 						$rootScope.currentUser = result;
 					})
 				}
-				$rootScope.indexPage = next.indexPage;
-				$rootScope.menuItem = next.menuItem;
+				$rootScope.queuedIndexPage = next.indexPage;
+				$rootScope.queuedMenuItem = next.menuItem;
 			}
 			$rootScope.isViewLoading = true;
 		}
@@ -244,15 +244,19 @@ app.run(['authService', '$rootScope', '$location', '$http', '$window', function(
 				$location.path('/sites');
 			} else {
 				$rootScope.currentUser = null;
-				$rootScope.indexPage = next.indexPage;
-				$rootScope.menuItem = next.menuItem;
+				$rootScope.queuedIndexPage = next.indexPage;
+				$rootScope.queuedMenuItem = next.menuItem;
 			}
 		}
 	});
 	$rootScope.$on('$routeChangeSuccess', function() {
 		$rootScope.isViewLoading = false;
+		$rootScope.indexPage = $rootScope.queuedIndexPage;
+		$rootScope.menuItem = $rootScope.queuedMenuItem;
 	});
 	$rootScope.$on('$routeChangeError', function() {
 		$rootScope.isViewLoading = false;
+		$rootScope.indexPage = $rootScope.queuedIndexPage;
+		$rootScope.menuItem = $rootScope.queuedMenuItem;
 	});
 }]);
