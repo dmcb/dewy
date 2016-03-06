@@ -20,7 +20,7 @@ router.all('/*', function(req, res) {
         }
         
         // Send request, return results to Angular app
-        var endPoint = 'http://api.dewy.io/1.0/' + req.params[0];
+        var endPoint = config.api.url + req.params[0];
         console.log(req.method + ': ' + endPoint);
         var request = require('request');
         request({

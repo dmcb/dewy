@@ -7,11 +7,11 @@ authenticateWithDewy = function() {
     return function(req, res, next) {
         if (req.url == '/signon') {
             var body = 'grant_type=password&username=' + req.body.username + '&password=' + req.body.password;
-            var endPoint = 'http://api.dewy.io/1.0/oauth/token';
+            var endPoint = config.api.url + 'oauth/token';
         }
         else if (req.url == '/signup') {
             var body = 'grant_type=password&username=' + req.body.username + '&password=' + req.body.password + '&email=' + req.body.email;
-            var endPoint = 'http://api.dewy.io/1.0/users';
+            var endPoint = config.api.url + 'users';
         }
         var encodedClient = new Buffer(config.client.client_id + ':' + config.client.client_secret).toString('base64');
         var request = require('request');
