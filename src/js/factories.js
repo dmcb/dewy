@@ -1,6 +1,6 @@
 var factories = angular.module('dewyFactories', []);
 
-factories.factory('authInterceptor', ['authService', '$location', '$q', '$window', function(authService, $location, $q, $window) {
+factories.factory('authInterceptor', ['authService', '$location', '$q', '$injector', '$window', function(authService, $location, $q, $injector, $window) {
 	var authInterceptor = {};
 
 	authInterceptor.request = function(config) {
@@ -15,10 +15,19 @@ factories.factory('authInterceptor', ['authService', '$location', '$q', '$window
 	}
 
 	authInterceptor.responseError = function(responseError) {
-		// If no longer authorized, sign off
+		// No longer authorized
 		if (responseError.status == 401) {
-			console.log('Access denied');
-			authService.signOff();
+			// But if proxy API sent back new access token
+			if (responseError.data) {
+				var $http = $injector.get('$http');
+				var deferred = $q.defer();
+				authService.update(responseError.data);
+                return $http(responseError.config);
+			}
+			else {
+				console.log('Access denied');
+				authService.signOff();
+			}
 		}
 		return $q.reject(responseError);
 	}
@@ -46,11 +55,15 @@ factories.factory('authService', ['dewySession', '$location', '$rootScope', func
 		$location.path('/signon');
 	}
 
-	authService.signOn = function(result, remember) {
-		dewySession.create(result);
+	authService.signOn = function(payload, remember) {
+		dewySession.create(payload);
 		$rootScope.$broadcast('auth-signon-success');
 		$location.path('/sites');
 	};
+
+	authService.update = function(payload) {
+		dewySession.create(payload);
+	}
 
 	return authService;
 }]);
