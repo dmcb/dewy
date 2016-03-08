@@ -49,9 +49,19 @@ router.all('/*', function(req, res) {
                         }
                     }, function(refreshError, refreshResponse, refreshBody) {
                         if (refreshResponse.statusCode == '200') {
-                            console.log('Attempt succeeded, sending 401 with new token');
-                            console.log(refreshBody);
-                            var token = jwt.encode(refreshBody, config.jwt.secret);
+                            console.log('Attempt succeeded, returning new token');
+                            // Keep the original refresh token
+                            // This way the user can't remain logged in forever
+                            // The refresh token lifetime will dictate how long a user can remain authenticated
+                            refreshBody = JSON.parse(refreshBody);
+                            newToken = {
+                                token_type: refreshBody['token_type'],
+                                access_token: refreshBody['access_token'],
+                                expires_in: refreshBody['expires_in'],
+                                refresh_token: payload['refresh_token']
+                            }
+                            console.log(newToken);
+                            var token = jwt.encode(JSON.stringify(newToken), config.jwt.secret);
                             res.status(401).end(token);
                         }
                         else {
