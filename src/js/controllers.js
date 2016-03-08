@@ -380,18 +380,18 @@ controllers.controller('overviewSitesController', ['$scope', 'sitesFactory',
         $scope.addTags = function(siteIndex) {
             var formName = 'tagForm' + siteIndex;
             if (this[formName].$valid) {
+                if (!$scope.openSite.tags) {
+                    $scope.openSite.tags = [];
+                }
                 tags = this.tags.split(',');
                 for (i=0; i<tags.length; i++) {
                     tag = tags[i].trim();
-                    if (!$scope.sites[siteIndex].tags) {
-                        $scope.sites[siteIndex].tags = [];
-                    }
-                    if (tag != "" && $scope.sites[siteIndex].tags.indexOf(tag) == -1) {
-                        $scope.sites[siteIndex].tags.push(tag);
-                        console.log($scope.sites[siteIndex].tags);
+                    if (tag != "" && $scope.openSite.tags.indexOf(tag) == -1) {
+                        $scope.openSite.tags.push(tag);
+                        console.log($scope.openSite.tags);
                     }
                 }
-                sitesFactory.setTags($scope.sites[siteIndex]);
+                sitesFactory.setTags($scope.openSite);
                 this.tags = null;
                 this[formName].$setPristine();
                 this[formName].tags.$setUntouched();
