@@ -279,8 +279,7 @@ controllers.controller('signonController', ['authService', '$scope', '$http',
 				// Authenticate
 				$http.post(url, {
 					username: $scope.username,
-					password: $scope.password,
-					remember: $scope.remember
+					password: $scope.password
 				}).success(function(result) {
 					authService.signOn(result, $scope.remember);
 				})
