@@ -28,12 +28,45 @@ router.all('/*', function(req, res) {
             json: req.body,
             headers: headers
         }, function(error, response, body) {
-            console.log(response.statusCode + ' - ' + req.method + ': ' + endPoint);
             if (error) {
                 res.status(response.statusCode).send(error);
             }
             else {
-                res.status(response.statusCode).send(body);
+                console.log(response.statusCode + ' - ' + req.method + ': ' + endPoint);
+                if (response.statusCode == '401') {
+                    // We may have an expired access_token on our hands
+                    // Let's try to get a new one via our refresh token
+                    console.log('401 received, attempting to get new access token');
+                    var encodedClient = new Buffer(config.client.client_id + ':' + config.client.client_secret).toString('base64');
+                    var refreshRequest = require('request');
+                    refreshRequest({
+                        uri: config.api.url + 'oauth/token',
+                        body: 'grant_type=refresh_token&refresh_token=' + payload['refresh_token'],
+                        method: 'post',
+                        headers: {
+                            'Authorization': 'Basic ' + encodedClient,
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        }
+                    }, function(refreshError, refreshResponse, refreshBody) {
+                        if (refreshResponse.statusCode == '200') {
+                            console.log('Attempt succeeded, sending 401 with new token');
+                            console.log(refreshBody);
+                            var token = jwt.encode(refreshBody, config.jwt.secret);
+                            res.status(401).end(token);
+                        }
+                        else {
+                            // We tried, we failed
+                            // User very likely must reauthenticate
+                            // Pass on the 401 to indicate that to web app
+                            console.log('Attempt failed, sending 401');
+                            console.log(refreshResponse.statusCode);
+                            console.log(refreshBody);
+                            res.status(401).end();
+                        }
+                    });
+                } else {
+                    res.status(response.statusCode).send(body);
+                }
             }
         });
     } else {

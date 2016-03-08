@@ -5,24 +5,7 @@ var jwt = require('jwt-simple');
 
 authenticateWithDewy = function() {
     return function(req, res, next) {
-        if (req.url == '/renew') {
-            if (req.headers.authorization) {
-                // Get JWT token from header
-                var token = req.headers.authorization.substr('Bearer '.length);
-
-                // Decode JWT and send OAuth header to actual API
-                var headers = {};
-                try {
-                    var payload = JSON.parse(jwt.decode(token, config.jwt.secret));
-                    var body = 'grant_type=refresh_token&refresh_token=' + payload['refresh_token'];
-                    var endPoint = config.api.url + 'oauth/token';
-                }
-                catch (error) {
-                    console.log(error);
-                }
-            }
-        }
-        else if (req.url == '/signon') {
+        if (req.url == '/signon') {
             var body = 'grant_type=password&username=' + req.body.username + '&password=' + req.body.password;
             var endPoint = config.api.url + 'oauth/token';
         }
@@ -61,7 +44,6 @@ authenticateWithDewy = function() {
     }
 }
 
-router.post('/renew', authenticateWithDewy(), function(req, res) {});
 router.post('/signon', authenticateWithDewy(), function(req, res) {});
 router.post('/signup', authenticateWithDewy(), function(req, res) {});
 
