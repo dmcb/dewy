@@ -3,12 +3,12 @@
         <h2>Your account, {{currentUser.username}}</h2>
         <section class="user-info">
             <h3>User information</h3>
-            <div class="gravatar">
-                   <img class="gravatar" src="http://www.gravatar.com/avatar/{{currentUser.gravatar}}?s=240" alt="Gravatar"/>
-                   <span>Change your profile picture at <a href="http://gravatar.com" target="_blank">Gravatar</a></span>
-            </div>
             <form name="profileForm" ng-submit="submitProfile(currentUser.uid)">
                 <fieldset>
+                    <div class="gravatar">
+                        <img src="http://www.gravatar.com/avatar/{{currentUser.gravatar}}?s=240" alt="Gravatar"/>
+                        <span>Change your profile picture at <a href="http://gravatar.com" target="_blank">Gravatar</a></span>
+                    </div>
                     <div class="field">
                         <label>Your username</label>
                         <input type="text" ng-model="username" name="username" required />

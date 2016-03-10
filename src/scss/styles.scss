@@ -275,20 +275,26 @@ section.user-info {
         border-radius: 5em;
         padding: 0.5em;
         position: relative;
+        margin-bottom: 2em;
+
+        @include breakpoint($tablet) {
+            margin-left: -4em;
+            margin-right: -4em;
+
+            span {
+                display: block;
+                position: absolute;
+            }
+        }
 
         span {
             top: 4.5em;
             left: 0;
             right: 0;
             text-align: center;
-
-            @include breakpoint($tablet) {
-                display: block;
-                position: absolute;
-            }
         }
 
-        img.gravatar {
+        img {
             max-width: 9em;
             border-radius: 50%;
             vertical-align: middle;
