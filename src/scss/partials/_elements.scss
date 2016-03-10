@@ -148,6 +148,12 @@ fieldset {
         }
     }
 
+    .field {
+        @include clearfix;
+        clear: both;
+        margin-top: 0.25em;
+    }
+
     input {
         width: 100%;
         padding: 0.5em;
@@ -163,7 +169,7 @@ fieldset {
     button {
         margin-top: 2em;
         @include layout(24) {
-            @include grid-span(12,7);
+            @include grid-span(10,8);
         }
     }
 }

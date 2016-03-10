@@ -268,10 +268,31 @@ section.offline-sites {
 }
 
 section.user-info {
-    img.gravatar {
-        max-width: 96px;
-        border-radius: 50%;
-        vertical-align: middle;
+
+    .gravatar {
+        @include clearfix;
+        background-color: #eee;
+        border-radius: 5em;
+        padding: 0.5em;
+        position: relative;
+
+        span {
+            top: 4.5em;
+            left: 0;
+            right: 0;
+            text-align: center;
+
+            @include breakpoint($tablet) {
+                display: block;
+                position: absolute;
+            }
+        }
+
+        img.gravatar {
+            max-width: 9em;
+            border-radius: 50%;
+            vertical-align: middle;
+        }
     }
 }
 
