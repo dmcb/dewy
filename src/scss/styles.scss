@@ -316,7 +316,7 @@ section.user-info, section.your-password {
         margin-top: 0.5em;
     }
 
-    input {
+    input, .error {
         float: right;
         width: 70%;
     }

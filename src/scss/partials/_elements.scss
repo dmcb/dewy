@@ -80,6 +80,8 @@ span.error {
     color: $blue;
     display: block;
     transition: 400ms;
+    margin-top: 0.25em;
+    margin-bottom: 0.5em;
 
     &.ng-enter {
         transition: 0;
