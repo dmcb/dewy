@@ -7,12 +7,12 @@
                    <img class="gravatar" src="http://www.gravatar.com/avatar/{{currentUser.gravatar}}?s=240" alt="Gravatar"/>
                    <span>Change your profile picture at <a href="http://gravatar.com" target="_blank">Gravatar</a></span>
             </div>
-            <form name="userForm">
+            <form name="profileForm" ng-submit="submitProfile(currentUser.uid)">
                 <fieldset>
                     <div class="field">
                         <label>Your username</label>
-                        <input type="text" ng-model="username" id="username" required />
-                        <span class="error" ng-if="userForm.username.$error.required && (userForm.username.$touched || userForm.$submitted)">A username is required.</span>
+                        <input type="text" ng-model="username" name="username" required />
+                        <span class="error" ng-if="profileForm.username.$error.required && (profileForm.username.$touched || profileForm.$submitted)">A username is required.</span>
                     </div>
                     <button ng-click="">Update profile <span class="glyphicon glyphicon-save" aria-hidden="true"></span></button>
                 </fieldset>
@@ -20,24 +20,24 @@
         </section>
         <section class="your-password">
             <h3>Your email and password</h3>
-            <form>
+            <form name="accountForm" ng-submit="submitAccount(currentUser.uid)">
                 <fieldset>
                     <div class="field">
                         <label>Existing password</label>
-                        <input type="password" ng-model="passwordExisting" id="password-existing" />
+                        <input type="password" ng-model="passwordExisting" name="password-existing" />
                     </div>
                     <hr/>
                     <div class="field">
                         <label>New email</label>
-                        <input type="text" ng-model="email" id="email" />
+                        <input type="text" ng-model="email" name="email" />
                     </div>
                     <div class="field">
                         <label>New password</label>
-                        <input type="password" ng-model="passwordNew" id="password-new" />
+                        <input type="password" ng-model="passwordNew" name="password-new" />
                     </div>
                     <div class="field">
                         <label>Confirm password</label>
-                        <input type="password" ng-model="passwordConfirm" id="password-confirm"/>
+                        <input type="password" ng-model="passwordConfirm" name="password-confirm"/>
                     </div>
                     <button ng-click="">Update account<span class="glyphicon glyphicon-save" aria-hidden="true"></span></button>
                 </fieldset>

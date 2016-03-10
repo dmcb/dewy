@@ -1,10 +1,23 @@
 var controllers = angular.module('dewyControllers', []);
 
-controllers.controller('accountController', ['$scope', '$rootScope',
-	function ($scope, $rootScope) {
+controllers.controller('accountController', ['$scope', '$rootScope', 'userFactory',
+	function ($scope, $rootScope, userFactory) {
 		$scope.cancel = function() {
 			window.history.back();
 		}
+		$scope.submitProfile = function(uid) {
+            if ($scope.profileForm.$valid) {
+                userFactory.changeUsername(uid, $scope.profileForm.username);
+            }
+        }
+		$scope.submitAccount = function(uid) {
+            if ($scope.accountForm.$valid) {
+
+           		userFactory.changeEmail(uid, $scope.profileForm.passwordExisting, $scope.profileForm.email);
+
+           		userFactory.changePassword(uid, $scope.profileForm.passwordExisting, $scope.profileForm.passwordNew);
+            }
+        }
 
 		$scope.username == $rootScope.currentUser.username;
 		$scope.email == $rootScope.currentUser.email;

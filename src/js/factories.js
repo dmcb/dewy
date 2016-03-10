@@ -250,6 +250,38 @@ factories.factory('userFactory', ['$http', function($http) {
 			});
 	}
 
+	userFactory.changeEmail = function(uid, existingPassword, newEmail) {
+		var update = {
+			existingPassword: existingPassword,
+			email: newEmail
+		}
+		return $http.put(apiUrl + '/users/' + uid, update)
+			.then(function (response) {
+				return response.data.apikey;
+			});
+	}
+
+	userFactory.changePassword = function(uid, existingPassword, newPassword) {
+		var update = {
+			existingPassword: existingPassword,
+			password: newPassword
+		}
+		return $http.put(apiUrl + '/users/' + uid, update)
+			.then(function (response) {
+				return response.data.apikey;
+			});
+	}
+
+	userFactory.changeUsername = function(uid, newUsername) {
+		var update = {
+			username: newUsername
+		}
+		return $http.put(apiUrl + '/users/' + uid, update)
+			.then(function (response) {
+				return response.data.apikey;
+			});
+	}
+
 	userFactory.resetKey = function(uid) {
 		var update = {
 			key: true
