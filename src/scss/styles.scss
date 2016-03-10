@@ -627,6 +627,16 @@ section.main {
                         height: 3.5em;
 
                         li {
+                            &.open:before {
+                                @include add-arrow(up, 0.75em);
+                                color: $light-grey;
+                                top: 2.05em;
+                                margin-left: auto;
+                                margin-right: auto;
+                                left: 0;
+                                right: 0;
+                            }
+
                             .point {
                                 width: 0.75em;
                                 background-color: $blue;
@@ -651,24 +661,18 @@ section.main {
 
                                     span {
                                         white-space: nowrap;
+                                        display: block;
+                                        overflow: hidden;
+                                        text-overflow: ellipsis;
 
                                         &.title {
-                                            display: block;
-                                            overflow: hidden;
-                                            text-overflow: ellipsis;
+                                            margin-bottom: 0.25em;
                                         }
 
                                         &.url {
                                             font-size: 0.8em;
                                         }
                                     }
-                                }
-
-                                &.open:before {
-                                    @include add-arrow(up, 0.75em);
-                                    color: $light-grey;
-                                    top: 2em;
-                                    margin-left: 1em;
                                 }
                             }
 
@@ -678,9 +682,8 @@ section.main {
                                 }
 
                                 &.open:before {
-                                    @include add-arrow(up, 0.75em);
-                                    color: $light-grey;
-                                    top: 2em;
+                                    margin-left: 1em;
+                                    margin-right: 0;
                                 }
                             }
                         }
@@ -691,10 +694,14 @@ section.main {
                         clear: both;
                         background-color: $light-grey;
                         padding: 1em;
-                        width: 115%;
+                        width: 100%;
+                        position: absolute;
+                        z-index: 2;
+                        box-shadow: 0 3px 3px $grey;
 
                         @include breakpoint($tablet) {
-                            width: 100%;
+                            position: static;
+                            box-shadow: none;
                         }
 
                         .tags {
