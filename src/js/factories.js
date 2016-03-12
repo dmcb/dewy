@@ -136,6 +136,22 @@ factories.factory('filterFactory', ['$http', function($http) {
 	return filterFactory;
 }]);
 
+factories.factory('moduleFactory', ['$http', function($http) {
+	var moduleFactory = {};
+	var apiUrl = "http://dewy.io/api";
+
+	moduleFactory.getAll = function(fid) {
+		return $http.get(apiUrl + '/modules/_filter/' + fid)
+			.then(function (response) {
+				console.log(response.data);
+
+				return response.data;
+			});
+	}
+
+	return moduleFactory;
+}]);
+
 factories.factory('sitesFactory', ['$http', function($http) {
 	var sitesFactory = {};
 	var apiUrl = "http://dewy.io/api";

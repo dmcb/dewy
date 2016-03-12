@@ -100,26 +100,26 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 				filters: ['filterFactory', function(filterFactory) {
 					return filterFactory.getAll();
 				}],
-				data: ['$route', 'filterFactory', 'sitesFactory', function($route, filterFactory, sitesFactory) {
+				data: ['$route', 'filterFactory', 'moduleFactory', function($route, filterFactory, moduleFactory) {
 					if ($route.current.params.filter) {
 						return filterFactory.getFilter($route.current.params.filter).
 						then(function(currentFilter) {
-							return sitesFactory.getAll(currentFilter.fid).
-							then(function(sites) {
+							return moduleFactory.getAll(currentFilter.fid).
+							then(function(modules) {
 								return {
 									currentFilter: currentFilter,
-									sites: sites,
+									modules: modules,
 									view: 'modules'
 								}
 							});
 						});
 					}
 					else {
-						return sitesFactory.getAll().
-						then(function(sites) {
+						return moduleFactory.getAll().
+						then(function(modules) {
 							return {
 								currentFilter: null,
-								sites: sites,
+								modules: modules,
 								view: 'modules'
 							}
 						});
