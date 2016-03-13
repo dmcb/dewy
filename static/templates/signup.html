@@ -6,14 +6,15 @@
             <span class="messages">
                 {{ message }}
             </span>
-            <input id="username" name="username" ng-model="username" placeholder="Your username" value="{{username}}" required />
-            <span class="error" ng-if="form.username.$error.required && (form.username.$touched || form.$submitted)">A username is required.</span>
+            <input name="username" ng-model="username" placeholder="Your username" value="{{username}}" ng-change="check('username')" required />
+            <span class="error" ng-if="!error.username && form.username.$error.required && (form.username.$touched || form.$submitted)">A username is required.</span>
             <span class="error" ng-if="error.username">{{ error.username }}</span>
-            <input id="email" name="email" ng-model="email" placeholder="Your email" value="{{email}}" required />
-            <span class="error" ng-if="form.email.$error.required && (form.email.$touched || form.$submitted)">An email is required.</span>
+            <input name="email" type="email" ng-model="email" placeholder="Your email" value="{{email}}" ng-change="check('email')" required />
+            <span class="error" ng-if="!error.email && form.email.$error.required && (form.email.$touched || form.$submitted)">An email is required.</span>
+            <span class="error" ng-if="!error.email && form.email.$error.email && (form.email.$touched || form.$submitted)">A valid email address is required.</span>
             <span class="error" ng-if="error.email">{{ error.email }}</span>
-            <input id="password" name="password" ng-model="password" placeholder="Your password" type="password" required />
-            <span class="error" ng-if="form.password.$error.required && (form.password.$touched || form.$submitted)">A password is required.</span>
+            <input name="password" ng-model="password" placeholder="Your password" type="password" ng-change="check('password')" required />
+            <span class="error" ng-if="!error.password && form.password.$error.required && (form.password.$touched || form.$submitted)">A password is required.</span>
             <span class="error" ng-if="error.password">{{ error.password }}</span>
             <button type="submit">Sign up</button>
         </fieldset>

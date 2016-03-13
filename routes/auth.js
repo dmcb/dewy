@@ -5,12 +5,14 @@ var jwt = require('jwt-simple');
 
 authenticateWithDewy = function() {
     return function(req, res, next) {
+        var body = 'grant_type=password';
+        for (property in req.body) {
+            body = body + '&' + property + '=' + req.body[property];
+        }
         if (req.url == '/signon') {
-            var body = 'grant_type=password&username=' + req.body.username + '&password=' + req.body.password;
             var endPoint = config.api.url + 'oauth/token';
         }
         else if (req.url == '/signup') {
-            var body = 'grant_type=password&username=' + req.body.username + '&password=' + req.body.password + '&email=' + req.body.email;
             var endPoint = config.api.url + 'users';
         }
         var encodedClient = new Buffer(config.client.client_id + ':' + config.client.client_secret).toString('base64');
@@ -29,8 +31,14 @@ authenticateWithDewy = function() {
             }
             else {
                 if (response.statusCode == '200') {
-                    var token = jwt.encode(body, config.jwt.secret);
-                    res.end(token);             
+                    body = JSON.parse(body);
+                    if ('error' in body) {
+                        res.end(body.error);
+                    }
+                    else {
+                        var token = jwt.encode(JSON.stringify(body), config.jwt.secret);
+                        res.end(token);
+                    }       
                 }
                 else if (response.statusCode == '400') {
                     res.status(response.statusCode).end(body);

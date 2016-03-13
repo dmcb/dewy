@@ -309,6 +309,29 @@ controllers.controller('signonController', ['authService', '$scope', '$http',
 
 controllers.controller('signupController', ['authService', '$scope', '$http',
 	function (authService, $scope, $http) {
+		$scope.check = function(field) {
+			if ($scope.form[field].$valid) {
+				var url = 'http://dewy.io/auth/signup';
+				var post = {};
+				if (field == 'username') {
+					post = {username: $scope.username}
+				}
+				else if (field == 'email') {
+					post = {email: $scope.email}
+				}
+				else if (field == 'password') {
+					post = {password: $scope.password}
+				}
+				$http.post(url, post)
+				.success(function(result) {
+					if (!('error' in $scope)) {
+						$scope.error = {};
+					}
+					$scope.error[field] = result;
+				});
+			}
+		}
+
 		$scope.submit = function() {
 			if ($scope.form.$valid) {
 				$scope.message = null;
