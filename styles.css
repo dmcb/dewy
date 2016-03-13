@@ -1,0 +1,50 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    background-color: #FFF;
+    color: #FFF;
+    margin:8px 0 0 0;
+    font-family: helvetica, arial, sans-serif;
+    line-height: 1.4em;
+    text-align: center;
+}
+
+.wrapper {
+    background: radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
+    background: -webkit-radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
+    background: -o-radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
+    background: -ms-radial-gradient(center center, 50% 70%, #239CF9 70%, #1E93EE);
+    background-attachment: fixed;
+    min-height: 100%;
+    position: relative;
+}
+
+img {
+    max-width: 6em;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    padding-top: 3em;
+}
+
+h1 {
+    margin-top: 2em;
+    font-family: 'katarine-web', serif;
+}
+
+p {
+    max-width: 600px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+span {
+    display: block;
+    margin-top: 2em;
+    text-transform: uppercase;
+    font-family: 'katarine-web', serif;
+}
