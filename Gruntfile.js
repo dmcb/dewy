@@ -9,6 +9,7 @@ module.exports = function(grunt) {
         },
         include: [
           'angular-ui-sortable',
+          'angular-validation-match',
           'moment',
           'angular-momentjs'
         ],

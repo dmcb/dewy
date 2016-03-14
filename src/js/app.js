@@ -3,6 +3,7 @@ var app = angular.module('dewy', [
 	'ngAnimate',
 	'ui.sortable',
 	'angular-momentjs',
+	'validation.match',
 	'dewyControllers',
 	'dewyFactories',
 	'dewyServices',

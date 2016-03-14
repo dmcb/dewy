@@ -24,7 +24,7 @@
                 <fieldset>
                     <div class="field">
                         <label>Existing password</label>
-                        <input type="password" ng-model="passwordExisting" name="password-existing" />
+                        <input type="password" ng-model="passwordExisting" name="passwordExisting" />
                         <span class="error" ng-if="error.existingPassword">{{ error.existingPassword }}</span>
                     </div>
                     <hr/>
@@ -35,12 +35,13 @@
                     </div>
                     <div class="field">
                         <label>New password</label>
-                        <input type="password" ng-model="passwordNew" name="password-new" />
+                        <input type="password" ng-model="passwordNew" name="passwordNew" />
                         <span class="error" ng-if="error.password">{{ error.password }}</span>
                     </div>
                     <div class="field">
                         <label>Confirm password</label>
-                        <input type="password" ng-model="passwordConfirm" name="password-confirm"/>
+                        <input type="password" ng-model="passwordConfirm" name="passwordConfirm" match="passwordNew" />
+                        <span class="error" ng-if="accountForm.passwordConfirm.$error.match && (accountForm.passwordConfirm.$touched || accountForm.$submitted)">Passwords do not match.</span>
                     </div>
                     <button ng-click="">Update account<span class="glyphicon glyphicon-save" aria-hidden="true"></span></button>
                 </fieldset>
