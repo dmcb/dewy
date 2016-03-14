@@ -5,17 +5,24 @@ controllers.controller('accountController', ['$scope', '$rootScope', 'userFactor
 		$scope.cancel = function() {
 			window.history.back();
 		}
-		$scope.submitProfile = function(uid) {
-            if ($scope.profileForm.$valid) {
-                userFactory.changeUsername(uid, $scope.profileForm.username);
-            }
-        }
 		$scope.submitAccount = function(uid) {
             if ($scope.accountForm.$valid) {
+           		userFactory.changeAccount(uid, $scope.passwordExisting, $scope.email, $scope.passwordNew)
+				.success(function(result) {
 
-           		userFactory.changeEmail(uid, $scope.profileForm.passwordExisting, $scope.profileForm.email);
-
-           		userFactory.changePassword(uid, $scope.profileForm.passwordExisting, $scope.profileForm.passwordNew);
+				})
+				.error(function(error, status) {
+					if (status != '400') {
+						$scope.message = 'Dewy could not update your account at this time.';
+					} else {
+						$scope.error = error;
+					}
+				});
+            }
+        }
+		$scope.submitProfile = function(uid) {
+            if ($scope.profileForm.$valid) {
+                userFactory.changeUsername(uid, $scope.username);
             }
         }
 

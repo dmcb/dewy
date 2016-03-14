@@ -25,15 +25,18 @@
                     <div class="field">
                         <label>Existing password</label>
                         <input type="password" ng-model="passwordExisting" name="password-existing" />
+                        <span class="error" ng-if="error.existingPassword">{{ error.existingPassword }}</span>
                     </div>
                     <hr/>
                     <div class="field">
                         <label>New email</label>
                         <input type="text" ng-model="email" name="email" />
+                        <span class="error" ng-if="error.email">{{ error.email }}</span>
                     </div>
                     <div class="field">
                         <label>New password</label>
                         <input type="password" ng-model="passwordNew" name="password-new" />
+                        <span class="error" ng-if="error.password">{{ error.password }}</span>
                     </div>
                     <div class="field">
                         <label>Confirm password</label>
