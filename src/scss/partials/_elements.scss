@@ -76,6 +76,11 @@ button, a.button {
     }
 }
 
+form {
+    position: relative;
+    @include clearfix;
+}
+
 span.error {
     color: $blue;
     display: block;

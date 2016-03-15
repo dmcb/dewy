@@ -1,19 +1,43 @@
 var controllers = angular.module('dewyControllers', []);
 
-controllers.controller('accountController', ['$scope', '$rootScope', 'userFactory',
-	function ($scope, $rootScope, userFactory) {
+controllers.controller('accountController', ['$scope', '$timeout', '$rootScope', 'userFactory',
+	function ($scope, $timeout, $rootScope, userFactory) {
 		$scope.cancel = function() {
 			window.history.back();
 		}
+		$scope.check = function(uid, field) {
+			if ($scope.accountForm[field].$valid) {
+				var post = {};
+				if (field == 'email') {
+					post = {email: $scope.email}
+				}
+				else if (field == 'password') {
+					post = {password: $scope.password}
+				}
+				userFactory.checkAccount(uid, post)
+				.success(function(result) {
+					if (!('error' in $scope)) {
+						$scope.error = {};
+					}
+					$scope.error[field] = result.error;
+				});
+			}
+		}
 		$scope.submitAccount = function(uid) {
             if ($scope.accountForm.$valid) {
-           		userFactory.changeAccount(uid, $scope.passwordExisting, $scope.email, $scope.passwordNew)
+           		userFactory.changeAccount(uid, $scope.passwordExisting, $scope.email, $scope.password)
 				.success(function(result) {
-
+					$scope.accountSubmitMessage = 'Success';
+					$scope.accountSubmitStatus = 'success';
+					$scope.accountSubmit = true;
+					$timeout(function() {
+						$scope.accountSubmit = false;
+						$scope.accountSubmitStatus = 'submitting';
+					},1500);
 				})
 				.error(function(error, status) {
 					if (status != '400') {
-						$scope.message = 'Dewy could not update your account at this time.';
+						$scope.error.error = 'Dewy could not update your account at this time.';
 					} else {
 						$scope.error = error;
 					}
@@ -240,28 +264,26 @@ controllers.controller('filterController', ['$scope', '$location', 'filterFactor
 controllers.controller('manageController', ['$scope', '$timeout', '$moment', 'sites', 'user', 'sitesFactory', 'userFactory',
 	function ($scope, $timeout, $moment, sites, user, sitesFactory, userFactory) {
 		$scope.auditSite = function(index) {
-			$scope.sites[index].auditingMessage = 'Auditing...';
-			$scope.sites[index].auditing = true;
+			$scope.sites[index].submitMessage = 'Auditing...';
+			$scope.sites[index].submit = true;
 
 			return sitesFactory.audit($scope.sites[index].sid)
 			.error(function(error, status) {
-				$scope.sites[index].auditingMessage = 'Error: ' + $scope.sites[index].audited.error;
-				$scope.sites[index].auditingStatus = 'error'; 
+				$scope.sites[index].submitMessage = 'Error: ' + $scope.sites[index].audited.error;
+				$scope.sites[index].submitStatus = 'error'; 
 				$timeout(function() {
-					$scope.sites[index].auditing = false;
-					$scope.sites[index].auditingStatus = 'auditing';
+					$scope.sites[index].submit = false;
+					$scope.sites[index].submitStatus = 'submitting';
 				},1500);
 				$scope.sites[index].audited.date = $moment().fromNow();
 				$scope.sites[index].audited.error = error.statusCode;
 			})
 			.success(function(result) {
-				// Todo: add more visual feedback for user
-				console.log(result);
-				$scope.sites[index].auditingMessage = 'Success';
-				$scope.sites[index].auditingStatus = 'success';
+				$scope.sites[index].submitMessage = 'Success';
+				$scope.sites[index].submitStatus = 'success';
 				$timeout(function() {
-					$scope.sites[index].auditing = false;
-					$scope.sites[index].auditingStatus = 'auditing';
+					$scope.sites[index].submit = false;
+					$scope.sites[index].submitStatus = 'submitting';
 					var successfulSite = $scope.sites.splice(index, 1);
 				},1500);
 			});

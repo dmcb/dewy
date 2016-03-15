@@ -272,8 +272,12 @@ factories.factory('userFactory', ['$http', function($http) {
 			email: newEmail,
 			password: newPassword
 		}
-		console.log(update);
 		return $http.put(apiUrl + '/users/' + uid, update);
+	}
+
+	userFactory.checkAccount = function(uid, post) {
+		post.check = true;
+		return $http.put(apiUrl + '/users/' + uid, post);
 	}
 
 	userFactory.changeProfile = function(uid, username) {
