@@ -144,6 +144,11 @@ factories.factory('moduleFactory', ['$http', function($http) {
 		return $http.get(apiUrl + '/modules/_filter/' + fid)
 			.then(function (response) {
 
+				// Calculate values
+				for (var i in response.data) {
+					response.data[i].installRate = Math.round(response.data[i].totalInstalls / response.data[i].total * 100);
+				}
+
 				return response.data;
 			});
 	}

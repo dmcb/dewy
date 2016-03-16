@@ -438,6 +438,21 @@ controllers.controller('overviewContentController', ['$scope',
 
 controllers.controller('overviewModulesController', ['$scope',
 	function ($scope) {
+		$scope.changeSorting = function(column) {
+			var sort = $scope.sort;
+
+			if (sort.column == column) {
+				sort.descending = !sort.descending;
+			} else {
+				sort.column = column;
+				sort.descending = false;
+			}
+		}
+		
+	    $scope.sort = {
+	        column: 'title',
+	        descending: false
+	    };
 }]);
 
 controllers.controller('overviewSitesController', ['$scope', 'sitesFactory', 
