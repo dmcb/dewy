@@ -143,7 +143,6 @@ factories.factory('moduleFactory', ['$http', function($http) {
 	moduleFactory.getAll = function(fid) {
 		return $http.get(apiUrl + '/modules/_filter/' + fid)
 			.then(function (response) {
-				console.log(response.data);
 
 				return response.data;
 			});
