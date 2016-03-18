@@ -535,6 +535,7 @@ section.main {
                     li {
                         width: 25%;
                         float: left;
+                        padding: 0;
 
                         @include breakpoint($tablet) {
                             @include float-span(6);

@@ -3,9 +3,10 @@
         <ul class="site">
             <li class="title"><a href="" ng-class="{selected: sort.column=='title', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('title')">{{filteredModules.length}} modules</a></li>
             <ul class="variables">
+                <li class="securityUpdates"><a href="" ng-class="{selected: sort.column=='securityUpdates', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('securityUpdates')">Security updates</a></li>
+                <li class="updates"><a href="" ng-class="{selected: sort.column=='updates', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('updates')">Updates</a></li>
                 <li class="installRate"><a href="" ng-class="{selected: sort.column=='installRate', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('installRate')">Enabled rate</a></li>
-                <li class="installed"><a href="" ng-class="{selected: sort.column=='installed', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('installed')">Sites Installed</a></li>
-                <li class="available"><a href="" ng-class="{selected: sort.column=='available', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('available')">Sites Available</a></li>
+                <li class="total"><a href="" ng-class="{selected: sort.column=='total', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('total')">Available to</a></li>
             </ul>
         </ul>
     </div>
@@ -14,14 +15,17 @@
             <ul class="site">
                 <li class="title" ng-class="{open: openModule.sid == site.sid && !openModule.detail}"><a href="" ng-click="openDetails(modules.indexOf(module))"><span class="title">{{module.module}}</span></a></li>
                 <ul class="variables">
+                    <li class="securityUpdates" ng-class="{open: openModule.sid == site.sid && openModule.detail == 'securityUpdates'}">
+                        <a href="" ng-click="openDetails(modules.indexOf(module), 'securityUpdates')">{{module.securityUpdates}} sites</a>
+                    </li>
+                    <li class="updates" ng-class="{open: openModule.sid == site.sid && openModule.detail == 'updates'}">
+                        <a href="" ng-click="openDetails(modules.indexOf(module), 'updates')">{{module.updates}} sites</a>
+                    </li>
                     <li class="installRate" ng-class="{open: openModule.sid == site.sid && openModule.detail == 'installRate'}">
                         <a href="" ng-click="openDetails(modules.indexOf(module), 'installRate')">{{module.installRate}}%</a>
                     </li>
-                    <li class="installed" ng-class="{open: openModule.sid == site.sid && openModule.detail == 'installed'}">
-                        <a href="" ng-click="openDetails(modules.indexOf(module), 'installed')">{{module.totalInstalls}}</a>
-                    </li>
-                    <li class="available" ng-class="{open: openModule.sid == site.sid && openModule.detail == 'available'}">
-                        <a href="" ng-click="openDetails(modules.indexOf(module), 'available')">{{module.total}}</a>
+                    <li class="total" ng-class="{open: openModule.sid == site.sid && openModule.detail == 'total'}">
+                        <a href="" ng-click="openDetails(modules.indexOf(module), 'total')">{{module.total}} sites</a>
                     </li>
                 </ul>
             </ul>
