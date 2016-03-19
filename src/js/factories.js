@@ -147,6 +147,10 @@ factories.factory('moduleFactory', ['$http', function($http) {
 				// Calculate values
 				for (var i in response.data) {
 					response.data[i].installRate = Math.round(response.data[i].totalInstalls / response.data[i].total * 100);
+					response.data[i].totalVersions = 0;
+					for (var j in response.data[i].versions) {
+						response.data[i].totalVersions = response.data[i].totalVersions + 1;
+					}
 				}
 
 				return response.data;

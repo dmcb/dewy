@@ -13,21 +13,55 @@
     <div class="sites">
         <div ng-repeat="module in filteredModules = (modules | filter:query) | orderBy:sort.column:sort.descending" class="site">
             <ul class="site">
-                <li class="title" ng-class="{open: openModule.sid == site.sid && !openModule.detail}"><a href="" ng-click="openDetails(modules.indexOf(module))"><span class="title">{{module.module}}</span></a></li>
+                <li class="title" ng-class="{open: openModule.module == module.module && !openModule.detail}"><a href="" ng-click="openDetails(modules.indexOf(module))"><span class="title">{{module.module}}</span><span class="url" ng-show="module.totalVersions > 1">{{module.totalVersions}} versions on your sites</span></a></a></li>
                 <ul class="variables">
-                    <li class="securityUpdates" ng-class="{open: openModule.sid == site.sid && openModule.detail == 'securityUpdates'}">
+                    <li class="securityUpdates" ng-class="{open: openModule.module == module.module && openModule.detail == 'securityUpdates'}">
                         <a href="" ng-click="openDetails(modules.indexOf(module), 'securityUpdates')">{{module.securityUpdates}} sites</a>
                     </li>
-                    <li class="updates" ng-class="{open: openModule.sid == site.sid && openModule.detail == 'updates'}">
+                    <li class="updates" ng-class="{open: openModule.module == module.module && openModule.detail == 'updates'}">
                         <a href="" ng-click="openDetails(modules.indexOf(module), 'updates')">{{module.updates}} sites</a>
                     </li>
-                    <li class="installRate" ng-class="{open: openModule.sid == site.sid && openModule.detail == 'installRate'}">
+                    <li class="installRate" ng-class="{open: openModule.module == module.module && openModule.detail == 'installRate'}">
                         <a href="" ng-click="openDetails(modules.indexOf(module), 'installRate')">{{module.installRate}}%</a>
                     </li>
-                    <li class="total" ng-class="{open: openModule.sid == site.sid && openModule.detail == 'total'}">
+                    <li class="total" ng-class="{open: openModule.module == module.module && openModule.detail == 'total'}">
                         <a href="" ng-click="openDetails(modules.indexOf(module), 'total')">{{module.total}} sites</a>
                     </li>
                 </ul>
             </ul>
+            <div class="detail-view" ng-if="openModule.module == module.module">
+                <div ng-if="!openModule.detail">
+                    <ul class="tags" ng-if="openModule.tags.length">
+                        <li ng-repeat="tag in openModule.tags">{{tag}} <a href="" ng-click="deleteTag($index, sites.indexOf(site))"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></li>
+                    </ul>
+                    <form name="tagForm{{sites.indexOf(site)}}" ng-submit="addTags(sites.indexOf(site))">
+                        <input placeholder="Tags seperated by commas" name="tags" ng-model="tags" required />
+                        <button type="submit">Add tags</button>
+                        <span class="error" ng-show="tagForm{{sites.indexOf(site)}}.tags.$error.required && (tagForm{{sites.indexOf(site)}}.tags.$touched || tagForm{{sites.indexOf(site)}}.$submitted)">Please enter a tag.</span>
+                    </form>
+                </div>
+                <ul ng-if="openModule.detail == 'complexity'">
+                    <li><span class="number">{{}}</span> modules enabled</li>
+                    <li><span class="number">{{}}</span> modules available</li>
+                    <li><span class="number">{{}}</span> content types</li>
+                    <li><span class="number">{{}}</span> roles</li>
+                </ul>
+                <ul ng-if="openModule.detail == 'size'">
+                    <li><span class="number">{{}}</span> nodes</li>
+                    <li><span class="number">{{}}</span> users</li>
+                    <li><span class="number">{{}}</span> files</li>
+                    <li><span class="number">{{}}</span> words</li>
+                </ul>
+                <ul ng-if="openModule.detail == 'activity'">
+                    <li><span class="number">{{}}</span> since last visit</li>
+                    <li><span class="number">{{}}</span> since last access</li>
+                    <li><span class="number">{{}}</span> since last modification</li>
+                </ul>
+                <ul ng-if="openModule.detail == 'health'">
+                    <li><span class="number">{{}}</span> modules out of date</li>
+                    <li><span class="number">{{}}</span> database updates pending</li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
