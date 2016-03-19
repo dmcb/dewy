@@ -492,73 +492,78 @@ section.main {
             }
 
             ul.site {
-                li.title {
-                    background-color: $white;
-                    width: 50%;
-                    position: absolute;
-                    z-index: 1;
-
-                    &:after {
-                        background: -webkit-linear-gradient(90deg, rgba($grey, 0.5), rgba($grey, 0));
-                        background: -moz-linear-gradient(90deg, rgba($grey, 0.5), rgba($grey, 0));
-                        background: -o-linear-gradient(90deg, rgba($grey, 0.5), rgba($grey, 0));
-                        background: linear-gradient(90deg, rgba($grey, 0.5), rgba($grey, 0));
+                @include clearfix;
+                
+                @include layout(24, 0) {
+                    li.title {
+                        background-color: $white;
+                        width: 50%;
                         position: absolute;
-                        content: "";
-                        top: 0;
-                        right: -1em;
-                        width: 1em;
-                        height: 3.5em;
                         z-index: 1;
-                    }
-
-                    @include breakpoint($tablet) {
-                        @include grid-span(10,1);
-                        position: relative;
-                        z-index: 0;
 
                         &:after {
-                            display: none;
+                            background: -webkit-linear-gradient(90deg, rgba($grey, 0.5), rgba($grey, 0));
+                            background: -moz-linear-gradient(90deg, rgba($grey, 0.5), rgba($grey, 0));
+                            background: -o-linear-gradient(90deg, rgba($grey, 0.5), rgba($grey, 0));
+                            background: linear-gradient(90deg, rgba($grey, 0.5), rgba($grey, 0));
+                            position: absolute;
+                            content: "";
+                            top: 0;
+                            right: -1em;
+                            width: 1em;
+                            height: 3.5em;
+                            z-index: 1;
+                        }
+
+                        @include breakpoint($tablet) {
+                            @include grid-span(9,1);
+                            position: relative;
+                            z-index: 0;
+
+                            &:after {
+                                display: none;
+                            }
                         }
                     }
-                }
-                    
-                ul.variables {
-                    margin-left: 40%;
-                    width: 75%;
+                        
+                    ul.variables {
+                        margin-left: 35%;
+                        width: 75%;
 
-                    @include breakpoint($tablet) {
-                        @include grid-span(14,11);
-                        z-index: 0;
+                        @include breakpoint($tablet) {
+                            @include grid-span(15,10);
+                            z-index: 0;
+                        }
+
+                        li {
+                            width: 25%;
+                            float: left;
+                            padding: 0;
+
+                            @include breakpoint($tablet) {
+                                @include float-span(6);
+
+                                &:nth-child(4) {
+                                    @include float-span(6,'last');
+                                }
+                            }
+
+                            a {
+                                width: 100%;
+                                display: block;
+                                padding-left: 1em;
+                                padding-right: 0;
+                                font-weight: bold;
+                            }
+                        }
                     }
 
                     li {
-                        width: 25%;
-                        float: left;
-                        padding: 0;
-
-                        @include breakpoint($tablet) {
-                            @include float-span(6);
-
-                            &:nth-child(4) {
-                                @include float-span(6,'last');
-                            }
-                        }
+                        position: relative;
 
                         a {
-                            width: 100%;
-                            display: block;
-                            padding-left: 1em;
-                            padding-right: 0;
+                            padding: 0.75em 1em;
                         }
-                    }
-                }
-
-                li {
-                    position: relative;
-
-                    a {
-                        padding: 0.75em 1em;
                     }
                 }
             }
@@ -572,7 +577,7 @@ section.main {
                     width: 100%;
                 }
 
-                ul li {
+                ul.site li.title, ul.site ul.variables li {
                     &.title:after {
                         height: 2em;
                     }
@@ -584,6 +589,7 @@ section.main {
                         width: 100%;
                         height: 100%;
                         padding: 0.5em 1em;
+                        font-weight: normal;
 
                         &:hover {
                             color: $light-grey;
@@ -651,7 +657,7 @@ section.main {
                                 display: inline-block;
                                 border-radius: 0.75em;
                                 transition: opacity 0.3s;
-                                font-size: 0.8em;
+                                font-size: 0.9em;
                             }
 
                             &.title {
