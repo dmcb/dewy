@@ -5,21 +5,16 @@ controllers.controller('accountController', ['$scope', '$timeout', '$rootScope',
 		$scope.cancel = function() {
 			window.history.back();
 		}
-		$scope.check = function(uid, field) {
-			if ($scope.accountForm[field].$valid) {
+		$scope.check = function(uid, form, field) {
+			if ($scope[form][field].$valid) {
 				var post = {};
-				if (field == 'email') {
-					post = {email: $scope.email}
-				}
-				else if (field == 'password') {
-					post = {password: $scope.password}
-				}
+				post[field] = $scope[field];
 				userFactory.checkAccount(uid, post)
 				.success(function(result) {
-					if (!('error' in $scope)) {
-						$scope.error = {};
+					if (!('error' in $scope[form])) {
+						$scope[form].error = {};
 					}
-					$scope.error[field] = result.error;
+					$scope[form].error[field] = result.error;
 				});
 			}
 		}
@@ -37,16 +32,32 @@ controllers.controller('accountController', ['$scope', '$timeout', '$rootScope',
 				})
 				.error(function(error, status) {
 					if (status != '400') {
-						$scope.error.error = 'Dewy could not update your account at this time.';
+						$scope.accountForm.error = {error: 'Dewy could not update your account at this time.'};
 					} else {
-						$scope.error = error;
+						$scope.accountForm.error = error;
 					}
 				});
             }
         }
 		$scope.submitProfile = function(uid) {
             if ($scope.profileForm.$valid) {
-                userFactory.changeUsername(uid, $scope.username);
+                userFactory.changeProfile(uid, $scope.username)
+				.success(function(result) {
+					$scope.profileSubmitMessage = 'Success';
+					$scope.profileSubmitStatus = 'success';
+					$scope.profileSubmit = true;
+					$timeout(function() {
+						$scope.profileSubmit = false;
+						$scope.profileSubmitStatus = 'submitting';
+					},1500);
+				})
+				.error(function(error, status) {
+					if (status != '400') {
+						$scope.profileForm = {error: 'Dewy could not update your profile at this time.'};
+					} else {
+						$scope.profileForm = error;
+					}
+				});
             }
         }
 

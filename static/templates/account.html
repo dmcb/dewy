@@ -4,6 +4,7 @@
         <section class="user-info">
             <h3>User information</h3>
             <form name="profileForm" ng-submit="submitProfile(currentUser.uid)">
+                <div class="load" ng-if="profileSubmit"><span class="load-message" ng-class="{error: profileSubmitStatus == 'error', success: profileSubmitStatus == 'success'}">{{profileSubmitMessage}}</span></div>
                 <fieldset>
                     <div class="gravatar">
                         <img src="http://www.gravatar.com/avatar/{{currentUser.gravatar}}?s=240" alt="Gravatar"/>
@@ -11,8 +12,9 @@
                     </div>
                     <div class="field">
                         <label>Your username</label>
-                        <input type="text" ng-model="username" name="username" required />
+                        <input type="text" ng-model="username" name="username" ng-change="check(currentUser.uid, 'profileForm', 'username')" />
                         <span class="error" ng-if="profileForm.username.$error.required && (profileForm.username.$touched || profileForm.$submitted)">A username is required.</span>
+                        <span class="error" ng-if="profileForm.error.username">{{ profileForm.error.username }}</span>
                     </div>
                     <button ng-click="">Update profile <span class="glyphicon glyphicon-save" aria-hidden="true"></span></button>
                 </fieldset>
@@ -27,25 +29,25 @@
                         <label>Existing password</label>
                         <input type="password" ng-model="passwordExisting" name="passwordExisting" required />
                         <span class="error" ng-if="!error.existingPassword && accountForm.passwordExisting.$error.required && (accountForm.passwordExisting.$touched || accountForm.$submitted)">Your existing password is required.</span>
-                        <span class="error" ng-if="error.existingPassword">{{ error.existingPassword }}</span>
+                        <span class="error" ng-if="accountForm.error.existingPassword">{{ accountForm.error.existingPassword }}</span>
                     </div>
                     <hr/>
                     <div class="field">
                         <label>New email</label>
-                        <input type="text" ng-model="email" name="email" ng-change="check(currentUser.uid, 'email')" />
-                        <span class="error" ng-if="error.email">{{ error.email }}</span>
+                        <input type="text" ng-model="email" name="email" ng-change="check(currentUser.uid, 'accountForm', 'email')" />
+                        <span class="error" ng-if="accountForm.error.email">{{ accountForm.error.email }}</span>
                     </div>
                     <div class="field">
                         <label>New password</label>
-                        <input type="password" ng-model="password" name="password" ng-change="check(currentUser.uid, 'password')" />
-                        <span class="error" ng-if="error.password">{{ error.password }}</span>
+                        <input type="password" ng-model="password" name="password" ng-change="check(currentUser.uid, 'accountForm', 'password')" />
+                        <span class="error" ng-if="accountForm.error.password">{{ accountForm.error.password }}</span>
                     </div>
                     <div class="field">
                         <label>Confirm password</label>
                         <input type="password" ng-model="passwordConfirm" name="passwordConfirm" match="password" />
                         <span class="error" ng-if="accountForm.passwordConfirm.$error.match && (accountForm.passwordConfirm.$touched || accountForm.$submitted)">Passwords do not match.</span>
                     </div>
-                    <span class="error" ng-if="error.error">{{ error.error }}</span>
+                    <span class="error" ng-if="accountForm.error.error">{{ accountForm.error.error }}</span>
                     <button ng-click="">Update account<span class="glyphicon glyphicon-save" aria-hidden="true"></span></button>
                 </fieldset>
             </form>
