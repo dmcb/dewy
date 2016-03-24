@@ -353,15 +353,8 @@ controllers.controller('signupController', ['authService', '$scope', '$http',
 			if ($scope.form[field].$valid) {
 				var url = 'http://dewy.io/auth/signup';
 				var post = {};
-				if (field == 'username') {
-					post = {username: $scope.username}
-				}
-				else if (field == 'email') {
-					post = {email: $scope.email}
-				}
-				else if (field == 'password') {
-					post = {password: $scope.password}
-				}
+				post[field] = $scope[field];
+				post['check'] = true;
 				$http.post(url, post)
 				.success(function(result) {
 					if (!('error' in $scope)) {
