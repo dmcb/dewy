@@ -3,213 +3,220 @@ header {
     border-top: 5px solid $blue;
     background-color: $light-grey;
 
-    nav {
-        #menu-toggle-value + div {
-            display: none;
+    .shell {
 
-            @include breakpoint($tablet) {
-                display: block;
-            }
-        }
+    }
 
-        #menu-toggle-value:checked + div {
+    #menu-toggle-value + div {
+        display: none;
+
+        @include breakpoint($tablet) {
             display: block;
         }
+    }
 
-        ul {
-            text-align: right;
+    #menu-toggle-value:checked + div {
+        display: block;
+    }
 
-            @include breakpoint($tablet) {
-                @include grid-span(24,1);
-            }
+    ul {
+        margin-left: -16px;
+        margin-right: -16px;
+        text-align: right;
+        background-color: $blue;
 
-            li {
-                display: inline;
-                position: relative;
+        li {
+            display: inline;
+            position: relative;
 
-                a {
-                    text-align: center;
-                    display: block;
-                    padding: 1.25em 1em;
-                    margin-top: 0.5em;
-                    width: 100%;
+            a {
+                color: $white;
+                text-align: center;
+                display: block;
+                padding: 1.25em 1em;
+                width: 100%;
+                font-size: 1.2em;
 
-                    font-size: 1.2em;
+                &.icon {
+                    padding-left: 3.5em;
+                }
+
+                &:hover {
+                    color: $blue;
+                    background-color: $white;
 
                     @include breakpoint($tablet) {
-                        display: inline-block;
-                        width: auto;
-                        background-color: transparent;
-                        border-radius: none;
-                        margin-top: 0;
-                        font-size: 1em;
-                    }
-
-                    &.icon {
-                        padding-left: 3.5em;
-                    }
-
-                    &:hover {
-                        color: $blue;
-                        background-color: $white;
-
-                        @include breakpoint($tablet) {
-                            color: $dark-blue;
-                            background-color: transparent;
-                        }
-                    }
-
-                    &.selected {
-                        background-color: $white;
                         color: $dark-blue;
-                    }
-
-                    img {
-                        max-width: 2em;
-                        border-radius: 1em;
-                        margin-right: 0.5em;
-                        left: 1em;
-                        margin-top: -0.5em;
-                        position: absolute;
-                    }
-
-                    &.drop {
-                        padding-right: 1.9em;
-                        display: none;
-
-                        @include breakpoint($tablet) {
-                            display: inline-block;
-                        }
-
-                        &:after {
-                            @include add-arrow(down, 0.4em);
-                        }
+                        background-color: transparent;
                     }
                 }
 
-                &.dropped {
+                img {
+                    max-width: 2em;
+                    border-radius: 1em;
+                    margin-right: 0.5em;
+                    left: 1em;
+                    margin-top: -0.5em;
+                    position: absolute;
+                }
 
-                    > a {
-                        background-color: $white;
-                        color: $dark-blue;
+                &.drop {
+                    padding-right: 1.9em;
+                    display: none;
+
+                    @include breakpoint($tablet) {
+                        display: inline-block;
                     }
-                        
-                    .dropdown {
-                        display: block;
+
+                    &:after {
+                        @include add-arrow(down, 0.4em);
                     }
+                }
+            }
+
+            &.dropped {
+
+                > a {
+                    background-color: $white;
+                    color: $dark-blue;
+                }
+                    
+                .dropdown {
+                    display: block;
+                }
+            }
+        }
+
+        &.dropdown {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            z-index: 1;
+
+            li a {
+                display: block;
+
+                @include breakpoint($tablet) {
+                    text-align: left;
+                }
+            }
+        }
+
+        &.home li a {
+            border-radius: 0.25em;
+
+            &:hover {
+                background-color: $white;
+                color: $blue;
+            }
+        }
+
+        @include breakpoint($tablet) {
+            @include grid-span(24,1);
+            margin-left: 0;
+            margin-right: 0;
+            background-color: transparent;
+
+            li a {
+                color: $blue;
+                display: inline-block;
+                width: auto;
+                background-color: transparent;
+                border-radius: none;
+                font-size: 1em;
+
+                &.selected {
+                    background-color: $white;
+                    color: $dark-blue;
                 }
             }
 
             &.dropdown {
-                margin: 0;
-                padding: 0;
                 background-color: $light-grey;
-                width: 100%;
-                z-index: 1;
-
-                li a {
-                    display: block;
-
-                    @include breakpoint($tablet) {
-                        text-align: left;
-                    }
-                }
-
-                @include breakpoint($tablet) {
-                    position: absolute;
-                    display: none;
-                    right: 0;
-                    text-align: left;
-                    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
-                }
+                position: absolute;
+                display: none;
+                right: 0;
+                text-align: left;
+                box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
             }
 
             &.home {
                 margin-top: 1em;
                 margin-bottom: 1em;
-
+                
                 li a {
-                    border-radius: 0.25em;
-
                     &:hover {
-                        background-color: $white;
-                        color: $blue;
+                        background-color: transparent;
+                        color: $light-blue;
                     }
 
-                    @include breakpoint($tablet) {
+                    &.important {
+                        border: 3px $white solid;
+                        border-radius: 0.6em;
+                        padding: 0.25em 1em;
+
                         &:hover {
-                            background-color: transparent;
-                            color: $light-blue;
-                        }
-
-                        &.important {
-                            border: 3px $white solid;
-                            border-radius: 0.6em;
-                            padding: 0.25em 1em;
-
-                            &:hover {
-                                background-color: $white;
-                                color: $blue;
-                            }
+                            background-color: $white;
+                            color: $blue;
                         }
                     }
                 }
             }
         }
+    }
 
-        .logo {
-            @include grid-span(4,1);
-            margin-top: 0.75em;
+    .logo {
+        @include grid-span(4,1);
+        margin-top: 0.75em;
 
-            @include breakpoint($tablet) {
-                position: absolute;
-            }
-
-            img {
-                max-height: 36px;
-
-                @include breakpoint($tablet) {
-                    max-height: 33px;
-                }
-
-                @include breakpoint($desktop) {
-                    max-height: 35px;
-                }
-
-                @include breakpoint($desktop-medium) {
-                    max-height: 37px;
-                }
-
-                @include breakpoint($desktop-large) {
-                    max-height: 41px;
-                }
-
-                @include breakpoint($desktop-extra-large) {
-                    max-height: 43px;
-                }
-            }
-        }
-
-        #menu-toggle {
-            color: $blue;
-            cursor: pointer;
-            float: right;
-            margin-top: 1em;
-
-            span {
-                font-size: 2em;
-            }
-        
-            @include breakpoint($tablet) {
-                display: none;
-            }
-        }
-
-        #menu-toggle-value {
-            visibility: hidden;
-            height: 0;
-            width: 0;
+        @include breakpoint($tablet) {
             position: absolute;
         }
+
+        img {
+            max-height: 36px;
+
+            @include breakpoint($tablet) {
+                max-height: 33px;
+            }
+
+            @include breakpoint($desktop) {
+                max-height: 35px;
+            }
+
+            @include breakpoint($desktop-medium) {
+                max-height: 37px;
+            }
+
+            @include breakpoint($desktop-large) {
+                max-height: 41px;
+            }
+
+            @include breakpoint($desktop-extra-large) {
+                max-height: 43px;
+            }
+        }
+    }
+
+    #menu-toggle {
+        color: $blue;
+        cursor: pointer;
+        float: right;
+        margin-top: 1em;
+
+        span {
+            font-size: 2em;
+        }
+    
+        @include breakpoint($tablet) {
+            display: none;
+        }
+    }
+
+    #menu-toggle-value {
+        visibility: hidden;
+        height: 0;
+        width: 0;
+        position: absolute;
     }
 }

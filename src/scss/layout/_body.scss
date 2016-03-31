@@ -63,12 +63,29 @@ body {
             background-color: transparent;
             color: $light-blue;
 
-            ul li a {
-                color: $white;
+            ul {
+                background-color: $white;
 
-                &:hover {
-                    color: $light-blue;
+                li a {
+                    color: $blue;
+
+                    &:hover {
+                        color: $white;
+                        background-color: $blue;
+                    }
+                }
+
+                @include breakpoint($tablet) {
                     background-color: transparent;
+
+                    li a {
+                        color: $white;
+
+                        &:hover {
+                            color: $light-blue;
+                            background-color: transparent;
+                        }
+                    }
                 }
             }
         }

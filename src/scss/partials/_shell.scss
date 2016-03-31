@@ -5,7 +5,7 @@
     padding-left: 16px;
     padding-right: 16px;
 
-    @include breakpoint($mobile-large) {
+    @include breakpoint($tablet) {
         padding-left: gutter-span(1);
         padding-right: gutter-span(1);
     }
