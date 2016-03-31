@@ -131,6 +131,16 @@ section.feature {
     section {
         border-bottom: solid 1px $light-blue;
 
+        &.notifications {
+            h2, p {
+                width: 100%;
+            }
+
+            p {
+                padding-bottom: 3em;
+            }
+        }
+
         &.getstarted {
             padding-bottom: 5em;
             border-bottom: none;
@@ -150,24 +160,29 @@ section.feature {
                         }
                     }
 
-                    .step {
-                        display: block;
-                        background-color: $blue;
-                        color: $white;
-                        border-radius: 1.5em;
-                        height: 1.5em;
-                        width: 1.5em;
-                        margin-left: auto;
-                        margin-right: auto;
-                        text-align: center;
-                        font-size: 1.5em;
-                    }
+                    span {
+                        line-height: 1.6;
 
-                    .instruction {
-                        text-align: center;
-                        display: block;
-                        margin-top: 2em;
-                        font-weight: bold;
+                        &.step {
+                            display: block;
+                            background-color: $blue;
+                            color: $white;
+                            border-radius: 1.5em;
+                            height: 1.5em;
+                            width: 1.5em;
+                            margin-left: auto;
+                            margin-right: auto;
+                            text-align: center;
+                            font-size: 2em;
+                            font-weight: bold;
+                        }
+
+                        &.instruction {
+                            text-align: center;
+                            display: block;
+                            margin-top: 2em;
+                            font-weight: bold;
+                        }
                     }
                 }
             }
