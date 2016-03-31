@@ -64,6 +64,23 @@ body {
             color: $light-blue;
 
             ul {
+                background-color: transparent;
+
+                li a {
+                    color: $white;
+
+                    &:hover {
+                        color: $light-blue;
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
+
+        header {
+            border-top-color: $white;
+
+            ul {
                 background-color: $white;
 
                 li a {
@@ -74,8 +91,13 @@ body {
                         background-color: $blue;
                     }
                 }
+            }
 
-                @include breakpoint($tablet) {
+            @include breakpoint($tablet) {
+                background-color: transparent;
+                color: $light-blue;
+
+                ul {
                     background-color: transparent;
 
                     li a {
@@ -88,10 +110,6 @@ body {
                     }
                 }
             }
-        }
-
-        header {
-            border-top-color: $white;
 
             #menu-toggle {
                 color: $white;
