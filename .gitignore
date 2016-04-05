@@ -12,5 +12,8 @@ bower_components
 static/css/*.map
 static/js/*.map
 
+# Minified JS
+static/js/*.min.js
+
 # Environment-specific configuration
 config.json
