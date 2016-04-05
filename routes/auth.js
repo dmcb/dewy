@@ -54,5 +54,6 @@ authenticateWithDewy = function() {
 
 router.post('/signon', authenticateWithDewy(), function(req, res) {});
 router.post('/signup', authenticateWithDewy(), function(req, res) {});
+router.post('/verify', authenticateWithDewy(), function(req, res) {});
 
 module.exports = router;
