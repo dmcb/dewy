@@ -5,7 +5,7 @@ module.exports = function(grunt) {
     bower_concat: {
       all: {
         dest: {
-          'js': 'src/js/bower.js'
+          'js': 'static/js/bower.js'
         },
         include: [
           'angular-ui-sortable',
@@ -31,9 +31,10 @@ module.exports = function(grunt) {
       dist : {
         files: [{
           expand: true,
-          cwd: 'src/js',
+          cwd: 'static/js',
           src: ['*.js'],
           dest: 'static/js/',
+          ext: '.min.js'
         }]
       }
     },
@@ -50,7 +51,7 @@ module.exports = function(grunt) {
         },
         files: [{
           expand: true,
-          cwd: 'src/scss/',
+          cwd: 'static/scss/',
           src: ['*.scss'],
           dest: 'static/css/',
           ext: '.css'
@@ -62,12 +63,12 @@ module.exports = function(grunt) {
       grunt: {files: ['Gruntfile.js']},
 
       scripts: {
-        files: 'src/js/**/*.js',
+        files: ['static/js/**/*.js', '!static/js/**/*.min.js'],
         tasks: ['uglify']
       },
 
       sass: {
-        files: 'src/scss/**/*.scss',
+        files: 'static/scss/**/*.scss',
         tasks: ['sass'],
         options: {
           livereload: true,

@@ -1,2 +1,309 @@
-var factories=angular.module("dewyFactories",[]);factories.factory("authInterceptor",["authService","$location","$q","$injector","$window",function(a,b,c,d,e){var f={};return f.request=function(a){return a.headers=a.headers||{},e.localStorage.token?a.headers.Authorization="Bearer "+e.localStorage.token:e.sessionStorage.token&&(a.headers.Authorization="Bearer "+e.sessionStorage.token),a},f.responseError=function(b){if(401==b.status){if(b.data){var e=d.get("$http");c.defer();return a.update(b.data),e(b.config)}console.log("Access denied"),a.signOff()}return c.reject(b)},f}]),factories.factory("authService",["dewySession","$location","$rootScope",function(a,b,c){var d={};return d.currentUser=function(){return a.getUser()},d.isAuthenticated=function(){return!!a.getToken()},d.setUser=function(b){a.setUser(b)},d.signOff=function(){a.destroy(),b.path("/signon")},d.signOn=function(d,e){a.create(d,e),c.$broadcast("auth-signon-success"),b.path("/sites")},d.update=function(b){a.update(b)},d}]),factories.factory("filterFactory",["$http",function(a){var b={},c="http://dewy.io/api";return b.create=function(b){return a.post(c+"/filters",b).then(function(a){return a})},b["delete"]=function(b){return a["delete"](c+"/filters/"+b)},b.getAll=function(){return a.get(c+"/filters").then(function(a){return a.data})},b.getFields=function(){return a.get(c+"/fields/values",{cache:!0}).then(function(a){return a.data})},b.getFilter=function(b){return a.get(c+"/filters/"+b).then(function(a){function b(a){var d,e=a.rules;if(e)for(d=e.length;d--;)b(e[d]);else c++}var c=0;return b(a.data),a.data.count=c,a.data})},b.getOperators=function(){return a.get(c+"/fields/operators",{cache:!0}).then(function(a){return a.data})},b.update=function(b){return a.put(c+"/filters/"+b.fid,b).then(function(a){return a})},b}]),factories.factory("moduleFactory",["$http",function(a){var b={},c="http://dewy.io/api";return b.getAll=function(b){return a.get(c+"/modules/_filter/"+b).then(function(a){for(var b in a.data){a.data[b].installRate=Math.round(a.data[b].totalInstalls/a.data[b].total*100),a.data[b].totalVersions=0;for(var c in a.data[b].versions)a.data[b].totalVersions=a.data[b].totalVersions+1}return a.data})},b}]),factories.factory("sitesFactory",["$http",function(a){var b={},c="http://dewy.io/api";return b.audit=function(b){var d={audit:!0};return a.put(c+"/sites/"+b,d).success(function(a){return a.data}).error(function(a,b){return a})},b["delete"]=function(b){return a["delete"](c+"/sites/"+b)},b.get=function(b,d){return a.get(c+"/sites/"+b).then(function(a){return a.data})},b.getAll=function(b){return a.get(c+"/sites/_filter/"+b).then(function(a){var b={complexity:[],size:[],activity:[],health:[]};for(var c in a.data)for(var d in b)null==b[d].maximum?b[d].maximum=a.data[c].attributes[d]:b[d].maximum<a.data[c].attributes[d]&&(b[d].maximum=a.data[c].attributes[d]),null==b[d].minimum?b[d].minimum=a.data[c].attributes[d]:b[d].minimum>a.data[c].attributes[d]&&(b[d].minimum=a.data[c].attributes[d]);for(var d in b)b[d].increment=(b[d].maximum-b[d].minimum)/9;for(var c in a.data)for(var d in b)b[d].increment?a.data[c][d]=(a.data[c].attributes[d]-b[d].minimum)/b[d].increment+1:a.data[c][d]=1;return a.data})},b.getOffline=function(){return a.get(c+"/sites/_offline").then(function(a){return a.data})},b.getTags=function(){return a.get(c+"/sites/_tags").then(function(a){var b=[];for(var c in a.data)b.push(a.data[c].key[1]);return b})},b.setTags=function(b){var d={tags:b.tags};return a.put(c+"/sites/"+b.sid,d).then(function(a){return a.data})},b}]),factories.factory("userFactory",["$http",function(a){var b={},c="http://dewy.io/api";return b.get=function(){return a.get(c+"/users").then(function(a){return a.data})},b.changeAccount=function(b,d,e,f){var g={existingPassword:d,email:e,password:f};return a.put(c+"/users/"+b,g)},b.checkAccount=function(b,d){return d.check=!0,a.put(c+"/users/"+b,d)},b.changeProfile=function(b,d){var e={username:d};return a.put(c+"/users/"+b,e)},b.resetKey=function(b){var d={key:!0};return a.put(c+"/users/"+b,d).then(function(a){return a.data})},b}]);
-//# sourceMappingURL=factories.js.map
+var factories = angular.module('dewyFactories', []);
+
+factories.factory('authInterceptor', ['authService', '$location', '$q', '$injector', '$window', function(authService, $location, $q, $injector, $window) {
+	var authInterceptor = {};
+
+	authInterceptor.request = function(config) {
+		// If there's a JWT in session, add it to all requests
+		config.headers = config.headers || {};
+		if ($window.localStorage.token) {
+			config.headers.Authorization = 'Bearer ' + $window.localStorage.token;
+		} else if ($window.sessionStorage.token) {
+			config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
+		}
+		return config;
+	}
+
+	authInterceptor.responseError = function(responseError) {
+		// No longer authorized
+		if (responseError.status == 401) {
+			// But if proxy API sent back new access token
+			if (responseError.data) {
+				var $http = $injector.get('$http');
+				var deferred = $q.defer();
+				authService.update(responseError.data);
+                return $http(responseError.config);
+			}
+			else {
+				console.log('Access denied');
+				authService.signOff();
+			}
+		}
+		return $q.reject(responseError);
+	}
+
+	return authInterceptor;
+}]);
+
+factories.factory('authService', ['dewySession', '$location', '$rootScope', function(dewySession, $location, $rootScope) {
+	var authService = {};
+
+	authService.currentUser = function() {
+		return dewySession.getUser();
+	}
+
+	authService.isAuthenticated = function() {
+		return !!dewySession.getToken();
+	}
+
+	authService.setUser = function(user) {
+		dewySession.setUser(user);
+	}
+
+	authService.signOff = function() {
+		dewySession.destroy();
+		$location.path('/signon');
+	}
+
+	authService.signOn = function(payload, remember) {
+		dewySession.create(payload, remember);
+		$rootScope.$broadcast('auth-signon-success');
+		$location.path('/sites');
+	};
+
+	authService.update = function(payload) {
+		dewySession.update(payload);
+	}
+
+	return authService;
+}]);
+
+factories.factory('filterFactory', ['$http', function($http) {
+	var filterFactory = {};
+	var apiUrl = "http://dewy.io/api";
+
+	filterFactory.create = function(filterDoc) {
+		return $http.post(apiUrl + '/filters', filterDoc)
+			.then(function (response) {
+				return response;
+			});
+	}
+
+	filterFactory.delete = function(fid) {
+		return $http.delete(apiUrl + '/filters/' + fid);
+	}
+
+	filterFactory.getAll = function() {
+		return $http.get(apiUrl + '/filters')
+			.then(function (response) {
+				return response.data;
+			});
+	}
+
+	filterFactory.getFields = function() {
+		return $http.get(apiUrl + '/fields/values', {cache: true})
+			.then(function (response) {
+				return response.data;
+			});
+	}
+
+	filterFactory.getFilter = function(fid) {
+		return $http.get(apiUrl + '/filters/' + fid)
+			.then(function (response) {
+				// Count the number of rules
+				var count = 0;
+				function walk(target) {
+					var rules = target.rules, i;
+					if (rules) {
+						i = rules.length;
+						while (i--) {
+							walk(rules[i])
+						}
+					} else {
+						count++;
+					}
+				}
+				walk(response.data);
+				response.data.count = count;
+				return response.data;
+			});
+	}
+
+	filterFactory.getOperators = function() {
+		return $http.get(apiUrl + '/fields/operators', {cache: true})
+			.then(function (response) {
+				return response.data;
+			});
+	}
+
+	filterFactory.update = function(filterDoc) {
+		return $http.put(apiUrl + '/filters/' + filterDoc.fid, filterDoc)
+			.then(function (response) {
+				return response;
+			});
+	}
+
+	return filterFactory;
+}]);
+
+factories.factory('moduleFactory', ['$http', function($http) {
+	var moduleFactory = {};
+	var apiUrl = "http://dewy.io/api";
+
+	moduleFactory.getAll = function(fid) {
+		return $http.get(apiUrl + '/modules/_filter/' + fid)
+			.then(function (response) {
+
+				// Calculate values
+				for (var i in response.data) {
+					response.data[i].installRate = Math.round(response.data[i].totalInstalls / response.data[i].total * 100);
+					response.data[i].totalVersions = 0;
+					for (var j in response.data[i].versions) {
+						response.data[i].totalVersions = response.data[i].totalVersions + 1;
+					}
+				}
+
+				return response.data;
+			});
+	}
+
+	return moduleFactory;
+}]);
+
+factories.factory('sitesFactory', ['$http', function($http) {
+	var sitesFactory = {};
+	var apiUrl = "http://dewy.io/api";
+
+	sitesFactory.audit = function(sid) {
+		var update = {
+			audit: true
+		};
+		return $http.put(apiUrl + '/sites/' + sid, update)
+			.success(function (response) {
+				return response.data;
+			})
+			.error(function (error, status) {
+				return error;
+			});
+	}
+
+	sitesFactory.delete = function(sid) {
+		return $http.delete(apiUrl + '/sites/' + sid);
+	}
+
+	sitesFactory.get = function(sid, detail) {
+		return $http.get(apiUrl + '/sites/' + sid)
+			.then(function (response) {
+				return response.data;
+			});
+	}
+
+	sitesFactory.getAll = function(fid) {
+		return $http.get(apiUrl + '/sites/_filter/' + fid)
+			.then(function (response) {
+
+				// Loop through all sites and determine absolute values of attributes
+				var attributes = {'complexity': [], 'size': [], 'activity': [], 'health': []};
+
+				for (var i in response.data) {
+
+					for (var attribute in attributes) {
+						if (attributes[attribute]['maximum'] == null) {
+							attributes[attribute]['maximum'] = response.data[i].attributes[attribute];
+						} else if (attributes[attribute]['maximum'] < response.data[i].attributes[attribute]) {
+							attributes[attribute]['maximum'] = response.data[i].attributes[attribute];
+						}
+						if (attributes[attribute]['minimum'] == null) {
+							attributes[attribute]['minimum'] = response.data[i].attributes[attribute];
+						} else if (attributes[attribute]['minimum'] > response.data[i].attributes[attribute]) {
+							attributes[attribute]['minimum'] = response.data[i].attributes[attribute];
+						}
+					}
+				}
+
+				// Determine how much value is in a dot from range of attribute values
+				for (var attribute in attributes) {
+					attributes[attribute]['increment'] = (attributes[attribute]['maximum'] - attributes[attribute]['minimum']) / 9;
+				}
+
+				// Set normalized values
+				for (var i in response.data) {
+					for (var attribute in attributes) {
+						if (!attributes[attribute]['increment']) {
+							response.data[i][attribute] = 1;
+						} 
+						else {
+							response.data[i][attribute] = ((response.data[i].attributes[attribute] - attributes[attribute]['minimum']) / attributes[attribute]['increment']) + 1;
+						}
+					}
+				}
+
+				return response.data;
+			});
+	}
+
+	sitesFactory.getOffline = function() {
+		return $http.get(apiUrl + '/sites/_offline')
+			.then(function (response) {
+				return response.data;
+			});
+	}
+
+	sitesFactory.getTags = function() {
+		return $http.get(apiUrl + '/sites/_tags')
+			.then(function (response) {
+				var tags = [];
+				for (var i in response.data) {
+					tags.push(response.data[i].key[1]);
+				}
+				return tags;
+			});
+	}
+
+	sitesFactory.setTags = function(site) {
+		var update = {
+			tags: site.tags
+		};
+		return $http.put(apiUrl + '/sites/' + site.sid, update)
+			.then(function (response) {
+				return response.data;
+			});
+	}
+
+	return sitesFactory;
+}]);
+
+factories.factory('userFactory', ['$http', function($http) {
+	var userFactory = {};
+	var apiUrl = "http://dewy.io/api";
+
+	userFactory.get = function() {
+		return $http.get(apiUrl + '/users')
+			.then(function (response) {
+				return response.data;
+			});
+	}
+
+	userFactory.changeAccount = function(uid, existingPassword, newEmail, newPassword) {
+		var update = {
+			existingPassword: existingPassword,
+			email: newEmail,
+			password: newPassword
+		}
+		return $http.put(apiUrl + '/users/' + uid, update);
+	}
+
+	userFactory.checkAccount = function(uid, post) {
+		post.check = true;
+		return $http.put(apiUrl + '/users/' + uid, post);
+	}
+
+	userFactory.changeProfile = function(uid, username) {
+		var update = {
+			username: username
+		}
+		return $http.put(apiUrl + '/users/' + uid, update);
+	}
+
+	userFactory.resetKey = function(uid) {
+		var update = {
+			key: true
+		}
+		return $http.put(apiUrl + '/users/' + uid, update)
+			.then(function (response) {
+				return response.data;
+			});
+	}
+
+	return userFactory;
+}]);

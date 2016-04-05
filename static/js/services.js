@@ -1,2 +1,46 @@
-var services=angular.module("dewyServices",[]);services.service("dewySession",["$window",function(a){this.create=function(b,c){1==c&&(a.localStorage.token=b),a.sessionStorage.token=b},this.destroy=function(){delete a.localStorage.token,delete a.localStorage.user,delete a.sessionStorage.token,delete a.sessionStorage.user},this.getToken=function(){return"token"in a.sessionStorage?a.sessionStorage.token:"token"in a.localStorage?a.localStorage.token:null},this.getUser=function(){return"user"in a.sessionStorage?JSON.parse(a.sessionStorage.user):"user"in a.localStorage?JSON.parse(a.localStorage.user):null},this.setUser=function(b){"user"in a.localStorage&&(a.localStorage.user=JSON.stringify(b)),a.sessionStorage.user=JSON.stringify(b)},this.update=function(b){"token"in a.localStorage&&(a.localStorage.token=b),a.sessionStorage.token=b}}]);
-//# sourceMappingURL=services.js.map
+var services = angular.module('dewyServices', []);
+
+services.service('dewySession', ['$window', function ($window) {
+	this.create = function (result, remember) {
+		if (remember == true) {
+			$window.localStorage.token = result;
+		}
+		$window.sessionStorage.token = result;
+	}
+	this.destroy = function () {
+		delete $window.localStorage.token;
+		delete $window.localStorage.user;
+		delete $window.sessionStorage.token;
+		delete $window.sessionStorage.user;
+	}
+	this.getToken = function() {
+		if ('token' in $window.sessionStorage) {
+			return $window.sessionStorage.token;
+		}
+		else if ('token' in $window.localStorage) {
+			return $window.localStorage.token
+		}
+		return null;
+	}
+	this.getUser = function() {
+		if ('user' in $window.sessionStorage) {
+			return JSON.parse($window.sessionStorage.user);
+		}
+		else if ('user' in $window.localStorage) {
+			return JSON.parse($window.localStorage.user);
+		}
+		return null;
+	}
+	this.setUser = function(user) {
+		if ('user' in $window.localStorage) {
+			$window.localStorage.user = JSON.stringify(user);
+		}
+		$window.sessionStorage.user = JSON.stringify(user);
+	}
+	this.update = function (result) {
+		if ('token' in $window.localStorage) {
+			$window.localStorage.token = result;
+		}
+		$window.sessionStorage.token = result;
+	}
+}]);

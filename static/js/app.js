@@ -1,2 +1,287 @@
-var app=angular.module("dewy",["ngRoute","ngAnimate","ui.sortable","angular-momentjs","validation.match","dewyControllers","dewyFactories","dewyServices","dewyDirectives"]);app.config(["$httpProvider","$routeProvider","$locationProvider",function(a,b,c){c.html5Mode(!0),a.interceptors.push("authInterceptor"),b.when("/account",{templateUrl:"templates/account.html",controller:"accountController",menuItem:"account",requiresAuthorization:!0}).when("/content/:filter?",{templateUrl:"templates/overview.html",controller:"overviewController",menuItem:"overview",requiresAuthorization:!0,resolve:{filters:["filterFactory",function(a){return a.getAll()}],data:["$route","filterFactory","sitesFactory",function(a,b,c){return a.current.params.filter?b.getFilter(a.current.params.filter).then(function(a){return c.getAll(a.fid).then(function(b){return{currentFilter:a,sites:b,view:"content"}})}):c.getAll().then(function(a){return{currentFilter:null,sites:a,view:"content"}})}]}}).when("/filter/:filter?",{templateUrl:"templates/filter.html",controller:"filterController",requiresAuthorization:!0,resolve:{operators:["filterFactory",function(a){return a.getOperators()}],fields:["filterFactory",function(a){return a.getFields()}],filters:["filterFactory",function(a){return a.getAll()}],currentFilter:["$route","filterFactory",function(a,b){return b.getFilter(a.current.params.filter)}],tags:["sitesFactory",function(a){return a.getTags()}]}}).when("/manage",{templateUrl:"templates/manage.html",controller:"manageController",menuItem:"manage",requiresAuthorization:!0,resolve:{sites:["sitesFactory",function(a){return a.getOffline()}],user:["userFactory",function(a){return a.get()}]}}).when("/modules/:filter?",{templateUrl:"templates/overview.html",controller:"overviewController",menuItem:"overview",requiresAuthorization:!0,resolve:{filters:["filterFactory",function(a){return a.getAll()}],data:["$route","filterFactory","moduleFactory",function(a,b,c){return a.current.params.filter?b.getFilter(a.current.params.filter).then(function(a){return c.getAll(a.fid).then(function(b){return{currentFilter:a,modules:b,view:"modules"}})}):c.getAll().then(function(a){return{currentFilter:null,modules:a,view:"modules"}})}]}}).when("/signon",{templateUrl:"templates/signon.html",controller:"signonController",requiresAuthorization:!1,indexPage:!0}).when("/sites/:filter?",{templateUrl:"templates/overview.html",controller:"overviewController",menuItem:"overview",requiresAuthorization:!0,resolve:{filters:["filterFactory",function(a){return a.getAll()}],data:["$route","filterFactory","sitesFactory",function(a,b,c){return a.current.params.filter?b.getFilter(a.current.params.filter).then(function(a){return c.getAll(a.fid).then(function(b){return{currentFilter:a,sites:b,view:"sites"}})}):c.getAll().then(function(a){return{currentFilter:null,sites:a,view:"sites"}})}]}}).when("/users/:filter?",{templateUrl:"templates/overview.html",controller:"overviewController",menuItem:"overview",requiresAuthorization:!0,resolve:{filters:["filterFactory",function(a){return a.getAll()}],data:["$route","filterFactory","sitesFactory",function(a,b,c){return a.current.params.filter?b.getFilter(a.current.params.filter).then(function(a){return c.getAll(a.fid).then(function(b){return{currentFilter:a,sites:b,view:"users"}})}):c.getAll().then(function(a){return{currentFilter:null,sites:a,view:"users"}})}]}}).when("/verify/:uid/:verify",{templateUrl:"templates/verify.html",controller:"verifyController",menuItem:"account",requiresAuthorization:!1,indexPage:!0,resolve:{user:["$route","$http","authService",function(a,b,c){var d="http://dewy.io/auth/verify/"+a.current.params.uid+"/"+a.current.params.verify;return b.get(d).success(function(a){return a}).error(function(a,b){return"400"==b?{error:a}:{error:"Dewy could not verify you at this time."}})}]}}).when("/",{templateUrl:"templates/index.html",requiresAuthorization:!1,indexPage:!0}).otherwise({controller:function(){window.location.replace("/")},template:"<div></div>"})}]),app.run(["authService","$rootScope","$location","$http","$window",function(a,b,c,d,e){b.$on("$routeChangeStart",function(e,f){f.requiresAuthorization?(a.isAuthenticated()?(b.currentUser=a.currentUser(),b.currentUser||d.get("http://dewy.io/api/users").success(function(c){a.setUser(c),b.currentUser=c}),b.queuedIndexPage=f.indexPage,b.queuedMenuItem=f.menuItem):(e.preventDefault(),c.path("/signon")),b.isViewLoading=!0):a.isAuthenticated()?(e.preventDefault(),c.path("/sites")):(b.currentUser=null,b.queuedIndexPage=f.indexPage,b.queuedMenuItem=f.menuItem)}),b.$on("$routeChangeSuccess",function(){b.isViewLoading=!1,b.indexPage=b.queuedIndexPage,b.menuItem=b.queuedMenuItem}),b.$on("$routeChangeError",function(){b.isViewLoading=!1,b.indexPage=b.queuedIndexPage,b.menuItem=b.queuedMenuItem})}]);
-//# sourceMappingURL=app.js.map
+var app = angular.module('dewy', [
+	'ngRoute',
+	'ngAnimate',
+	'ui.sortable',
+	'angular-momentjs',
+	'validation.match',
+	'dewyControllers',
+	'dewyFactories',
+	'dewyServices',
+	'dewyDirectives'
+])
+
+app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($httpProvider, $routeProvider, $locationProvider) {
+	$locationProvider.html5Mode(true);
+	$httpProvider.interceptors.push('authInterceptor');
+    $routeProvider.
+		when('/account', {
+			templateUrl: 'templates/account.html',
+			controller: 'accountController',
+			menuItem: 'account',
+			requiresAuthorization: true
+		}).
+		when('/content/:filter?', {
+			templateUrl: 'templates/overview.html',
+			controller: 'overviewController',
+			menuItem: 'overview',
+			requiresAuthorization: true,
+			resolve: {
+				filters: ['filterFactory', function(filterFactory) {
+					return filterFactory.getAll();
+				}],
+				data: ['$route', 'filterFactory', 'sitesFactory', function($route, filterFactory, sitesFactory) {
+					if ($route.current.params.filter) {
+						return filterFactory.getFilter($route.current.params.filter).
+						then(function(currentFilter) {
+							return sitesFactory.getAll(currentFilter.fid).
+							then(function(sites) {
+								return {
+									currentFilter: currentFilter,
+									sites: sites,
+									view: 'content'
+								}
+							});
+						});
+					}
+					else {
+						return sitesFactory.getAll().
+						then(function(sites) {
+							return {
+								currentFilter: null,
+								sites: sites,
+								view: 'content'
+							}
+						});
+					}
+				}]
+			}
+		}).
+		when('/filter/:filter?', {
+			templateUrl: 'templates/filter.html',
+			controller: 'filterController',
+			requiresAuthorization: true,
+			resolve: {
+				operators: ['filterFactory', function(filterFactory) {
+					return filterFactory.getOperators();
+				}],
+				fields: ['filterFactory', function(filterFactory) {
+					return filterFactory.getFields();
+				}],
+				filters: ['filterFactory', function(filterFactory) {
+					return filterFactory.getAll();
+				}],
+				currentFilter: ['$route', 'filterFactory', function($route, filterFactory) {
+					return filterFactory.getFilter($route.current.params.filter);
+				}],
+				tags: ['sitesFactory', function(sitesFactory) {
+					return sitesFactory.getTags();
+				}]
+			}
+		}).
+		when('/manage', {
+			templateUrl: 'templates/manage.html',
+			controller: 'manageController',
+			menuItem: 'manage',
+			requiresAuthorization: true,
+			resolve: {
+				sites: ['sitesFactory', function(sitesFactory) {
+					return sitesFactory.getOffline();
+				}],
+				user: ['userFactory', function(userFactory) {
+					return userFactory.get();
+				}]
+			}
+		}).
+		when('/modules/:filter?', {
+			templateUrl: 'templates/overview.html',
+			controller: 'overviewController',
+			menuItem: 'overview',
+			requiresAuthorization: true,
+			resolve: {
+				filters: ['filterFactory', function(filterFactory) {
+					return filterFactory.getAll();
+				}],
+				data: ['$route', 'filterFactory', 'moduleFactory', function($route, filterFactory, moduleFactory) {
+					if ($route.current.params.filter) {
+						return filterFactory.getFilter($route.current.params.filter).
+						then(function(currentFilter) {
+							return moduleFactory.getAll(currentFilter.fid).
+							then(function(modules) {
+								return {
+									currentFilter: currentFilter,
+									modules: modules,
+									view: 'modules'
+								}
+							});
+						});
+					}
+					else {
+						return moduleFactory.getAll().
+						then(function(modules) {
+							return {
+								currentFilter: null,
+								modules: modules,
+								view: 'modules'
+							}
+						});
+					}
+				}]
+			}
+		}).
+		when('/signon', {
+			templateUrl: 'templates/signon.html',
+			controller: 'signonController',
+			requiresAuthorization: false,
+			indexPage: true
+		}).
+		when('/sites/:filter?', {
+			templateUrl: 'templates/overview.html',
+			controller: 'overviewController',
+			menuItem: 'overview',
+			requiresAuthorization: true,
+			resolve: {
+				filters: ['filterFactory', function(filterFactory) {
+					return filterFactory.getAll();
+				}],
+				data: ['$route', 'filterFactory', 'sitesFactory', function($route, filterFactory, sitesFactory) {
+					if ($route.current.params.filter) {
+						return filterFactory.getFilter($route.current.params.filter).
+						then(function(currentFilter) {
+							return sitesFactory.getAll(currentFilter.fid).
+							then(function(sites) {
+								return {
+									currentFilter: currentFilter,
+									sites: sites,
+									view: 'sites'
+								}
+							});
+						});
+					}
+					else {
+						return sitesFactory.getAll().
+						then(function(sites) {
+							return {
+								currentFilter: null,
+								sites: sites,
+								view: 'sites'
+							}
+						});
+					}
+				}]
+			}
+		}).
+		when('/users/:filter?', {
+			templateUrl: 'templates/overview.html',
+			controller: 'overviewController',
+			menuItem: 'overview',
+			requiresAuthorization: true,
+			resolve: {
+				filters: ['filterFactory', function(filterFactory) {
+					return filterFactory.getAll();
+				}],
+				data: ['$route', 'filterFactory', 'sitesFactory', function($route, filterFactory, sitesFactory) {
+					if ($route.current.params.filter) {
+						return filterFactory.getFilter($route.current.params.filter).
+						then(function(currentFilter) {
+							return sitesFactory.getAll(currentFilter.fid).
+							then(function(sites) {
+								return {
+									currentFilter: currentFilter,
+									sites: sites,
+									view: 'users'
+								}
+							});
+						});
+					}
+					else {
+						return sitesFactory.getAll().
+						then(function(sites) {
+							return {
+								currentFilter: null,
+								sites: sites,
+								view: 'users'
+							}
+						});
+					}
+				}]
+			}
+		}).
+		when('/verify/:uid/:verify', {
+			templateUrl: 'templates/verify.html',
+			controller: 'verifyController',
+			menuItem: 'account',
+			requiresAuthorization: false,
+			indexPage: true,
+			resolve: {
+				user: ['$route', '$http', 'authService', function($route, $http, authService) {
+					var url = 'http://dewy.io/auth/verify/' + $route.current.params.uid + '/' + $route.current.params.verify;
+					return $http.get(url)
+					.success(function(result) {
+						// authService.signOn(result, $scope.remember);
+						return result;
+					})
+					.error(function(error, status) {
+						if (status == '400') {
+							return {error: error};
+						} else {
+							return {error: 'Dewy could not verify you at this time.'};
+						}
+					})
+				}]
+			}
+		}).
+		when('/', {
+			templateUrl: 'templates/index.html',
+			requiresAuthorization: false,
+			indexPage: true
+		}).
+		otherwise({
+			controller: function() {
+				window.location.replace('/');
+			},
+			template : '<div></div>'
+		})
+}]);
+
+app.run(['authService', '$rootScope', '$location', '$http', '$window', function(authService, $rootScope, $location, $http, $window) {
+	$rootScope.$on('$routeChangeStart', function (event, next) {
+		if (next.requiresAuthorization) {
+			if (!authService.isAuthenticated()) {
+				event.preventDefault();
+				$location.path('/signon');
+			} else {
+				$rootScope.currentUser = authService.currentUser();
+				if (!$rootScope.currentUser) {
+					$http.get('http://dewy.io/api/users')
+					.success(function(result) {
+						authService.setUser(result);
+						$rootScope.currentUser = result;
+					})
+				}
+				$rootScope.queuedIndexPage = next.indexPage;
+				$rootScope.queuedMenuItem = next.menuItem;
+			}
+			$rootScope.isViewLoading = true;
+		}
+		else {
+			if (authService.isAuthenticated()) {
+				event.preventDefault();
+				$location.path('/sites');
+			} else {
+				$rootScope.currentUser = null;
+				$rootScope.queuedIndexPage = next.indexPage;
+				$rootScope.queuedMenuItem = next.menuItem;
+			}
+		}
+	});
+	$rootScope.$on('$routeChangeSuccess', function() {
+		$rootScope.isViewLoading = false;
+		$rootScope.indexPage = $rootScope.queuedIndexPage;
+		$rootScope.menuItem = $rootScope.queuedMenuItem;
+	});
+	$rootScope.$on('$routeChangeError', function() {
+		$rootScope.isViewLoading = false;
+		$rootScope.indexPage = $rootScope.queuedIndexPage;
+		$rootScope.menuItem = $rootScope.queuedMenuItem;
+	});
+}]);

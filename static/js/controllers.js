@@ -1,2 +1,532 @@
-var controllers=angular.module("dewyControllers",[]);controllers.controller("accountController",["$scope","$timeout","$rootScope","userFactory",function(a,b,c,d){a.cancel=function(){window.history.back()},a.check=function(b,c,e){if(a[c][e].$valid){var f={};f[e]=a[e],d.checkAccount(b,f).success(function(b){"error"in a[c]||(a[c].error={}),a[c].error[e]=b.error})}},a.submitAccount=function(c){a.accountForm.$valid&&d.changeAccount(c,a.passwordExisting,a.email,a.password).success(function(c){a.accountSubmitMessage="Success",a.accountSubmitStatus="success",a.accountSubmit=!0,b(function(){a.accountSubmit=!1,a.accountSubmitStatus="submitting"},1500)}).error(function(b,c){"400"!=c?a.accountForm.error={error:"Dewy could not update your account at this time."}:a.accountForm.error=b})},a.submitProfile=function(c){a.profileForm.$valid&&d.changeProfile(c,a.username).success(function(c){a.profileSubmitMessage="Success",a.profileSubmitStatus="success",a.profileSubmit=!0,b(function(){a.profileSubmit=!1,a.profileSubmitStatus="submitting"},1500)}).error(function(b,c){"400"!=c?a.profileForm={error:"Dewy could not update your profile at this time."}:a.profileForm=b})},a.username==c.currentUser.username,a.email==c.currentUser.email}]),controllers.controller("appController",["$scope","$location","authService",function(a,b,c){a.signOff=function(){c.signOff()}}]),controllers.controller("filterController",["$scope","$location","filterFactory","operators","fields","filters","currentFilter","tags",function(a,b,c,d,e,f,g,h){a.addRule=function(b,c){function d(c){var f,g=c.rules;if(g)for(f=g.length;f--;){if(g[f]==b)return a.currentFilter.count++,g[f].rules?g[f].rules.splice(0,0,e):g.splice(f+1,0,e);d(g[f])}}var e;e=c?{operator:"any",rules:[{field:"Base URL",choice:"contains"}]}:{field:"Base URL",choice:"contains"},d(a.currentFilter)},a.cancel=function(){window.history.back()},a.deleteFilter=function(){c["delete"](a.currentFilter.fid).then(function(a){window.history.back()})},a.deleteRule=function(b){function c(d){var e,f=d.rules;if(f){if(e=f.length,!e)return"empty";for(;e--;){if(f[e]==b){var g=f.splice(e,1);if(g[0].rules)for(var h=g[0].rules.length;h--;)f.splice(e,0,g[0].rules[h]);else a.currentFilter.count--;if(!f.length)return"empty";return}"empty"==c(f[e])&&a.deleteRule(f[e])}}}c(a.currentFilter)},a.getChoices=function(b){for(var c=0;c<a.fields.length;c++)if(a.fields[c].title==b)return a.fields[c].choices},a.getDetails=function(b){for(var c=0;c<a.fields.length;c++)if(a.fields[c].title==b)return a.fields[c].details},a.saveFilter=function(){a.filterForm.$valid&&(a.currentFilter.fid?c.update(a.currentFilter).then(function(a){b.path("sites/"+a.data.fid)}):c.create(a.currentFilter).then(function(a){b.path("sites/"+a.data.fid)}))},a.updateChoice=function(b,c){choices=a.getChoices(b.field);var d=b.choice;b.choice=choices[0].id;for(var e=0;e<choices.length;e++)choices[e].id==d&&(b.choice=choices[e].id);details=a.getDetails(b.field),details&&-1==details.indexOf(b.choice)&&(b.detail=details[0]);for(var e=0;e<a.fields.length;e++)a.fields[e].title==b.field&&(field=a.fields[e]);for(var e=0;e<a.fields.length;e++)a.fields[e].title==c&&(oldField=a.fields[e]);field.value!=oldField.value&&("tag"==field.value?b.value=a.tags[0]:"integer"==field.value?b.value=0:b.value=null)},a.updateNotifications=function(b){b||(a.currentFilter.notifications.appears.enabled=a.currentFilter.notifications.disappears.enabled=a.currentFilter.notifications.total.enabled=!1)},a.valueIsType=function(b,c){for(var d=0;d<a.fields.length;d++)if(a.fields[d].title==b)return a.fields[d].value==c},a.operators=d,a.fields=e,a.filters=f,a.currentFilter=g,a.tags=h,a.notificationsOn=!!(g.notifications.appears.enabled||g.notifications.disappears.enabled||g.notifications.total.enabled),a.notificationChoices=["is","is not","is greater than","is less than","is greater than or equal to","is less than or equal to"],a.sortableOptions={connectWith:".rule-group",handle:".handle",helper:"clone",opacity:.75,placeholder:"rule-group-placeholder",stop:function(b,c){a.deleteRule(null)}}}]),controllers.controller("manageController",["$scope","$timeout","$moment","sites","user","sitesFactory","userFactory",function(a,b,c,d,e,f,g){a.auditSite=function(d){return a.sites[d].submitMessage="Auditing...",a.sites[d].submit=!0,f.audit(a.sites[d].sid).error(function(e,f){a.sites[d].submitMessage="Error: "+a.sites[d].audited.error,a.sites[d].submitStatus="error",b(function(){a.sites[d].submit=!1,a.sites[d].submitStatus="submitting"},1500),a.sites[d].audited.date=c().fromNow(),a.sites[d].audited.error=e.statusCode}).success(function(c){a.sites[d].submitMessage="Success",a.sites[d].submitStatus="success",b(function(){a.sites[d].submit=!1,a.sites[d].submitStatus="submitting";a.sites.splice(d,1)},1500)})},a.getKey=function(){a.apikey=e.apikey},a.deleteSite=function(b){f["delete"](a.sites[b].sid).success(function(c){a.sites.splice(b,1)})},a.resetKey=function(b){g.resetKey(b).then(function(b){a.apikey=b})},a.sites=d;for(site in a.sites)a.sites[site].dateAdded=c(1e3*a.sites[site].dateAdded).fromNow(),"audited"in a.sites[site]&&(a.sites[site].audited.date=c(1e3*a.sites[site].audited.date).fromNow());a.apikey=e.apikey}]),controllers.controller("signonController",["authService","$scope","$http",function(a,b,c){b.submit=function(){if(b.form.$valid){b.message=null;var d="http://dewy.io/auth/signon";c.post(d,{username:b.username,password:b.password}).success(function(c){a.signOn(c,b.remember)}).error(function(a,c){"400"==c?b.message="Your username and password combination is incorrect, please try again.":b.message="Dewy could not authenticate at this time."})}}}]),controllers.controller("signupController",["authService","$scope","$http",function(a,b,c){b.check=function(a){if(b.form[a].$valid){var d="http://dewy.io/auth/signup",e={};e[a]=b[a],e.check=!0,c.post(d,e).success(function(c){"error"in b||(b.error={}),b.error[a]=c})}},b.submit=function(){if(b.form.$valid){b.message=null;var d="http://dewy.io/auth/signup";c.post(d,{username:b.username,email:b.email,password:b.password}).success(function(b){a.signOn(b)}).error(function(a,c){"400"!=c?b.message="Dewy could not sign you up at this time.":b.error=a})}}}]),controllers.controller("overviewController",["$scope","$location","sitesFactory","filters","data",function(a,b,c,d,e){a.changeFilter=function(c){c?b.path(a.view+"/"+c):b.path(a.view)},a.openFolder=function(b){a.folders[b]=!a.folders[b],sessionStorage.folders=JSON.stringify(a.folders)},a.currentFilter=e.currentFilter,b.path()=="/"+e.view||"url"in a.currentFilter||b.path(e.view),a.view=e.view,"sites"==a.view?(a.sites=e.sites,a.viewPage="templates/overview_sites.html"):"modules"==a.view?(a.modules=e.modules,a.viewPage="templates/overview_modules.html"):"users"==a.view?a.viewPage="templates/overview_users.html":"content"==a.view&&(a.viewPage="templates/overview_content.html"),sessionStorage.folders?a.folders=JSON.parse(sessionStorage.folders):a.folders={},a.filters=d}]),controllers.controller("overviewContentController",["$scope",function(a){}]),controllers.controller("overviewModulesController",["$scope",function(a){a.changeSorting=function(b){var c=a.sort;c.column==b?c.descending=!c.descending:(c.column=b,c.descending=!1)},a.sort={column:"title",descending:!1}}]),controllers.controller("overviewSitesController",["$scope","sitesFactory",function(a,b){a.addTags=function(c){var d="tagForm"+c;if(this[d].$valid){for(a.openSite.tags||(a.openSite.tags=[]),tags=this.tags.split(","),i=0;i<tags.length;i++)tag=tags[i].trim(),""!=tag&&-1==a.openSite.tags.indexOf(tag)&&(a.openSite.tags.push(tag),console.log(a.openSite.tags));b.setTags(a.openSite),this.tags=null,this[d].$setPristine(),this[d].tags.$setUntouched()}},a.changeSorting=function(b){var c=a.sort;c.column==b?c.descending=!c.descending:(c.column=b,c.descending=!1)},a.deleteTag=function(c,d){a.sites[d].tags.splice(c,1),b.setTags(a.sites[d])},a.getNumber=function(a){return new Array(Math.round(a))},a.openDetails=function(c,d){a.openSite&&a.openSite.sid==a.sites[c].sid&&a.openSite.detail==d?a.openSite=null:"details"in a.sites[c]?a.openSite={sid:a.sites[c].sid,tags:a.sites[c].tags,details:a.sites[c].details,detail:d}:b.get(a.sites[c].sid).then(function(b){a.sites[c].details=b,a.openSite={sid:a.sites[c].sid,tags:a.sites[c].tags,details:a.sites[c].details,detail:d}})},a.sort={column:"title",descending:!1}}]),controllers.controller("overviewUsersController",["$scope",function(a){}]),controllers.controller("verifyController","user",["$scope","user",function(a){a.error=user}]);
-//# sourceMappingURL=controllers.js.map
+var controllers = angular.module('dewyControllers', []);
+
+controllers.controller('accountController', ['$scope', '$timeout', '$rootScope', 'userFactory',
+	function ($scope, $timeout, $rootScope, userFactory) {
+		$scope.cancel = function() {
+			window.history.back();
+		}
+		$scope.check = function(uid, form, field) {
+			if ($scope[form][field].$valid) {
+				var post = {};
+				post[field] = $scope[field];
+				userFactory.checkAccount(uid, post)
+				.success(function(result) {
+					if (!('error' in $scope[form])) {
+						$scope[form].error = {};
+					}
+					$scope[form].error[field] = result.error;
+				});
+			}
+		}
+		$scope.submitAccount = function(uid) {
+            if ($scope.accountForm.$valid) {
+           		userFactory.changeAccount(uid, $scope.passwordExisting, $scope.email, $scope.password)
+				.success(function(result) {
+					$scope.accountSubmitMessage = 'Success';
+					$scope.accountSubmitStatus = 'success';
+					$scope.accountSubmit = true;
+					$timeout(function() {
+						$scope.accountSubmit = false;
+						$scope.accountSubmitStatus = 'submitting';
+					},1500);
+				})
+				.error(function(error, status) {
+					if (status != '400') {
+						$scope.accountForm.error = {error: 'Dewy could not update your account at this time.'};
+					} else {
+						$scope.accountForm.error = error;
+					}
+				});
+            }
+        }
+		$scope.submitProfile = function(uid) {
+            if ($scope.profileForm.$valid) {
+                userFactory.changeProfile(uid, $scope.username)
+				.success(function(result) {
+					$scope.profileSubmitMessage = 'Success';
+					$scope.profileSubmitStatus = 'success';
+					$scope.profileSubmit = true;
+					$timeout(function() {
+						$scope.profileSubmit = false;
+						$scope.profileSubmitStatus = 'submitting';
+					},1500);
+				})
+				.error(function(error, status) {
+					if (status != '400') {
+						$scope.profileForm = {error: 'Dewy could not update your profile at this time.'};
+					} else {
+						$scope.profileForm = error;
+					}
+				});
+            }
+        }
+
+		$scope.username == $rootScope.currentUser.username;
+		$scope.email == $rootScope.currentUser.email;
+}]);
+
+controllers.controller('appController', ['$scope', '$location', 'authService',
+	function ($scope, $location, authService) {
+		$scope.signOff = function() {
+			authService.signOff();
+		}
+}]);
+
+controllers.controller('filterController', ['$scope', '$location', 'filterFactory', 'operators', 'fields', 'filters', 'currentFilter', 'tags',
+	function ($scope, $location, filterFactory, operators, fields, filters, currentFilter, tags) {
+		$scope.addRule = function(rule, group) {
+			// New rule
+			var newRule;
+			if (group) {
+				newRule = {
+					operator: 'any',
+					rules: [{
+						field: 'Base URL',
+						choice: 'contains'
+					}]
+				}
+			} else {
+				newRule = {
+					field: 'Base URL',
+					choice: 'contains'
+				}
+			}
+			function walk(target) {
+				var rules = target.rules, i;
+				if (rules) {
+					i = rules.length;
+					while (i--) {
+						if (rules[i] == rule) {
+							$scope.currentFilter.count++;
+							// If your adding from a rule group, insert into that group
+							if (rules[i].rules) {
+								return rules[i].rules.splice(0, 0, newRule);
+							} else {
+								return rules.splice(i+1, 0, newRule);
+							}
+						} else {
+							walk(rules[i])
+						}
+					}
+				}
+			}
+			walk($scope.currentFilter);
+		}
+		$scope.cancel = function() {
+			window.history.back();
+		}
+		$scope.deleteFilter = function() {
+			filterFactory.delete($scope.currentFilter.fid)
+				.then(function (response) {
+					window.history.back();
+				});
+		}
+		$scope.deleteRule = function(rule) {
+			function walk(target) {
+				var rules = target.rules, i;
+				if (rules) {
+					i = rules.length;
+					if (!i) {
+						return 'empty';
+					}
+					while (i--) {
+						if (rules[i] == rule) {
+							var deletedRule = rules.splice(i, 1);
+							// If the rule being deleted has child rules, move them up
+							if (deletedRule[0].rules) {
+								var j = deletedRule[0].rules.length;
+								while (j--) {
+									rules.splice(i, 0, deletedRule[0].rules[j]);
+								}
+							} else {
+								// Rule is not a group
+								$scope.currentFilter.count--;
+							}
+							// If the rule is the last in a group, flag it as empty
+							if (!rules.length) {
+								return 'empty'
+							}
+							return;
+						} else {
+							// If the group is now empty, delete it
+							if (walk(rules[i]) == 'empty') {
+								$scope.deleteRule(rules[i]);
+							}
+						}
+					}
+				}
+			}
+			walk($scope.currentFilter);
+		}
+		$scope.getChoices = function(field) {
+			for (var i=0; i<$scope.fields.length; i++) {
+				if ($scope.fields[i].title == field) {
+					return $scope.fields[i].choices;
+				}
+			}
+		}
+		$scope.getDetails = function(field) {
+			for (var i=0; i<$scope.fields.length; i++) {
+				if ($scope.fields[i].title == field) {
+					return $scope.fields[i].details;
+				}
+			}
+		}
+		$scope.saveFilter = function() {
+			if ($scope.filterForm.$valid) {
+				if ($scope.currentFilter.fid) {
+					filterFactory.update($scope.currentFilter)
+					.then(function (response) {
+						$location.path('sites/' + response.data.fid);
+					});
+				} else {
+					filterFactory.create($scope.currentFilter)
+					.then(function (response) {
+						$location.path('sites/' + response.data.fid);
+					});
+				}
+			}
+		}
+		$scope.updateChoice = function(rule, oldRule) {
+			choices = $scope.getChoices(rule.field);
+			var oldChoice = rule.choice;
+			rule.choice = choices[0].id;
+			for (var i=0; i<choices.length; i++) {
+				if (choices[i].id == oldChoice) {
+					rule.choice = choices[i].id;
+				}
+			}
+
+			details = $scope.getDetails(rule.field);
+			if (details) {
+				if (details.indexOf(rule.choice) == -1) {
+					rule.detail = details[0];
+				}
+			}
+
+			// Get field from rule
+			for (var i=0; i<$scope.fields.length; i++) {
+				if ($scope.fields[i].title == rule.field) {
+					field = $scope.fields[i];
+				}
+			}
+			// Get old field from rule
+			for (var i=0; i<$scope.fields.length; i++) {
+				if ($scope.fields[i].title == oldRule) {
+					oldField = $scope.fields[i];
+				}
+			}
+
+			// If field value type changes, reset value, provide default
+			if (field.value != oldField.value) {
+				if (field.value == 'tag') {
+					rule.value = $scope.tags[0];
+				}
+				else if (field.value == 'integer') {
+					rule.value = 0;
+				}
+				else {
+					rule.value = null;
+				}
+			}
+		}
+		$scope.updateNotifications = function(notifications) {
+			if (!notifications) {
+				$scope.currentFilter.notifications.appears.enabled = 
+				$scope.currentFilter.notifications.disappears.enabled = 
+				$scope.currentFilter.notifications.total.enabled = false;
+			}
+		}
+		$scope.valueIsType = function(field, type) {
+			for (var i=0; i<$scope.fields.length; i++) {
+				if ($scope.fields[i].title == field) {
+					return ($scope.fields[i].value == type) ? true : false;
+				}
+			}
+		}
+
+		$scope.operators = operators;
+		$scope.fields = fields;
+		$scope.filters = filters;
+		$scope.currentFilter = currentFilter;
+		$scope.tags = tags;
+		$scope.notificationsOn = (currentFilter.notifications.appears.enabled || currentFilter.notifications.disappears.enabled || currentFilter.notifications.total.enabled) ? true : false;
+		$scope.notificationChoices = [
+			'is',
+			'is not',
+			'is greater than',
+			'is less than',
+			'is greater than or equal to',
+			'is less than or equal to'
+		];
+		$scope.sortableOptions = {
+			connectWith: ".rule-group",
+			handle: ".handle",
+			helper: "clone",
+			opacity: 0.75,
+			placeholder: "rule-group-placeholder",
+			stop: function(e, ui) {
+				// Check if there are rule groups to delete because they are now empty after a move
+				$scope.deleteRule(null);
+			}
+		};
+}]);
+
+controllers.controller('manageController', ['$scope', '$timeout', '$moment', 'sites', 'user', 'sitesFactory', 'userFactory',
+	function ($scope, $timeout, $moment, sites, user, sitesFactory, userFactory) {
+		$scope.auditSite = function(index) {
+			$scope.sites[index].submitMessage = 'Auditing...';
+			$scope.sites[index].submit = true;
+
+			return sitesFactory.audit($scope.sites[index].sid)
+			.error(function(error, status) {
+				$scope.sites[index].submitMessage = 'Error: ' + $scope.sites[index].audited.error;
+				$scope.sites[index].submitStatus = 'error'; 
+				$timeout(function() {
+					$scope.sites[index].submit = false;
+					$scope.sites[index].submitStatus = 'submitting';
+				},1500);
+				$scope.sites[index].audited.date = $moment().fromNow();
+				$scope.sites[index].audited.error = error.statusCode;
+			})
+			.success(function(result) {
+				$scope.sites[index].submitMessage = 'Success';
+				$scope.sites[index].submitStatus = 'success';
+				$timeout(function() {
+					$scope.sites[index].submit = false;
+					$scope.sites[index].submitStatus = 'submitting';
+					var successfulSite = $scope.sites.splice(index, 1);
+				},1500);
+			});
+		}
+		$scope.getKey = function() {
+			$scope.apikey = user.apikey;
+		}
+		$scope.deleteSite = function(index) {
+			sitesFactory.delete($scope.sites[index].sid)
+			.success(function(result) {
+				var deletedSite = $scope.sites.splice(index, 1);
+			});
+		}
+		$scope.resetKey = function(uid) {
+			userFactory.resetKey(uid).then(function(apikey) {
+				$scope.apikey = apikey;
+			});
+		}
+		$scope.sites = sites;
+		for (site in $scope.sites) {
+			$scope.sites[site].dateAdded = $moment($scope.sites[site].dateAdded * 1000).fromNow();
+			if ('audited' in $scope.sites[site]) {
+				$scope.sites[site].audited.date = $moment($scope.sites[site].audited.date * 1000).fromNow();
+			}
+		}
+		$scope.apikey = user.apikey;
+}]);
+
+controllers.controller('signonController', ['authService', '$scope', '$http',
+	function (authService, $scope, $http) {
+		$scope.submit = function() {
+			if ($scope.form.$valid) {
+				$scope.message = null;
+				var url = 'http://dewy.io/auth/signon';
+				// Authenticate
+				$http.post(url, {
+					username: $scope.username,
+					password: $scope.password
+				}).success(function(result) {
+					authService.signOn(result, $scope.remember);
+				})
+				.error(function(error, status) {
+					if (status == '400') {
+						$scope.message = 'Your username and password combination is incorrect, please try again.';
+					} else {
+						$scope.message = 'Dewy could not authenticate at this time.';
+					}
+				});
+			}
+		}
+}]);
+
+controllers.controller('signupController', ['authService', '$scope', '$http',
+	function (authService, $scope, $http) {
+		$scope.check = function(field) {
+			if ($scope.form[field].$valid) {
+				var url = 'http://dewy.io/auth/signup';
+				var post = {};
+				post[field] = $scope[field];
+				post['check'] = true;
+				$http.post(url, post)
+				.success(function(result) {
+					if (!('error' in $scope)) {
+						$scope.error = {};
+					}
+					$scope.error[field] = result;
+				});
+			}
+		}
+
+		$scope.submit = function() {
+			if ($scope.form.$valid) {
+				$scope.message = null;
+				var url = 'http://dewy.io/auth/signup';
+				$http.post(url, {
+					username: $scope.username,
+					email: $scope.email,
+					password: $scope.password
+				})
+				.success(function(result) {
+					authService.signOn(result);
+				})
+				.error(function(error, status) {
+					if (status != '400') {
+						$scope.message = 'Dewy could not sign you up at this time.';
+					} else {
+						$scope.error = error;
+					}
+				});
+			}
+		}
+}]);
+
+controllers.controller('overviewController', ['$scope', '$location', 'sitesFactory', 'filters', 'data',
+	function ($scope, $location, sitesFactory, filters, data) {
+		$scope.changeFilter = function(fid) {
+			if (fid) {
+				$location.path($scope.view + '/' + fid);
+			}
+			else {
+				$location.path($scope.view);
+			}
+		}
+		$scope.openFolder = function(filter) {
+			$scope.folders[filter] = !$scope.folders[filter];
+			sessionStorage.folders = JSON.stringify($scope.folders);
+		}
+
+		// If filter specified in URL is invalid, redirect to all sites
+		$scope.currentFilter = data.currentFilter;
+		if ($location.path() != '/' + data.view && !('url' in $scope.currentFilter)) {
+			$location.path(data.view);
+		}
+
+		// Load view
+		$scope.view = data.view;
+		if ($scope.view == 'sites') {
+			$scope.sites = data.sites;
+			$scope.viewPage = 'templates/overview_sites.html';
+		}
+		else if ($scope.view == 'modules') {
+			$scope.modules = data.modules;
+			$scope.viewPage = 'templates/overview_modules.html';
+		}
+		else if ($scope.view == 'users') {
+			$scope.viewPage = 'templates/overview_users.html';
+		}
+		else if ($scope.view == 'content') {
+			$scope.viewPage = 'templates/overview_content.html';
+		}
+
+		// Grab session folder data if it exists
+		if (sessionStorage.folders) {
+			$scope.folders = JSON.parse(sessionStorage.folders);
+		} else {
+			$scope.folders = {};
+		}
+
+        $scope.filters = filters;
+}]);
+
+controllers.controller('overviewContentController', ['$scope',
+	function ($scope) {
+}]);
+
+controllers.controller('overviewModulesController', ['$scope',
+	function ($scope) {
+		$scope.changeSorting = function(column) {
+			var sort = $scope.sort;
+
+			if (sort.column == column) {
+				sort.descending = !sort.descending;
+			} else {
+				sort.column = column;
+				sort.descending = false;
+			}
+		}
+		
+	    $scope.sort = {
+	        column: 'title',
+	        descending: false
+	    };
+}]);
+
+controllers.controller('overviewSitesController', ['$scope', 'sitesFactory', 
+	function ($scope, sitesFactory) {
+        $scope.addTags = function(siteIndex) {
+            var formName = 'tagForm' + siteIndex;
+            if (this[formName].$valid) {
+                if (!$scope.openSite.tags) {
+                    $scope.openSite.tags = [];
+                }
+                tags = this.tags.split(',');
+                for (i=0; i<tags.length; i++) {
+                    tag = tags[i].trim();
+                    if (tag != "" && $scope.openSite.tags.indexOf(tag) == -1) {
+                        $scope.openSite.tags.push(tag);
+                        console.log($scope.openSite.tags);
+                    }
+                }
+                sitesFactory.setTags($scope.openSite);
+                this.tags = null;
+                this[formName].$setPristine();
+                this[formName].tags.$setUntouched();
+            }
+        }
+		$scope.changeSorting = function(column) {
+			var sort = $scope.sort;
+
+			if (sort.column == column) {
+				sort.descending = !sort.descending;
+			} else {
+				sort.column = column;
+				sort.descending = false;
+			}
+		}
+        $scope.deleteTag = function(tagIndex, siteIndex) {
+            $scope.sites[siteIndex].tags.splice(tagIndex, 1);
+            sitesFactory.setTags($scope.sites[siteIndex]);
+        }
+        $scope.getNumber = function(number) {
+            return new Array(Math.round(number));
+        }
+        $scope.openDetails = function(index, detail) {
+            // If the site is already open to that same site and view, close the view
+            if ($scope.openSite && $scope.openSite.sid == $scope.sites[index].sid && $scope.openSite.detail == detail) {
+                $scope.openSite = null;
+            }
+            else {
+                // If details haven't been already loaded for the site, go grab the site
+                if (!('details' in $scope.sites[index])) {
+                    sitesFactory.get($scope.sites[index].sid).then(function(details) {
+                        $scope.sites[index].details = details;
+                        $scope.openSite = {sid: $scope.sites[index].sid, tags: $scope.sites[index].tags, details: $scope.sites[index].details, detail: detail};
+                    });
+                } else {
+                    $scope.openSite = {sid: $scope.sites[index].sid, tags: $scope.sites[index].tags, details: $scope.sites[index].details, detail: detail};
+                }
+            }
+        }
+
+        $scope.sort = {
+            column: 'title',
+            descending: false
+        };
+}]);
+
+controllers.controller('overviewUsersController', ['$scope',
+	function ($scope) {
+}]);
+
+controllers.controller('verifyController', 'user', ['$scope', 'user',
+	function ($scope) {
+		$scope.error = user;
+}]);

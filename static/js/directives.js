@@ -1,2 +1,12 @@
-var directives=angular.module("dewyDirectives",[]);directives.directive("formatDate",function(){return{require:"ngModel",link:function(a,b,c,d){d.$formatters.push(function(a){return new Date(a)})}}});
-//# sourceMappingURL=directives.js.map
+var directives = angular.module('dewyDirectives', []);
+
+directives.directive('formatDate', function() {
+    return {
+        require: 'ngModel',
+        link: function(scope, elem, attr, modelCtrl) {
+            modelCtrl.$formatters.push(function(modelValue){
+                return new Date(modelValue);
+            })
+        }
+    }
+});
