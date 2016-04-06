@@ -24,13 +24,17 @@
 @import 'layout/signup-and-on';
 
 section {
-    &.introduction, &.feature, &.feature section, &.signup, &.signon, &.main {
+    &.introduction, &.feature, &.feature section, &.signup, &.signon, &.main, &.error {
         @include grid-span(24,1);
         @include clearfix;
         clear: both;
+
+        p {
+            margin-top: 1em;
+        }
     }
 
-    &.introduction, &.feature section, &.signup, &.signon, &.add-site, &.api-key, &.offline-sites, &.user-info, &.your-password, &.subscription {
+    &.introduction, &.error, &.feature section, &.signup, &.signon, &.add-site, &.api-key, &.offline-sites, &.user-info, &.your-password, &.subscription {
         padding-top: 3em;
 
         @include breakpoint($mobile-large) {
@@ -50,7 +54,6 @@ section.introduction {
     padding-bottom: 3em;
 
     p {
-        margin-top: 1em;
         font-size: 1.4em;
 
         @include breakpoint($tablet) {

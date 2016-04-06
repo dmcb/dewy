@@ -526,7 +526,7 @@ controllers.controller('overviewUsersController', ['$scope',
 	function ($scope) {
 }]);
 
-controllers.controller('verifyController' ['$scope', 'user',
-	function ($scope, user) {
-		$scope.error = user;
+controllers.controller('verifyController', ['$scope', 'verifyData',
+	function ($scope, verifyData) {
+		$scope.error = verifyData.error;
 }]);

@@ -209,24 +209,20 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 		when('/verify/:uid/:verify', {
 			templateUrl: 'templates/verify.html',
 			controller: 'verifyController',
-			menuItem: 'account',
 			requiresAuthorization: false,
 			indexPage: true,
 			resolve: {
-				user: ['$route', '$http', 'authService', function($route, $http, authService) {
-					var url = 'http://dewy.io/auth/verify/' + $route.current.params.uid + '/' + $route.current.params.verify;
-					return $http.get(url)
-					.success(function(result) {
-						// authService.signOn(result, $scope.remember);
-						return result;
-					})
-					.error(function(error, status) {
-						if (status == '400') {
-							return {error: error};
+				verifyData: ['$route', '$http', 'authService', function($route, $http, authService) {
+					return $http.get('http://dewy.io/auth/verify/' + $route.current.params.uid + '/' + $route.current.params.verify).
+					then(function(result) {
+						authService.signOn(result.data);
+					}, function(error) {
+						if (error.status == '400') {
+							return {error: error.data};
 						} else {
 							return {error: 'Dewy could not verify you at this time.'};
 						}
-					})
+					});
 				}]
 			}
 		}).

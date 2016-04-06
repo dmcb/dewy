@@ -15,6 +15,10 @@ authenticateWithDewy = function() {
         else if (req.url == '/signup') {
             var endPoint = config.api.url + 'users';
         }
+        else if (req.url == '/verify/' + req.params.uid + '/' + req.params.verify) {
+            var endPoint = config.api.url + 'users/_verify/' + req.params.uid + '/' + req.params.verify;
+            console.log(endPoint);
+        }
         var encodedClient = new Buffer(config.client.client_id + ':' + config.client.client_secret).toString('base64');
         var request = require('request');
         request({
@@ -54,6 +58,6 @@ authenticateWithDewy = function() {
 
 router.post('/signon', authenticateWithDewy(), function(req, res) {});
 router.post('/signup', authenticateWithDewy(), function(req, res) {});
-router.post('/verify', authenticateWithDewy(), function(req, res) {});
+router.get('/verify/:uid/:verify', authenticateWithDewy(), function(req, res) {});
 
 module.exports = router;
