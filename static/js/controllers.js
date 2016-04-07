@@ -1,6 +1,6 @@
 var controllers = angular.module('dewyControllers', []);
 
-controllers.controller('accountController', ['$scope', '$timeout', '$rootScope', 'userFactory', 'flash',
+controllers.controller('accountController', ['$scope', '$timeout', '$rootScope', 'userFactory',
 	function ($scope, $timeout, $rootScope, userFactory) {
 		$scope.cancel = function() {
 			window.history.back();
