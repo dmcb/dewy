@@ -1,7 +1,7 @@
 var controllers = angular.module('dewyControllers', []);
 
-controllers.controller('accountController', ['$scope', '$timeout', '$rootScope', 'userFactory',
-	function ($scope, $timeout, $rootScope, userFactory) {
+controllers.controller('accountController', ['$scope', '$timeout', '$rootScope', 'userFactory', 'flash',
+	function ($scope, $timeout, $rootScope, userFactory, flash) {
 		$scope.cancel = function() {
 			window.history.back();
 		}
@@ -60,7 +60,7 @@ controllers.controller('accountController', ['$scope', '$timeout', '$rootScope',
 				});
             }
         }
-
+        flash('omg');
 		$scope.username == $rootScope.currentUser.username;
 		$scope.email == $rootScope.currentUser.email;
 }]);

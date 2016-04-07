@@ -27,6 +27,8 @@
     <body ng-controller="appController" ng-class="{index: indexPage}">
         <div id="load" ng-if="isViewLoading"></div>
         <div class="wrapper">
+            <flash:messages ng:show="messages"></flash:messages>
+
             <header>
                 <div class="shell">
                     <nav>

@@ -1,3 +1,26 @@
+#flash-messages {
+    background-color: $blue;
+    color: $white;
+    text-align: center;
+    font-weight: bold;
+    overflow: hidden;
+
+    li {
+        border-top: 5px solid $blue;
+        padding: 0.25em 0;
+    }
+
+    height: 0;
+    transition: 400ms ease all;
+
+    &.ng-hide-remove {
+        height: 2em;
+        transition: 1500ms all;
+    }
+}
+
+
+
 header {
     @include clearfix;
     border-top: 5px solid $blue;

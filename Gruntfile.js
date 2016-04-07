@@ -8,6 +8,7 @@ module.exports = function(grunt) {
           'js': 'static/js/bower.js'
         },
         include: [
+          'angular-flash',
           'angular-ui-sortable',
           'angular-validation-match',
           'moment',
