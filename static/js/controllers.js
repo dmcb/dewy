@@ -1,7 +1,7 @@
 var controllers = angular.module('dewyControllers', []);
 
-controllers.controller('accountController', ['$scope', '$timeout', '$rootScope', 'userFactory',
-	function ($scope, $timeout, $rootScope, userFactory) {
+controllers.controller('accountController', ['$scope', '$timeout', '$rootScope', 'userFactory', 'authService', 'flash',
+	function ($scope, $timeout, $rootScope, userFactory, authService, flash) {
 		$scope.cancel = function() {
 			window.history.back();
 		}
@@ -21,14 +21,9 @@ controllers.controller('accountController', ['$scope', '$timeout', '$rootScope',
 		$scope.submitAccount = function(uid) {
             if ($scope.accountForm.$valid) {
            		userFactory.changeAccount(uid, $scope.passwordExisting, $scope.email, $scope.password)
-				.success(function(result) {
-					$scope.accountSubmitMessage = 'Success';
-					$scope.accountSubmitStatus = 'success';
-					$scope.accountSubmit = true;
-					$timeout(function() {
-						$scope.accountSubmit = false;
-						$scope.accountSubmitStatus = 'submitting';
-					},1500);
+				.success(function(userDoc) {
+					authService.setUser(userDoc);
+					flash('Account information updated');
 				})
 				.error(function(error, status) {
 					if (status != '400') {
@@ -42,14 +37,9 @@ controllers.controller('accountController', ['$scope', '$timeout', '$rootScope',
 		$scope.submitProfile = function(uid) {
             if ($scope.profileForm.$valid) {
                 userFactory.changeProfile(uid, $scope.username)
-				.success(function(result) {
-					$scope.profileSubmitMessage = 'Success';
-					$scope.profileSubmitStatus = 'success';
-					$scope.profileSubmit = true;
-					$timeout(function() {
-						$scope.profileSubmit = false;
-						$scope.profileSubmitStatus = 'submitting';
-					},1500);
+				.success(function(userDoc) {
+					authService.setUser(userDoc);
+					flash('Profile information updated');
 				})
 				.error(function(error, status) {
 					if (status != '400') {
@@ -60,9 +50,6 @@ controllers.controller('accountController', ['$scope', '$timeout', '$rootScope',
 				});
             }
         }
-
-		$scope.username == $rootScope.currentUser.username;
-		$scope.email == $rootScope.currentUser.email;
 }]);
 
 controllers.controller('appController', ['$scope', '$location', 'authService',
@@ -70,6 +57,10 @@ controllers.controller('appController', ['$scope', '$location', 'authService',
 		$scope.signOff = function() {
 			authService.signOff();
 		}
+		$scope.$on('currentUser:updated', function(event, data) {
+			$scope.currentUser = data;
+		});
+		$scope.currentUser = authService.currentUser();
 }]);
 
 controllers.controller('filterController', ['$scope', '$location', 'filterFactory', 'operators', 'fields', 'filters', 'currentFilter', 'tags',

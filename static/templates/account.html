@@ -4,7 +4,6 @@
         <section class="user-info">
             <h3>User information</h3>
             <form name="profileForm" ng-submit="submitProfile(currentUser.uid)">
-                <div class="load" ng-if="profileSubmit"><span class="load-message" ng-class="{error: profileSubmitStatus == 'error', success: profileSubmitStatus == 'success'}">{{profileSubmitMessage}}</span></div>
                 <fieldset>
                     <div class="gravatar">
                         <img src="http://www.gravatar.com/avatar/{{currentUser.gravatar}}?s=240" alt="Gravatar"/>
@@ -23,7 +22,6 @@
         <section class="your-password">
             <h3>Your email and password</h3>
             <form name="accountForm" ng-submit="submitAccount(currentUser.uid)">
-                <div class="load" ng-if="accountSubmit"><span class="load-message" ng-class="{error: accountSubmitStatus == 'error', success: accountSubmitStatus == 'success'}">{{accountSubmitMessage}}</span></div>
                 <fieldset>
                     <div class="field">
                         <label>Existing password</label>

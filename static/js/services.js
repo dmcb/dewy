@@ -31,11 +31,11 @@ services.service('dewySession', ['$window', function ($window) {
 		}
 		return null;
 	}
-	this.setUser = function(user) {
+	this.setUser = function(userDoc) {
 		if ('user' in $window.localStorage) {
-			$window.localStorage.user = JSON.stringify(user);
+			$window.localStorage.user = JSON.stringify(userDoc);
 		}
-		$window.sessionStorage.user = JSON.stringify(user);
+		$window.sessionStorage.user = JSON.stringify(userDoc);
 	}
 	this.update = function (result) {
 		if ('token' in $window.localStorage) {

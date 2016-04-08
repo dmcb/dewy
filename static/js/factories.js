@@ -46,19 +46,20 @@ factories.factory('authService', ['dewySession', '$location', '$rootScope', func
 		return !!dewySession.getToken();
 	}
 
-	authService.setUser = function(user) {
-		dewySession.setUser(user);
+	authService.setUser = function(userDoc) {
+		dewySession.setUser(userDoc);
+		$rootScope.$broadcast('currentUser:updated', userDoc);
 	}
 
 	authService.signOff = function() {
 		dewySession.destroy();
-		$rootScope.$broadcast('signoff');
+		$rootScope.$broadcast('signOff:success');
 		$location.path('/signon');
 	}
 
 	authService.signOn = function(location, payload, remember) {
 		dewySession.create(payload, remember);
-		$rootScope.$broadcast('signon:success');
+		$rootScope.$broadcast('signOn:success');
 		$location.path(location);
 	};
 

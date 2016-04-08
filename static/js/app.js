@@ -248,16 +248,19 @@ app.run(['authService', '$rootScope', '$location', '$http', '$window', function(
 				event.preventDefault();
 				$location.path('/signon');
 			} else {
-				$rootScope.currentUser = authService.currentUser();
-				if (!$rootScope.currentUser) {
+				var currentUser = authService.currentUser();
+				if (!currentUser) {
 					$http.get('http://dewy.io/api/users')
 					.success(function(result) {
 						authService.setUser(result);
-						$rootScope.currentUser = result;
+						$rootScope.queuedIndexPage = next.indexPage;
+						$rootScope.queuedMenuItem = next.menuItem;
 					})
 				}
-				$rootScope.queuedIndexPage = next.indexPage;
-				$rootScope.queuedMenuItem = next.menuItem;
+				else {
+					$rootScope.queuedIndexPage = next.indexPage;
+					$rootScope.queuedMenuItem = next.menuItem;
+				}
 			}
 			$rootScope.isViewLoading = true;
 		}
@@ -266,7 +269,6 @@ app.run(['authService', '$rootScope', '$location', '$http', '$window', function(
 				event.preventDefault();
 				$location.path('/sites');
 			} else {
-				$rootScope.currentUser = null;
 				$rootScope.queuedIndexPage = next.indexPage;
 				$rootScope.queuedMenuItem = next.menuItem;
 			}
