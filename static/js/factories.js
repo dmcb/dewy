@@ -52,13 +52,14 @@ factories.factory('authService', ['dewySession', '$location', '$rootScope', func
 
 	authService.signOff = function() {
 		dewySession.destroy();
+		$rootScope.$broadcast('signoff');
 		$location.path('/signon');
 	}
 
-	authService.signOn = function(payload, remember) {
+	authService.signOn = function(location, payload, remember) {
 		dewySession.create(payload, remember);
-		$rootScope.$broadcast('auth-signon-success');
-		$location.path('/sites');
+		$rootScope.$broadcast('signon:success');
+		$location.path(location);
 	};
 
 	authService.update = function(payload) {

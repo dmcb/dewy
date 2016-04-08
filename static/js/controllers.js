@@ -334,7 +334,7 @@ controllers.controller('signonController', ['authService', '$scope', '$http',
 					username: $scope.username,
 					password: $scope.password
 				}).success(function(result) {
-					authService.signOn(result, $scope.remember);
+					authService.signOn('/sites', result, $scope.remember);
 				})
 				.error(function(error, status) {
 					if (status == '400') {
@@ -375,7 +375,7 @@ controllers.controller('signupController', ['authService', '$scope', '$http',
 					password: $scope.password
 				})
 				.success(function(result) {
-					authService.signOn(result);
+					authService.signOn('/sites', result);
 				})
 				.error(function(error, status) {
 					if (status != '400') {
