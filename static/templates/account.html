@@ -11,7 +11,7 @@
                     </div>
                     <div class="field">
                         <label>Your username</label>
-                        <input type="text" ng-model="username" name="username" ng-change="check(currentUser.uid, 'profileForm', 'username')" />
+                        <input type="text" ng-model="username" name="username" ng-change="check(currentUser.uid, 'profileForm', 'username')" required />
                         <span class="error" ng-if="profileForm.username.$error.required && (profileForm.username.$touched || profileForm.$submitted)">A username is required.</span>
                         <span class="error" ng-if="profileForm.error.username">{{ profileForm.error.username }}</span>
                     </div>

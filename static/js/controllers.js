@@ -43,9 +43,9 @@ controllers.controller('accountController', ['$scope', '$timeout', '$rootScope',
 				})
 				.error(function(error, status) {
 					if (status != '400') {
-						$scope.profileForm = {error: 'Dewy could not update your profile at this time.'};
+						$scope.profileForm.error.username = 'Dewy could not update your profile at this time.';
 					} else {
-						$scope.profileForm = error;
+						$scope.profileForm.error.username = error;
 					}
 				});
             }
