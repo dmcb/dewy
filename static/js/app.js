@@ -208,6 +208,9 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 			}
 		}).
 		when('/verify/:uid/:verify', {
+			templateUrl: 'templates/verify.html',
+			controller: 'verifyController',
+			indexPage: true,
 			resolve: {
 				verifyData: ['$route', '$http', 'flash', 'authService', function($route, $http, flash, authService) {
 					return $http.get('http://dewy.io/auth/verify/' + $route.current.params.uid + '/' + $route.current.params.verify).
@@ -215,11 +218,11 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 						flash('Email verified');
 						authService.signOn('/account', result.data);
 					}, function(error) {
-						// if (error.status == '400') {
-						// 	return {error: error.data};
-						// } else {
-						// 	return {error: 'Dewy could not verify you at this time.'};
-						// }
+						if (error.status == '400') {
+							return {error: error.data};
+						} else {
+							return {error: 'Dewy could not verify you at this time.'};
+						}
 					});
 				}]
 			}
@@ -230,9 +233,9 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 			indexPage: true
 		}).
 		otherwise({
-			controller: function() {
-				window.location.replace('/');
-			},
+			controller: ['$location', function($location) {
+				$location.path('/');
+			}],
 			template : '<div></div>'
 		})
 }]);
@@ -260,7 +263,7 @@ app.run(['authService', '$rootScope', '$location', '$http', '$window', function(
 				}
 			}
 		}
-		else if (!next.requiresAuthorization) {
+		else if ('requiresAuthorization' in next && !next.requiresAuthorization) {
 			if (authService.isAuthenticated()) {
 				event.preventDefault();
 				$location.path('/sites');

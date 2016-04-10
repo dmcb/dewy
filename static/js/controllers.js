@@ -523,3 +523,9 @@ controllers.controller('overviewSitesController', ['$scope', 'sitesFactory',
 controllers.controller('overviewUsersController', ['$scope',
 	function ($scope) {
 }]);
+
+controllers.controller('verifyController', ['$scope', 'verifyData',
+	function ($scope, verifyData) {
+		$scope.error = verifyData.error;
+}]);
+
