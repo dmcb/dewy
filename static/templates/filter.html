@@ -7,9 +7,9 @@
             <span id="titleerror" ng-show="filterForm.title.$error.required && (filterForm.title.$touched || filterForm.$submitted)">A title is required.</span>
             <nav class="context">
                 <div class="actions">
-                    <button type="submit">Save filter <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
-                    <a class="button" href="" ng-click="cancel()">Cancel changes <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-                    <a class="button" href="" ng-click="deleteFilter()" ng-if="!newFilter">Delete filter <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                    <button type="submit">Save filter <i class="fa fa-check"></i></button>
+                    <a class="button" href="" ng-click="cancel()">Cancel changes <i class="fa fa-times"></i></a>
+                    <a class="button" href="" ng-click="deleteFilter()" ng-if="!newFilter">Delete filter <i class="fa fa-trash-o"></i></a>
                 </div>
             </nav>
             <div class="view">

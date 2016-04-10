@@ -11,7 +11,7 @@
             <form>
                 <fieldset>
                     <input type="text" ng-model="apikey" ng-change="getKey()" id="apikey" />
-                    <button ng-click="resetKey(currentUser.uid)">Reset API Key <span class="glyphicon glyphicon-random" aria-hidden="true"></span></button>
+                    <button ng-click="resetKey(currentUser.uid)">Reset API Key<i class="fa fa-random"></i></button>
                 </fieldset>
             </form>
         </section>
@@ -30,9 +30,9 @@
                     <li class="status disabled" ng-if="site.enabled == 0">Site disabled from reporting to Dewy</li>
                 </ul>
                 <div class="buttons">
-                    <a class="button" href="{{site.baseurl}}/user" target="_blank">Visit site <span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
-                    <a class="button" href="" ng-click="auditSite($index)">Attempt audit <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a>
-                    <a class="button" href="" ng-click="deleteSite($index)">Remove from Dewy <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                    <a class="button" href="{{site.baseurl}}/user" target="_blank">Visit site <i class="fa fa-search"></i></a>
+                    <a class="button" href="" ng-click="auditSite($index)">Attempt audit <i class="fa fa-repeat"></i></a>
+                    <a class="button" href="" ng-click="deleteSite($index)">Remove from Dewy <i class="fa fa-trash-o"></i></a>
                 </div>
             </div>
         </section>

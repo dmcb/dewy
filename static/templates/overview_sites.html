@@ -11,7 +11,7 @@
         </ul>
     </div>
     <div class="sites">
-        <div ng-if="!filteredSites.length && query" class="noresults"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span><span>No sites meet your criteria.</span></div>
+        <div ng-if="!filteredSites.length && query" class="noresults"><i class="fa fa-exclamation-triangle"></i><span>No sites meet your criteria.</span></div>
         <div ng-repeat="site in filteredSites = (sites | filter:query) | orderBy:sort.column:sort.descending" class="site">
             <ul class="site">
                 <li class="title" ng-class="{open: openSite.sid == site.sid && !openSite.detail}"><a href="" ng-click="openDetails(sites.indexOf(site))"><span class="title">{{site.title}}</span><span class="url">{{site.baseurl}}</span></a></li>
@@ -33,7 +33,7 @@
             <div class="detail-view" ng-if="openSite.sid == site.sid">
                 <div ng-if="!openSite.detail">
                     <ul class="tags" ng-if="openSite.tags.length">
-                        <li ng-repeat="tag in openSite.tags">{{tag}} <a href="" ng-click="deleteTag($index, sites.indexOf(site))"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></li>
+                        <li ng-repeat="tag in openSite.tags">{{tag}} <a href="" ng-click="deleteTag($index, sites.indexOf(site))"><i class="fa fa-times"></i></a></li>
                     </ul>
                     <form name="tagForm{{sites.indexOf(site)}}" ng-submit="addTags(sites.indexOf(site))">
                         <input placeholder="Tags seperated by commas" name="tags" ng-model="tags" required />

@@ -31,35 +31,19 @@
             </ul>
             <div class="detail-view" ng-if="openModule.module == module.module">
                 <div ng-if="!openModule.detail">
-                    <ul class="tags" ng-if="openModule.tags.length">
-                        <li ng-repeat="tag in openModule.tags">{{tag}} <a href="" ng-click="deleteTag($index, sites.indexOf(site))"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></li>
-                    </ul>
-                    <form name="tagForm{{sites.indexOf(site)}}" ng-submit="addTags(sites.indexOf(site))">
-                        <input placeholder="Tags seperated by commas" name="tags" ng-model="tags" required />
-                        <button type="submit">Add tags</button>
-                        <span class="error" ng-show="tagForm{{sites.indexOf(site)}}.tags.$error.required && (tagForm{{sites.indexOf(site)}}.tags.$touched || tagForm{{sites.indexOf(site)}}.$submitted)">Please enter a tag.</span>
-                    </form>
+                    
                 </div>
                 <ul ng-if="openModule.detail == 'complexity'">
-                    <li><span class="number">{{}}</span> modules enabled</li>
-                    <li><span class="number">{{}}</span> modules available</li>
-                    <li><span class="number">{{}}</span> content types</li>
-                    <li><span class="number">{{}}</span> roles</li>
+
                 </ul>
                 <ul ng-if="openModule.detail == 'size'">
-                    <li><span class="number">{{}}</span> nodes</li>
-                    <li><span class="number">{{}}</span> users</li>
-                    <li><span class="number">{{}}</span> files</li>
-                    <li><span class="number">{{}}</span> words</li>
+
                 </ul>
                 <ul ng-if="openModule.detail == 'activity'">
-                    <li><span class="number">{{}}</span> since last visit</li>
-                    <li><span class="number">{{}}</span> since last access</li>
-                    <li><span class="number">{{}}</span> since last modification</li>
+
                 </ul>
                 <ul ng-if="openModule.detail == 'health'">
-                    <li><span class="number">{{}}</span> modules out of date</li>
-                    <li><span class="number">{{}}</span> database updates pending</li>
+
                 </ul>
             </div>
         </div>

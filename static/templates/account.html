@@ -15,7 +15,7 @@
                         <span class="error" ng-if="profileForm.username.$error.required && (profileForm.username.$touched || profileForm.$submitted)">A username is required.</span>
                         <span class="error" ng-if="profileForm.error.username">{{ profileForm.error.username }}</span>
                     </div>
-                    <button ng-click="">Update profile <span class="glyphicon glyphicon-save" aria-hidden="true"></span></button>
+                    <button ng-click="">Update profile <i class="fa fa-pencil"></i></button>
                 </fieldset>
             </form>
         </section>
@@ -46,12 +46,12 @@
                         <span class="error" ng-if="accountForm.passwordConfirm.$error.match && (accountForm.passwordConfirm.$touched || accountForm.$submitted)">Passwords do not match.</span>
                     </div>
                     <span class="error" ng-if="accountForm.error.error">{{ accountForm.error.error }}</span>
-                    <button ng-click="">Update account<span class="glyphicon glyphicon-save" aria-hidden="true"></span></button>
+                    <button ng-click="">Update account<i class="fa fa-pencil"></i></button>
                 </fieldset>
                 <fieldset ng-if="currentUser.verify">
                     <hr/>
                     <span class="unverified">Your email address has not been verified.</span>
-                    <a class="button" ng-click="reverify(currentUser.uid)">Resend verification email<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a>
+                    <a class="button" ng-click="reverify(currentUser.uid)">Resend verification email<i class="fa fa-envelope-o"></i></a>
                 </fieldset>
             </form>
         </section>

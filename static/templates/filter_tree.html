@@ -1,5 +1,5 @@
 <li class="rule-group-heading" ng-class="{top: !rule._parent}" ng-if="rule.operator">
-    <a class="handle" ng-if="rule._parent"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></a>
+    <a class="handle" ng-if="rule._parent"><i class="fa fa-bars"></i></a>
     <select ng-model="rule.operator" ng-options="operator as operator for operator in operators"></select>
     <span class="label">of the following rules:</span>
     <div class="buttons" ng-if="rule._parent" ng-include="'templates/rule_buttons.html'"></div>
@@ -8,7 +8,7 @@
     <li class="rule" ng-repeat="rule in rule.rules" ng-form="rulesForm">
         <div ng-if="rule.operator" ng-init="rule._parent=true" ng-include="'templates/filter_tree.html'"></div>
         <div ng-if="!rule.operator">
-            <a class="handle"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></a>
+            <a class="handle"><i class="fa fa-bars"></i></a>
             <select class="field" ng-model="rule.field" ng-options="field.title as field.title for field in fields" ng-change="updateChoice(rule, '{{rule.field}}')"></select>
             <select class="choice" ng-model="rule.choice" ng-options="choice.id as choice.label for choice in getChoices(rule.field)"></select>
             <input name="value" type="text" ng-model="rule.value" ng-if="valueIsType(rule.field, 'string')" required />
