@@ -173,7 +173,7 @@ fieldset {
         }
     }
 
-    button {
+    button, .button {
         margin-top: 2em;
         @include layout(24) {
             @include grid-span(10,8);

@@ -35,7 +35,7 @@ factories.factory('authInterceptor', ['authService', '$location', '$q', '$inject
 	return authInterceptor;
 }]);
 
-factories.factory('authService', ['dewySession', '$location', '$rootScope', function(dewySession, $location, $rootScope) {
+factories.factory('authService', ['dewySession', '$rootScope', function(dewySession, $rootScope) {
 	var authService = {};
 
 	authService.currentUser = function() {
@@ -54,13 +54,11 @@ factories.factory('authService', ['dewySession', '$location', '$rootScope', func
 	authService.signOff = function() {
 		dewySession.destroy();
 		$rootScope.$broadcast('signOff:success');
-		$location.path('/signon');
 	}
 
 	authService.signOn = function(location, payload, remember) {
 		dewySession.create(payload, remember);
-		$rootScope.$broadcast('signOn:success');
-		$location.path(location);
+		$rootScope.$broadcast('signOn:success', location);
 	};
 
 	authService.update = function(payload) {
@@ -302,6 +300,13 @@ factories.factory('userFactory', ['$http', function($http) {
 			key: true
 		}
 		return $http.put(apiUrl + '/users/' + uid, update)
+			.then(function (response) {
+				return response.data;
+			});
+	}
+
+	userFactory.reverify = function(uid) {
+		return $http.get(apiUrl + '/users/_verify/' + uid)
 			.then(function (response) {
 				return response.data;
 			});

@@ -208,10 +208,6 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 			}
 		}).
 		when('/verify/:uid/:verify', {
-			templateUrl: 'templates/verify.html',
-			controller: 'verifyController',
-			requiresAuthorization: false,
-			indexPage: true,
 			resolve: {
 				verifyData: ['$route', '$http', 'flash', 'authService', function($route, $http, flash, authService) {
 					return $http.get('http://dewy.io/auth/verify/' + $route.current.params.uid + '/' + $route.current.params.verify).
@@ -219,11 +215,11 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 						flash('Email verified');
 						authService.signOn('/account', result.data);
 					}, function(error) {
-						if (error.status == '400') {
-							return {error: error.data};
-						} else {
-							return {error: 'Dewy could not verify you at this time.'};
-						}
+						// if (error.status == '400') {
+						// 	return {error: error.data};
+						// } else {
+						// 	return {error: 'Dewy could not verify you at this time.'};
+						// }
 					});
 				}]
 			}
@@ -243,6 +239,7 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 
 app.run(['authService', '$rootScope', '$location', '$http', '$window', function(authService, $rootScope, $location, $http, $window) {
 	$rootScope.$on('$routeChangeStart', function (event, next) {
+		$rootScope.isViewLoading = true;
 		if (next.requiresAuthorization) {
 			if (!authService.isAuthenticated()) {
 				event.preventDefault();
@@ -255,14 +252,13 @@ app.run(['authService', '$rootScope', '$location', '$http', '$window', function(
 						authService.setUser(result);
 						$rootScope.queuedIndexPage = next.indexPage;
 						$rootScope.queuedMenuItem = next.menuItem;
-					})
+					});
 				}
 				else {
 					$rootScope.queuedIndexPage = next.indexPage;
 					$rootScope.queuedMenuItem = next.menuItem;
 				}
 			}
-			$rootScope.isViewLoading = true;
 		}
 		else {
 			if (authService.isAuthenticated()) {
@@ -283,5 +279,11 @@ app.run(['authService', '$rootScope', '$location', '$http', '$window', function(
 		$rootScope.isViewLoading = false;
 		$rootScope.indexPage = $rootScope.queuedIndexPage;
 		$rootScope.menuItem = $rootScope.queuedMenuItem;
+	});
+	$rootScope.$on('signOff:success', function() {
+		$location.path('/signon');
+	});
+	$rootScope.$on('signOn:success', function(event, data) {
+		$location.path(data);
 	});
 }]);

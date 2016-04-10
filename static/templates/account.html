@@ -51,7 +51,7 @@
                 <fieldset ng-if="currentUser.verify">
                     <hr/>
                     <span class="unverified">Your email address has not been verified.</span>
-                    <button ng-click="">Resend verification email</button>
+                    <a class="button" ng-click="reverify(currentUser.uid)">Resend verification email<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a>
                 </fieldset>
             </form>
         </section>

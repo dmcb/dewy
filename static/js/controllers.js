@@ -50,6 +50,12 @@ controllers.controller('accountController', ['$scope', '$timeout', '$rootScope',
 				});
             }
         }
+        $scope.reverify = function(uid) {
+            userFactory.reverify(uid)
+			.then(function(userDoc) {
+				flash('Verification email sent');
+			});
+        }
 }]);
 
 controllers.controller('appController', ['$scope', '$location', 'authService',
@@ -263,8 +269,8 @@ controllers.controller('filterController', ['$scope', '$location', 'filterFactor
 		};
 }]);
 
-controllers.controller('manageController', ['$scope', '$timeout', '$moment', 'sites', 'user', 'sitesFactory', 'userFactory',
-	function ($scope, $timeout, $moment, sites, user, sitesFactory, userFactory) {
+controllers.controller('manageController', ['$scope', '$timeout', '$moment', 'sites', 'user', 'sitesFactory', 'userFactory', 'flash',
+	function ($scope, $timeout, $moment, sites, user, sitesFactory, userFactory, flash) {
 		$scope.auditSite = function(index) {
 			$scope.sites[index].submitMessage = 'Auditing...';
 			$scope.sites[index].submit = true;
@@ -301,6 +307,7 @@ controllers.controller('manageController', ['$scope', '$timeout', '$moment', 'si
 		}
 		$scope.resetKey = function(uid) {
 			userFactory.resetKey(uid).then(function(apikey) {
+				flash('API key reset');
 				$scope.apikey = apikey;
 			});
 		}
@@ -515,9 +522,4 @@ controllers.controller('overviewSitesController', ['$scope', 'sitesFactory',
 
 controllers.controller('overviewUsersController', ['$scope',
 	function ($scope) {
-}]);
-
-controllers.controller('verifyController', ['$scope', 'verifyData',
-	function ($scope, verifyData) {
-		$scope.error = verifyData.error;
 }]);

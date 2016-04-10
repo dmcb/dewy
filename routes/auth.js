@@ -17,7 +17,6 @@ authenticateWithDewy = function() {
         }
         else if (req.url == '/verify/' + req.params.uid + '/' + req.params.verify) {
             var endPoint = config.api.url + 'users/_verify/' + req.params.uid + '/' + req.params.verify;
-            console.log(endPoint);
         }
         var encodedClient = new Buffer(config.client.client_id + ':' + config.client.client_secret).toString('base64');
         var request = require('request');
