@@ -260,7 +260,7 @@ app.run(['authService', '$rootScope', '$location', '$http', '$window', function(
 				}
 			}
 		}
-		else {
+		else if (!next.requiresAuthorization) {
 			if (authService.isAuthenticated()) {
 				event.preventDefault();
 				$location.path('/sites');
@@ -268,6 +268,10 @@ app.run(['authService', '$rootScope', '$location', '$http', '$window', function(
 				$rootScope.queuedIndexPage = next.indexPage;
 				$rootScope.queuedMenuItem = next.menuItem;
 			}
+		}
+		else {
+			$rootScope.queuedIndexPage = next.indexPage;
+			$rootScope.queuedMenuItem = next.menuItem;
 		}
 	});
 	$rootScope.$on('$routeChangeSuccess', function() {
