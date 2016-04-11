@@ -384,7 +384,7 @@ section.main {
 
             i {
                 padding-left: 0.5em;
-                top: 7px;
+                top: 9px;
                 position: absolute;
             }
         }
@@ -394,7 +394,7 @@ section.main {
             padding: 0;
             width: 100%;
             color: $blue;
-            margin-top: -4px;
+            margin-top: -5px;
         }
 
         @include breakpoint($tablet) {
