@@ -241,7 +241,7 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 }]);
 
 app.run(['authService', '$rootScope', '$location', '$http', '$window', function(authService, $rootScope, $location, $http, $window) {
-	$rootScope.$on('$routeChangeStart', function (event, next) {
+	$rootScope.$on('$routeChangeStart', function (event, next, current) {
 		$rootScope.isViewLoading = true;
 		if (next.requiresAuthorization) {
 			if (!authService.isAuthenticated()) {
@@ -266,7 +266,11 @@ app.run(['authService', '$rootScope', '$location', '$http', '$window', function(
 		else if ('requiresAuthorization' in next && !next.requiresAuthorization) {
 			if (authService.isAuthenticated()) {
 				event.preventDefault();
-				$location.path('/sites');
+				if (current.controller != "overviewController") {
+					$location.path('/sites');
+				} else {
+					$rootScope.isViewLoading = false;
+				}
 			} else {
 				$rootScope.queuedIndexPage = next.indexPage;
 				$rootScope.queuedMenuItem = next.menuItem;
