@@ -269,6 +269,11 @@ controllers.controller('filterController', ['$scope', '$location', 'filterFactor
 		};
 }]);
 
+controllers.controller('filtersController', ['$scope', 'filters', 'filterFactory', 'flash',
+	function ($scope, $filters, filterFactory, flash) {
+		$scope.filters = filters;
+}]);
+
 controllers.controller('manageController', ['$scope', '$timeout', '$moment', 'sites', 'user', 'sitesFactory', 'userFactory', 'flash',
 	function ($scope, $timeout, $moment, sites, user, sitesFactory, userFactory, flash) {
 		$scope.auditSite = function(index) {

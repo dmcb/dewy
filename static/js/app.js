@@ -79,6 +79,17 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 				}]
 			}
 		}).
+		when('/filters', {
+			templateUrl: 'templates/filters.html',
+			controller: 'filtersController',
+			menuItem: 'filters',
+			requiresAuthorization: true,
+			resolve: {
+				filters: ['filterFactory', function(filterFactory) {
+					return filterFactory.getAll();
+				}]
+			}
+		}).
 		when('/manage', {
 			templateUrl: 'templates/manage.html',
 			controller: 'manageController',
