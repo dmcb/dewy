@@ -90,6 +90,13 @@ factories.factory('filterFactory', ['$http', function($http) {
 			});
 	}
 
+	filterFactory.getIndex = function() {
+		return $http.get(apiUrl + '/filters/_index')
+			.then(function (response) {
+				return response.data;
+			});
+	}
+
 	filterFactory.getFields = function() {
 		return $http.get(apiUrl + '/fields/values', {cache: true})
 			.then(function (response) {

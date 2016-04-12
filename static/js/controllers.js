@@ -269,9 +269,10 @@ controllers.controller('filterController', ['$scope', '$location', 'filterFactor
 		};
 }]);
 
-controllers.controller('filtersController', ['$scope', 'filters', 'filterFactory', 'flash',
-	function ($scope, filters, filterFactory, flash) {
+controllers.controller('filtersController', ['$scope', 'filters', 'filterIndex', 'filterFactory', 'flash',
+	function ($scope, filters, filterIndex, filterFactory, flash) {
 		$scope.filters = filters;
+		$scope.filterIndex = filterIndex;
 }]);
 
 controllers.controller('manageController', ['$scope', '$timeout', '$moment', 'sites', 'user', 'sitesFactory', 'userFactory', 'flash',

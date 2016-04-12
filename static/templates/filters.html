@@ -2,10 +2,7 @@
     <section class="main">
         <h2>Manage filters</h2>
         <section class="filters">
-            <ul>
-                <li class="rule" ng-repeat="filter in filters">
-                    {{filter.title}}
-                </li>
+            <ul ng-init="filters=filterIndex.filters" ng-include="'templates/filter_index.html'">
             </ul>
         </section>
     </section>

@@ -87,6 +87,9 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 			resolve: {
 				filters: ['filterFactory', function(filterFactory) {
 					return filterFactory.getAll();
+				}],
+				filterIndex: ['filterFactory', function(filterFactory) {
+					return filterFactory.getIndex();
 				}]
 			}
 		}).
