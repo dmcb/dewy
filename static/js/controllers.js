@@ -270,7 +270,7 @@ controllers.controller('filterController', ['$scope', '$location', 'filterFactor
 }]);
 
 controllers.controller('filtersController', ['$scope', 'filters', 'filterFactory', 'flash',
-	function ($scope, $filters, filterFactory, flash) {
+	function ($scope, filters, filterFactory, flash) {
 		$scope.filters = filters;
 }]);
 
