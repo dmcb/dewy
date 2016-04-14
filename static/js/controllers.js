@@ -271,6 +271,60 @@ controllers.controller('filterController', ['$scope', '$location', 'filterFactor
 
 controllers.controller('filtersController', ['$scope', 'filters', 'filterIndex', 'filterFactory', 'flash',
 	function ($scope, filters, filterIndex, filterFactory, flash) {
+		$scope.addFolder = function(filter) {
+			var newFolder = {
+				folder: 'New folder',
+				filters: []
+			}
+			function walk(target) {
+				var filters = target.filters, i;
+				if (filters) {
+					i = filters.length;
+					while (i--) {
+						if (filters[i] == filter) {
+							// If your adding from a folder, insert into that folder
+							if (filters[i].filters) {
+								return filters[i].filters.splice(0, 0, newFolder);
+							} else {
+								return filters.splice(i+1, 0, newFolder);
+							}
+						} else {
+							walk(filters[i])
+						}
+					}
+				}
+			}
+			walk($scope.filterIndex);
+			filterFactory.updateIndex($scope.filterIndex);
+		}
+
+		$scope.deleteFolder = function(filter) {
+			function walk(target) {
+				var filters = target.filters, i;
+				if (filters) {
+					i = filters.length;
+					while (i--) {
+						if (filters[i] == filter) {
+							var deletedFilter = filters.splice(i, 1);
+							// If the folder being deleted has child filters, move them up
+							if (deletedFilter[0].filters) {
+								var j = deletedFilter[0].filters.length;
+								while (j--) {
+									filters.splice(i, 0, deletedFilter[0].filters[j]);
+								}
+							}
+							return;
+						}
+						else {
+							walk(filters[i]);
+						}
+					}
+				}
+			}
+			walk($scope.filterIndex);
+			filterFactory.updateIndex($scope.filterIndex);
+		}
+
 		$scope.filters = filters;
 		$scope.filterIndex = filterIndex;
 		$scope.sortableOptions = {
