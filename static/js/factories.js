@@ -140,6 +140,13 @@ factories.factory('filterFactory', ['$http', function($http) {
 			});
 	}
 
+	filterFactory.updateIndex = function(filterIndex) {
+		return $http.post(apiUrl + '/filters/_index', filterIndex)
+			.then(function (response) {
+				return response;
+			});
+	}
+
 	return filterFactory;
 }]);
 

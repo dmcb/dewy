@@ -2,7 +2,8 @@
     <section class="main">
         <h2>Manage filters</h2>
         <section class="filters">
-            <ul ng-init="filters=filterIndex.filters" ng-include="'templates/filter_index.html'">
+            <h3>Arrange filters and folders</h3>
+            <ul ng-init="filters=filterIndex.filters" ng-include="'templates/filter_index.html'" ui-sortable="sortableOptions" ng-model="filters" class="filter-group">
             </ul>
         </section>
     </section>

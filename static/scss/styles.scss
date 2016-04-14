@@ -13,6 +13,7 @@
 @import 'modules/arrows';
 
 // Partials
+@import 'partials/buttons';
 @import 'partials/elements';
 @import 'partials/shell';
 
@@ -33,7 +34,7 @@ section {
         }
     }
 
-    &.introduction, &.error, &.feature section, &.signup, &.signon, &.add-site, &.api-key, &.offline-sites, &.user-info, &.your-password, &.subscription {
+    &.introduction, &.error, &.feature section, &.signup, &.signon, &.add-site, &.api-key, &.offline-sites, &.user-info, &.your-password, &.subscription, &.filters {
         padding-top: 3em;
 
         @include breakpoint($mobile-large) {
@@ -192,7 +193,7 @@ section.feature {
     }
 }
 
-section.add-site, section.user-info {
+section.add-site, section.user-info, section.filters {
     padding-top: 0;
 }
 
@@ -280,6 +281,17 @@ section.offline-sites {
         @include breakpoint($desktop) {
             @include grid-span(20,3);
             clear: both;
+        }
+    }
+}
+
+section.filters {
+    li {
+        position: relative;
+        margin-top: 1em;
+
+        > ul {
+            margin-left: 1.5em;
         }
     }
 }
@@ -789,14 +801,6 @@ section.main {
                     }
                 }
 
-                .rule-group-placeholder {
-                    height: 3px;
-                    background-color: $blue;
-                    display: block;
-                    margin: -5px 0 -5px 0;
-                    padding: 0;
-                }
-
                 .notification-choices li {
                     display: block;
 
@@ -817,52 +821,6 @@ section.main {
                         height: 0;
                         clear: both;
                         visibility: hidden;
-                    }
-
-                    .buttons {
-                        margin-top: 0.5em;
-                        margin-bottom: 1em;
-                        text-align: center;
-
-                        @include breakpoint($tablet) {
-                            margin-top: 0;
-                            position: absolute;
-                            right: 0;
-                            top: 0;
-                        }
-
-                        button, a.button {
-                            margin-left: 0.25em;
-                            background-color: $white;
-                            display: inline-block;
-
-                            span { 
-                                float: none;
-                            }
-
-                            @include breakpoint($tablet) {
-                                background-color: $light-grey;
-
-                                &:hover {
-                                    background-color: $grey;
-                                }
-                            }
-                        }
-                    }
-
-                    .handle {
-                        display: none;
-
-                        @include breakpoint($tablet) {
-                            color: $light-grey;
-                            display: inline-block;
-                        }
-
-                        &:hover {
-                            cursor: grab;
-                            cursor: -webkit-grab; 
-                            cursor: -moz-grab;
-                        }
                     }
 
                     span {

@@ -1,8 +1,10 @@
 <li ng-repeat="filter in filters">
     <a class="handle"><i class="fa fa-bars"></i></a>
     <span ng-if="filter.filters">{{filter.folder}}</span>
-    <ul ng-if="filter.filters" ng-init="filters=filter.filters" ng-include="'templates/filter_index.html'"></ul>
+    <ul ng-if="filter.filters" ng-init="filters=filter.filters" ng-include="'templates/filter_index.html'" ui-sortable="sortableOptions" ng-model="filters" class="filter-group"></ul>
     <span ng-if="filter.fid">{{filter.fid}}</span>
-    <a ng-if="filter.filters" class="button" href="" ng-click="deleteFolder($index)"><i class="fa fa-minus"></i></a>
-    <a class="button" href="" ng-click="addFolder($index)"><i class="fa fa-plus"></i></a>
+    <div class="buttons">
+        <a ng-if="filter.filters" class="button" href="" ng-click="deleteFolder($index)"><i class="fa fa-minus"></i></a>
+        <a class="button" href="" ng-click="addFolder($index)"><i class="fa fa-plus"></i></a>
+    </div>
 </li>

@@ -1,0 +1,45 @@
+.buttons {
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+    text-align: center;
+
+    @include breakpoint($tablet) {
+        margin-top: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    button, a.button {
+        margin-left: 0.25em;
+        background-color: $white;
+        display: inline-block;
+
+        span { 
+            float: none;
+        }
+
+        @include breakpoint($tablet) {
+            background-color: $light-grey;
+
+            &:hover {
+                background-color: $grey;
+            }
+        }
+    }
+}
+
+.handle {
+    display: none;
+
+    @include breakpoint($tablet) {
+        color: $light-grey;
+        display: inline-block;
+    }
+
+    &:hover {
+        cursor: grab;
+        cursor: -webkit-grab; 
+        cursor: -moz-grab;
+    }
+}

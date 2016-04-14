@@ -261,7 +261,7 @@ controllers.controller('filterController', ['$scope', '$location', 'filterFactor
 			handle: ".handle",
 			helper: "clone",
 			opacity: 0.75,
-			placeholder: "rule-group-placeholder",
+			placeholder: "dropdown-placeholder",
 			stop: function(e, ui) {
 				// Check if there are rule groups to delete because they are now empty after a move
 				$scope.deleteRule(null);
@@ -273,6 +273,16 @@ controllers.controller('filtersController', ['$scope', 'filters', 'filterIndex',
 	function ($scope, filters, filterIndex, filterFactory, flash) {
 		$scope.filters = filters;
 		$scope.filterIndex = filterIndex;
+		$scope.sortableOptions = {
+			connectWith: ".filter-group",
+			handle: ".handle",
+			helper: "clone",
+			opacity: 0.75,
+			placeholder: "dropdown-placeholder",
+			stop: function(e, ui) {
+				filterFactory.updateIndex($scope.filterIndex);
+			}
+		};
 }]);
 
 controllers.controller('manageController', ['$scope', '$timeout', '$moment', 'sites', 'user', 'sitesFactory', 'userFactory', 'flash',
