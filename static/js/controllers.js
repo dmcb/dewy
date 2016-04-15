@@ -325,6 +325,10 @@ controllers.controller('filtersController', ['$scope', 'filters', 'filterIndex',
 			filterFactory.updateIndex($scope.filterIndex);
 		}
 
+		$scope.updateIndex = function() {
+			filterFactory.updateIndex($scope.filterIndex);
+		}
+
 		$scope.filters = filters;
 		$scope.filterIndex = filterIndex;
 		$scope.sortableOptions = {

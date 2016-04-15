@@ -1,9 +1,6 @@
 <li ng-repeat="filter in filterList">
     <a class="handle"><i class="fa fa-bars"></i></a>
-    <a href="" ng-if="filter.filters" ng-hide="editing" class="folder" ng-click="editing=true"><span>{{filter.folder}} <i class="fa fa-pencil-square-o"></i></span></a>
-    <form ng-show="editing" ng-submit="editing=false">
-        <input type="text" ng-model="filter.folder" value="filter.folder" ng-required /><button type="submit">Save</button>
-    </form>
+    <editablespan ng-if="filter.filters" model="filter.folder" on-ready="updateIndex()" input-type="text"></editablespan>
     <ul ng-if="filter.folder" ng-init="filterList=filter.filters" ng-include="'templates/filter_index.html'" ui-sortable="sortableOptions" ng-model="filterList" class="filter-group" ng-class="{placeholder: !filterList.length}"></ul>
     <span ng-if="filter.fid">{{filter.fid}}</span>
     <div class="buttons">

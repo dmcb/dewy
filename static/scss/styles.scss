@@ -290,6 +290,10 @@ section.filters {
         position: relative;
         padding: 0.5em 0;
 
+        .editable-span {
+            display: inline;
+        }
+
         span {
             margin-left: 1em;
             padding-left: 2px;
