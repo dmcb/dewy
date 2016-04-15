@@ -380,16 +380,7 @@ section.user-info, section.your-password {
                 clear: both;
             }
         }
-
-        opacity: 1;
-        transition: 400ms ease all;
-
-        &.ng-hide-remove {
-            opacity: 1;
-            transition: 1500ms all;
-        }
     }
-
 
     label {
         @include clearfix;
@@ -1055,8 +1046,6 @@ div.site.ng-enter,
 
 .rule.ng-enter, 
 .rule.ng-leave,
-fieldset.ng-enter,
-fieldset.ng-leave,
 .detail-view.ng-enter, 
 .detail-view div.ng-enter,
 div.site.ng-leave,
@@ -1070,8 +1059,6 @@ div.site.ng-leave,
 
 .rule.ng-enter.ng-enter-active, 
 .rule.ng-leave,
-fieldset.ng-enter.ng-enter-active,
-fieldset.ng-leave,
 .detail-view div.ng-enter.ng-enter-active, 
 .detail-view div.ng-leave,
 {
@@ -1081,8 +1068,6 @@ fieldset.ng-leave,
 
 .rule.ng-leave.ng-leave-active,
 .rule.ng-enter,
-.fieldset.ng-leave.ng-leave-active, 
-.fieldset.ng-enter,
 .detail-view div.ng-leave.ng-leave-active,
 .detail-view div.ng-enter,
 {
