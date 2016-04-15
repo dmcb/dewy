@@ -286,6 +286,19 @@ section.offline-sites {
 }
 
 section.filters {
+
+    & > ul {
+        @include layout(24) {
+            @include grid-span(24,1);
+            clear: both;
+
+            @include breakpoint($desktop) {
+                @include grid-span(18,4);
+                clear: both;
+            }
+        }
+    }
+
     li {
         position: relative;
         padding: 0.5em 0;

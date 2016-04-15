@@ -30,12 +30,8 @@
 }
 
 .handle {
-    display: none;
-
-    @include breakpoint($tablet) {
-        color: $light-grey;
-        display: inline-block;
-    }
+    display: inline-block;
+    color: $light-grey;
 
     &:hover {
         cursor: grab;
