@@ -303,13 +303,24 @@ section.filters {
         position: relative;
         padding: 0.5em 0;
 
+        .filter {
+            height: 1.5em;
+        }
+
+        .handle {
+            vertical-align: top;
+        }
+
         .editable-span {
             display: inline;
+
+            a {
+                font-weight: bold;
+            }
         }
 
         span {
             margin-left: 1em;
-            padding-left: 2px;
         }
 
         > ul {
@@ -322,13 +333,30 @@ section.filters {
         }
 
         form {
-            display: inline;
+            display: inline-block;
+
+            input {
+                border: 0;
+                margin: 0;
+                padding-top: 0;
+                padding-bottom: 0;
+                color: $blue;
+                vertical-align: top;
+                font-weight: bold;
+            }
 
             button {
                 display: inline-block;
-                padding: 0.35em 1em;
+                padding: 0.25em 0.5em;
                 margin: 0 0 0 0.5em;
             }
+        }
+
+        .buttons {
+            margin-top: 0;
+            position: absolute;
+            right: 0;
+            top: 0.5em;
         }
     }
 }

@@ -14,7 +14,7 @@ directives.directive('formatDate', function() {
 directives.directive('editablespan', function() {
     return {
         restrict: 'E',
-        template: '<div class="editable-span"><a href="" ng-hide="editing" ng-class="spanClass"><span>{{text}} <i class="fa fa-pencil-square-o"></i></span></a><form ng-show="editing"><input type="{{getInputType()}}" ng-class="inputClass"></form><div>',
+        template: '<div class="editable-span"><a href="" ng-hide="editing" ng-class="spanClass"><span>{{text}} <i class="fa fa-pencil-square-o"></i></span></a><form ng-show="editing"><input type="{{getInputType()}}" ng-class="inputClass"><button type="submit"><i class="fa fa-check" aria-hidden="true"></i></button></form><div>',
         scope: {
             text: '=model',
             onReady: '&',
