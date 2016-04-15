@@ -288,10 +288,30 @@ section.offline-sites {
 section.filters {
     li {
         position: relative;
-        margin-top: 1em;
+        padding: 0.5em 0;
+
+        span {
+            margin-left: 1em;
+            padding-left: 2px;
+        }
 
         > ul {
             margin-left: 1.5em;
+            padding-top: 0.5em;
+
+            li:last-child {
+                padding-bottom: 0;
+            }
+        }
+
+        form {
+            display: inline;
+
+            button {
+                display: inline-block;
+                padding: 0.35em 1em;
+                margin: 0 0 0 0.5em;
+            }
         }
     }
 }

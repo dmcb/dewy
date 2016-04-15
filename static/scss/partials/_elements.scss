@@ -218,6 +218,5 @@ input {
     height: 3px;
     background-color: $blue;
     display: block;
-    margin: -5px 0 -5px 0;
-    padding: 0;
+    padding: 0 !important;
 }
