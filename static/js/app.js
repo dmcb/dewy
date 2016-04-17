@@ -30,6 +30,9 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 				filters: ['filterFactory', function(filterFactory) {
 					return filterFactory.getAll();
 				}],
+				filterIndex: ['filterFactory', function(filterFactory) {
+					return filterFactory.getIndex();
+				}],
 				data: ['$route', 'filterFactory', 'sitesFactory', function($route, filterFactory, sitesFactory) {
 					if ($route.current.params.filter) {
 						return filterFactory.getFilter($route.current.params.filter).
@@ -116,6 +119,9 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 				filters: ['filterFactory', function(filterFactory) {
 					return filterFactory.getAll();
 				}],
+				filterIndex: ['filterFactory', function(filterFactory) {
+					return filterFactory.getIndex();
+				}],
 				data: ['$route', 'filterFactory', 'moduleFactory', function($route, filterFactory, moduleFactory) {
 					if ($route.current.params.filter) {
 						return filterFactory.getFilter($route.current.params.filter).
@@ -158,6 +164,9 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 				filters: ['filterFactory', function(filterFactory) {
 					return filterFactory.getAll();
 				}],
+				filterIndex: ['filterFactory', function(filterFactory) {
+					return filterFactory.getIndex();
+				}],
 				data: ['$route', 'filterFactory', 'sitesFactory', function($route, filterFactory, sitesFactory) {
 					if ($route.current.params.filter) {
 						return filterFactory.getFilter($route.current.params.filter).
@@ -193,6 +202,9 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 			resolve: {
 				filters: ['filterFactory', function(filterFactory) {
 					return filterFactory.getAll();
+				}],
+				filterIndex: ['filterFactory', function(filterFactory) {
+					return filterFactory.getIndex();
 				}],
 				data: ['$route', 'filterFactory', 'sitesFactory', function($route, filterFactory, sitesFactory) {
 					if ($route.current.params.filter) {

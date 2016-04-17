@@ -2,7 +2,7 @@
     <div class="filter">
         <a class="handle"><i class="fa fa-bars"></i></a>
         <editablespan ng-if="filter.filters" model="filter.folder" on-ready="updateIndex()" input-type="text"></editablespan>
-        <span ng-if="filter.fid">{{filter.fid}}</span>
+        <span ng-if="filter.fid">{{filters[filter.fid].title}}</span>
         <div class="buttons">
             <a ng-if="filter.filters" class="button" href="" ng-click="deleteFolder(filter)"><i class="fa fa-minus"></i></a>
             <a class="button" href="" ng-click="addFolder(filter)"><i class="fa fa-plus"></i></a>

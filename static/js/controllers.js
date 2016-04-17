@@ -460,8 +460,8 @@ controllers.controller('signupController', ['authService', '$scope', '$http',
 		}
 }]);
 
-controllers.controller('overviewController', ['$scope', '$location', 'sitesFactory', 'filters', 'data',
-	function ($scope, $location, sitesFactory, filters, data) {
+controllers.controller('overviewController', ['$scope', '$location', 'sitesFactory', 'filters', 'filterIndex', 'data',
+	function ($scope, $location, sitesFactory, filters, filterIndex, data) {
 		$scope.changeFilter = function(fid) {
 			if (fid) {
 				$location.path($scope.view + '/' + fid);
@@ -470,8 +470,10 @@ controllers.controller('overviewController', ['$scope', '$location', 'sitesFacto
 				$location.path($scope.view);
 			}
 		}
-		$scope.openFolder = function(filter) {
-			$scope.folders[filter] = !$scope.folders[filter];
+		$scope.openFolder = function(index) {
+			console.log(index);
+			$scope.folders[index] = !$scope.folders[index];
+			console.log($scope.folders);
 			sessionStorage.folders = JSON.stringify($scope.folders);
 		}
 
@@ -505,6 +507,7 @@ controllers.controller('overviewController', ['$scope', '$location', 'sitesFacto
 			$scope.folders = {};
 		}
 
+		$scope.filterIndex = filterIndex;
         $scope.filters = filters;
 }]);
 

@@ -960,7 +960,6 @@ section.main {
 
         @include breakpoint($desktop) {
             display: block;
-            margin-bottom: 2em;
         }
 
         li {
@@ -1040,7 +1039,7 @@ section.main {
         @include breakpoint($desktop) {
             position: static;
             width: auto;
-            margin-top: 0;
+            margin-top: 2em;
         }
 
         button, a.button {

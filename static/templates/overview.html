@@ -7,10 +7,9 @@
             </select>
             <ul class="folders">
                 <li><a href="/{{view}}" ng-class="{selected: !currentFilter}">All sites</a></li>
-                <li ng-repeat="filter in filters" ng-include="'templates/filter_menu_item.html'"></li>
+                <li ng-repeat="filter in filterIndex.filters" ng-include="'templates/filter_menu_item.html'"></li>
             </ul>
             <div class="actions">
-                <button ng-click="addFolder()">Add folder <i class="fa fa-plus-circle"></i></button>
                 <a href="/filter" class="button">Add filter <i class="fa fa-plus-circle"></i></a>
             </div>
         </nav>
