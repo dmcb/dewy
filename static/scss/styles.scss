@@ -1027,6 +1027,12 @@ section.main {
         }
     }
 
+    @include breakpoint($desktop) {
+        & > ul.folders {
+            margin-bottom: 2em;
+        }
+    }
+
     .actions {
         @include breakpoint($tablet) {
             position: absolute;
@@ -1039,7 +1045,7 @@ section.main {
         @include breakpoint($desktop) {
             position: static;
             width: auto;
-            margin-top: 2em;
+            margin-top: 0;
         }
 
         button, a.button {
