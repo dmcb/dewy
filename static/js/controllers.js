@@ -516,17 +516,18 @@ controllers.controller('overviewController', ['$scope', '$location', 'sitesFacto
         		prefix = prefix + '---';
         	}
         	for (var i=0; i<filters.length; i++) {
-        		if (filters[i].filters) {
+        		if (filters[i].filters && filters[i].filters.length) {
         			result.push({title: prefix + ' ' + filters[i].folder});
         			comb(filters[i].filters, level+1, result);
         		}
-        		else {
+        		else if (filters[i].fid) {
 	        		result.push({title: prefix + ' ' + $scope.filters[filters[i].fid].title, fid: filters[i].fid });
 	        	}
         	}
         }
 		$scope.filterDropdown = [];
 		comb($scope.filterIndex.filters, 0, $scope.filterDropdown);
+		console.log(filterIndex);
 }]);
 
 controllers.controller('overviewContentController', ['$scope',
