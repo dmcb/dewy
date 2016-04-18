@@ -509,6 +509,24 @@ controllers.controller('overviewController', ['$scope', '$location', 'sitesFacto
 
 		$scope.filterIndex = filterIndex;
         $scope.filters = filters;
+
+        var comb = function(filters, level, result) {
+        	var prefix = '';
+        	for (var i=0; i<level; i++) {
+        		prefix = prefix + '---';
+        	}
+        	for (var i=0; i<filters.length; i++) {
+        		if (filters[i].filters) {
+        			result.push({title: prefix + ' ' + filters[i].folder});
+        			comb(filters[i].filters, level+1, result);
+        		}
+        		else {
+	        		result.push({title: prefix + ' ' + $scope.filters[filters[i].fid].title, fid: filters[i].fid });
+	        	}
+        	}
+        }
+		$scope.filterDropdown = [];
+		comb($scope.filterIndex.filters, 0, $scope.filterDropdown);
 }]);
 
 controllers.controller('overviewContentController', ['$scope',
