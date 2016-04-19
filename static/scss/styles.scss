@@ -985,7 +985,7 @@ section.main {
                 &.folder {
                     &:before {
                         margin-left: -1.25em;
-                        margin-right: 0.4em;
+                        margin-right: 0.35em;
                         display: inline-block;
                         width: 0;
                         height: 0;
@@ -999,7 +999,7 @@ section.main {
 
                     &.open:before {
                         margin-left: -1.5em;
-                        margin-right: 0.65em;
+                        margin-right: 0.6em;
                         display: inline-block;
                         width: 0;
                         height: 0;
@@ -1015,15 +1015,15 @@ section.main {
         }
 
         &.folders li > ul li a {
-            padding-left: 2.5em;
+            padding-left: 2.75em;
         }
 
         &.folders li > ul li > ul li a {
-            padding-left: 4.5em;
+            padding-left: 4.1em;
         }
 
         &.folders li > ul li > ul li > ul li a {
-            padding-left: 6.5em;
+            padding-left: 5.5em;
         }
     }
 
