@@ -1,5 +1,5 @@
 <a href="/{{view}}/{{filter.fid}}" ng-if="filter.fid" ng-class="{selected: currentFilter.fid==filter.fid}"><i class="fa fa-envelope-o" ng-if="filters[filter.fid].notifications"></i> {{filters[filter.fid].title}}</a>
-<a href="" ng-model="open" ng-if="filter.filters.length" ng-click="openFolder($index)" ng-class="{folder: filter.folder, open: folders[$index]}">{{filter.folder}}</a>
-<ul ng-if="filter.filters.length&&folders[$index]" class="folders">
-    <li ng-repeat="filter in filter.filters" ng-include="'templates/filter_menu_item.html'"></li>
+<a href="" ng-model="open" ng-if="filter.filters.length" ng-click="openFolder(sectionIndex + '' + $index)" ng-class="{folder: filter.folder, open: folders[sectionIndex + '' + $index]}">{{filter.folder}}</a>
+<ul ng-if="filter.filters.length&&folders[sectionIndex + '' + $index]" class="folders">
+    <li ng-repeat="filter in filter.filters" ng-include="'templates/filter_menu_item.html'" ng-init="sectionIndex=sectionIndex + '' + $index"></li>
 </ul>
