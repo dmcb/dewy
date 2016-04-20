@@ -8,5 +8,5 @@
             <a class="button" href="" ng-click="addFolder(filter)"><i class="fa fa-plus"></i></a>
         </div>
     </div>
-    <ul ng-if="filter.folder" ng-init="filterList=filter.filters" ng-include="'templates/filter_index.html'" ui-sortable="sortableOptions" ng-model="filterList" class="filter-group" ng-class="{placeholder: !filterList.length}"></ul>
+    <ul ng-if="filter.folder" ng-init="filterList=filter.filters;level=level+1" ng-include="'templates/filter_index.html'" ui-sortable="sortableOptions" ng-model="filterList" class="filter-group" ng-class="{placeholder: !filterList.length}"></ul>
 </li>

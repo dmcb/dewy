@@ -19,8 +19,8 @@ controllers.controller('accountController', ['$scope', '$timeout', '$rootScope',
 			}
 		}
 		$scope.submitAccount = function(uid) {
-            if ($scope.accountForm.$valid) {
-           		userFactory.changeAccount(uid, $scope.passwordExisting, $scope.email, $scope.password)
+			if ($scope.accountForm.$valid) {
+		   		userFactory.changeAccount(uid, $scope.passwordExisting, $scope.email, $scope.password)
 				.success(function(userDoc) {
 					authService.setUser(userDoc);
 					flash('Account information updated');
@@ -32,11 +32,11 @@ controllers.controller('accountController', ['$scope', '$timeout', '$rootScope',
 						$scope.accountForm.error = error;
 					}
 				});
-            }
-        }
+			}
+		}
 		$scope.submitProfile = function(uid) {
-            if ($scope.profileForm.$valid) {
-                userFactory.changeProfile(uid, $scope.username)
+			if ($scope.profileForm.$valid) {
+				userFactory.changeProfile(uid, $scope.username)
 				.success(function(userDoc) {
 					authService.setUser(userDoc);
 					flash('Profile information updated');
@@ -48,14 +48,14 @@ controllers.controller('accountController', ['$scope', '$timeout', '$rootScope',
 						$scope.profileForm.error.username = error;
 					}
 				});
-            }
-        }
-        $scope.reverify = function(uid) {
-            userFactory.reverify(uid)
+			}
+		}
+		$scope.reverify = function(uid) {
+			userFactory.reverify(uid)
 			.then(function(userDoc) {
 				flash('Verification email sent');
 			});
-        }
+		}
 }]);
 
 controllers.controller('appController', ['$scope', '$location', 'authService',
@@ -337,6 +337,29 @@ controllers.controller('filtersController', ['$scope', 'filters', 'filterIndex',
 			helper: "clone",
 			opacity: 0.75,
 			placeholder: "dropdown-placeholder",
+			update: function(e, ui) {
+				// console.log(ui.item.sortable.model);
+				// console.log(ui.item.sortable.sourceModel);
+				// console.log(ui.item.sortable.dropindex);
+				// var getDepth = function(target) {
+				// 	var depth = 0;
+				// 	if (target.filters) {
+				// 		target.filters.forEach(function(filter) {
+				// 			var tmpDepth = getDepth(filter);
+				// 			if (tmpDepth > depth) {
+				// 				depth = tmpDepth
+				// 			}
+				// 		});
+				// 	return 1 + depth;
+				// 	}
+				// }
+
+				// var depth = getDepth($scope.filterIndex);
+				// console.log('Depth ' + depth);
+				// if (depth > 4) {
+				// 	ui.item.sortable.cancel();
+				// }
+			},
 			stop: function(e, ui) {
 				filterFactory.updateIndex($scope.filterIndex);
 			}
@@ -508,23 +531,23 @@ controllers.controller('overviewController', ['$scope', '$location', 'sitesFacto
 		}
 
 		$scope.filterIndex = filterIndex;
-        $scope.filters = filters;
+		$scope.filters = filters;
 
-        var comb = function(filters, level, result) {
-        	var prefix = '';
-        	for (var i=0; i<level; i++) {
-        		prefix = prefix + '---';
-        	}
-        	for (var i=0; i<filters.length; i++) {
-        		if (filters[i].filters && filters[i].filters.length) {
-        			result.push({title: prefix + ' ' + filters[i].folder});
-        			comb(filters[i].filters, level+1, result);
-        		}
-        		else if (filters[i].fid) {
-	        		result.push({title: prefix + ' ' + $scope.filters[filters[i].fid].title, fid: filters[i].fid });
-	        	}
-        	}
-        }
+		var comb = function(filters, level, result) {
+			var prefix = '';
+			for (var i=0; i<level; i++) {
+				prefix = prefix + '---';
+			}
+			for (var i=0; i<filters.length; i++) {
+				if (filters[i].filters && filters[i].filters.length) {
+					result.push({title: prefix + ' ' + filters[i].folder});
+					comb(filters[i].filters, level+1, result);
+				}
+				else if (filters[i].fid) {
+					result.push({title: prefix + ' ' + $scope.filters[filters[i].fid].title, fid: filters[i].fid });
+				}
+			}
+		}
 		$scope.filterDropdown = [];
 		comb($scope.filterIndex.filters, 0, $scope.filterDropdown);
 		console.log(filterIndex);
@@ -547,34 +570,34 @@ controllers.controller('overviewModulesController', ['$scope',
 			}
 		}
 		
-	    $scope.sort = {
-	        column: 'title',
-	        descending: false
-	    };
+		$scope.sort = {
+			column: 'title',
+			descending: false
+		};
 }]);
 
 controllers.controller('overviewSitesController', ['$scope', 'sitesFactory', 
 	function ($scope, sitesFactory) {
-        $scope.addTags = function(siteIndex) {
-            var formName = 'tagForm' + siteIndex;
-            if (this[formName].$valid) {
-                if (!$scope.openSite.tags) {
-                    $scope.openSite.tags = [];
-                }
-                tags = this.tags.split(',');
-                for (i=0; i<tags.length; i++) {
-                    tag = tags[i].trim();
-                    if (tag != "" && $scope.openSite.tags.indexOf(tag) == -1) {
-                        $scope.openSite.tags.push(tag);
-                        console.log($scope.openSite.tags);
-                    }
-                }
-                sitesFactory.setTags($scope.openSite);
-                this.tags = null;
-                this[formName].$setPristine();
-                this[formName].tags.$setUntouched();
-            }
-        }
+		$scope.addTags = function(siteIndex) {
+			var formName = 'tagForm' + siteIndex;
+			if (this[formName].$valid) {
+				if (!$scope.openSite.tags) {
+					$scope.openSite.tags = [];
+				}
+				tags = this.tags.split(',');
+				for (i=0; i<tags.length; i++) {
+					tag = tags[i].trim();
+					if (tag != "" && $scope.openSite.tags.indexOf(tag) == -1) {
+						$scope.openSite.tags.push(tag);
+						console.log($scope.openSite.tags);
+					}
+				}
+				sitesFactory.setTags($scope.openSite);
+				this.tags = null;
+				this[formName].$setPristine();
+				this[formName].tags.$setUntouched();
+			}
+		}
 		$scope.changeSorting = function(column) {
 			var sort = $scope.sort;
 
@@ -585,35 +608,35 @@ controllers.controller('overviewSitesController', ['$scope', 'sitesFactory',
 				sort.descending = false;
 			}
 		}
-        $scope.deleteTag = function(tagIndex, siteIndex) {
-            $scope.sites[siteIndex].tags.splice(tagIndex, 1);
-            sitesFactory.setTags($scope.sites[siteIndex]);
-        }
-        $scope.getNumber = function(number) {
-            return new Array(Math.round(number));
-        }
-        $scope.openDetails = function(index, detail) {
-            // If the site is already open to that same site and view, close the view
-            if ($scope.openSite && $scope.openSite.sid == $scope.sites[index].sid && $scope.openSite.detail == detail) {
-                $scope.openSite = null;
-            }
-            else {
-                // If details haven't been already loaded for the site, go grab the site
-                if (!('details' in $scope.sites[index])) {
-                    sitesFactory.get($scope.sites[index].sid).then(function(details) {
-                        $scope.sites[index].details = details;
-                        $scope.openSite = {sid: $scope.sites[index].sid, tags: $scope.sites[index].tags, details: $scope.sites[index].details, detail: detail};
-                    });
-                } else {
-                    $scope.openSite = {sid: $scope.sites[index].sid, tags: $scope.sites[index].tags, details: $scope.sites[index].details, detail: detail};
-                }
-            }
-        }
+		$scope.deleteTag = function(tagIndex, siteIndex) {
+			$scope.sites[siteIndex].tags.splice(tagIndex, 1);
+			sitesFactory.setTags($scope.sites[siteIndex]);
+		}
+		$scope.getNumber = function(number) {
+			return new Array(Math.round(number));
+		}
+		$scope.openDetails = function(index, detail) {
+			// If the site is already open to that same site and view, close the view
+			if ($scope.openSite && $scope.openSite.sid == $scope.sites[index].sid && $scope.openSite.detail == detail) {
+				$scope.openSite = null;
+			}
+			else {
+				// If details haven't been already loaded for the site, go grab the site
+				if (!('details' in $scope.sites[index])) {
+					sitesFactory.get($scope.sites[index].sid).then(function(details) {
+						$scope.sites[index].details = details;
+						$scope.openSite = {sid: $scope.sites[index].sid, tags: $scope.sites[index].tags, details: $scope.sites[index].details, detail: detail};
+					});
+				} else {
+					$scope.openSite = {sid: $scope.sites[index].sid, tags: $scope.sites[index].tags, details: $scope.sites[index].details, detail: detail};
+				}
+			}
+		}
 
-        $scope.sort = {
-            column: 'title',
-            descending: false
-        };
+		$scope.sort = {
+			column: 'title',
+			descending: false
+		};
 }]);
 
 controllers.controller('overviewUsersController', ['$scope',
