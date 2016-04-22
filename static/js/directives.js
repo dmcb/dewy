@@ -1,5 +1,20 @@
 var directives = angular.module('dewyDirectives', []);
 
+directives.directive('currentUser', ['$animate', function ($animate) {
+    return {
+        link: function (scope, element, attrs) {
+            scope.$on('currentUser:updated', function(event, data) {
+                $animate.addClass(element, 'currentuser-reset').then(function () {
+                    scope.$emit('currentUser:finishUpdate', data);
+                    // TODO: Only animate profile names when the profile name
+                    // changes, not the whole userDoc
+                    $animate.removeClass(element, 'currentuser-reset');
+                });
+            });
+        }
+    };
+}]);
+
 directives.directive('formatDate', function() {
     return {
         require: 'ngModel',

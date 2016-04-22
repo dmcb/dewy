@@ -1131,3 +1131,12 @@ div.site.ng-enter,
 {
     opacity: 0;
 }
+
+.currentuser-reset {
+    opacity: 0;
+}
+
+.currentuser-reset-remove-active {
+    transition: 0.4s ease opacity;
+    opacity: 1;
+}

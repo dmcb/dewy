@@ -63,7 +63,7 @@ controllers.controller('appController', ['$scope', '$location', '$timeout', 'aut
 		$scope.signOff = function() {
 			authService.signOff();
 		}
-		$scope.$on('currentUser:updated', function(event, data) {
+		$scope.$on('currentUser:finishUpdate', function(event, data) {
 			$scope.currentUser = data;
 		});
 		$scope.$on('flashMessage', function(event, data) {
