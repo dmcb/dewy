@@ -1,7 +1,7 @@
 var controllers = angular.module('dewyControllers', []);
 
-controllers.controller('accountController', ['$scope', '$timeout', '$rootScope', 'userFactory', 'authService', 'flash',
-	function ($scope, $timeout, $rootScope, userFactory, authService, flash) {
+controllers.controller('accountController', ['$scope', '$timeout', '$rootScope', 'userFactory', 'authService',
+	function ($scope, $timeout, $rootScope, userFactory, authService) {
 		$scope.cancel = function() {
 			window.history.back();
 		}
@@ -23,7 +23,7 @@ controllers.controller('accountController', ['$scope', '$timeout', '$rootScope',
 		   		userFactory.changeAccount(uid, $scope.passwordExisting, $scope.email, $scope.password)
 				.success(function(userDoc) {
 					authService.setUser(userDoc);
-					flash('Account information updated');
+					$scope.$emit('flashMessage', 'Account information updated');
 				})
 				.error(function(error, status) {
 					if (status != '400') {
@@ -39,7 +39,7 @@ controllers.controller('accountController', ['$scope', '$timeout', '$rootScope',
 				userFactory.changeProfile(uid, $scope.username)
 				.success(function(userDoc) {
 					authService.setUser(userDoc);
-					flash('Profile information updated');
+					$scope.$emit('flashMessage', 'Profile information updated');
 				})
 				.error(function(error, status) {
 					if (status != '400') {
@@ -53,19 +53,26 @@ controllers.controller('accountController', ['$scope', '$timeout', '$rootScope',
 		$scope.reverify = function(uid) {
 			userFactory.reverify(uid)
 			.then(function(userDoc) {
-				flash('Verification email sent');
+				$scope.$emit('flashMessage', 'Verification email sent');
 			});
 		}
 }]);
 
-controllers.controller('appController', ['$scope', '$location', 'authService',
-	function ($scope, $location, authService) {
+controllers.controller('appController', ['$scope', '$location', '$timeout', 'authService',
+	function ($scope, $location, $timeout, authService) {
 		$scope.signOff = function() {
 			authService.signOff();
 		}
 		$scope.$on('currentUser:updated', function(event, data) {
 			$scope.currentUser = data;
 		});
+		$scope.$on('flashMessage', function(event, data) {
+			$scope.flashMessages.unshift(data);
+			$timeout(function() {
+				$scope.flashMessages.pop();
+			}, 3500);
+		});
+		$scope.flashMessages = [];
 		$scope.currentUser = authService.currentUser();
 }]);
 
@@ -269,8 +276,8 @@ controllers.controller('filterController', ['$scope', '$location', 'filterFactor
 		};
 }]);
 
-controllers.controller('filtersController', ['$scope', 'filters', 'filterIndex', 'filterFactory', 'flash',
-	function ($scope, filters, filterIndex, filterFactory, flash) {
+controllers.controller('filtersController', ['$scope', 'filters', 'filterIndex', 'filterFactory',
+	function ($scope, filters, filterIndex, filterFactory) {
 		$scope.addFolder = function(filter) {
 			var newFolder = {
 				folder: 'New folder',
@@ -366,8 +373,8 @@ controllers.controller('filtersController', ['$scope', 'filters', 'filterIndex',
 		};
 }]);
 
-controllers.controller('manageController', ['$scope', '$timeout', '$moment', 'sites', 'user', 'sitesFactory', 'userFactory', 'flash',
-	function ($scope, $timeout, $moment, sites, user, sitesFactory, userFactory, flash) {
+controllers.controller('manageController', ['$scope', '$timeout', '$moment', 'sites', 'user', 'sitesFactory', 'userFactory',
+	function ($scope, $timeout, $moment, sites, user, sitesFactory, userFactory) {
 		$scope.auditSite = function(index) {
 			$scope.sites[index].submitMessage = 'Auditing...';
 			$scope.sites[index].submit = true;
@@ -404,7 +411,7 @@ controllers.controller('manageController', ['$scope', '$timeout', '$moment', 'si
 		}
 		$scope.resetKey = function(uid) {
 			userFactory.resetKey(uid).then(function(apikey) {
-				flash('API key reset');
+				$scope.$emit('flashMessage', 'API key reset');
 				$scope.apikey = apikey;
 			});
 		}

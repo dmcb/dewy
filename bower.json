@@ -21,7 +21,6 @@
     "reset-css": "^2.0.2011012603",
     "moment": "^2.11.2",
     "angular-momentjs": "^0.2.2",
-    "angular-validation-match": "^1.7.1",
-    "angular-flash": "angular-flash-messages#^1.2.0"
+    "angular-validation-match": "^1.7.1"
   }
 }

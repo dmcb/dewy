@@ -3,7 +3,6 @@ var app = angular.module('dewy', [
 	'ngAnimate',
 	'ui.sortable',
 	'angular-momentjs',
-	'flash',
 	'validation.match',
 	'dewyControllers',
 	'dewyFactories',
@@ -238,10 +237,10 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 			controller: 'verifyController',
 			indexPage: true,
 			resolve: {
-				verifyData: ['$route', '$http', 'flash', 'authService', function($route, $http, flash, authService) {
+				verifyData: ['$rootScope', '$route', '$http', 'authService', function($rootScope, $route, $http, authService) {
 					return $http.get('http://dewy.io/auth/verify/' + $route.current.params.uid + '/' + $route.current.params.verify).
 					then(function(result) {
-						flash('Email verified');
+						$rootScope.$broadcast('flashMessage', 'Email verified');
 						authService.signOn('/account', result.data);
 					}, function(error) {
 						if (error.status == '400') {

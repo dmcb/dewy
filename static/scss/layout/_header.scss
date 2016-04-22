@@ -1,21 +1,34 @@
-#flash-messages {
+#flash-message {
     background-color: $blue;
     color: $white;
     text-align: center;
     font-weight: bold;
     overflow: hidden;
+    width: 100%;
+    z-index: 1;
 
     li {
-        border-top: 5px solid $blue;
         padding: 0.25em 0;
-    }
-
-    height: 0;
-    transition: 400ms ease all;
-
-    &.ng-hide-remove {
+        display: block;
         height: 2em;
-        transition: 1500ms all;
+
+        &.ng-enter {
+            height: 0;
+            transition: 0.2s ease height;
+        }
+
+        &.ng-enter.ng-enter-active {
+            height: 2em;
+        }
+
+        &.ng-leave {
+            height: 2em;
+            transition: 0.2s ease height;
+        }
+
+        &.ng-leave.ng-leave-active {
+            height: 0;
+        }
     }
 }
 
