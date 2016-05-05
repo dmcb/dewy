@@ -291,10 +291,10 @@ app.run(['authService', '$rootScope', '$location', '$http', '$window', function(
 		else if ('requiresAuthorization' in next && !next.requiresAuthorization) {
 			if (authService.isAuthenticated()) {
 				event.preventDefault();
-				if (current.controller != "overviewController") {
-					$location.path('/sites');
-				} else {
+				if (current && current.controller == "overviewController") {
 					$rootScope.isViewLoading = false;
+				} else {
+					$location.path('/sites');
 				}
 			} else {
 				$rootScope.queuedIndexPage = next.indexPage;
