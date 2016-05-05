@@ -20,45 +20,45 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 			menuItem: 'account',
 			requiresAuthorization: true
 		}).
-		when('/content/:filter?', {
-			templateUrl: 'templates/overview.html',
-			controller: 'overviewController',
-			menuItem: 'overview',
-			requiresAuthorization: true,
-			resolve: {
-				filters: ['filterFactory', function(filterFactory) {
-					return filterFactory.getAll();
-				}],
-				filterIndex: ['filterFactory', function(filterFactory) {
-					return filterFactory.getIndex();
-				}],
-				data: ['$route', 'filterFactory', 'sitesFactory', function($route, filterFactory, sitesFactory) {
-					if ($route.current.params.filter) {
-						return filterFactory.getFilter($route.current.params.filter).
-						then(function(currentFilter) {
-							return sitesFactory.getAll(currentFilter.fid).
-							then(function(sites) {
-								return {
-									currentFilter: currentFilter,
-									sites: sites,
-									view: 'content'
-								}
-							});
-						});
-					}
-					else {
-						return sitesFactory.getAll().
-						then(function(sites) {
-							return {
-								currentFilter: null,
-								sites: sites,
-								view: 'content'
-							}
-						});
-					}
-				}]
-			}
-		}).
+		// when('/content/:filter?', {
+		// 	templateUrl: 'templates/overview.html',
+		// 	controller: 'overviewController',
+		// 	menuItem: 'overview',
+		// 	requiresAuthorization: true,
+		// 	resolve: {
+		// 		filters: ['filterFactory', function(filterFactory) {
+		// 			return filterFactory.getAll();
+		// 		}],
+		// 		filterIndex: ['filterFactory', function(filterFactory) {
+		// 			return filterFactory.getIndex();
+		// 		}],
+		// 		data: ['$route', 'filterFactory', 'sitesFactory', function($route, filterFactory, sitesFactory) {
+		// 			if ($route.current.params.filter) {
+		// 				return filterFactory.getFilter($route.current.params.filter).
+		// 				then(function(currentFilter) {
+		// 					return sitesFactory.getAll(currentFilter.fid).
+		// 					then(function(sites) {
+		// 						return {
+		// 							currentFilter: currentFilter,
+		// 							sites: sites,
+		// 							view: 'content'
+		// 						}
+		// 					});
+		// 				});
+		// 			}
+		// 			else {
+		// 				return sitesFactory.getAll().
+		// 				then(function(sites) {
+		// 					return {
+		// 						currentFilter: null,
+		// 						sites: sites,
+		// 						view: 'content'
+		// 					}
+		// 				});
+		// 			}
+		// 		}]
+		// 	}
+		// }).
 		when('/filter/:filter?', {
 			templateUrl: 'templates/filter.html',
 			controller: 'filterController',
@@ -193,45 +193,45 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 				}]
 			}
 		}).
-		when('/users/:filter?', {
-			templateUrl: 'templates/overview.html',
-			controller: 'overviewController',
-			menuItem: 'overview',
-			requiresAuthorization: true,
-			resolve: {
-				filters: ['filterFactory', function(filterFactory) {
-					return filterFactory.getAll();
-				}],
-				filterIndex: ['filterFactory', function(filterFactory) {
-					return filterFactory.getIndex();
-				}],
-				data: ['$route', 'filterFactory', 'sitesFactory', function($route, filterFactory, sitesFactory) {
-					if ($route.current.params.filter) {
-						return filterFactory.getFilter($route.current.params.filter).
-						then(function(currentFilter) {
-							return sitesFactory.getAll(currentFilter.fid).
-							then(function(sites) {
-								return {
-									currentFilter: currentFilter,
-									sites: sites,
-									view: 'users'
-								}
-							});
-						});
-					}
-					else {
-						return sitesFactory.getAll().
-						then(function(sites) {
-							return {
-								currentFilter: null,
-								sites: sites,
-								view: 'users'
-							}
-						});
-					}
-				}]
-			}
-		}).
+		// when('/users/:filter?', {
+		// 	templateUrl: 'templates/overview.html',
+		// 	controller: 'overviewController',
+		// 	menuItem: 'overview',
+		// 	requiresAuthorization: true,
+		// 	resolve: {
+		// 		filters: ['filterFactory', function(filterFactory) {
+		// 			return filterFactory.getAll();
+		// 		}],
+		// 		filterIndex: ['filterFactory', function(filterFactory) {
+		// 			return filterFactory.getIndex();
+		// 		}],
+		// 		data: ['$route', 'filterFactory', 'sitesFactory', function($route, filterFactory, sitesFactory) {
+		// 			if ($route.current.params.filter) {
+		// 				return filterFactory.getFilter($route.current.params.filter).
+		// 				then(function(currentFilter) {
+		// 					return sitesFactory.getAll(currentFilter.fid).
+		// 					then(function(sites) {
+		// 						return {
+		// 							currentFilter: currentFilter,
+		// 							sites: sites,
+		// 							view: 'users'
+		// 						}
+		// 					});
+		// 				});
+		// 			}
+		// 			else {
+		// 				return sitesFactory.getAll().
+		// 				then(function(sites) {
+		// 					return {
+		// 						currentFilter: null,
+		// 						sites: sites,
+		// 						view: 'users'
+		// 					}
+		// 				});
+		// 			}
+		// 		}]
+		// 	}
+		// }).
 		when('/verify/:uid/:verify', {
 			templateUrl: 'templates/verify.html',
 			controller: 'verifyController',

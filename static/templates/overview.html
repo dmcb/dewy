@@ -24,14 +24,6 @@
                         <a href="/modules" ng-if="!currentFilter">Modules</a>
                         <a href="/modules/{{currentFilter.fid}}" ng-if="currentFilter">Modules</a>
                     </li>
-                    <li ng-class="{selected: view == 'users'}">
-                        <a href="/users" ng-if="!currentFilter">Users</a>
-                        <a href="/users/{{currentFilter.fid}}" ng-if="currentFilter">Users</a>
-                    </li>
-                    <li ng-class="{selected: view == 'content'}">
-                        <a href="/content" ng-if="!currentFilter">Content</a>
-                        <a href="/content/{{currentFilter.fid}}" ng-if="currentFilter">Content</a>
-                    </li>
                 </ul>
             </div>
             <div class="search">
