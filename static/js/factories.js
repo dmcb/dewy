@@ -210,7 +210,6 @@ factories.factory('sitesFactory', ['$http', function($http) {
 				var attributes = {'complexity': [], 'size': [], 'activity': [], 'health': []};
 
 				for (var i in response.data) {
-
 					for (var attribute in attributes) {
 						if (attributes[attribute]['maximum'] == null) {
 							attributes[attribute]['maximum'] = response.data[i].attributes[attribute];

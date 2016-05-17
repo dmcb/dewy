@@ -242,6 +242,7 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 					then(function(result) {
 						$rootScope.$broadcast('flashMessage', 'Email verified');
 						authService.signOn('/account', result.data);
+						return {error: null};
 					}, function(error) {
 						if (error.status == '400') {
 							return {error: error.data};
@@ -278,13 +279,7 @@ app.run(['authService', '$rootScope', '$location', '$http', '$window', function(
 					$http.get('http://dewy.io/api/users')
 					.success(function(result) {
 						authService.setUser(result);
-						$rootScope.queuedIndexPage = next.indexPage;
-						$rootScope.queuedMenuItem = next.menuItem;
 					});
-				}
-				else {
-					$rootScope.queuedIndexPage = next.indexPage;
-					$rootScope.queuedMenuItem = next.menuItem;
 				}
 			}
 		}
@@ -296,25 +291,18 @@ app.run(['authService', '$rootScope', '$location', '$http', '$window', function(
 				} else {
 					$location.path('/sites');
 				}
-			} else {
-				$rootScope.queuedIndexPage = next.indexPage;
-				$rootScope.queuedMenuItem = next.menuItem;
 			}
 		}
-		else {
-			$rootScope.queuedIndexPage = next.indexPage;
-			$rootScope.queuedMenuItem = next.menuItem;
-		}
 	});
-	$rootScope.$on('$routeChangeSuccess', function() {
+	$rootScope.$on('$routeChangeSuccess', function(event, current, previous) {
 		$rootScope.isViewLoading = false;
-		$rootScope.indexPage = $rootScope.queuedIndexPage;
-		$rootScope.menuItem = $rootScope.queuedMenuItem;
+		$rootScope.indexPage = current.indexPage;
+		$rootScope.menuItem = current.menuItem;
 	});
 	$rootScope.$on('$routeChangeError', function() {
 		$rootScope.isViewLoading = false;
-		$rootScope.indexPage = $rootScope.queuedIndexPage;
-		$rootScope.menuItem = $rootScope.queuedMenuItem;
+		$rootScope.indexPage = current.indexPage;
+		$rootScope.menuItem = current.menuItem;
 	});
 	$rootScope.$on('signOff:success', function() {
 		$location.path('/signon');
