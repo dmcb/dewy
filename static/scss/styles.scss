@@ -259,12 +259,6 @@ section.offline-sites {
                 }
             }
 
-            .buttons {
-                padding-top: 1.5em;
-                clear: both;
-                text-align: center;
-            }
-
             @include breakpoint($tablet) {
                 @include grid-span(16,1);
             }
@@ -275,6 +269,14 @@ section.offline-sites {
 
             @include breakpoint($tablet) {
                 @include grid-span(8,17);
+
+                padding-top: 1.5em;
+                clear: both;
+                text-align: center;
+
+                .button {
+                    display: block;
+                }
             }
         }
 
