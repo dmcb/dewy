@@ -629,13 +629,16 @@ controllers.controller('overviewSitesController', ['$scope', 'sitesFactory',
 			}
 			else {
 				// If details haven't been already loaded for the site, go grab the site
-				if (!('details' in $scope.sites[index])) {
-					sitesFactory.get($scope.sites[index].sid).then(function(details) {
-						$scope.sites[index].details = details;
-						$scope.openSite = {sid: $scope.sites[index].sid, tags: $scope.sites[index].tags, details: $scope.sites[index].details, detail: detail};
+				if (!('details' in $scope.sites[index]) || !(detail in $scope.sites[index].details)) {
+					if (!('details' in $scope.sites[index])) {
+						$scope.sites[index].details = [];
+					}
+					sitesFactory.getDetails($scope.sites[index].sid, detail).then(function(details) {
+						$scope.sites[index].details[detail] = details;
+						$scope.openSite = {sid: $scope.sites[index].sid, details: $scope.sites[index].details[detail], detail: detail};
 					});
 				} else {
-					$scope.openSite = {sid: $scope.sites[index].sid, tags: $scope.sites[index].tags, details: $scope.sites[index].details, detail: detail};
+					$scope.openSite = {sid: $scope.sites[index].sid, details: $scope.sites[index].details[detail], detail: detail};
 				}
 			}
 		}

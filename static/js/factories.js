@@ -195,8 +195,15 @@ factories.factory('sitesFactory', ['$http', function($http) {
 		return $http.delete(apiUrl + '/sites/' + sid);
 	}
 
-	sitesFactory.get = function(sid, detail) {
+	sitesFactory.get = function(sid) {
 		return $http.get(apiUrl + '/sites/' + sid)
+			.then(function (response) {
+				return response.data;
+			});
+	}
+
+	sitesFactory.getDetails = function(sid, detail) {
+		return $http.get(apiUrl + '/sites/' + sid + '/_' + detail)
 			.then(function (response) {
 				return response.data;
 			});

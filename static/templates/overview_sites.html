@@ -14,7 +14,7 @@
         <div ng-if="!filteredSites.length && query" class="noresults"><span><i class="fa fa-exclamation-triangle"></i> No sites meet your criteria.</span></div>
         <div ng-repeat="site in filteredSites = (sites | filter:query) | orderBy:sort.column:sort.descending" class="site">
             <ul class="site">
-                <li class="title" ng-class="{open: openSite.sid == site.sid && !openSite.detail}"><a href="" ng-click="openDetails(sites.indexOf(site))"><span class="title">{{site.title}}</span><span class="url">{{site.baseurl}}</span></a></li>
+                <li class="title" ng-class="{open: openSite.sid == site.sid && openSite.detail == 'meta'}"><a href="" ng-click="openDetails(sites.indexOf(site), 'meta')"><span class="title">{{site.title}}</span><span class="url">{{site.baseurl}}</span></a></li>
                 <ul class="variables">
                     <li class="complexity" ng-class="{open: openSite.sid == site.sid && openSite.detail == 'complexity'}">
                         <a href="" ng-click="openDetails(sites.indexOf(site), 'complexity')"><div class="point" ng-repeat="i in getNumber(site.complexity) track by $index"></div></a>
@@ -31,7 +31,7 @@
                 </ul>
             </ul>
             <div class="detail-view" ng-if="openSite.sid == site.sid">
-                <div ng-if="!openSite.detail">
+                <div ng-if="openSite.detail == 'meta'">
                     <ul class="tags" ng-if="openSite.tags.length">
                         <li ng-repeat="tag in openSite.tags">{{tag}} <a href="" ng-click="deleteTag($index, sites.indexOf(site))"><i class="fa fa-times"></i></a></li>
                     </ul>
@@ -42,7 +42,7 @@
                     </form>
                 </div>
                 <ul ng-if="openSite.detail == 'complexity'">
-                    <li><span class="number">{{}}</span> modules enabled</li>
+                    <li><span class="number">{{openSite.attributes.enabledModules}}</span> modules enabled</li>
                     <li><span class="number">{{}}</span> modules available</li>
                     <li><span class="number">{{}}</span> content types</li>
                     <li><span class="number">{{}}</span> roles</li>
