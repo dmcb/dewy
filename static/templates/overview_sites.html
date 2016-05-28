@@ -42,8 +42,8 @@
                     </form>
                 </div>
                 <ul ng-if="openSite.detail == 'complexity'">
-                    <li><span class="number">{{openSite.attributes.enabledModules}}</span> modules enabled</li>
-                    <li><span class="number">{{}}</span> modules available</li>
+                    <li><span class="number">{{openSite.details.enabledModules.length}}</span> modules enabled</li>
+                    <li><span class="number">{{openSite.details.availableModules.length}}</span> modules available</li>
                     <li><span class="number">{{}}</span> content types</li>
                     <li><span class="number">{{}}</span> roles</li>
                 </ul>
