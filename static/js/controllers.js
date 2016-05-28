@@ -588,15 +588,14 @@ controllers.controller('overviewSitesController', ['$scope', 'sitesFactory',
 		$scope.addTags = function(siteIndex) {
 			var formName = 'tagForm' + siteIndex;
 			if (this[formName].$valid) {
-				if (!$scope.openSite.tags) {
-					$scope.openSite.tags = [];
+				if (!$scope.openSite.details.tags) {
+					$scope.openSite.details.tags = [];
 				}
 				tags = this.tags.split(',');
 				for (i=0; i<tags.length; i++) {
 					tag = tags[i].trim();
-					if (tag != "" && $scope.openSite.tags.indexOf(tag) == -1) {
-						$scope.openSite.tags.push(tag);
-						console.log($scope.openSite.tags);
+					if (tag != "" && $scope.openSite.details.tags.indexOf(tag) == -1) {
+						$scope.openSite.details.tags.push(tag);
 					}
 				}
 				sitesFactory.setTags($scope.openSite);
@@ -616,8 +615,8 @@ controllers.controller('overviewSitesController', ['$scope', 'sitesFactory',
 			}
 		}
 		$scope.deleteTag = function(tagIndex, siteIndex) {
-			$scope.sites[siteIndex].tags.splice(tagIndex, 1);
-			sitesFactory.setTags($scope.sites[siteIndex]);
+			$scope.openSite.details.tags.splice(tagIndex, 1);
+			sitesFactory.setTags($scope.openSite);
 		}
 		$scope.getNumber = function(number) {
 			return new Array(Math.round(number));
@@ -631,7 +630,7 @@ controllers.controller('overviewSitesController', ['$scope', 'sitesFactory',
 				// If details haven't been already loaded for the site, go grab the site
 				if (!('details' in $scope.sites[index]) || !(detail in $scope.sites[index].details)) {
 					if (!('details' in $scope.sites[index])) {
-						$scope.sites[index].details = [];
+						$scope.sites[index].details = {};
 					}
 					sitesFactory.getDetails($scope.sites[index].sid, detail).then(function(details) {
 						$scope.sites[index].details[detail] = details;
