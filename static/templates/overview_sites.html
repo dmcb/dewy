@@ -44,23 +44,25 @@
                 <ul ng-if="openSite.detail == 'complexity'">
                     <li><span class="number">{{openSite.details.enabledModules.length}}</span> modules enabled</li>
                     <li><span class="number">{{openSite.details.availableModules.length}}</span> modules available</li>
-                    <li><span class="number">{{}}</span> content types</li>
-                    <li><span class="number">{{}}</span> roles</li>
+                    <li><span class="number">{{openSite.details.contentTypes.length}}</span> content types</li>
+                    <li><span class="number">{{openSite.details.roles.length}}</span> roles</li>
                 </ul>
                 <ul ng-if="openSite.detail == 'size'">
-                    <li><span class="number">{{}}</span> nodes</li>
-                    <li><span class="number">{{}}</span> users</li>
-                    <li><span class="number">{{}}</span> files</li>
-                    <li><span class="number">{{}}</span> words</li>
+                    <li><span class="number">{{openSite.details.nodes}}</span> nodes</li>
+                    <li><span class="number">{{openSite.details.users.length}}</span> users</li>
+                    <li><span class="number">{{openSite.details.files}}</span> files</li>
+                    <li><span class="number">{{openSite.details.words}}</span> words</li>
                 </ul>
                 <ul ng-if="openSite.detail == 'activity'">
-                    <li><span class="number">{{}}</span> since last visit</li>
-                    <li><span class="number">{{}}</span> since last access</li>
-                    <li><span class="number">{{}}</span> since last modification</li>
+                    <li><span am-time-ago="openSite.details.lastAccess * 1000" class="number"></span> since last access to the site</li>
+                    <li><span am-time-ago="openSite.details.avgLastAccess * 1000" class="number"></span> since last access for an average user</li>
+                    <li><span am-time-ago="openSite.details.lastModified * 1000"  class="number"></span> since last modification to the site</li>
+                    <li><span am-time-ago="openSite.details.avgLastModified * 1000"  class="number"></span> since last modification for an average node</li>
                 </ul>
                 <ul ng-if="openSite.detail == 'health'">
-                    <li><span class="number">{{}}</span> modules out of date</li>
-                    <li><span class="number">{{}}</span> database updates pending</li>
+                    <li><span class="number">{{openSite.details.modulesWithUpdates.length}}</span> modules have updates</li>
+                    <li><span class="number">{{openSite.details.modulesWithSecurityUpdates.length}}</span> modules have security updates</li>
+                    <li><span class="number">{{openSite.details.databaseUpdates}}</span> database updates pending</li>
                 </ul>
             </div>
         </div>
