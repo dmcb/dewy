@@ -812,7 +812,6 @@ section.main {
                         @include clearfix;
                         clear: both;
                         background-color: $light-grey;
-                        padding: 1em;
                         width: 100%;
                         position: absolute;
                         z-index: 2;
@@ -830,6 +829,39 @@ section.main {
                                 margin-right: 1em;
                                 display: block;
                                 float: left;
+                            }
+                        }
+
+                        & > ul > li {
+                            padding: 1em;
+
+                            &:nth-child(2n) {
+                                background-color: $lighter-grey;
+                            }
+
+                            h3 {
+                                font-family: $body-font;
+                                font-size: 1em;
+                                font-weight: bold;
+                                border-bottom: none;
+                                margin-bottom: 0;
+                            }
+
+                            ul {
+                                margin-top: 1em;
+
+                                li {
+                                    display: inline-block;
+                                    margin: 0.25em 0.5em 0.25em 0;
+
+                                    &:after {
+                                        content: ',';
+                                    }
+
+                                    &:last-child:after {
+                                        content: '';
+                                    }
+                                }
                             }
                         }
                     }
