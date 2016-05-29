@@ -31,16 +31,24 @@
                 </ul>
             </ul>
             <div class="detail-view" ng-if="openSite.sid == site.sid">
-                <div ng-if="openSite.detail == 'meta'">
-                    <ul class="tags" ng-if="openSite.details.tags.length">
-                        <li ng-repeat="tag in openSite.details.tags">{{tag}} <a href="" ng-click="deleteTag($index, sites.indexOf(site))"><i class="fa fa-times"></i></a></li>
-                    </ul>
-                    <form name="tagForm{{sites.indexOf(site)}}" ng-submit="addTags(sites.indexOf(site))">
-                        <input placeholder="Tags seperated by commas" name="tags" ng-model="tags" required />
-                        <button type="submit">Add tags</button>
-                        <span class="error" ng-show="tagForm{{sites.indexOf(site)}}.tags.$error.required && (tagForm{{sites.indexOf(site)}}.tags.$touched || tagForm{{sites.indexOf(site)}}.$submitted)">Please enter a tag.</span>
-                    </form>
-                </div>
+                <ul ng-if="openSite.detail == 'meta'">
+                    <li>
+                        <h3><span class="number">{{openSite.details.tags.length}}</span> tags assigned</h3>
+                        <ul class="items" ng-if="openSite.details.tags.length">
+                            <li ng-repeat="tag in openSite.details.tags" class="tag">{{tag}} <a href="" ng-click="deleteTag($index, sites.indexOf(site))"><i class="fa fa-times"></i></a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <form name="tagForm{{sites.indexOf(site)}}" ng-submit="addTags(sites.indexOf(site))">
+                            <input placeholder="Tags seperated by commas" name="tags" ng-model="tags" required />
+                            <button type="submit">Add tags <i class="fa fa-plus-circle"></i></button>
+                            <span class="error" ng-show="tagForm{{sites.indexOf(site)}}.tags.$error.required && (tagForm{{sites.indexOf(site)}}.tags.$touched || tagForm{{sites.indexOf(site)}}.$submitted)">Please enter a tag.</span>
+                        </form>
+                    </li>
+                    <li>
+                        <h3><span am-time-ago="openSite.details.dateAdded * 1000" class="number"></span> since site was added to Dewy</h3>
+                    </li>
+                </ul>
                 <ul ng-if="openSite.detail == 'complexity'">
                     <li>
                         <h3><span class="number">{{openSite.details.enabledModules.length}}</span> modules enabled</h3>

@@ -816,22 +816,7 @@ section.main {
                         width: 100%;
                         position: absolute;
                         z-index: 2;
-                        box-shadow: 3px 3px 3px $grey;
-
-                        @include breakpoint($tablet) {
-                            position: static;
-                            box-shadow: none;
-                        }
-
-                        .tags {
-                            margin-bottom: 0.5em;
-                            
-                            li {
-                                margin-right: 1em;
-                                display: block;
-                                float: left;
-                            }
-                        }
+                        box-shadow: 3px 3px 3px $lightish-grey;
 
                         & > ul > li {
                             padding: 1em;
@@ -848,6 +833,31 @@ section.main {
                                 margin-bottom: 0;
                             }
 
+                            input {
+                                @include grid-span(24,1);
+                            }
+
+                            button {
+                                @include grid-span(8,9);
+                                clear: both;
+                                background-color: $blue;
+                                color: $white;
+
+                                &:hover {
+                                    background-color: $grey;
+                                }
+
+                                &:active {
+                                    background-color: $white;
+                                    color: $blue;
+                                }
+                            }
+
+                            .error {
+                                clear: both;
+                                margin-bottom: 0;
+                            }
+
                             ul {
                                 margin-top: 1em;
 
@@ -859,9 +869,25 @@ section.main {
                                         content: ',';
                                     }
 
-                                    &:last-child:after {
+                                    &:last-child:after, &.tag:after {
                                         content: '';
                                     }
+                                }
+                            }
+                        }
+
+                        @include breakpoint($tablet) {
+                            position: static;
+                            box-shadow: none;
+
+                            & > ul > li {
+                                input {
+                                    @include grid-span(18,1);
+                                }
+
+                                button {
+                                    clear: none;
+                                    @include grid-span(6,19);
                                 }
                             }
                         }
