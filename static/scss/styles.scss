@@ -812,6 +812,7 @@ section.main {
                         @include clearfix;
                         clear: both;
                         background-color: $light-grey;
+                        border-bottom: 1px solid $light-grey;
                         width: 100%;
                         position: absolute;
                         z-index: 2;
