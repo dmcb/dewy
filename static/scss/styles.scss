@@ -816,7 +816,7 @@ section.main {
                         width: 100%;
                         position: absolute;
                         z-index: 2;
-                        box-shadow: 0 3px 3px $grey;
+                        box-shadow: 3px 3px 3px $grey;
 
                         @include breakpoint($tablet) {
                             position: static;
