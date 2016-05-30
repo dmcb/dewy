@@ -599,6 +599,7 @@ controllers.controller('overviewSitesController', ['$scope', 'sitesFactory',
 					}
 				}
 				sitesFactory.setTags($scope.openSite);
+				$scope.sites[siteIndex].tags = $scope.openSite.details.tags;
 				this.tags = null;
 				this[formName].$setPristine();
 				this[formName].tags.$setUntouched();
@@ -616,6 +617,7 @@ controllers.controller('overviewSitesController', ['$scope', 'sitesFactory',
 		}
 		$scope.deleteTag = function(tagIndex, siteIndex) {
 			$scope.openSite.details.tags.splice(tagIndex, 1);
+			$scope.sites[siteIndex].tags = $scope.openSite.details.tags;
 			sitesFactory.setTags($scope.openSite);
 		}
 		$scope.getNumber = function(number) {
