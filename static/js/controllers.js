@@ -588,18 +588,18 @@ controllers.controller('overviewSitesController', ['$scope', 'sitesFactory',
 		$scope.addTags = function(siteIndex) {
 			var formName = 'tagForm' + siteIndex;
 			if (this[formName].$valid) {
-				if (!$scope.openSite.details.tags) {
-					$scope.openSite.details.tags = [];
+				if (!$scope.openSite.tags) {
+					$scope.openSite.tags = [];
 				}
 				tags = this.tags.split(',');
 				for (i=0; i<tags.length; i++) {
 					tag = tags[i].trim();
-					if (tag != "" && $scope.openSite.details.tags.indexOf(tag) == -1) {
-						$scope.openSite.details.tags.push(tag);
+					if (tag != "" && $scope.openSite.tags.indexOf(tag) == -1) {
+						$scope.openSite.tags.push(tag);
 					}
 				}
 				sitesFactory.setTags($scope.openSite);
-				$scope.sites[siteIndex].tags = $scope.openSite.details.tags;
+				$scope.sites[siteIndex].tags = $scope.openSite.tags;
 				this.tags = null;
 				this[formName].$setPristine();
 				this[formName].tags.$setUntouched();
@@ -616,8 +616,8 @@ controllers.controller('overviewSitesController', ['$scope', 'sitesFactory',
 			}
 		}
 		$scope.deleteTag = function(tagIndex, siteIndex) {
-			$scope.openSite.details.tags.splice(tagIndex, 1);
-			$scope.sites[siteIndex].tags = $scope.openSite.details.tags;
+			$scope.openSite.tags.splice(tagIndex, 1);
+			$scope.sites[siteIndex].tags = $scope.openSite.tags;
 			sitesFactory.setTags($scope.openSite);
 		}
 		$scope.getNumber = function(number) {
@@ -629,17 +629,16 @@ controllers.controller('overviewSitesController', ['$scope', 'sitesFactory',
 				$scope.openSite = null;
 			}
 			else {
-				// If details haven't been already loaded for the site, go grab the site
-				if (!('details' in $scope.sites[index]) || !(detail in $scope.sites[index].details)) {
-					if (!('details' in $scope.sites[index])) {
-						$scope.sites[index].details = {};
-					}
-					sitesFactory.getDetails($scope.sites[index].sid, detail).then(function(details) {
-						$scope.sites[index].details[detail] = details;
-						$scope.openSite = {sid: $scope.sites[index].sid, details: $scope.sites[index].details[detail], detail: detail};
+				// If details haven't been already loaded for the site, go grab the site details
+				if (!('details' in $scope.sites[index])) {
+					sitesFactory.getDetails($scope.sites[index].sid).then(function(details) {
+						$scope.sites[index].details = details;
+						$scope.openSite = $scope.sites[index];
+						$scope.openSite.detail = detail;
 					});
 				} else {
-					$scope.openSite = {sid: $scope.sites[index].sid, details: $scope.sites[index].details[detail], detail: detail};
+					$scope.openSite = $scope.sites[index];
+					$scope.openSite.detail = detail;
 				}
 			}
 		}

@@ -202,8 +202,8 @@ factories.factory('sitesFactory', ['$http', function($http) {
 			});
 	}
 
-	sitesFactory.getDetails = function(sid, detail) {
-		return $http.get(apiUrl + '/sites/' + sid + '/_' + detail)
+	sitesFactory.getDetails = function(sid) {
+		return $http.get(apiUrl + '/sites/' + sid + '/_detail')
 			.then(function (response) {
 				return response.data;
 			});
@@ -212,6 +212,69 @@ factories.factory('sitesFactory', ['$http', function($http) {
 	sitesFactory.getAll = function(fid) {
 		return $http.get(apiUrl + '/sites/_filter/' + fid)
 			.then(function (response) {
+
+				var arrayOfRankings = [];
+				for (var i in response.data) {
+					var ranking = [];
+					for (var j in response.data[i].attributes) {
+						ranking.push(response.data[i].attributes[j]);
+					}
+					arrayOfRankings.push(ranking);
+				}
+
+				var length = arrayOfRankings[0].length,
+				    rankedArray = Array.apply(null, { length: arrayOfRankings.length }).map(function () { return []; }),
+				    temp, i;
+
+				console.log(arrayOfRankings);
+
+				for (i = 0; i < length; i++) {
+				    temp = [];
+				    arrayOfRankings.forEach(function (a, j) {
+				        temp.push({ v: a[i], i: j });
+				    });
+				    var mostRecentValue;
+				    var mostRecentIndex = 0;
+				    temp.sort(function (a, b) {
+				        return a.v - b.v;
+				    })
+				    temp.forEach(function (a, j) {
+				    	if (mostRecentValue == temp[j].v) {
+				    		// Ties previous value, give it the same rank
+				    		rankedArray[a.i][i] = mostRecentIndex;
+				    	}
+				    	else {
+				    		// No tie, increase its rank
+							mostRecentValue = temp[j].v;
+							mostRecentIndex = mostRecentIndex + 1;
+							rankedArray[a.i][i] = mostRecentIndex;
+				    	}
+				    });
+				}
+
+				// 0 availableModules
+				// 1 enabledModules
+				// 2 contentTypes
+				// 3 roles
+				// 4 users
+				// 5 nodes
+				// 6 files
+				// 7 words
+				// 8 diskSpace
+				// 9 lastModified
+				// 10 avgLastModified
+				// 11 lastAccess
+				// 12 avgLastAccess
+				// 13 databaseUpdates
+				// 14 modulesWithUpdates
+				// 15 modulesWithSecurityUpdates
+
+				for (var i in rankedArray) {
+					response.data[i].attributes['complexity'] = Math.log(rankedArray[i][0] + rankedArray[i][1] + rankedArray[i][2] + rankedArray[i][3]);
+					response.data[i].attributes['size'] = Math.log(rankedArray[i][4] + rankedArray[i][5] + rankedArray[i][6] + rankedArray[i][7] + rankedArray[i][8]);
+					response.data[i].attributes['activity'] = Math.log(rankedArray[i][9] + rankedArray[i][10] + rankedArray[i][11] + rankedArray[i][12]);
+					response.data[i].attributes['health'] = Math.log((rankedArray[i][13] + rankedArray[i][14] + rankedArray[i][15])) * -1;
+				}
 
 				// Loop through all sites and determine absolute values of attributes
 				var attributes = {'complexity': [], 'size': [], 'activity': [], 'health': []};
@@ -272,7 +335,7 @@ factories.factory('sitesFactory', ['$http', function($http) {
 
 	sitesFactory.setTags = function(site) {
 		var update = {
-			tags: site.details.tags
+			tags: site.tags
 		};
 		return $http.put(apiUrl + '/sites/' + site.sid, update)
 			.then(function (response) {

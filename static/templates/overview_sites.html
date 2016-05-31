@@ -33,9 +33,9 @@
             <div class="detail-view" ng-if="openSite.sid == site.sid">
                 <ul ng-if="openSite.detail == 'meta'">
                     <li>
-                        <h3><span class="number">{{openSite.details.tags.length}}</span> tags assigned</h3>
-                        <ul class="items" ng-if="openSite.details.tags.length">
-                            <li ng-repeat="tag in openSite.details.tags" class="tag">{{tag}} <a href="" ng-click="deleteTag($index, sites.indexOf(site))"><i class="fa fa-times"></i></a></li>
+                        <h3><span class="number">{{openSite.tags.length}}</span> tags assigned</h3>
+                        <ul class="items" ng-if="openSite.tags.length">
+                            <li ng-repeat="tag in openSite.tags" class="tag">{{tag}} <a href="" ng-click="deleteTag($index, sites.indexOf(site))"><i class="fa fa-times"></i></a></li>
                         </ul>
                     </li>
                     <li>
@@ -46,30 +46,30 @@
                         </form>
                     </li>
                     <li>
-                        <h3><span am-time-ago="openSite.details.dateAdded * 1000" class="number"></span> since site was added to Dewy</h3>
+                        <h3><span am-time-ago="openSite.dateAdded * 1000" class="number"></span> since site was added to Dewy</h3>
                     </li>
                 </ul>
                 <ul ng-if="openSite.detail == 'complexity'">
                     <li>
-                        <h3><span class="number">{{openSite.details.enabledModules.length}}</span> modules enabled</h3>
+                        <h3><span class="number">{{openSite.attributes.enabledModules}}</span> modules enabled</h3>
                         <ul class="items">
                             <li ng-repeat="item in openSite.details.enabledModules">{{item}}</li>
                         </ul>
                     </li>
                     <li>
-                        <h3><span class="number">{{openSite.details.availableModules.length}}</span> modules available</h3>
+                        <h3><span class="number">{{openSite.attributes.availableModules}}</span> modules available</h3>
                         <ul class="items">
                             <li ng-repeat="item in openSite.details.availableModules">{{item}}</li>
                         </ul>
                     </li>
                     <li>
-                        <h3><span class="number">{{openSite.details.contentTypes.length}}</span> content types</h3>
+                        <h3><span class="number">{{openSite.attributes.contentTypes}}</span> content types</h3>
                         <ul class="items">
                             <li ng-repeat="item in openSite.details.contentTypes">{{item}}</li>
                         </ul>
                     </li>
                     <li>
-                        <h3><span class="number">{{openSite.details.roles.length}}</span> roles</h3>
+                        <h3><span class="number">{{openSite.attributes.roles}}</span> roles</h3>
                         <ul class="items">
                             <li ng-repeat="item in openSite.details.roles">{{item}}</li>
                         </ul>
@@ -77,53 +77,53 @@
                 </ul>
                 <ul ng-if="openSite.detail == 'size'">
                     <li>
-                        <h3><span class="number">{{openSite.details.nodes}}</span> nodes</h3>
+                        <h3><span class="number">{{openSite.attributes.nodes}}</span> nodes</h3>
                     </li>
                     <li>
-                        <h3><span class="number">{{openSite.details.users.length}}</span> users</h3>
+                        <h3><span class="number">{{openSite.attributes.users}}</span> users</h3>
                         <ul class="items">
                             <li ng-repeat="item in openSite.details.users">{{item}}</li>
                         </ul>
                     </li>
                     <li>
-                        <h3><span class="number">{{openSite.details.files}}</span> files</h3>
+                        <h3><span class="number">{{openSite.attributes.files}}</span> files</h3>
                     </li>
                     <li>
-                        <h3><span class="number">{{openSite.details.words}}</span> words</h3>
+                        <h3><span class="number">{{openSite.attributes.words}}</span> words</h3>
                     </li>
                     <li>
-                        <h3><span class="number">{{openSite.details.diskSpace}}</span> MB disk size</h3>
+                        <h3><span class="number">{{openSite.attributes.diskSpace}}</span> MB disk size</h3>
                     </li>
                 </ul>
                 <ul ng-if="openSite.detail == 'activity'">
                     <li>
-                        <h3><span am-time-ago="openSite.details.lastAccess * 1000" class="number"></span> since last access to the site</h3>
+                        <h3><span am-time-ago="openSite.attributes.lastAccess * 1000" class="number"></span> since last access to the site</h3>
                     </li>
                     <li>
-                        <h3><span am-time-ago="openSite.details.avgLastAccess * 1000" class="number"></span> since last access for an average user</h3>
+                        <h3><span am-time-ago="openSite.attributes.avgLastAccess * 1000" class="number"></span> since last access for an average user</h3>
                     </li>
                     <li>
-                        <h3><span am-time-ago="openSite.details.lastModified * 1000"  class="number"></span> since last modification to the site</h3>
+                        <h3><span am-time-ago="openSite.attributes.lastModified * 1000"  class="number"></span> since last modification to the site</h3>
                     </li>
                     <li>
-                        <h3><span am-time-ago="openSite.details.avgLastModified * 1000"  class="number"></span> since last modification for an average node</h3>
+                        <h3><span am-time-ago="openSite.attributes.avgLastModified * 1000"  class="number"></span> since last modification for an average node</h3>
                     </li>
                 </ul>
                 <ul ng-if="openSite.detail == 'health'">
                     <li>
-                        <h3><span class="number">{{openSite.details.modulesWithUpdates.length}}</span> modules have updates</h3>
+                        <h3><span class="number">{{openSite.attributes.modulesWithUpdates}}</span> modules have updates</h3>
                         <ul class="items">
                             <li ng-repeat="item in openSite.details.modulesWithUpdates">{{item}}</li>
                         </ul>
                     </li>
                     <li>
-                        <h3><span class="number">{{openSite.details.modulesWithSecurityUpdates.length}}</span> modules have security updates</h3>
+                        <h3><span class="number">{{openSite.attributes.modulesWithSecurityUpdates}}</span> modules have security updates</h3>
                         <ul class="items">
                             <li ng-repeat="item in openSite.details.modulesWithSecurityUpdates">{{item}}</li>
                         </ul>
                     </li>
                     <li>
-                        <h3><span class="number">{{openSite.details.databaseUpdates}}</span> database updates pending</h3>
+                        <h3><span class="number">{{openSite.attributes.databaseUpdates}}</span> database updates pending</h3>
                     </li>
                 </ul>
             </div>
