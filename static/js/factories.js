@@ -270,10 +270,10 @@ factories.factory('sitesFactory', ['$http', function($http) {
 				// 15 modulesWithSecurityUpdates
 
 				for (var i in rankedArray) {
-					response.data[i].attributes['complexity'] = rankedArray[i][0] + rankedArray[i][1] + rankedArray[i][2] + rankedArray[i][3];
+					response.data[i].attributes['complexity'] = rankedArray[i][0] + rankedArray[i][1] * 2 + rankedArray[i][2] + rankedArray[i][3];
 					response.data[i].attributes['size'] = rankedArray[i][4] + rankedArray[i][5] + rankedArray[i][6] + rankedArray[i][7] + rankedArray[i][8];
-					response.data[i].attributes['activity'] = rankedArray[i][9] + rankedArray[i][10] + rankedArray[i][11] + rankedArray[i][12];
-					response.data[i].attributes['health'] = (rankedArray[i][13] + rankedArray[i][14] + rankedArray[i][15]) * -1;
+					response.data[i].attributes['activity'] = rankedArray[i][9] * 2 + rankedArray[i][10] + rankedArray[i][11] * 2 + rankedArray[i][12];
+					response.data[i].attributes['health'] = (rankedArray[i][13] + rankedArray[i][14] + rankedArray[i][15] * 3) * -1;
 				}
 
 				// Loop through all sites and determine absolute values of attributes
