@@ -226,8 +226,6 @@ factories.factory('sitesFactory', ['$http', function($http) {
 				    rankedArray = Array.apply(null, { length: arrayOfRankings.length }).map(function () { return []; }),
 				    temp, i;
 
-				console.log(arrayOfRankings);
-
 				for (i = 0; i < length; i++) {
 				    temp = [];
 				    arrayOfRankings.forEach(function (a, j) {
@@ -238,17 +236,19 @@ factories.factory('sitesFactory', ['$http', function($http) {
 				    temp.sort(function (a, b) {
 				        return a.v - b.v;
 				    })
+
+				    // Get minimum and maximum value for attribute
+				    var minimum = temp[0].v;
+				    var maximum = temp[temp.length-1].v;
+				    var increment = maximum - minimum / 9;
+
 				    temp.forEach(function (a, j) {
-				    	if (mostRecentValue == temp[j].v) {
-				    		// Ties previous value, give it the same rank
-				    		rankedArray[a.i][i] = mostRecentIndex;
-				    	}
-				    	else {
-				    		// No tie, increase its rank
-							mostRecentValue = temp[j].v;
-							mostRecentIndex = mostRecentIndex + 1;
-							rankedArray[a.i][i] = mostRecentIndex;
-				    	}
+				    	if (!increment) {
+							rankedArray[a.i][i] = 1;
+						}
+						else {
+							rankedArray[a.i][i] = Math.log((temp[j].v - minimum / increment) + 1);
+						}
 				    });
 				}
 
@@ -270,10 +270,10 @@ factories.factory('sitesFactory', ['$http', function($http) {
 				// 15 modulesWithSecurityUpdates
 
 				for (var i in rankedArray) {
-					response.data[i].attributes['complexity'] = Math.log(rankedArray[i][0] + rankedArray[i][1] + rankedArray[i][2] + rankedArray[i][3]);
-					response.data[i].attributes['size'] = Math.log(rankedArray[i][4] + rankedArray[i][5] + rankedArray[i][6] + rankedArray[i][7] + rankedArray[i][8]);
-					response.data[i].attributes['activity'] = Math.log(rankedArray[i][9] + rankedArray[i][10] + rankedArray[i][11] + rankedArray[i][12]);
-					response.data[i].attributes['health'] = Math.log((rankedArray[i][13] + rankedArray[i][14] + rankedArray[i][15])) * -1;
+					response.data[i].attributes['complexity'] = rankedArray[i][0] + rankedArray[i][1] + rankedArray[i][2] + rankedArray[i][3];
+					response.data[i].attributes['size'] = rankedArray[i][4] + rankedArray[i][5] + rankedArray[i][6] + rankedArray[i][7] + rankedArray[i][8];
+					response.data[i].attributes['activity'] = rankedArray[i][9] + rankedArray[i][10] + rankedArray[i][11] + rankedArray[i][12];
+					response.data[i].attributes['health'] = (rankedArray[i][13] + rankedArray[i][14] + rankedArray[i][15]) * -1;
 				}
 
 				// Loop through all sites and determine absolute values of attributes
