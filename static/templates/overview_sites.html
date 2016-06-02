@@ -123,7 +123,10 @@
                         </ul>
                     </li>
                     <li>
-                        <h3><span class="number">{{openSite.attributes.databaseUpdates}}</span> database updates pending</h3>
+                        <h3><span class="number">{{openSite.attributes.databaseUpdates}}</span> modules with database updates pending</h3>
+                        <ul class="items">
+                            <li ng-repeat="item in openSite.details.databaseUpdates">{{item}}</li>
+                        </ul>
                     </li>
                 </ul>
             </div>
