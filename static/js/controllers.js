@@ -564,8 +564,8 @@ controllers.controller('overviewContentController', ['$scope',
 	function ($scope) {
 }]);
 
-controllers.controller('overviewModulesController', ['$scope',
-	function ($scope) {
+controllers.controller('overviewModulesController', ['$scope', 'moduleFactory',
+	function ($scope, moduleFactory) {
 		$scope.changeSorting = function(column) {
 			var sort = $scope.sort;
 
@@ -574,6 +574,27 @@ controllers.controller('overviewModulesController', ['$scope',
 			} else {
 				sort.column = column;
 				sort.descending = false;
+			}
+		}
+		$scope.openDetails = function(index, detail) {
+			// If the module is already open to that same module and view, close the view
+			if ($scope.openModule && $scope.openModule.index == index && $scope.openModule.detail == detail) {
+				$scope.openModule = null;
+			}
+			else {
+				// If details haven't been already loaded for the site, go grab the site details
+				if (!('details' in $scope.modules[index])) {
+					moduleFactory.getDetails($scope.modules[index].module + '-' + $scope.modules[index].core).then(function(details) {
+						$scope.modules[index].details = details;
+						$scope.openModule = $scope.modules[index];
+						$scope.openModule.detail = detail;
+						$scope.openModule.index = index;
+					});
+				} else {
+					$scope.openModule = $scope.modules[index];
+					$scope.openModule.detail = detail;
+					$scope.openModule.index = index;
+				}
 			}
 		}
 		

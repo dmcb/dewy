@@ -171,6 +171,13 @@ factories.factory('moduleFactory', ['$http', function($http) {
 			});
 	}
 
+	moduleFactory.getDetails = function(moduleWithCore) {
+		return $http.get(apiUrl + '/modules/' + moduleWithCore + '/_detail')
+			.then(function (response) {
+				return response.data;
+			});
+	}
+
 	return moduleFactory;
 }]);
 

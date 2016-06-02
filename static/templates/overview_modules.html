@@ -13,37 +13,68 @@
     <div class="sites">
         <div ng-repeat="module in filteredModules = (modules | filter:query) | orderBy:sort.column:sort.descending" class="site">
             <ul class="site">
-                <li class="title" ng-class="{open: openModule.module == module.module && !openModule.detail}"><a href="" ng-click="openDetails(modules.indexOf(module))"><span class="title">{{module.module}}</span><span class="url" ng-show="module.totalVersions > 1">{{module.totalVersions}} versions on your sites</span></a></a></li>
+                <li class="title" ng-class="{open: openModule.module == module.module && !openModule.detail}"><a href="" ng-click="openDetails(modules.indexOf(module), 'meta')"><span class="title">{{module.module}}</span><span class="url" ng-show="module.totalVersions > 1">{{module.totalVersions}} versions on your sites</span></a></a></li>
                 <ul class="variables">
-                    <li class="securityUpdates" ng-class="{open: openModule.module == module.module && openModule.detail == 'securityUpdates'}">
-                        <a href="" ng-click="openDetails(modules.indexOf(module), 'securityUpdates')">{{module.securityUpdates}} sites</a>
+                    <li class="version" ng-class="{open: openModule.module == module.module && openModule.detail == 'version'}">
+                        <a href="" ng-click="openDetails(modules.indexOf(module), 'version')">{{module.securityUpdates}} sites</a>
                     </li>
-                    <li class="updates" ng-class="{open: openModule.module == module.module && openModule.detail == 'updates'}">
-                        <a href="" ng-click="openDetails(modules.indexOf(module), 'updates')">{{module.updates}} sites</a>
+                    <li class="uniformity" ng-class="{open: openModule.module == module.module && openModule.detail == 'uniformity'}">
+                        <a href="" ng-click="openDetails(modules.indexOf(module), 'uniformity')">{{module.updates}} sites</a>
                     </li>
-                    <li class="installRate" ng-class="{open: openModule.module == module.module && openModule.detail == 'installRate'}">
-                        <a href="" ng-click="openDetails(modules.indexOf(module), 'installRate')">{{module.installRate}}%</a>
+                    <li class="availability" ng-class="{open: openModule.module == module.module && openModule.detail == 'availability'}">
+                        <a href="" ng-click="openDetails(modules.indexOf(module), 'availability')">{{module.installRate}}%</a>
                     </li>
-                    <li class="total" ng-class="{open: openModule.module == module.module && openModule.detail == 'total'}">
-                        <a href="" ng-click="openDetails(modules.indexOf(module), 'total')">{{module.total}} sites</a>
+                    <li class="utilization" ng-class="{open: openModule.module == module.module && openModule.detail == 'utilization'}">
+                        <a href="" ng-click="openDetails(modules.indexOf(module), 'utilization')">{{module.total}} sites</a>
                     </li>
                 </ul>
             </ul>
-            <div class="detail-view" ng-if="openModule.module == module.module">
-                <div ng-if="!openModule.detail">
-                    
-                </div>
-                <ul ng-if="openModule.detail == 'complexity'">
+            <div class="detail-view" ng-if="openModule.index == $index">
+                <ul ng-if="openModule.detail == 'meta'">
+                    <li>
 
+                    </li>
                 </ul>
-                <ul ng-if="openModule.detail == 'size'">
-
+                <ul ng-if="openModule.detail == 'version'">
+                    <li>
+                        <h3><span class="number">{{openModule.details.sitesWithSecurityUpdates.length}}</span> sites with security updates</h3>
+                        <ul class="items">
+                            <li ng-repeat="item in openModule.details.sitesWithSecurityUpdates">{{item}}</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h3><span class="number">{{openModule.details.sitesWithUpdates.length}}</span> sites with updates</h3>
+                        <ul class="items">
+                            <li ng-repeat="item in openModule.details.sitesWithUpdates">{{item}}</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h3><span class="number">{{openModule.details.sitesWithDatabaseUpdates.length}}</span> sites with pending database updates</h3>
+                        <ul class="items">
+                            <li ng-repeat="item in openModule.details.sitesWithDatabaseUpdates">{{item}}</li>
+                        </ul>
+                    </li>
                 </ul>
-                <ul ng-if="openModule.detail == 'activity'">
-
+                <ul ng-if="openModule.detail == 'uniformity'">
+                    <li>
+                        <h3><span class="number">{{module.totalVersions}}</span> versions on your sites</h3>
+                    </li>
                 </ul>
-                <ul ng-if="openModule.detail == 'health'">
-
+                <ul ng-if="openModule.detail == 'availability'">
+                    <li>
+                        <h3><span class="number">{{openModule.details.sitesWithAvailable.length}}</span> sites where the module is available</h3>
+                        <ul class="items">
+                            <li ng-repeat="item in openModule.details.sitesWithAvailable">{{item}}</li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul ng-if="openModule.detail == 'utilization'">
+                    <li>
+                        <h3><span class="number">{{openModule.details.sitesWithEnabled.length}}</span> sites where the module is enabled</h3>
+                        <ul class="items">
+                            <li ng-repeat="item in openModule.details.sitesWithEnabled">{{item}}</li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
