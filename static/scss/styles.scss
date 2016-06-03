@@ -746,10 +746,13 @@ section.main {
                                 @include add-arrow(up, 0.75em);
                                 color: $light-grey;
                                 top: 2.05em;
-                                margin-left: auto;
-                                margin-right: auto;
+                                margin-left: 0.5em;
                                 left: 0;
                                 right: 0;
+                            }
+
+                            a:hover .point {
+                                background-color: $dark-blue;
                             }
 
                             .point {
@@ -792,17 +795,6 @@ section.main {
                                             font-size: 0.8em;
                                         }
                                     }
-                                }
-                            }
-
-                            &.complexity, &.size, &.activity, &.health {
-                                a:hover .point {
-                                    background-color: $dark-blue;
-                                }
-
-                                &.open:before {
-                                    margin-left: 1em;
-                                    margin-right: 0;
                                 }
                             }
                         }

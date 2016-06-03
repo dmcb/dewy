@@ -13,18 +13,18 @@
     <div class="sites">
         <div ng-repeat="module in filteredModules = (modules | filter:query) | orderBy:sort.column:sort.descending" class="site">
             <ul class="site">
-                <li class="title" ng-class="{open: openModule.module == module.module && !openModule.detail == 'meta'}"><a href="" ng-click="openDetails(modules.indexOf(module), 'meta')"><span class="title">{{module.module}}</span></a></li>
+                <li class="title" ng-class="{open: openModule.index == $index && openModule.detail == 'meta'}"><a href="" ng-click="openDetails(modules.indexOf(module), 'meta')"><span class="title">{{module.module}}</span></a></li>
                 <ul class="variables">
-                    <li class="version" ng-class="{open: openModule.module == module.module && openModule.detail == 'version'}">
+                    <li class="version" ng-class="{open: openModule.index == $index && openModule.detail == 'version'}">
                         <a href="" ng-click="openDetails(modules.indexOf(module), 'version')">{{module.securityUpdates}} sites</a>
                     </li>
-                    <li class="uniformity" ng-class="{open: openModule.module == module.module && openModule.detail == 'uniformity'}">
+                    <li class="uniformity" ng-class="{open: openModule.index == $index && openModule.detail == 'uniformity'}">
                         <a href="" ng-click="openDetails(modules.indexOf(module), 'uniformity')">{{module.updates}} sites</a>
                     </li>
-                    <li class="availability" ng-class="{open: openModule.module == module.module && openModule.detail == 'availability'}">
+                    <li class="availability" ng-class="{open: openModule.index == $index && openModule.detail == 'availability'}">
                         <a href="" ng-click="openDetails(modules.indexOf(module), 'availability')">{{module.installRate}}%</a>
                     </li>
-                    <li class="utilization" ng-class="{open: openModule.module == module.module && openModule.detail == 'utilization'}">
+                    <li class="utilization" ng-class="{open: openModule.index == $index && openModule.detail == 'utilization'}">
                         <a href="" ng-click="openDetails(modules.indexOf(module), 'utilization')">{{module.total}} sites</a>
                     </li>
                 </ul>
