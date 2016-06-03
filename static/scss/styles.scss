@@ -613,7 +613,7 @@ section.main {
                             top: 0;
                             right: -1em;
                             width: 1em;
-                            height: 3.5em;
+                            height: 100%;
                             z-index: 1;
                         }
 
@@ -739,16 +739,24 @@ section.main {
                     ul.site {
                         @include clearfix;
                         clear: both;
-                        height: 3.5em;
 
                         li {
-                            &.open:before {
-                                @include add-arrow(up, 0.75em);
-                                color: $light-grey;
-                                top: 2.05em;
-                                margin-left: 0.5em;
-                                left: 0;
-                                right: 0;
+                            &.open {
+                                &:before {
+                                    @include add-arrow(up, 0.75em);
+                                    color: $light-grey;
+                                    top: auto;
+                                    margin-left: 0.5em;
+                                    left: 0;
+                                    right: 0;
+                                    bottom: 0;
+                                }
+
+                                @include breakpoint($tablet) {
+                                    a {
+                                        padding-bottom: 2em;
+                                    }
+                                }
                             }
 
                             a:hover .point {
@@ -783,16 +791,8 @@ section.main {
                                         overflow: hidden;
                                         text-overflow: ellipsis;
 
-                                        &.title {
-                                            margin-bottom: 0.25em;
-
-                                            .point {
-                                                margin-right: 0.5em;
-                                            }
-                                        }
-
-                                        &.url {
-                                            font-size: 0.8em;
+                                        &.title .point {
+                                            margin-right: 0.5em;
                                         }
                                     }
                                 }
@@ -832,16 +832,18 @@ section.main {
                             button {
                                 @include grid-span(8,9);
                                 clear: both;
-                                background-color: $blue;
-                                color: $white;
+                                background-color: transparent;
+                                color: $blue;
+                                text-align: center;
+                                font-weight: bold;
 
                                 &:hover {
-                                    background-color: $grey;
+                                    background-color: transparent;
                                 }
 
                                 &:active {
-                                    background-color: $white;
-                                    color: $blue;
+                                    background-color: transparent;
+                                    color: $dark-blue;
                                 }
                             }
 
@@ -871,6 +873,7 @@ section.main {
                         @include breakpoint($tablet) {
                             position: static;
                             box-shadow: none;
+                            margin-bottom: 1em;
 
                             & > ul > li {
                                 input {
@@ -880,6 +883,7 @@ section.main {
                                 button {
                                     clear: none;
                                     @include grid-span(6,19);
+                                    text-align: left;
                                 }
                             }
                         }

@@ -14,7 +14,7 @@
         <div ng-if="!filteredSites.length && query" class="noresults"><span><i class="fa fa-exclamation-triangle"></i> No sites meet your criteria.</span></div>
         <div ng-repeat="site in filteredSites = (sites | filter:query) | orderBy:sort.column:sort.descending" class="site">
             <ul class="site">
-                <li class="title" ng-class="{open: openSite.sid == site.sid && openSite.detail == 'meta'}"><a href="" ng-click="openDetails(sites.indexOf(site), 'meta')"><span class="title"><div class="point" ng-if="site.tags.length"></div>{{site.title}}</span><span class="url">{{site.baseurl}}</span></a></li>
+                <li class="title" ng-class="{open: openSite.sid == site.sid && openSite.detail == 'meta'}"><a href="" ng-click="openDetails(sites.indexOf(site), 'meta')"><span class="title"><div class="point" ng-if="site.tags.length"></div>{{site.title}}</span></a></li>
                 <ul class="variables">
                     <li class="complexity" ng-class="{open: openSite.sid == site.sid && openSite.detail == 'complexity'}">
                         <a href="" ng-click="openDetails(sites.indexOf(site), 'complexity')"><div class="point" ng-repeat="i in getNumber(site.complexity) track by $index"></div></a>
@@ -41,12 +41,15 @@
                     <li>
                         <form name="tagForm{{sites.indexOf(site)}}" ng-submit="addTags(sites.indexOf(site))">
                             <input placeholder="Tags seperated by commas" name="tags" ng-model="tags" required />
-                            <button type="submit">Add tags <i class="fa fa-plus-circle"></i></button>
+                            <button type="submit">Add tags</button>
                             <span class="error" ng-show="tagForm{{sites.indexOf(site)}}.tags.$error.required && (tagForm{{sites.indexOf(site)}}.tags.$touched || tagForm{{sites.indexOf(site)}}.$submitted)">Please enter a tag.</span>
                         </form>
                     </li>
                     <li>
-                        <h3><span am-time-ago="openSite.dateAdded * 1000" class="number"></span> since site was added to Dewy</h3>
+                        <h3>Site live at <a href="{{site.baseurl}}" target="_blank">{{site.baseurl}}</a></h3>
+                    </li>
+                    <li>
+                        <h3>Site added to Dewy <span am-time-ago="openSite.dateAdded * 1000" class="number"></span></h3>
                     </li>
                 </ul>
                 <ul ng-if="openSite.detail == 'complexity'">
@@ -97,16 +100,16 @@
                 </ul>
                 <ul ng-if="openSite.detail == 'activity'">
                     <li>
-                        <h3><span am-time-ago="openSite.attributes.lastAccess * 1000" class="number"></span> since last access to the site</h3>
+                        <h3>Last access to the site was <span am-time-ago="openSite.attributes.lastAccess * 1000" class="number"></span></h3>
                     </li>
                     <li>
-                        <h3><span am-time-ago="openSite.attributes.avgLastAccess * 1000" class="number"></span> since last access for an average user</h3>
+                        <h3>Last access for an average user was <span am-time-ago="openSite.attributes.avgLastAccess * 1000" class="number"></span></h3>
                     </li>
                     <li>
-                        <h3><span am-time-ago="openSite.attributes.lastModified * 1000"  class="number"></span> since last modification to the site</h3>
+                        <h3>Last modification to the site was <span am-time-ago="openSite.attributes.lastModified * 1000"  class="number"></span></h3>
                     </li>
                     <li>
-                        <h3><span am-time-ago="openSite.attributes.avgLastModified * 1000"  class="number"></span> since last modification for an average node</h3>
+                        <h3>Last modification for an average node was <span am-time-ago="openSite.attributes.avgLastModified * 1000"  class="number"></span></h3>
                     </li>
                 </ul>
                 <ul ng-if="openSite.detail == 'health'">
