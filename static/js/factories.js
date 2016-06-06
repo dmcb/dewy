@@ -158,22 +158,107 @@ factories.factory('moduleFactory', ['$http', function($http) {
 		return $http.get(apiUrl + '/modules/_filter/' + fid)
 			.then(function (response) {
 
-				// Calculate values
+				var arrayOfRankings = [];
 				for (var i in response.data) {
-					response.data[i].installRate = Math.round(response.data[i].totalInstalls / response.data[i].total * 100);
-					response.data[i].totalVersions = 0;
-					for (var j in response.data[i].versions) {
-						response.data[i].totalVersions = response.data[i].totalVersions + 1;
+					var versions = 0;
+					for (version in response.data[i].versions) {
+						versions = versions + 1; 
+					}
+
+					response.data[i].attributes = {
+						sitesWithAvailable: response.data[i].sitesWithAvailable.length,
+						sitesWithEnabled: response.data[i].sitesWithEnabled.length,
+						sitesWithDatabaseUpdates: response.data[i].sitesWithDatabaseUpdates.length,
+						sitesWithUpdates: response.data[i].sitesWithUpdates.length,
+						sitesWithSecurityUpdates: response.data[i].sitesWithSecurityUpdates.length,
+						versions: versions
+					}
+
+					var ranking = [];
+					for (var j in response.data[i].attributes) {
+						ranking.push(response.data[i].attributes[j]);
+					}
+					arrayOfRankings.push(ranking);
+				}
+
+				var length = arrayOfRankings[0].length,
+				    rankedArray = Array.apply(null, { length: arrayOfRankings.length }).map(function () { return []; }),
+				    temp, i;
+
+				for (i = 0; i < length; i++) {
+				    temp = [];
+				    arrayOfRankings.forEach(function (a, j) {
+				        temp.push({ v: a[i], i: j });
+				    });
+				    var mostRecentValue;
+				    var mostRecentIndex = 0;
+				    temp.sort(function (a, b) {
+				        return a.v - b.v;
+				    })
+
+				    // Get minimum and maximum value for attribute
+				    var minimum = temp[0].v;
+				    var maximum = temp[temp.length-1].v;
+				    var increment = maximum - minimum / 9;
+
+				    temp.forEach(function (a, j) {
+				    	if (!increment) {
+							rankedArray[a.i][i] = 1;
+						}
+						else {
+							rankedArray[a.i][i] = Math.log((temp[j].v - minimum / increment) + 1);
+						}
+				    });
+				}
+
+				// 0 sitesWithAvailable
+				// 1 sitesWithEnabled
+				// 2 sitesWithDatabaseUpdates
+				// 3 sitesWithUpdates
+				// 4 sitesWithSecurityUpdates
+				// 5 versions
+
+				for (var i in rankedArray) {
+					response.data[i].attributes['version'] = (rankedArray[i][2] + rankedArray[i][3]+ rankedArray[i][4] * 3) * -1;
+					response.data[i].attributes['uniformity'] = (rankedArray[i][5]) * -1;
+					response.data[i].attributes['utilization'] = rankedArray[i][1] / rankedArray[i][0];
+					response.data[i].attributes['availability'] = rankedArray[i][0];
+				}
+
+				// Loop through all sites and determine absolute values of attributes
+				var attributes = {'version': [], 'uniformity': [], 'utilization': [], 'availability': []};
+
+				for (var i in response.data) {
+					for (var attribute in attributes) {
+						if (attributes[attribute]['maximum'] == null) {
+							attributes[attribute]['maximum'] = response.data[i].attributes[attribute];
+						} else if (attributes[attribute]['maximum'] < response.data[i].attributes[attribute]) {
+							attributes[attribute]['maximum'] = response.data[i].attributes[attribute];
+						}
+						if (attributes[attribute]['minimum'] == null) {
+							attributes[attribute]['minimum'] = response.data[i].attributes[attribute];
+						} else if (attributes[attribute]['minimum'] > response.data[i].attributes[attribute]) {
+							attributes[attribute]['minimum'] = response.data[i].attributes[attribute];
+						}
 					}
 				}
 
-				return response.data;
-			});
-	}
+				// Determine how much value is in a dot from range of attribute values
+				for (var attribute in attributes) {
+					attributes[attribute]['increment'] = (attributes[attribute]['maximum'] - attributes[attribute]['minimum']) / 9;
+				}
 
-	moduleFactory.getDetails = function(moduleWithCore) {
-		return $http.get(apiUrl + '/modules/' + moduleWithCore + '/_detail')
-			.then(function (response) {
+				// Set normalized values
+				for (var i in response.data) {
+					for (var attribute in attributes) {
+						if (!attributes[attribute]['increment']) {
+							response.data[i][attribute] = 1;
+						} 
+						else {
+							response.data[i][attribute] = ((response.data[i].attributes[attribute] - attributes[attribute]['minimum']) / attributes[attribute]['increment']) + 1;
+						}
+					}
+				}
 				return response.data;
 			});
 	}

@@ -3,33 +3,34 @@
         <ul class="site">
             <li class="title"><a href="" ng-class="{selected: sort.column=='title', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('title')">{{filteredModules.length}} modules</a></li>
             <ul class="variables">
-                <li class="securityUpdates"><a href="" ng-class="{selected: sort.column=='securityUpdates', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('securityUpdates')">Security</a></li>
-                <li class="updates"><a href="" ng-class="{selected: sort.column=='updates', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('updates')">Version</a></li>
-                <li class="installRate"><a href="" ng-class="{selected: sort.column=='installRate', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('installRate')">Utilization</a></li>
-                <li class="total"><a href="" ng-class="{selected: sort.column=='total', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('total')">Availablity</a></li>
+                <li class="version"><a href="" ng-class="{selected: sort.column=='version', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('version')">Version</a></li>
+                <li class="uniformity"><a href="" ng-class="{selected: sort.column=='uniformity', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('uniformity')">Uniformity</a></li>
+                <li class="utilization"><a href="" ng-class="{selected: sort.column=='utilization', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('utilization')">Utilization</a></li>
+                <li class="availability"><a href="" ng-class="{selected: sort.column=='availability', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('availability')">Availablity</a></li>
             </ul>
         </ul>
     </div>
     <div class="sites">
+        <div ng-if="!filteredModules.length && query" class="noresults"><span><i class="fa fa-exclamation-triangle"></i> No modules meet your criteria.</span></div>
         <div ng-repeat="module in filteredModules = (modules | filter:query) | orderBy:sort.column:sort.descending" class="site">
             <ul class="site">
-                <li class="title" ng-class="{open: openModule.index == $index && openModule.detail == 'meta'}"><a href="" ng-click="openDetails(modules.indexOf(module), 'meta')"><span class="title">{{module.module}}</span></a></li>
+                <li class="title" ng-class="{open: openModule.module == module.module && openModule.detail == 'meta'}"><a href="" ng-click="openDetails(modules.indexOf(module), 'meta')"><span class="title">{{module.module}}</span></a></li>
                 <ul class="variables">
-                    <li class="version" ng-class="{open: openModule.index == $index && openModule.detail == 'version'}">
-                        <a href="" ng-click="openDetails(modules.indexOf(module), 'version')">{{module.securityUpdates}} sites</a>
+                    <li class="version" ng-class="{open: openModule.module == module.module && openModule.detail == 'version'}">
+                        <a href="" ng-click="openDetails(modules.indexOf(module), 'version')"><div class="point" ng-repeat="i in getNumber(module.version) track by $index"></div></a>
                     </li>
-                    <li class="uniformity" ng-class="{open: openModule.index == $index && openModule.detail == 'uniformity'}">
-                        <a href="" ng-click="openDetails(modules.indexOf(module), 'uniformity')">{{module.updates}} sites</a>
+                    <li class="uniformity" ng-class="{open: openModule.module == module.module && openModule.detail == 'uniformity'}">
+                        <a href="" ng-click="openDetails(modules.indexOf(module), 'uniformity')"><div class="point" ng-repeat="i in getNumber(module.uniformity) track by $index"></div></a>
                     </li>
-                    <li class="availability" ng-class="{open: openModule.index == $index && openModule.detail == 'availability'}">
-                        <a href="" ng-click="openDetails(modules.indexOf(module), 'availability')">{{module.installRate}}%</a>
+                    <li class="utilization" ng-class="{open: openModule.module == module.module && openModule.detail == 'utilization'}">
+                        <a href="" ng-click="openDetails(modules.indexOf(module), 'utilization')"><div class="point" ng-repeat="i in getNumber(module.utilization) track by $index"></div></a>
                     </li>
-                    <li class="utilization" ng-class="{open: openModule.index == $index && openModule.detail == 'utilization'}">
-                        <a href="" ng-click="openDetails(modules.indexOf(module), 'utilization')">{{module.total}} sites</a>
+                    <li class="availability" ng-class="{open: openModule.module == module.module && openModule.detail == 'availability'}">
+                        <a href="" ng-click="openDetails(modules.indexOf(module), 'availability')"><div class="point" ng-repeat="i in getNumber(module.availability) track by $index"></div></a>
                     </li>
                 </ul>
             </ul>
-            <div class="detail-view" ng-if="openModule.index == $index">
+            <div class="detail-view" ng-if="openModule.module == module.module">
                 <ul ng-if="openModule.detail == 'meta'">
                     <li>
                         <h3>Module is part of project <a href="https://www.drupal.org/project/{{module.project}}" target="_blank">{{module.project}}</a></h3>
@@ -37,45 +38,45 @@
                 </ul>
                 <ul ng-if="openModule.detail == 'version'">
                     <li>
-                        <h3><span class="number">{{openModule.details.sitesWithSecurityUpdates.length}}</span> sites with security updates</h3>
+                        <h3><span class="number">{{openModule.sitesWithSecurityUpdates.length}}</span> sites with security updates</h3>
                         <ul class="items">
-                            <li ng-repeat="item in openModule.details.sitesWithSecurityUpdates">{{item}}</li>
+                            <li ng-repeat="item in openModule.sitesWithSecurityUpdates">{{item}}</li>
                         </ul>
                     </li>
                     <li>
-                        <h3><span class="number">{{openModule.details.sitesWithUpdates.length}}</span> sites with updates</h3>
+                        <h3><span class="number">{{openModule.sitesWithUpdates.length}}</span> sites with updates</h3>
                         <ul class="items">
-                            <li ng-repeat="item in openModule.details.sitesWithUpdates">{{item}}</li>
+                            <li ng-repeat="item in openModule.sitesWithUpdates">{{item}}</li>
                         </ul>
                     </li>
                     <li>
-                        <h3><span class="number">{{openModule.details.sitesWithDatabaseUpdates.length}}</span> sites with pending database updates</h3>
+                        <h3><span class="number">{{openModule.sitesWithDatabaseUpdates.length}}</span> sites with pending database updates</h3>
                         <ul class="items">
-                            <li ng-repeat="item in openModule.details.sitesWithDatabaseUpdates">{{item}}</li>
+                            <li ng-repeat="item in openModule.sitesWithDatabaseUpdates">{{item}}</li>
                         </ul>
                     </li>
                 </ul>
                 <ul ng-if="openModule.detail == 'uniformity'">
                     <li>
-                        <h3><span class="number">{{module.totalVersions}}</span> versions on your sites</h3>
+                        <h3><span class="number">{{module.attributes.versions}}</span> versions on your sites</h3>
                         <ul class="items">
                             <li ng-repeat="(item, value) in module.versions">{{item}}</li>
                         </ul>
                     </li>
                 </ul>
-                <ul ng-if="openModule.detail == 'availability'">
+                <ul ng-if="openModule.detail == 'utilization'">
                     <li>
-                        <h3><span class="number">{{openModule.details.sitesWithEnabled.length}}</span> sites where the module is enabled</h3>
+                        <h3><span class="number">{{openModule.sitesWithEnabled.length}}</span> sites where the module is enabled</h3>
                         <ul class="items">
-                            <li ng-repeat="item in openModule.details.sitesWithEnabled">{{item}}</li>
+                            <li ng-repeat="item in openModule.sitesWithEnabled">{{item}}</li>
                         </ul>
                     </li>
                 </ul>
-                <ul ng-if="openModule.detail == 'utilization'">
+                <ul ng-if="openModule.detail == 'availability'">
                     <li>
-                        <h3><span class="number">{{openModule.details.sitesWithAvailable.length}}</span> sites where the module is available</h3>
+                        <h3><span class="number">{{openModule.sitesWithAvailable.length}}</span> sites where the module is available</h3>
                         <ul class="items">
-                            <li ng-repeat="item in openModule.details.sitesWithAvailable">{{item}}</li>
+                            <li ng-repeat="item in openModule.sitesWithAvailable">{{item}}</li>
                         </ul>
                     </li>
                 </ul>

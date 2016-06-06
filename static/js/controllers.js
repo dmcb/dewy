@@ -500,6 +500,9 @@ controllers.controller('overviewController', ['$scope', '$location', 'sitesFacto
 				$location.path($scope.view);
 			}
 		}
+		$scope.getNumber = function(number) {
+			return new Array(Math.round(number));
+		}
 		$scope.openFolder = function(index) {
 			console.log(index);
 			$scope.folders[index] = !$scope.folders[index];
@@ -557,7 +560,6 @@ controllers.controller('overviewController', ['$scope', '$location', 'sitesFacto
 		}
 		$scope.filterDropdown = [];
 		comb($scope.filterIndex.filters, 0, $scope.filterDropdown);
-		console.log(filterIndex);
 }]);
 
 controllers.controller('overviewContentController', ['$scope',
@@ -582,19 +584,9 @@ controllers.controller('overviewModulesController', ['$scope', 'moduleFactory',
 				$scope.openModule = null;
 			}
 			else {
-				// If details haven't been already loaded for the site, go grab the site details
-				if (!('details' in $scope.modules[index])) {
-					moduleFactory.getDetails($scope.modules[index].module + '-' + $scope.modules[index].core).then(function(details) {
-						$scope.modules[index].details = details;
-						$scope.openModule = $scope.modules[index];
-						$scope.openModule.detail = detail;
-						$scope.openModule.index = index;
-					});
-				} else {
-					$scope.openModule = $scope.modules[index];
-					$scope.openModule.detail = detail;
-					$scope.openModule.index = index;
-				}
+				$scope.openModule = $scope.modules[index];
+				$scope.openModule.detail = detail;
+				$scope.openModule.index = index;
 			}
 		}
 		
@@ -640,9 +632,6 @@ controllers.controller('overviewSitesController', ['$scope', 'sitesFactory',
 			$scope.openSite.tags.splice(tagIndex, 1);
 			$scope.sites[siteIndex].tags = $scope.openSite.tags;
 			sitesFactory.setTags($scope.openSite);
-		}
-		$scope.getNumber = function(number) {
-			return new Array(Math.round(number));
 		}
 		$scope.openDetails = function(index, detail) {
 			// If the site is already open to that same site and view, close the view
