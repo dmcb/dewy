@@ -3,7 +3,7 @@
         <ul class="site">
             <li class="title"><a href="" ng-class="{selected: sort.column=='title', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('title')">{{filteredModules.length}} modules</a></li>
             <ul class="variables">
-                <li class="version"><a href="" ng-class="{selected: sort.column=='version', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('version')">Version</a></li>
+                <li class="health"><a href="" ng-class="{selected: sort.column=='health', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('health')">Health</a></li>
                 <li class="uniformity"><a href="" ng-class="{selected: sort.column=='uniformity', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('uniformity')">Uniformity</a></li>
                 <li class="utilization"><a href="" ng-class="{selected: sort.column=='utilization', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('utilization')">Utilization</a></li>
                 <li class="availability"><a href="" ng-class="{selected: sort.column=='availability', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('availability')">Availablity</a></li>
@@ -16,8 +16,8 @@
             <ul class="site">
                 <li class="title" ng-class="{open: openModule.module == module.module && openModule.detail == 'meta'}"><a href="" ng-click="openDetails(modules.indexOf(module), 'meta')"><span class="title">{{module.module}}</span></a></li>
                 <ul class="variables">
-                    <li class="version" ng-class="{open: openModule.module == module.module && openModule.detail == 'version'}">
-                        <a href="" ng-click="openDetails(modules.indexOf(module), 'version')"><div class="point" ng-repeat="i in getNumber(module.version) track by $index"></div></a>
+                    <li class="health" ng-class="{open: openModule.module == module.module && openModule.detail == 'health'}">
+                        <a href="" ng-click="openDetails(modules.indexOf(module), 'health')"><div class="point" ng-repeat="i in getNumber(module.health) track by $index"></div></a>
                     </li>
                     <li class="uniformity" ng-class="{open: openModule.module == module.module && openModule.detail == 'uniformity'}">
                         <a href="" ng-click="openDetails(modules.indexOf(module), 'uniformity')"><div class="point" ng-repeat="i in getNumber(module.uniformity) track by $index"></div></a>
@@ -36,7 +36,7 @@
                         <h3>Module is part of project <a href="https://www.drupal.org/project/{{module.project}}" target="_blank">{{module.project}}</a></h3>
                     </li>
                 </ul>
-                <ul ng-if="openModule.detail == 'version'">
+                <ul ng-if="openModule.detail == 'health'">
                     <li>
                         <h3><span class="number">{{openModule.sitesWithSecurityUpdates.length}}</span> sites with security updates</h3>
                         <ul class="items" ng-if="openModule.sitesWithSecurityUpdates.length">
