@@ -39,35 +39,35 @@
                 <ul ng-if="openModule.detail == 'version'">
                     <li>
                         <h3><span class="number">{{openModule.sitesWithSecurityUpdates.length}}</span> sites with security updates</h3>
-                        <ul class="items">
+                        <ul class="items" ng-if="openModule.sitesWithSecurityUpdates.length">
                             <li ng-repeat="item in openModule.sitesWithSecurityUpdates">{{item}}</li>
                         </ul>
                     </li>
                     <li>
                         <h3><span class="number">{{openModule.sitesWithUpdates.length}}</span> sites with updates</h3>
-                        <ul class="items">
+                        <ul class="items" ng-if="openModule.sitesWithUpdates.length">
                             <li ng-repeat="item in openModule.sitesWithUpdates">{{item}}</li>
                         </ul>
                     </li>
                     <li>
                         <h3><span class="number">{{openModule.sitesWithDatabaseUpdates.length}}</span> sites with pending database updates</h3>
-                        <ul class="items">
+                        <ul class="items" ng-if="openModule.sitesWithDatabaseUpdates.length">
                             <li ng-repeat="item in openModule.sitesWithDatabaseUpdates">{{item}}</li>
                         </ul>
                     </li>
                 </ul>
                 <ul ng-if="openModule.detail == 'uniformity'">
                     <li>
-                        <h3><span class="number">{{module.attributes.versions}}</span> versions on your sites</h3>
-                        <ul class="items">
-                            <li ng-repeat="(item, value) in module.versions">{{item}}</li>
+                        <h3><span class="number">{{openModule.attributes.versions}}</span> versions on your sites</h3>
+                        <ul class="items" ng-if="openModule.versions.length">
+                            <li ng-repeat="(item, value) in openModule.versions">{{item}}</li>
                         </ul>
                     </li>
                 </ul>
                 <ul ng-if="openModule.detail == 'utilization'">
                     <li>
                         <h3><span class="number">{{openModule.sitesWithEnabled.length}}</span> sites where the module is enabled</h3>
-                        <ul class="items">
+                        <ul class="items" ng-if="openModule.sitesWithEnabled.length">
                             <li ng-repeat="item in openModule.sitesWithEnabled">{{item}}</li>
                         </ul>
                     </li>
@@ -75,7 +75,7 @@
                 <ul ng-if="openModule.detail == 'availability'">
                     <li>
                         <h3><span class="number">{{openModule.sitesWithAvailable.length}}</span> sites where the module is available</h3>
-                        <ul class="items">
+                        <ul class="items" ng-if="openModule.sitesWithAvailable.length">
                             <li ng-repeat="item in openModule.sitesWithAvailable">{{item}}</li>
                         </ul>
                     </li>

@@ -55,25 +55,25 @@
                 <ul ng-if="openSite.detail == 'complexity'">
                     <li>
                         <h3><span class="number">{{openSite.attributes.enabledModules}}</span> modules enabled</h3>
-                        <ul class="items">
+                        <ul class="items" ng-if="openSite.details.enabledModules.length">
                             <li ng-repeat="item in openSite.details.enabledModules">{{item}}</li>
                         </ul>
                     </li>
                     <li>
                         <h3><span class="number">{{openSite.attributes.availableModules}}</span> modules available</h3>
-                        <ul class="items">
+                        <ul class="items" ng-if="openSite.details.availableModules.length">
                             <li ng-repeat="item in openSite.details.availableModules">{{item}}</li>
                         </ul>
                     </li>
                     <li>
                         <h3><span class="number">{{openSite.attributes.contentTypes}}</span> content types</h3>
-                        <ul class="items">
+                        <ul class="items" ng-if="openSite.details.contentTypes.length">
                             <li ng-repeat="item in openSite.details.contentTypes">{{item}}</li>
                         </ul>
                     </li>
                     <li>
                         <h3><span class="number">{{openSite.attributes.roles}}</span> roles</h3>
-                        <ul class="items">
+                        <ul class="items" ng-if="openSite.details.roles.length">
                             <li ng-repeat="item in openSite.details.roles">{{item}}</li>
                         </ul>
                     </li>
@@ -84,7 +84,7 @@
                     </li>
                     <li>
                         <h3><span class="number">{{openSite.attributes.users}}</span> users</h3>
-                        <ul class="items">
+                        <ul class="items" ng-if="openSite.details.users.length">
                             <li ng-repeat="item in openSite.details.users">{{item}}</li>
                         </ul>
                     </li>
@@ -115,19 +115,19 @@
                 <ul ng-if="openSite.detail == 'health'">
                     <li>
                         <h3><span class="number">{{openSite.attributes.modulesWithUpdates}}</span> modules have updates</h3>
-                        <ul class="items">
+                        <ul class="items" ng-if="openSite.details.modulesWithUpdates.length">
                             <li ng-repeat="item in openSite.details.modulesWithUpdates">{{item}}</li>
                         </ul>
                     </li>
                     <li>
                         <h3><span class="number">{{openSite.attributes.modulesWithSecurityUpdates}}</span> modules have security updates</h3>
-                        <ul class="items">
+                        <ul class="items" ng-if="openSite.details.modulesWithSecurityUpdates.length">
                             <li ng-repeat="item in openSite.details.modulesWithSecurityUpdates">{{item}}</li>
                         </ul>
                     </li>
                     <li>
                         <h3><span class="number">{{openSite.attributes.databaseUpdates}}</span> modules with database updates pending</h3>
-                        <ul class="items">
+                        <ul class="items" ng-if="openSite.details.databaseUpdates.length">
                             <li ng-repeat="item in openSite.details.databaseUpdates">{{item}}</li>
                         </ul>
                     </li>
