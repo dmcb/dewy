@@ -240,7 +240,7 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 				verifyData: ['$rootScope', '$route', '$http', 'authService', function($rootScope, $route, $http, authService) {
 					return $http.get('http://dewy.io/auth/verify/' + $route.current.params.uid + '/' + $route.current.params.verify).
 					then(function(result) {
-						$rootScope.$broadcast('flashMessage', 'Email verified');
+						$rootScope.$broadcast('flashMessage', {content: 'Email verified', type: 'message'});
 						authService.signOn('/account', result.data);
 						return {error: null};
 					}, function(error) {
@@ -301,8 +301,7 @@ app.run(['authService', '$rootScope', '$location', '$http', '$window', function(
 	});
 	$rootScope.$on('$routeChangeError', function() {
 		$rootScope.isViewLoading = false;
-		$rootScope.indexPage = current.indexPage;
-		$rootScope.menuItem = current.menuItem;
+		$rootScope.$broadcast('flashMessage', {content: 'There is a problem communicating with Dewy at this time', type: 'error'});
 	});
 	$rootScope.$on('signOff:success', function() {
 		$location.path('/signon');

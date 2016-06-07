@@ -23,7 +23,7 @@ controllers.controller('accountController', ['$scope', '$timeout', '$rootScope',
 		   		userFactory.changeAccount(uid, $scope.passwordExisting, $scope.email, $scope.password)
 				.success(function(userDoc) {
 					authService.setUser(userDoc);
-					$scope.$emit('flashMessage', 'Account information updated');
+					$scope.$emit('flashMessage', {content: 'Account information updated', type: 'message'});
 				})
 				.error(function(error, status) {
 					if (status != '400') {
@@ -39,7 +39,7 @@ controllers.controller('accountController', ['$scope', '$timeout', '$rootScope',
 				userFactory.changeProfile(uid, $scope.username)
 				.success(function(userDoc) {
 					authService.setUser(userDoc);
-					$scope.$emit('flashMessage', 'Profile information updated');
+					$scope.$emit('flashMessage', {content: 'Profile information updated', type: 'message'});
 				})
 				.error(function(error, status) {
 					if (status != '400') {
@@ -53,7 +53,7 @@ controllers.controller('accountController', ['$scope', '$timeout', '$rootScope',
 		$scope.reverify = function(uid) {
 			userFactory.reverify(uid)
 			.then(function(userDoc) {
-				$scope.$emit('flashMessage', 'Verification email sent');
+				$scope.$emit('flashMessage', {content: 'Verification email sent', type: 'message'});
 			});
 		}
 }]);
@@ -411,7 +411,7 @@ controllers.controller('manageController', ['$scope', '$timeout', '$moment', 'si
 		}
 		$scope.resetKey = function(uid) {
 			userFactory.resetKey(uid).then(function(apikey) {
-				$scope.$emit('flashMessage', 'API key reset');
+				$scope.$emit('flashMessage', {content: 'API key reset', type: 'message'});
 				$scope.apikey = apikey;
 			});
 		}
