@@ -33,6 +33,12 @@
             <div class="detail-view" ng-if="openSite.sid == site.sid">
                 <ul ng-if="openSite.detail == 'meta'">
                     <li>
+                        <h3>Site live at <a href="{{site.baseurl}}" target="_blank">{{site.baseurl}}</a></h3>
+                    </li>
+                    <li>
+                        <h3>Site added to Dewy <span am-time-ago="openSite.dateAdded * 1000" class="number"></span></h3>
+                    </li>
+                    <li>
                         <h3><span class="number">{{openSite.tags.length}}</span> tags assigned</h3>
                         <ul class="items" ng-if="openSite.tags.length">
                             <li ng-repeat="tag in openSite.tags" class="tag">{{tag}} <a href="" ng-click="deleteTag($index, sites.indexOf(site))"><i class="fa fa-times"></i></a></li>
@@ -44,12 +50,6 @@
                             <button type="submit">Add tags</button>
                             <span class="error" ng-show="tagForm{{sites.indexOf(site)}}.tags.$error.required && (tagForm{{sites.indexOf(site)}}.tags.$touched || tagForm{{sites.indexOf(site)}}.$submitted)">Please enter a tag.</span>
                         </form>
-                    </li>
-                    <li>
-                        <h3>Site live at <a href="{{site.baseurl}}" target="_blank">{{site.baseurl}}</a></h3>
-                    </li>
-                    <li>
-                        <h3>Site added to Dewy <span am-time-ago="openSite.dateAdded * 1000" class="number"></span></h3>
                     </li>
                 </ul>
                 <ul ng-if="openSite.detail == 'complexity'">

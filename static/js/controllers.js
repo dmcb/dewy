@@ -647,6 +647,9 @@ controllers.controller('overviewSitesController', ['$scope', 'sitesFactory',
 						$scope.sites[index].details = details;
 						$scope.openSite = $scope.sites[index];
 						$scope.openSite.detail = detail;
+						if (!$scope.openSite.tags) {
+							$scope.openSite.tags = [];
+						}
 					});
 				} else {
 					$scope.openSite = $scope.sites[index];
