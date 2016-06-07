@@ -299,7 +299,13 @@ app.run(['authService', '$rootScope', '$location', '$http', '$window', function(
 		$rootScope.indexPage = current.indexPage;
 		$rootScope.menuItem = current.menuItem;
 	});
-	$rootScope.$on('$routeChangeError', function() {
+	$rootScope.$on('$routeChangeError', function(event, current, previous) {
+		if (previous) {
+			$window.history.back();
+		}
+		else {
+			$location.path('/').replace();
+		}
 		$rootScope.isViewLoading = false;
 		$rootScope.$broadcast('flashMessage', {content: 'There is a problem communicating with Dewy at this time', type: 'error'});
 	});
