@@ -67,10 +67,12 @@ controllers.controller('appController', ['$scope', '$location', '$timeout', 'aut
 			$scope.currentUser = data;
 		});
 		$scope.$on('flashMessage', function(event, data) {
-			$scope.flashMessages.unshift(data);
-			$timeout(function() {
-				$scope.flashMessages.pop();
-			}, 3500);
+			if (!$scope.flashMessages[0] || $scope.flashMessages[0].content != data.content) {
+				$scope.flashMessages.unshift(data);
+				$timeout(function() {
+					$scope.flashMessages.pop();
+				}, 3500);
+			}
 		});
 		$scope.flashMessages = [];
 		$scope.currentUser = authService.currentUser();
