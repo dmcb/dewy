@@ -252,7 +252,7 @@ factories.factory('moduleFactory', ['$http', function($http) {
 				for (var i in response.data) {
 					for (var attribute in attributes) {
 						if (!attributes[attribute]['increment']) {
-							response.data[i][attribute] = 1;
+							response.data[i][attribute] = 10;
 						} 
 						else {
 							response.data[i][attribute] = ((response.data[i].attributes[attribute] - attributes[attribute]['minimum']) / attributes[attribute]['increment']) + 1;
@@ -395,7 +395,7 @@ factories.factory('sitesFactory', ['$http', function($http) {
 				for (var i in response.data) {
 					for (var attribute in attributes) {
 						if (!attributes[attribute]['increment']) {
-							response.data[i][attribute] = 1;
+							response.data[i][attribute] = 10;
 						} 
 						else {
 							response.data[i][attribute] = ((response.data[i].attributes[attribute] - attributes[attribute]['minimum']) / attributes[attribute]['increment']) + 1;
