@@ -38,15 +38,15 @@
                 </ul>
                 <ul ng-if="openModule.detail == 'health'">
                     <li>
-                        <h3><span class="number">{{openModule.sitesWithSecurityUpdates.length}}</span> sites with security updates</h3>
-                        <ul class="items" ng-if="openModule.sitesWithSecurityUpdates.length">
-                            <li ng-repeat="item in openModule.sitesWithSecurityUpdates">{{item}}</li>
-                        </ul>
-                    </li>
-                    <li>
                         <h3><span class="number">{{openModule.sitesWithUpdates.length}}</span> sites with updates</h3>
                         <ul class="items" ng-if="openModule.sitesWithUpdates.length">
                             <li ng-repeat="item in openModule.sitesWithUpdates">{{item}}</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h3><span class="number">{{openModule.sitesWithSecurityUpdates.length}}</span> sites with security updates</h3>
+                        <ul class="items" ng-if="openModule.sitesWithSecurityUpdates.length">
+                            <li ng-repeat="item in openModule.sitesWithSecurityUpdates">{{item}}</li>
                         </ul>
                     </li>
                     <li>

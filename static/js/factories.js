@@ -219,7 +219,7 @@ factories.factory('moduleFactory', ['$http', function($http) {
 				// 5 versions
 
 				for (var i in rankedArray) {
-					response.data[i].attributes['health'] = (rankedArray[i][2] + rankedArray[i][3]+ rankedArray[i][4] * 3) * -1;
+					response.data[i].attributes['health'] = (rankedArray[i][2] + rankedArray[i][3] * 1.5 + rankedArray[i][4] * 3) * -1;
 					response.data[i].attributes['uniformity'] = (rankedArray[i][5]) * -1;
 					response.data[i].attributes['utilization'] = rankedArray[i][1] / rankedArray[i][0];
 					response.data[i].attributes['availability'] = rankedArray[i][0];
