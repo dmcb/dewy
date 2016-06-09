@@ -1,7 +1,7 @@
 <div class="content" ng-controller="overviewModulesController">
     <div class="header">
         <ul class="site">
-            <li class="title"><a href="" ng-class="{selected: sort.column=='title', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('title')">{{filteredModules.length}} modules</a></li>
+            <li class="title"><a href="" ng-class="{selected: sort.column=='module', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('module')">{{filteredModules.length}} modules</a></li>
             <ul class="variables">
                 <li class="availability"><a href="" ng-class="{selected: sort.column=='availability', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('availability')">Availablity</a></li>
                 <li class="utilization"><a href="" ng-class="{selected: sort.column=='utilization', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('utilization')">Utilization</a></li>
