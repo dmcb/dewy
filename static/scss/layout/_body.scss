@@ -11,8 +11,8 @@ body {
     @include add-gutter(1/3);
 
     height: 100%;
-    background-color: $blue;
-    color: $grey;
+    background-color: $white;
+    color: $white;
     font-size: 10px;
     font-family: $body-font;
 
@@ -43,81 +43,61 @@ body {
     .wrapper {
         min-height: 100%;
         position: relative;
-        background-color: $white;
+        background: radial-gradient(center center, 50% 70%, $blue 70%, $darkish-blue);
+        background: -webkit-radial-gradient(center center, 50% 70%, $blue 70%, $darkish-blue);
+        background: -o-radial-gradient(center center, 50% 70%, $blue 70%, $darkish-blue);
+        background: -ms-radial-gradient(center center, 50% 70%, $blue 70%, $darkish-blue);
+        background-attachment: fixed;
         @include clearfix;
     }
 
-    &.index {
-        background-color: $white;
-        color: $white;
+    &.app {
+        background-color: $blue;
+        color: $grey;
 
         .wrapper {
-            background: radial-gradient(center center, 50% 70%, $blue 70%, $darkish-blue);
-            background: -webkit-radial-gradient(center center, 50% 70%, $blue 70%, $darkish-blue);
-            background: -o-radial-gradient(center center, 50% 70%, $blue 70%, $darkish-blue);
-            background: -ms-radial-gradient(center center, 50% 70%, $blue 70%, $darkish-blue);
-            background-attachment: fixed;
+            background: none;
+            background-color: $white;
+        }
+
+        button, a.button {
+            text-align: left;
         }
 
         header, footer {
-            background-color: transparent;
-            color: $light-blue;
+            background-color: $light-grey;
+            border-top-color: $blue;
 
             ul {
-                background-color: transparent;
-
-                li a {
-                    color: $white;
-
-                    &:hover {
-                        color: $light-blue;
-                        background-color: transparent;
-                    }
-                }
-            }
-        }
-
-        header {
-            border-top-color: $white;
-
-            ul {
-                background-color: $white;
+                color: $white;
+                background-color: $light-grey;
 
                 li a {
                     color: $blue;
 
                     &:hover {
-                        color: $white;
-                        background-color: $blue;
-                    }
-                }
-            }
+                        color: $blue;
+                        background-color: $white;
 
-            @include breakpoint($tablet) {
-                background-color: transparent;
-                color: $light-blue;
-
-                ul {
-                    background-color: transparent;
-
-                    li a {
-                        color: $white;
-
-                        &:hover {
-                            color: $light-blue;
-                            background-color: transparent;
+                        @include breakpoint($tablet) {
+                            color: $dark-blue;
                         }
                     }
                 }
             }
 
             #menu-toggle {
-                color: $white;
+                color: $blue;
             }
         }
 
-        button, a.button {
-            text-align: center;
+        footer ul {
+            color: $grey;
+
+            li a:hover {
+                background-color: transparent;
+                color: $dark-blue;
+            }
         }
     }
 }

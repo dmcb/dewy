@@ -18,6 +18,7 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 			templateUrl: 'templates/account.html',
 			controller: 'accountController',
 			menuItem: 'account',
+			appPage: true,
 			requiresAuthorization: true
 		}).
 		// when('/content/:filter?', {
@@ -62,6 +63,7 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 		when('/filter/:filter?', {
 			templateUrl: 'templates/filter.html',
 			controller: 'filterController',
+			appPage: true,
 			requiresAuthorization: true,
 			resolve: {
 				operators: ['filterFactory', function(filterFactory) {
@@ -85,6 +87,7 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 			templateUrl: 'templates/filters.html',
 			controller: 'filtersController',
 			menuItem: 'filters',
+			appPage: true,
 			requiresAuthorization: true,
 			resolve: {
 				filters: ['filterFactory', function(filterFactory) {
@@ -99,6 +102,7 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 			templateUrl: 'templates/manage.html',
 			controller: 'manageController',
 			menuItem: 'manage',
+			appPage: true,
 			requiresAuthorization: true,
 			resolve: {
 				sites: ['sitesFactory', function(sitesFactory) {
@@ -113,6 +117,7 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 			templateUrl: 'templates/overview.html',
 			controller: 'overviewController',
 			menuItem: 'overview',
+			appPage: true,
 			requiresAuthorization: true,
 			resolve: {
 				filters: ['filterFactory', function(filterFactory) {
@@ -152,12 +157,12 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 			templateUrl: 'templates/signon.html',
 			controller: 'signonController',
 			requiresAuthorization: false,
-			indexPage: true
 		}).
 		when('/sites/:filter?', {
 			templateUrl: 'templates/overview.html',
 			controller: 'overviewController',
 			menuItem: 'overview',
+			appPage: true,
 			requiresAuthorization: true,
 			resolve: {
 				filters: ['filterFactory', function(filterFactory) {
@@ -235,7 +240,6 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 		when('/verify/:uid/:verify', {
 			templateUrl: 'templates/verify.html',
 			controller: 'verifyController',
-			indexPage: true,
 			resolve: {
 				verifyData: ['$rootScope', '$route', '$http', 'authService', function($rootScope, $route, $http, authService) {
 					return $http.get('http://dewy.io/auth/verify/' + $route.current.params.uid + '/' + $route.current.params.verify).
@@ -256,7 +260,6 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 		when('/', {
 			templateUrl: 'templates/index.html',
 			requiresAuthorization: false,
-			indexPage: true
 		}).
 		otherwise({
 			controller: ['$location', function($location) {
@@ -296,7 +299,7 @@ app.run(['authService', '$rootScope', '$location', '$http', '$window', function(
 	});
 	$rootScope.$on('$routeChangeSuccess', function(event, current, previous) {
 		$rootScope.isViewLoading = false;
-		$rootScope.indexPage = current.indexPage;
+		$rootScope.appPage = current.appPage;
 		$rootScope.menuItem = current.menuItem;
 	});
 	$rootScope.$on('$routeChangeError', function(event, current, previous) {

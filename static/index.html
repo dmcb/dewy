@@ -25,7 +25,7 @@
         <script src="/js/controllers.js"></script>
         <script src="/js/scripts.js"></script>
     </head>
-    <body ng-controller="appController" ng-class="{index: indexPage}">
+    <body ng-controller="appController" ng-class="{app: appPage}">
         <div id="load" ng-if="isViewLoading"></div>
         <div class="wrapper">
             <div id="flash-message">
@@ -38,10 +38,10 @@
                     <nav>
                         <input type="checkbox" id="menu-toggle-value" />
                         <div>
-                            <ul ng-show="indexPage" class="home">
+                            <ul ng-show="!appPage" class="home">
                                 <li><a class="scroll" href="#signup">Sign up</a></li><li><a href="/signon" class="important">Sign on</a></li>
                             </ul>
-                            <ul ng-show="!indexPage" class="app">
+                            <ul ng-show="appPage" class="app">
                                 <li><a href="/sites" ng-class="{selected: menuItem=='overview'}">Overview</a></li><li><a href="/manage" ng-class="{selected: menuItem=='manage'}">Manage sites</a></li><li><a href="/filters" ng-class="{selected: menuItem=='filters'}">Manage filters</a></li><li><a href="" class="icon drop" ng-class="{selected: menuItem=='account'}" current-user><img src="http://www.gravatar.com/avatar/{{currentUser.gravatar}}?s=64" alt=""/>Signed in as {{currentUser.username}}</a><ul class="dropdown">
                                     <li><a href="/account">Account</a></li>
                                     <li><a href="" ng-click="signOff()">Sign off</a></li>
@@ -49,7 +49,7 @@
                             </ul>
                         </div>
                         <div class="logo">
-                            <a href="/"><img src="/img/dewy-white.png" alt="Dewy" ng-if="indexPage"><img src="/img/dewy.png" alt="Dewy" ng-if="!indexPage"></a>
+                            <a href="/"><img src="/img/dewy-white.png" alt="Dewy" ng-if="!appPage"><img src="/img/dewy.png" alt="Dewy" ng-if="appPage"></a>
                         </div>
                         <label for="menu-toggle-value" id="menu-toggle" onclick=""><i class="fa fa-bars"></i></label>
                     </nav>

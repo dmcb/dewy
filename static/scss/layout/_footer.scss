@@ -1,11 +1,19 @@
 footer {
     position: absolute;
     bottom: 0;
-    background-color: $light-grey;
     width: 100%;
+    color: $light-blue;
 
     ul li {
         display: inline;
+
+        a {
+            color: $white;
+
+            &:hover {
+                color: $light-blue;
+            }
+        }
 
         span, a {
             display: inline-block;

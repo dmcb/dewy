@@ -39,12 +39,8 @@
 
 header {
     @include clearfix;
-    border-top: 5px solid $blue;
-    background-color: $light-grey;
-
-    .shell {
-
-    }
+    border-top: 5px solid $white;
+    color: $light-blue;
 
     #menu-toggle-value + div {
         display: none;
@@ -59,17 +55,17 @@ header {
     }
 
     ul {
+        background-color: $white;
         margin-left: -16px;
         margin-right: -16px;
         text-align: right;
-        background-color: $blue;
 
         li {
             display: inline;
             position: relative;
 
             a {
-                color: $white;
+                color: $blue;
                 text-align: center;
                 display: block;
                 padding: 1.25em 1em;
@@ -81,12 +77,11 @@ header {
                 }
 
                 &:hover {
-                    color: $blue;
-                    background-color: $white;
+                    color: $white;
+                    background-color: $blue;
 
                     @include breakpoint($tablet) {
-                        color: $dark-blue;
-                        background-color: transparent;
+                        color: $light-blue;
                     }
                 }
 
@@ -141,15 +136,6 @@ header {
             }
         }
 
-        &.home li a {
-            border-radius: 0.25em;
-
-            &:hover {
-                background-color: $white;
-                color: $blue;
-            }
-        }
-
         @include breakpoint($tablet) {
             @include grid-span(24,1);
             margin-left: 0;
@@ -157,7 +143,7 @@ header {
             background-color: transparent;
 
             li a {
-                color: $blue;
+                color: $white;
                 display: inline-block;
                 width: auto;
                 background-color: transparent;
@@ -238,7 +224,7 @@ header {
     }
 
     #menu-toggle {
-        color: $blue;
+        color: $white;
         cursor: pointer;
         float: right;
         margin-top: 1em;
