@@ -1,0 +1,13 @@
+<div class="shell">
+    <section class="main">
+        <h2 current-user>Your subscription, {{currentUser.username}}</h2>
+        <section class="subscription">
+            <h3>Details</h3>
+            <ul>
+                <li class="">You signed up with Dewy on <strong>{{currentUser.created*1000 | date:'MMMM d, yyyy'}}</strong></li>
+                <li class="">You are on a <strong>{{currentUser.subscription.type}}</strong> subscription</li>
+                <li class="">Your subscription expires <strong>{{currentUser.subscription.endDate*1000 | date:'MMMM d, yyyy'}}</strong></li>
+            </ul>
+        </section>
+    </section>
+</div>

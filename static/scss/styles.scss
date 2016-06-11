@@ -301,6 +301,10 @@ section.filters {
         }
     }
 
+    & > form {
+        clear: both;
+    }
+
     li {
         position: relative;
         padding: 0.5em 0;

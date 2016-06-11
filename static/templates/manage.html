@@ -15,7 +15,7 @@
                 </fieldset>
             </form>
         </section>
-        <section class="offline-sites">
+        <section class="offline-sites" ng-if="sites.length">
             <h3>Offline sites</h3>
             <p>The following sites are linked to your account but aren't able to report to Dewy.</p>
             <div ng-repeat="site in sites" class="offline-site">

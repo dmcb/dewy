@@ -198,6 +198,13 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', function($ht
 				}]
 			}
 		}).
+		when('/subscription', {
+			templateUrl: 'templates/subscription.html',
+			controller: 'subscriptionController',
+			menuItem: 'subscription',
+			appPage: true,
+			requiresAuthorization: true
+		}).
 		// when('/users/:filter?', {
 		// 	templateUrl: 'templates/overview.html',
 		// 	controller: 'overviewController',

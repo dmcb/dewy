@@ -44,6 +44,7 @@
                             <ul ng-show="appPage" class="app">
                                 <li><a href="/sites" ng-class="{selected: menuItem=='overview'}">Overview</a></li><li><a href="/manage" ng-class="{selected: menuItem=='manage'}">Manage sites</a></li><li><a href="/filters" ng-class="{selected: menuItem=='filters'}">Manage filters</a></li><li><a href="" class="icon drop" ng-class="{selected: menuItem=='account'}" current-user><img src="http://www.gravatar.com/avatar/{{currentUser.gravatar}}?s=64" alt=""/>Signed in as {{currentUser.username}}</a><ul class="dropdown">
                                     <li><a href="/account">Account</a></li>
+                                    <li><a href="/subscription">Subscription</a></li>
                                     <li><a href="" ng-click="signOff()">Sign off</a></li>
                                 </ul></li>
                             </ul>

@@ -668,6 +668,11 @@ controllers.controller('overviewUsersController', ['$scope',
 	function ($scope) {
 }]);
 
+controllers.controller('subscriptionController', ['$scope', '$timeout', '$rootScope', 'userFactory', 'authService',
+	function ($scope, $timeout, $rootScope, userFactory, authService) {
+		
+}]);
+
 controllers.controller('verifyController', ['$scope', 'verifyData',
 	function ($scope, verifyData) {
 		$scope.error = verifyData.error;

@@ -5,6 +5,11 @@
             <h3>Arrange filters and folders</h3>
             <ul ng-init="filterList=filterIndex.filters;level=1" ng-include="'templates/filter_index.html'" ui-sortable="sortableOptions" ng-model="filterList" class="filter-group">
             </ul>
+            <form>
+                <fieldset>
+                    <a href="/filter" class="button">Add filter <i class="fa fa-plus-circle"></i></a>
+                </fieldset>
+            </form>
         </section>
     </section>
 </div>

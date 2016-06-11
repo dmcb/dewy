@@ -181,81 +181,83 @@ factories.factory('moduleFactory', ['$http', function($http) {
 					arrayOfRankings.push(ranking);
 				}
 
-				var length = arrayOfRankings[0].length,
-				    rankedArray = Array.apply(null, { length: arrayOfRankings.length }).map(function () { return []; }),
-				    temp, i;
+				if (arrayOfRankings.length) {
+					var length = arrayOfRankings[0].length,
+					    rankedArray = Array.apply(null, { length: arrayOfRankings.length }).map(function () { return []; }),
+					    temp, i;
 
-				for (i = 0; i < length; i++) {
-				    temp = [];
-				    arrayOfRankings.forEach(function (a, j) {
-				        temp.push({ v: a[i], i: j });
-				    });
-				    var mostRecentValue;
-				    var mostRecentIndex = 0;
-				    temp.sort(function (a, b) {
-				        return a.v - b.v;
-				    })
+					for (i = 0; i < length; i++) {
+					    temp = [];
+					    arrayOfRankings.forEach(function (a, j) {
+					        temp.push({ v: a[i], i: j });
+					    });
+					    var mostRecentValue;
+					    var mostRecentIndex = 0;
+					    temp.sort(function (a, b) {
+					        return a.v - b.v;
+					    })
 
-				    // Get minimum and maximum value for attribute
-				    var minimum = temp[0].v;
-				    var maximum = temp[temp.length-1].v;
-				    var increment = maximum - minimum / 9;
+					    // Get minimum and maximum value for attribute
+					    var minimum = temp[0].v;
+					    var maximum = temp[temp.length-1].v;
+					    var increment = maximum - minimum / 9;
 
-				    temp.forEach(function (a, j) {
-				    	if (!increment) {
-							rankedArray[a.i][i] = 1;
-						}
-						else {
-							rankedArray[a.i][i] = Math.log((temp[j].v - minimum / increment) + 1);
-						}
-				    });
-				}
+					    temp.forEach(function (a, j) {
+					    	if (!increment) {
+								rankedArray[a.i][i] = 1;
+							}
+							else {
+								rankedArray[a.i][i] = Math.log((temp[j].v - minimum / increment) + 1);
+							}
+					    });
+					}
 
-				// 0 sitesWithAvailable
-				// 1 sitesWithEnabled
-				// 2 sitesWithDatabaseUpdates
-				// 3 sitesWithUpdates
-				// 4 sitesWithSecurityUpdates
-				// 5 versions
+					// 0 sitesWithAvailable
+					// 1 sitesWithEnabled
+					// 2 sitesWithDatabaseUpdates
+					// 3 sitesWithUpdates
+					// 4 sitesWithSecurityUpdates
+					// 5 versions
 
-				for (var i in rankedArray) {
-					response.data[i].attributes['health'] = (rankedArray[i][2] + rankedArray[i][3] * 1.5 + rankedArray[i][4] * 3) * -1;
-					response.data[i].attributes['uniformity'] = (rankedArray[i][5]) * -1;
-					response.data[i].attributes['utilization'] = rankedArray[i][1] / rankedArray[i][0];
-					response.data[i].attributes['availability'] = rankedArray[i][0];
-				}
+					for (var i in rankedArray) {
+						response.data[i].attributes['health'] = (rankedArray[i][2] + rankedArray[i][3] * 1.5 + rankedArray[i][4] * 3) * -1;
+						response.data[i].attributes['uniformity'] = (rankedArray[i][5]) * -1;
+						response.data[i].attributes['utilization'] = rankedArray[i][1] / rankedArray[i][0];
+						response.data[i].attributes['availability'] = rankedArray[i][0];
+					}
 
-				// Loop through all sites and determine absolute values of attributes
-				var attributes = {'health': [], 'uniformity': [], 'utilization': [], 'availability': []};
+					// Loop through all sites and determine absolute values of attributes
+					var attributes = {'health': [], 'uniformity': [], 'utilization': [], 'availability': []};
 
-				for (var i in response.data) {
-					for (var attribute in attributes) {
-						if (attributes[attribute]['maximum'] == null) {
-							attributes[attribute]['maximum'] = response.data[i].attributes[attribute];
-						} else if (attributes[attribute]['maximum'] < response.data[i].attributes[attribute]) {
-							attributes[attribute]['maximum'] = response.data[i].attributes[attribute];
-						}
-						if (attributes[attribute]['minimum'] == null) {
-							attributes[attribute]['minimum'] = response.data[i].attributes[attribute];
-						} else if (attributes[attribute]['minimum'] > response.data[i].attributes[attribute]) {
-							attributes[attribute]['minimum'] = response.data[i].attributes[attribute];
+					for (var i in response.data) {
+						for (var attribute in attributes) {
+							if (attributes[attribute]['maximum'] == null) {
+								attributes[attribute]['maximum'] = response.data[i].attributes[attribute];
+							} else if (attributes[attribute]['maximum'] < response.data[i].attributes[attribute]) {
+								attributes[attribute]['maximum'] = response.data[i].attributes[attribute];
+							}
+							if (attributes[attribute]['minimum'] == null) {
+								attributes[attribute]['minimum'] = response.data[i].attributes[attribute];
+							} else if (attributes[attribute]['minimum'] > response.data[i].attributes[attribute]) {
+								attributes[attribute]['minimum'] = response.data[i].attributes[attribute];
+							}
 						}
 					}
-				}
 
-				// Determine how much value is in a dot from range of attribute values
-				for (var attribute in attributes) {
-					attributes[attribute]['increment'] = (attributes[attribute]['maximum'] - attributes[attribute]['minimum']) / 9;
-				}
-
-				// Set normalized values
-				for (var i in response.data) {
+					// Determine how much value is in a dot from range of attribute values
 					for (var attribute in attributes) {
-						if (!attributes[attribute]['increment']) {
-							response.data[i][attribute] = 10;
-						} 
-						else {
-							response.data[i][attribute] = ((response.data[i].attributes[attribute] - attributes[attribute]['minimum']) / attributes[attribute]['increment']) + 1;
+						attributes[attribute]['increment'] = (attributes[attribute]['maximum'] - attributes[attribute]['minimum']) / 9;
+					}
+
+					// Set normalized values
+					for (var i in response.data) {
+						for (var attribute in attributes) {
+							if (!attributes[attribute]['increment']) {
+								response.data[i][attribute] = 10;
+							} 
+							else {
+								response.data[i][attribute] = ((response.data[i].attributes[attribute] - attributes[attribute]['minimum']) / attributes[attribute]['increment']) + 1;
+							}
 						}
 					}
 				}
@@ -314,91 +316,93 @@ factories.factory('sitesFactory', ['$http', function($http) {
 					arrayOfRankings.push(ranking);
 				}
 
-				var length = arrayOfRankings[0].length,
-				    rankedArray = Array.apply(null, { length: arrayOfRankings.length }).map(function () { return []; }),
-				    temp, i;
+				if (arrayOfRankings.length) {
+					var length = arrayOfRankings[0].length,
+					    rankedArray = Array.apply(null, { length: arrayOfRankings.length }).map(function () { return []; }),
+					    temp, i;
 
-				for (i = 0; i < length; i++) {
-				    temp = [];
-				    arrayOfRankings.forEach(function (a, j) {
-				        temp.push({ v: a[i], i: j });
-				    });
-				    var mostRecentValue;
-				    var mostRecentIndex = 0;
-				    temp.sort(function (a, b) {
-				        return a.v - b.v;
-				    })
+					for (i = 0; i < length; i++) {
+					    temp = [];
+					    arrayOfRankings.forEach(function (a, j) {
+					        temp.push({ v: a[i], i: j });
+					    });
+					    var mostRecentValue;
+					    var mostRecentIndex = 0;
+					    temp.sort(function (a, b) {
+					        return a.v - b.v;
+					    })
 
-				    // Get minimum and maximum value for attribute
-				    var minimum = temp[0].v;
-				    var maximum = temp[temp.length-1].v;
-				    var increment = maximum - minimum / 9;
+					    // Get minimum and maximum value for attribute
+					    var minimum = temp[0].v;
+					    var maximum = temp[temp.length-1].v;
+					    var increment = maximum - minimum / 9;
 
-				    temp.forEach(function (a, j) {
-				    	if (!increment) {
-							rankedArray[a.i][i] = 1;
-						}
-						else {
-							rankedArray[a.i][i] = Math.log((temp[j].v - minimum / increment) + 1);
-						}
-				    });
-				}
+					    temp.forEach(function (a, j) {
+					    	if (!increment) {
+								rankedArray[a.i][i] = 1;
+							}
+							else {
+								rankedArray[a.i][i] = Math.log((temp[j].v - minimum / increment) + 1);
+							}
+					    });
+					}
 
-				// 0 availableModules
-				// 1 enabledModules
-				// 2 contentTypes
-				// 3 roles
-				// 4 users
-				// 5 nodes
-				// 6 files
-				// 7 words
-				// 8 diskSpace
-				// 9 lastModified
-				// 10 avgLastModified
-				// 11 lastAccess
-				// 12 avgLastAccess
-				// 13 databaseUpdates
-				// 14 modulesWithUpdates
-				// 15 modulesWithSecurityUpdates
+					// 0 availableModules
+					// 1 enabledModules
+					// 2 contentTypes
+					// 3 roles
+					// 4 users
+					// 5 nodes
+					// 6 files
+					// 7 words
+					// 8 diskSpace
+					// 9 lastModified
+					// 10 avgLastModified
+					// 11 lastAccess
+					// 12 avgLastAccess
+					// 13 databaseUpdates
+					// 14 modulesWithUpdates
+					// 15 modulesWithSecurityUpdates
 
-				for (var i in rankedArray) {
-					response.data[i].attributes['complexity'] = rankedArray[i][0] + rankedArray[i][1] * 2 + rankedArray[i][2] + rankedArray[i][3];
-					response.data[i].attributes['size'] = rankedArray[i][4] + rankedArray[i][5] + rankedArray[i][6] + rankedArray[i][7] + rankedArray[i][8];
-					response.data[i].attributes['activity'] = rankedArray[i][9] * 2 + rankedArray[i][10] + rankedArray[i][11] * 2 + rankedArray[i][12];
-					response.data[i].attributes['health'] = (rankedArray[i][13] + rankedArray[i][14] + rankedArray[i][15] * 3) * -1;
-				}
+					for (var i in rankedArray) {
+						response.data[i].attributes['complexity'] = rankedArray[i][0] + rankedArray[i][1] * 2 + rankedArray[i][2] + rankedArray[i][3];
+						response.data[i].attributes['size'] = rankedArray[i][4] + rankedArray[i][5] + rankedArray[i][6] + rankedArray[i][7] + rankedArray[i][8];
+						response.data[i].attributes['activity'] = rankedArray[i][9] * 2 + rankedArray[i][10] + rankedArray[i][11] * 2 + rankedArray[i][12];
+						response.data[i].attributes['health'] = (rankedArray[i][13] + rankedArray[i][14] + rankedArray[i][15] * 3) * -1;
+					}
 
-				// Loop through all sites and determine absolute values of attributes
-				var attributes = {'complexity': [], 'size': [], 'activity': [], 'health': []};
+					// Loop through all sites and determine absolute values of attributes
+					var attributes = {'complexity': [], 'size': [], 'activity': [], 'health': []};
 
-				for (var i in response.data) {
-					for (var attribute in attributes) {
-						if (attributes[attribute]['maximum'] == null) {
-							attributes[attribute]['maximum'] = response.data[i].attributes[attribute];
-						} else if (attributes[attribute]['maximum'] < response.data[i].attributes[attribute]) {
-							attributes[attribute]['maximum'] = response.data[i].attributes[attribute];
-						}
-						if (attributes[attribute]['minimum'] == null) {
-							attributes[attribute]['minimum'] = response.data[i].attributes[attribute];
-						} else if (attributes[attribute]['minimum'] > response.data[i].attributes[attribute]) {
-							attributes[attribute]['minimum'] = response.data[i].attributes[attribute];
+					for (var i in response.data) {
+						for (var attribute in attributes) {
+							if (attributes[attribute]['maximum'] == null) {
+								attributes[attribute]['maximum'] = response.data[i].attributes[attribute];
+							} else if (attributes[attribute]['maximum'] < response.data[i].attributes[attribute]) {
+								attributes[attribute]['maximum'] = response.data[i].attributes[attribute];
+							}
+							if (attributes[attribute]['minimum'] == null) {
+								attributes[attribute]['minimum'] = response.data[i].attributes[attribute];
+							} else if (attributes[attribute]['minimum'] > response.data[i].attributes[attribute]) {
+								attributes[attribute]['minimum'] = response.data[i].attributes[attribute];
+							}
 						}
 					}
-				}
 
-				// Determine how much value is in a dot from range of attribute values
-				for (var attribute in attributes) {
-					attributes[attribute]['increment'] = (attributes[attribute]['maximum'] - attributes[attribute]['minimum']) / 9;
-				}
-
-				// Set normalized values
-				for (var i in response.data) {
+					// Determine how much value is in a dot from range of attribute values
 					for (var attribute in attributes) {
-						if (!attributes[attribute]['increment']) {
-							response.data[i][attribute] = 10;
-						} 
-						else {
-							response.data[i][attribute] = ((response.data[i].attributes[attribute] - attributes[attribute]['minimum']) / attributes[attribute]['increment']) + 1;
+						attributes[attribute]['increment'] = (attributes[attribute]['maximum'] - attributes[attribute]['minimum']) / 9;
+					}
+
+					// Set normalized values
+					for (var i in response.data) {
+						for (var attribute in attributes) {
+							if (!attributes[attribute]['increment']) {
+								response.data[i][attribute] = 10;
+							} 
+							else {
+								response.data[i][attribute] = ((response.data[i].attributes[attribute] - attributes[attribute]['minimum']) / attributes[attribute]['increment']) + 1;
+							}
 						}
 					}
 				}
