@@ -11,7 +11,11 @@
         </ul>
     </div>
     <div class="sites">
-        <div ng-if="!filteredSites.length && query" class="noresults"><span><i class="fa fa-exclamation-triangle"></i> No sites meet your criteria.</span></div>
+        <div ng-if="!filteredSites.length" class="noresults">
+            <span ng-if="!query && !currentFilter"><i class="fa fa-exclamation-triangle"></i> You haven't added any sites to Dewy. <a href="/manage">Manage your sites.</a></span>
+            <span ng-if="!query && currentFilter"><i class="fa fa-exclamation-triangle"></i> No sites meet your filter criteria. <a href="/filter/{{currentFilter.fid}}">Edit your filter.</a></span>            
+            <span ng-if="query"><i class="fa fa-exclamation-triangle"></i> Your search returned no results.</span>
+        </div>
         <div ng-repeat="site in filteredSites = (sites | filter:query) | orderBy:sort.column:sort.descending" class="site">
             <ul class="site">
                 <li class="title" ng-class="{open: openSite.sid == site.sid && openSite.detail == 'meta'}"><a href="" ng-click="openDetails(sites.indexOf(site), 'meta')"><span class="title"><div class="point" ng-if="site.tags.length"></div>{{site.title}}</span></a></li>
