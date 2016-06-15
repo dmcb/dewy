@@ -719,23 +719,30 @@ section.main {
                 clear: both;
                 width: 150%;
 
-                @include breakpoint($tablet) {
-                    width: 100%;
-                }
-
                 .noresults {
                     padding-top: 3em;
                     padding-bottom: 3em;
-                }
-
-                .noresults {
+                    position: absolute;
+                    left: 0;
+                    right: 0;
                     display: block;
                     text-align: center;
                     margin: 0;
                     color: $dark-blue;
+                    border: 1px solid $light-blue;
+                    border-top: 1px solid $white;
 
                     span {
                         margin-right: 0.5em;
+                    }
+                }
+
+                @include breakpoint($tablet) {
+                    width: 100%;
+
+                    .noresults {
+                        position: static;
+                        border: none;
                     }
                 }
 
