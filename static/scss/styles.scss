@@ -270,7 +270,7 @@ section.offline-sites {
             @include breakpoint($tablet) {
                 @include grid-span(8,17);
 
-                padding-top: 1.5em;
+                margin-top: 0;
                 clear: both;
                 text-align: center;
 
