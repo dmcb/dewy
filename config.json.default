@@ -8,8 +8,5 @@
     },
     "jwt": {
         "secret": ""
-    },
-    "stripe": {
-        "public_key": ""
     }
 }

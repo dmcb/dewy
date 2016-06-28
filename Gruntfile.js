@@ -12,7 +12,8 @@ module.exports = function(grunt) {
           'angular-ui-sortable',
           'angular-validation-match',
           'moment',
-          'angular-momentjs'
+          'angular-momentjs',
+          'angular-stripe'
         ],
         mainFiles: {
           'moment': 'moment.js'
