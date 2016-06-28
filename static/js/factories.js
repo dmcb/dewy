@@ -68,44 +68,43 @@ factories.factory('authService', ['dewySession', '$rootScope', function(dewySess
 	return authService;
 }]);
 
-factories.factory('filterFactory', ['$http', function($http) {
+factories.factory('filterFactory', ['$http', 'ENV', function($http, ENV) {
 	var filterFactory = {};
-	var apiUrl = "http://dewy.io/api";
 
 	filterFactory.create = function(filterDoc) {
-		return $http.post(apiUrl + '/filters', filterDoc)
+		return $http.post(ENV.api + 'filters', filterDoc)
 			.then(function (response) {
 				return response;
 			});
 	}
 
 	filterFactory.delete = function(fid) {
-		return $http.delete(apiUrl + '/filters/' + fid);
+		return $http.delete(ENV.api + 'filters/' + fid);
 	}
 
 	filterFactory.getAll = function() {
-		return $http.get(apiUrl + '/filters')
+		return $http.get(ENV.api + 'filters')
 			.then(function (response) {
 				return response.data;
 			});
 	}
 
 	filterFactory.getIndex = function() {
-		return $http.get(apiUrl + '/filters/_index')
+		return $http.get(ENV.api + 'filters/_index')
 			.then(function (response) {
 				return response.data;
 			});
 	}
 
 	filterFactory.getFields = function() {
-		return $http.get(apiUrl + '/fields/values', {cache: true})
+		return $http.get(ENV.api + 'fields/values', {cache: true})
 			.then(function (response) {
 				return response.data;
 			});
 	}
 
 	filterFactory.getFilter = function(fid) {
-		return $http.get(apiUrl + '/filters/' + fid)
+		return $http.get(ENV.api + 'filters/' + fid)
 			.then(function (response) {
 				// Count the number of rules
 				var count = 0;
@@ -127,21 +126,21 @@ factories.factory('filterFactory', ['$http', function($http) {
 	}
 
 	filterFactory.getOperators = function() {
-		return $http.get(apiUrl + '/fields/operators', {cache: true})
+		return $http.get(ENV.api + 'fields/operators', {cache: true})
 			.then(function (response) {
 				return response.data;
 			});
 	}
 
 	filterFactory.update = function(filterDoc) {
-		return $http.put(apiUrl + '/filters/' + filterDoc.fid, filterDoc)
+		return $http.put(ENV.api + 'filters/' + filterDoc.fid, filterDoc)
 			.then(function (response) {
 				return response;
 			});
 	}
 
 	filterFactory.updateIndex = function(filterIndex) {
-		return $http.post(apiUrl + '/filters/_index', filterIndex)
+		return $http.post(ENV.api + 'filters/_index', filterIndex)
 			.then(function (response) {
 				return response;
 			});
@@ -150,12 +149,11 @@ factories.factory('filterFactory', ['$http', function($http) {
 	return filterFactory;
 }]);
 
-factories.factory('moduleFactory', ['$http', function($http) {
+factories.factory('moduleFactory', ['$http', 'ENV', function($http, ENV) {
 	var moduleFactory = {};
-	var apiUrl = "http://dewy.io/api";
 
 	moduleFactory.getAll = function(fid) {
-		return $http.get(apiUrl + '/modules/_filter/' + fid)
+		return $http.get(ENV.api + 'modules/_filter/' + fid)
 			.then(function (response) {
 
 				var arrayOfRankings = [];
@@ -268,15 +266,14 @@ factories.factory('moduleFactory', ['$http', function($http) {
 	return moduleFactory;
 }]);
 
-factories.factory('sitesFactory', ['$http', function($http) {
+factories.factory('sitesFactory', ['$http', 'ENV', function($http, ENV) {
 	var sitesFactory = {};
-	var apiUrl = "http://dewy.io/api";
 
 	sitesFactory.audit = function(sid) {
 		var update = {
 			audit: true
 		};
-		return $http.put(apiUrl + '/sites/' + sid, update)
+		return $http.put(ENV.api + 'sites/' + sid, update)
 			.success(function (response) {
 				return response.data;
 			})
@@ -286,25 +283,25 @@ factories.factory('sitesFactory', ['$http', function($http) {
 	}
 
 	sitesFactory.delete = function(sid) {
-		return $http.delete(apiUrl + '/sites/' + sid);
+		return $http.delete(ENV.api + 'sites/' + sid);
 	}
 
 	sitesFactory.get = function(sid) {
-		return $http.get(apiUrl + '/sites/' + sid)
+		return $http.get(ENV.api + 'sites/' + sid)
 			.then(function (response) {
 				return response.data;
 			});
 	}
 
 	sitesFactory.getDetails = function(sid) {
-		return $http.get(apiUrl + '/sites/' + sid + '/_detail')
+		return $http.get(ENV.api + 'sites/' + sid + '/_detail')
 			.then(function (response) {
 				return response.data;
 			});
 	}
 
 	sitesFactory.getAll = function(fid) {
-		return $http.get(apiUrl + '/sites/_filter/' + fid)
+		return $http.get(ENV.api + 'sites/_filter/' + fid)
 			.then(function (response) {
 
 				var arrayOfRankings = [];
@@ -412,14 +409,14 @@ factories.factory('sitesFactory', ['$http', function($http) {
 	}
 
 	sitesFactory.getOffline = function() {
-		return $http.get(apiUrl + '/sites/_offline')
+		return $http.get(ENV.api + 'sites/_offline')
 			.then(function (response) {
 				return response.data;
 			});
 	}
 
 	sitesFactory.getTags = function() {
-		return $http.get(apiUrl + '/sites/_tags')
+		return $http.get(ENV.api + 'sites/_tags')
 			.then(function (response) {
 				var tags = [];
 				for (var i in response.data) {
@@ -433,7 +430,7 @@ factories.factory('sitesFactory', ['$http', function($http) {
 		var update = {
 			tags: site.tags
 		};
-		return $http.put(apiUrl + '/sites/' + site.sid, update)
+		return $http.put(ENV.api + 'sites/' + site.sid, update)
 			.then(function (response) {
 				return response.data;
 			});
@@ -442,12 +439,11 @@ factories.factory('sitesFactory', ['$http', function($http) {
 	return sitesFactory;
 }]);
 
-factories.factory('userFactory', ['$http', function($http) {
+factories.factory('userFactory', ['$http', 'ENV', function($http, ENV) {
 	var userFactory = {};
-	var apiUrl = "http://dewy.io/api";
 
 	userFactory.get = function() {
-		return $http.get(apiUrl + '/users')
+		return $http.get(ENV.api + 'users')
 			.then(function (response) {
 				return response.data;
 			});
@@ -459,33 +455,33 @@ factories.factory('userFactory', ['$http', function($http) {
 			email: newEmail,
 			password: newPassword
 		}
-		return $http.put(apiUrl + '/users/' + uid, update);
+		return $http.put(ENV.api + 'users/' + uid, update);
 	}
 
 	userFactory.checkAccount = function(uid, post) {
 		post.check = true;
-		return $http.put(apiUrl + '/users/' + uid, post);
+		return $http.put(ENV.api + 'users/' + uid, post);
 	}
 
 	userFactory.changeProfile = function(uid, username) {
 		var update = {
 			username: username
 		}
-		return $http.put(apiUrl + '/users/' + uid, update);
+		return $http.put(ENV.api + 'users/' + uid, update);
 	}
 
 	userFactory.resetKey = function(uid) {
 		var update = {
 			key: true
 		}
-		return $http.put(apiUrl + '/users/' + uid, update)
+		return $http.put(ENV.api + 'users/' + uid, update)
 			.then(function (response) {
 				return response.data;
 			});
 	}
 
 	userFactory.reverify = function(uid) {
-		return $http.get(apiUrl + '/users/_verify/' + uid)
+		return $http.get(ENV.api + 'users/_verify/' + uid)
 			.then(function (response) {
 				return response.data;
 			});

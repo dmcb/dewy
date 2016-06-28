@@ -1,6 +1,26 @@
 module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    config: grunt.file.readJSON('config.json'),
+
+    ngconstant: {
+      options: {
+        space: '  ',
+        wrap: '"use strict";\n\n {\%= __ngModule %}',
+        name: 'config'
+      },
+      dist: {
+        options: {
+          dest: 'static/js/config.js'
+        },
+        constants: {
+          ENV: {
+            api: '<%= config.proxy_api.url %>', 
+            stripePublicKey: '<%= config.stripe.public_key %>'
+          }
+        }
+      }
+    },
 
     bower_concat: {
       all: {
@@ -81,6 +101,6 @@ module.exports = function(grunt) {
 
   require('load-grunt-tasks')(grunt);
 
-  grunt.registerTask('build', ['bower_concat', 'uglify', 'sass']);
+  grunt.registerTask('build', ['ngconstant', 'bower_concat', 'uglify', 'sass']);
   grunt.registerTask('default', ['build','watch']);
 }

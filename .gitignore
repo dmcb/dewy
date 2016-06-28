@@ -17,3 +17,4 @@ static/js/*.min.js
 
 # Environment-specific configuration
 config.json
+static/js/config.js

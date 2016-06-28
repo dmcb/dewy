@@ -1,4 +1,5 @@
 var app = angular.module('dewy', [
+	'config',
 	'ngRoute',
 	'ngAnimate',
 	'ui.sortable',
@@ -11,10 +12,10 @@ var app = angular.module('dewy', [
 	'dewyDirectives'
 ])
 
-app.config(['$httpProvider', '$routeProvider', '$locationProvider', 'stripeProvider', function($httpProvider, $routeProvider, $locationProvider, stripeProvider) {
+app.config(['$httpProvider', '$routeProvider', '$locationProvider', 'stripeProvider', 'ENV', function($httpProvider, $routeProvider, $locationProvider, stripeProvider, ENV) {
 	$locationProvider.html5Mode(true);
 	$httpProvider.interceptors.push('authInterceptor');
-    stripeProvider.setPublishableKey('pk_test_eyFdjRjrMh1wzAePo5Fqx4hy');
+    stripeProvider.setPublishableKey(ENV.stripePublicKey);
     $routeProvider.
 		when('/account', {
 			templateUrl: 'templates/account.html',
@@ -278,7 +279,7 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', 'stripeProvi
 		})
 }]);
 
-app.run(['authService', '$rootScope', '$location', '$http', '$window', function(authService, $rootScope, $location, $http, $window) {
+app.run(['authService', '$rootScope', '$location', '$http', '$window', 'ENV', function(authService, $rootScope, $location, $http, $window, ENV) {
 	$rootScope.$on('$routeChangeStart', function (event, next, current) {
 		$rootScope.isViewLoading = true;
 		if (next.requiresAuthorization) {
@@ -288,7 +289,7 @@ app.run(['authService', '$rootScope', '$location', '$http', '$window', function(
 			} else {
 				var currentUser = authService.currentUser();
 				if (!currentUser) {
-					$http.get('http://dewy.io/api/users')
+					$http.get(ENV.api + 'users')
 					.success(function(result) {
 						authService.setUser(result);
 					});
