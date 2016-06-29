@@ -1,0 +1,17 @@
+h1, h2, h3 {
+    font-family: $header-font;
+}
+
+h1 {
+    font-size: 4em;
+}
+
+h2 {
+    font-size: 3em;
+}
+
+h3 {
+    font-size: 2em;
+    border-bottom: 1px solid $light-grey;
+    margin-bottom: 0.5em;
+}

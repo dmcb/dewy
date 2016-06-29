@@ -1,0 +1,129 @@
+section.introduction {
+    p {
+        font-size: 1.4em;
+    }
+}
+
+div.feature {
+    @include clearfix;
+    background-color: $white;
+    color: $grey;
+
+    section {
+        border-bottom: solid 1px $light-blue;
+        padding-bottom: 0;
+
+        &.notifications {
+            h2, p {
+                width: 100%;
+            }
+
+            p {
+                padding-bottom: 3em;
+            }
+        }
+
+        &.getstarted {
+            padding-bottom: 5em;
+            border-bottom: none;
+
+            ul {
+                clear: both;
+                padding: 0;
+
+                li {
+                    margin-top: 3em;
+                    display: block;
+
+                    span {
+                        line-height: 1.6;
+
+                        &.step {
+                            display: block;
+                            background-color: $blue;
+                            color: $white;
+                            border-radius: 1.5em;
+                            height: 1.5em;
+                            width: 1.5em;
+                            margin-left: auto;
+                            margin-right: auto;
+                            text-align: center;
+                            font-size: 2em;
+                            font-weight: bold;
+                        }
+
+                        &.instruction {
+                            text-align: center;
+                            display: block;
+                            margin-top: 2em;
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+        }
+
+        .image {
+            clear: both;
+            width: 100%;
+            margin-top: 2em;
+
+            @include breakpoint($tablet) {
+                overflow: hidden;
+                padding: 2em 2em 0 2em;
+            }
+
+            @include breakpoint($desktop) {
+                @include grid-span(13,12);
+                margin-top: 0;
+            }
+
+            @include breakpoint($desktop-large) {
+                width: grid-span(15,10);
+            }
+
+            .screenshot {
+                -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+                -moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+                box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+                width: 100%;
+
+                @include breakpoint($tablet) {
+                    -webkit-box-shadow: 0px 0px 2em 0px rgba(0,0,0,0.5);
+                    -moz-box-shadow: 0px 0px 2em 0px rgba(0,0,0,0.5);
+                    box-shadow: 0px 0px 2em 0px rgba(0,0,0,0.5);
+                }
+            }
+        }
+    }
+
+    @include breakpoint($tablet) {
+        section {
+            &.getstarted ul li {
+                @include float-span(8);
+
+                &:last-child {
+                    @include float-span(8,'last');
+                }
+            }
+        }
+    }
+
+    @include breakpoint($desktop) {
+        section {
+            h2, p {
+                @include grid-span(10,1);
+                clear: both;
+            }
+        }
+    }
+
+    @include breakpoint($desktop-large) {
+        section {
+            h2, p {
+                @include grid-span(8,1);
+                clear: both;
+            }
+        }
+    }
+}

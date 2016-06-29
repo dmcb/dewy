@@ -1,0 +1,66 @@
+section.api-key {
+    input {
+        text-align: center;
+    }
+}
+
+section.offline-sites {
+    .offline-site {
+        @include clearfix;
+        clear: both;
+        margin-top: 2em;
+        position: relative;
+
+        ul {
+            margin-top: 0;
+
+            .baseurl {
+                font-weight: bold;
+                margin-bottom: 0.5em;
+            }
+
+            .status {
+                font-weight: bold;
+
+                &.error {
+                    color: $red;
+                }
+
+                &.disabled {
+                    color: $orange;
+                }
+
+                &.waiting {
+                    color: $blue;
+                }
+            }
+        }
+    }
+
+    @include breakpoint($tablet) {
+        .offline-site {
+            ul {
+                @include grid-span(16,1);
+            }
+        }
+
+        .buttons {
+            @include grid-span(8,17);
+
+            margin-top: 0;
+            clear: both;
+            text-align: center;
+
+            .button {
+                display: block;
+            }
+        }
+    }
+
+    @include breakpoint($desktop) {
+        .offline-site {
+            @include grid-span(20,3);
+            clear: both;
+        }
+    }
+}

@@ -2,7 +2,6 @@ section.signon, section.signup {
     form.signon, form.signup {
         @include clearfix;
         color: $white;
-        margin-top: 3em;
 
         span.error {
             color: $white;
@@ -43,12 +42,6 @@ section.signon, section.signup {
     }
 }
 
-section.signon {
-    padding-top: 2em;
-    padding-bottom: 5em;
-}
-
-section.signup {
-    padding-top: 1em;
+section.signon, section.signup {
     padding-bottom: 8em;
 }

@@ -135,59 +135,6 @@ header {
                 }
             }
         }
-
-        @include breakpoint($tablet) {
-            @include grid-span(24,1);
-            margin-left: 0;
-            margin-right: 0;
-            background-color: transparent;
-
-            li a {
-                color: $white;
-                display: inline-block;
-                width: auto;
-                background-color: transparent;
-                border-radius: none;
-                font-size: 1em;
-
-                &.selected {
-                    background-color: $white;
-                    color: $dark-blue;
-                }
-            }
-
-            &.dropdown {
-                background-color: $light-grey;
-                position: absolute;
-                display: none;
-                right: 0;
-                text-align: left;
-                box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
-            }
-
-            &.home {
-                margin-top: 0.5em;
-                margin-bottom: 0.5em;
-
-                li a {
-                    &:hover {
-                        background-color: transparent;
-                        color: $light-blue;
-                    }
-
-                    &.important {
-                        border: 3px $white solid;
-                        border-radius: 0.6em;
-                        padding: 0.25em 1em;
-
-                        &:hover {
-                            background-color: $white;
-                            color: $blue;
-                        }
-                    }
-                }
-            }
-        }
     }
 
     .logo {
@@ -243,5 +190,61 @@ header {
         height: 0;
         width: 0;
         position: absolute;
+    }
+
+
+    @include breakpoint($tablet) {
+        ul {
+            @include grid-span(24,1);
+            margin-left: 0;
+            margin-right: 0;
+            background-color: transparent;
+
+            li a {
+                color: $white;
+                display: inline-block;
+                width: auto;
+                background-color: transparent;
+                border-radius: none;
+                font-size: 1em;
+
+                &.selected {
+                    background-color: $white;
+                    color: $dark-blue;
+                }
+            }
+
+            &.dropdown {
+                background-color: $light-grey;
+                position: absolute;
+                display: none;
+                right: 0;
+                text-align: left;
+                box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+            }
+
+            &.home {
+                margin-top: 0.5em;
+                margin-bottom: 0.5em;
+
+                li a {
+                    &:hover {
+                        background-color: transparent;
+                        color: $light-blue;
+                    }
+
+                    &.important {
+                        border: 3px $white solid;
+                        border-radius: 0.6em;
+                        padding: 0.25em 1em;
+
+                        &:hover {
+                            background-color: $white;
+                            color: $blue;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

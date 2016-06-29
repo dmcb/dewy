@@ -1,0 +1,27 @@
+section {
+    @include grid-span(24,1);
+    @include clearfix;
+    clear: both;
+    position: relative;
+    padding-top: 3em;
+    padding-bottom: 3em;
+
+    @include breakpoint($mobile-large) {
+        @include grid-span(20,3);
+        clear: both;
+    }
+
+    @include breakpoint($desktop) {
+        @include grid-span(18,4);
+        clear: both;
+    }
+
+    & > p, & > form, & > ul {
+        margin-top: 2em;
+        clear: both;
+    }
+
+    ul li {
+        margin-top: 0.5em;
+    }
+}
