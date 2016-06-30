@@ -33,7 +33,7 @@ module.exports = function(grunt) {
           'angular-validation-match',
           'moment',
           'angular-momentjs',
-          'angular-stripe'
+          'stripe-angular'
         ],
         mainFiles: {
           'moment': 'moment.js'

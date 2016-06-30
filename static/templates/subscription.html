@@ -11,7 +11,7 @@
         </section>
         <section class="subscribe">
             <h3>Payment</h3>
-            <form action="" method="POST" id="payment-form">
+            <form stripe:form="saveCustomer">
                 <span class="payment-errors"></span>
                 <fieldset>
                     <div class="field">
@@ -21,9 +21,9 @@
 
                     <div class="field">
                         <label>Expiration (MM/YY)</label>
-                        <input type="text" size="2" data-stripe="exp_month">
+                        <input type="text" size="2" data-stripe="exp-month">
                         <span> / </span>
-                        <input type="text" size="2" data-stripe="exp_year">
+                        <input type="text" size="2" data-stripe="exp-year">
                     </div>
 
                     <div class="field">

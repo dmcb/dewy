@@ -4,7 +4,7 @@ var app = angular.module('dewy', [
 	'ngAnimate',
 	'ui.sortable',
 	'angular-momentjs',
-	'angular-stripe',
+	'stripe',
 	'validation.match',
 	'dewyControllers',
 	'dewyFactories',
@@ -12,10 +12,10 @@ var app = angular.module('dewy', [
 	'dewyDirectives'
 ])
 
-app.config(['$httpProvider', '$routeProvider', '$locationProvider', 'stripeProvider', 'ENV', function($httpProvider, $routeProvider, $locationProvider, stripeProvider, ENV) {
+app.config(['$httpProvider', '$routeProvider', '$locationProvider', 'ENV', function($httpProvider, $routeProvider, $locationProvider, ENV) {
 	$locationProvider.html5Mode(true);
 	$httpProvider.interceptors.push('authInterceptor');
-    stripeProvider.setPublishableKey(ENV.stripePublicKey);
+    Stripe.setPublishableKey(ENV.stripePublicKey);
     $routeProvider.
 		when('/account', {
 			templateUrl: 'templates/account.html',
