@@ -29,18 +29,18 @@
                 <fieldset>
                     <div class="field">
                         <label>Card Number</label>
-                        <input type="text" size="20" data-stripe="number">
+                        <input type="text" maxlength="20" data-stripe="number">
                     </div>
 
                     <div class="field">
                         <label>Expiration</label>
-                        <input type="text" size="2" data-stripe="exp-month" placeholder="MM" class="month">
-                        <input type="text" size="2" data-stripe="exp-year" placeholder="YY" class="year">
+                        <input type="text" maxlength="2" data-stripe="exp-month" placeholder="MM" class="month">
+                        <input type="text" maxlength="2" data-stripe="exp-year" placeholder="YY" class="year">
                     </div>
 
                     <div class="field">
                         <label>CVC</label>
-                        <input type="text" size="4" data-stripe="cvc">
+                        <input type="text" maxlength="4" data-stripe="cvc" class="cvc">
                     </div>
                     <span class="error" ng-if="error">{{ error }}</span>
                     <button type="submit">Submit Payment<i class="fa fa-credit-card-alt" aria-hidden="true"></i></button>

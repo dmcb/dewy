@@ -20,11 +20,15 @@ section.subscribe {
     }
 
     input.month {
-        @include grid-span(4,7);
+        @include grid-span(3,7);
     }
 
     input.year {
-        @include grid-span(4,11);
+        @include grid-span(3,10);
+    }
+
+    input.cvc {
+        @include grid-span(4,7);
     }
 
     button {
