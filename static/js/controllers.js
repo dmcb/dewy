@@ -677,12 +677,7 @@ controllers.controller('subscriptionController', ['$scope', '$timeout', '$rootSc
 				userFactory.subscribe($scope.currentUser.uid, response.id);
 			}
 			else {
-				if (response.error.type == 'invalid_request_error') {
-					$scope.error = 'Card details are missing.';
-				}
-				else {
-					$scope.error = 'Unable to complete the payment at this time.';
-				}
+				$scope.error = response.error.message;
 			}
 		};
 
