@@ -10,7 +10,20 @@
             </ul>
         </section>
         <section class="subscribe">
-            <h3>Payment</h3>
+            <h3>Payment via Checkout</h3>
+            <form action="{{stripeEndPoint}}" method="POST">
+                <script
+                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    data-key="{{stripePublicKey}}"
+                    data-name="Dewy"
+                    data-description="Basic subscription"
+                    data-amount="3999"
+                    data-label="Sign Me Up!" >
+                </script>
+            </form>
+        </section>
+        <section class="subscribe">
+            <h3>Payment via Stripe.js</h3>
             <form stripe:form="saveCustomer">
                 <span class="payment-errors"></span>
                 <fieldset>
@@ -30,6 +43,7 @@
                         <label>CVC</label>
                         <input type="text" size="4" data-stripe="cvc">
                     </div>
+                    <span class="error" ng-if="error">{{ error }}</span>
                     <button type="submit">Submit Payment<i class="fa fa-credit-card-alt" aria-hidden="true"></i></button>
                 </fieldset>
             </form>

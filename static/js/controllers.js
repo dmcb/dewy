@@ -668,13 +668,26 @@ controllers.controller('overviewUsersController', ['$scope',
 	function ($scope) {
 }]);
 
-controllers.controller('subscriptionController', ['$scope', '$timeout', '$rootScope', 'userFactory', 'authService',
-	function ($scope, $timeout, $rootScope, userFactory, authService) {
+controllers.controller('subscriptionController', ['$scope', '$timeout', '$rootScope', 'userFactory', 'authService', 'ENV',
+	function ($scope, $timeout, $rootScope, userFactory, authService, ENV) {
+		// Stripe.JS method
 		$scope.saveCustomer = function(status, response) {
-			console.log(status)
-			console.log(response);
-	    // $http.post('/save_customer', { token: response.id });
+			if (status == 200) {
+				userFactory.subscribe($scope.currentUser.uid, response.id);
+			}
+			else {
+				if (response.error.type == 'invalid_request_error') {
+					$scope.error = 'Card details are missing.';
+				}
+				else {
+					$scope.error = 'Unable to complete the payment at this time.';
+				}
+			}
 		};
+
+		// Information for checkout method
+		$scope.stripeEndPoint = ENV.api + 'users/_subscription/' + $scope.currentUser.uid;
+		$scope.stripePublicKey = ENV.stripePublicKey;
 }]);
 
 controllers.controller('verifyController', ['$scope', 'verifyData',
