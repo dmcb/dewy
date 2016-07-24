@@ -12,14 +12,28 @@ section.subscribe {
     }
 
     label {
-        @include clearfix;
-        clear: both;
-        display: inline-block;
-        margin-top: 0.5em;
+        @include grid-span(6,1);
     }
 
     input, .error {
-        float: right;
-        width: 70%;
+        @include grid-span(18,7);
+    }
+
+    input.month {
+        @include grid-span(4,7);
+    }
+
+    input.year {
+        @include grid-span(4,11);
+    }
+
+    button {
+        @include grid-span(12,7);
+    }
+
+    @include breakpoint($tablet) {
+        input.year {
+            margin-top: 0;
+        }
     }
 }

@@ -673,6 +673,7 @@ controllers.controller('subscriptionController', ['$scope', '$timeout', '$rootSc
 		// Stripe.JS method
 		$scope.saveCustomer = function(status, response) {
 			if (status == 200) {
+				$scope.error = null;
 				userFactory.subscribe($scope.currentUser.uid, response.id);
 			}
 			else {

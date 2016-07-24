@@ -9,7 +9,7 @@
                 <li class="">Your subscription expires <strong>{{currentUser.subscription.endDate*1000 | date:'MMMM d, yyyy'}}</strong></li>
             </ul>
         </section>
-        <section class="subscribe">
+        <section class="checkout">
             <h3>Payment via Checkout</h3>
             <form action="{{stripeEndPoint}}" method="POST">
                 <script
@@ -33,10 +33,9 @@
                     </div>
 
                     <div class="field">
-                        <label>Expiration (MM/YY)</label>
-                        <input type="text" size="2" data-stripe="exp-month">
-                        <span> / </span>
-                        <input type="text" size="2" data-stripe="exp-year">
+                        <label>Expiration</label>
+                        <input type="text" size="2" data-stripe="exp-month" placeholder="MM" class="month">
+                        <input type="text" size="2" data-stripe="exp-year" placeholder="YY" class="year">
                     </div>
 
                     <div class="field">
