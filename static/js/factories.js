@@ -487,10 +487,13 @@ factories.factory('userFactory', ['$http', 'ENV', function($http, ENV) {
 			});
 	}
 
-	userFactory.subscribe = function(uid, stripeToken) {
-		return $http.post(ENV.api + 'users/' + uid + '/_subscription', {stripeToken: stripeToken})
-			.then(function (response) {
+	userFactory.subscribe = function(uid, stripeToken, planType) {
+		return $http.post(ENV.api + 'users/' + uid + '/_subscription/' + planType, {stripeToken: stripeToken})
+			.success(function (response) {
 				return response.data;
+			})
+			.error(function (error, status) {
+				return error;
 			});
 	}
 

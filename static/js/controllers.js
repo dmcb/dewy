@@ -672,18 +672,30 @@ controllers.controller('subscriptionController', ['$scope', '$timeout', '$rootSc
 	function ($scope, $timeout, $rootScope, userFactory, authService, ENV) {
 		// Stripe.JS method
 		$scope.saveCustomer = function(status, response) {
+			$scope.error = null;
+			$scope.disabled = true;
 			if (status == 200) {
 				$scope.error = null;
-				userFactory.subscribe($scope.currentUser.uid, response.id);
+				return userFactory.subscribe($scope.currentUser.uid, response.id, 'basic')
+				.error(function(error, status) {
+					$scope.error = error;
+					$scope.disabled = false;
+				})
+				.success(function(response) {
+					$scope.error = response;
+				});
 			}
 			else {
 				$scope.error = response.error.message;
+				$scope.disabled = false;
 			}
 		};
 
 		// Information for checkout method
 		$scope.stripeEndPoint = ENV.api + 'users/_subscription/' + $scope.currentUser.uid;
 		$scope.stripePublicKey = ENV.stripePublicKey;
+
+		$scope.disabled = false;
 }]);
 
 controllers.controller('verifyController', ['$scope', 'verifyData',

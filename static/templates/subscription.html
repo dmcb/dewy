@@ -43,7 +43,7 @@
                         <input type="text" maxlength="4" data-stripe="cvc" class="cvc">
                     </div>
                     <span class="error" ng-if="error">{{ error }}</span>
-                    <button type="submit">Submit Payment<i class="fa fa-credit-card-alt" aria-hidden="true"></i></button>
+                    <button type="submit" ng-disabled="disabled">Submit Payment<i class="fa fa-credit-card-alt" aria-hidden="true"></i></button>
                 </fieldset>
             </form>
     </section>
