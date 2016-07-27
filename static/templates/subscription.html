@@ -9,7 +9,7 @@
                 <li class="">Your subscription expires <strong>{{currentUser.subscription.endDate*1000 | date:'MMMM d, yyyy'}}</strong></li>
             </ul>
         </section>
-        <section class="checkout">
+<!--         <section class="checkout">
             <h3>Payment via Checkout</h3>
             <form action="{{stripeEndPoint}}" method="POST">
                 <script
@@ -21,10 +21,37 @@
                     data-label="Sign Me Up!" >
                 </script>
             </form>
-        </section>
+        </section> -->
         <section class="subscribe">
-            <h3>Payment via Stripe.js</h3>
+            <h3>Start your subscription</h3>
             <form stripe:form="saveCustomer">
+                <div class="plans">
+                    <input type="radio" id="basic" name="plan" value="basic" checked="checked">
+                    <label for="basic" class="basic">
+                        <div class="plan">
+                            <span class="type">Basic</span>
+                            <div class="price"><span class="unit">$</span><span class="dollars">39</span><span class="cents">99</span></div>
+                            <span class="permonth">per month</span>
+                        </div>
+                        <ul class="facts">
+                            <li>Unlimited sites</li>
+                            <li>Site and module data</li>
+                            <li>Custom site filters</li>
+                        </ul>
+                    </label>
+                    <label class="pro">
+                        <div class="plan">
+                            <span class="type">Pro</span>
+                            <p class="price">Coming soon</p>
+                        </div>
+                    </label>
+                    <label class="enterprise">
+                        <div class="plan">
+                            <span class="type">Enterprise</span>
+                            <p class="price">Coming soon</p>
+                        </div>
+                    </label>
+                </div>
                 <span class="payment-errors"></span>
                 <fieldset>
                     <div class="field">
