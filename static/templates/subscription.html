@@ -27,7 +27,7 @@
             <form stripe:form="saveCustomer">
                 <div class="plans">
                     <input type="radio" id="basic" name="plan" value="basic" checked="checked">
-                    <label for="basic" class="basic">
+                    <label for="basic" class="basic" ng-click="setPlan('basic')">
                         <div class="plan">
                             <span class="type">Basic</span>
                             <div class="price"><span class="unit">$</span><span class="dollars">39</span><span class="cents">99</span></div>
@@ -44,12 +44,22 @@
                             <span class="type">Pro</span>
                             <p class="price">Coming soon</p>
                         </div>
+                        <ul class="facts">
+                            <li>Everything in basic, plus</li>
+                            <li>Notifications</li>
+                            <li>Maillist generation</li>
+                        </ul>
                     </label>
                     <label class="enterprise">
                         <div class="plan">
                             <span class="type">Enterprise</span>
                             <p class="price">Coming soon</p>
                         </div>
+                        <ul class="facts">
+                            <li>Everything in pro, plus</li>
+                            <li>API end points</li>
+                            <li>Trends</li>
+                        </ul>
                     </label>
                 </div>
                 <span class="payment-errors"></span>
@@ -70,7 +80,7 @@
                         <input type="text" maxlength="4" data-stripe="cvc" class="cvc">
                     </div>
                     <span class="error" ng-if="error">{{ error }}</span>
-                    <button type="submit" ng-disabled="disabled">Submit Payment<i class="fa fa-credit-card-alt" aria-hidden="true"></i></button>
+                    <button type="submit" ng-disabled="disabled">Start your {{plan}} plan<i class="fa fa-credit-card-alt" aria-hidden="true"></i></button>
                 </fieldset>
             </form>
     </section>

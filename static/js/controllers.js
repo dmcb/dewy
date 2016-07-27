@@ -676,7 +676,7 @@ controllers.controller('subscriptionController', ['$scope', '$timeout', '$rootSc
 			$scope.disabled = true;
 			if (status == 200) {
 				$scope.error = null;
-				return userFactory.subscribe($scope.currentUser.uid, response.id, 'basic')
+				return userFactory.subscribe($scope.currentUser.uid, response.id, $scope.plan)
 				.error(function(error, status) {
 					$scope.error = error;
 					$scope.disabled = false;
@@ -691,11 +691,16 @@ controllers.controller('subscriptionController', ['$scope', '$timeout', '$rootSc
 			}
 		};
 
+		$scope.setPlan = function(plan) {
+			$scope.plan = plan;
+		}
+
 		// Information for checkout method
 		$scope.stripeEndPoint = ENV.api + 'users/_subscription/' + $scope.currentUser.uid;
 		$scope.stripePublicKey = ENV.stripePublicKey;
 
 		$scope.disabled = false;
+		$scope.plan = 'basic';
 }]);
 
 controllers.controller('verifyController', ['$scope', 'verifyData',
