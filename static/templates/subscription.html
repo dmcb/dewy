@@ -84,7 +84,7 @@
                         <label>CVC</label>
                         <input type="text" maxlength="4" data-stripe="cvc" class="cvc">
                     </div>
-                    <span class="error" ng-if="error">{{ error }}</span>
+                    <span class="error" ng-show="error">{{ error }}</span>
                     <button type="submit" ng-disabled="disabled">Start your {{plan}} plan<i class="fa fa-credit-card-alt" aria-hidden="true"></i></button>
                 </fieldset>
             </form>
