@@ -1,18 +1,38 @@
 {
-    "api": {
-        "url": ""
+    "development": {
+        "api": {
+            "url": ""
+        },
+        "proxy_api": {
+            "url": ""
+        },
+        "client": {
+            "client_id": "",
+            "client_secret": ""
+        },
+        "jwt": {
+            "secret": ""
+        },
+        "stripe": {
+            "public_key": ""
+        }
     },
-    "proxy_api": {
-        "url": ""
-    },
-    "client": {
-        "client_id": "",
-        "client_secret": ""
-    },
-    "jwt": {
-        "secret": ""
-    },
-    "stripe": {
-        "public_key": ""
+    "production": {
+        "api": {
+            "url": ""
+        },
+        "proxy_api": {
+            "url": ""
+        },
+        "client": {
+            "client_id": "",
+            "client_secret": ""
+        },
+        "jwt": {
+            "secret": ""
+        },
+        "stripe": {
+            "public_key": ""
+        }
     }
 }

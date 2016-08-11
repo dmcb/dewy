@@ -9,14 +9,27 @@ module.exports = function(grunt) {
         wrap: '"use strict";\n\n {\%= __ngModule %}',
         name: 'config'
       },
-      dist: {
+      development: {
         options: {
           dest: 'static/js/config.js'
         },
         constants: {
           ENV: {
-            api: '<%= config.proxy_api.url %>', 
-            stripePublicKey: '<%= config.stripe.public_key %>'
+            api: '<%= config.development.proxy_api.url %>', 
+            stripePublicKey: '<%= config.development.stripe.public_key %>',
+            environment: 'development'
+          }
+        }
+      },
+      production: {
+        options: {
+          dest: 'static/js/config.js'
+        },
+        constants: {
+          ENV: {
+            api: '<%= config.production.proxy_api.url %>', 
+            stripePublicKey: '<%= config.production.stripe.public_key %>',
+            environment: 'production'
           }
         }
       }
@@ -50,7 +63,7 @@ module.exports = function(grunt) {
         mangle: true,
         compress: true
       },
-      dist : {
+      build : {
         files: [{
           expand: true,
           cwd: 'static/js',
@@ -65,7 +78,7 @@ module.exports = function(grunt) {
       options: {
         
       },
-      dist: {
+      build: {
         options: {
           sourceMap: true,
           outputStyle: 'compressed',
@@ -101,6 +114,7 @@ module.exports = function(grunt) {
 
   require('load-grunt-tasks')(grunt);
 
-  grunt.registerTask('build', ['ngconstant', 'bower_concat', 'uglify', 'sass']);
+  grunt.registerTask('production', ['ngconstant:production', 'bower_concat', 'uglify', 'sass']);
+  grunt.registerTask('build', ['ngconstant:development', 'bower_concat', 'uglify', 'sass']);
   grunt.registerTask('default', ['build','watch']);
 }
