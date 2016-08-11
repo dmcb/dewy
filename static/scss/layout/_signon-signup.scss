@@ -1,4 +1,13 @@
 section.signon, section.signup {
+
+    a {
+        color: $light-blue;
+
+        &:hover {
+            color: $dark-blue;
+        }
+    }
+
     form.signon, form.signup {
         @include clearfix;
         color: $white;

@@ -280,6 +280,7 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', 'ENV', funct
 }]);
 
 app.run(['authService', '$rootScope', '$location', '$http', '$window', 'ENV', function(authService, $rootScope, $location, $http, $window, ENV) {
+	$rootScope.env = ENV.environment;
 	$rootScope.$on('$routeChangeStart', function (event, next, current) {
 		$rootScope.isViewLoading = true;
 		if (next.requiresAuthorization) {
