@@ -58,12 +58,26 @@ module.exports = function(grunt) {
     },
 
     uglify: {
-      options: {
-        sourceMap: true,
-        mangle: true,
-        compress: true
+      development: {
+        options: {
+          sourceMap: true,
+          mangle: true,
+          compress: true
+        },
+        files: [{
+          expand: true,
+          cwd: 'static/js',
+          src: ['*.js', '!*.min.js'],
+          dest: 'static/js',
+          ext: '.min.js'
+        }]
       },
-      build : {
+      production: {
+        options: {
+          sourceMap: false,
+          mangle: true,
+          compress: true
+        },
         files: [{
           expand: true,
           cwd: 'static/js',
@@ -75,14 +89,23 @@ module.exports = function(grunt) {
     },
 
     sass: {
-      options: {
-        
-      },
-      build: {
+      development: {
         options: {
           sourceMap: true,
           outputStyle: 'compressed',
-
+        },
+        files: [{
+          expand: true,
+          cwd: 'static/scss/',
+          src: ['*.scss'],
+          dest: 'static/css/',
+          ext: '.css'
+        }]
+      },
+      production: {
+        options: {
+          sourceMap: false,
+          outputStyle: 'compressed',
         },
         files: [{
           expand: true,
@@ -114,7 +137,7 @@ module.exports = function(grunt) {
 
   require('load-grunt-tasks')(grunt);
 
-  grunt.registerTask('production', ['ngconstant:production', 'bower_concat', 'uglify', 'sass']);
-  grunt.registerTask('build', ['ngconstant:development', 'bower_concat', 'uglify', 'sass']);
+  grunt.registerTask('production', ['ngconstant:production', 'bower_concat', 'uglify:production', 'sass:production']);
+  grunt.registerTask('build', ['ngconstant:development', 'bower_concat', 'uglify:development', 'sass:development']);
   grunt.registerTask('default', ['build','watch']);
 }
