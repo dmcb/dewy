@@ -7,9 +7,11 @@ factories.factory('authInterceptor', ['authService', '$location', '$q', '$inject
 		// If there's a JWT in session, add it to all requests
 		config.headers = config.headers || {};
 		if ($window.localStorage.token) {
-			config.headers.Authorization = 'Bearer ' + $window.localStorage.token;
+			var payload = JSON.parse($window.localStorage.token);
+			config.headers.Authorization = 'Bearer ' + payload['access_token'];
 		} else if ($window.sessionStorage.token) {
-			config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
+			var payload = JSON.parse($window.sessionStorage.token);
+			config.headers.Authorization = 'Bearer ' + payload['access_token'];
 		}
 		return config;
 	}

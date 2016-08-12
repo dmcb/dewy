@@ -2,6 +2,7 @@ var services = angular.module('dewyServices', []);
 
 services.service('dewySession', ['$window', function ($window) {
 	this.create = function (result, remember) {
+		result = JSON.stringify(result);
 		if (remember == true) {
 			$window.localStorage.token = result;
 		}
