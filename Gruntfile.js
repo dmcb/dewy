@@ -15,7 +15,7 @@ module.exports = function(grunt) {
         },
         constants: {
           ENV: {
-            api: '<%= config.development.proxy_api.url %>', 
+            api: '<%= config.development.api.url %>', 
             stripePublicKey: '<%= config.development.stripe.public_key %>',
             environment: 'development'
           }
@@ -27,7 +27,7 @@ module.exports = function(grunt) {
         },
         constants: {
           ENV: {
-            api: '<%= config.production.proxy_api.url %>', 
+            api: '<%= config.production.api.url %>', 
             stripePublicKey: '<%= config.production.stripe.public_key %>',
             environment: 'production'
           }

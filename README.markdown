@@ -16,6 +16,8 @@
 
         bower install
 
+## Development
+
 * Run grunt to compile assets:
 
     * On development run grunt to build assets and watch for changes to files during development:
@@ -28,21 +30,4 @@
 
 ## Usage
 
-### Development
-
-* Run node:
-
-        npm start
-
-* Go to localhost:3000 to visit the site
-
-### Production
-
-* Run node, specifying that the environment is production:
-
-        NODE_ENV=production npm start
-
-* Alternatively, if it is preferred to specify the environment outside of the run command, run:
-
-        export NODE_ENV=production
-        npm start
+* Run a web server with /static as the webroot
