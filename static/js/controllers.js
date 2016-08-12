@@ -427,17 +427,28 @@ controllers.controller('manageController', ['$scope', '$timeout', '$moment', 'si
 		$scope.apikey = user.apikey;
 }]);
 
-controllers.controller('signonController', ['authService', '$scope', '$http',
-	function (authService, $scope, $http) {
+controllers.controller('signonController', ['authService', '$scope', '$http', '$httpParamSerializer', 'ENV',
+	function (authService, $scope, $http, $httpParamSerializer, ENV) {
 		$scope.submit = function() {
 			if ($scope.form.$valid) {
 				$scope.message = null;
-				var url = 'http://dewy.io/auth/signon';
+
 				// Authenticate
-				$http.post(url, {
-					username: $scope.username,
-					password: $scope.password
-				}).success(function(result) {
+				var encodedClient = window.btoa(ENV.client_id + ':' + ENV.client_secret);
+				$http({
+					method: 'POST',
+					url: ENV.api + 'oauth/token',
+					headers: {
+						'Authorization': 'Basic ' + encodedClient,
+						'Content-Type': 'application/x-www-form-urlencoded'
+					},
+					data: $httpParamSerializer({
+						grant_type: 'password',
+						username: $scope.username,
+						password: $scope.password
+					})
+				})
+				.success(function(result) {
 					authService.signOn('/sites', result, $scope.remember);
 				})
 				.error(function(error, status) {
@@ -451,20 +462,37 @@ controllers.controller('signonController', ['authService', '$scope', '$http',
 		}
 }]);
 
-controllers.controller('signupController', ['authService', '$scope', '$http',
-	function (authService, $scope, $http) {
+controllers.controller('signupController', ['authService', '$scope', '$http', '$httpParamSerializer', 'ENV',
+	function (authService, $scope, $http, $httpParamSerializer, ENV) {
 		$scope.check = function(field) {
 			if ($scope.form[field].$valid) {
-				var url = 'http://dewy.io/auth/signup';
-				var post = {};
-				post[field] = $scope[field];
-				post['check'] = true;
-				$http.post(url, post)
+
+				var body = {};
+				body['grant_type'] = 'password';
+				body[field] = $scope[field];
+				body['check'] = true;
+
+				var encodedClient = window.btoa(ENV.client_id + ':' + ENV.client_secret);
+				$http({
+					method: 'POST',
+					url: ENV.api + 'users',
+					headers: {
+						'Authorization': 'Basic ' + encodedClient,
+						'Content-Type': 'application/x-www-form-urlencoded'
+					},
+					data: $httpParamSerializer(body)
+				})
 				.success(function(result) {
 					if (!('error' in $scope)) {
 						$scope.error = {};
 					}
-					$scope.error[field] = result;
+
+					if (result.error) {
+						$scope.error[field] = result.error;
+					}
+					else {
+						$scope.error[field] = "";
+					}
 				});
 			}
 		}
@@ -472,11 +500,21 @@ controllers.controller('signupController', ['authService', '$scope', '$http',
 		$scope.submit = function() {
 			if ($scope.form.$valid) {
 				$scope.message = null;
-				var url = 'http://dewy.io/auth/signup';
-				$http.post(url, {
-					username: $scope.username,
-					email: $scope.email,
-					password: $scope.password
+
+				var encodedClient = window.btoa(ENV.client_id + ':' + ENV.client_secret);
+				$http({
+					method: 'POST',
+					url: ENV.api + 'users',
+					headers: {
+						'Authorization': 'Basic ' + encodedClient,
+						'Content-Type': 'application/x-www-form-urlencoded'
+					},
+					data: $httpParamSerializer({
+						grant_type: 'password',
+						username: $scope.username,
+						email: $scope.email,
+						password: $scope.password
+					})
 				})
 				.success(function(result) {
 					authService.signOn('/sites', result);

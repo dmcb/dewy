@@ -3,15 +3,9 @@
         "api": {
             "url": ""
         },
-        "proxy_api": {
-            "url": ""
-        },
         "client": {
             "client_id": "",
             "client_secret": ""
-        },
-        "jwt": {
-            "secret": ""
         },
         "stripe": {
             "public_key": ""
@@ -21,15 +15,9 @@
         "api": {
             "url": ""
         },
-        "proxy_api": {
-            "url": ""
-        },
         "client": {
             "client_id": "",
             "client_secret": ""
-        },
-        "jwt": {
-            "secret": ""
         },
         "stripe": {
             "public_key": ""
