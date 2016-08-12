@@ -251,8 +251,8 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', 'ENV', funct
 			templateUrl: 'templates/verify.html',
 			controller: 'verifyController',
 			resolve: {
-				verifyData: ['$rootScope', '$route', '$http', 'authService', function($rootScope, $route, $http, authService) {
-					return $http.get('http://dewy.io/auth/verify/' + $route.current.params.uid + '/' + $route.current.params.verify).
+				verifyData: ['$rootScope', '$route', '$http', 'authService', 'ENV', function($rootScope, $route, $http, authService, ENV) {
+					return $http.get(ENV.api + 'users/_verify/' + $route.current.params.uid + '/' + $route.current.params.verify).
 					then(function(result) {
 						$rootScope.$broadcast('flashMessage', {content: 'Email verified', type: 'message'});
 						authService.signOn('/account', result.data);

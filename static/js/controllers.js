@@ -427,14 +427,13 @@ controllers.controller('manageController', ['$scope', '$timeout', '$moment', 'si
 		$scope.apikey = user.apikey;
 }]);
 
-controllers.controller('signonController', ['authService', '$scope', '$http',
-	function (authService, $scope, $http) {
+controllers.controller('signonController', ['authService', '$scope', '$http', 'ENV',
+	function (authService, $scope, $http, ENV) {
 		$scope.submit = function() {
 			if ($scope.form.$valid) {
 				$scope.message = null;
-				var url = 'http://dewy.io/auth/signon';
 				// Authenticate
-				$http.post(url, {
+				$http.post(ENV.api + 'oauth/token', {
 					username: $scope.username,
 					password: $scope.password
 				}).success(function(result) {
@@ -451,15 +450,14 @@ controllers.controller('signonController', ['authService', '$scope', '$http',
 		}
 }]);
 
-controllers.controller('signupController', ['authService', '$scope', '$http',
-	function (authService, $scope, $http) {
+controllers.controller('signupController', ['authService', '$scope', '$http', 'ENV',
+	function (authService, $scope, $http, ENV) {
 		$scope.check = function(field) {
 			if ($scope.form[field].$valid) {
-				var url = 'http://dewy.io/auth/signup';
 				var post = {};
 				post[field] = $scope[field];
 				post['check'] = true;
-				$http.post(url, post)
+				$http.post(ENV.api + 'users', post)
 				.success(function(result) {
 					if (!('error' in $scope)) {
 						$scope.error = {};
@@ -472,8 +470,7 @@ controllers.controller('signupController', ['authService', '$scope', '$http',
 		$scope.submit = function() {
 			if ($scope.form.$valid) {
 				$scope.message = null;
-				var url = 'http://dewy.io/auth/signup';
-				$http.post(url, {
+				$http.post(ENV.api + 'users', {
 					username: $scope.username,
 					email: $scope.email,
 					password: $scope.password
