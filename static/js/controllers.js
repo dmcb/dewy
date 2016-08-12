@@ -435,7 +435,6 @@ controllers.controller('signonController', ['authService', '$scope', '$http', '$
 
 				// Authenticate
 				var encodedClient = window.btoa(ENV.client_id + ':' + ENV.client_secret);
-				console.log(encodedClient);
 				$http({
 					method: 'POST',
 					url: ENV.api + 'oauth/token',
