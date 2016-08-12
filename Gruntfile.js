@@ -16,6 +16,8 @@ module.exports = function(grunt) {
         constants: {
           ENV: {
             api: '<%= config.development.api.url %>', 
+            client_id: '<%= config.development.client.client_id %>', 
+            client_secret: '<%= config.development.client.client_secret %>', 
             stripePublicKey: '<%= config.development.stripe.public_key %>',
             environment: 'development'
           }
@@ -28,6 +30,8 @@ module.exports = function(grunt) {
         constants: {
           ENV: {
             api: '<%= config.production.api.url %>', 
+            client_id: '<%= config.production.client.client_id %>', 
+            client_secret: '<%= config.production.client.client_secret %>', 
             stripePublicKey: '<%= config.production.stripe.public_key %>',
             environment: 'production'
           }

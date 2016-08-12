@@ -3,6 +3,10 @@
         "api": {
             "url": ""
         },
+        "client": {
+            "client_id": "",
+            "client_secret": ""
+        },
         "stripe": {
             "public_key": ""
         }
@@ -10,6 +14,10 @@
     "production": {
         "api": {
             "url": ""
+        },
+        "client": {
+            "client_id": "",
+            "client_secret": ""
         },
         "stripe": {
             "public_key": ""
