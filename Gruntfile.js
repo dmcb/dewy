@@ -116,7 +116,7 @@ module.exports = function(grunt) {
         },
         files: [{
           expand: true,
-          cwd: 'static/scss/',
+          cwd: 'src/scss/',
           src: ['*.scss'],
           dest: 'static/css/',
           ext: '.css'
@@ -129,7 +129,7 @@ module.exports = function(grunt) {
         },
         files: [{
           expand: true,
-          cwd: 'static/scss/',
+          cwd: 'src/scss/',
           src: ['*.scss'],
           dest: 'static/css/',
           ext: '.css'
@@ -141,12 +141,12 @@ module.exports = function(grunt) {
       grunt: {files: ['Gruntfile.js']},
 
       scripts: {
-        files: ['static/js/**/*.js', '!static/js/**/*.min.js'],
+        files: ['src/js/**/*.js', '!static/js/**/*.min.js'],
         tasks: ['concat', 'uglify']
       },
 
       sass: {
-        files: 'static/scss/**/*.scss',
+        files: 'src/scss/**/*.scss',
         tasks: ['sass'],
         options: {
           livereload: true,
