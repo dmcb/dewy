@@ -12,7 +12,8 @@ bower_components
 static/css/*.map
 static/js/*.map
 
-# Minified JS
+# Compiled and minified JS
+static/js/scripts.js
 static/js/*.min.js
 
 # Environment-specific configuration
