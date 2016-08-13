@@ -105,7 +105,7 @@ module.exports = function(grunt) {
         },
         files: [{
           expand: true,
-          cwd: 'static/js',
+          cwd: '.tmp',
           src: ['scripts.js'],
           dest: 'static/js',
           ext: '.min.js'
@@ -146,7 +146,7 @@ module.exports = function(grunt) {
       grunt: {files: ['Gruntfile.js']},
 
       scripts: {
-        files: ['src/js/**/*.js', '!static/js/**/*.min.js'],
+        files: ['src/js/**/*.js', '.tmp/config.js'],
         tasks: ['concat', 'uglify']
       },
 
