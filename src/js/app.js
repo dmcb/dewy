@@ -161,6 +161,11 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', 'ENV', funct
 			controller: 'signonController',
 			requiresAuthorization: false,
 		}).
+		when('/signup', {
+			templateUrl: 'templates/signup.html',
+			controller: 'signupController',
+			requiresAuthorization: false,
+		}).
 		when('/sites/:filter?', {
 			templateUrl: 'templates/overview.html',
 			controller: 'overviewController',
@@ -294,6 +299,7 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', 'ENV', funct
 
 app.run(['authService', '$rootScope', '$location', '$http', '$window', 'ENV', function(authService, $rootScope, $location, $http, $window, ENV) {
 	$rootScope.env = ENV.environment;
+	$rootScope.location = $location;
 	$rootScope.$on('$routeChangeStart', function (event, next, current) {
 		$rootScope.isViewLoading = true;
 		if (next.requiresAuthorization) {

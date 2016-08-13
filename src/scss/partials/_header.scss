@@ -224,19 +224,20 @@ header {
             }
 
             &.home {
-                margin-top: 0.5em;
-                margin-bottom: 0.5em;
+                margin-top: 1em;
 
                 li a {
+                    border: 3px transparent solid;
+                    border-radius: 0.6em;
+                    padding: 0.25em 1em;
+
                     &:hover {
                         background-color: transparent;
                         color: $light-blue;
                     }
 
                     &.important {
-                        border: 3px $white solid;
-                        border-radius: 0.6em;
-                        padding: 0.25em 1em;
+                        border-color: $white;
 
                         &:hover {
                             background-color: $white;
