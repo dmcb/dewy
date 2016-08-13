@@ -61,6 +61,22 @@ module.exports = function(grunt) {
       }
     },
 
+    concat: {
+      all: {
+        src: [
+          'static/js/bower.js',
+          'static/js/app.js',
+          'static/js/services.js',
+          'static/js/factories.js',
+          'static/js/directives.js',
+          'static/js/controllers.js',
+          'static/js/config.js',
+          'static/js/site.js'
+        ],
+        dest: 'static/js/scripts.js'
+      }
+    },
+
     uglify: {
       development: {
         options: {
@@ -71,7 +87,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: 'static/js',
-          src: ['*.js', '!*.min.js'],
+          src: ['scripts.js'],
           dest: 'static/js',
           ext: '.min.js'
         }]
@@ -85,7 +101,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: 'static/js',
-          src: ['*.js', '!*.min.js'],
+          src: ['scripts.js'],
           dest: 'static/js',
           ext: '.min.js'
         }]
@@ -126,7 +142,7 @@ module.exports = function(grunt) {
 
       scripts: {
         files: ['static/js/**/*.js', '!static/js/**/*.min.js'],
-        tasks: ['uglify']
+        tasks: ['concat', 'uglify']
       },
 
       sass: {
@@ -141,7 +157,7 @@ module.exports = function(grunt) {
 
   require('load-grunt-tasks')(grunt);
 
-  grunt.registerTask('production', ['ngconstant:production', 'bower_concat', 'uglify:production', 'sass:production']);
-  grunt.registerTask('build', ['ngconstant:development', 'bower_concat', 'uglify:development', 'sass:development']);
+  grunt.registerTask('production', ['ngconstant:production', 'bower_concat', 'concat', 'uglify:production', 'sass:production']);
+  grunt.registerTask('build', ['ngconstant:development', 'bower_concat', 'concat', 'uglify:development', 'sass:development']);
   grunt.registerTask('default', ['build','watch']);
 }
