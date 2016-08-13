@@ -11,7 +11,7 @@ module.exports = function(grunt) {
       },
       development: {
         options: {
-          dest: 'static/js/config.js'
+          dest: '.tmp/config.js'
         },
         constants: {
           ENV: {
@@ -25,7 +25,7 @@ module.exports = function(grunt) {
       },
       production: {
         options: {
-          dest: 'static/js/config.js'
+          dest: '.tmp/config.js'
         },
         constants: {
           ENV: {
@@ -42,7 +42,7 @@ module.exports = function(grunt) {
     bower_concat: {
       all: {
         dest: {
-          'js': 'static/js/bower.js'
+          'js': '.tmp/bower.js'
         },
         include: [
           'angular-flash',
@@ -63,17 +63,20 @@ module.exports = function(grunt) {
 
     concat: {
       all: {
+        options: {
+          sourceMap: true
+        },
         src: [
-          'static/js/bower.js',
-          'static/js/app.js',
-          'static/js/services.js',
-          'static/js/factories.js',
-          'static/js/directives.js',
-          'static/js/controllers.js',
-          'static/js/config.js',
-          'static/js/site.js'
+          '.tmp/bower.js',
+          'src/js/app.js',
+          'src/js/services.js',
+          'src/js/factories.js',
+          'src/js/directives.js',
+          'src/js/controllers.js',
+          'src/js/site.js',
+          '.tmp/config.js'
         ],
-        dest: 'static/js/scripts.js'
+        dest: '.tmp/scripts.js'
       }
     },
 
@@ -81,12 +84,14 @@ module.exports = function(grunt) {
       development: {
         options: {
           sourceMap: true,
+          sourceMapIncludeSources : true,
+          sourceMapIn: '.tmp/scripts.js.map',
           mangle: true,
           compress: true
         },
         files: [{
           expand: true,
-          cwd: 'static/js',
+          cwd: '.tmp',
           src: ['scripts.js'],
           dest: 'static/js',
           ext: '.min.js'

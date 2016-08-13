@@ -1,20 +1,13 @@
-# Sass
+# Temporary files
+.tmp
 .sass-cache
-
-# Node
 npm-debug.log
 node_modules
-
-# Bower
 bower_components
 
-# Source maps
-static/css/*.map
-static/js/*.map
-
-# Compiled and minified JS
-static/js/scripts.js
-static/js/*.min.js
+# Compiled JS and CSS
+static/js
+static/css
 
 # Environment-specific configuration
 config.json
