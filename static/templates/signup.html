@@ -1,5 +1,5 @@
 <div class="shell">
-    <section class="signup" id="signup" ng-controller="signupController" ng-if="env == 'production'">
+    <section class="signup" id="signup" ng-controller="signupController" ng-if="env != 'production'">
         <h2>Sign up for Dewy</h2>
         <p>Start your 30-day trial now!</p>
         <form ng-submit="submit()" class="signup" name="form">
@@ -21,7 +21,7 @@
         </fieldset>
         </form>
     </section>
-    <section class="signup" id="signup" ng-controller="signupController" ng-if="env != 'production'">
+    <section class="signup" id="signup" ng-controller="signupController" ng-if="env == 'production'">
         <h2>Sign up for Dewy</h2>
         <p>Dewy is still under development. Please follow <a href="https://twitter.com/dewyapp" target="_blank">@dewyapp</a> on twitter for updates.</p>
     </section>
