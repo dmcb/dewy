@@ -43,10 +43,8 @@ body {
     .wrapper {
         min-height: 100%;
         position: relative;
-        background: radial-gradient(center center, 50% 70%, $blue 70%, $darkish-blue);
-        background: -webkit-radial-gradient(center center, 50% 70%, $blue 70%, $darkish-blue);
-        background: -o-radial-gradient(center center, 50% 70%, $blue 70%, $darkish-blue);
-        background: -ms-radial-gradient(center center, 50% 70%, $blue 70%, $darkish-blue);
+        background-color: $blue;
+        background-image: radial-gradient(circle, $blue 70%, $darkish-blue);
         background-attachment: fixed;
         @include clearfix;
     }
