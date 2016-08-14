@@ -81,7 +81,7 @@ module.exports = function(grunt) {
     },
 
     uglify: {
-      development: {
+      all: {
         options: {
           sourceMap: true,
           sourceMapIncludeSources : true,
@@ -96,25 +96,11 @@ module.exports = function(grunt) {
           dest: 'static/js',
           ext: '.min.js'
         }]
-      },
-      production: {
-        options: {
-          sourceMap: false,
-          mangle: true,
-          compress: true
-        },
-        files: [{
-          expand: true,
-          cwd: '.tmp',
-          src: ['scripts.js'],
-          dest: 'static/js',
-          ext: '.min.js'
-        }]
       }
     },
 
     sass: {
-      development: {
+      all: {
         options: {
           sourceMap: true,
           outputStyle: 'compressed',
@@ -127,26 +113,13 @@ module.exports = function(grunt) {
           ext: '.css'
         }]
       },
-      production: {
-        options: {
-          sourceMap: false,
-          outputStyle: 'compressed',
-        },
-        files: [{
-          expand: true,
-          cwd: 'src/scss/',
-          src: ['*.scss'],
-          dest: 'static/css/',
-          ext: '.css'
-        }]
-      }
     },
 
     watch: {
       grunt: {files: ['Gruntfile.js']},
 
       scripts: {
-        files: ['src/js/**/*.js', '.tmp/config.js'],
+        files: ['config.json', 'src/js/**/*.js', '.tmp/config.js'],
         tasks: ['concat', 'uglify']
       },
 
@@ -162,7 +135,7 @@ module.exports = function(grunt) {
 
   require('load-grunt-tasks')(grunt);
 
-  grunt.registerTask('production', ['ngconstant:production', 'bower_concat', 'concat', 'uglify:production', 'sass:production']);
-  grunt.registerTask('build', ['ngconstant:development', 'bower_concat', 'concat', 'uglify:development', 'sass:development']);
+  grunt.registerTask('production', ['ngconstant:production', 'bower_concat', 'concat', 'uglify', 'sass']);
+  grunt.registerTask('build', ['ngconstant:development', 'bower_concat', 'concat', 'uglify', 'sass']);
   grunt.registerTask('default', ['build','watch']);
 }
