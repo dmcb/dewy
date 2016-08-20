@@ -412,9 +412,9 @@ controllers.controller('manageController', ['$scope', '$timeout', '$moment', 'si
 			});
 		}
 		$scope.resetKey = function(uid) {
-			userFactory.resetKey(uid).then(function(apikey) {
+			userFactory.resetKey(uid).then(function(result) {
 				$scope.$emit('flashMessage', {content: 'API key reset', type: 'message'});
-				$scope.apikey = apikey;
+				$scope.apikey = result.apikey;
 			});
 		}
 		$scope.sites = sites;
