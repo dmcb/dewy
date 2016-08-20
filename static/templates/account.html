@@ -48,7 +48,7 @@
                     <span class="error" ng-if="accountForm.error.error">{{ accountForm.error.error }}</span>
                     <button ng-click="">Update account<i class="fa fa-pencil"></i></button>
                 </fieldset>
-                <fieldset ng-if="currentUser.verify">
+                <fieldset ng-if="currentUser.verified !== true">
                     <hr/>
                     <span class="unverified">Your email address has not been verified.</span>
                     <a class="button" ng-click="reverify(currentUser.uid)">Resend email<i class="fa fa-envelope-o"></i></a>
