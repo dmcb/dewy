@@ -427,6 +427,25 @@ controllers.controller('manageController', ['$scope', '$timeout', '$moment', 'si
 		$scope.apikey = user.apikey;
 }]);
 
+controllers.controller('resetController', ['$scope', 'userFactory',
+	function ($scope, userFactory) {
+		$scope.submit = function() {
+			if ($scope.form.$valid) {
+				$scope.message = null;
+				$scope.error = {
+					email: null
+				};
+				userFactory.passwordRequest($scope.email)
+					.success(function(result) {
+						$scope.message = result;
+					})
+					.error(function(error, status) {
+						$scope.error.email = error;
+					});
+			}
+		}
+}]);
+
 controllers.controller('signonController', ['authService', '$scope', '$http', '$httpParamSerializer', 'ENV',
 	function (authService, $scope, $http, $httpParamSerializer, ENV) {
 		$scope.submit = function() {

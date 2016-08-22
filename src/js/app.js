@@ -156,6 +156,41 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', 'ENV', funct
 				}]
 			}
 		}).
+		when('/reset', {
+			templateUrl: 'templates/reset.html',
+			controller: 'resetController',
+			requiresAuthorization: false,
+		}).
+		when('/reset/:uid/:reset', {
+			templateUrl: 'templates/reset.html',
+			controller: 'resetController',
+			resolve: {
+				resetData: ['$rootScope', '$route', '$http', 'authService', '$httpParamSerializer', 'ENV', function($rootScope, $route, $http, authService, $httpParamSerializer, ENV) {
+					var encodedClient = window.btoa(ENV.client_id + ':' + ENV.client_secret);
+					return $http({
+						method: 'POST',
+						url: ENV.api + 'users/_reset/' + $route.current.params.uid,
+						headers: {
+							'Authorization': 'Basic ' + encodedClient,
+							'Content-Type': 'application/x-www-form-urlencoded'
+						},
+						data: $httpParamSerializer({
+							grant_type: 'password',
+							verification_code: $route.current.params.verify
+						})
+					})
+					.then(function(result) {
+						return result;
+					}, function(error) {
+						if (error.status == '400') {
+							return {error: error.data};
+						} else {
+							return {error: 'Dewy could not reset your password at this time.'};
+						}
+					});
+				}]
+			}
+		}).
 		when('/signon', {
 			templateUrl: 'templates/signon.html',
 			controller: 'signonController',

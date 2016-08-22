@@ -1,0 +1,18 @@
+<div class="shell">
+    <section class="reset" ng-controller="resetController">
+        <h2>Reset your password</h2>
+        <p>Enter your email address to send a password reset request.</p>
+        <form ng-submit="submit()" class="reset" name="form">
+        <fieldset>
+            <span class="messages">
+                {{ message }}
+            </span>
+            <input name="email" type="email" ng-model="email" placeholder="Your email" value="{{email}}" required />
+            <span class="error" ng-if="!error.email && form.email.$error.required && (form.email.$touched || form.$submitted)">An email is required.</span>
+            <span class="error" ng-if="!error.email && form.email.$error.email && (form.email.$touched || form.$submitted)">A valid email address is required.</span>
+            <span class="error" ng-if="error.email">{{ error.email }}</span>
+            <button type="submit">Send request</button>
+        </fieldset>
+        </form>
+    </section>
+</div>

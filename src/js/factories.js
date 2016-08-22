@@ -472,6 +472,16 @@ factories.factory('userFactory', ['$http', 'ENV', function($http, ENV) {
 		return $http.put(ENV.api + 'users/' + uid, update);
 	}
 
+	userFactory.passwordRequest = function(email) {
+		return $http.post(ENV.api + 'users/_reset', {email: email})
+			.success(function (response) {
+				return response.data;
+			})
+			.error(function (error, status) {
+				return error;
+			});
+	}	
+
 	userFactory.resetKey = function(uid) {
 		var update = {
 			key: true
