@@ -437,17 +437,18 @@ controllers.controller('signonController', ['authService', '$scope', 'userFactor
 	function (authService, $scope, userFactory, $http, $httpParamSerializer, ENV) {
 		$scope.requestReset = function() {
 			if ($scope.form.$valid) {
+				$scope.disabled = true;
 				$scope.message = null;
 				$scope.error = {
 					email: null
 				};
 				userFactory.passwordRequest($scope.email)
 					.success(function(result) {
-						$scope.success = true;
 						$scope.message = 'A password reset request has been sucessfully sent.';
 					})
 					.error(function(error, status) {
 						$scope.error.email = error;
+						$scope.disabled = false;
 					});
 			}
 		}

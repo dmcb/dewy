@@ -7,12 +7,11 @@
             <span class="messages">
                 {{ message }}
             </span>
-            <input name="email" type="email" ng-disabled="success" ng-model="email" placeholder="Your email" value="{{email}}" required />
+            <input name="email" type="email" ng-disabled="disabled" ng-model="email" placeholder="Your email" value="{{email}}" required />
             <span class="error" ng-if="!error.email && form.email.$error.required && (form.email.$touched || form.$submitted)">An email is required.</span>
             <span class="error" ng-if="!error.email && form.email.$error.email && (form.email.$touched || form.$submitted)">A valid email address is required.</span>
             <span class="error" ng-if="error.email">{{ error.email }}</span>
-            <button type="submit" ng-if="!success">Send request</button>
-            <button type="submit" ng-if="success" disabled="disabled">Request sent</button>
+            <button type="submit" ng-disabled="disabled">Send request</button>
         </fieldset>
         </form>
     </section>
