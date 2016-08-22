@@ -437,7 +437,8 @@ controllers.controller('resetController', ['$scope', 'userFactory',
 				};
 				userFactory.passwordRequest($scope.email)
 					.success(function(result) {
-						$scope.message = result;
+						$scope.success = true;
+						$scope.message = 'A password reset request has been sucessfully sent.';
 					})
 					.error(function(error, status) {
 						$scope.error.email = error;
