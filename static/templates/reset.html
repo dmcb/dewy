@@ -1,8 +1,8 @@
 <div class="shell">
-    <section class="reset" ng-controller="resetController">
+    <section class="reset" ng-controller="signonController">
         <h2>Reset your password</h2>
         <p>Enter your email address to send a password reset request.</p>
-        <form ng-submit="submit()" class="reset" name="form">
+        <form ng-submit="requestReset()" class="reset" name="form">
         <fieldset>
             <span class="messages">
                 {{ message }}

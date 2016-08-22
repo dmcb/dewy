@@ -1,9 +1,10 @@
 <div class="shell">
     <section class="error" ng-if="error">
-        <h2>Unable to verify email address</h2>
+        <h2>Unable to reset password</h2>
         <p>{{error}}</p>
     </section>
     <section ng-if="!error">
-        <h2>Email verified</h2>
+        <h2>Password reset</h2>
+        <p>{{message}}
     </section>
 </div>

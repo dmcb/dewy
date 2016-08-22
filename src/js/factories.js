@@ -441,7 +441,7 @@ factories.factory('sitesFactory', ['$http', 'ENV', function($http, ENV) {
 	return sitesFactory;
 }]);
 
-factories.factory('userFactory', ['$http', 'ENV', function($http, ENV) {
+factories.factory('userFactory', ['$http', '$httpParamSerializer', 'ENV', function($http, $httpParamSerializer, ENV) {
 	var userFactory = {};
 
 	userFactory.get = function() {
@@ -482,6 +482,22 @@ factories.factory('userFactory', ['$http', 'ENV', function($http, ENV) {
 			});
 	}	
 
+	userFactory.resetPassword = function(uid, resetCode) {
+		var encodedClient = window.btoa(ENV.client_id + ':' + ENV.client_secret);
+		return $http({
+			method: 'POST',
+			url: ENV.api + 'users/_reset/' + uid,
+			headers: {
+				'Authorization': 'Basic ' + encodedClient,
+				'Content-Type': 'application/x-www-form-urlencoded'
+			},
+			data: $httpParamSerializer({
+				grant_type: 'password',
+				reset_code: resetCode
+			})
+		});
+	}
+
 	userFactory.resetKey = function(uid) {
 		var update = {
 			key: true
@@ -507,6 +523,22 @@ factories.factory('userFactory', ['$http', 'ENV', function($http, ENV) {
 			.error(function (error, status) {
 				return error;
 			});
+	}
+
+	userFactory.verify = function(uid, verificationCode) {
+		var encodedClient = window.btoa(ENV.client_id + ':' + ENV.client_secret);
+		return $http({
+			method: 'POST',
+			url: ENV.api + 'users/_verify/' + uid,
+			headers: {
+				'Authorization': 'Basic ' + encodedClient,
+				'Content-Type': 'application/x-www-form-urlencoded'
+			},
+			data: $httpParamSerializer({
+				grant_type: 'password',
+				verification_code: verificationCode
+			})
+		});
 	}
 
 	return userFactory;

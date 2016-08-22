@@ -427,9 +427,15 @@ controllers.controller('manageController', ['$scope', '$timeout', '$moment', 'si
 		$scope.apikey = user.apikey;
 }]);
 
-controllers.controller('resetController', ['$scope', 'userFactory',
-	function ($scope, userFactory) {
-		$scope.submit = function() {
+controllers.controller('resetController', ['$scope', 'resetData',
+	function ($scope, resetData) {
+		$scope.error = resetData.error;
+		$scope.message = resetData.message;
+}]);
+
+controllers.controller('signonController', ['authService', '$scope', 'userFactory', '$http', '$httpParamSerializer', 'ENV',
+	function (authService, $scope, userFactory, $http, $httpParamSerializer, ENV) {
+		$scope.requestReset = function() {
 			if ($scope.form.$valid) {
 				$scope.message = null;
 				$scope.error = {
@@ -445,10 +451,7 @@ controllers.controller('resetController', ['$scope', 'userFactory',
 					});
 			}
 		}
-}]);
 
-controllers.controller('signonController', ['authService', '$scope', '$http', '$httpParamSerializer', 'ENV',
-	function (authService, $scope, $http, $httpParamSerializer, ENV) {
 		$scope.submit = function() {
 			if ($scope.form.$valid) {
 				$scope.message = null;

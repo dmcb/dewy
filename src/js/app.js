@@ -158,29 +158,17 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', 'ENV', funct
 		}).
 		when('/reset', {
 			templateUrl: 'templates/reset.html',
-			controller: 'resetController',
+			controller: 'signonController',
 			requiresAuthorization: false,
 		}).
 		when('/reset/:uid/:reset', {
-			templateUrl: 'templates/reset.html',
+			templateUrl: 'templates/reset_response.html',
 			controller: 'resetController',
 			resolve: {
-				resetData: ['$rootScope', '$route', '$http', 'authService', '$httpParamSerializer', 'ENV', function($rootScope, $route, $http, authService, $httpParamSerializer, ENV) {
-					var encodedClient = window.btoa(ENV.client_id + ':' + ENV.client_secret);
-					return $http({
-						method: 'POST',
-						url: ENV.api + 'users/_reset/' + $route.current.params.uid,
-						headers: {
-							'Authorization': 'Basic ' + encodedClient,
-							'Content-Type': 'application/x-www-form-urlencoded'
-						},
-						data: $httpParamSerializer({
-							grant_type: 'password',
-							verification_code: $route.current.params.verify
-						})
-					})
+				resetData: ['$rootScope', '$route', 'userFactory', function($rootScope, $route, userFactory) {
+					return userFactory.resetPassword($route.current.params.uid, $route.current.params.reset)
 					.then(function(result) {
-						return result;
+						return {message: 'Your password has been reset, you will receive a new password shortly.'}
 					}, function(error) {
 						if (error.status == '400') {
 							return {error: error.data};
@@ -291,21 +279,8 @@ app.config(['$httpProvider', '$routeProvider', '$locationProvider', 'ENV', funct
 			templateUrl: 'templates/verify.html',
 			controller: 'verifyController',
 			resolve: {
-				verifyData: ['$rootScope', '$route', '$http', 'authService', '$httpParamSerializer', 'ENV', function($rootScope, $route, $http, authService, $httpParamSerializer, ENV) {
-					
-					var encodedClient = window.btoa(ENV.client_id + ':' + ENV.client_secret);
-					return $http({
-						method: 'POST',
-						url: ENV.api + 'users/_verify/' + $route.current.params.uid,
-						headers: {
-							'Authorization': 'Basic ' + encodedClient,
-							'Content-Type': 'application/x-www-form-urlencoded'
-						},
-						data: $httpParamSerializer({
-							grant_type: 'password',
-							verification_code: $route.current.params.verify
-						})
-					})
+				verifyData: ['$rootScope', '$route', 'authService', 'userFactory', function($rootScope, $route, authService, userFactory) {
+					return userFactory.verify($route.current.params.uid, $route.current.params.verify)
 					.then(function(result) {
 						$rootScope.$broadcast('flashMessage', {content: 'Email verified', type: 'message'});
 						authService.signOn('/account', result.data);
