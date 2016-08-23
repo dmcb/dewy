@@ -72,31 +72,11 @@ div.feature {
             width: 100%;
             margin-top: 2em;
 
-            @include breakpoint($tablet) {
-                overflow: hidden;
-                padding: 2em 2em 0 2em;
-            }
-
-            @include breakpoint($desktop) {
-                @include grid-span(13,12);
-                margin-top: 0;
-            }
-
-            @include breakpoint($desktop-large) {
-                width: grid-span(15,10);
-            }
-
             .screenshot {
                 -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
                 -moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
                 box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
                 width: 100%;
-
-                @include breakpoint($tablet) {
-                    -webkit-box-shadow: 0px 0px 2em 0px rgba(0,0,0,0.5);
-                    -moz-box-shadow: 0px 0px 2em 0px rgba(0,0,0,0.5);
-                    box-shadow: 0px 0px 2em 0px rgba(0,0,0,0.5);
-                }
             }
         }
     }
@@ -110,13 +90,29 @@ div.feature {
                     @include float-span(8,'last');
                 }
             }
+
+            .image {
+                overflow: hidden;
+                padding: 2em 2em 0 2em;
+
+                .screenshot {
+                    -webkit-box-shadow: 0px 0px 2em 0px rgba(0,0,0,0.5);
+                    -moz-box-shadow: 0px 0px 2em 0px rgba(0,0,0,0.5);
+                    box-shadow: 0px 0px 2em 0px rgba(0,0,0,0.5);
+                }
+            }
         }
     }
 
     @include breakpoint($desktop) {
         section {
-            h2, p {
-                @include grid-span(10,1);
+            p {
+                @include grid-span(16,1);
+                clear: both;
+            }
+
+            .image {
+                @include grid-span(20,3);
                 clear: both;
             }
         }
@@ -127,6 +123,11 @@ div.feature {
             h2, p {
                 @include grid-span(8,1);
                 clear: both;
+            }
+
+            .image {
+                padding-top: 2em;
+                @include grid-span(15,10);
             }
         }
     }
