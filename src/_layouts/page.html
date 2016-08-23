@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+    {% include head.html %}
+    <body>
+        <div class="wrapper">
+            <header>
+                <div class="shell">
+                    <nav>
+                        <input type="checkbox" id="menu-toggle-value" />
+                        <div>
+                            <ul ng-show="!appPage" class="home">
+                                <li><a href="/signup">Sign up</a></li><li><a href="/signon" class="important">Sign on</a></li>
+                            </ul>
+                        </div>
+                        <div class="logo">
+                            <a href="/"><img src="/img/dewy-white.png" alt="Dewy"></a>
+                        </div>
+                        <label for="menu-toggle-value" id="menu-toggle" onclick=""><i class="fa fa-bars"></i></label>
+                    </nav>
+                </div>
+            </header>
+
+            <div class="app">
+                <div class="shell">
+                    <section>
+                        <h2>Pricing</h2>
+                    </section>
+                </div>
+                <div class="feature">
+                    <div class="shell">
+
+                    </div>
+                </div>
+            </div>
+
+            {% include footer.html %}
+        </div>
+    </body>
+</html>
