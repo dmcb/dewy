@@ -2,7 +2,7 @@
     <div class="main">
         <form name="filterForm" ng-submit="saveFilter()">
             <h2>
-                <input name="title" type="text" placeholder="Filter title" ng-model="currentFilter.title" value="{{currentFilter.title}}" required autofocus />
+                <input name="title" type="text" placeholder="Filter title" ng-model="currentFilter.title" value="{(currentFilter.title)}" required autofocus />
             </h2>
             <span id="titleerror" ng-show="filterForm.title.$error.required && (filterForm.title.$touched || filterForm.$submitted)">A title is required.</span>
             <nav class="context">

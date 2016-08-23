@@ -1,20 +1,20 @@
 <div class="shell">
     <section class="main">
-        <h2 current-user>Your subscription, {{currentUser.username}}</h2>
+        <h2 current-user>Your subscription, {(currentUser.username)}</h2>
         <section class="subscription">
             <h3>Details</h3>
             <ul>
-                <li class="">You signed up with Dewy on <strong>{{currentUser.created*1000 | date:'MMMM d, yyyy'}}</strong></li>
-                <li class="">You are on a <strong>{{currentUser.subscription.type}}</strong> subscription</li>
-                <li class="">Your subscription expires <strong>{{currentUser.subscription.endDate*1000 | date:'MMMM d, yyyy'}}</strong></li>
+                <li class="">You signed up with Dewy on <strong>{(currentUser.created*1000 | date:'MMMM d, yyyy')}</strong></li>
+                <li class="">You are on a <strong>{(currentUser.subscription.type)}</strong> subscription</li>
+                <li class="">Your subscription expires <strong>{(currentUser.subscription.endDate*1000 | date:'MMMM d, yyyy')}</strong></li>
             </ul>
         </section>
 <!--         <section class="checkout">
             <h3>Payment via Checkout</h3>
-            <form action="{{stripeEndPoint}}" method="POST">
+            <form action="{(stripeEndPoint)}" method="POST">
                 <script
                     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                    data-key="{{stripePublicKey}}"
+                    data-key="{(stripePublicKey)}"
                     data-name="Dewy"
                     data-description="Basic subscription"
                     data-amount="3999"
@@ -84,8 +84,8 @@
                         <label>CVC</label>
                         <input type="text" maxlength="4" data-stripe="cvc" class="cvc">
                     </div>
-                    <span class="error" ng-show="error">{{ error }}</span>
-                    <button type="submit" ng-disabled="disabled">Start your {{plan}} plan<i class="fa fa-credit-card-alt" aria-hidden="true"></i></button>
+                    <span class="error" ng-show="error">{( error )}</span>
+                    <button type="submit" ng-disabled="disabled">Start your {(plan)} plan<i class="fa fa-credit-card-alt" aria-hidden="true"></i></button>
                 </fieldset>
             </form>
     </section>

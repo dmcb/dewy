@@ -1,7 +1,7 @@
 <div class="content" ng-controller="overviewSitesController">
     <div class="header">
         <ul class="site">
-            <li class="title"><a href="" ng-class="{selected: sort.column=='title', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('title')">{{filteredSites.length}} sites</a></li>
+            <li class="title"><a href="" ng-class="{selected: sort.column=='title', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('title')">{(filteredSites.length)} sites</a></li>
             <ul class="variables">
                 <li class="complexity"><a href="" ng-class="{selected: sort.column=='complexity', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('complexity')">Complexity</a></li>
                 <li class="size"><a href="" ng-class="{selected: sort.column=='size', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('size')">Size</a></li>
@@ -13,12 +13,12 @@
     <div class="sites">
         <div ng-if="!filteredSites.length" class="noresults">
             <span ng-if="!query && !currentFilter"><i class="fa fa-exclamation-triangle"></i> You haven't added any sites to Dewy. <a href="/manage">Manage your sites.</a></span>
-            <span ng-if="!query && currentFilter"><i class="fa fa-exclamation-triangle"></i> No sites meet your filter criteria. <a href="/filter/{{currentFilter.fid}}">Edit your filter.</a></span>            
+            <span ng-if="!query && currentFilter"><i class="fa fa-exclamation-triangle"></i> No sites meet your filter criteria. <a href="/filter/{(currentFilter.fid)}">Edit your filter.</a></span>            
             <span ng-if="query"><i class="fa fa-exclamation-triangle"></i> Your search returned no results.</span>
         </div>
         <div ng-repeat="site in filteredSites = (sites | filter:query) | orderBy:sort.column:sort.descending" class="site">
             <ul class="site">
-                <li class="title" ng-class="{open: openSite.sid == site.sid && openSite.detail == 'meta'}"><a href="" ng-click="openDetails(sites.indexOf(site), 'meta')"><span class="title"><div class="point" ng-if="site.tags.length"></div>{{site.title}}</span></a></li>
+                <li class="title" ng-class="{open: openSite.sid == site.sid && openSite.detail == 'meta'}"><a href="" ng-click="openDetails(sites.indexOf(site), 'meta')"><span class="title"><div class="point" ng-if="site.tags.length"></div>{(site.title)}</span></a></li>
                 <ul class="variables">
                     <li class="complexity" ng-class="{open: openSite.sid == site.sid && openSite.detail == 'complexity'}">
                         <a href="" ng-click="openDetails(sites.indexOf(site), 'complexity')"><div class="point" ng-repeat="i in getNumber(site.complexity) track by $index"></div></a>
@@ -37,69 +37,69 @@
             <div class="detail-view" ng-if="openSite.sid == site.sid">
                 <ul ng-if="openSite.detail == 'meta'">
                     <li>
-                        <h3>Site live at <a href="{{site.baseurl}}" target="_blank">{{site.baseurl}}</a></h3>
+                        <h3>Site live at <a href="{(site.baseurl)}" target="_blank">{(site.baseurl)}</a></h3>
                     </li>
                     <li>
                         <h3>Site added to Dewy <span am-time-ago="openSite.dateAdded * 1000" class="number"></span></h3>
                     </li>
                     <li>
-                        <h3><span class="number">{{openSite.tags.length}}</span> tags assigned</h3>
+                        <h3><span class="number">{(openSite.tags.length)}</span> tags assigned</h3>
                         <ul class="items" ng-if="openSite.tags.length">
-                            <li ng-repeat="tag in openSite.tags" class="tag">{{tag}} <a href="" ng-click="deleteTag($index, sites.indexOf(site))"><i class="fa fa-times"></i></a></li>
+                            <li ng-repeat="tag in openSite.tags" class="tag">{(tag)} <a href="" ng-click="deleteTag($index, sites.indexOf(site))"><i class="fa fa-times"></i></a></li>
                         </ul>
                     </li>
                     <li>
-                        <form name="tagForm{{sites.indexOf(site)}}" ng-submit="addTags(sites.indexOf(site))">
+                        <form name="tagForm{(sites.indexOf(site))}" ng-submit="addTags(sites.indexOf(site))">
                             <input placeholder="Tags seperated by commas" name="tags" ng-model="tags" required />
                             <button type="submit">Add tags</button>
-                            <span class="error" ng-show="tagForm{{sites.indexOf(site)}}.tags.$error.required && (tagForm{{sites.indexOf(site)}}.tags.$touched || tagForm{{sites.indexOf(site)}}.$submitted)">Please enter a tag.</span>
+                            <span class="error" ng-show="tagForm{(sites.indexOf(site))}.tags.$error.required && (tagForm{(sites.indexOf(site))}.tags.$touched || tagForm{(sites.indexOf(site))}.$submitted)">Please enter a tag.</span>
                         </form>
                     </li>
                 </ul>
                 <ul ng-if="openSite.detail == 'complexity'">
                     <li>
-                        <h3><span class="number">{{openSite.attributes.enabledModules}}</span> modules enabled</h3>
+                        <h3><span class="number">{(openSite.attributes.enabledModules)}</span> modules enabled</h3>
                         <ul class="items" ng-if="openSite.details.enabledModules.length">
-                            <li ng-repeat="item in openSite.details.enabledModules">{{item}}</li>
+                            <li ng-repeat="item in openSite.details.enabledModules">{(item)}</li>
                         </ul>
                     </li>
                     <li>
-                        <h3><span class="number">{{openSite.attributes.availableModules}}</span> modules available</h3>
+                        <h3><span class="number">{(openSite.attributes.availableModules)}</span> modules available</h3>
                         <ul class="items" ng-if="openSite.details.availableModules.length">
-                            <li ng-repeat="item in openSite.details.availableModules">{{item}}</li>
+                            <li ng-repeat="item in openSite.details.availableModules">{(item)}</li>
                         </ul>
                     </li>
                     <li>
-                        <h3><span class="number">{{openSite.attributes.contentTypes}}</span> content types</h3>
+                        <h3><span class="number">{(openSite.attributes.contentTypes)}</span> content types</h3>
                         <ul class="items" ng-if="openSite.details.contentTypes.length">
-                            <li ng-repeat="item in openSite.details.contentTypes">{{item}}</li>
+                            <li ng-repeat="item in openSite.details.contentTypes">{(item)}</li>
                         </ul>
                     </li>
                     <li>
-                        <h3><span class="number">{{openSite.attributes.roles}}</span> roles</h3>
+                        <h3><span class="number">{(openSite.attributes.roles)}</span> roles</h3>
                         <ul class="items" ng-if="openSite.details.roles.length">
-                            <li ng-repeat="item in openSite.details.roles">{{item}}</li>
+                            <li ng-repeat="item in openSite.details.roles">{(item)}</li>
                         </ul>
                     </li>
                 </ul>
                 <ul ng-if="openSite.detail == 'size'">
                     <li>
-                        <h3><span class="number">{{openSite.attributes.nodes}}</span> nodes</h3>
+                        <h3><span class="number">{(openSite.attributes.nodes)}</span> nodes</h3>
                     </li>
                     <li>
-                        <h3><span class="number">{{openSite.attributes.users}}</span> users</h3>
+                        <h3><span class="number">{(openSite.attributes.users)}</span> users</h3>
                         <ul class="items" ng-if="openSite.details.users.length">
-                            <li ng-repeat="item in openSite.details.users">{{item}}</li>
+                            <li ng-repeat="item in openSite.details.users">{(item)}</li>
                         </ul>
                     </li>
                     <li>
-                        <h3><span class="number">{{openSite.attributes.files}}</span> files</h3>
+                        <h3><span class="number">{(openSite.attributes.files)}</span> files</h3>
                     </li>
                     <li>
-                        <h3><span class="number">{{openSite.attributes.words}}</span> words</h3>
+                        <h3><span class="number">{(openSite.attributes.words)}</span> words</h3>
                     </li>
                     <li>
-                        <h3><span class="number">{{openSite.attributes.diskSpace}}</span> MB disk size</h3>
+                        <h3><span class="number">{(openSite.attributes.diskSpace)}</span> MB disk size</h3>
                     </li>
                 </ul>
                 <ul ng-if="openSite.detail == 'activity'">
@@ -118,21 +118,21 @@
                 </ul>
                 <ul ng-if="openSite.detail == 'health'">
                     <li>
-                        <h3><span class="number">{{openSite.attributes.modulesWithUpdates}}</span> modules have updates</h3>
+                        <h3><span class="number">{(openSite.attributes.modulesWithUpdates)}</span> modules have updates</h3>
                         <ul class="items" ng-if="openSite.details.modulesWithUpdates.length">
-                            <li ng-repeat="item in openSite.details.modulesWithUpdates">{{item}}</li>
+                            <li ng-repeat="item in openSite.details.modulesWithUpdates">{(item)}</li>
                         </ul>
                     </li>
                     <li>
-                        <h3><span class="number">{{openSite.attributes.modulesWithSecurityUpdates}}</span> modules have security updates</h3>
+                        <h3><span class="number">{(openSite.attributes.modulesWithSecurityUpdates)}</span> modules have security updates</h3>
                         <ul class="items" ng-if="openSite.details.modulesWithSecurityUpdates.length">
-                            <li ng-repeat="item in openSite.details.modulesWithSecurityUpdates">{{item}}</li>
+                            <li ng-repeat="item in openSite.details.modulesWithSecurityUpdates">{(item)}</li>
                         </ul>
                     </li>
                     <li>
-                        <h3><span class="number">{{openSite.attributes.databaseUpdates}}</span> modules with database updates pending</h3>
+                        <h3><span class="number">{(openSite.attributes.databaseUpdates)}</span> modules with database updates pending</h3>
                         <ul class="items" ng-if="openSite.details.databaseUpdates.length">
-                            <li ng-repeat="item in openSite.details.databaseUpdates">{{item}}</li>
+                            <li ng-repeat="item in openSite.details.databaseUpdates">{(item)}</li>
                         </ul>
                     </li>
                 </ul>

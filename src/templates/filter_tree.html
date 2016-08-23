@@ -9,7 +9,7 @@
         <div ng-if="rule.operator" ng-init="rule._parent=true" ng-include="'templates/filter_tree.html'"></div>
         <div ng-if="!rule.operator">
             <a class="handle"><i class="fa fa-bars"></i></a>
-            <select class="field" ng-model="rule.field" ng-options="field.title as field.title for field in fields" ng-change="updateChoice(rule, '{{rule.field}}')"></select>
+            <select class="field" ng-model="rule.field" ng-options="field.title as field.title for field in fields" ng-change="updateChoice(rule, '{(rule.field)}')"></select>
             <input name="value" type="text" ng-model="rule.variable" ng-if="valueIsType(rule.field, 'variable')" required />
             <select class="choice" ng-model="rule.choice" ng-options="choice.id as choice.label for choice in getChoices(rule.field)"></select>
             <input name="value" type="text" ng-model="rule.value" ng-if="valueIsType(rule.field, 'string') || valueIsType(rule.field, 'variable')" required />

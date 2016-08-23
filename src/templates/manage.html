@@ -19,18 +19,18 @@
             <h3>Offline sites</h3>
             <p>The following sites are linked to your account but aren't able to report to Dewy.</p>
             <div ng-repeat="site in sites" class="offline-site">
-                <div class="load" ng-if="site.submit"><span class="load-message" ng-class="{error: site.submitStatus == 'error', success: site.submitStatus == 'success'}">{{site.submitMessage}}</span></div>
+                <div class="load" ng-if="site.submit"><span class="load-message" ng-class="{error: site.submitStatus == 'error', success: site.submitStatus == 'success'}">{(site.submitMessage)}</span></div>
                 <ul>
-                    <li class="baseurl">{{site.baseurl}}</li>
-                    <li class="added">Added to Dewy {{site.dateAdded}}</li>
-                    <li class="reported" ng-if="site.audited.date">Last audit attempted {{site.audited.date}}</li>
+                    <li class="baseurl">{(site.baseurl)}</li>
+                    <li class="added">Added to Dewy {(site.dateAdded)}</li>
+                    <li class="reported" ng-if="site.audited.date">Last audit attempted {(site.audited.date)}</li>
                     <li class="reported" ng-if="!site.audited.date">Never been audited</li>
-                    <li class="status error" ng-if="site.enabled == 1 && site.audited.error">Error {{site.audited.error}}</li>
+                    <li class="status error" ng-if="site.enabled == 1 && site.audited.error">Error {(site.audited.error)}</li>
                     <li class="status waiting" ng-if="site.enabled == 1 && !site.audited.error">Waiting to be audited</li>
                     <li class="status disabled" ng-if="site.enabled == 0">Site disabled from reporting to Dewy</li>
                 </ul>
                 <div class="buttons">
-                    <a class="button" href="{{site.baseurl}}/user" target="_blank">Visit site <i class="fa fa-search"></i></a>
+                    <a class="button" href="{(site.baseurl)}/user" target="_blank">Visit site <i class="fa fa-search"></i></a>
                     <a class="button" href="" ng-click="auditSite($index)">Attempt audit <i class="fa fa-repeat"></i></a>
                     <a class="button" href="" ng-click="deleteSite($index)">Remove from Dewy <i class="fa fa-trash-o"></i></a>
                 </div>

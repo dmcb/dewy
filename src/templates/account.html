@@ -1,19 +1,19 @@
 <div class="shell">
     <section class="main">
-        <h2 current-user>Your account, {{currentUser.username}}</h2>
+        <h2 current-user>Your account, {(currentUser.username)}</h2>
         <section class="user-info">
             <h3>User information</h3>
             <form name="profileForm" ng-submit="submitProfile(currentUser.uid)">
                 <fieldset>
                     <div class="gravatar">
-                        <img src="https://www.gravatar.com/avatar/{{currentUser.gravatar}}?s=240" alt="Gravatar" current-user />
+                        <img src="https://www.gravatar.com/avatar/{(currentUser.gravatar)}?s=240" alt="Gravatar" current-user />
                         <span>Change your profile picture at <a href="http://gravatar.com" target="_blank">Gravatar</a></span>
                     </div>
                     <div class="field">
                         <label>Your username</label>
                         <input type="text" ng-model="username" name="username" ng-change="check(currentUser.uid, 'profileForm', 'username')" required />
                         <span class="error" ng-if="profileForm.username.$error.required && (profileForm.username.$touched || profileForm.$submitted)">A username is required.</span>
-                        <span class="error" ng-if="profileForm.error.username">{{ profileForm.error.username }}</span>
+                        <span class="error" ng-if="profileForm.error.username">{( profileForm.error.username )}</span>
                     </div>
                     <button ng-click="">Update profile <i class="fa fa-pencil"></i></button>
                 </fieldset>
@@ -27,25 +27,25 @@
                         <label>Existing password</label>
                         <input type="password" ng-model="passwordExisting" name="passwordExisting" required />
                         <span class="error" ng-if="!error.existingPassword && accountForm.passwordExisting.$error.required && (accountForm.passwordExisting.$touched || accountForm.$submitted)">Your existing password is required.</span>
-                        <span class="error" ng-if="accountForm.error.existingPassword">{{ accountForm.error.existingPassword }}</span>
+                        <span class="error" ng-if="accountForm.error.existingPassword">{( accountForm.error.existingPassword )}</span>
                     </div>
                     <hr/>
                     <div class="field">
                         <label>New email</label>
                         <input type="text" ng-model="email" name="email" ng-change="check(currentUser.uid, 'accountForm', 'email')" />
-                        <span class="error" ng-if="accountForm.error.email">{{ accountForm.error.email }}</span>
+                        <span class="error" ng-if="accountForm.error.email">{( accountForm.error.email )}</span>
                     </div>
                     <div class="field">
                         <label>New password</label>
                         <input type="password" ng-model="password" name="password" ng-change="check(currentUser.uid, 'accountForm', 'password')" />
-                        <span class="error" ng-if="accountForm.error.password">{{ accountForm.error.password }}</span>
+                        <span class="error" ng-if="accountForm.error.password">{( accountForm.error.password )}</span>
                     </div>
                     <div class="field">
                         <label>Confirm password</label>
                         <input type="password" ng-model="passwordConfirm" name="passwordConfirm" match="password" />
                         <span class="error" ng-if="accountForm.passwordConfirm.$error.match && (accountForm.passwordConfirm.$touched || accountForm.$submitted)">Passwords do not match.</span>
                     </div>
-                    <span class="error" ng-if="accountForm.error.error">{{ accountForm.error.error }}</span>
+                    <span class="error" ng-if="accountForm.error.error">{( accountForm.error.error )}</span>
                     <button ng-click="">Update account<i class="fa fa-pencil"></i></button>
                 </fieldset>
                 <fieldset ng-if="currentUser.verified !== true">

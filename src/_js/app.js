@@ -12,9 +12,10 @@ var app = angular.module('dewy', [
 	'dewyDirectives'
 ])
 
-app.config(['$httpProvider', '$routeProvider', '$locationProvider', 'ENV', function($httpProvider, $routeProvider, $locationProvider, ENV) {
+app.config(['$httpProvider', '$routeProvider', '$interpolateProvider', '$locationProvider', 'ENV', function($httpProvider, $routeProvider, $interpolateProvider, $locationProvider, ENV) {
 	$locationProvider.html5Mode(true);
 	$httpProvider.interceptors.push('authInterceptor');
+	$interpolateProvider.startSymbol('{(').endSymbol(')}');
     Stripe.setPublishableKey(ENV.stripePublicKey);
     $routeProvider.
 		when('/account', {

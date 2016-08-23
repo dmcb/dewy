@@ -1,12 +1,12 @@
 <div class="shell">
     <div class="main">
-        <h2><a href="/filter/{{currentFilter.fid}}" ng-if="currentFilter">{{currentFilter.title}} <i class="fa fa-pencil-square-o"></i></a><span ng-if="!currentFilter">All sites</span></h2>
+        <h2><a href="/filter/{(currentFilter.fid)}" ng-if="currentFilter">{(currentFilter.title)} <i class="fa fa-pencil-square-o"></i></a><span ng-if="!currentFilter">All sites</span></h2>
         <nav class="context">
             <select class="folders" ng-init="selectedFilter = currentFilter.fid" ng-model="selectedFilter" ng-options="filter.fid as filter.title disable when !filter.fid for filter in filterDropdown" ng-change="changeFilter(selectedFilter)">
                 <option value="">All sites</option>
             </select>
             <ul class="folders">
-                <li><a href="/{{view}}" ng-class="{selected: !currentFilter}">All sites</a></li>
+                <li><a href="/{(view)}" ng-class="{selected: !currentFilter}">All sites</a></li>
                 <li ng-repeat="filter in filterIndex.filters" ng-include="'templates/filter_menu_item.html'"></li>
             </ul>
             <div class="actions">
@@ -18,17 +18,17 @@
                 <ul>
                     <li ng-class="{selected: view == 'sites'}">
                         <a href="/sites" ng-if="!currentFilter">Sites</a>
-                        <a href="/sites/{{currentFilter.fid}}" ng-if="currentFilter">Sites</a>
+                        <a href="/sites/{(currentFilter.fid)}" ng-if="currentFilter">Sites</a>
                     </li>
                     <li ng-class="{selected: view == 'modules'}">
                         <a href="/modules" ng-if="!currentFilter">Modules</a>
-                        <a href="/modules/{{currentFilter.fid}}" ng-if="currentFilter">Modules</a>
+                        <a href="/modules/{(currentFilter.fid)}" ng-if="currentFilter">Modules</a>
                     </li>
                 </ul>
             </div>
             <div class="search">
                 <form>
-                    <input type="text" placeholder="Search {{view}}" ng-model="query" />
+                    <input type="text" placeholder="Search {(view)}" ng-model="query" />
                     <i class="fa fa-search"></i>
                 </form>
             </div>

@@ -4,7 +4,7 @@
         <form ng-submit="submit()" class="signon" name="form">
         <fieldset>
             <span class="messages">
-                {{ message }}
+                {( message )}
             </span>
             <input id="username" name="username" ng-model="username" placeholder="Your username" required />
             <span class="error" ng-if="form.username.$error.required && (form.username.$touched || form.$submitted)">A username is required.</span>
