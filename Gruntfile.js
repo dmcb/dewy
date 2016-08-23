@@ -128,7 +128,7 @@ module.exports = function(grunt) {
         files: [
           'src/**/*.{html,yml,md,mkd,markdown}'
         ],
-        tasks: ['jekyll']
+        tasks: ['jekyll', 'concat', 'uglify', 'sass']
       },
 
       scripts: {

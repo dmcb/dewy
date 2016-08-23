@@ -13,14 +13,7 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Dewy
-email: your-email@domain.com
-description: > # this means to ignore newlines until "baseurl:"
-  Take back Drupal with Dewy, a service that lets you know what
-  your Drupal sites are doing at your higher-ed institution,
-  multi-site organization or digital agency.
 
 # Build settings
-markdown: kramdown
 source: src
 destination: _site
