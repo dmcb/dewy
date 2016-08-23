@@ -5,10 +5,8 @@ npm-debug.log
 node_modules
 bower_components
 
-# Compiled JS and CSS
-static/js
-static/css
+# Compiled site
+_site
 
 # Environment-specific configuration
 config.json
-static/js/config.js

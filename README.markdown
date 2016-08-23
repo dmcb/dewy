@@ -2,32 +2,43 @@
 
 # Dewy website
 
+## Pre-requisites
+
+* Install NodeJS (OS X with [Homebrew](https://brew.sh)):
+
+		$ brew update
+		$ brew install node
+
+* Install [Jekyll](https://jekyllrb.com/)
+
+		$ gem install jekyll
+
 ## Installation
-
-* Configure OAuth client secret and JWT encryption:
-
-        cp config.json.default config.json
 
 * Install dependencies:
 
-        npm install
+        $ npm install
 
-* Run bower to download packages:
+* Run Bower to download packages:
 
-        bower install
+        $ bower install
+        
+* Configure OAuth client secret and JWT encryption:
+
+        $ cp config.json.default config.json
 
 ## Development
 
-* Run grunt to compile assets:
+* Run Grunt to compile Jekyll site and compile and add assets:
 
-    * On development run grunt to build assets and watch for changes to files during development:
+    * On development run Grunt to build assets and watch for changes to files during development:
 
-            grunt
+            $ grunt
 
-    * On production run grunt to build assets with production values, this will not watch for file changes as files shouldn't change in production:
+    * On production run Grunt to build assets with production values, this will not watch for file changes as files shouldn't change in production:
 
-            grunt production
+            $ grunt production
 
 ## Usage
 
-* Run a web server with /static as the webroot
+* Run a web server with /_site as the web root

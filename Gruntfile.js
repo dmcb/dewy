@@ -3,6 +3,12 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     config: grunt.file.readJSON('config.json'),
 
+    jekyll: {
+      all: {
+
+      }
+    },
+
     ngconstant: {
       options: {
         space: '  ',
@@ -68,12 +74,12 @@ module.exports = function(grunt) {
         },
         src: [
           '.tmp/bower.js',
-          'src/js/app.js',
-          'src/js/services.js',
-          'src/js/factories.js',
-          'src/js/directives.js',
-          'src/js/controllers.js',
-          'src/js/site.js',
+          'src/_js/app.js',
+          'src/_js/services.js',
+          'src/_js/factories.js',
+          'src/_js/directives.js',
+          'src/_js/controllers.js',
+          'src/_js/site.js',
           '.tmp/config.js'
         ],
         dest: '.tmp/scripts.js'
@@ -93,7 +99,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: '.tmp',
           src: ['scripts.js'],
-          dest: 'static/js',
+          dest: '_site/js',
           ext: '.min.js'
         }]
       }
@@ -107,9 +113,9 @@ module.exports = function(grunt) {
         },
         files: [{
           expand: true,
-          cwd: 'src/scss/',
+          cwd: 'src/_scss/',
           src: ['*.scss'],
-          dest: 'static/css/',
+          dest: '_site/css/',
           ext: '.css'
         }]
       },
@@ -118,13 +124,20 @@ module.exports = function(grunt) {
     watch: {
       grunt: {files: ['Gruntfile.js']},
 
+      jekyll: {
+        files: [
+          'src/**/*.{html,yml,md,mkd,markdown}'
+        ],
+        tasks: ['jekyll']
+      },
+
       scripts: {
-        files: ['config.json', 'src/js/**/*.js', '.tmp/config.js'],
+        files: ['config.json', 'src/_js/**/*.js', '.tmp/config.js'],
         tasks: ['concat', 'uglify']
       },
 
       sass: {
-        files: 'src/scss/**/*.scss',
+        files: 'src/_scss/**/*.scss',
         tasks: ['sass'],
         options: {
           livereload: true,
@@ -135,7 +148,7 @@ module.exports = function(grunt) {
 
   require('load-grunt-tasks')(grunt);
 
-  grunt.registerTask('production', ['ngconstant:production', 'bower_concat', 'concat', 'uglify', 'sass']);
-  grunt.registerTask('build', ['ngconstant:development', 'bower_concat', 'concat', 'uglify', 'sass']);
-  grunt.registerTask('default', ['build','watch']);
+  grunt.registerTask('production', ['jekyll', 'ngconstant:production', 'bower_concat', 'concat', 'uglify', 'sass']);
+  grunt.registerTask('build', ['jekyll', 'ngconstant:development', 'bower_concat', 'concat', 'uglify', 'sass']);
+  grunt.registerTask('default', ['build', 'watch']);
 }
