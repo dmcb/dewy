@@ -5,10 +5,14 @@ module.exports = function(grunt) {
 
     jekyll: {
       development: {
-        raw: 'environment: development'
+        options: {
+          config: '_config.yml,_config.development.yml'
+        }
       },
       production: {
-        raw: 'environment: production'
+        options: {
+          config: '_config.yml'
+        }
       }
     },
 
