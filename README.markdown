@@ -1,4 +1,4 @@
-![Dewy](static/img/dewy.png "Dewy")
+![Dewy](src/img/dewy.png "Dewy")
 
 # Dewy website
 
