@@ -742,7 +742,7 @@ controllers.controller('subscriptionController', ['$scope', '$timeout', '$rootSc
 					$scope.disabled = false;
 				})
 				.success(function(response) {
-					$scope.error = response;
+					authService.setUser(response);
 				});
 			}
 			else {
