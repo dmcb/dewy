@@ -2,8 +2,8 @@
     <base href="/">
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Dewy{% if page.title %} | {{ page.title | escape }}{% endif %}</title>
-    <meta name="description" content="Take back Drupal with Dewy, a service that lets you know what your Drupal sites are doing at your higher-ed institution, multi-site organization or digital agency.">
+    <title>{{ site.title }}{% if page.title %} | {{ page.title | escape }}{% endif %}</title>
+    <meta name="description" content="{{ site.description }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta property="fb:app_id" content="296276577393043" />
@@ -24,6 +24,8 @@
     <meta name="twitter:description" content="A service that lets you know what your Drupal sites are doing at your higher-ed institution, multi-site organization or digital agency.">
     <meta name="twitter:image" content="https://dewy.io/img/dewy-banner.png">
     <meta name="twitter:image:alt" content="Dewy banner">
+
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
 
     <script src="https://use.typekit.net/nxo7wkc.js"></script>
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
