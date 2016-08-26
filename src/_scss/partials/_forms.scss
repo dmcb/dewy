@@ -102,6 +102,9 @@ fieldset {
 }
 
 select, input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     font-family: inherit;
     font-size: 1em;
     border-width: solid 1px $light-blue;
@@ -119,9 +122,6 @@ select, input {
 }
 
 select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
     cursor: pointer;
     background: #FFF url(/img/select.svg);
     background-size: contain;
