@@ -239,10 +239,16 @@ header {
 
                     &.important {
                         border-color: $white;
+                        margin-left: 1em;
+                        margin-right: 1em;
 
                         &:hover {
                             background-color: $white;
                             color: $blue;
+                        }
+
+                        &:last-child {
+                            margin-right: 0;
                         }
                     }
                 }

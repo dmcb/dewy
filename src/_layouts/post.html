@@ -8,8 +8,8 @@
                     <nav>
                         <input type="checkbox" id="menu-toggle-value" />
                         <div>
-                            <ul ng-show="!appPage" class="home">
-                                <li><a href="/signup">Sign up</a></li><li><a href="/signon" class="important">Sign on</a></li>
+                            <ul class="home">
+                                {% include non-app-menu.html %}
                             </ul>
                         </div>
                         <div class="logo">
