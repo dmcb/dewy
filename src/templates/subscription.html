@@ -22,9 +22,14 @@
                 </script>
             </form>
         </section> -->
+        <section class="card" ng-if="customer">
+            <h3>Card on file</h3>
+            <p ng-if="customer.error">{(customer.error)}</p>
+            <p ng-if="!customer.error">Dewy is using the credit card ending with <strong>{(customer.sources.data[0].last4)}</strong></p>
+        </section>
         <section class="subscribe">
-            <h3 ng-show="!currentUser.subscription.stripeID">Start your subscription</h3>
-            <h3 ng-show="currentUser.subscription.stripeID">Update your subscription</h3>
+            <h3 ng-show="!currentUser.subscription.subscriptionID">Start your subscription</h3>
+            <h3 ng-show="currentUser.subscription.subscriptionID">Update your subscription</h3>
             <form stripe:form="saveCustomer">
                 <div class="plans">
                     <input type="radio" id="basic" name="plan" value="basic" checked="checked">

@@ -235,7 +235,21 @@ app.config(['$httpProvider', '$routeProvider', '$interpolateProvider', '$locatio
 			controller: 'subscriptionController',
 			menuItem: 'subscription',
 			appPage: true,
-			requiresAuthorization: true
+			requiresAuthorization: true,
+			resolve: {
+				customer: ['authService', 'userFactory', function(authService, userFactory) {
+					return userFactory.getCustomer(authService.currentUser().uid)
+					.then(function(result) {
+						return result;
+					}, function(error) {
+						if (error.status == '400') {
+							return;
+						} else {
+							return {error: 'Your customer information could not be retrieved at this time.'};
+						}
+					});
+				}]
+			}
 		}).
 		// when('/users/:filter?', {
 		// 	templateUrl: 'templates/overview.html',

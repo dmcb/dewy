@@ -451,6 +451,13 @@ factories.factory('userFactory', ['$http', '$httpParamSerializer', 'ENV', functi
 			});
 	}
 
+	userFactory.getCustomer = function(uid) {
+		return $http.get(ENV.api + 'users/' + uid + '/_subscription')
+			.then(function (response) {
+				return response.data;
+			});
+	}
+
 	userFactory.changeAccount = function(uid, existingPassword, newEmail, newPassword) {
 		var update = {
 			existingPassword: existingPassword,

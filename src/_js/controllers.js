@@ -728,8 +728,8 @@ controllers.controller('overviewUsersController', ['$scope',
 	function ($scope) {
 }]);
 
-controllers.controller('subscriptionController', ['$scope', '$timeout', '$rootScope', 'userFactory', 'authService', 'ENV',
-	function ($scope, $timeout, $rootScope, userFactory, authService, ENV) {
+controllers.controller('subscriptionController', ['$scope', '$timeout', '$rootScope', 'userFactory', 'authService', 'ENV', 'customer',
+	function ($scope, $timeout, $rootScope, userFactory, authService, ENV, customer) {
 		// Stripe.JS method
 		$scope.saveCustomer = function(status, response) {
 			$scope.error = null;
@@ -761,6 +761,8 @@ controllers.controller('subscriptionController', ['$scope', '$timeout', '$rootSc
 
 		$scope.disabled = false;
 		$scope.plan = 'basic';
+		$scope.customer = customer;
+
 }]);
 
 controllers.controller('verifyController', ['$scope', 'verifyData',
