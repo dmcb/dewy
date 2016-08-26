@@ -1,10 +1,12 @@
+---
+---
 <div class="shell">
     <section class="introduction">
         <h1>Take back Drupal.</h1>
         <p>The days of guessing what Drupal sites are doing at your higher-ed institution, multi-site organization or digital agency are over.</p>
     </section>
 </div>
-<div class="feature">
+<div class="body">
     <div class="shell">
         <section class="views">
             <h2>See it all</h2>
@@ -24,18 +26,25 @@
             <h2>Coming soon:<br/>Notifications, integrations, mailing lists and more!</h2>
             <p>Let your sites tell you when they need your attention. Create mailing lists of users. Talk to the Dewy API to create unique workflows. Powerful new features are on the way.</p>
         </section>
+    </div>
+</div>
+<div class="feature">
+    <div class="shell">
         <section class="getstarted">    
             <h2>How it works</h2>
-            <ul ng-if="env != 'production'">
+            {% if site.environment == 'development' %}
+            <ul>
                 <li><span class="step">1</span><span class="instruction"><a class="scroll" href="#signup">Sign up for Dewy</a> and get a unique key.</span></li>
                 <li><span class="step">2</span><span class="instruction">Install the <a href="https://www.drupal.org/project/dewy">Drupal module</a> with that key to any site you want insight into.</span></li>
                 <li><span class="step">3</span><span class="instruction">Get all the details on all your sites.</span></li>
             </ul>
-            <ul ng-if="env == 'production'">
+            {% else %}
+            <ul>
                 <li><span class="step">1</span><span class="instruction">Sign up for Dewy and get a unique key.</span></li>
                 <li><span class="step">2</span><span class="instruction">Install the Drupal module with that key to any site you want insight into.</span></li>
                 <li><span class="step">3</span><span class="instruction">Get all the details on all your sites.</span></li>
             </ul>
+            {% endif %}
         </section>
     </div>
 </div>

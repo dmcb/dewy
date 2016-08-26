@@ -11,7 +11,7 @@ section.introduction {
     }
 }
 
-div.feature {
+div.body {
     @include clearfix;
     background-color: $white;
     color: $grey;
@@ -25,50 +25,11 @@ div.feature {
             h2, p {
                 width: 100%;
             }
-
-            p {
-                padding-bottom: 3em;
-            }
         }
 
-        &.getstarted {
-            padding-bottom: 5em;
+        &:last-child {
+        padding-bottom: 4em;
             border-bottom: none;
-
-            ul {
-                clear: both;
-                padding: 0;
-
-                li {
-                    margin-top: 3em;
-                    display: block;
-
-                    span {
-                        line-height: 1.6;
-
-                        &.step {
-                            display: block;
-                            background-color: $blue;
-                            color: $white;
-                            border-radius: 1.5em;
-                            height: 1.5em;
-                            width: 1.5em;
-                            margin-left: auto;
-                            margin-right: auto;
-                            text-align: center;
-                            font-size: 2em;
-                            font-weight: bold;
-                        }
-
-                        &.instruction {
-                            text-align: center;
-                            display: block;
-                            margin-top: 2em;
-                            font-weight: bold;
-                        }
-                    }
-                }
-            }
         }
 
         .image {
@@ -87,14 +48,6 @@ div.feature {
 
     @include breakpoint($tablet) {
         section {
-            &.getstarted ul li {
-                @include float-span(8);
-
-                &:last-child {
-                    @include float-span(8,'last');
-                }
-            }
-
             .image {
                 overflow: hidden;
                 padding: 2em 2em 0 2em;
@@ -132,6 +85,62 @@ div.feature {
             .image {
                 padding-top: 2em;
                 @include grid-span(15,10);
+            }
+        }
+    }
+}
+
+div.feature {
+    @include clearfix;
+    background-color: $lighter-grey;
+    color: $grey;
+
+    section.getstarted {
+        padding-bottom: 5em;
+        border-bottom: none;
+
+        ul {
+            clear: both;
+            padding: 0;
+
+            li {
+                margin-top: 3em;
+                display: block;
+
+                span {
+                    line-height: 1.6;
+
+                    &.step {
+                        display: block;
+                        background-color: $blue;
+                        color: $white;
+                        border-radius: 1.5em;
+                        height: 1.5em;
+                        width: 1.5em;
+                        margin-left: auto;
+                        margin-right: auto;
+                        text-align: center;
+                        font-size: 2em;
+                        font-weight: bold;
+                    }
+
+                    &.instruction {
+                        text-align: center;
+                        display: block;
+                        margin-top: 2em;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+
+    @include breakpoint($tablet) {
+        section.getstarted ul li {
+            @include float-span(8);
+
+            &:last-child {
+                @include float-span(8,'last');
             }
         }
     }
