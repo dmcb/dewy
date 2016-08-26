@@ -133,7 +133,7 @@ module.exports = function(grunt) {
 
       jekyll: {
         files: ['src/**/*.{html,yml,md,mkd,markdown}'],
-        tasks: ['jekyll', 'concat', 'uglify', 'sass']
+        tasks: ['jekyll:development', 'concat', 'uglify', 'sass']
       },
 
       scripts: {
