@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
     {% include head.html %}
-    <body>
+    <body class="page">
         <div class="wrapper">
             <header>
                 <div class="shell">
@@ -20,13 +20,14 @@
                 </div>
             </header>
 
-            <div class="app">
-                <div class="feature">
-                    <div class="shell">
-                        <h2>{{ page.title }}</h2>
-                        {{ content }}
-                    </div>
+            <div class="shell">
+                <section class="content">
+                <h2>{{ page.title }}</h2>
+                <div class="meta">
+                    <span class="date">{{ page.date | date: "%B %d, %Y" }}</span>
                 </div>
+                {{ content }}
+                </section>
             </div>
 
             {% include footer.html %}

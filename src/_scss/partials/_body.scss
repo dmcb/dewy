@@ -13,31 +13,31 @@ body {
     height: 100%;
     background-color: $white;
     color: $white;
-    font-size: 10px;
+    font-size: 11px;
     font-family: $body-font;
 
     @include breakpoint($mobile-large) {
-        font-size: 11px;
-    }
-
-    @include breakpoint($tablet) {
         font-size: 12px;
     }
 
-    @include breakpoint($desktop) {
+    @include breakpoint($tablet) {
         font-size: 13px;
     }
 
-    @include breakpoint($desktop-medium) {
+    @include breakpoint($desktop) {
         font-size: 14px;
     }
 
-    @include breakpoint($desktop-large) {
+    @include breakpoint($desktop-medium) {
         font-size: 15px;
     }
 
-    @include breakpoint($desktop-extra-large) {
+    @include breakpoint($desktop-large) {
         font-size: 16px;
+    }
+
+    @include breakpoint($desktop-extra-large) {
+        font-size: 17px;
     }
 
     .wrapper {
@@ -95,6 +95,30 @@ body {
             li a:hover {
                 background-color: transparent;
                 color: $dark-blue;
+            }
+        }
+    }
+
+    &.page {
+        color: $grey;
+
+        .wrapper {
+            background: none;
+            background-color: $white;
+        }
+
+        header, footer {
+            background-color: $blue;
+            background-image: radial-gradient(circle, $blue 70%, $darkish-blue);
+            background-attachment: fixed;
+        }
+
+        section.content {
+            padding-bottom: 5em;
+
+            .meta {
+                margin-top: 1em;
+                color: $lightish-grey;
             }
         }
     }

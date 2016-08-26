@@ -21,12 +21,12 @@ Drupal 8 continues to mature and the possibility for large Drupal 7 organization
 
 So how can Dewy help?
 
-## 1. Spot sites with different module versions and pending upgrades
+### 1. Spot sites with different module versions and pending upgrades
 
-## 2. Find what modules aren't essential to your Drupal environment
+### 2. Find what modules aren't essential to your Drupal environment
 
-## 3. Hunt down abandoned modules
+### 3. Hunt down abandoned modules
 
-## 4. Identify what sites that don't need to be moved at all
+### 4. Identify what sites that don't need to be moved at all
 
-## 5. Organize what sites will be moved and what admins to contact
+### 5. Organize what sites will be moved and what admins to contact
