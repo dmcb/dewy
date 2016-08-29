@@ -1,3 +1,6 @@
+---
+layout: compress
+---
 <li class="rule-group-heading" ng-class="{top: !rule._parent}" ng-if="rule.operator">
     <a class="handle" ng-if="rule._parent"><i class="fa fa-bars"></i></a>
     <select ng-model="rule.operator" ng-options="operator as operator for operator in operators"></select>
