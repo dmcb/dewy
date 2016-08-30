@@ -13,31 +13,31 @@ body {
     height: 100%;
     background-color: $white;
     color: $white;
-    font-size: 11px;
+    font-size: 10px;
     font-family: $body-font;
 
     @include breakpoint($mobile-large) {
-        font-size: 12px;
+        font-size: 11px;
     }
 
     @include breakpoint($tablet) {
-        font-size: 13px;
+        font-size: 12px;
     }
 
     @include breakpoint($desktop) {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     @include breakpoint($desktop-medium) {
-        font-size: 15px;
+        font-size: 14px;
     }
 
     @include breakpoint($desktop-large) {
-        font-size: 16px;
+        font-size: 15px;
     }
 
     @include breakpoint($desktop-extra-large) {
-        font-size: 17px;
+        font-size: 16px;
     }
 
     .wrapper {
