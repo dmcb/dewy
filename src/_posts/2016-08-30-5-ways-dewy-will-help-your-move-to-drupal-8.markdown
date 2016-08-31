@@ -23,10 +23,38 @@ So how can Dewy help?
 
 ### 1. Spot sites with different module versions and pending upgrades
 
+Glancing through the modules list of all the sites we are looking to upgrade we can spot what modules are using the same version across our sites and what modules have multiple versions running.
+
+![Module versions](/img/posts/module-versions.gif)
+
+We can see what modules have new versions to be updated to and what sites need those updates.
+
+![Module updates](/img/posts/module-updates.gif)
+
 ### 2. Find what modules aren't essential to your Drupal environment
+
+There’s likely been a lot of modules made available to sites where the sites aren’t actually use any more. It’s easy to find modules that see little to no usage rates across our environment.
+
+![Module usage](/img/posts/module-usage.gif)
 
 ### 3. Hunt down abandoned modules
 
+There may be modules that are enabled on our sites that actually aren’t doing anything. We can take a look at webforms sites and find what what sites enable the module, but don’t actually have any webform content.
+
+![Module usage](/img/posts/sites-no-webforms.gif)
+
 ### 4. Identify what sites that don't need to be moved at all
 
+We can quickly check for sites that are better off being deprovisioned on our environment than upgraded to Drupal 8. Choose what factors matter to you. If the site is in maintenance mode, but hasn’t been edited in months, that’s a good sign that the site has been abandoned.
+
+![Module usage](/img/posts/sites-abandoned.gif)
+
+Sites that haven’t been logged into in the past year and are receiving nearly no traffic are probably good candidates for deprovisioning instead of a time consuming Drupal 8 migration.
+
+![Module usage](/img/posts/sites-no-visitors.gif)
+
 ### 5. Organize what sites will be moved and what admins to contact
+
+Taking a look through our sites, we can identify which ones are entirely on the latest versions of their modules and have no database updates pending. Tag them for upgrade so that we can refer to this list throughout the upgrade process
+
+![Module usage](/img/posts/sites-to-upgrade.gif)

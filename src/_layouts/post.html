@@ -25,11 +25,20 @@ layout: compress
 
             <div class="shell">
                 <section class="content">
-                <h2>{{ page.title }}</h2>
-                <div class="meta">
-                    <span class="date">{{ page.date | date: "%B %d, %Y" }}</span>
-                </div>
-                {{ content }}
+                    <h2>{{ page.title }}</h2>
+                    <div class="meta">
+                        <span class="date">{{ page.date | date: "%B %d, %Y" }}</span>
+                    </div>
+                    {{ content }}
+                </section>
+                <section class="cta">
+                    {% if site.environment == 'development' %}
+                    <p>Dewy is a service that lets you know what your Drupal sites are doing at your higher-ed institution, multi-site organization or digital agency.</p>
+                    <p><a href="/signup">Start your free trial today</a></p>
+                    {% else %}
+                    <p>Dewy is still under development.</p>
+                    <p>Please follow <a href="https://twitter.com/dewyapp" target="_blank">@dewyapp</a> on twitter for updates.</p>
+                    {% endif %}
                 </section>
             </div>
 

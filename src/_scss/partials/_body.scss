@@ -112,14 +112,5 @@ body {
             background-image: radial-gradient(circle, $blue 70%, $darkish-blue);
             background-attachment: fixed;
         }
-
-        section.content {
-            padding-bottom: 5em;
-
-            .meta {
-                margin-top: 1em;
-                color: $lightish-grey;
-            }
-        }
     }
 }
