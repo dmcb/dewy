@@ -9,9 +9,9 @@
     <meta property="fb:app_id" content="296276577393043" />
     <meta property="og:url" content="https://dewy.io/" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Take back Drupal" />
+    <meta property="og:title" content="{{ page.title || site.title }}" />
     <meta property="og:site_name" content="Dewy" />
-    <meta property="og:description" content="Take back Drupal with Dewy, a service that lets you know what your Drupal sites are doing at your higher-ed institution, multi-site organization or digital agency." />
+    <meta property="og:description" content="{{ site.description }}" />
     <meta property="og:image" content="https://dewy.io/img/dewy-banner.png" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
@@ -20,8 +20,8 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@dewyapp">
     <meta name="twitter:creator" content="@derekmcb">
-    <meta name="twitter:title" content="Dewy | Take back Drupal">
-    <meta name="twitter:description" content="A service that lets you know what your Drupal sites are doing at your higher-ed institution, multi-site organization or digital agency.">
+    <meta name="twitter:title" content="Dewy | {{ page.title || site.title }}">
+    <meta name="twitter:description" content="{{ site.shortDescription }}">
     <meta name="twitter:image" content="https://dewy.io/img/dewy-banner.png">
     <meta name="twitter:image:alt" content="Dewy banner">
 

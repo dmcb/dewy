@@ -1,5 +1,6 @@
 h1, h2, h3 {
     font-family: $header-font;
+    margin-bottom: 0.5em;
 }
 
 h1 {
@@ -13,5 +14,4 @@ h2 {
 h3 {
     font-size: 2em;
     border-bottom: 1px solid $light-grey;
-    margin-bottom: 0.5em;
 }
