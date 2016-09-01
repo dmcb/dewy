@@ -1,52 +1,23 @@
 ---
-layout: compress
+layout: page
 ---
-<!doctype html>
-<html lang="en">
-    {% include head.html %}
-    <body class="page">
-        <div class="wrapper">
-            <header>
-                <div class="shell">
-                    <nav>
-                        <input type="checkbox" id="menu-toggle-value" />
-                        <div>
-                            <ul class="home">
-                                {% include non-app-menu.html %}
-                            </ul>
-                        </div>
-                        <div class="logo">
-                            <a href="/"><img src="/img/dewy-white.png" alt="Dewy"></a>
-                        </div>
-                        <label for="menu-toggle-value" id="menu-toggle" onclick=""><i class="fa fa-bars"></i></label>
-                    </nav>
-                </div>
-            </header>
-
-            <div class="shell">
-                <div class="post">
-                    <section class="meta">
-                        <h2>{{ page.title }}</h2>
-                        <div class="meta">
-                            <span class="date">{{ page.date | date: "%B %d, %Y" }}</span>
-                        </div>
-                    </section>
-                    <section class="content">
-                        {{ content }}
-                    </section>
-                    <section class="cta">
-                        {% if site.environment == 'development' %}
-                        <p>Dewy is a service that lets you know what your Drupal sites are doing at your higher-ed institution, multi-site organization or digital agency.</p>
-                        <p><a href="/signup">Start your free trial today</a></p>
-                        {% else %}
-                        <p>Dewy is still under development.</p>
-                        <p>Please follow <a href="https://twitter.com/dewyapp" target="_blank">@dewyapp</a> on twitter for updates.</p>
-                        {% endif %}
-                    </section>
-                </div>
-            </div>
-
-            {% include footer.html %}
+<div class="post">
+    <section class="meta">
+        <h2>{{ page.title }}</h2>
+        <div class="meta">
+            <span class="date">{{ page.date | date: "%B %d, %Y" }}</span>
         </div>
-    </body>
-</html>
+    </section>
+    <section class="content">
+        {{ content }}
+    </section>
+    <section class="cta">
+        {% if site.environment == 'development' %}
+        <p>Dewy is a service that lets you know what your Drupal sites are doing at your higher-ed institution, multi-site organization or digital agency.</p>
+        <p><a href="/signup">Start your free trial today</a></p>
+        {% else %}
+        <p>Dewy is still under development.</p>
+        <p>Please follow <a href="https://twitter.com/dewyapp" target="_blank">@dewyapp</a> on twitter for updates.</p>
+        {% endif %}
+    </section>
+</div>

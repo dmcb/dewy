@@ -7,7 +7,8 @@ div.post {
     }
 
     section.content {
-        padding-top: 0;
+        margin-top: 0;
+        margin-bottom: 0;
 
         ul {
             margin-left: 1em;
@@ -59,11 +60,12 @@ div.post {
         section.content {
             @include grid-span(15,1);
             clear: both;
-            padding-bottom: 5em;
+            margin-bottom: 5em;
         }
 
         section.cta {
             @include grid-span(8,17);
+            margin-top: 0;
             margin-bottom: 0;
         }
     }

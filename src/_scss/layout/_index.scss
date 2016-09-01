@@ -1,5 +1,5 @@
 section.introduction {
-    padding-bottom: 4em;
+    margin-bottom: 4em;
 
     p {
         font-size: 1.4em;
@@ -16,11 +16,11 @@ div.body {
     color: $grey;
 
     section {
-        padding-top: 4em;
-        padding-bottom: 0;
+        margin-top: 4em;
+        margin-bottom: 0;
 
         &:last-child {
-            padding-bottom: 4em;
+            margin-bottom: 4em;
         }
 
         &.notifications {
@@ -101,12 +101,11 @@ div.feature {
     color: $grey;
 
     section.getstarted {
-        padding-bottom: 5em;
+        margin-bottom: 5em;
         border-bottom: none;
 
         ul {
             clear: both;
-            padding: 0;
 
             li {
                 margin-top: 3em;

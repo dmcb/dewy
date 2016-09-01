@@ -1,5 +1,10 @@
 ---
 title: Blog
-layout: page
+layout: list
 permalink: blog/
 ---
+<ul class="index">
+{% for post in site.posts %}
+    <li><a href="{{ post.url | prepend: site.baseurl | prepend: site.url }}">{{ post.title }}</a></li>
+{% endfor %}
+</ul>

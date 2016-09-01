@@ -4,7 +4,7 @@ layout: compress
 <!doctype html>
 <html lang="en">
     {% include head.html %}
-    <body>
+    <body class="page">
         <div class="wrapper">
             <header>
                 <div class="shell">
@@ -23,17 +23,8 @@ layout: compress
                 </div>
             </header>
 
-            <div class="app">
-                <div class="shell">
-                    <section>
-                        <h2>{{ page.title }}</h2>
-                    </section>
-                </div>
-                <div class="feature">
-                    <div class="shell">
-                        {{ content }}
-                    </div>
-                </div>
+            <div class="shell">
+                {{ content }}
             </div>
 
             {% include footer.html %}

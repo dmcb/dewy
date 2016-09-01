@@ -1,0 +1,22 @@
+div.list {
+    section.content {
+        
+
+        ul.index {
+            margin-left: 0;
+            list-style: none;
+
+            a {
+                @extend h2;
+                background-color: $blue;
+                padding: 0.5em;
+                color: $white;
+                display: block;
+
+                &:hover {
+                    background-color: $dark-blue;
+                }
+            }
+        }
+    }
+}
