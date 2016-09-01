@@ -49,7 +49,7 @@ body {
         @include clearfix;
     }
 
-    &.app {
+    &.app, &.page {
         background-color: $blue;
         color: $grey;
 
@@ -68,7 +68,6 @@ body {
 
             ul {
                 color: $white;
-                background-color: $light-grey;
 
                 li a {
                     color: $blue;
@@ -99,18 +98,4 @@ body {
         }
     }
 
-    &.page {
-        color: $grey;
-
-        .wrapper {
-            background: none;
-            background-color: $white;
-        }
-
-        header, footer {
-            background-color: $blue;
-            background-image: radial-gradient(circle, $blue 70%, $darkish-blue);
-            background-attachment: fixed;
-        }
-    }
 }

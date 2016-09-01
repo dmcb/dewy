@@ -141,10 +141,6 @@ header {
         @include grid-span(4,1);
         margin-top: 0.75em;
 
-        @include breakpoint($tablet) {
-            position: absolute;
-        }
-
         img {
             max-height: 36px;
 
