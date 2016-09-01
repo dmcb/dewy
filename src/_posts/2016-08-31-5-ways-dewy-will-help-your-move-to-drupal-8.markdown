@@ -1,5 +1,6 @@
 ---
 title: 5 Ways Dewy Will Help Your Move To Drupal 8
+description: Drupal 8 continues to mature and the possibility for large Drupal 7 organizations to make the jump comfortably is becoming more real. But there's big pain points that will slow any migration down. How can Dewy help?
 ---
 Drupal 8 continues to mature and the possibility for large Drupal 7 organizations to make the jump comfortably is becoming more real. Having survived upgrading hundreds of sites for a large higher-ed institution from Drupal 5 to Drupal 7, I learned the biggest pain points that slowed the whole migration down:
 

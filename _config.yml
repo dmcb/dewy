@@ -1,6 +1,7 @@
 source: src
 destination: _site
 title: Dewy
+url: https://dewy.io
 description: Take back Drupal with Dewy, a service that lets you know what your Drupal sites are doing at your higher-ed institution, multi-site organization or digital agency.
 shortDescription: A service that lets you know what your Drupal sites are doing at your higher-ed institution, multi-site organization or digital agency.
 defaults:
