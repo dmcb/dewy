@@ -1,6 +1,5 @@
 div.list {
     section.content {
-        
 
         ul.index {
             margin-left: 0;
@@ -9,9 +8,10 @@ div.list {
             a {
                 @extend h2;
                 background-color: $blue;
-                padding: 0.5em;
+                padding: 0.1em 0.25em;
                 color: $white;
-                display: block;
+                line-height: 1.35em;
+                display: inline;
 
                 &:hover {
                     background-color: $dark-blue;
