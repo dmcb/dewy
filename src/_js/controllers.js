@@ -390,7 +390,7 @@ controllers.controller('manageController', ['$scope', '$timeout', '$moment', 'si
 					$scope.sites[index].submitStatus = 'submitting';
 				},1500);
 				$scope.sites[index].audited.date = $moment().fromNow();
-				$scope.sites[index].audited.error = error.statusCode;
+				$scope.sites[index].audited.error = error;
 			})
 			.success(function(result) {
 				$scope.sites[index].submitMessage = 'Success';
