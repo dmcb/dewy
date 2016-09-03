@@ -151,6 +151,11 @@ div.main {
             border-bottom: solid 1px $light-blue;
             overflow: scroll;
 
+            li {
+                margin: 0;
+            }
+
+
             @include breakpoint($tablet) {
                 overflow: hidden;
             }
@@ -280,10 +285,6 @@ div.main {
             .sites {
                 clear: both;
                 width: 150%;
-
-                li {
-                    margin: 0;
-                }
 
                 .noresults {
                     padding-top: 3em;
@@ -464,6 +465,12 @@ div.main {
                                     text-align: left;
                                 }
                             }
+                        }
+                    }
+
+                    @include breakpoint($tablet) {
+                        &:last-child div.detail-view {
+                            margin-bottom: 0;
                         }
                     }
                 }
