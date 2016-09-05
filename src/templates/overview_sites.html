@@ -107,10 +107,13 @@ layout: compress
                 </ul>
                 <ul ng-if="openSite.detail == 'activity'">
                     <li>
-                        <h3>Last access to the site was <span am-time-ago="openSite.attributes.lastAccess * 1000" class="number"></span></h3>
+                        <h3><span class="number">{(openSite.attributes.hitsPerDay)}</span> hits per day</h3>
                     </li>
                     <li>
-                        <h3>Last access for an average user was <span am-time-ago="openSite.attributes.avgLastAccess * 1000" class="number"></span></h3>
+                        <h3>Last log in to the site was <span am-time-ago="openSite.attributes.lastAccess * 1000" class="number"></span></h3>
+                    </li>
+                    <li>
+                        <h3>Last log in for an average user was <span am-time-ago="openSite.attributes.avgLastAccess * 1000" class="number"></span></h3>
                     </li>
                     <li>
                         <h3>Last modification to the site was <span am-time-ago="openSite.attributes.lastModified * 1000"  class="number"></span></h3>
