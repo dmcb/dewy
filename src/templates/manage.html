@@ -20,7 +20,7 @@ layout: compress
         </section>
         <section class="offline-sites" ng-if="sites.length">
             <h3>Offline sites</h3>
-            <p>The following sites are linked to your account but aren't able to report to Dewy.</p>
+            <p>The following sites are linked to your account but haven't reported to Dewy.</p>
             <div ng-repeat="site in sites" class="offline-site">
                 <div class="load" ng-if="site.submit"><span class="load-message" ng-class="{error: site.submitStatus == 'error', success: site.submitStatus == 'success'}">{(site.submitMessage)}</span></div>
                 <ul>
