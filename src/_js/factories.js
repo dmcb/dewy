@@ -186,28 +186,34 @@ factories.factory('moduleFactory', ['$http', 'ENV', function($http, ENV) {
 					    rankedArray = Array.apply(null, { length: arrayOfRankings.length }).map(function () { return []; }),
 					    temp, i;
 
+					// For each attribute ...
 					for (i = 0; i < length; i++) {
 					    temp = [];
+					    // ... create a temporary array of values (v) to module index (i)
 					    arrayOfRankings.forEach(function (a, j) {
 					        temp.push({ v: a[i], i: j });
 					    });
-					    var mostRecentValue;
-					    var mostRecentIndex = 0;
+
+					    // Sort temporary array by value (v) 
+					    // This gives us each module ranked in order of value size
 					    temp.sort(function (a, b) {
 					        return a.v - b.v;
-					    })
+					    });
 
 					    // Get minimum and maximum value for attribute
 					    var minimum = temp[0].v;
 					    var maximum = temp[temp.length-1].v;
-					    var increment = maximum - minimum / 9;
+					    var increment = (maximum - minimum) / 9;
 
+					    // Instead of leaving in value ranges of 189,900 to 1 (which will skew results)
+					    // Normalize to scale 1 out of 10
 					    temp.forEach(function (a, j) {
 					    	if (!increment) {
 								rankedArray[a.i][i] = 1;
 							}
 							else {
-								rankedArray[a.i][i] = Math.log((temp[j].v - minimum / increment) + 1);
+								rankedArray[a.i][i] = ((temp[j].v - minimum) / increment) + 1;
+								// rankedArray[a.i][i] = Math.log(((temp[j].v - minimum) / increment) + 1);
 							}
 					    });
 					}
@@ -320,28 +326,34 @@ factories.factory('sitesFactory', ['$http', 'ENV', function($http, ENV) {
 					    rankedArray = Array.apply(null, { length: arrayOfRankings.length }).map(function () { return []; }),
 					    temp, i;
 
+					// For each attribute ...
 					for (i = 0; i < length; i++) {
 					    temp = [];
+					    // ... create a temporary array of values (v) to site index (i)
 					    arrayOfRankings.forEach(function (a, j) {
 					        temp.push({ v: a[i], i: j });
 					    });
-					    var mostRecentValue;
-					    var mostRecentIndex = 0;
+
+					    // Sort temporary array by value (v) 
+					    // This gives us each site ranked in order of value size
 					    temp.sort(function (a, b) {
 					        return a.v - b.v;
-					    })
+					    });
 
 					    // Get minimum and maximum value for attribute
 					    var minimum = temp[0].v;
 					    var maximum = temp[temp.length-1].v;
-					    var increment = maximum - minimum / 9;
+					    var increment = (maximum - minimum) / 9;
 
+					    // Instead of leaving in value ranges of 189,900 to 1 (which will skew results)
+					    // Normalize to scale 1 out of 10
 					    temp.forEach(function (a, j) {
 					    	if (!increment) {
 								rankedArray[a.i][i] = 1;
 							}
 							else {
-								rankedArray[a.i][i] = Math.log((temp[j].v - minimum / increment) + 1);
+								rankedArray[a.i][i] = ((temp[j].v - minimum) / increment) + 1;
+								// rankedArray[a.i][i] = Math.log(((temp[j].v - minimum) / increment) + 1);
 							}
 					    });
 					}
@@ -367,7 +379,7 @@ factories.factory('sitesFactory', ['$http', 'ENV', function($http, ENV) {
 					for (var i in rankedArray) {
 						response.data[i].attributes['complexity'] = rankedArray[i][0] + rankedArray[i][1] * 2 + rankedArray[i][2] + rankedArray[i][3];
 						response.data[i].attributes['size'] = rankedArray[i][4] + rankedArray[i][5] + rankedArray[i][6] + rankedArray[i][7] + rankedArray[i][8];
-						response.data[i].attributes['activity'] = rankedArray[i][9] * 2 + rankedArray[i][10] + rankedArray[i][11] * 2 + rankedArray[i][12] + rankedArray[i][13] * 3;
+						response.data[i].attributes['activity'] = rankedArray[i][9] * 4 + rankedArray[i][10] * 2 + rankedArray[i][11] * 2 + rankedArray[i][12] + rankedArray[i][13] * 9;
 						response.data[i].attributes['health'] = (rankedArray[i][14] + rankedArray[i][15] + rankedArray[i][16] * 3) * -1;
 					}
 
