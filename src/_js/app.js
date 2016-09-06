@@ -357,15 +357,17 @@ app.run(['authService', '$rootScope', '$location', '$http', '$window', 'ENV', fu
 		$rootScope.appPage = current.appPage;
 		$rootScope.menuItem = current.menuItem;
 	});
-	$rootScope.$on('$routeChangeError', function(event, current, previous) {
-		if (previous) {
-			$window.history.back();
+	$rootScope.$on('$routeChangeError', function(event, current, previous, rejection) {
+		if (rejection.status != 401) {
+			if (previous) {
+				$window.history.back();
+			}
+			else {
+				$location.path('/').replace();
+			}
+			$rootScope.isViewLoading = false;
+			$rootScope.$broadcast('flashMessage', {content: 'There is a problem communicating with Dewy at this time', type: 'error'});
 		}
-		else {
-			$location.path('/').replace();
-		}
-		$rootScope.isViewLoading = false;
-		$rootScope.$broadcast('flashMessage', {content: 'There is a problem communicating with Dewy at this time', type: 'error'});
 	});
 	$rootScope.$on('signOff:success', function() {
 		$location.path('/signon');

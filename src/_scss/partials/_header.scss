@@ -1,5 +1,4 @@
 #flash-message {
-    background-color: $blue;
     color: $white;
     text-align: center;
     font-weight: bold;
@@ -12,6 +11,7 @@
         padding: 0.5em 0;
         display: block;
         height: 2em;
+        overflow: hidden;
 
         &.error {
             background-color: $red;

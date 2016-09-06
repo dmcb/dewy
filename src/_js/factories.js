@@ -1,6 +1,6 @@
 var factories = angular.module('dewyFactories', []);
 
-factories.factory('authInterceptor', ['authService', '$location', '$q', '$injector', '$window', function(authService, $location, $q, $injector, $window) {
+factories.factory('authInterceptor', ['$rootScope', 'authService', '$location', '$q', '$injector', '$window', function($rootScope, authService, $location, $q, $injector, $window) {
 	var authInterceptor = {};
 
 	authInterceptor.request = function(config) {
@@ -19,17 +19,8 @@ factories.factory('authInterceptor', ['authService', '$location', '$q', '$inject
 	authInterceptor.responseError = function(responseError) {
 		// No longer authorized
 		if (responseError.status == 401) {
-			// But if proxy API sent back new access token
-			if (responseError.data) {
-				var $http = $injector.get('$http');
-				var deferred = $q.defer();
-				authService.update(responseError.data);
-                return $http(responseError.config);
-			}
-			else {
-				console.log('Access denied');
-				authService.signOff();
-			}
+			$rootScope.$broadcast('flashMessage', {content: 'Your session has expired', type: 'error'});
+			authService.signOff();
 		}
 		return $q.reject(responseError);
 	}
