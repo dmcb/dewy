@@ -110,29 +110,29 @@ layout: compress
                         <h3><span class="number">{(openSite.attributes.hitsPerDay)}</span> hits per day</h3>
                     </li>
                     <li>
-                        <h3>Last log in to the site was <span am-time-ago="openSite.attributes.lastAccess * 1000" class="number"></span></h3>
-                    </li>
-                    <li>
-                        <h3>Last log in for an average user was <span am-time-ago="openSite.attributes.avgLastAccess * 1000" class="number"></span></h3>
-                    </li>
-                    <li>
                         <h3>Last modification to the site was <span am-time-ago="openSite.attributes.lastModified * 1000"  class="number"></span></h3>
                     </li>
                     <li>
                         <h3>Last modification for an average node was <span am-time-ago="openSite.attributes.avgLastModified * 1000"  class="number"></span></h3>
                     </li>
+                    <li>
+                        <h3>Last log in to the site was <span am-time-ago="openSite.attributes.lastAccess * 1000" class="number"></span></h3>
+                    </li>
+                    <li>
+                        <h3>Last log in for an average user was <span am-time-ago="openSite.attributes.avgLastAccess * 1000" class="number"></span></h3>
+                    </li>
                 </ul>
                 <ul ng-if="openSite.detail == 'health'">
                     <li>
-                        <h3><span class="number">{(openSite.attributes.modulesWithUpdates)}</span> modules have updates</h3>
-                        <ul class="items" ng-if="openSite.details.modulesWithUpdates.length">
-                            <li ng-repeat="item in openSite.details.modulesWithUpdates">{(item)}</li>
+                        <h3><span class="number">{(openSite.attributes.modulesWithSecurityUpdates)}</span> projects have security updates</h3>
+                        <ul class="items" ng-if="openSite.details.modulesWithSecurityUpdates.length">
+                            <li ng-repeat="item in openSite.details.modulesWithSecurityUpdates">{(item)}</li>
                         </ul>
                     </li>
                     <li>
-                        <h3><span class="number">{(openSite.attributes.modulesWithSecurityUpdates)}</span> modules have security updates</h3>
-                        <ul class="items" ng-if="openSite.details.modulesWithSecurityUpdates.length">
-                            <li ng-repeat="item in openSite.details.modulesWithSecurityUpdates">{(item)}</li>
+                        <h3><span class="number">{(openSite.attributes.modulesWithUpdates)}</span> projects have updates</h3>
+                        <ul class="items" ng-if="openSite.details.modulesWithUpdates.length">
+                            <li ng-repeat="item in openSite.details.modulesWithUpdates">{(item)}</li>
                         </ul>
                     </li>
                     <li>
