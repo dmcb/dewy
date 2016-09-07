@@ -15,8 +15,7 @@ layout: compress
             <header>
                 <div class="shell">
                     <nav>
-                        <input type="checkbox" id="menu-toggle-value" />
-                        <div>
+                        <div class="menu">
                             <ul ng-show="!appPage" class="home">
                                 {% include non-app-menu.html %}
                             </ul>
@@ -31,7 +30,7 @@ layout: compress
                         <div class="logo">
                             <a href="/"><img src="/img/dewy-white.png" alt="Dewy" ng-if="!appPage"><img src="/img/dewy.png" alt="Dewy" ng-if="appPage"></a>
                         </div>
-                        <label for="menu-toggle-value" id="menu-toggle" onclick=""><i class="fa fa-bars"></i></label>
+                        <label id="menu-toggle" onclick=""><i class="fa fa-bars"></i></label>
                     </nav>
                 </div>
             </header>

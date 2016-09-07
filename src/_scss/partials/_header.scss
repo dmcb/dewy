@@ -54,10 +54,14 @@ header {
         display: block;
     }
 
-    ul {
+    .menu {
+        display: none;
         background-color: $white;
         margin-left: -16px;
         margin-right: -16px;
+    }
+
+    ul {
         text-align: right;
 
         li {
@@ -188,8 +192,13 @@ header {
         position: absolute;
     }
 
-
     @include breakpoint($tablet) {
+        .menu {
+            margin-left: 0;
+            margin-right: 0;
+            display: block !important;
+        }
+
         ul {
             @include grid-span(24,1);
             margin-left: 0;
