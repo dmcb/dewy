@@ -469,7 +469,8 @@ controllers.controller('signonController', ['authService', '$scope', 'userFactor
 					data: $httpParamSerializer({
 						grant_type: 'password',
 						username: $scope.username,
-						password: $scope.password
+						password: $scope.password,
+						remember: $scope.remember
 					})
 				})
 				.success(function(result) {

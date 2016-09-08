@@ -102,9 +102,6 @@ fieldset {
 }
 
 select, input {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
     font-family: inherit;
     font-size: 1em;
     border-width: solid 1px $light-blue;
@@ -119,6 +116,12 @@ select, input {
         width: auto;
         margin-top: 0;
     }
+}
+
+select, input[type=text], input[type=password] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 select {
