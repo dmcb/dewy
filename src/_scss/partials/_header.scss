@@ -12,6 +12,7 @@
         display: block;
         height: 2em;
         overflow: hidden;
+        background-color: $blue;
 
         &.error {
             background-color: $red;
