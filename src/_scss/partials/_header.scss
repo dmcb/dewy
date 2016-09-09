@@ -1,4 +1,4 @@
-#flash-message {
+#flash-message, #subscription-notice {
     color: $white;
     text-align: center;
     font-weight: bold;
@@ -7,8 +7,8 @@
     width: 100%;
     z-index: 1;
 
-    li {
-        padding: 0.5em 0;
+    li, span {
+        padding: 0.5em 1em;
         display: block;
         height: 2em;
         overflow: hidden;
@@ -39,6 +39,19 @@
         &.ng-leave.ng-leave-active {
             height: 0;
         }
+
+        a {
+            color: $white;
+            text-decoration: underline;
+        }
+    }
+}
+
+#subscription-notice {
+    position: static;
+
+    span {
+        height: auto;
     }
 }
 

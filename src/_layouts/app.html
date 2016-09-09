@@ -7,12 +7,15 @@ layout: compress
     <body ng-controller="appController" ng-class="{app: appPage}">
         <div id="load" ng-if="isViewLoading"></div>
         <div class="wrapper">
-            <div id="flash-message">
+            <ul id="flash-message">
                 <li ng-repeat="message in flashMessages track by $index" class="{(message.type)}">
                     {(message.content)}
                 </li>
-            </div>
+            </ul>
             <header>
+                <div id="subscription-notice" ng-if="currentUser.subscription.expired">
+                    <span class="notice">Your subscription has elapsed and features have been disabled. <a href="/subscription">Please renew your subscription.</a></span>
+                </div>
                 <div class="shell">
                     <nav>
                         <div class="menu">
