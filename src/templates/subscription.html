@@ -10,7 +10,7 @@ layout: compress
                 <li>You signed up with Dewy on <strong>{(currentUser.created*1000 | date:'MMMM d, yyyy')}</strong></li>
                 <li ng-if="!currentUser.subscription.expired">Your subscription is <strong>{(currentUser.subscription.type)}</strong></li>
                 <li ng-if="currentUser.subscription.expired">Your subscription expired <strong>{(currentUser.subscription.endDate*1000 | date:'MMMM d, yyyy')}</strong></li>
-                <li ng-if="!currentUser.subscription.expired'">Your subscription expires <strong>{(currentUser.subscription.endDate*1000 | date:'MMMM d, yyyy')}</strong></li>
+                <li ng-if="!currentUser.subscription.expired">Your subscription expires <strong>{(currentUser.subscription.endDate*1000 | date:'MMMM d, yyyy')}</strong></li>
             </ul>
         </section>
 <!--         <section class="checkout">
