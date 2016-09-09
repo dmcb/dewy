@@ -8,9 +8,8 @@
     z-index: 1;
 
     li, span {
-        padding: 0.5em 1em;
+        padding: 2em 1em;
         display: block;
-        height: 2em;
         overflow: hidden;
         background-color: $blue;
 
@@ -45,14 +44,16 @@
             text-decoration: underline;
         }
     }
+
+    @include breakpoint($tablet) {
+        li, span {
+            padding: 1em 1em;
+        }
+    }
 }
 
 #subscription-notice {
     position: static;
-
-    span {
-        height: auto;
-    }
 }
 
 header {
