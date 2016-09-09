@@ -19,7 +19,7 @@ factories.factory('authInterceptor', ['$rootScope', 'authService', '$location', 
 	authInterceptor.responseError = function(responseError) {
 		// No longer authorized
 		if (responseError.status == 401) {
-			$rootScope.$broadcast('flashMessage', {content: 'Your session has expired', type: 'error'});
+			$rootScope.$broadcast('flashMessage', {content: 'Your session has expired', type: 'notice'});
 			authService.signOff();
 		}
 		return $q.reject(responseError);
@@ -300,7 +300,11 @@ factories.factory('sitesFactory', ['$http', 'ENV', function($http, ENV) {
 	}
 
 	sitesFactory.getAll = function(fid) {
-		return $http.get(ENV.api + 'sites/_filter/' + fid)
+		var route = ENV.api + 'sites/_filter';
+		if (fid) {
+			route = route + '/' + fid;
+		}
+		return $http.get(route)
 			.then(function (response) {
 
 				var arrayOfRankings = [];

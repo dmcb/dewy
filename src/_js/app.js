@@ -366,7 +366,12 @@ app.run(['authService', '$rootScope', '$location', '$http', '$window', 'ENV', fu
 				$location.path('/').replace();
 			}
 			$rootScope.isViewLoading = false;
-			$rootScope.$broadcast('flashMessage', {content: 'There is a problem communicating with Dewy at this time', type: 'error'});
+			if (rejection.status == 402) {
+				$rootScope.$broadcast('flashMessage', {content: 'Please upgrade your subscription to use that feature', type: 'notice'});
+			}
+			else {
+				$rootScope.$broadcast('flashMessage', {content: 'There is a problem communicating with Dewy at this time', type: 'error'});
+			}
 		}
 	});
 	$rootScope.$on('signOff:success', function() {
