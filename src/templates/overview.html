@@ -10,10 +10,11 @@ layout: compress
             </select>
             <ul class="folders">
                 <li><a href="/{(view)}" ng-class="{selected: !currentFilter}">All sites</a></li>
-                <li ng-repeat="filter in filterIndex.filters" ng-include="'templates/filter_menu_item.html'"></li>
+                <li ng-if="!currentUser.subscription.expired" ng-repeat="filter in filterIndex.filters" ng-include="'templates/filter_menu_item.html'"></li>
+                <li ng-if="currentUser.subscription.expired" ng-repeat="filter in filterIndex.filters" ng-include="'templates/filter_menu_item_expired.html'"></li>
             </ul>
             <div class="actions">
-                <a href="/filter" class="button">Add filter <i class="fa fa-plus-circle"></i></a>
+                <a href="/filter" class="button" ng-if="!currentUser.subscription.expired">Add filter <i class="fa fa-plus-circle"></i></a>
             </div>
         </nav>
         <div class="view">
@@ -23,9 +24,12 @@ layout: compress
                         <a href="/sites" ng-if="!currentFilter">Sites</a>
                         <a href="/sites/{(currentFilter.fid)}" ng-if="currentFilter">Sites</a>
                     </li>
-                    <li ng-class="{selected: view == 'modules'}">
+                    <li ng-class="{selected: view == 'modules'}" ng-if="!currentUser.subscription.expired">
                         <a href="/modules" ng-if="!currentFilter">Modules</a>
                         <a href="/modules/{(currentFilter.fid)}" ng-if="currentFilter">Modules</a>
+                    </li>
+                    <li ng-class="{selected: view == 'modules'}" ng-if="currentUser.subscription.expired">
+                        <span>Modules</span>
                     </li>
                 </ul>
             </div>

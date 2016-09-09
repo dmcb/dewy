@@ -10,7 +10,7 @@ layout: compress
             </ul>
             <form>
                 <fieldset>
-                    <a href="/filter" class="button">Add filter <i class="fa fa-plus-circle"></i></a>
+                    <a href="/filter" class="button" ng-if="!currentUser.subscription.expired">Add filter <i class="fa fa-plus-circle"></i></a>
                 </fieldset>
             </form>
         </section>

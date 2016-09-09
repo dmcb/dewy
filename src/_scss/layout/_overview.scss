@@ -70,7 +70,7 @@ div.main {
                 li {
                     display: inline;
 
-                    a {
+                    a, span {
                         color: $dark-blue;
                         display: inline-block;
                         padding: 0.5em 1em;
@@ -84,6 +84,16 @@ div.main {
                             text-decoration: none;
                             color: $white;
                             background-color: $dark-blue;
+                        }
+                    }
+
+                    span {
+                        color: $lightish-grey;
+                        border-color: $light-grey;
+
+                        &:hover {
+                            color: $lightish-grey;
+                            background-color: transparent;
                         }
                     }
 
@@ -234,8 +244,13 @@ div.main {
                     li {
                         position: relative;
 
-                        a {
+                        a, p {
                             padding: 0.75em 1em;
+                        }
+
+                        p {
+                            line-height: inherit;
+                            font-size: inherit;
                         }
                     }
                 }
@@ -255,7 +270,7 @@ div.main {
                         height: 2em;
                     }
 
-                    a {
+                    a, span {
                         background-color: $light-grey;
                         color: $grey;
                         display: block;
@@ -278,6 +293,11 @@ div.main {
                         @include add-arrow(up, 0.4em);
                             top: 0.4em;
                         }
+                    }
+
+                    span:hover {
+                        color: $grey;
+                        background-color: $light-grey;
                     }
                 }
             }
@@ -354,7 +374,7 @@ div.main {
                             &.title {
                                 background-color: $white;
 
-                                a {
+                                a, p {
                                     display: block;
                                     color: $grey;
                                     padding-right: 0;
@@ -374,6 +394,10 @@ div.main {
                                             margin-right: 0.5em;
                                         }
                                     }
+                                }
+
+                                p:hover {
+                                    color: $grey;
                                 }
                             }
                         }
@@ -611,7 +635,7 @@ div.main {
         li {
             display: inline;
 
-            a {
+            a, p {
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap;
@@ -658,17 +682,23 @@ div.main {
                     }
                 }
             }
+
+            p {
+                color: $lightish-grey;
+                font-size: inherit;
+                line-height: inherit;
+            }
         }
 
-        &.folders li > ul li a {
+        &.folders li > ul li a, &.folders li > ul li p {
             padding-left: 2.75em;
         }
 
-        &.folders li > ul li > ul li a {
+        &.folders li > ul li > ul li a, &.folders li > ul li > ul li p {
             padding-left: 4.1em;
         }
 
-        &.folders li > ul li > ul li > ul li a {
+        &.folders li > ul li > ul li > ul li a, &.folders li > ul li > ul li > ul li p {
             padding-left: 5.5em;
         }
     }

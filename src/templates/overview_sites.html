@@ -6,34 +6,34 @@ layout: compress
         <ul class="site">
             <li class="title"><a href="" ng-class="{selected: sort.column=='title', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('title')">{(filteredSites.length)} sites</a></li>
             <ul class="variables">
-                <li class="complexity"><a href="" ng-class="{selected: sort.column=='complexity', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('complexity')">Complexity</a></li>
-                <li class="size"><a href="" ng-class="{selected: sort.column=='size', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('size')">Size</a></li>
-                <li class="activity"><a href="" ng-class="{selected: sort.column=='activity', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('activity')">Activity</a></li>
-                <li class="health"><a href="" ng-class="{selected: sort.column=='health', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('health')">Health</a></li>
+                <li class="complexity"><a href="" ng-if="!currentUser.subscription.expired" ng-class="{selected: sort.column=='complexity', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('complexity')">Complexity</a><span ng-if="currentUser.subscription.expired">Complexity</span></li>
+                <li class="size"><a href="" ng-if="!currentUser.subscription.expired" ng-class="{selected: sort.column=='size', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('size')">Size</a><span ng-if="currentUser.subscription.expired">Size</span></li>
+                <li class="activity"><a href="" ng-if="!currentUser.subscription.expired" ng-class="{selected: sort.column=='activity', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('activity')">Activity</a><span ng-if="currentUser.subscription.expired">Activity</span></li>
+                <li class="health"><a href="" ng-if="!currentUser.subscription.expired" ng-class="{selected: sort.column=='health', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('health')">Health</a><span ng-if="currentUser.subscription.expired">Health</span></li>
             </ul>
         </ul>
     </div>
     <div class="sites">
         <div ng-if="!filteredSites.length" class="noresults">
-            <span ng-if="!query && !currentFilter"><i class="fa fa-exclamation-triangle"></i> You haven't added any sites to Dewy. <a href="/manage">Manage your sites.</a></span>
-            <span ng-if="!query && currentFilter"><i class="fa fa-exclamation-triangle"></i> No sites meet your filter criteria. <a href="/filter/{(currentFilter.fid)}">Edit your filter.</a></span>            
+            <span ng-if="!query && !currentFilter"><i class="fa fa-exclamation-triangle"></i> You haven't added any sites to Dewy. <a href="/manage" ng-if="!currentUser.subscription.expired">Manage your sites.</a></span>
+            <span ng-if="!query && currentFilter"><i class="fa fa-exclamation-triangle"></i> No sites meet your filter criteria. <a href="/filter/{(currentFilter.fid)}" ng-if="!currentUser.subscription.expired">Edit your filter.</a></span>            
             <span ng-if="query"><i class="fa fa-exclamation-triangle"></i> Your search returned no results.</span>
         </div>
         <div ng-repeat="site in filteredSites = (sites | filter:query) | orderBy:sort.column:sort.descending" class="site">
             <ul class="site">
-                <li class="title" ng-class="{open: openSite.sid == site.sid && openSite.detail == 'meta'}"><a href="" ng-click="openDetails(sites.indexOf(site), 'meta')"><span class="title"><div class="point" ng-if="site.tags.length"></div>{(site.title)}</span></a></li>
+                <li class="title" ng-class="{open: openSite.sid == site.sid && openSite.detail == 'meta'}"><a href="" ng-if="!currentUser.subscription.expired" ng-click="openDetails(sites.indexOf(site), 'meta')"><span class="title"><div class="point" ng-if="site.tags.length"></div>{(site.title)}</span></a><p ng-if="currentUser.subscription.expired"><span class="title">{(site.title)}</span></p></li>
                 <ul class="variables">
                     <li class="complexity" ng-class="{open: openSite.sid == site.sid && openSite.detail == 'complexity'}">
-                        <a href="" ng-click="openDetails(sites.indexOf(site), 'complexity')"><div class="point" ng-repeat="i in getNumber(site.complexity) track by $index"></div></a>
+                        <a href="" ng-if="!currentUser.subscription.expired" ng-click="openDetails(sites.indexOf(site), 'complexity')"><div class="point" ng-repeat="i in getNumber(site.complexity) track by $index"></div></a>
                     </li>
                     <li class="size" ng-class="{open: openSite.sid == site.sid && openSite.detail == 'size'}">
-                        <a href="" ng-click="openDetails(sites.indexOf(site), 'size')"><div class="point" ng-repeat="i in getNumber(site.size) track by $index"></div></a>
+                        <a href="" ng-if="!currentUser.subscription.expired" ng-click="openDetails(sites.indexOf(site), 'size')"><div class="point" ng-repeat="i in getNumber(site.size) track by $index"></div></a>
                     </li>
                     <li class="activity" ng-class="{open: openSite.sid == site.sid && openSite.detail == 'activity'}">
-                        <a href="" ng-click="openDetails(sites.indexOf(site), 'activity')"><div class="point" ng-repeat="i in getNumber(site.activity) track by $index"></div></a>
+                        <a href="" ng-if="!currentUser.subscription.expired" ng-click="openDetails(sites.indexOf(site), 'activity')"><div class="point" ng-repeat="i in getNumber(site.activity) track by $index"></div></a>
                     </li>
                     <li class="health" ng-class="{open: openSite.sid == site.sid && openSite.detail == 'health'}">
-                        <a href="" ng-click="openDetails(sites.indexOf(site), 'health')"><div class="point" ng-repeat="i in getNumber(site.health) track by $index"></div></a>
+                        <a href="" ng-if="!currentUser.subscription.expired" ng-click="openDetails(sites.indexOf(site), 'health')"><div class="point" ng-repeat="i in getNumber(site.health) track by $index"></div></a>
                     </li>
                 </ul>
             </ul>
