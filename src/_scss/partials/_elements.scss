@@ -31,3 +31,14 @@ hr {
 li {
     margin-bottom: 0.5em;
 }
+
+pre.highlight {
+    overflow-x: scroll;
+    background-color: $lighter-grey;
+    padding: 1em;
+    margin-bottom: 2em;
+}
+
+code {
+    font-family: $code-font;
+}
