@@ -1,5 +1,5 @@
 ---
-title: Stop Scaring Your Clients And Users With The Update Module
+title: Stop The Update Module From Scaring Your Clients And Users
 description: The update module provides an important view of what modules are out-of-date and insecure on your Drupal site. But to your users and clients, the list is confusing, alarming, and the more they see these warnings before you can get to them, the more risk to your reputation.
 ---
 
