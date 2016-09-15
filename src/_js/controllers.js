@@ -63,6 +63,9 @@ controllers.controller('appController', ['$scope', '$location', '$timeout', 'aut
 		$scope.signOff = function() {
 			authService.signOff();
 		}
+		$scope.$on('signOff:success', function(event, data) {
+			$scope.currentUser = null;
+		});
 		$scope.$on('currentUser:finishUpdate', function(event, data) {
 			$scope.currentUser = data;
 		});

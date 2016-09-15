@@ -24,10 +24,10 @@ services.service('dewySession', ['$window', function ($window) {
 		return null;
 	}
 	this.getUser = function() {
-		if ('user' in $window.sessionStorage) {
+		if ('user' in $window.sessionStorage && $window.sessionStorage.user != "undefined") {
 			return JSON.parse($window.sessionStorage.user);
 		}
-		else if ('user' in $window.localStorage) {
+		else if ('user' in $window.localStorage && $window.localStorage.user != "undefined") {
 			return JSON.parse($window.localStorage.user);
 		}
 		return null;
