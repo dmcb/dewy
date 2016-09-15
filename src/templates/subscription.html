@@ -8,7 +8,7 @@ layout: compress
             <h3>Details</h3>
             <ul>
                 <li>You signed up with Dewy on <strong>{(currentUser.created*1000 | date:'MMMM d, yyyy')}</strong></li>
-                <li ng-if="!currentUser.subscription.expired">Your subscription is <strong>{(currentUser.subscription.type)}</strong></li>
+                <li ng-if="!currentUser.subscription.expired">You are on the <strong>{(currentUser.subscription.type)}</strong> plan</li>
                 <li ng-if="currentUser.subscription.expired">Your subscription expired <strong>{(currentUser.subscription.endDate*1000 | date:'MMMM d, yyyy')}</strong></li>
                 <li ng-if="!currentUser.subscription.expired">Your subscription expires <strong>{(currentUser.subscription.endDate*1000 | date:'MMMM d, yyyy')}</strong></li>
             </ul>
@@ -36,7 +36,7 @@ layout: compress
             <h3 ng-show="currentUser.subscription.subscriptionID">Update your subscription</h3>
             <form stripe:form="saveCustomer">
                 <div class="plans">
-                    <input type="radio" id="basic" name="plan" value="basic" checked="checked">
+                    <input type="radio" id="basic" name="plan" value="basic" ng-checked="currentUser.subscription.type == 'trial' || currentUser.subscription.type == 'basic'">
                     <label for="basic" class="basic" ng-click="setPlan('basic')">
                         <div class="plan">
                             <i class="fa fa-check-circle-o" aria-hidden="true"></i>
@@ -50,7 +50,7 @@ layout: compress
                             <li>Custom site filters</li>
                         </ul>
                     </label>
-                    <!-- <input type="radio" id="pro" name="plan" value="basic"> -->
+                    <!-- <input type="radio" id="pro" name="plan" value="pro" ng-checked="currentUser.subscription.type == 'pro'"> -->
                     <label for="pro" class="pro">
                         <div class="plan">
                             <i class="fa fa-check-circle-o" aria-hidden="true"></i>
@@ -63,7 +63,7 @@ layout: compress
                             <li>Maillist generation</li>
                         </ul>
                     </label>
-                    <!-- <input type="radio" id="enterprise" name="plan" value="basic"> -->
+                    <!-- <input type="radio" id="enterprise" name="plan" value="enterprise" ng-checked="currentUser.subscription.type == 'enterprise'"> -->
                     <label for="enterprise" class="enterprise">
                         <div class="plan">
                             <i class="fa fa-check-circle-o" aria-hidden="true"></i>
