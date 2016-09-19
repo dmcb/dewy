@@ -368,8 +368,9 @@ factories.factory('sitesFactory', ['$http', 'ENV', function($http, ENV) {
 					// 12 avgLastAccess
 					// 13 hitsPerDay
 					// 14 databaseUpdates
-					// 15 modulesWithUpdates
-					// 16 modulesWithSecurityUpdates
+					// 15 projectsWithUpdates
+					// 16 projectsWithSecurityUpdates
+					// 17 enabledProjects
 
 					for (var i in rankedArray) {
 						response.data[i].attributes['complexity'] = rankedArray[i][0] + rankedArray[i][1] * 2 + rankedArray[i][2] + rankedArray[i][3];
@@ -411,9 +412,18 @@ factories.factory('sitesFactory', ['$http', 'ENV', function($http, ENV) {
 								response.data[i][attribute] = ((response.data[i].attributes[attribute] - attributes[attribute]['minimum']) / attributes[attribute]['increment']) + 1;
 							}
 						}
+						// The health stuff isn't normalized based on what sites are showing, but is a separate calculation
+						var nonRelativeHealthValue = 
+							Math.log(5 - (response.data[i].attributes['databaseUpdates']/response.data[i].attributes['enabledModules'] +
+							response.data[i].attributes['projectsWithUpdates']/response.data[i].attributes['enabledProjects'] +
+							response.data[i].attributes['projectsWithSecurityUpdates']/response.data[i].attributes['enabledProjects'] * 3)) / Math.log(5) * 9 + 1;
+							// (1 - Math.log(response.data[i].attributes['databaseUpdates']/response.data[i].attributes['enabledModules'] +
+							// response.data[i].attributes['projectsWithUpdates']/response.data[i].attributes['enabledProjects'] +
+							// response.data[i].attributes['projectsWithSecurityUpdates']/response.data[i].attributes['enabledProjects'] * 3) / Math.log(5)) * 9 + 1;
+
+						response.data[i]['health'] = (response.data[i]['health'] * (response.data.length-1) + nonRelativeHealthValue) / response.data.length;
 					}
 				}
-
 				return response.data;
 			});
 	}
