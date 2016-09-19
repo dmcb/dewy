@@ -371,6 +371,96 @@ div.main {
                                 font-size: 0.9em;
                             }
 
+                            &.health-1 {
+                                .point {
+                                    background-color: $red;
+                                }
+
+                                a:hover .point {
+                                    background-color: $dark-red;
+                                }
+                            }
+
+                            &.health-2 {
+                                .point {
+                                    background-color: #f36670;
+                                }
+
+                                a:hover .point {
+                                    background-color: #c6535c;
+                                }
+                            }
+
+                            &.health-3 {
+                                .point {
+                                    background-color: #ea6f89;
+                                }
+
+                                a:hover .point {
+                                    background-color: #c15a73;
+                                }
+                            }
+
+                            &.health-4 {
+                                .point {
+                                    background-color: #e4769d;
+                                }
+
+                                a:hover .point {
+                                    background-color: #be6282;
+                                }
+                            }
+
+                            &.health-5 {
+                                .point {
+                                    background-color: #e17aab;
+                                }
+
+                                a:hover .point {
+                                    background-color: #bd6590;
+                                }
+                            }
+
+                            &.health-6 {
+                                .point {
+                                    background-color: #d57eb4;
+                                }
+
+                                a:hover .point {
+                                    background-color: #b56a96;
+                                }
+                            }
+
+                            &.health-7 {
+                                .point {
+                                    background-color: #bd81bd;
+                                }
+
+                                a:hover .point {
+                                    background-color: #a46f9d;
+                                }
+                            }
+
+                            &.health-8 {
+                                .point {
+                                    background-color: #a086c9;
+                                }
+
+                                a:hover .point {
+                                    background-color: #9274a4;
+                                }
+                            }
+
+                            &.health-9 {
+                                .point {
+                                    background-color: #7d8cd5;
+                                }
+
+                                a:hover .point {
+                                    background-color: #7b7cae;
+                                }
+                            }
+
                             &.title {
                                 background-color: $white;
 

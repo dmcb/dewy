@@ -32,7 +32,7 @@ layout: compress
                     <li class="activity" ng-class="{open: openSite.sid == site.sid && openSite.detail == 'activity'}">
                         <a href="" ng-if="!currentUser.subscription.expired" ng-click="openDetails(sites.indexOf(site), 'activity')"><div class="point" ng-repeat="i in getNumber(site.activity) track by $index"></div></a>
                     </li>
-                    <li class="health" ng-class="{open: openSite.sid == site.sid && openSite.detail == 'health'}">
+                    <li class="health health-{(getNumber(site.health).length)}" ng-class="{open: openSite.sid == site.sid && openSite.detail == 'health'}">
                         <a href="" ng-if="!currentUser.subscription.expired" ng-click="openDetails(sites.indexOf(site), 'health')"><div class="point" ng-repeat="i in getNumber(site.health) track by $index"></div></a>
                     </li>
                 </ul>
