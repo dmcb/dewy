@@ -568,6 +568,9 @@ controllers.controller('overviewController', ['$scope', '$location', 'sitesFacto
 				$location.path($scope.view);
 			}
 		}
+		$scope.getFloor = function(number) {
+			return new Array(Math.floor(number));
+		}
 		$scope.getNumber = function(number) {
 			return new Array(Math.round(number));
 		}
