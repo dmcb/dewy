@@ -126,13 +126,13 @@ layout: compress
                     <li>
                         <h3><span class="number">{(openSite.attributes.projectsWithSecurityUpdates)}</span> projects have security updates</h3>
                         <ul class="items" ng-if="openSite.details.projectsWithSecurityUpdates.length">
-                            <li ng-repeat="item in openSite.details.projectsWithSecurityUpdates">{(item)}</li>
+                            <li ng-repeat="item in openSite.details.projectsWithSecurityUpdates"><a href="https://www.drupal.org/project/{(item)}" target="_blank">{(item)}</a></li>
                         </ul>
                     </li>
                     <li>
                         <h3><span class="number">{(openSite.attributes.projectsWithUpdates)}</span> projects have updates</h3>
                         <ul class="items" ng-if="openSite.details.projectsWithUpdates.length">
-                            <li ng-repeat="item in openSite.details.projectsWithUpdates">{(item)}</li>
+                            <li ng-repeat="item in openSite.details.projectsWithUpdates"><a href="https://www.drupal.org/project/{(item)}" target="_blank">{(item)}</a></li>
                         </ul>
                     </li>
                     <li>
