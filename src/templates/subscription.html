@@ -33,47 +33,7 @@ layout: compress
         <section class="subscribe">
             <h3 ng-show="!currentUser.subscription.subscriptionID">Start your subscription</h3>
             <form stripe:form="saveCustomer"  ng-show="!currentUser.subscription.subscriptionID">
-                <div class="plans">
-                    <input type="radio" id="basic" name="plan" value="basic" ng-checked="currentUser.subscription.type == 'trial' || currentUser.subscription.type == 'basic'">
-                    <label for="basic" class="basic" ng-click="setPlan('basic')">
-                        <div class="plan">
-                            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                            <span class="type">Basic</span>
-                            <div class="price"><span class="unit">$</span><span class="dollars">39</span><span class="cents">99</span></div>
-                            <span class="permonth">per month</span>
-                        </div>
-                        <ul class="facts">
-                            <li>Unlimited sites</li>
-                            <li>Site and module data</li>
-                            <li>Custom site filters</li>
-                        </ul>
-                    </label>
-                    <!-- <input type="radio" id="pro" name="plan" value="pro" ng-checked="currentUser.subscription.type == 'pro'"> -->
-                    <label for="pro" class="pro">
-                        <div class="plan">
-                            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                            <span class="type">Pro</span>
-                            <p class="price">Coming soon</p>
-                        </div>
-                        <ul class="facts">
-                            <li>Everything in basic, plus:</li>
-                            <li>Notifications</li>
-                            <li>Maillist generation</li>
-                        </ul>
-                    </label>
-                    <!-- <input type="radio" id="enterprise" name="plan" value="enterprise" ng-checked="currentUser.subscription.type == 'enterprise'"> -->
-                    <label for="enterprise" class="enterprise">
-                        <div class="plan">
-                            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                            <span class="type">Enterprise</span>
-                            <p class="price">Coming soon</p>
-                        </div>
-                        <ul class="facts">
-                            <li>Everything in pro, plus:</li>
-                            <li>API end points</li>
-                            <li>Trends</li>
-                        </ul>
-                    </label>
+                <div class="plans" ng-include="'templates/subscription_plans.html'">
                 </div>
                 <span class="payment-errors"></span>
                 <fieldset>
@@ -98,47 +58,7 @@ layout: compress
             </form>
             <h3 ng-show="currentUser.subscription.subscriptionID">Change your subscription</h3>
             <form ng-show="currentUser.subscription.subscriptionID">
-                <div class="plans">
-                    <input type="radio" id="basic" name="plan" value="basic" ng-checked="currentUser.subscription.type == 'trial' || currentUser.subscription.type == 'basic'">
-                    <label for="basic" class="basic" ng-click="setPlan('basic')">
-                        <div class="plan">
-                            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                            <span class="type">Basic</span>
-                            <div class="price"><span class="unit">$</span><span class="dollars">39</span><span class="cents">99</span></div>
-                            <span class="permonth">per month</span>
-                        </div>
-                        <ul class="facts">
-                            <li>Unlimited sites</li>
-                            <li>Site and module data</li>
-                            <li>Custom site filters</li>
-                        </ul>
-                    </label>
-                    <!-- <input type="radio" id="pro" name="plan" value="pro" ng-checked="currentUser.subscription.type == 'pro'"> -->
-                    <label for="pro" class="pro">
-                        <div class="plan">
-                            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                            <span class="type">Pro</span>
-                            <p class="price">Coming soon</p>
-                        </div>
-                        <ul class="facts">
-                            <li>Everything in basic, plus:</li>
-                            <li>Notifications</li>
-                            <li>Maillist generation</li>
-                        </ul>
-                    </label>
-                    <!-- <input type="radio" id="enterprise" name="plan" value="enterprise" ng-checked="currentUser.subscription.type == 'enterprise'"> -->
-                    <label for="enterprise" class="enterprise">
-                        <div class="plan">
-                            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                            <span class="type">Enterprise</span>
-                            <p class="price">Coming soon</p>
-                        </div>
-                        <ul class="facts">
-                            <li>Everything in pro, plus:</li>
-                            <li>API end points</li>
-                            <li>Trends</li>
-                        </ul>
-                    </label>
+                <div class="plans" ng-include="'templates/subscription_plans.html'">
                 </div>
                 <span class="payment-errors"></span>
                 <fieldset>
