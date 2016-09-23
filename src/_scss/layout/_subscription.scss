@@ -143,6 +143,7 @@ section.subscribe {
 
     button {
         @include grid-span(12,7);
+        clear: both;
     }
 
     @include breakpoint($tablet) {

@@ -98,6 +98,11 @@ fieldset {
         @include layout(24) {
             @include grid-span(10,8);
         }
+        clear: both;
+
+        & + button, & + .button {
+            margin-top: 0;
+        }
     }
 }
 
