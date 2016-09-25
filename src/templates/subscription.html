@@ -29,10 +29,32 @@ layout: compress
         <section class="card" ng-if="customer.default_source.last4">
             <h3>Card on file</h3>
             <p ng-if="!customer.error">Dewy is using the credit card ending with <strong>{(customer.default_source.last4)}</strong></p>
+            <form>
+                <span class="payment-errors"></span>
+                <fieldset>
+                    <div class="field">
+                        <label>Card Number</label>
+                        <input type="text" maxlength="20" data-stripe="number">
+                    </div>
+
+                    <div class="field">
+                        <label>Expiration</label>
+                        <input type="text" maxlength="2" data-stripe="exp-month" placeholder="MM" class="month">
+                        <input type="text" maxlength="2" data-stripe="exp-year" placeholder="YY" class="year">
+                    </div>
+
+                    <div class="field">
+                        <label>CVC</label>
+                        <input type="text" maxlength="4" data-stripe="cvc" class="cvc">
+                    </div>
+                    <span class="error" ng-if="error">{( error )}</span>
+                    <button type="submit" ng-disabled="disabled">Update card details<i class="fa fa-credit-card-alt" aria-hidden="true"></i></button>
+                </fieldset>
+            </form>
         </section>
-        <section class="subscribe">
-            <h3 ng-show="!currentUser.subscription.subscriptionID">Start your subscription</h3>
-            <form stripe:form="saveCustomer"  ng-show="!currentUser.subscription.subscriptionID">
+        <section class="subscribe" ng-if="!currentUser.subscription.subscriptionID">
+            <h3>Start your subscription</h3>
+            <form stripe:form="saveCustomer">
                 <div class="plans" ng-include="'templates/subscription_plans.html'">
                 </div>
                 <span class="payment-errors"></span>
@@ -52,19 +74,22 @@ layout: compress
                         <label>CVC</label>
                         <input type="text" maxlength="4" data-stripe="cvc" class="cvc">
                     </div>
-                    <span class="error" ng-show="error">{( error )}</span>
+                    <span class="error" ng-if="error">{( error )}</span>
                     <button type="submit" ng-disabled="disabled">Start your {(plan)} plan<i class="fa fa-credit-card-alt" aria-hidden="true"></i></button>
                 </fieldset>
             </form>
-            <h3 ng-show="currentUser.subscription.subscriptionID">Change your subscription</h3>
-            <form ng-show="currentUser.subscription.subscriptionID">
-                <div class="plans" ng-include="'templates/subscription_plans.html'">
-                </div>
+        </section>
+        <section class="update" ng-if="currentUser.subscription.subscriptionID">
+            <h3>Update your subscription</h3>
+            <form>
+<!--                 <div class="plans" ng-include="'templates/subscription_plans.html'">
+                </div> -->
                 <span class="payment-errors"></span>
                 <fieldset>
-                    <button type="submit" ng-disabled="disabled">Change to {(plan)} plan<i class="fa fa-credit-card-alt" aria-hidden="true"></i></button>
-                    <button type="submit" ng-disabled="disabled">Cancel plan at period end<i class="fa fa-credit-card-alt" aria-hidden="true"></i></button>
+                    <a class="button" ng-if="currentUser.subscription.type != plan" ng-disabled="disabled">Change to {(plan)} plan<i class="fa fa-credit-card-alt" aria-hidden="true"></i></a>
+                    <a class="button" ng-disabled="disabled">Stop plan renewal<i class="fa fa-ban" aria-hidden="true"></i></a>
                 </fieldset>
             </form>
+        </section>
     </section>
 </div>
