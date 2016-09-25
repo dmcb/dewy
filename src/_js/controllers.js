@@ -750,6 +750,7 @@ controllers.controller('subscriptionController', ['$scope', '$timeout', '$rootSc
 				})
 				.success(function(response) {
 					authService.setUser(response);
+					$scope.$emit('flashMessage', {content: 'Your subscription has started', type: 'message'});
 				});
 			}
 			else {
