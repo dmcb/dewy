@@ -737,10 +737,28 @@ controllers.controller('overviewUsersController', ['$scope',
 
 controllers.controller('subscriptionController', ['$scope', '$timeout', '$rootScope', 'userFactory', 'authService', 'ENV', 'customer',
 	function ($scope, $timeout, $rootScope, userFactory, authService, ENV, customer) {
-		// Stripe.JS method
+		$scope.cancelSubscription = function(cancel) {
+			$scope.updateError = null;
+			$scope.cancelDisabled = true;
+			return userFactory.cancelSubscription($scope.currentUser.uid, cancel)
+			.error(function(error, status) {
+				$scope.updateError = error;
+				$scope.cancelDisabled = false;
+			})
+			.success(function(response) {
+				authService.setUser(response);
+				if (cancel) {
+					$scope.$emit('flashMessage', {content: 'You have cancelled your subscription, effective at the end of this period', type: 'message'});
+				}
+				else {
+					$scope.$emit('flashMessage', {content: 'You have resumed your subscription, it will renew at the end of this period', type: 'message'});
+				}
+			});
+		};
+
 		$scope.subscribeCustomer = function(status, response) {
-			$scope.error = null;
-			$scope.disabled = true;
+			$scope.subscribeError = null;
+			$scope.subscribeDisabled = true;
 			if (response.error) {
 				$scope.subscribeError = response.error.message;
 				$scope.subscribeDisabled = false;
@@ -749,7 +767,7 @@ controllers.controller('subscriptionController', ['$scope', '$timeout', '$rootSc
 				$scope.subscribeError = null;
 				return userFactory.subscribe($scope.currentUser.uid, response.id, $scope.plan)
 				.error(function(error, status) {
-					$scope.error = error;
+					$scope.subscribeError = error;
 					$scope.subscribeDisabled = false;
 				})
 				.success(function(response) {
@@ -760,8 +778,8 @@ controllers.controller('subscriptionController', ['$scope', '$timeout', '$rootSc
 		};
 
 		$scope.updateCard = function(status, response) {
-			$scope.error = null;
-			$scope.disabled = true;
+			$scope.updateError = null;
+			$scope.updateDisabled = true;
 			if (response.error) {
 				$scope.updateError = response.error.message;
 				$scope.updateDisabled = false;
@@ -770,7 +788,7 @@ controllers.controller('subscriptionController', ['$scope', '$timeout', '$rootSc
 				$scope.updateError = null;
 				// return userFactory.update($scope.currentUser.uid, response.id, $scope.plan)
 				// .error(function(error, status) {
-				// 	$scope.error = error;
+				// 	$scope.updateError = error;
 				// 	$scope.updateDisabled = false;
 				// })
 				// .success(function(response) {

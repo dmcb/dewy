@@ -12,6 +12,7 @@ layout: compress
                 <li ng-if="!currentUser.subscription.expired && !currentUser.subscription.subscriptionID">You are on the <strong>trial</strong> plan</li>
                 <li ng-if="currentUser.subscription.expired">Your subscription expired <strong>{(currentUser.subscription.endDate*1000 | date:'MMMM d, yyyy')}</strong></li>
                 <li ng-if="!currentUser.subscription.expired">Your subscription expires <strong>{(currentUser.subscription.endDate*1000 | date:'MMMM d, yyyy')}</strong></li>
+                <li ng-if="currentUser.subscription.cancelled && currentUser.subscription.subscriptionID">You have set your subscription to <strong>no longer renew</strong></li>
             </ul>
         </section>
 <!--         <section class="checkout">
@@ -31,7 +32,6 @@ layout: compress
             <h3>Update card on file</h3>
             <p ng-if="!customer.error && customer.default_source.last4">Dewy is using the credit card ending with <strong>{(customer.default_source.last4)}</strong></p>
             <form stripe:form="updateCard">
-                <span class="payment-errors"></span>
                 <fieldset>
                     <div class="field">
                         <label>Card Number</label>
@@ -58,7 +58,6 @@ layout: compress
             <form stripe:form="subscribeCustomer">
                 <div class="plans" ng-include="'templates/subscription_plans.html'">
                 </div>
-                <span class="payment-errors"></span>
                 <fieldset>
                     <div class="field">
                         <label>Card Number</label>
@@ -85,10 +84,11 @@ layout: compress
             <form>
 <!--                 <div class="plans" ng-include="'templates/subscription_plans.html'">
                 </div> -->
-                <span class="payment-errors"></span>
+                <span class="error" ng-if="updateError">{( updateError )}</span>
                 <fieldset>
-                    <a class="button" ng-if="currentUser.subscription.type != plan" ng-disabled="disabled">Change to {(plan)} plan<i class="fa fa-credit-card-alt" aria-hidden="true"></i></a>
-                    <a class="button" ng-disabled="disabled">Stop plan renewal<i class="fa fa-ban" aria-hidden="true"></i></a>
+                    <a class="button" ng-if="currentUser.subscription.type != plan" ng-disabled="changeDisabled">Change to {(plan)} plan<i class="fa fa-credit-card-alt" aria-hidden="true"></i></a>
+                    <a class="button" ng-if="!currentUser.subscription.cancelled" ng-disabled="cancelDisabled" ng-click="cancelSubscription(true)">Cancel subscription<i class="fa fa-ban" aria-hidden="true"></i></a>
+                    <a class="button" ng-if="currentUser.subscription.cancelled" ng-disabled="cancelDisabled" ng-click="cancelSubscription(false)">Resume subscription<i class="fa fa-ban" aria-hidden="true"></i></a>
                 </fieldset>
             </form>
         </section>

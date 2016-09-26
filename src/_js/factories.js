@@ -476,6 +476,16 @@ factories.factory('userFactory', ['$http', '$httpParamSerializer', 'ENV', functi
 			});
 	}
 
+	userFactory.cancelSubscription = function(uid, cancel) {
+		return $http.put(ENV.api + 'users/' + uid + '/_subscription', {cancel: cancel})
+			.success(function (response) {
+				return response.data;
+			})
+			.error(function (error, status) {
+				return error;
+			});
+	}
+
 	userFactory.changeAccount = function(uid, existingPassword, newEmail, newPassword) {
 		var update = {
 			existingPassword: existingPassword,
