@@ -48,8 +48,8 @@ layout: compress
                         <label>CVC</label>
                         <input type="text" maxlength="4" data-stripe="cvc" class="cvc">
                     </div>
-                    <span class="error" ng-if="updateError">{( updateError )}</span>
-                    <button type="submit" ng-disabled="updateDisabled">Update card details<i class="fa fa-credit-card-alt" aria-hidden="true"></i></button>
+                    <span class="error" ng-if="updateCardError">{( updateCardError )}</span>
+                    <button type="submit" ng-disabled="updateCardDisabled">Update card details<i class="fa fa-credit-card-alt" aria-hidden="true"></i></button>
                 </fieldset>
             </form>
         </section>

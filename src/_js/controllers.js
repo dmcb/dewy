@@ -778,18 +778,18 @@ controllers.controller('subscriptionController', ['$scope', '$timeout', '$rootSc
 		};
 
 		$scope.updateCard = function(status, response) {
-			$scope.updateError = null;
-			$scope.updateDisabled = true;
+			$scope.updateCardError = null;
+			$scope.updateCardDisabled = true;
 			if (response.error) {
-				$scope.updateError = response.error.message;
-				$scope.updateDisabled = false;
+				$scope.updateCardError = response.error.message;
+				$scope.updateCardDisabled = false;
 			}
 			else {
-				$scope.updateError = null;
+				$scope.updateCardError = null;
 				// return userFactory.update($scope.currentUser.uid, response.id, $scope.plan)
 				// .error(function(error, status) {
-				// 	$scope.updateError = error;
-				// 	$scope.updateDisabled = false;
+				// 	$scope.updateCardError = error;
+				// 	$scope.updateCardDisabled = false;
 				// })
 				// .success(function(response) {
 				// 	authService.setUser(response);
