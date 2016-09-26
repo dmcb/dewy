@@ -541,7 +541,7 @@ factories.factory('userFactory', ['$http', '$httpParamSerializer', 'ENV', functi
 	}
 
 	userFactory.subscribe = function(uid, stripeToken, planType) {
-		return $http.post(ENV.api + 'users/' + uid + '/_subscription/' + planType, {stripeToken: stripeToken})
+		return $http.post(ENV.api + 'users/' + uid + '/_subscription', {planType: planType, stripeToken: stripeToken})
 			.success(function (response) {
 				return response.data;
 			})
