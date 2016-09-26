@@ -141,7 +141,7 @@ section.card, section.subscribe, section.update {
         @include grid-span(4,7);
     }
 
-    button {
+    button, a.button {
         @include grid-span(12,7);
         clear: both;
     }

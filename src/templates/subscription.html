@@ -8,7 +8,8 @@ layout: compress
             <h3>Details</h3>
             <ul>
                 <li>You signed up with Dewy on <strong>{(currentUser.created*1000 | date:'MMMM d, yyyy')}</strong></li>
-                <li ng-if="!currentUser.subscription.expired">You are on the <strong>{(currentUser.subscription.type)}</strong> plan</li>
+                <li ng-if="!currentUser.subscription.expired && currentUser.subscription.subscriptionID">You are on the <strong>{(currentUser.subscription.type)}</strong> plan</li>
+                <li ng-if="!currentUser.subscription.expired && !currentUser.subscription.subscriptionID">You are on the <strong>trial</strong> plan</li>
                 <li ng-if="currentUser.subscription.expired">Your subscription expired <strong>{(currentUser.subscription.endDate*1000 | date:'MMMM d, yyyy')}</strong></li>
                 <li ng-if="!currentUser.subscription.expired">Your subscription expires <strong>{(currentUser.subscription.endDate*1000 | date:'MMMM d, yyyy')}</strong></li>
             </ul>
@@ -26,9 +27,9 @@ layout: compress
                 </script>
             </form>
         </section> -->
-        <section class="card" ng-if="customer.default_source.last4">
-            <h3>Card on file</h3>
-            <p ng-if="!customer.error">Dewy is using the credit card ending with <strong>{(customer.default_source.last4)}</strong></p>
+        <section class="card" ng-if="currentUser.subscription.subscriptionID">
+            <h3>Update card on file</h3>
+            <p ng-if="!customer.error && customer.default_source.last4">Dewy is using the credit card ending with <strong>{(customer.default_source.last4)}</strong></p>
             <form stripe:form="updateCard">
                 <span class="payment-errors"></span>
                 <fieldset>
