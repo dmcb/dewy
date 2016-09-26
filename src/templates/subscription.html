@@ -88,7 +88,7 @@ layout: compress
                 <fieldset>
                     <a class="button" ng-if="currentUser.subscription.type != plan" ng-disabled="changeDisabled">Change to {(plan)} plan<i class="fa fa-credit-card-alt" aria-hidden="true"></i></a>
                     <a class="button" ng-if="!currentUser.subscription.cancelled" ng-disabled="cancelDisabled" ng-click="cancelSubscription(true)">Cancel subscription<i class="fa fa-ban" aria-hidden="true"></i></a>
-                    <a class="button" ng-if="currentUser.subscription.cancelled" ng-disabled="cancelDisabled" ng-click="cancelSubscription(false)">Resume subscription<i class="fa fa-ban" aria-hidden="true"></i></a>
+                    <a class="button" ng-if="currentUser.subscription.cancelled" ng-disabled="cancelDisabled" ng-click="cancelSubscription(false)">Resume subscription<i class="fa fa-play" aria-hidden="true"></i></a>
                 </fieldset>
             </form>
         </section>
