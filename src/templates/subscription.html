@@ -29,7 +29,7 @@ layout: compress
         <section class="card" ng-if="customer.default_source.last4">
             <h3>Card on file</h3>
             <p ng-if="!customer.error">Dewy is using the credit card ending with <strong>{(customer.default_source.last4)}</strong></p>
-            <form>
+            <form stripe:form="updateCard">
                 <span class="payment-errors"></span>
                 <fieldset>
                     <div class="field">
@@ -47,14 +47,14 @@ layout: compress
                         <label>CVC</label>
                         <input type="text" maxlength="4" data-stripe="cvc" class="cvc">
                     </div>
-                    <span class="error" ng-if="error">{( error )}</span>
-                    <button type="submit" ng-disabled="disabled">Update card details<i class="fa fa-credit-card-alt" aria-hidden="true"></i></button>
+                    <span class="error" ng-if="updateError">{( updateError )}</span>
+                    <button type="submit" ng-disabled="updateDisabled">Update card details<i class="fa fa-credit-card-alt" aria-hidden="true"></i></button>
                 </fieldset>
             </form>
         </section>
         <section class="subscribe" ng-if="!currentUser.subscription.subscriptionID">
             <h3>Start your subscription</h3>
-            <form stripe:form="saveCustomer">
+            <form stripe:form="subscribeCustomer">
                 <div class="plans" ng-include="'templates/subscription_plans.html'">
                 </div>
                 <span class="payment-errors"></span>
@@ -74,8 +74,8 @@ layout: compress
                         <label>CVC</label>
                         <input type="text" maxlength="4" data-stripe="cvc" class="cvc">
                     </div>
-                    <span class="error" ng-if="error">{( error )}</span>
-                    <button type="submit" ng-disabled="disabled">Start your {(plan)} plan<i class="fa fa-credit-card-alt" aria-hidden="true"></i></button>
+                    <span class="error" ng-if="subscribeError">{( subscribeError )}</span>
+                    <button type="submit" ng-disabled="subscribeDisabled">Start your {(plan)} plan<i class="fa fa-credit-card-alt" aria-hidden="true"></i></button>
                 </fieldset>
             </form>
         </section>

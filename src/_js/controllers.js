@@ -738,24 +738,45 @@ controllers.controller('overviewUsersController', ['$scope',
 controllers.controller('subscriptionController', ['$scope', '$timeout', '$rootScope', 'userFactory', 'authService', 'ENV', 'customer',
 	function ($scope, $timeout, $rootScope, userFactory, authService, ENV, customer) {
 		// Stripe.JS method
-		$scope.saveCustomer = function(status, response) {
+		$scope.subscribeCustomer = function(status, response) {
 			$scope.error = null;
 			$scope.disabled = true;
-			if (status == 200) {
-				$scope.error = null;
+			if (response.error) {
+				$scope.subscribeError = response.error.message;
+				$scope.subscribeDisabled = false;
+			}
+			else {
+				$scope.subscribeError = null;
 				return userFactory.subscribe($scope.currentUser.uid, response.id, $scope.plan)
 				.error(function(error, status) {
 					$scope.error = error;
-					$scope.disabled = false;
+					$scope.subscribeDisabled = false;
 				})
 				.success(function(response) {
 					authService.setUser(response);
 					$scope.$emit('flashMessage', {content: 'Your subscription has started', type: 'message'});
 				});
 			}
+		};
+
+		$scope.updateCard = function(status, response) {
+			$scope.error = null;
+			$scope.disabled = true;
+			if (response.error) {
+				$scope.updateError = response.error.message;
+				$scope.updateDisabled = false;
+			}
 			else {
-				$scope.error = response.error.message;
-				$scope.disabled = false;
+				$scope.updateError = null;
+				// return userFactory.update($scope.currentUser.uid, response.id, $scope.plan)
+				// .error(function(error, status) {
+				// 	$scope.error = error;
+				// 	$scope.updateDisabled = false;
+				// })
+				// .success(function(response) {
+				// 	authService.setUser(response);
+				// 	$scope.$emit('flashMessage', {content: 'Your subscription has started', type: 'message'});
+				// });
 			}
 		};
 
@@ -767,7 +788,6 @@ controllers.controller('subscriptionController', ['$scope', '$timeout', '$rootSc
 		$scope.stripeEndPoint = ENV.api + 'users/_subscription/' + $scope.currentUser.uid;
 		$scope.stripePublicKey = ENV.stripePublicKey;
 
-		$scope.disabled = false;
 		$scope.plan = 'basic';
 		$scope.customer = customer;
 
