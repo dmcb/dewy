@@ -21,6 +21,7 @@ app.config(['$httpProvider', '$routeProvider', '$interpolateProvider', '$locatio
 		when('/account', {
 			templateUrl: 'templates/account.html',
 			controller: 'accountController',
+			title: 'Account',
 			menuItem: 'account',
 			appPage: true,
 			requiresAuthorization: true
@@ -67,6 +68,7 @@ app.config(['$httpProvider', '$routeProvider', '$interpolateProvider', '$locatio
 		when('/filter/:filter?', {
 			templateUrl: 'templates/filter.html',
 			controller: 'filterController',
+			title: 'Filter',
 			appPage: true,
 			requiresAuthorization: true,
 			resolve: {
@@ -90,6 +92,7 @@ app.config(['$httpProvider', '$routeProvider', '$interpolateProvider', '$locatio
 		when('/filters', {
 			templateUrl: 'templates/filters.html',
 			controller: 'filtersController',
+			title: 'Filters',
 			menuItem: 'filters',
 			appPage: true,
 			requiresAuthorization: true,
@@ -106,6 +109,7 @@ app.config(['$httpProvider', '$routeProvider', '$interpolateProvider', '$locatio
 			templateUrl: 'templates/manage.html',
 			controller: 'manageController',
 			menuItem: 'manage',
+			title: 'Manage sites',
 			appPage: true,
 			requiresAuthorization: true,
 			resolve: {
@@ -120,6 +124,7 @@ app.config(['$httpProvider', '$routeProvider', '$interpolateProvider', '$locatio
 		when('/modules/:filter?', {
 			templateUrl: 'templates/overview.html',
 			controller: 'overviewController',
+			title: 'Modules',
 			menuItem: 'overview',
 			appPage: true,
 			requiresAuthorization: true,
@@ -160,11 +165,13 @@ app.config(['$httpProvider', '$routeProvider', '$interpolateProvider', '$locatio
 		when('/reset', {
 			templateUrl: 'templates/reset.html',
 			controller: 'signonController',
+			title: 'Reset password',
 			requiresAuthorization: false,
 		}).
 		when('/reset/:uid/:reset', {
 			templateUrl: 'templates/reset_response.html',
 			controller: 'resetController',
+			title: 'Reset password',
 			resolve: {
 				resetData: ['$rootScope', '$route', 'userFactory', function($rootScope, $route, userFactory) {
 					return userFactory.resetPassword($route.current.params.uid, $route.current.params.reset)
@@ -183,16 +190,19 @@ app.config(['$httpProvider', '$routeProvider', '$interpolateProvider', '$locatio
 		when('/signon', {
 			templateUrl: 'templates/signon.html',
 			controller: 'signonController',
+			title: 'Sign on',
 			requiresAuthorization: false,
 		}).
 		when('/signup', {
 			templateUrl: 'templates/signup.html',
 			controller: 'signupController',
+			title: 'Sign up',
 			requiresAuthorization: false,
 		}).
 		when('/sites/:filter?', {
 			templateUrl: 'templates/overview.html',
 			controller: 'overviewController',
+			title: 'Sites',
 			menuItem: 'overview',
 			appPage: true,
 			requiresAuthorization: true,
@@ -233,6 +243,7 @@ app.config(['$httpProvider', '$routeProvider', '$interpolateProvider', '$locatio
 		when('/subscription', {
 			templateUrl: 'templates/subscription.html',
 			controller: 'subscriptionController',
+			title: 'Subscription',
 			menuItem: 'subscription',
 			appPage: true,
 			requiresAuthorization: true,
@@ -293,6 +304,7 @@ app.config(['$httpProvider', '$routeProvider', '$interpolateProvider', '$locatio
 		when('/verify/:uid/:verify', {
 			templateUrl: 'templates/verify.html',
 			controller: 'verifyController',
+			title: 'Email verification',
 			resolve: {
 				verifyData: ['$rootScope', '$route', 'authService', 'userFactory', function($rootScope, $route, authService, userFactory) {
 					return userFactory.verify($route.current.params.uid, $route.current.params.verify)
@@ -312,6 +324,7 @@ app.config(['$httpProvider', '$routeProvider', '$interpolateProvider', '$locatio
 		}).
 		when('/', {
 			templateUrl: 'templates/index.html',
+			title: 'Take back Drupal',
 			requiresAuthorization: false,
 		}).
 		otherwise({
@@ -356,6 +369,7 @@ app.run(['authService', '$rootScope', '$location', '$http', '$window', 'ENV', fu
 		$rootScope.isViewLoading = false;
 		$rootScope.appPage = current.appPage;
 		$rootScope.menuItem = current.menuItem;
+		document.title = 'Dewy | ' + current.title;
 	});
 	$rootScope.$on('$routeChangeError', function(event, current, previous, rejection) {
 		if (rejection.status != 401) {
