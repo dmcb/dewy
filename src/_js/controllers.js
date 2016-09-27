@@ -786,15 +786,19 @@ controllers.controller('subscriptionController', ['$scope', '$timeout', '$rootSc
 			}
 			else {
 				$scope.updateCardError = null;
-				// return userFactory.update($scope.currentUser.uid, response.id, $scope.plan)
-				// .error(function(error, status) {
-				// 	$scope.updateCardError = error;
-				// 	$scope.updateCardDisabled = false;
-				// })
-				// .success(function(response) {
-				// 	authService.setUser(response);
-				// 	$scope.$emit('flashMessage', {content: 'Your subscription has started', type: 'message'});
-				// });
+				return userFactory.updateCard($scope.currentUser.uid, response.id)
+				.error(function(error, status) {
+					$scope.updateCardError = error;
+					$scope.updateCardDisabled = false;
+				})
+				.success(function(response) {
+					$scope.updateCardDisabled = false;
+					$scope.$emit('flashMessage', {content: 'Your credit card has been updated', type: 'message'});
+					userFactory.getCustomer($scope.currentUser.uid)
+					.then(function(result) {
+						$scope.customer = result;
+					});
+				});
 			}
 		};
 

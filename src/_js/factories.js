@@ -560,6 +560,16 @@ factories.factory('userFactory', ['$http', '$httpParamSerializer', 'ENV', functi
 			});
 	}
 
+	userFactory.updateCard = function(uid, source, planType) {
+		return $http.put(ENV.api + 'users/' + uid + '/_subscription', {source: source})
+			.success(function (response) {
+				return response.data;
+			})
+			.error(function (error, status) {
+				return error;
+			});
+	}
+
 	userFactory.verify = function(uid, verificationCode) {
 		var encodedClient = window.btoa(ENV.client_id + ':' + ENV.client_secret);
 		return $http({
