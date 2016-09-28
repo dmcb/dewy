@@ -69,6 +69,7 @@ div.main {
 
                 li {
                     display: inline;
+                    line-height: 1em;
 
                     a, span {
                         color: $dark-blue;
@@ -163,6 +164,7 @@ div.main {
 
             li {
                 margin: 0;
+                line-height: 1em;
             }
 
 
@@ -726,6 +728,7 @@ div.main {
 
         li {
             display: inline;
+            line-height: 1em;
 
             a, p {
                 overflow: hidden;

@@ -8,6 +8,7 @@
     z-index: 1;
 
     li, span {
+        line-height: 1em;
         padding: 2em 1em;
         margin: 0;
         display: block;
@@ -87,6 +88,7 @@ header {
         li {
             display: inline;
             position: relative;
+            line-height: 1em;
 
             a {
                 color: $blue;

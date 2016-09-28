@@ -14,6 +14,10 @@ section.offline-sites {
         ul {
             margin-top: 0;
 
+            li {
+                line-height: 1em;
+            }
+
             .baseurl {
                 font-weight: bold;
                 margin-bottom: 0.5em;
