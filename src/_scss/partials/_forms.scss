@@ -5,8 +5,8 @@ form {
 span.error {
     color: $blue;
     display: block;
+    margin-top: 0.5em;
     transition: 400ms;
-    margin-top: 0.25em;
     margin-bottom: 0.5em;
 
     &.ng-enter {
@@ -110,7 +110,7 @@ select, input {
     font-family: inherit;
     font-size: 1em;
     border-width: solid 1px $light-blue;
-    padding: 0.25em 2.5em 0.25em 1em;
+    padding: 0.25em 1em 0.25em 1em;
     color: $grey;
     border: solid 1px $light-blue;
     border-radius: 0.5em;
@@ -135,6 +135,7 @@ select {
     background-size: contain;
     background-position: top right;
     background-repeat: no-repeat;
+    padding-right: 2.5em;
 }
 
 input {

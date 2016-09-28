@@ -1,5 +1,10 @@
-section.card, section.subscribe, section.update {
+section.subscription {
+    li {
+        line-height: 1em;
+    }
+}
 
+section.card, section.subscribe, section.update {
     .plans {
         @include clearfix;
         margin-bottom: 2em;
@@ -66,17 +71,17 @@ section.card, section.subscribe, section.update {
                     }
 
                     .unit {
-                        font-size: 3em;
+                        font-size: 2.5em;
                         padding-top: 0.175em;
                     }
 
                     .dollars {
-                        font-size: 5em;
+                        font-size: 4em;
                     }
 
                     .cents {
                         font-size: 1.25em;
-                        padding-top: 1.5em;
+                        padding-top: 1em;
                     }
                 }
 
@@ -94,6 +99,7 @@ section.card, section.subscribe, section.update {
 
                 li {
                     display: list-item;
+                    line-height: 1em;
                 }
             }
         }

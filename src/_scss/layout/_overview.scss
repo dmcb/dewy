@@ -31,6 +31,7 @@ div.main {
             width: 100%;
             color: $blue;
             margin-top: -5px;
+            border-radius: 0;
         }
 
         @include breakpoint($tablet) {
@@ -597,9 +598,7 @@ div.main {
             .rules, .notifications, .total {
                 padding: 1em;
 
-
                 div > .rule-group, .notification-choices {
-                    margin-top: 1em;
                     padding-left: 1.5em;
                 }
 
@@ -646,7 +645,6 @@ div.main {
                     span {
                         margin-top: 1em;
                         margin-bottom: 0.5em;
-                        font-weight: bold;
                         display: block;
 
                         @include breakpoint($tablet) {
@@ -654,6 +652,11 @@ div.main {
                             margin-top: 0;
                             margin-bottom: 0;
                             font-size: 0.85em;
+
+                            &.error {
+                                display: block;
+                                margin-top: 0.5em;
+                            }
                         }
                     }
                 }
@@ -673,8 +676,15 @@ div.main {
 
                     @include breakpoint($tablet) {
                         select, input {
-                            width: auto;
                             margin-top: 0;
+                        }
+
+                        select {
+                            width: auto;
+                        }
+
+                        input {
+                            width: 120px;
                         }
                     }
                 }
@@ -731,6 +741,7 @@ div.main {
             line-height: 1em;
 
             a, p {
+                font-size: 0.9em;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap;
