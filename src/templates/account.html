@@ -53,7 +53,7 @@ layout: compress
                 </fieldset>
                 <fieldset ng-if="currentUser.verified !== true">
                     <hr/>
-                    <span class="unverified">Your email address has not been verified.</span>
+                    <p class="unverified">Your email address has not been verified.</p>
                     <a class="button" ng-click="reverify(currentUser.uid)">Resend email<i class="fa fa-envelope-o"></i></a>
                 </fieldset>
             </form>
