@@ -38,8 +38,8 @@ layout: compress
                         <div class="fields">
                             <input type="text" maxlength="4" data-stripe="cvc" class="cvc">
                         </div>
+                        <span class="error" ng-if="updateCardError">{( updateCardError )}</span>
                     </div>
-                    <span class="error" ng-if="updateCardError">{( updateCardError )}</span>
                     <button type="submit" ng-disabled="updateCardDisabled">Update card details<i class="fa fa-credit-card-alt" aria-hidden="true"></i></button>
                 </fieldset>
             </form>
@@ -68,8 +68,8 @@ layout: compress
                         <div class="fields">
                             <input type="text" maxlength="4" data-stripe="cvc" class="cvc">
                         </div>
+                        <span class="error" ng-if="subscribeError">{( subscribeError )}</span>
                     </div>
-                    <span class="error" ng-if="subscribeError">{( subscribeError )}</span>
                     <button type="submit" ng-disabled="subscribeDisabled">Start {(plan)} plan<i class="fa fa-credit-card-alt" aria-hidden="true"></i></button>
                 </fieldset>
             </form>
