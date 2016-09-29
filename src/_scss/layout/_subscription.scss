@@ -159,9 +159,7 @@ section.card, section.subscribe, section.update {
 
     @include breakpoint($desktop) {
         input.month, input.cvc {
-            float: none;
-            display: inline-block;
-            margin-left: column-span(8,1);
+
         }
 
         input.year {

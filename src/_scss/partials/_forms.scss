@@ -1,25 +1,120 @@
 form {
     @include clearfix;
-}
 
-label {
-    display: block;
-}
+    fieldset {
+        border: none;
+        margin: 0;
+        padding: 0;
 
-.error {
-    color: $blue;
-    display: block;
-    margin-top: 0.5em;
-    transition: 400ms;
-    margin-bottom: 0.5em;
+        .field {
+            @include clearfix;
+            clear: both;
 
-    &.ng-enter {
-        transition: 0;
+            & + .field {
+                margin-top: 1em;
+            }
+        }
+
+        .messages {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 1.5em;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5em;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.5em;
+            border-radius: 0.25em;
+            color: $grey;
+
+            & + input {
+                margin-top: 0.5em;
+            }
+        }
+
+        .fields input + input {
+            margin-top: 0;
+        }
+
+        .error {
+            color: $blue;
+            display: block;
+            margin-top: 0.5em;
+            transition: 400ms;
+            margin-bottom: 0.5em;
+
+            &.ng-enter {
+                transition: 0;
+            }
+
+            &.ng-enter, &.ng-leave-active {
+                opacity: 0;
+                margin-left: -1em;
+            }
+        }
+
+        button, .button {
+            margin-top: 2em;
+            @include layout(24) {
+                @include grid-span(12,7);
+            }
+            clear: both;
+
+            & + button, & + .button {
+                margin-top: 0;
+            }
+        }
     }
 
-    &.ng-enter, &.ng-leave-active {
-        opacity: 0;
-        margin-left: -1em;
+    &.center {
+        fieldset {
+            .field + .field {
+                margin-top: 0.5em;
+            }
+        }
+    }
+
+    @include breakpoint($tablet) {
+        fieldset {
+            @include layout(24) {
+                @include grid-span(18,4);
+                clear: both;
+            }
+        }
+    }
+
+    @include breakpoint($desktop) {
+        &.center .field {
+            @include grid-span(18,4);
+            clear: both;
+        }
+
+        &:not(.center) fieldset {
+            label {
+                margin-top: 0.5em;
+                @include grid-span(7,1);
+            }
+
+            .field > input,  .field > .error, .fields {
+                @include grid-span(17,8);
+            }
+
+            .error {
+                clear: both;
+            }
+        }
+
+        fieldset {
+            button, .button {
+                @include grid-span(10,8);
+                clear: both;
+            }
+        }
     }
 }
 
@@ -63,85 +158,6 @@ label {
     transition: 0.4s ease all;
 }
 
-fieldset {
-    border: none;
-    margin: 0;
-    padding: 0;
-
-    .field {
-        @include clearfix;
-        clear: both;
-
-        & + .field {
-            margin-top: 1em;
-        }
-
-        &.center {
-            input, .error {
-                text-align: center;
-            }
-        }
-    }
-
-    input {
-        width: 100%;
-        padding: 0.5em;
-        border-radius: 0.25em;
-        color: $grey;
-
-        & + input {
-            margin-top: 0.5em;
-        }
-    }
-
-    button, .button {
-        margin-top: 2em;
-        @include layout(24) {
-            @include grid-span(16,5);
-        }
-        clear: both;
-
-        & + button, & + .button {
-            margin-top: 0;
-        }
-    }
-
-    @include breakpoint($tablet) {
-        @include layout(24) {
-            @include grid-span(18,4);
-            clear: both;
-        }
-    }
-
-    @include breakpoint($desktop) {
-        label {
-            @include grid-span(8,1);
-        }
-
-        input, .error {
-            @include grid-span(16,9);
-        }
-
-        .error {
-            clear: both;
-        }
-
-        .field.center {
-            input, .error {
-                @include grid-span(18,4);
-            }
-
-            .error {
-                clear: both;
-            }
-        }
-
-        button, .button {
-            @include grid-span(8,9);
-        }
-    }
-}
-
 select, input {
     font-family: inherit;
     font-size: 1em;
@@ -150,12 +166,11 @@ select, input {
     color: $grey;
     border: solid 1px $light-blue;
     border-radius: 0.5em;
-    margin: 0.5em 2px 0 0;
+    margin: 0;
     width: 100%;
 
     @include breakpoint($desktop) {
         width: auto;
-        margin-top: 0;
     }
 }
 

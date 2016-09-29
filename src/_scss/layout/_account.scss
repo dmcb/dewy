@@ -2,13 +2,11 @@ section.user-info {
     .gravatar {
         margin-top: 2em;
         margin-bottom: 4em;
-        background-color: $light-grey;
-        padding: 0.5em;
-        border-radius: 1em;
         position: relative;
+        border-bottom: 1px solid $light-grey;
 
         span {
-            margin-left: 5.75em;
+            margin-right: 5.75em;
             display: block;
         }
 
@@ -19,7 +17,7 @@ section.user-info {
             border: 0.5em solid $light-grey;
             position: absolute;
             top: -2em;
-            left: 0;
+            right: 0;
         }
     }
 }

@@ -11,9 +11,9 @@ layout: compress
         <section class="api-key">
             <h3>Your API Key</h3>
             <p>Your API key is what links sites to your account. Keep it confidential. You can reset your API key to clear all sites' ability to associate with your account.</p>
-            <form>
+            <form class="center">
                 <fieldset>
-                    <div class="field center">
+                    <div class="field">
                         <input type="text" ng-model="apikey" ng-change="getKey()" id="apikey" />
                     </div>
                     <button ng-click="resetKey(currentUser.uid)">Reset API Key<i class="fa fa-random"></i></button>

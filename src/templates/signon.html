@@ -4,20 +4,26 @@ layout: compress
 <div class="shell">
     <section class="signon" ng-controller="signonController">
         <h2>Sign on</h2>
-        <form ng-submit="submit()" class="signon" name="form">
+        <form ng-submit="submit()" class="signon center" name="form">
         <fieldset>
-            <span class="messages">
-                {( message )}
-            </span>
-            <input id="username" name="username" ng-model="username" placeholder="Your username" required />
-            <span class="error" ng-if="form.username.$error.required && (form.username.$touched || form.$submitted)">A username is required.</span>
-            <input id="password" name="password" ng-model="password" placeholder="Your password" type="password" required />
-            <span class="error" ng-if="form.password.$error.required && (form.password.$touched || form.$submitted)">A password is required.</span>
-            <label class="remember">
-                <input id="remember" name="remember" ng-model="remember" type="checkbox" value="on" />
-                <span>Remember me</span>
-                <a href="/reset" class="reset">Forgot password?</a>
-            </label>
+            <div class="field">
+                <span class="messages">
+                    {( message )}
+                </span>
+                <input id="username" name="username" ng-model="username" placeholder="Your username" required />
+                <span class="error" ng-if="form.username.$error.required && (form.username.$touched || form.$submitted)">A username is required.</span>
+            </div>
+            <div class="field">
+                <input id="password" name="password" ng-model="password" placeholder="Your password" type="password" required />
+                <span class="error" ng-if="form.password.$error.required && (form.password.$touched || form.$submitted)">A password is required.</span>
+            </div>
+            <div class="field">
+                <label class="remember">
+                    <input id="remember" name="remember" ng-model="remember" type="checkbox" value="on" />
+                    <span>Remember me</span>
+                    <a href="/reset" class="reset">Forgot password?</a>
+                </label>
+            </div>
             <button type="submit">Sign on</button>
         </fieldset>
         </form>

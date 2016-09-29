@@ -1,6 +1,4 @@
 section.signon, section.signup, section.reset {
-    padding-bottom: 5em;
-
     a {
         color: $light-blue;
 
@@ -13,17 +11,11 @@ section.signon, section.signup, section.reset {
         @include clearfix;
         color: $white;
 
-        span.error {
+        .error {
             color: $white;
         }
 
         fieldset {
-            span.messages {
-                display: block;
-                font-weight: bold;
-                margin-bottom: 1.5em;
-            }
-
             label.remember {
                 margin-top: 0.5em;
                 display: block;
@@ -31,17 +23,16 @@ section.signon, section.signup, section.reset {
 
                 input {
                     width: auto;
-                    margin-top: 2em;
+                    margin-top: 1em;
                 }
 
                 .reset {
                     float: right;
-                    margin-top: 2em;
+                    margin-top: 1em;
                 }
             }
 
             button {
-                margin-top: 2em;
                 color: $white;
                 padding: 0.25em;
                 border-radius: 0.5em;
@@ -61,7 +52,7 @@ section.signon, section.signup, section.reset {
         form.signon, form.signup, form.reset {
             fieldset label.remember {
                 input, .reset {
-                    margin-top: 0.5em;
+                    margin-top: 0;
                 }
             }
         }

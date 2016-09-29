@@ -1,3 +1,9 @@
+section.api-key {
+    #apikey {
+        text-align: center;
+    }
+}
+
 section.offline-sites {
     .offline-site {
         @include clearfix;

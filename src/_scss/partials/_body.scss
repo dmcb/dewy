@@ -16,7 +16,7 @@ body {
     font-size: 12px;
     font-family: $body-font;
 
-    @include breakpoint($tablet) {
+    @include breakpoint($mobile-large) {
         font-size: 13px;
     }
 

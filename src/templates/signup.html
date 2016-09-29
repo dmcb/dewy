@@ -6,21 +6,27 @@ layout: compress
     <section class="signup" id="signup" ng-controller="signupController">
         <h2>Sign up for Dewy</h2>
         <p>Start your 14 day free trial now!</p>
-        <form ng-submit="submit()" class="signup" name="form">
+        <form ng-submit="submit()" class="signup center" name="form">
         <fieldset>
-            <span class="messages">
-                {( message )}
-            </span>
-            <input name="username" ng-model="username" placeholder="Your username" value="{(username)}" ng-change="check('username')" required />
-            <span class="error" ng-if="!error.username && form.username.$error.required && (form.username.$touched || form.$submitted)">A username is required.</span>
-            <span class="error" ng-if="error.username">{( error.username )}</span>
-            <input name="email" type="email" ng-model="email" placeholder="Your email" value="{(email)}" ng-change="check('email')" required />
-            <span class="error" ng-if="!error.email && form.email.$error.required && (form.email.$touched || form.$submitted)">An email is required.</span>
-            <span class="error" ng-if="!error.email && form.email.$error.email && (form.email.$touched || form.$submitted)">A valid email address is required.</span>
-            <span class="error" ng-if="error.email">{( error.email )}</span>
-            <input name="password" ng-model="password" placeholder="Your password" type="password" ng-change="check('password')" required />
-            <span class="error" ng-if="!error.password && form.password.$error.required && (form.password.$touched || form.$submitted)">A password is required.</span>
-            <span class="error" ng-if="error.password">{( error.password )}</span>
+            <div class="field">
+                <span class="messages">
+                    {( message )}
+                </span>
+                <input name="username" ng-model="username" placeholder="Your username" value="{(username)}" ng-change="check('username')" required />
+                <span class="error" ng-if="!error.username && form.username.$error.required && (form.username.$touched || form.$submitted)">A username is required.</span>
+                <span class="error" ng-if="error.username">{( error.username )}</span>
+            </div>
+            <div class="field">
+                <input name="email" type="email" ng-model="email" placeholder="Your email" value="{(email)}" ng-change="check('email')" required />
+                <span class="error" ng-if="!error.email && form.email.$error.required && (form.email.$touched || form.$submitted)">An email is required.</span>
+                <span class="error" ng-if="!error.email && form.email.$error.email && (form.email.$touched || form.$submitted)">A valid email address is required.</span>
+                <span class="error" ng-if="error.email">{( error.email )}</span>
+            </div>
+            <div class="field">
+                <input name="password" ng-model="password" placeholder="Your password" type="password" ng-change="check('password')" required />
+                <span class="error" ng-if="!error.password && form.password.$error.required && (form.password.$touched || form.$submitted)">A password is required.</span>
+                <span class="error" ng-if="error.password">{( error.password )}</span>
+            </div>
             <button type="submit">Sign up</button>
         </fieldset>
         </form>
