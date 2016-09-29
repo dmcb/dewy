@@ -810,7 +810,7 @@ controllers.controller('subscriptionController', ['$scope', '$timeout', '$rootSc
 		$scope.stripeEndPoint = ENV.api + 'users/_subscription/' + $scope.currentUser.uid;
 		$scope.stripePublicKey = ENV.stripePublicKey;
 
-		$scope.plan = 'basic';
+		$scope.plan = 'standard';
 		$scope.customer = customer;
 
 }]);
