@@ -7,8 +7,10 @@ section {
     margin-bottom: 3em;
 
     @include breakpoint($mobile-large) {
-        @include grid-span(20,3);
-        clear: both;
+        & > section {
+            @include grid-span(20,3);
+            clear: both;
+        }
     }
 
     @include breakpoint($desktop) {

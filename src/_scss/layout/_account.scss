@@ -1,40 +1,29 @@
 section.user-info {
-
     .gravatar {
-        @include clearfix;
-        background-color: #eee;
-        border-radius: 5em;
+        margin-top: 2em;
+        margin-bottom: 4em;
+        background-color: $light-grey;
         padding: 0.5em;
+        border-radius: 1em;
         position: relative;
-        margin-bottom: 2em;
-
-        @include breakpoint($tablet) {
-            margin-left: -4em;
-            margin-right: -4em;
-
-            span {
-                display: block;
-                position: absolute;
-            }
-        }
 
         span {
-            top: 4.5em;
-            left: 0;
-            right: 0;
-            text-align: center;
+            margin-left: 5.75em;
         }
 
         img {
-            max-width: 9em;
+            width: 6em;
             border-radius: 50%;
             vertical-align: middle;
+            border: 0.5em solid $light-grey;
+            position: absolute;
+            top: -2em;
+            left: 0;
         }
     }
 }
 
 section.user-info, section.your-password {
-
     fieldset {
         @include layout(24) {
             @include grid-span(24,1);
