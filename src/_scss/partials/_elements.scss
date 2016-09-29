@@ -21,10 +21,14 @@ em {
 }
 
 hr {
-    margin: 1.5em -2em;
+    margin: 1.5em 0;
     border: none;
     height: 1px;
     background-color: $light-grey;
+
+    @include breakpoint($desktop) {
+        margin: 1.5em -2em;
+    }
 }
 
 li {
