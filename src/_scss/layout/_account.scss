@@ -23,33 +23,3 @@ section.user-info {
         }
     }
 }
-
-section.user-info, section.your-password {
-    fieldset {
-        @include layout(24) {
-            @include grid-span(24,1);
-            clear: both;
-
-            @include breakpoint($desktop) {
-                @include grid-span(16,5);
-                clear: both;
-            }
-        }
-    }
-
-    label {
-        @include clearfix;
-        clear: both;
-        display: inline-block;
-        margin-top: 0.5em;
-    }
-
-    input, .error {
-        float: right;
-        width: 70%;
-    }
-
-    button {
-        clear: both;
-    }
-}

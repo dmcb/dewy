@@ -112,44 +112,19 @@ section.card, section.subscribe, section.update {
             opacity: 1;
             transform: scale(1);
         }
-
-    }
-
-    fieldset {
-        @include layout(24) {
-            @include grid-span(24,1);
-            clear: both;
-
-            @include breakpoint($desktop) {
-                @include grid-span(16,5);
-                clear: both;
-            }
-        }
-    }
-
-    label {
-        @include grid-span(6,1);
-    }
-
-    input, .error {
-        @include grid-span(18,7);
     }
 
     input.month {
-        @include grid-span(3,7);
+        width: 15%;
     }
 
     input.year {
-        @include grid-span(3,10);
+        width: 15%;
+        margin-left: 1em;
     }
 
     input.cvc {
-        @include grid-span(4,7);
-    }
-
-    button, a.button {
-        @include grid-span(12,7);
-        clear: both;
+        width: 20%;
     }
 
     @include breakpoint($tablet) {
@@ -180,9 +155,18 @@ section.card, section.subscribe, section.update {
                 }
             }
         }
+    }
+
+    @include breakpoint($desktop) {
+        input.month, input.cvc {
+            float: none;
+            display: inline-block;
+            margin-left: column-span(8,1);
+        }
 
         input.year {
-            margin-top: 0;
+            float: none;
+            display: inline-block;
         }
     }
 }

@@ -2,7 +2,11 @@ form {
     @include clearfix;
 }
 
-span.error {
+label {
+    display: block;
+}
+
+.error {
     color: $blue;
     display: block;
     margin-top: 0.5em;
@@ -64,22 +68,19 @@ fieldset {
     margin: 0;
     padding: 0;
 
-    @include layout(24) {
-        @include grid-span(24,1);
-
-        @include breakpoint($tablet) {
-            @include grid-span(16,5);
-        }
-
-        @include breakpoint($desktop) {
-            @include grid-span(12,7);
-        }
-    }
-
     .field {
         @include clearfix;
         clear: both;
-        margin-top: 0.25em;
+
+        & + .field {
+            margin-top: 1em;
+        }
+
+        &.center {
+            input, .error {
+                text-align: center;
+            }
+        }
     }
 
     input {
@@ -96,12 +97,47 @@ fieldset {
     button, .button {
         margin-top: 2em;
         @include layout(24) {
-            @include grid-span(10,8);
+            @include grid-span(16,5);
         }
         clear: both;
 
         & + button, & + .button {
             margin-top: 0;
+        }
+    }
+
+    @include breakpoint($tablet) {
+        @include layout(24) {
+            @include grid-span(18,4);
+            clear: both;
+        }
+    }
+
+    @include breakpoint($desktop) {
+        label {
+            @include grid-span(8,1);
+        }
+
+        input, .error {
+            @include grid-span(16,9);
+        }
+
+        .error {
+            clear: both;
+        }
+
+        .field.center {
+            input, .error {
+                @include grid-span(18,4);
+            }
+
+            .error {
+                clear: both;
+            }
+        }
+
+        button, .button {
+            @include grid-span(8,9);
         }
     }
 }
@@ -117,7 +153,7 @@ select, input {
     margin: 0.5em 2px 0 0;
     width: 100%;
 
-    @include breakpoint($tablet) {
+    @include breakpoint($desktop) {
         width: auto;
         margin-top: 0;
     }

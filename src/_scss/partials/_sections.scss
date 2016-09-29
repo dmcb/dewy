@@ -13,8 +13,8 @@ section {
         }
     }
 
-    @include breakpoint($desktop) {
-        @include grid-span(18,4);
+    @include breakpoint($tablet) {
+        @include grid-span(20,3);
         clear: both;
     }
 
