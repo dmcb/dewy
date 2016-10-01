@@ -1,6 +1,6 @@
 var factories = angular.module('dewyFactories', []);
 
-factories.factory('authInterceptor', ['$rootScope', 'authService', '$location', '$q', '$injector', '$window', function($rootScope, authService, $location, $q, $injector, $window) {
+factories.factory('authInterceptor', ['$rootScope', '$location', '$q', '$window', function($rootScope, $location, $q, $window) {
 	var authInterceptor = {};
 
 	authInterceptor.request = function(config) {
@@ -19,8 +19,7 @@ factories.factory('authInterceptor', ['$rootScope', 'authService', '$location', 
 	authInterceptor.responseError = function(responseError) {
 		// No longer authorized
 		if (responseError.status == 401) {
-			$rootScope.$broadcast('flashMessage', {content: 'Your session has expired', type: 'notice'});
-			authService.signOff();
+			$rootScope.$broadcast('session:expired');
 		}
 		return $q.reject(responseError);
 	}
@@ -28,8 +27,9 @@ factories.factory('authInterceptor', ['$rootScope', 'authService', '$location', 
 	return authInterceptor;
 }]);
 
-factories.factory('authService', ['dewySession', '$rootScope', function(dewySession, $rootScope) {
+factories.factory('authService', ['dewySession', '$rootScope', '$injector', 'ENV', function(dewySession, $rootScope, $injector, ENV) {
 	var authService = {};
+    var $http = $injector.get('$http');
 
 	authService.currentUser = function() {
 		return dewySession.getUser();
@@ -44,10 +44,20 @@ factories.factory('authService', ['dewySession', '$rootScope', function(dewySess
 		$rootScope.$broadcast('currentUser:updated', userDoc);
 	}
 
-	authService.signOff = function() {
-		dewySession.destroy();
-		$rootScope.$broadcast('signOff:success');
-	}
+    authService.signOff = function(expired) {
+    	if (expired) {
+			dewySession.destroy();
+			$rootScope.$broadcast('signOff:success');
+    	}
+    	else {
+			return $http.delete(ENV.api + 'oauth/token')
+				.then(function (response) {
+					dewySession.destroy();
+					$rootScope.$broadcast('signOff:success');
+				}
+			);
+        }
+    }
 
 	authService.signOn = function(location, payload, remember) {
 		dewySession.create(payload, remember);

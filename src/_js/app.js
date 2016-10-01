@@ -388,6 +388,10 @@ app.run(['authService', '$rootScope', '$location', '$http', '$window', 'ENV', fu
 			}
 		}
 	});
+	$rootScope.$on('session:expired', function() {
+		$rootScope.$broadcast('flashMessage', {content: 'Your session has expired', type: 'notice'});
+		authService.signOff(true);
+	});
 	$rootScope.$on('signOff:success', function() {
 		$location.path('/signon');
 	});
