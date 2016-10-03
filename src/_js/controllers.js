@@ -386,14 +386,20 @@ controllers.controller('manageController', ['$scope', '$timeout', '$moment', 'si
 
 			return sitesFactory.audit($scope.sites[index].sid)
 			.error(function(error, status) {
-				$scope.sites[index].submitMessage = 'Error: ' + $scope.sites[index].audited.error;
 				$scope.sites[index].submitStatus = 'error'; 
+				if (error) {
+					$scope.sites[index].submitMessage = 'Error: ' + error;
+					$scope.sites[index].audit.errors[0].error = error;
+				}
+				else {
+					$scope.sites[index].submitMessage = 'Error: Failed to communicate';
+					$scope.sites[index].audit.errors[0].error = 'Failed to communicate';
+				}
 				$timeout(function() {
 					$scope.sites[index].submit = false;
 					$scope.sites[index].submitStatus = 'submitting';
 				},1500);
-				$scope.sites[index].audited.date = $moment().fromNow();
-				$scope.sites[index].audited.error = error;
+				$scope.sites[index].audit.errors[0].date = $moment().fromNow();
 			})
 			.success(function(result) {
 				$scope.sites[index].submitMessage = 'Success';
@@ -423,8 +429,8 @@ controllers.controller('manageController', ['$scope', '$timeout', '$moment', 'si
 		$scope.sites = sites;
 		for (site in $scope.sites) {
 			$scope.sites[site].dateAdded = $moment($scope.sites[site].dateAdded * 1000).fromNow();
-			if ('audited' in $scope.sites[site]) {
-				$scope.sites[site].audited.date = $moment($scope.sites[site].audited.date * 1000).fromNow();
+			if ('audit' in $scope.sites[site]) {
+				$scope.sites[site].audit.lastAudit = $moment($scope.sites[site].audit.lastAudit * 1000).fromNow();
 			}
 		}
 		$scope.apikey = user.apikey;

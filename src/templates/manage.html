@@ -28,10 +28,10 @@ layout: compress
                 <ul>
                     <li class="baseurl">{(site.baseurl)}</li>
                     <li class="added">Added to Dewy {(site.dateAdded)}</li>
-                    <li class="reported" ng-if="site.audited.date">Last audit attempted {(site.audited.date)}</li>
-                    <li class="reported" ng-if="!site.audited.date">Never been audited</li>
-                    <li class="status error" ng-if="site.enabled == 1 && site.audited.error">Error {(site.audited.error)}</li>
-                    <li class="status waiting" ng-if="site.enabled == 1 && !site.audited.error">Waiting to be audited</li>
+                    <li class="reported" ng-if="site.audit">Last audit attempted {(site.audit.lastAudit)}</li>
+                    <li class="reported" ng-if="!site.audit">Never been audited</li>
+                    <li class="status error" ng-if="site.enabled == 1 && site.audit">Error: {(site.audit.errors[0].error)}</li>
+                    <li class="status waiting" ng-if="site.enabled == 1 && !site.audit">Waiting to be audited</li>
                     <li class="status disabled" ng-if="site.enabled == 0">Site disabled from reporting to Dewy</li>
                 </ul>
                 <div class="buttons">
