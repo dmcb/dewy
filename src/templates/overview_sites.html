@@ -107,7 +107,7 @@ layout: compress
                     <li>
                         <h3><span class="number">{(openSite.attributes.files)}</span> files</h3>
                     </li>
-                    <li>
+                    <li ng-if="openSite.attributes.words != -1">
                         <h3><span class="number">{(openSite.attributes.words)}</span> words</h3>
                     </li>
                     <li>
