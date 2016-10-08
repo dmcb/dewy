@@ -45,15 +45,6 @@ layout: compress
                     <li>
                         <h3>Site added to Dewy <span am-time-ago="openSite.dateAdded * 1000" class="number"></span></h3>
                     </li>
-                    <li ng-if="openSite.details.audit.errors.length == 1">
-                        <h3 class="warning">Last site audit attempt failed</h3>
-                    </li>
-                    <li ng-if="openSite.details.audit.errors.length == 2">
-                        <h3 class="warning">Last 2 site audit attempts failed</h3>
-                    </li>
-                    <li ng-if="openSite.details.audit.lastSuccessfulAudit != openSite.details.audit.lastSuccessfulContentAudit && openSite.details.content">
-                        <h3 class="warning">Content failed to be audited</h3>
-                    </li>
                     <li>
                         <h3><span class="number">{(openSite.tags.length)}</span> tags assigned</h3>
                         <ul class="items" ng-if="openSite.tags.length">
@@ -66,6 +57,15 @@ layout: compress
                             <button type="submit">Add tags</button>
                             <span class="error" ng-show="tagForm{(sites.indexOf(site))}.tags.$error.required && (tagForm{(sites.indexOf(site))}.tags.$touched || tagForm{(sites.indexOf(site))}.$submitted)">Please enter a tag.</span>
                         </form>
+                    </li>
+                    <li ng-if="openSite.details.audit.errors.length == 1">
+                        <h3 class="warning">Last site audit attempt failed</h3>
+                    </li>
+                    <li ng-if="openSite.details.audit.errors.length == 2">
+                        <h3 class="warning">Last 2 site audit attempts failed</h3>
+                    </li>
+                    <li ng-if="openSite.details.audit.lastSuccessfulAudit != openSite.details.audit.lastSuccessfulContentAudit && openSite.details.content">
+                        <h3 class="warning">Content failed to be audited</h3>
                     </li>
                 </ul>
                 <ul ng-if="openSite.detail == 'complexity'">
@@ -115,7 +115,7 @@ layout: compress
                     </li>
                 </ul>
                 <ul ng-if="openSite.detail == 'activity'">
-                    <li>
+                    <li ng-if="openSite.attributes.hitsPerDay != -1">
                         <h3><span class="number">{(openSite.attributes.hitsPerDay)}</span> hits per day</h3>
                     </li>
                     <li>
