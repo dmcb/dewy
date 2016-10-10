@@ -8,11 +8,13 @@ layout: compress
             <h3>Details</h3>
             <ul>
                 <li>You signed up with Dewy on <strong>{(currentUser.created*1000 | date:'MMMM d, yyyy')}</strong></li>
-                <li ng-if="!currentUser.subscription.expired && currentUser.subscription.subscriptionID">You are on the <strong>{(currentUser.subscription.type)}</strong> plan</li>
-                <li ng-if="!currentUser.subscription.expired && !currentUser.subscription.subscriptionID">You are on the <strong>trial</strong> plan</li>
-                <li ng-if="currentUser.subscription.expired">Your subscription expired <strong>{(currentUser.subscription.endDate*1000 | date:'MMMM d, yyyy')}</strong></li>
-                <li ng-if="!currentUser.subscription.expired">Your subscription expires <strong>{(currentUser.subscription.endDate*1000 | date:'MMMM d, yyyy')}</strong></li>
-                <li ng-if="currentUser.subscription.cancelled && currentUser.subscription.subscriptionID">You have set your subscription to <strong>no longer renew</strong></li>
+                <li ng-if="currentUser.subscription.endDate == -1">You are on the <strong>test</strong> plan.</li>
+                <li ng-if="currentUser.subscription.endDate == -1">Your subscription expires <strong>when the promotional period has ended</strong>.</li>
+                <li ng-if="!currentUser.subscription.expired && currentUser.subscription.subscriptionID && currentUser.subscription.endDate != -1">You are on the <strong>{(currentUser.subscription.type)}</strong> plan</li>
+                <li ng-if="!currentUser.subscription.expired && !currentUser.subscription.subscriptionID && currentUser.subscription.endDate != -1">You are on the <strong>trial</strong> plan</li>
+                <li ng-if="currentUser.subscription.expired && currentUser.subscription.endDate != -1">Your subscription expired <strong>{(currentUser.subscription.endDate*1000 | date:'MMMM d, yyyy')}</strong></li>
+                <li ng-if="!currentUser.subscription.expired && currentUser.subscription.endDate != -1">Your subscription expires <strong>{(currentUser.subscription.endDate*1000 | date:'MMMM d, yyyy')}</strong></li>
+                <li ng-if="currentUser.subscription.cancelled && currentUser.subscription.subscriptionID && currentUser.subscription.endDate != -1">You have set your subscription to <strong>no longer renew</strong></li>
             </ul>
         </section>
         <section class="card" ng-if="currentUser.subscription.subscriptionID">
@@ -44,7 +46,7 @@ layout: compress
                 </fieldset>
             </form>
         </section>
-        <section class="subscribe" ng-if="!currentUser.subscription.subscriptionID">
+        <section class="subscribe" ng-if="!currentUser.subscription.subscriptionID && currentUser.subscription.endDate != -1">
             <h3>Start your subscription</h3>
             <form stripe:form="subscribeCustomer">
                 <div class="plans" ng-include="'templates/subscription_plans.html'">
@@ -74,7 +76,7 @@ layout: compress
                 </fieldset>
             </form>
         </section>
-        <section class="update" ng-if="currentUser.subscription.subscriptionID">
+        <section class="update" ng-if="currentUser.subscription.subscriptionID && currentUser.subscription.endDate != -1">
             <h3>Update your subscription</h3>
             <form>
 <!--                 <div class="plans" ng-include="'templates/subscription_plans.html'">
