@@ -384,7 +384,7 @@ factories.factory('sitesFactory', ['$http', 'ENV', function($http, ENV) {
 
 					for (var i in rankedArray) {
 						response.data[i].attributes['complexity'] = rankedArray[i][0] + rankedArray[i][1] * 2 + rankedArray[i][2] + rankedArray[i][3];
-						response.data[i].attributes['size'] = rankedArray[i][4] + rankedArray[i][5] + rankedArray[i][6] + rankedArray[i][7] + rankedArray[i][8];
+						response.data[i].attributes['size'] = rankedArray[i][4] + rankedArray[i][5] * 3 + rankedArray[i][6] + rankedArray[i][7] + rankedArray[i][8];
 						response.data[i].attributes['activity'] = rankedArray[i][9] * 4 + rankedArray[i][10] * 2 + rankedArray[i][11] * 2 + rankedArray[i][12] + rankedArray[i][13] * 9;
 						response.data[i].attributes['health'] = (rankedArray[i][14] + rankedArray[i][15] + rankedArray[i][16] * 3) * -1;
 					}
