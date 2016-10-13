@@ -570,6 +570,10 @@ div.main {
                                         content: '';
                                     }
                                 }
+
+                                &#dewy-site-data li:first-child:before {
+                                    content: 'Dewy set not to retrive ';
+                                }
                             }
                         }
 
