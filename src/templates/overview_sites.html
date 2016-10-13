@@ -99,6 +99,9 @@ layout: compress
                         <h3><span class="number">{(openSite.attributes.nodes)}</span> nodes</h3>
                     </li>
                     <li>
+                        <h3><span class="number">{(openSite.attributes.words)}</span> words</h3>
+                    </li>
+                    <li>
                         <h3><span class="number">{(openSite.attributes.users)}</span> users</h3>
                         <ul class="items" ng-if="openSite.details.attributeDetails.users.length">
                             <li ng-repeat="item in openSite.details.attributeDetails.users">{(item)}</li>
@@ -106,9 +109,6 @@ layout: compress
                     </li>
                     <li>
                         <h3><span class="number">{(openSite.attributes.files)}</span> files</h3>
-                    </li>
-                    <li ng-if="openSite.attributes.words != -1">
-                        <h3><span class="number">{(openSite.attributes.words)}</span> words</h3>
                     </li>
                     <li>
                         <h3><span class="number">{(openSite.attributes.diskSpace)}</span> MB disk size</h3>
