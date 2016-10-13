@@ -45,9 +45,7 @@ layout: compress
                     <li>
                         <h3>Site added to Dewy <span am-time-ago="openSite.dateAdded * 1000" class="number"></span></h3>
                         <ul class="items" id="dewy-site-data" ng-if="!openSite.details.users || !openSite.details.content || !openSite.details.traffic">
-                            <li ng-if="!openSite.details.users">user data</li>
-                            <li ng-if="!openSite.details.content">content data</li>
-                            <li ng-if="!openSite.details.traffic">traffic data</li>
+                            <li ng-if="!openSite.details.users">user data</li><li ng-if="!openSite.details.content">content data</li><li ng-if="!openSite.details.traffic">traffic data</li>
                         </ul>
                     </li>
                     <li>
