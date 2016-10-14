@@ -717,7 +717,6 @@ controllers.controller('overviewSitesController', ['$scope', 'sitesFactory',
 				// If details haven't been already loaded for the site, go grab the site details
 				if (!('details' in $scope.sites[index])) {
 					sitesFactory.getDetails($scope.sites[index].sid).then(function(details) {
-						console.log(details);
 						$scope.sites[index].details = details;
 						$scope.openSite = $scope.sites[index];
 						$scope.openSite.detail = detail;
