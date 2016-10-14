@@ -571,8 +571,16 @@ div.main {
                                     }
                                 }
 
-                                &#dewy-site-data li:first-child:before {
-                                    content: 'Dewy set not to retrive ';
+                                &#dewy-site-data {
+                                    margin-top: 0;
+
+                                    li:first-child {
+                                        margin-top: 1em;
+
+                                        &:before {
+                                            content: 'Dewy set not to retrieve ';
+                                        }
+                                    }
                                 }
                             }
                         }
