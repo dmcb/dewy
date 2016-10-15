@@ -216,7 +216,7 @@ div.main {
                         
                     ul.variables {
                         margin-left: 35%;
-                        width: 75%;
+                        width: 88%;
 
                         @include breakpoint($tablet) {
                             @include grid-span(15,10);
