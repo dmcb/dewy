@@ -168,7 +168,7 @@ module.exports = function(grunt) {
 
       scripts: {
         files: ['config.json', 'src/_js/**/*.js', '.tmp/config.js'],
-        tasks: ['ngconstant:development', 'concat:development']
+        tasks: ['concat:development']
       },
 
       sass: {
