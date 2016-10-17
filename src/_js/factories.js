@@ -228,7 +228,7 @@ factories.factory('moduleFactory', ['$http', 'ENV', function($http, ENV) {
 					for (var i in rankedArray) {
 						response.data.modules[i].attributes['health'] = (rankedArray[i][2] + rankedArray[i][3] * 1.5 + rankedArray[i][4] * 3) * -1;
 						response.data.modules[i].attributes['uniformity'] = (rankedArray[i][5]) * -1;
-						response.data.modules[i].attributes['utilization'] = response.data.modules[i].attributes.e / response.data.modules[i].attributes.a;
+						response.data.modules[i].attributes['utilization'] = response.data.modules[i].attributes.sitesWithEnabled / response.data.modules[i].attributes.sitesWithAvailable;
 						response.data.modules[i].attributes['availability'] = rankedArray[i][0];
 					}
 
