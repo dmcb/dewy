@@ -19,21 +19,21 @@ layout: compress
             <span ng-if="!query && currentFilter"><i class="fa fa-exclamation-triangle"></i> No sites meet your filter criteria. <a href="/filter/{(currentFilter.fid)}">Edit your filter.</a></span>            
             <span ng-if="query"><i class="fa fa-exclamation-triangle"></i> Your search returned no results.</span>
         </div>
-        <div ng-repeat="module in filteredModules = (modules | filter:query) | orderBy:sort.column:sort.descending" class="site">
+        <div ng-repeat="module in filteredModules = (moduleData.modules | filter:query) | orderBy:sort.column:sort.descending" class="site">
             <ul class="site">
-                <li class="title" ng-class="{open: openModule.module == module.module && openModule.detail == 'meta'}"><a href="" ng-click="openDetails(modules.indexOf(module), 'meta')"><span class="title">{(module.module)}</span></a></li>
+                <li class="title" ng-class="{open: openModule.module == module.module && openModule.detail == 'meta'}"><a href="" ng-click="openDetails(moduleData.modules.indexOf(module), 'meta')"><span class="title">{(module.module)}</span></a></li>
                 <ul class="variables">
                     <li class="availability" ng-class="{open: openModule.module == module.module && openModule.detail == 'availability'}">
-                        <a href="" ng-click="openDetails(modules.indexOf(module), 'availability')"><div class="point" ng-repeat="i in getNumber(module.availability) track by $index"></div></a>
+                        <a href="" ng-click="openDetails(moduleData.modules.indexOf(module), 'availability')"><div class="point" ng-repeat="i in getNumber(module.availability) track by $index"></div></a>
                     </li>
                     <li class="utilization" ng-class="{open: openModule.module == module.module && openModule.detail == 'utilization'}">
-                        <a href="" ng-click="openDetails(modules.indexOf(module), 'utilization')"><div class="point" ng-repeat="i in getNumber(module.utilization) track by $index"></div></a>
+                        <a href="" ng-click="openDetails(moduleData.modules.indexOf(module), 'utilization')"><div class="point" ng-repeat="i in getNumber(module.utilization) track by $index"></div></a>
                     </li>
                     <li class="uniformity" ng-class="{open: openModule.module == module.module && openModule.detail == 'uniformity'}">
-                        <a href="" ng-click="openDetails(modules.indexOf(module), 'uniformity')"><div class="point" ng-repeat="i in getNumber(module.uniformity) track by $index"></div></a>
+                        <a href="" ng-click="openDetails(moduleData.modules.indexOf(module), 'uniformity')"><div class="point" ng-repeat="i in getNumber(module.uniformity) track by $index"></div></a>
                     </li>
                     <li class="health health-{(getFloor(module.health).length)}" ng-class="{open: openModule.module == module.module && openModule.detail == 'health'}">
-                        <a href="" ng-click="openDetails(modules.indexOf(module), 'health')"><div class="point" ng-repeat="i in getFloor(module.health) track by $index"></div></a>
+                        <a href="" ng-click="openDetails(moduleData.modules.indexOf(module), 'health')"><div class="point" ng-repeat="i in getFloor(module.health) track by $index"></div></a>
                     </li>
                 </ul>
             </ul>
@@ -45,7 +45,7 @@ layout: compress
                 </ul>
                 <ul ng-if="openModule.detail == 'availability'">
                     <li>
-                        <h3><span class="number">{(openModule.sitesWithAvailable.length)}</span> sites where the module is available</h3>
+                        <h3><span class="number">{(openModule.sitesWithAvailable.length)}</span> sites where the module is available (out of {(moduleData.siteTotal)} sites)</h3>
                         <ul class="items" ng-if="openModule.sitesWithAvailable.length">
                             <li ng-repeat="item in openModule.sitesWithAvailable">{(item)}</li>
                         </ul>
@@ -53,7 +53,7 @@ layout: compress
                 </ul>
                 <ul ng-if="openModule.detail == 'utilization'">
                     <li>
-                        <h3><span class="number">{(openModule.sitesWithEnabled.length)}</span> sites where the module is enabled</h3>
+                        <h3><span class="number">{(openModule.sitesWithEnabled.length)}</span> sites where the module is enabled (out of {(openModule.sitesWithAvailable.length)} sites)</h3>
                         <ul class="items" ng-if="openModule.sitesWithEnabled.length">
                             <li ng-repeat="item in openModule.sitesWithEnabled">{(item)}</li>
                         </ul>

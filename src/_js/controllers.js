@@ -598,7 +598,7 @@ controllers.controller('overviewController', ['$scope', '$location', 'sitesFacto
 			$scope.viewPage = 'templates/overview_sites.html';
 		}
 		else if ($scope.view == 'modules') {
-			$scope.modules = data.modules;
+			$scope.moduleData = data.moduleData;
 			$scope.viewPage = 'templates/overview_modules.html';
 		}
 		else if ($scope.view == 'users') {
@@ -659,7 +659,7 @@ controllers.controller('overviewModulesController', ['$scope', 'moduleFactory',
 				$scope.openModule = null;
 			}
 			else {
-				$scope.openModule = $scope.modules[index];
+				$scope.openModule = $scope.moduleData.modules[index];
 				$scope.openModule.detail = detail;
 				$scope.openModule.index = index;
 			}

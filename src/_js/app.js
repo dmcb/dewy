@@ -140,10 +140,10 @@ app.config(['$httpProvider', '$routeProvider', '$interpolateProvider', '$locatio
 						return filterFactory.getFilter($route.current.params.filter).
 						then(function(currentFilter) {
 							return moduleFactory.getAll(currentFilter.fid).
-							then(function(modules) {
+							then(function(moduleData) {
 								return {
 									currentFilter: currentFilter,
-									modules: modules,
+									moduleData: moduleData,
 									view: 'modules'
 								}
 							});
@@ -151,10 +151,10 @@ app.config(['$httpProvider', '$routeProvider', '$interpolateProvider', '$locatio
 					}
 					else {
 						return moduleFactory.getAll().
-						then(function(modules) {
+						then(function(moduleData) {
 							return {
 								currentFilter: null,
-								modules: modules,
+								moduleData: moduleData,
 								view: 'modules'
 							}
 						});

@@ -158,26 +158,25 @@ factories.factory('moduleFactory', ['$http', 'ENV', function($http, ENV) {
 	moduleFactory.getAll = function(fid) {
 		return $http.get(ENV.api + 'modules/_filter/' + fid)
 			.then(function (response) {
-
 				var arrayOfRankings = [];
-				for (var i in response.data) {
+				for (var i in response.data.modules) {
 					var versions = 0;
-					for (version in response.data[i].versions) {
+					for (version in response.data.modules[i].versions) {
 						versions = versions + 1; 
 					}
 
-					response.data[i].attributes = {
-						sitesWithAvailable: response.data[i].sitesWithAvailable.length,
-						sitesWithEnabled: response.data[i].sitesWithEnabled.length,
-						sitesWithDatabaseUpdates: response.data[i].sitesWithDatabaseUpdates.length,
-						sitesWithUpdates: response.data[i].sitesWithUpdates.length,
-						sitesWithSecurityUpdates: response.data[i].sitesWithSecurityUpdates.length,
+					response.data.modules[i].attributes = {
+						sitesWithAvailable: response.data.modules[i].sitesWithAvailable.length,
+						sitesWithEnabled: response.data.modules[i].sitesWithEnabled.length,
+						sitesWithDatabaseUpdates: response.data.modules[i].sitesWithDatabaseUpdates.length,
+						sitesWithUpdates: response.data.modules[i].sitesWithUpdates.length,
+						sitesWithSecurityUpdates: response.data.modules[i].sitesWithSecurityUpdates.length,
 						versions: versions
 					}
 
 					var ranking = [];
-					for (var j in response.data[i].attributes) {
-						ranking.push(response.data[i].attributes[j]);
+					for (var j in response.data.modules[i].attributes) {
+						ranking.push(response.data.modules[i].attributes[j]);
 					}
 					arrayOfRankings.push(ranking);
 				}
@@ -227,26 +226,26 @@ factories.factory('moduleFactory', ['$http', 'ENV', function($http, ENV) {
 					// 5 versions
 
 					for (var i in rankedArray) {
-						response.data[i].attributes['health'] = (rankedArray[i][2] + rankedArray[i][3] * 1.5 + rankedArray[i][4] * 3) * -1;
-						response.data[i].attributes['uniformity'] = (rankedArray[i][5]) * -1;
-						response.data[i].attributes['utilization'] = rankedArray[i][1] / rankedArray[i][0];
-						response.data[i].attributes['availability'] = rankedArray[i][0];
+						response.data.modules[i].attributes['health'] = (rankedArray[i][2] + rankedArray[i][3] * 1.5 + rankedArray[i][4] * 3) * -1;
+						response.data.modules[i].attributes['uniformity'] = (rankedArray[i][5]) * -1;
+						response.data.modules[i].attributes['utilization'] = rankedArray[i][1] / rankedArray[i][0];
+						response.data.modules[i].attributes['availability'] = rankedArray[i][0];
 					}
 
 					// Loop through all sites and determine absolute values of attributes
 					var attributes = {'health': [], 'uniformity': [], 'utilization': [], 'availability': []};
 
-					for (var i in response.data) {
+					for (var i in response.data.modules) {
 						for (var attribute in attributes) {
 							if (attributes[attribute]['maximum'] == null) {
-								attributes[attribute]['maximum'] = response.data[i].attributes[attribute];
-							} else if (attributes[attribute]['maximum'] < response.data[i].attributes[attribute]) {
-								attributes[attribute]['maximum'] = response.data[i].attributes[attribute];
+								attributes[attribute]['maximum'] = response.data.modules[i].attributes[attribute];
+							} else if (attributes[attribute]['maximum'] < response.data.modules[i].attributes[attribute]) {
+								attributes[attribute]['maximum'] = response.data.modules[i].attributes[attribute];
 							}
 							if (attributes[attribute]['minimum'] == null) {
-								attributes[attribute]['minimum'] = response.data[i].attributes[attribute];
-							} else if (attributes[attribute]['minimum'] > response.data[i].attributes[attribute]) {
-								attributes[attribute]['minimum'] = response.data[i].attributes[attribute];
+								attributes[attribute]['minimum'] = response.data.modules[i].attributes[attribute];
+							} else if (attributes[attribute]['minimum'] > response.data.modules[i].attributes[attribute]) {
+								attributes[attribute]['minimum'] = response.data.modules[i].attributes[attribute];
 							}
 						}
 					}
@@ -257,13 +256,13 @@ factories.factory('moduleFactory', ['$http', 'ENV', function($http, ENV) {
 					}
 
 					// Set normalized values
-					for (var i in response.data) {
+					for (var i in response.data.modules) {
 						for (var attribute in attributes) {
 							if (!attributes[attribute]['increment']) {
-								response.data[i][attribute] = 10;
+								response.data.modules[i][attribute] = 10;
 							} 
 							else {
-								response.data[i][attribute] = ((response.data[i].attributes[attribute] - attributes[attribute]['minimum']) / attributes[attribute]['increment']) + 1;
+								response.data.modules[i][attribute] = ((response.data.modules[i].attributes[attribute] - attributes[attribute]['minimum']) / attributes[attribute]['increment']) + 1;
 							}
 						}
 					}
