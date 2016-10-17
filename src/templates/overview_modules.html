@@ -64,7 +64,7 @@ layout: compress
                         <h3><span class="number">{(openModule.attributes.versions)}</span> versions on your sites</h3>
                     </li>
                     <li ng-repeat="(item, value) in openModule.v">
-                        <h3><span class="number">{(value.length)}</span> sites using version {(moduleData.siteIndex[item])}</h3>
+                        <h3><span class="number">{(value.length)}</span> sites using version {(item)}</h3>
                         <ul class="items" ng-if="value.length">
                             <li ng-repeat="item in value">{(moduleData.siteIndex[item])}</li>
                         </ul>
