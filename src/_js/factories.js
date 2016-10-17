@@ -205,7 +205,7 @@ factories.factory('moduleFactory', ['$http', 'ENV', function($http, ENV) {
 					    var maximum = temp[temp.length-1].v;
 					    var increment = (maximum - minimum) / 9;
 
-					    // Instead of leaving in value ranges of 189,900 to 1 (which will skew results)
+					    // Instead of leaving in value ranges of some randomly huge number to 1 (which will skew results)
 					    // Normalize to scale 1 out of 10
 					    temp.forEach(function (a, j) {
 					    	if (!increment) {
@@ -228,7 +228,7 @@ factories.factory('moduleFactory', ['$http', 'ENV', function($http, ENV) {
 					for (var i in rankedArray) {
 						response.data.modules[i].attributes['health'] = (rankedArray[i][2] + rankedArray[i][3] * 1.5 + rankedArray[i][4] * 3) * -1;
 						response.data.modules[i].attributes['uniformity'] = (rankedArray[i][5]) * -1;
-						response.data.modules[i].attributes['utilization'] = rankedArray[i][1] / rankedArray[i][0];
+						response.data.modules[i].attributes['utilization'] = response.data.modules[i].attributes.sitesWithEnabled / response.data.modules[i].attributes.sitesWithAvailable;
 						response.data.modules[i].attributes['availability'] = rankedArray[i][0];
 					}
 
@@ -349,7 +349,7 @@ factories.factory('sitesFactory', ['$http', 'ENV', function($http, ENV) {
 					    var maximum = temp[temp.length-1].v;
 					    var increment = (maximum - minimum) / 9;
 
-					    // Instead of leaving in value ranges of 189,900 to 1 (which will skew results)
+					    // Instead of leaving in value ranges of some randomly huge number to 1 (which will skew results)
 					    // Normalize to scale 1 out of 10
 					    temp.forEach(function (a, j) {
 					    	if (!increment) {
