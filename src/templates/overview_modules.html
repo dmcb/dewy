@@ -29,10 +29,10 @@ layout: compress
                     <li class="utilization" ng-class="{open: openModule.module == module.module && openModule.detail == 'utilization'}">
                         <a href="" ng-click="openDetails(moduleData.modules.indexOf(module), 'utilization')"><div class="point" ng-repeat="i in getNumber(module.utilization) track by $index"></div></a>
                     </li>
-                    <li class="uniformity" ng-class="{open: openModule.module == module.module && openModule.detail == 'uniformity'}">
+                    <li class="uniformity opinionated-{(getFloor(module.uniformity).length)}" ng-class="{open: openModule.module == module.module && openModule.detail == 'uniformity'}">
                         <a href="" ng-click="openDetails(moduleData.modules.indexOf(module), 'uniformity')"><div class="point" ng-repeat="i in getNumber(module.uniformity) track by $index"></div></a>
                     </li>
-                    <li class="health health-{(getFloor(module.health).length)}" ng-class="{open: openModule.module == module.module && openModule.detail == 'health'}">
+                    <li class="health opinionated-{(getFloor(module.health).length)}" ng-class="{open: openModule.module == module.module && openModule.detail == 'health'}">
                         <a href="" ng-click="openDetails(moduleData.modules.indexOf(module), 'health')"><div class="point" ng-repeat="i in getFloor(module.health) track by $index"></div></a>
                     </li>
                 </ul>
