@@ -75,7 +75,23 @@ module.exports = function(grunt) {
     },
 
     concat: {
-      all: {
+      development: {
+        options: {
+          sourceMap: false
+        },
+        src: [
+          '.tmp/bower.js',
+          'src/_js/app.js',
+          'src/_js/services.js',
+          'src/_js/factories.js',
+          'src/_js/directives.js',
+          'src/_js/controllers.js',
+          'src/_js/site.js',
+          '.tmp/config.js'
+        ],
+        dest: '_site/js/scripts.min.js'
+      },
+      production: {
         options: {
           sourceMap: true
         },
@@ -113,7 +129,19 @@ module.exports = function(grunt) {
     },
 
     sass: {
-      all: {
+      development: {
+        options: {
+          sourceMap: false
+        },
+        files: [{
+          expand: true,
+          cwd: 'src/_scss/',
+          src: ['*.scss'],
+          dest: '_site/css/',
+          ext: '.css'
+        }]
+      },
+      production: {
         options: {
           sourceMap: true,
           outputStyle: 'compressed',
@@ -125,20 +153,22 @@ module.exports = function(grunt) {
           dest: '_site/css/',
           ext: '.css'
         }]
-      },
+      }
     },
 
     watch: {
-      grunt: {files: ['Gruntfile.js']},
+      grunt: {
+        files: ['Gruntfile.js']
+      },
 
       jekyll: {
         files: ['src/**/*.{html,yml,md,mkd,markdown}'],
-        tasks: ['jekyll:development', 'concat', 'uglify', 'sass']
+        tasks: ['jekyll:development', 'concat:development', 'sass:development']
       },
 
       scripts: {
         files: ['config.json', 'src/_js/**/*.js', '.tmp/config.js'],
-        tasks: ['ngconstant:development', 'concat', 'uglify']
+        tasks: ['ngconstant:development', 'concat:development']
       },
 
       sass: {
@@ -153,7 +183,7 @@ module.exports = function(grunt) {
 
   require('load-grunt-tasks')(grunt);
 
-  grunt.registerTask('production', ['jekyll:production', 'ngconstant:production', 'bower_concat', 'concat', 'uglify', 'sass']);
-  grunt.registerTask('build', ['jekyll:development', 'ngconstant:development', 'bower_concat', 'concat', 'uglify', 'sass']);
+  grunt.registerTask('production', ['jekyll:production', 'ngconstant:production', 'bower_concat', 'concat:production', 'uglify', 'sass:production']);
+  grunt.registerTask('build', ['jekyll:development', 'ngconstant:development', 'bower_concat', 'concat:development', 'sass:development']);
   grunt.registerTask('default', ['build', 'watch']);
 }
