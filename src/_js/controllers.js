@@ -666,7 +666,7 @@ controllers.controller('overviewModulesController', ['$scope', 'moduleFactory',
 		}
 		
 		$scope.sort = {
-			column: 'module',
+			column: 'm',
 			descending: false
 		};
 }]);
