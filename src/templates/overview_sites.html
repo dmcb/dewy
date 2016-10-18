@@ -49,7 +49,7 @@ layout: compress
                         </ul>
                     </li>
                     <li>
-                        <h3><span class="number">{(openSite.tags.length)}</span> tags assigned</h3>
+                        <h3><ng-pluralize count="{(openSite.tags.length)}" when="{'0': 'No tags assigned', '1': '1 tag assigned', 'other': '{} tags assigned'}"></ng-pluralize></h3>
                         <ul class="items" ng-if="openSite.tags.length">
                             <li ng-repeat="tag in openSite.tags" class="tag">{(tag)} <a href="" ng-click="deleteTag($index, sites.indexOf(site))"><i class="fa fa-times"></i></a></li>
                         </ul>
@@ -73,25 +73,25 @@ layout: compress
                 </ul>
                 <ul ng-if="openSite.detail == 'complexity'">
                     <li>
-                        <h3><span class="number">{(openSite.attributes.enabledModules)}</span> modules enabled</h3>
+                        <h3><ng-pluralize count="{(openSite.attributes.enabledModules)}" when="{'0': 'No modules enabled', '1': '1 module enabled', 'other': '{} modules enabled'}"></ng-pluralize></h3>
                         <ul class="items" ng-if="openSite.details.attributeDetails.enabledModules.length">
                             <li ng-repeat="item in openSite.details.attributeDetails.enabledModules">{(item)}</li>
                         </ul>
                     </li>
                     <li>
-                        <h3><span class="number">{(openSite.attributes.availableModules)}</span> modules available</h3>
+                        <h3><ng-pluralize count="{(openSite.attributes.availableModules)}" when="{'0': 'No modules available', '1': '1 module available', 'other': '{} modules available'}"></ng-pluralize></h3>
                         <ul class="items" ng-if="openSite.details.attributeDetails.availableModules.length">
                             <li ng-repeat="item in openSite.details.attributeDetails.availableModules">{(item)}</li>
                         </ul>
                     </li>
                     <li>
-                        <h3><span class="number">{(openSite.attributes.contentTypes)}</span> content types</h3>
+                        <h3><ng-pluralize count="{(openSite.attributes.contentTypes)}" when="{'0': 'No content types', '1': '1 content type', 'other': '{} content types'}"></ng-pluralize></h3>
                         <ul class="items" ng-if="openSite.details.attributeDetails.contentTypes.length">
                             <li ng-repeat="item in openSite.details.attributeDetails.contentTypes">{(item)}</li>
                         </ul>
                     </li>
                     <li>
-                        <h3><span class="number">{(openSite.attributes.roles)}</span> roles</h3>
+                        <h3><ng-pluralize count="{(openSite.attributes.roles)}" when="{'0': 'No roles', '1': '1 role', 'other': '{} roles'}"></ng-pluralize></h3>
                         <ul class="items" ng-if="openSite.details.attributeDetails.roles.length">
                             <li ng-repeat="item in openSite.details.attributeDetails.roles">{(item)}</li>
                         </ul>
@@ -99,27 +99,27 @@ layout: compress
                 </ul>
                 <ul ng-if="openSite.detail == 'size'">
                     <li>
-                        <h3><span class="number">{(openSite.attributes.nodes)}</span> nodes</h3>
+                        <h3><ng-pluralize count="{(openSite.attributes.nodes)}" when="{'0': 'No nodes', '1': '1 node', 'other': '{} nodes'}"></ng-pluralize></h3>
                     </li>
                     <li>
-                        <h3><span class="number">{(openSite.attributes.words)}</span> words</h3>
+                        <h3><ng-pluralize count="{(openSite.attributes.words)}" when="{'0': 'No words', '1': '1 word', 'other': '{} words'}"></ng-pluralize></h3>
                     </li>
                     <li>
-                        <h3><span class="number">{(openSite.attributes.users)}</span> users</h3>
+                        <h3><ng-pluralize count="{(openSite.attributes.users)}" when="{'0': 'No users', '1': '1 user', 'other': '{} users'}"></ng-pluralize></h3>
                         <ul class="items" ng-if="openSite.details.attributeDetails.users.length">
                             <li ng-repeat="item in openSite.details.attributeDetails.users">{(item)}</li>
                         </ul>
                     </li>
                     <li>
-                        <h3><span class="number">{(openSite.attributes.files)}</span> files</h3>
+                        <h3><ng-pluralize count="{(openSite.attributes.files)}" when="{'0': 'No files', '1': '1 file', 'other': '{} files'}"></ng-pluralize></h3>
                     </li>
                     <li>
-                        <h3><span class="number">{(openSite.attributes.diskSpace)}</span> MB disk size</h3>
+                        <h3>{(openSite.attributes.diskSpace)} MB disk size</h3>
                     </li>
                 </ul>
                 <ul ng-if="openSite.detail == 'activity'">
                     <li ng-if="openSite.attributes.hitsPerDay != -1">
-                        <h3><span class="number">{(openSite.attributes.hitsPerDay)}</span> hits per day</h3>
+                        <h3><ng-pluralize count="{(openSite.attributes.hitsPerDay)}" when="{'0': 'No hits per day', '1': '1 hit per day', 'other': '{} hits per day'}"></ng-pluralize></h3>
                     </li>
                     <li>
                         <h3>Last modification to the site was <span am-time-ago="openSite.attributes.lastModified * 1000"  class="number"></span></h3>
@@ -136,19 +136,19 @@ layout: compress
                 </ul>
                 <ul ng-if="openSite.detail == 'health'">
                     <li>
-                        <h3><span class="number">{(openSite.attributes.projectsWithSecurityUpdates)}</span> projects have security updates</h3>
+                        <h3><ng-pluralize count="{(openSite.attributes.projectsWithSecurityUpdates)}" when="{'0': 'No projects have security updates', '1': '1 project has a security update', 'other': '{} projects have security updates'}"></ng-pluralize></h3>
                         <ul class="items" ng-if="openSite.details.attributeDetails.projectsWithSecurityUpdates.length">
                             <li ng-repeat="item in openSite.details.attributeDetails.projectsWithSecurityUpdates"><a href="https://www.drupal.org/project/{(item)}" target="_blank">{(item)}</a></li>
                         </ul>
                     </li>
                     <li>
-                        <h3><span class="number">{(openSite.attributes.projectsWithUpdates)}</span> projects have updates</h3>
+                        <h3><ng-pluralize count="{(openSite.attributes.projectsWithUpdates)}" when="{'0': 'No projects have updates', '1': '1 project has an update', 'other': '{} projects have updates'}"></ng-pluralize></h3>
                         <ul class="items" ng-if="openSite.details.attributeDetails.projectsWithUpdates.length">
                             <li ng-repeat="item in openSite.details.attributeDetails.projectsWithUpdates"><a href="https://www.drupal.org/project/{(item)}" target="_blank">{(item)}</a></li>
                         </ul>
                     </li>
                     <li>
-                        <h3><span class="number">{(openSite.attributes.databaseUpdates)}</span> modules with database updates pending</h3>
+                        <h3><ng-pluralize count="{(openSite.attributes.databaseUpdates)}" when="{'0': 'No modules with database updates pending', '1': '1 module with a database update pending', 'other': '{} modules with database updates pending'}"></ng-pluralize></h3>
                         <ul class="items" ng-if="openSite.details.attributeDetails.databaseUpdates.length">
                             <li ng-repeat="item in openSite.details.attributeDetails.databaseUpdates">{(item)}</li>
                         </ul>
