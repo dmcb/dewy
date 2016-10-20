@@ -67,7 +67,7 @@ layout: compress
                     <li ng-if="openSite.details.audit.errors.length == 2">
                         <h3 class="warning">Last 2 site audit attempts failed</h3>
                     </li>
-                    <li ng-if="openSite.details.audit.lastSuccessfulAudit != openSite.details.audit.lastSuccessfulContentAudit && openSite.details.content">
+                    <li ng-if="openSite.details.audit.lastSuccessfulAudit != openSite.details.audit.lastSuccessfulContentAudit && openSite.details.content == 1">
                         <h3 class="warning">Content failed to be audited</h3>
                     </li>
                 </ul>
