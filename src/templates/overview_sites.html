@@ -75,25 +75,25 @@ layout: compress
                     <li>
                         <h3><ng-pluralize count="{(openSite.attributes.enabledModules)}" when="{'0': 'No modules enabled', '1': '1 module enabled', 'other': '{} modules enabled'}"></ng-pluralize></h3>
                         <ul class="items" ng-if="openSite.details.attributeDetails.enabledModules.length">
-                            <li ng-repeat="item in openSite.details.attributeDetails.enabledModules">{(item)}</li>
+                            <li ng-repeat="item in openSite.details.attributeDetails.enabledModules | orderBy:item:sort.descending">{(item)}</li>
                         </ul>
                     </li>
                     <li>
                         <h3><ng-pluralize count="{(openSite.attributes.availableModules)}" when="{'0': 'No modules available', '1': '1 module available', 'other': '{} modules available'}"></ng-pluralize></h3>
                         <ul class="items" ng-if="openSite.details.attributeDetails.availableModules.length">
-                            <li ng-repeat="item in openSite.details.attributeDetails.availableModules">{(item)}</li>
+                            <li ng-repeat="item in openSite.details.attributeDetails.availableModules | orderBy:item:sort.descending">{(item)}</li>
                         </ul>
                     </li>
                     <li>
                         <h3><ng-pluralize count="{(openSite.attributes.contentTypes)}" when="{'0': 'No content types', '1': '1 content type', 'other': '{} content types'}"></ng-pluralize></h3>
                         <ul class="items" ng-if="openSite.details.attributeDetails.contentTypes.length">
-                            <li ng-repeat="item in openSite.details.attributeDetails.contentTypes">{(item)}</li>
+                            <li ng-repeat="item in openSite.details.attributeDetails.contentTypes | orderBy:item:sort.descending">{(item)}</li>
                         </ul>
                     </li>
                     <li>
                         <h3><ng-pluralize count="{(openSite.attributes.roles)}" when="{'0': 'No roles', '1': '1 role', 'other': '{} roles'}"></ng-pluralize></h3>
                         <ul class="items" ng-if="openSite.details.attributeDetails.roles.length">
-                            <li ng-repeat="item in openSite.details.attributeDetails.roles">{(item)}</li>
+                            <li ng-repeat="item in openSite.details.attributeDetails.roles | orderBy:item:sort.descending">{(item)}</li>
                         </ul>
                     </li>
                 </ul>
@@ -107,7 +107,7 @@ layout: compress
                     <li>
                         <h3><ng-pluralize count="{(openSite.attributes.users)}" when="{'0': 'No users', '1': '1 user', 'other': '{} users'}"></ng-pluralize></h3>
                         <ul class="items" ng-if="openSite.details.attributeDetails.users.length">
-                            <li ng-repeat="item in openSite.details.attributeDetails.users">{(item)}</li>
+                            <li ng-repeat="item in openSite.details.attributeDetails.users | orderBy:item:sort.descending">{(item)}</li>
                         </ul>
                     </li>
                     <li>
@@ -138,19 +138,19 @@ layout: compress
                     <li>
                         <h3><ng-pluralize count="{(openSite.attributes.projectsWithSecurityUpdates)}" when="{'0': 'No projects have security updates', '1': '1 project has a security update', 'other': '{} projects have security updates'}"></ng-pluralize></h3>
                         <ul class="items" ng-if="openSite.details.attributeDetails.projectsWithSecurityUpdates.length">
-                            <li ng-repeat="item in openSite.details.attributeDetails.projectsWithSecurityUpdates"><a href="https://www.drupal.org/project/{(item)}" target="_blank">{(item)}</a></li>
+                            <li ng-repeat="item in openSite.details.attributeDetails.projectsWithSecurityUpdates | orderBy:item:sort.descending"><a href="https://www.drupal.org/project/{(item)}" target="_blank">{(item)}</a></li>
                         </ul>
                     </li>
                     <li>
                         <h3><ng-pluralize count="{(openSite.attributes.projectsWithUpdates)}" when="{'0': 'No projects have updates', '1': '1 project has an update', 'other': '{} projects have updates'}"></ng-pluralize></h3>
                         <ul class="items" ng-if="openSite.details.attributeDetails.projectsWithUpdates.length">
-                            <li ng-repeat="item in openSite.details.attributeDetails.projectsWithUpdates"><a href="https://www.drupal.org/project/{(item)}" target="_blank">{(item)}</a></li>
+                            <li ng-repeat="item in openSite.details.attributeDetails.projectsWithUpdates | orderBy:item:sort.descending"><a href="https://www.drupal.org/project/{(item)}" target="_blank">{(item)}</a></li>
                         </ul>
                     </li>
                     <li>
                         <h3><ng-pluralize count="{(openSite.attributes.databaseUpdates)}" when="{'0': 'No modules with database updates pending', '1': '1 module with a database update pending', 'other': '{} modules with database updates pending'}"></ng-pluralize></h3>
                         <ul class="items" ng-if="openSite.details.attributeDetails.databaseUpdates.length">
-                            <li ng-repeat="item in openSite.details.attributeDetails.databaseUpdates">{(item)}</li>
+                            <li ng-repeat="item in openSite.details.attributeDetails.databaseUpdates | orderBy:item:sort.descending">{(item)}</li>
                         </ul>
                     </li>
                 </ul>
