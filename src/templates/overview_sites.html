@@ -107,7 +107,7 @@ layout: compress
                     <li>
                         <h3><ng-pluralize count="{(openSite.attributes.users)}" when="{'0': 'No users', '1': '1 user', 'other': '{} users'}"></ng-pluralize></h3>
                         <ul class="items" ng-if="openSite.details.attributeDetails.users.length">
-                            <li ng-repeat="item in openSite.details.attributeDetails.users | orderBy:item:sort.descending">{(item)}</li>
+                            <li ng-repeat="item in openSite.details.attributeDetails.users track by $index | orderBy:item:sort.descending">{(item)}</li>
                         </ul>
                     </li>
                     <li>
