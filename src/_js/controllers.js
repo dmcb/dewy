@@ -659,9 +659,17 @@ controllers.controller('overviewModulesController', ['$scope', 'moduleFactory',
 				$scope.openModule = null;
 			}
 			else {
-				$scope.openModule = $scope.moduleData.modules[index];
-				$scope.openModule.detail = detail;
-				$scope.openModule.index = index;
+				// If details haven't been already loaded for the site, go grab the site details
+				if (!('details' in $scope.moduleData.modules[index])) {
+					moduleFactory.getDetails($scope.moduleData.modules[index].m, $scope.currentFilter).then(function(details) {
+						$scope.moduleData.modules[index].details = details;
+						$scope.openModule = $scope.moduleData.modules[index];
+						$scope.openModule.detail = detail;
+					});
+				} else {
+					$scope.openModule = $scope.moduleData.modules[index];
+					$scope.openModule.detail = detail;
+				}
 			}
 		}
 		

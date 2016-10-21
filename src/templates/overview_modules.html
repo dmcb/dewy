@@ -39,26 +39,26 @@ layout: compress
             </ul>
             <div class="detail-view" ng-if="openModule.m == module.m">
                 <ul ng-if="openModule.detail == 'meta'">
-                    <li ng-if="module.p">
-                        <h3>Module is part of project <a href="https://www.drupal.org/project/{(module.p)}" target="_blank">{(module.p)}</a></h3>
+                    <li ng-if="module.details.p">
+                        <h3>Module is part of project <a href="https://www.drupal.org/project/{(module.details.p)}" target="_blank">{(module.details.p)}</a></h3>
                     </li>
-                    <li ng-if="!module.p">
+                    <li ng-if="!module.details.p">
                         <h3>Module is not a part of any Drupal.org registered project</a></h3>
                     </li>
                 </ul>
                 <ul ng-if="openModule.detail == 'availability'">
                     <li>
-                        <h3><ng-pluralize count="{(openModule.a.length)}" when="{'0': 'No sites where the module is available', '1': '1 site where the module is available', 'other': '{} sites where the module is available'}"></ng-pluralize> (out of {(moduleData.siteIndex.length)})</h3>
-                        <ul class="items" ng-if="openModule.a.length">
-                            <li ng-repeat="item in openModule.a">{(moduleData.siteIndex[item])}</li>
+                        <h3><ng-pluralize count="{(openModule.attributes.sitesWithAvailable)}" when="{'0': 'No sites where the module is available', '1': '1 site where the module is available', 'other': '{} sites where the module is available'}"></ng-pluralize> (out of {(moduleData.siteTotal)})</h3>
+                        <ul class="items" ng-if="openModule.details.a.length">
+                            <li ng-repeat="item in openModule.details.a | orderBy">{(item)}</li>
                         </ul>
                     </li>
                 </ul>
                 <ul ng-if="openModule.detail == 'utilization'">
                     <li>
-                        <h3><ng-pluralize count="{(openModule.e.length)}" when="{'0': 'No sites where the module is enabled', '1': '1 site where the module is enabled', 'other': '{} sites where the module is enabled'}"></ng-pluralize> (out of {(openModule.a.length)} where it is available)</h3>
-                        <ul class="items" ng-if="openModule.e.length">
-                            <li ng-repeat="item in openModule.e">{(moduleData.siteIndex[item])}</li>
+                        <h3><ng-pluralize count="{(openModule.attributes.sitesWithEnabled)}" when="{'0': 'No sites where the module is enabled', '1': '1 site where the module is enabled', 'other': '{} sites where the module is enabled'}"></ng-pluralize> (out of {(openModule.attributes.sitesWithAvailable)} where it is available)</h3>
+                        <ul class="items" ng-if="openModule.details.e.length">
+                            <li ng-repeat="item in openModule.details.e | orderBy">{(item)}</li>
                         </ul>
                     </li>
                 </ul>
@@ -66,30 +66,30 @@ layout: compress
                     <li>
                         <h3><ng-pluralize count="{(openModule.attributes.versions)}" when="{'0': 'No versions on your sites', '1': '1 version on your sites', 'other': '{} versions on your sites'}"></ng-pluralize></h3>
                     </li>
-                    <li ng-repeat="(item, value) in openModule.v">
+                    <li ng-repeat="(item, value) in openModule.details.v | orderBy">
                         <h3><ng-pluralize count="{(value.length)}" when="{'0': 'No sites', '1': '1 site', 'other': '{} sites'}"></ng-pluralize> using version {(item)}</h3>
                         <ul class="items" ng-if="value.length">
-                            <li ng-repeat="item in value">{(moduleData.siteIndex[item])}</li>
+                            <li ng-repeat="item in value | orderBy">{(item)}</li>
                         </ul>
                     </li>
                 </ul>
                 <ul ng-if="openModule.detail == 'health'">
                     <li>
-                        <h3><ng-pluralize count="{(openModule.s.length)}" when="{'0': 'No sites with security updates', '1': '1 site with security updates', 'other': '{} sites with security updates'}"></ng-pluralize></h3>
-                        <ul class="items" ng-if="openModule.s.length">
-                            <li ng-repeat="item in openModule.s">{(moduleData.siteIndex[item])}</li>
+                        <h3><ng-pluralize count="{(openModule.attributes.sitesWithSecurityUpdates)}" when="{'0': 'No sites with security updates', '1': '1 site with security updates', 'other': '{} sites with security updates'}"></ng-pluralize></h3>
+                        <ul class="items" ng-if="openModule.details.s.length">
+                            <li ng-repeat="item in openModule.details.s | orderBy">{(item)}</li>
                         </ul>
                     </li>
                     <li>
-                        <h3><ng-pluralize count="{(openModule.u.length)}" when="{'0': 'No sites with updates', '1': '1 site with updates', 'other': '{} sites with updates'}"></ng-pluralize></h3>
-                        <ul class="items" ng-if="openModule.u.length">
-                            <li ng-repeat="item in openModule.u">{(moduleData.siteIndex[item])}</li>
+                        <h3><ng-pluralize count="{(openModule.attributes.sitesWithUpdates)}" when="{'0': 'No sites with updates', '1': '1 site with updates', 'other': '{} sites with updates'}"></ng-pluralize></h3>
+                        <ul class="items" ng-if="openModule.details.u.length">
+                            <li ng-repeat="item in openModule.details.u | orderBy">{(item)}</li>
                         </ul>
                     </li>
                     <li>
-                        <h3><ng-pluralize count="{(openModule.d.length)}" when="{'0': 'No sites with pending database updates', '1': '1 site with pending database updates', 'other': '{} sites with pending database updates'}"></ng-pluralize></h3>
-                        <ul class="items" ng-if="openModule.d.length">
-                            <li ng-repeat="item in openModule.d">{(moduleData.siteIndex[item])}</li>
+                        <h3><ng-pluralize count="{(openModule.attributes.sitesWithDatabaseUpdates)}" when="{'0': 'No sites with pending database updates', '1': '1 site with pending database updates', 'other': '{} sites with pending database updates'}"></ng-pluralize></h3>
+                        <ul class="items" ng-if="openModule.details.d.length">
+                            <li ng-repeat="item in openModule.details.d | orderBy">{(item)}</li>
                         </ul>
                     </li>
                 </ul>

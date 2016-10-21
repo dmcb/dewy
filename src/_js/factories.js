@@ -160,18 +160,13 @@ factories.factory('moduleFactory', ['$http', 'ENV', function($http, ENV) {
 			.then(function (response) {
 				var arrayOfRankings = [];
 				for (var i in response.data.modules) {
-					var versions = 0;
-					for (version in response.data.modules[i].v) {
-						versions = versions + 1; 
-					}
-
 					response.data.modules[i].attributes = {
-						sitesWithAvailable: response.data.modules[i].a.length,
-						sitesWithEnabled: response.data.modules[i].e.length,
-						sitesWithDatabaseUpdates: response.data.modules[i].d.length,
-						sitesWithUpdates: response.data.modules[i].u.length,
-						sitesWithSecurityUpdates: response.data.modules[i].s.length,
-						versions: versions
+						sitesWithAvailable: response.data.modules[i].a,
+						sitesWithEnabled: response.data.modules[i].e,
+						sitesWithDatabaseUpdates: response.data.modules[i].d,
+						sitesWithUpdates: response.data.modules[i].u,
+						sitesWithSecurityUpdates: response.data.modules[i].s,
+						versions: response.data.modules[i].v
 					}
 
 					var ranking = [];
@@ -267,6 +262,16 @@ factories.factory('moduleFactory', ['$http', 'ENV', function($http, ENV) {
 						}
 					}
 				}
+				return response.data;
+			});
+	}
+
+	moduleFactory.getDetails = function(module, fid) {
+		if (fid == null) {
+			fid = undefined;
+		}
+		return $http.get(ENV.api + 'modules/' + module + '/' + fid)
+			.then(function (response) {
 				return response.data;
 			});
 	}
