@@ -661,7 +661,7 @@ controllers.controller('overviewModulesController', ['$scope', 'moduleFactory',
 			else {
 				// If details haven't been already loaded for the site, go grab the site details
 				if (!('details' in $scope.moduleData.modules[index])) {
-					moduleFactory.getDetails($scope.moduleData.modules[index].m, $scope.currentFilter).then(function(details) {
+					moduleFactory.getDetails($scope.moduleData.modules[index].m, $scope.currentFilter.fid).then(function(details) {
 						$scope.moduleData.modules[index].details = details;
 						$scope.openModule = $scope.moduleData.modules[index];
 						$scope.openModule.detail = detail;
