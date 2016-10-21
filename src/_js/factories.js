@@ -267,9 +267,6 @@ factories.factory('moduleFactory', ['$http', 'ENV', function($http, ENV) {
 	}
 
 	moduleFactory.getDetails = function(module, fid) {
-		if (fid == null) {
-			fid = undefined;
-		}
 		return $http.get(ENV.api + 'modules/' + module + '/' + fid)
 			.then(function (response) {
 				return response.data;
