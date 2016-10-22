@@ -276,6 +276,19 @@ factories.factory('moduleFactory', ['$http', 'ENV', function($http, ENV) {
 	return moduleFactory;
 }]);
 
+factories.factory('projectFactory', ['$http', 'ENV', function($http, ENV) {
+	var projectFactory = {};
+
+	projectFactory.getAll = function() {
+		return $http.get(ENV.api + 'projects/')
+			.then(function (response) {
+				return response.data;
+			});
+	}
+
+	return projectFactory;
+}]);
+
 factories.factory('sitesFactory', ['$http', 'ENV', function($http, ENV) {
 	var sitesFactory = {};
 

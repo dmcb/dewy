@@ -213,6 +213,9 @@ app.config(['$httpProvider', '$routeProvider', '$interpolateProvider', '$locatio
 				filterIndex: ['filterFactory', function(filterFactory) {
 					return filterFactory.getIndex();
 				}],
+				projects: ['projectFactory', function(projectFactory) {
+					return projectFactory.getAll();
+				}],
 				data: ['$route', 'filterFactory', 'sitesFactory', function($route, filterFactory, sitesFactory) {
 					if ($route.current.params.filter) {
 						return filterFactory.getFilter($route.current.params.filter).

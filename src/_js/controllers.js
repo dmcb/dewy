@@ -595,6 +595,7 @@ controllers.controller('overviewController', ['$scope', '$location', 'sitesFacto
 		$scope.view = data.view;
 		if ($scope.view == 'sites') {
 			$scope.sites = data.sites;
+			$scope.projects = data.projects;
 			$scope.viewPage = 'templates/overview_sites.html';
 		}
 		else if ($scope.view == 'modules') {
