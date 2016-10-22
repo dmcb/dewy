@@ -564,8 +564,8 @@ controllers.controller('signupController', ['authService', '$scope', '$http', '$
 		}
 }]);
 
-controllers.controller('overviewController', ['$scope', '$location', 'sitesFactory', 'filters', 'filterIndex', 'data',
-	function ($scope, $location, sitesFactory, filters, filterIndex, data) {
+controllers.controller('overviewController', ['$scope', '$location', 'sitesFactory', 'filters', 'filterIndex', 'projects', 'data',
+	function ($scope, $location, sitesFactory, filters, filterIndex, projects, data) {
 		$scope.changeFilter = function(fid) {
 			if (fid) {
 				$location.path($scope.view + '/' + fid);
@@ -595,7 +595,7 @@ controllers.controller('overviewController', ['$scope', '$location', 'sitesFacto
 		$scope.view = data.view;
 		if ($scope.view == 'sites') {
 			$scope.sites = data.sites;
-			$scope.projects = data.projects;
+			$scope.projects = projects;
 			$scope.viewPage = 'templates/overview_sites.html';
 		}
 		else if ($scope.view == 'modules') {
@@ -719,6 +719,9 @@ controllers.controller('overviewSitesController', ['$scope', 'sitesFactory',
 			$scope.openSite.tags.splice(tagIndex, 1);
 			$scope.sites[siteIndex].tags = $scope.openSite.tags;
 			sitesFactory.setTags($scope.openSite);
+		}
+		$scope.getProject = function(projectIndex) {
+			return $scope.projects[projectIndex + '-' + $scope.openSite.details.core.major];
 		}
 		$scope.openDetails = function(index, detail) {
 			// If the site is already open to that same site and view, close the view

@@ -40,7 +40,7 @@ layout: compress
             <div class="detail-view" ng-if="openSite.sid == site.sid">
                 <ul ng-if="openSite.detail == 'meta'">
                     <li>
-                        <h3>Site live at <a href="{(site.baseurl)}" target="_blank">{(site.baseurl)}</a></h3>
+                        <h3>Site is live at <a href="{(site.baseurl)}" target="_blank">{(site.baseurl)}</a> using Drupal {(openSite.details.core.version)}</h3>
                     </li>
                     <li>
                         <h3>Site added to Dewy <span am-time-ago="openSite.dateAdded * 1000" class="number"></span></h3>
@@ -138,13 +138,13 @@ layout: compress
                     <li>
                         <h3><ng-pluralize count="{(openSite.attributes.projectsWithSecurityUpdates)}" when="{'0': 'No projects have security updates', '1': '1 project has a security update', 'other': '{} projects have security updates'}"></ng-pluralize></h3>
                         <ul class="items" ng-if="openSite.details.attributeDetails.projectsWithSecurityUpdates.length">
-                            <li ng-repeat="item in openSite.details.attributeDetails.projectsWithSecurityUpdates | orderBy"><a href="https://www.drupal.org/project/{(item)}" target="_blank">{(item)}</a></li>
+                            <li ng-repeat="item in openSite.details.attributeDetails.projectsWithSecurityUpdates | orderBy"><a href="https://www.drupal.org/project/{(item)}" target="_blank">{(item)}</a><span class="version-info"><span class="version-from">{(openSite.details.projectVersions[item])}</span><span class="version-to">{(getProject(item))}</span></li>
                         </ul>
                     </li>
                     <li>
                         <h3><ng-pluralize count="{(openSite.attributes.projectsWithUpdates)}" when="{'0': 'No projects have updates', '1': '1 project has an update', 'other': '{} projects have updates'}"></ng-pluralize></h3>
                         <ul class="items" ng-if="openSite.details.attributeDetails.projectsWithUpdates.length">
-                            <li ng-repeat="item in openSite.details.attributeDetails.projectsWithUpdates | orderBy"><a href="https://www.drupal.org/project/{(item)}" target="_blank">{(item)}</a></li>
+                            <li ng-repeat="item in openSite.details.attributeDetails.projectsWithUpdates | orderBy"><a href="https://www.drupal.org/project/{(item)}" target="_blank">{(item)}</a><span class="version-info"><span class="version-from">{(openSite.details.projectVersions[item])}</span><span class="version-to">{(getProject(item))}</span></li>
                         </ul>
                     </li>
                     <li>
