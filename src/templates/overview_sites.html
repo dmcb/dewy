@@ -138,13 +138,13 @@ layout: compress
                     <li>
                         <h3><ng-pluralize count="{(openSite.attributes.projectsWithSecurityUpdates)}" when="{'0': 'No projects have security updates', '1': '1 project has a security update', 'other': '{} projects have security updates'}"></ng-pluralize></h3>
                         <ul class="items" ng-if="openSite.details.attributeDetails.projectsWithSecurityUpdates.length">
-                            <li ng-repeat="item in openSite.details.attributeDetails.projectsWithSecurityUpdates | orderBy"><a href="https://www.drupal.org/project/{(item)}" target="_blank">{(item)}</a><span class="version-info"><span class="version-from">{(openSite.details.projectVersions[item])}</span><span class="version-to">{(getProject(item))}</span></li>
+                            <li ng-repeat="item in openSite.details.attributeDetails.projectsWithSecurityUpdates | orderBy" class="project-{(item)}"><a href="https://www.drupal.org/project/{(item)}" target="_blank">{(item)}</a><span class="version-info"><span class="version-from">{(openSite.details.projectVersions[item])}</span><span class="version-to">{(getProject(item))}</span></li>
                         </ul>
                     </li>
                     <li>
                         <h3><ng-pluralize count="{(openSite.attributes.projectsWithUpdates)}" when="{'0': 'No projects have updates', '1': '1 project has an update', 'other': '{} projects have updates'}"></ng-pluralize></h3>
                         <ul class="items" ng-if="openSite.details.attributeDetails.projectsWithUpdates.length">
-                            <li ng-repeat="item in openSite.details.attributeDetails.projectsWithUpdates | orderBy"><a href="https://www.drupal.org/project/{(item)}" target="_blank">{(item)}</a><span class="version-info"><span class="version-from">{(openSite.details.projectVersions[item])}</span><span class="version-to">{(getProject(item))}</span></li>
+                            <li ng-repeat="item in openSite.details.attributeDetails.projectsWithUpdates | orderBy" class="project-{(item)}"><a href="https://www.drupal.org/project/{(item)}" target="_blank">{(item)}</a><span class="version-info"><span class="version-from">{(openSite.details.projectVersions[item])}</span><span class="version-to">{(getProject(item))}</span></li>
                         </ul>
                     </li>
                     <li>
