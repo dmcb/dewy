@@ -26,3 +26,7 @@ h3 {
 h4 {
     font-weight: 700;
 }
+
+p + h2, p + h3 {
+    margin-top: 2em;
+}

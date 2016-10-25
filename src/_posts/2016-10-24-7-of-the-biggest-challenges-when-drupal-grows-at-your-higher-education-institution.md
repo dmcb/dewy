@@ -1,6 +1,6 @@
 ---
-title: 7 Of The Biggest Challenges When Drupal Grows At Your Institution
-description: Your central web team has empowered your higher-ed insitution's digital presence with Drupal. The units on campus can now take charge of their own sites while your team is still at the controls of your institution's digital strategy. But over time, issues will arise that if left unchecked, could pose significant risks to your institution. This is a list of some of the biggest challenges and how they can be managed.
+title: 7 Of The Biggest Challenges When Drupal Grows At Your Higher-Education Institution
+description: Your web team has empowered your higher-ed insitution's digital presence with Drupal, and everything is awesome. But over time issues will arise that could pose significant risks to your institution. These are the biggest challenges and how they can be managed.
 ---
 
 You've built a Drupal distribution for your higher-ed institution: a theme, a base set of content types, views and the modules that drive them. Now you are provisioning sites for all the units on campus with your Drupal distribution. These units will administer their websites, creating content without relying on your centralized web team to continue to build everything. This is the power of Drupal and why your institution chose it. It empowers your campus to own their sites, while still allowing your central web team the ability to control the institution's digital presence that fits with a broader digital strategy.
@@ -19,7 +19,7 @@ Much functionality can be built directly in the Drupal UI through CCK, Views, Pa
 * Make sure the modules you create providing this functionality are tagged with version numbers just like any [Drupal.org module](https://www.drupal.org/project/project_module) so that you know what site has what version of what functionality in use.
 * Keep modules across your sites using the same version if possible. This simplifies maintenance when every site has the exact same upgrade path for a module should an update be released, and provides a consistent user experience for all your site's users. Dewy can easily spot how many versions of the same module you are running across your environment.
 
-![Version usage in Dewy](/img/posts/7-of-the-biggest-challenges-when-growing-your-drupal-multisite-organization/versions.gif)
+![Version usage in Dewy](/img/posts/7-of-the-biggest-challenges-when-drupal-grows-at-your-higher-education-institution/versions.gif)
 
 ### 2. Content that deviates from your digital strategy
 
@@ -32,7 +32,7 @@ With a distributed network of content authors accross the sites at your higher-e
 * Regular content audits of your first tier of sites. Dewy can help you keep track of what's considered a first tier site via the site tagging system.
 * Use Dewy to spot outdated and sensitive content across all your sites. An old brand motto? References to the institution's previous President? Dewy can parse all your content to find the sites with those references.
 
-![Content lookup in Dewy](/img/posts/7-of-the-biggest-challenges-when-growing-your-drupal-multisite-organization/content.gif)
+![Content lookup in Dewy](/img/posts/7-of-the-biggest-challenges-when-drupal-grows-at-your-higher-education-institution/content.gif)
 
 ### 3. Site sprawl
 
@@ -45,7 +45,7 @@ What's much more difficult to deal with is site *deprovisioning*. The issues wit
 * Create rules around what is considered an inactive site that will be deprovisioned by your team and communicate these rules transparently to your users when you create a site for them. A good rule is that an administrator of the site must log in to the site every X months to indicate that the site hasn't been abandoned.
 * Look for sites that have little to no traffic, are seldom modified, haven't been signed on to in a long time or are in maintenance mode. Dewy can help you define these rules and find sites that match your criteria quickly.
 
-![Number of versions](/img/posts/7-of-the-biggest-challenges-when-growing-your-drupal-multisite-organization/stale-sites.gif)
+![Number of versions](/img/posts/7-of-the-biggest-challenges-when-drupal-grows-at-your-higher-education-institution/stale-sites.gif)
 
 ### 4. Module sprawl
 
@@ -59,7 +59,7 @@ More importantly, every module on a site also slows down your web team. Security
 * Create a review process so that when a request for a new module is made by one of your site admins, it is compared against existing offerings. For example, the [User One](https://www.drupal.org/project/userone) module may not be needed if you are already providing the [User Protect](https://www.drupal.org/project/userprotect) module.
 * Deprovision modules that may no longer be in use, or only exist for sites that are edge cases in your digital strategy. Dewy can help spot modules that are no longer in use.
 
-![Module utilization in Dewy](/img/posts/7-of-the-biggest-challenges-when-growing-your-drupal-multisite-organization/utilization.gif)
+![Module utilization in Dewy](/img/posts/7-of-the-biggest-challenges-when-drupal-grows-at-your-higher-education-institution/utilization.gif)
 
 ### 5. User deprovisioning
 
@@ -71,18 +71,18 @@ You will likely find at your institution that there are many users who have admi
 * Update that user's role across all sites they have access to. If the user is no longer with the institution, instead of deleting the account, block the account. [Account deletion can have unwanted side effects](https://www.drupal.org/node/1732920).
 * Use Dewy to help find what sites that user is on.
 
-![User lookup in Dewy](/img/posts/7-of-the-biggest-challenges-when-growing-your-drupal-multisite-organization/user-lookup.gif)
+![User lookup in Dewy](/img/posts/7-of-the-biggest-challenges-when-drupal-grows-at-your-higher-education-institution/user-lookup.gif)
 
 ### 6. Sites that run away in size
 
-Enforcing maximum file upload sizes for any given field, or site or environment wide is easy. Enforcing a total size for an entire website is difficult. And while diskspace is cheap, it is not always plentiful. At large higher-ed institutions there are always new initiatives finding evermore intensive ways of consuming what diskspace is available. So it's important to be responsible with your resources.
+Enforcing maximum file upload sizes for any given field is easy. Enforcing a total size for an entire website is difficult. And while diskspace is cheap, it is not always plentiful. At large higher-ed institutions there are always new initiatives finding ever more intensive ways of consuming what diskspace is available. So it's important to be responsible with your resources.
 
 #### Solutions
 
 * Write a script to periodically check the file size of your sites. This can be done by using the [du command](http://www.linfo.org/du.html) but involves knowing where the files and private files directories are for each site (the locations of these directories may be be changed by site administrators that have the permission to do so).
 * Use Dewy to build a filter that shows exactly what sites are using a disk space amount that you aren't comfortable with.
 
-![Site size lookup in Dewy](/img/posts/7-of-the-biggest-challenges-when-growing-your-drupal-multisite-organization/size-lookup.gif)
+![Site size lookup in Dewy](/img/posts/7-of-the-biggest-challenges-when-drupal-grows-at-your-higher-education-institution/size-lookup.gif)
 
 ### 7. Security
 
@@ -96,4 +96,4 @@ This problem is exacerbated by the more modules and sites you have, especially w
 * Use the Update module to see what security updates are on your site. [Or better yet, don't](https://dewy.io/blog/stop-the-update-module-from-scaring-your-clients-and-users/).
 * Use Dewy to quickly see all pending security and non-security updates across all your sites.
 
-![Pending security updates in Dewy](/img/posts/7-of-the-biggest-challenges-when-growing-your-drupal-multisite-organization/security-updates.gif)
+![Pending security updates in Dewy](/img/posts/7-of-the-biggest-challenges-when-drupal-grows-at-your-higher-education-institution/security-updates.gif)
