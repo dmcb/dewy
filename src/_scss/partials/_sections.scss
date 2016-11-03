@@ -3,8 +3,8 @@ section {
     @include clearfix;
     clear: both;
     position: relative;
-    margin-top: 3em;
-    margin-bottom: 3em;
+    padding-top: 3em;
+    padding-bottom: 3em;
 
     @include breakpoint($mobile-large) {
         & > section {
@@ -19,11 +19,11 @@ section {
     }
 
     & > p, & > form, & > ul {
-        margin-bottom: 2em;
+        padding-bottom: 2em;
         clear: both;
 
         &:last-child {
-            margin-bottom: 0;
+            padding-bottom: 0;
         }
     }
 }
