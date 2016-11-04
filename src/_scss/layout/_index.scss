@@ -1,8 +1,4 @@
 section.introduction {
-    h1 {
-        width: 85%;
-    }
-
     p {
         font-size: 1.25em;
     }
@@ -11,25 +7,15 @@ section.introduction {
         color: $grey;
     }
 
-    @include breakpoint($tablet) {
-        h1 {
-            width: 70%;
-        }
-    }
-
     @include breakpoint($desktop) {
-        h1 {
-            width: 55%;
-        }
-
         p {
             width: grid-span(16,1);
         }
     }
 
     @include breakpoint($desktop-large) {
-        h1 {
-            width: 42%;
+        p {
+            width: grid-span(8,1);
         }
     }
 }

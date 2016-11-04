@@ -1,7 +1,6 @@
 .shell, #flash-messages li {
     @include clearfix;
     position: relative;
-    overflow: hidden;
     
     max-width: $desktop-extra-large;
     margin-left: auto;
