@@ -43,6 +43,7 @@ body {
         background-image: radial-gradient(circle, $blue 70%, $darkish-blue);
         background-attachment: fixed;
         @include clearfix;
+        padding-bottom: 5em;
     }
 
     &.app, &.page {

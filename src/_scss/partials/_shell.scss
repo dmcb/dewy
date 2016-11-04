@@ -1,5 +1,7 @@
 .shell, #flash-messages li {
     @include clearfix;
+    position: relative;
+    overflow: hidden;
     
     max-width: $desktop-extra-large;
     margin-left: auto;
@@ -8,7 +10,7 @@
     padding-right: 16px;
 
     @include breakpoint($tablet) {
-        padding-left: gutter-span(1);
-        padding-right: gutter-span(1);
+        padding-left: 24px;
+        padding-right: 24px;
     }
 }

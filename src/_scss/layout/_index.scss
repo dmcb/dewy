@@ -1,4 +1,8 @@
 section.introduction {
+    h1 {
+        width: 85%;
+    }
+
     p {
         font-size: 1.25em;
     }
@@ -6,99 +10,199 @@ section.introduction {
     a {
         color: $grey;
     }
+
+    @include breakpoint($tablet) {
+        h1 {
+            width: 70%;
+        }
+    }
+
+    @include breakpoint($desktop) {
+        h1 {
+            width: 55%;
+        }
+
+        p {
+            width: grid-span(16,1);
+        }
+    }
+
+    @include breakpoint($desktop-large) {
+        h1 {
+            width: 42%;
+        }
+    }
 }
 
 div.body {
+    clear: both;
     @include clearfix;
     background-color: $white;
     color: $grey;
 
     section {
-        padding-bottom: 0;
+        overflow: hidden;
+        padding: 0;
         border-bottom: solid 1px $light-blue;
+        margin-bottom: 3em;
+
+        &:first-child {
+            margin-top: 3em;
+        }
 
         &:last-child {
-            padding-bottom: 3em;
             border-bottom: none;
+            margin-bottom: 0;
         }
 
-        &.more {
-            h2, p {
-                width: 100%;
-            }
-        }
-
-        .image {
-            clear: both;
+        .screenshot {
             width: 100%;
-            margin-top: 1em;
-
-            &.screenshot {
-                box-shadow: 0px 0px 1em 0px rgba(0,0,0,0.5);
-            }
+            margin-top: 2em;
 
             img {
                 width: 100%;
             }
         }
 
-        &.views, &.querying, &.notifications, &.more {
+        &.views, &.querying, &.notifications {
             background-color: $white;
         }
 
         &.notifications {
+            .coming-soon-copy {
+                display: none;
+            }
+
             .image {
-                width: 50%;
+                width: 70%;
+                margin: 2em auto -10em auto;
+
+                img {
+                    width: 100%;
+                }
             }
         }
     }
 
     @include breakpoint($tablet) {
         section {
-            .image {
+            .screenshot {
                 overflow: hidden;
+                width: grid-span(22,2);
+                margin-left: auto;
+                margin-right: auto;
 
                 &.screenshot {
-                    box-shadow: 0px 0px 2em 0px rgba(0,0,0,0.5);
+                    box-shadow: 0px 0px 2em 0px rgba(0,0,0,0.4);
+                    margin-top: 4em;
+                }
+            }
+
+            &.notifications {
+                float: none;
+                width: auto;
+                margin: 0 -24px 0 0;
+                height: 0;
+                @include proportional-box(70%);
+                background-image: url(/img/notifications.png);
+                background-position: 110% 0;
+                background-repeat: no-repeat;
+                background-size: contain;
+
+                .block, .image {
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+
+                .block {
+                    margin-left: grid-span(2,1);
+                    width: 55%;
+                }
+
+                .image {
+                    display: none;
+                }
+
+                .coming-soon-copy {
+                    margin-top: 4em;
+                    display: block;
                 }
             }
         }
     }
 
+    @include breakpoint($tablet-large) {
+        section.notifications {
+            padding-top: 60%;
+            background-position: 105% 0;
+        }
+    }
+
     @include breakpoint($desktop) {
-        section {
+        section:not(.notifications) {
             p {
-                @include grid-span(16,1);
-                clear: both;
+                width: grid-span(16,1);
             }
 
-            .image {
-                @include grid-span(20,3);
-                clear: both;
+            .screenshot {
+                width: grid-span(20,3);
             }
         }
     }
 
     @include breakpoint($desktop-large) {
         section {
+            margin-bottom: 0;
+
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+
+        section:not(.notifications) {
+            @include proportional-box(27%);
+
             h2, p {
-                @include grid-span(8,1);
-                clear: both;
+                width: grid-span(8,1);
+            }
+
+            .screenshot {
+                display: block;
+                margin: 0;
+                width: auto;
+                position: absolute;
+                right: 2em;
+                left: 40%;
+                bottom: 0;
+
+                img {
+                    margin-bottom: -5px;
+                }
+            }
+        }
+
+
+        section.notifications {
+            @include grid-span(20,3);
+            clear: both;
+            padding-top: 48%;
+            background-image: none;
+
+            .block {
+                margin-left: 0;
             }
 
             .image {
-                @include grid-span(14,10);
-            }
+                display: block;
+                margin: 0;
+                width: auto;
+                position: absolute;
+                right: 1.5em;
+                left: 70%;
+                bottom: 0;
 
-
-            &.notifications {
-                h2, p {
-                    @include grid-span(8,10);
-                    clear: both;
-                }
-
-                .image {
-                    @include grid-span(8,1);
+                img {
+                    margin-bottom: -5px;
                 }
             }
         }
