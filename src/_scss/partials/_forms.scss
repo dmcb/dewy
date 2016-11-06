@@ -100,7 +100,7 @@ form {
                 @include grid-span(7,1);
             }
 
-            .field > input,  .field > .error, .fields {
+            .field > input, .field > select, .field > .error, .fields {
                 @include grid-span(17,8);
             }
 

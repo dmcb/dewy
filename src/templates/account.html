@@ -58,5 +58,20 @@ layout: compress
                 </fieldset>
             </form>
         </section>
+        <section class="user-info">
+            <h3>Notifications</h3>
+            <form name="notificationsForm">
+                <fieldset>
+                    <div class="field">
+                        <label>Update notifications</label>
+                        <select ng-model="securityNotification" name="securityNotification" ng-change="submitNotifications(currentUser.uid)">
+                            <option value="all">Receive all project updates</option>
+                            <option value="security">Receive only project security updates</option>
+                            <option value="none">Do not be notified of any project updates</option>
+                        </select>
+                    </div>
+                </fieldset>
+            </form>
+        </section>
     </section>
 </div>
