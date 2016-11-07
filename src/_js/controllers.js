@@ -20,8 +20,9 @@ controllers.controller('accountController', ['$scope', '$timeout', '$rootScope',
 		}
 		$scope.submitAccount = function(uid) {
 			if ($scope.accountForm.$valid) {
-		   		userFactory.changeAccount(uid, $scope.passwordExisting, $scope.email, $scope.password)
+				userFactory.changeAccount(uid, $scope.passwordExisting, $scope.email, $scope.password)
 				.success(function(userDoc) {
+					$scope.accountForm.error = null;
 					authService.setUser(userDoc);
 					$scope.$emit('flashMessage', {content: 'Account information updated', type: 'message'});
 				})
@@ -34,10 +35,26 @@ controllers.controller('accountController', ['$scope', '$timeout', '$rootScope',
 				});
 			}
 		}
+		$scope.submitNotifications = function(uid) {
+			userFactory.changeNotifications(uid, $scope.notifications)
+			.success(function(userDoc) {
+				$scope.notificationsForm.error = null;
+				authService.setUser(userDoc);
+				$scope.$emit('flashMessage', {content: 'Notification preferences updated', type: 'message'});
+			})
+			.error(function(error, status) {
+				if (status != '400') {
+					$scope.notificationsForm.error = {error: 'Dewy could not update your notifications preference at this time.'};
+				} else {
+					$scope.notificationsForm.error = error;
+				}
+			});
+		}
 		$scope.submitProfile = function(uid) {
 			if ($scope.profileForm.$valid) {
 				userFactory.changeProfile(uid, $scope.username)
 				.success(function(userDoc) {
+					$scope.profileForm.error = null;
 					authService.setUser(userDoc);
 					$scope.$emit('flashMessage', {content: 'Profile information updated', type: 'message'});
 				})
@@ -55,6 +72,10 @@ controllers.controller('accountController', ['$scope', '$timeout', '$rootScope',
 			.then(function(userDoc) {
 				$scope.$emit('flashMessage', {content: 'Verification email sent', type: 'message'});
 			});
+		}
+		$scope.notifications = $scope.currentUser.notifications;
+		if ($scope.notifications != 'all' && $scope.notifications != 'security') {
+			$scope.notifications = 'none';
 		}
 }]);
 

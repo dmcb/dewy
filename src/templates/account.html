@@ -64,11 +64,12 @@ layout: compress
                 <fieldset>
                     <div class="field">
                         <label>Update notifications</label>
-                        <select ng-model="securityNotification" name="securityNotification" ng-change="submitNotifications(currentUser.uid)">
+                        <select ng-model="notifications" name="notifications" ng-change="submitNotifications(currentUser.uid)">
                             <option value="all">Receive all project updates</option>
                             <option value="security">Receive only project security updates</option>
                             <option value="none">Do not be notified of any project updates</option>
                         </select>
+                        <span class="error" ng-if="notificationsForm.error.error">{( notificationsForm.error.error )}</span>
                     </div>
                 </fieldset>
             </form>

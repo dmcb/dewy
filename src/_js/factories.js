@@ -524,6 +524,13 @@ factories.factory('userFactory', ['$http', '$httpParamSerializer', 'ENV', functi
 		return $http.put(ENV.api + 'users/' + uid, post);
 	}
 
+	userFactory.changeNotifications = function(uid, notifications) {
+		var update = {
+			notifications: notifications
+		}
+		return $http.put(ENV.api + 'users/' + uid, update);
+	}
+
 	userFactory.changeProfile = function(uid, username) {
 		var update = {
 			username: username
