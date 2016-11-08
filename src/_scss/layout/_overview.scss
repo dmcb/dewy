@@ -638,12 +638,8 @@ div.main {
             .rules, .notifications, .total {
                 padding: 1em;
 
-                div > .rule-group, .notification-choices {
+                div > .rule-group {
                     padding-left: 1.5em;
-                }
-
-                .notification-choices {
-                    margin-top: 1.5em;
                 }
 
                 .rule-group {
@@ -657,14 +653,6 @@ div.main {
                         padding: 0;
                         margin-left: 0;
                         margin-right: 0;
-                    }
-                }
-
-                .notification-choices li {
-                    display: block;
-
-                    select, input {
-                        margin: 0;
                     }
                 }
 

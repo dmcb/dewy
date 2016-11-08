@@ -3,7 +3,7 @@ layout: compress
 ---
 <div class="shell">
     <div class="main">
-        <form name="filterForm" ng-submit="saveFilter()">
+        <form class="filter" name="filterForm" ng-submit="saveFilter()">
             <h2>
                 <input name="title" type="text" placeholder="Filter title" ng-model="currentFilter.title" value="{(currentFilter.title)}" required autofocus />
             </h2>
@@ -21,9 +21,9 @@ layout: compress
                     </ul>
                     <!-- <p class="total">3 sites matched under these rules</p> -->
                 </div>
-                <!-- <div class="content">
-                    <div class="notifications" ng-include="'templates/notifications.html'"></div>
-                </div> -->
+                <div class="content">
+                    <div class="notifications" ng-include="'templates/filter_notifications.html'"></div>
+                </div>
             </div>
         </form>
     </div>
