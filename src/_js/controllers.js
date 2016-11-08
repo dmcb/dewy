@@ -690,10 +690,12 @@ controllers.controller('overviewModulesController', ['$scope', 'moduleFactory',
 						$scope.moduleData.modules[index].details = details;
 						$scope.openModule = $scope.moduleData.modules[index];
 						$scope.openModule.detail = detail;
+						$scope.openModule.index = index;
 					});
 				} else {
 					$scope.openModule = $scope.moduleData.modules[index];
 					$scope.openModule.detail = detail;
+					$scope.openModule.index = index;
 				}
 			}
 		}
