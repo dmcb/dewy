@@ -42,20 +42,9 @@ form {
         }
 
         .error {
-            color: $blue;
             display: block;
             margin-top: 0.5em;
-            transition: 400ms;
             margin-bottom: 0.5em;
-
-            &.ng-enter {
-                transition: 0;
-            }
-
-            &.ng-enter, &.ng-leave-active {
-                opacity: 0;
-                margin-left: -1em;
-            }
         }
 
         button, .button {

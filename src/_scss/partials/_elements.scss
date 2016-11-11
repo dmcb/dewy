@@ -12,6 +12,20 @@ a {
     }
 }
 
+span.error {
+    color: $blue;
+    transition: 400ms;
+
+    &.ng-enter {
+        transition: 0;
+    }
+
+    &.ng-enter, &.ng-leave-active {
+        opacity: 0;
+        margin-left: -1em;
+    }
+}
+
 strong {
     font-weight: bold;
 }

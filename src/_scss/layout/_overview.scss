@@ -17,12 +17,6 @@ div.main {
             &:hover {
                 color: $dark-blue;
             }
-
-            i {
-                padding-left: 0.5em;
-                top: 9px;
-                position: absolute;
-            }
         }
 
         input {
@@ -635,10 +629,22 @@ div.main {
                 }
             }
 
-            .rules, .notifications, .total {
+            .rules, .notifications {
                 padding: 1em;
 
-                div > .rule-group {
+                span {
+                    display: block;
+                    margin-top: 0.5em;
+                    margin-bottom: 0.5em;
+                }
+
+                label span {
+                    display: inline;
+                }
+            }
+
+            .rules {
+                .rule .rule-group {
                     padding-left: 1.5em;
                 }
 
@@ -669,68 +675,75 @@ div.main {
                         clear: both;
                         visibility: hidden;
                     }
-
-                    span {
-                        margin-top: 1em;
-                        margin-bottom: 0.5em;
-                        display: block;
-
-                        @include breakpoint($tablet) {
-                            display: inline;
-                            margin-top: 0;
-                            margin-bottom: 0;
-                            font-size: 0.85em;
-
-                            &.error {
-                                display: block;
-                                margin-top: 0.5em;
-                            }
-                        }
-                    }
                 }
 
                 .rule-group-heading.top {
                     margin-top: 0;
                 }
 
-                .rule-group-heading {
-                    margin-top: 0.5em;
-                    margin-bottom: 0.5em;
-                }
-
                 .rule {
                     width: 100%;
                     margin-top: 0.5em;
-
-                    @include breakpoint($tablet) {
-                        select, input {
-                            margin-top: 0;
-                        }
-
-                        select {
-                            width: auto;
-                        }
-
-                        input {
-                            width: 120px;
-                        }
-                    }
                 }
+            }
+        }
+    }
 
+    @include breakpoint($tablet) {
+        .view .content {
+            .rules, .notifications {
                 select, input {
-                    @include breakpoint($tablet) {
-                        font-size: 0.85em;
+                    font-size: 0.85em;
+                }
+
+                span {
+                    font-size: 0.85em;
+
+                    &.between {
+                        display: inline;
+                    }
+                }
+            }
+
+            .rules {
+                .rule-group-heading.top .rule-fields {
+                    padding-left: 0;
+                }
+
+                .rule {
+                    select, input {
+                        margin-top: 0;
+                    }
+
+                    select {
+                        width: auto;
+                    }
+
+                    input {
+                        width: 120px;
                     }
                 }
 
-                .total {
-                    margin: 2em 0 0 0;
-                    font-weight: bold;
-                }
+                .rule-fields {
+                    padding-right: 7em;
+                    padding-left: 1.25em;
 
-                .error span {
-                    margin-top: 0.5em;
-                    @extend .error;
+                    a.handle {
+                        position: absolute;
+                        left: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    @include breakpoint($desktop) {
+        .view .content {
+            .rules, .notifications {
+                span {
+                    &.label {
+                        display: inline;
+                    }
                 }
             }
         }
