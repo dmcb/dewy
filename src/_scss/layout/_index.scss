@@ -55,7 +55,15 @@ div.body {
         }
 
         &.notifications {
-            .coming-soon-copy {
+            .copy {
+                margin-top: 4em;
+
+                &:first-child {
+                    margin-top: 0;
+                }
+            }
+
+            .coming-soon.copy {
                 display: none;
             }
 
@@ -89,9 +97,9 @@ div.body {
                 width: auto;
                 margin: 0 -24px 0 0;
                 height: 0;
-                @include proportional-box(70%);
+                @include proportional-box(85%);
                 background-image: url(/img/notifications.png);
-                background-position: 110% 0;
+                background-position: 120% 0;
                 background-repeat: no-repeat;
                 background-size: contain;
 
@@ -109,8 +117,7 @@ div.body {
                     display: none;
                 }
 
-                .coming-soon-copy {
-                    margin-top: 4em;
+                .coming-soon.copy {
                     display: block;
                 }
             }
@@ -119,7 +126,7 @@ div.body {
 
     @include breakpoint($tablet-large) {
         section.notifications {
-            padding-top: 60%;
+            padding-top: 65%;
             background-position: 105% 0;
         }
     }
