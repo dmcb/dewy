@@ -9,7 +9,7 @@ layout: compress
 <label><input type="checkbox" ng-model="currentFilter.notifications.total.enabled" /><span>Send an email when the total number of sites on the filter changes and </span></label>
 
 <div class="choices">
-    <select ng-model="currentFilter.notifications.total.choice" ng-init="currentFilter.notifications.total.choice=notificationChoices[0]"  ng-options="choice as choice for choice in notificationChoices"></select>
+    <select ng-model="currentFilter.notifications.total.choice" ng-init="currentFilter.notifications.total.choice=notificationChoices[0]" ng-options="choice as choice for choice in notificationChoices"></select>
     <input name="value" type="number" ng-model="currentFilter.notifications.total.value" min="0" ng-required="currentFilter.notifications.total.enabled" />
     <div class="error">
         <span ng-show="notificationForm.value.$error.required && (notificationForm.value.$touched || filterForm.$submitted)">Please enter a value.</span>
