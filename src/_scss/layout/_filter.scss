@@ -1,0 +1,25 @@
+form.filter {
+    .notifications {
+        label {
+            margin-bottom: 0.5em;
+            display: block;
+        }
+
+        .choices {
+            margin-left: 1.25em;
+        }
+
+        input[type=checkbox] {
+            width: auto;
+            margin-right: 0.5em;
+        }
+    }
+
+    @include breakpoint($tablet) {
+        .notifications {
+            select, input {
+                width: auto;
+            }
+        }
+    }
+}

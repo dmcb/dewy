@@ -260,13 +260,6 @@ controllers.controller('filterController', ['$scope', '$location', 'filterFactor
 				}
 			}
 		}
-		$scope.updateNotifications = function(notifications) {
-			if (!notifications) {
-				$scope.currentFilter.notifications.appears.enabled = 
-				$scope.currentFilter.notifications.disappears.enabled = 
-				$scope.currentFilter.notifications.total.enabled = false;
-			}
-		}
 		$scope.valueIsType = function(field, type) {
 			for (var i=0; i<$scope.fields.length; i++) {
 				if ($scope.fields[i].title == field) {
@@ -280,7 +273,6 @@ controllers.controller('filterController', ['$scope', '$location', 'filterFactor
 		$scope.filters = filters;
 		$scope.currentFilter = currentFilter;
 		$scope.tags = tags;
-		$scope.notificationsOn = (currentFilter.notifications.appears.enabled || currentFilter.notifications.disappears.enabled || currentFilter.notifications.total.enabled) ? true : false;
 		$scope.notificationChoices = [
 			'is',
 			'is not',

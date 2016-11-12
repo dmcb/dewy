@@ -1,0 +1,21 @@
+---
+layout: compress
+---
+<div class="notifications" ng-form="notificationsForm">
+    <label><input type="checkbox" ng-model="currentFilter.notifications.appears.enabled" /><span>Send an email when a site first meets the criteria of this filter</span></label>
+
+    <label><input type="checkbox" ng-model="currentFilter.notifications.disappears.enabled" /><span>Send an email when a site no longer meets the criteria of this filter</span></label>
+
+    <label><input type="checkbox" ng-model="currentFilter.notifications.total.enabled" /><span>Send an email when the total number of sites on the filter changes and </span></label>
+
+    <div class="choices">
+        <select ng-model="currentFilter.notifications.total.choice" ng-options="choice as choice for choice in notificationChoices"></select>
+        <input name="value" type="number" ng-model="currentFilter.notifications.total.value" min="0" ng-required="currentFilter.notifications.total.enabled" ng-pattern="/^[0-9]*$/" />
+        <div class="error">
+            <span class="error"  ng-show="notificationsForm.value.$error.required && (notificationsForm.value.$touched || filterForm.$submitted)">Please enter a value.</span>
+            <span class="error"  ng-show="notificationsForm.value.$error.number">You must enter a number.</span>
+            <span class="error"  ng-show="notificationsForm.value.$error.pattern">You must enter an integer.</span>
+            <span class="error"  ng-show="notificationsForm.value.$error.min">The value cannot be less than 0.</span>
+        </div>
+    </div>
+</div>
