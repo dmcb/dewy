@@ -413,11 +413,11 @@ factories.factory('projectFactory', ['$http', 'ENV', function($http, ENV) {
 	return projectFactory;
 }]);
 
-factories.factory('roleFactory', ['$http', 'ENV', function($http, ENV) {
-	var roleFactory = {};
+factories.factory('drupalRoleFactory', ['$http', 'ENV', function($http, ENV) {
+	var drupalRoleFactory = {};
 
-	roleFactory.getAll = function(fid) {
-		return $http.get(ENV.api + 'roles/_filter/' + fid)
+	drupalRoleFactory.getAll = function(fid) {
+		return $http.get(ENV.api + 'drupalRoles/_filter/' + fid)
 			.then(function (response) {
 				var arrayOfRankings = [];
 				for (var i in response.data.modules) {
@@ -527,14 +527,14 @@ factories.factory('roleFactory', ['$http', 'ENV', function($http, ENV) {
 			});
 	}
 
-	roleFactory.getDetails = function(role, fid) {
-		return $http.get(ENV.api + 'roles/' + role + '/' + fid)
+	drupalRoleFactory.getDetails = function(role, fid) {
+		return $http.get(ENV.api + 'drupalRoles/' + role + '/' + fid)
 			.then(function (response) {
 				return response.data;
 			});
 	}
 
-	return roleFactory;
+	return drupalRoleFactory;
 }]);
 
 factories.factory('sitesFactory', ['$http', 'ENV', function($http, ENV) {

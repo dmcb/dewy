@@ -207,11 +207,11 @@ app.config(['$httpProvider', '$routeProvider', '$interpolateProvider', '$locatio
 				projects: ['projectFactory', function(projectFactory) {
 					return null;
 				}],
-				data: ['$route', 'filterFactory', 'roleFactory', function($route, filterFactory, roleFactory) {
+				data: ['$route', 'filterFactory', 'drupalRoleFactory', function($route, filterFactory, drupalRoleFactory) {
 					if ($route.current.params.filter) {
 						return filterFactory.getFilter($route.current.params.filter).
 						then(function(currentFilter) {
-							return roleFactory.getAll(currentFilter.fid).
+							return drupalRoleFactory.getAll(currentFilter.fid).
 							then(function(roleData) {
 								return {
 									currentFilter: currentFilter,
@@ -222,7 +222,7 @@ app.config(['$httpProvider', '$routeProvider', '$interpolateProvider', '$locatio
 						});
 					}
 					else {
-						return roleFactory.getAll().
+						return drupalRoleFactory.getAll().
 						then(function(roleData) {
 							return {
 								currentFilter: null,
