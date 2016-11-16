@@ -190,6 +190,50 @@ app.config(['$httpProvider', '$routeProvider', '$interpolateProvider', '$locatio
 				}]
 			}
 		}).
+		when('/roles/:filter?', {
+			templateUrl: 'templates/overview.html',
+			controller: 'overviewController',
+			title: 'Roles',
+			menuItem: 'overview',
+			appPage: true,
+			requiresAuthorization: true,
+			resolve: {
+				filters: ['filterFactory', function(filterFactory) {
+					return filterFactory.getAll();
+				}],
+				filterIndex: ['filterFactory', function(filterFactory) {
+					return filterFactory.getIndex();
+				}],
+				projects: ['projectFactory', function(projectFactory) {
+					return null;
+				}],
+				data: ['$route', 'filterFactory', 'roleFactory', function($route, filterFactory, roleFactory) {
+					if ($route.current.params.filter) {
+						return filterFactory.getFilter($route.current.params.filter).
+						then(function(currentFilter) {
+							return roleFactory.getAll(currentFilter.fid).
+							then(function(roleData) {
+								return {
+									currentFilter: currentFilter,
+									roleData: roleData,
+									view: 'roles'
+								}
+							});
+						});
+					}
+					else {
+						return roleFactory.getAll().
+						then(function(roleData) {
+							return {
+								currentFilter: null,
+								roleData: roleData,
+								view: 'roles'
+							}
+						});
+					}
+				}]
+			}
+		}).
 		when('/signon', {
 			templateUrl: 'templates/signon.html',
 			controller: 'signonController',
@@ -268,45 +312,50 @@ app.config(['$httpProvider', '$routeProvider', '$interpolateProvider', '$locatio
 				}]
 			}
 		}).
-		// when('/users/:filter?', {
-		// 	templateUrl: 'templates/overview.html',
-		// 	controller: 'overviewController',
-		// 	menuItem: 'overview',
-		// 	requiresAuthorization: true,
-		// 	resolve: {
-		// 		filters: ['filterFactory', function(filterFactory) {
-		// 			return filterFactory.getAll();
-		// 		}],
-		// 		filterIndex: ['filterFactory', function(filterFactory) {
-		// 			return filterFactory.getIndex();
-		// 		}],
-		// 		data: ['$route', 'filterFactory', 'sitesFactory', function($route, filterFactory, sitesFactory) {
-		// 			if ($route.current.params.filter) {
-		// 				return filterFactory.getFilter($route.current.params.filter).
-		// 				then(function(currentFilter) {
-		// 					return sitesFactory.getAll(currentFilter.fid).
-		// 					then(function(sites) {
-		// 						return {
-		// 							currentFilter: currentFilter,
-		// 							sites: sites,
-		// 							view: 'users'
-		// 						}
-		// 					});
-		// 				});
-		// 			}
-		// 			else {
-		// 				return sitesFactory.getAll().
-		// 				then(function(sites) {
-		// 					return {
-		// 						currentFilter: null,
-		// 						sites: sites,
-		// 						view: 'users'
-		// 					}
-		// 				});
-		// 			}
-		// 		}]
-		// 	}
-		// }).
+		when('/users/:filter?', {
+			templateUrl: 'templates/overview.html',
+			controller: 'overviewController',
+			title: 'Users',
+			menuItem: 'overview',
+			appPage: true,
+			requiresAuthorization: true,
+			resolve: {
+				filters: ['filterFactory', function(filterFactory) {
+					return filterFactory.getAll();
+				}],
+				filterIndex: ['filterFactory', function(filterFactory) {
+					return filterFactory.getIndex();
+				}],
+				projects: ['projectFactory', function(projectFactory) {
+					return null;
+				}],
+				data: ['$route', 'filterFactory', 'drupalUserFactory', function($route, filterFactory, drupalUserFactory) {
+					if ($route.current.params.filter) {
+						return filterFactory.getFilter($route.current.params.filter).
+						then(function(currentFilter) {
+							return drupalUserFactory.getAll(currentFilter.fid).
+							then(function(userData) {
+								return {
+									currentFilter: currentFilter,
+									userData: userData,
+									view: 'users'
+								}
+							});
+						});
+					}
+					else {
+						return drupalUserFactory.getAll().
+						then(function(userData) {
+							return {
+								currentFilter: null,
+								userData: userData,
+								view: 'users'
+							}
+						});
+					}
+				}]
+			}
+		}).
 		when('/verify/:uid/:verify', {
 			templateUrl: 'templates/verify.html',
 			controller: 'verifyController',

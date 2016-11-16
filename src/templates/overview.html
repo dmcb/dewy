@@ -31,6 +31,20 @@ layout: compress
                     <li ng-class="{selected: view == 'modules'}" ng-if="currentUser.subscription.expired">
                         <span>Modules</span>
                     </li>
+                    <li ng-class="{selected: view == 'users'}" ng-if="!currentUser.subscription.expired">
+                        <a href="/users" ng-if="!currentFilter">Users</a>
+                        <a href="/users/{(currentFilter.fid)}" ng-if="currentFilter">Users</a>
+                    </li>
+                    <li ng-class="{selected: view == 'users'}" ng-if="currentUser.subscription.expired">
+                        <span>Users</span>
+                    </li>
+                    <li ng-class="{selected: view == 'roles'}" ng-if="!currentUser.subscription.expired">
+                        <a href="/roles" ng-if="!currentFilter">Roles</a>
+                        <a href="/roles/{(currentFilter.fid)}" ng-if="currentFilter">Roles</a>
+                    </li>
+                    <li ng-class="{selected: view == 'roles'}" ng-if="currentUser.subscription.expired">
+                        <span>Roles</span>
+                    </li>
                 </ul>
             </div>
             <div class="search">

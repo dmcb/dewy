@@ -71,6 +71,130 @@ factories.factory('authService', ['dewySession', '$rootScope', '$injector', 'ENV
 	return authService;
 }]);
 
+factories.factory('drupalUserFactory', ['$http', 'ENV', function($http, ENV) {
+	var drupalUserFactory = {};
+
+	drupalUserFactory.getAll = function(fid) {
+		return $http.get(ENV.api + 'drupalUsers/_filter/' + fid)
+			.then(function (response) {
+				var arrayOfRankings = [];
+				for (var i in response.data.modules) {
+					response.data.modules[i].attributes = {
+						sitesWithAvailable: response.data.modules[i].a,
+						sitesWithEnabled: response.data.modules[i].e,
+						sitesWithDatabaseUpdates: response.data.modules[i].d,
+						sitesWithUpdates: response.data.modules[i].u,
+						sitesWithSecurityUpdates: response.data.modules[i].s,
+						versions: response.data.modules[i].v
+					}
+
+					var ranking = [];
+					for (var j in response.data.modules[i].attributes) {
+						ranking.push(response.data.modules[i].attributes[j]);
+					}
+					arrayOfRankings.push(ranking);
+				}
+
+				if (arrayOfRankings.length) {
+					var length = arrayOfRankings[0].length,
+					    rankedArray = Array.apply(null, { length: arrayOfRankings.length }).map(function () { return []; }),
+					    temp, i;
+
+					// For each attribute ...
+					for (i = 0; i < length; i++) {
+					    temp = [];
+					    // ... create a temporary array of values (v) to module index (i)
+					    arrayOfRankings.forEach(function (a, j) {
+					        temp.push({ v: a[i], i: j });
+					    });
+
+					    // Sort temporary array by value (v) 
+					    // This gives us each module ranked in order of value size
+					    temp.sort(function (a, b) {
+					        return a.v - b.v;
+					    });
+
+					    // Get minimum and maximum value for attribute
+					    var minimum = temp[0].v;
+					    var maximum = temp[temp.length-1].v;
+					    var increment = (maximum - minimum) / 9;
+
+					    // Instead of leaving in value ranges of some randomly huge number to 1 (which will skew results)
+					    // Normalize to scale 1 out of 10
+					    temp.forEach(function (a, j) {
+					    	if (!increment) {
+								rankedArray[a.i][i] = 1;
+							}
+							else {
+								rankedArray[a.i][i] = ((temp[j].v - minimum) / increment) + 1;
+								// rankedArray[a.i][i] = Math.log(((temp[j].v - minimum) / increment) + 1);
+							}
+					    });
+					}
+
+					// 0 sitesWithAvailable
+					// 1 sitesWithEnabled
+					// 2 sitesWithDatabaseUpdates
+					// 3 sitesWithUpdates
+					// 4 sitesWithSecurityUpdates
+					// 5 versions
+
+					for (var i in rankedArray) {
+						response.data.modules[i].attributes['health'] = (rankedArray[i][2] + rankedArray[i][3] * 1.5 + rankedArray[i][4] * 3) * -1;
+						response.data.modules[i].attributes['uniformity'] = (rankedArray[i][5]) * -1;
+						response.data.modules[i].attributes['utilization'] = response.data.modules[i].attributes.sitesWithEnabled / response.data.modules[i].attributes.sitesWithAvailable;
+						response.data.modules[i].attributes['availability'] = rankedArray[i][0];
+					}
+
+					// Loop through all sites and determine absolute values of attributes
+					var attributes = {'health': [], 'uniformity': [], 'utilization': [], 'availability': []};
+
+					for (var i in response.data.modules) {
+						for (var attribute in attributes) {
+							if (attributes[attribute]['maximum'] == null) {
+								attributes[attribute]['maximum'] = response.data.modules[i].attributes[attribute];
+							} else if (attributes[attribute]['maximum'] < response.data.modules[i].attributes[attribute]) {
+								attributes[attribute]['maximum'] = response.data.modules[i].attributes[attribute];
+							}
+							if (attributes[attribute]['minimum'] == null) {
+								attributes[attribute]['minimum'] = response.data.modules[i].attributes[attribute];
+							} else if (attributes[attribute]['minimum'] > response.data.modules[i].attributes[attribute]) {
+								attributes[attribute]['minimum'] = response.data.modules[i].attributes[attribute];
+							}
+						}
+					}
+
+					// Determine how much value is in a dot from range of attribute values
+					for (var attribute in attributes) {
+						attributes[attribute]['increment'] = (attributes[attribute]['maximum'] - attributes[attribute]['minimum']) / 9;
+					}
+
+					// Set normalized values
+					for (var i in response.data.modules) {
+						for (var attribute in attributes) {
+							if (!attributes[attribute]['increment']) {
+								response.data.modules[i][attribute] = 10;
+							} 
+							else {
+								response.data.modules[i][attribute] = ((response.data.modules[i].attributes[attribute] - attributes[attribute]['minimum']) / attributes[attribute]['increment']) + 1;
+							}
+						}
+					}
+				}
+				return response.data;
+			});
+	}
+
+	drupalUserFactory.getDetails = function(drupalUser, fid) {
+		return $http.get(ENV.api + 'drupalUsers/' + drupalUser + '/' + fid)
+			.then(function (response) {
+				return response.data;
+			});
+	}
+
+	return drupalUserFactory;
+}]);
+
 factories.factory('filterFactory', ['$http', 'ENV', function($http, ENV) {
 	var filterFactory = {};
 
@@ -287,6 +411,130 @@ factories.factory('projectFactory', ['$http', 'ENV', function($http, ENV) {
 	}
 
 	return projectFactory;
+}]);
+
+factories.factory('roleFactory', ['$http', 'ENV', function($http, ENV) {
+	var roleFactory = {};
+
+	roleFactory.getAll = function(fid) {
+		return $http.get(ENV.api + 'roles/_filter/' + fid)
+			.then(function (response) {
+				var arrayOfRankings = [];
+				for (var i in response.data.modules) {
+					response.data.modules[i].attributes = {
+						sitesWithAvailable: response.data.modules[i].a,
+						sitesWithEnabled: response.data.modules[i].e,
+						sitesWithDatabaseUpdates: response.data.modules[i].d,
+						sitesWithUpdates: response.data.modules[i].u,
+						sitesWithSecurityUpdates: response.data.modules[i].s,
+						versions: response.data.modules[i].v
+					}
+
+					var ranking = [];
+					for (var j in response.data.modules[i].attributes) {
+						ranking.push(response.data.modules[i].attributes[j]);
+					}
+					arrayOfRankings.push(ranking);
+				}
+
+				if (arrayOfRankings.length) {
+					var length = arrayOfRankings[0].length,
+					    rankedArray = Array.apply(null, { length: arrayOfRankings.length }).map(function () { return []; }),
+					    temp, i;
+
+					// For each attribute ...
+					for (i = 0; i < length; i++) {
+					    temp = [];
+					    // ... create a temporary array of values (v) to module index (i)
+					    arrayOfRankings.forEach(function (a, j) {
+					        temp.push({ v: a[i], i: j });
+					    });
+
+					    // Sort temporary array by value (v) 
+					    // This gives us each module ranked in order of value size
+					    temp.sort(function (a, b) {
+					        return a.v - b.v;
+					    });
+
+					    // Get minimum and maximum value for attribute
+					    var minimum = temp[0].v;
+					    var maximum = temp[temp.length-1].v;
+					    var increment = (maximum - minimum) / 9;
+
+					    // Instead of leaving in value ranges of some randomly huge number to 1 (which will skew results)
+					    // Normalize to scale 1 out of 10
+					    temp.forEach(function (a, j) {
+					    	if (!increment) {
+								rankedArray[a.i][i] = 1;
+							}
+							else {
+								rankedArray[a.i][i] = ((temp[j].v - minimum) / increment) + 1;
+								// rankedArray[a.i][i] = Math.log(((temp[j].v - minimum) / increment) + 1);
+							}
+					    });
+					}
+
+					// 0 sitesWithAvailable
+					// 1 sitesWithEnabled
+					// 2 sitesWithDatabaseUpdates
+					// 3 sitesWithUpdates
+					// 4 sitesWithSecurityUpdates
+					// 5 versions
+
+					for (var i in rankedArray) {
+						response.data.modules[i].attributes['health'] = (rankedArray[i][2] + rankedArray[i][3] * 1.5 + rankedArray[i][4] * 3) * -1;
+						response.data.modules[i].attributes['uniformity'] = (rankedArray[i][5]) * -1;
+						response.data.modules[i].attributes['utilization'] = response.data.modules[i].attributes.sitesWithEnabled / response.data.modules[i].attributes.sitesWithAvailable;
+						response.data.modules[i].attributes['availability'] = rankedArray[i][0];
+					}
+
+					// Loop through all sites and determine absolute values of attributes
+					var attributes = {'health': [], 'uniformity': [], 'utilization': [], 'availability': []};
+
+					for (var i in response.data.modules) {
+						for (var attribute in attributes) {
+							if (attributes[attribute]['maximum'] == null) {
+								attributes[attribute]['maximum'] = response.data.modules[i].attributes[attribute];
+							} else if (attributes[attribute]['maximum'] < response.data.modules[i].attributes[attribute]) {
+								attributes[attribute]['maximum'] = response.data.modules[i].attributes[attribute];
+							}
+							if (attributes[attribute]['minimum'] == null) {
+								attributes[attribute]['minimum'] = response.data.modules[i].attributes[attribute];
+							} else if (attributes[attribute]['minimum'] > response.data.modules[i].attributes[attribute]) {
+								attributes[attribute]['minimum'] = response.data.modules[i].attributes[attribute];
+							}
+						}
+					}
+
+					// Determine how much value is in a dot from range of attribute values
+					for (var attribute in attributes) {
+						attributes[attribute]['increment'] = (attributes[attribute]['maximum'] - attributes[attribute]['minimum']) / 9;
+					}
+
+					// Set normalized values
+					for (var i in response.data.modules) {
+						for (var attribute in attributes) {
+							if (!attributes[attribute]['increment']) {
+								response.data.modules[i][attribute] = 10;
+							} 
+							else {
+								response.data.modules[i][attribute] = ((response.data.modules[i].attributes[attribute] - attributes[attribute]['minimum']) / attributes[attribute]['increment']) + 1;
+							}
+						}
+					}
+				}
+				return response.data;
+			});
+	}
+
+	roleFactory.getDetails = function(role, fid) {
+		return $http.get(ENV.api + 'roles/' + role + '/' + fid)
+			.then(function (response) {
+				return response.data;
+			});
+	}
+
+	return roleFactory;
 }]);
 
 factories.factory('sitesFactory', ['$http', 'ENV', function($http, ENV) {
