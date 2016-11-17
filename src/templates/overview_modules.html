@@ -67,7 +67,7 @@ layout: compress
                         <h3><ng-pluralize count="{(openModule.attributes.versions)}" when="{'0': 'No versions on your sites', '1': '1 version on your sites', 'other': '{} versions on your sites'}"></ng-pluralize></h3>
                     </li>
                     <li ng-repeat="(item, value) in openModule.details.v | orderBy">
-                        <h3><ng-pluralize count="{(value.length)}" when="{'0': 'No sites', '1': '1 site', 'other': '{} sites'}"></ng-pluralize> using version {(item)}</h3>
+                        <h3><ng-pluralize count="{(value.length)}" when="{'0': 'No sites', '1': '1 site', 'other': '{} sites'}"></ng-pluralize> using version <a href="https://www.drupal.org/project/{(module.details.p)}/releases/{(item)}" target="_blank">{(item)}</a></h3>
                         <ul class="items" ng-if="value.length">
                             <li ng-repeat="item in value | orderBy">{(item)}</li>
                         </ul>
