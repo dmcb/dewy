@@ -78,19 +78,20 @@ factories.factory('drupalUserFactory', ['$http', 'ENV', function($http, ENV) {
 		return $http.get(ENV.api + 'drupalUsers/_filter/' + fid)
 			.then(function (response) {
 				var arrayOfRankings = [];
-				for (var i in response.data.modules) {
-					response.data.modules[i].attributes = {
-						sitesWithAvailable: response.data.modules[i].a,
-						sitesWithEnabled: response.data.modules[i].e,
-						sitesWithDatabaseUpdates: response.data.modules[i].d,
-						sitesWithUpdates: response.data.modules[i].u,
-						sitesWithSecurityUpdates: response.data.modules[i].s,
-						versions: response.data.modules[i].v
+				for (var i in response.data.users) {
+					response.data.users[i].attributes = {
+						emails: response.data.users[i].e,
+						sitesAvailable: response.data.users[i].a,
+						sitesBlocked: response.data.users[i].b,
+						avgCreatedDate: response.data.users[i].c,
+						avgLastAccess: response.data.users[i].l,
+						sitesNotUsed: response.data.users[i].n,
+						roles: response.data.users[i].r
 					}
 
 					var ranking = [];
-					for (var j in response.data.modules[i].attributes) {
-						ranking.push(response.data.modules[i].attributes[j]);
+					for (var j in response.data.users[i].attributes) {
+						ranking.push(response.data.users[i].attributes[j]);
 					}
 					arrayOfRankings.push(ranking);
 				}
@@ -132,34 +133,35 @@ factories.factory('drupalUserFactory', ['$http', 'ENV', function($http, ENV) {
 					    });
 					}
 
-					// 0 sitesWithAvailable
-					// 1 sitesWithEnabled
-					// 2 sitesWithDatabaseUpdates
-					// 3 sitesWithUpdates
-					// 4 sitesWithSecurityUpdates
-					// 5 versions
+                    // 0 emails
+                    // 1 sitesAvailable
+                    // 2 sitesBlocked
+                    // 3 totalCreatedDate
+                    // 4 totalLastAccess
+                    // 5 sitesNotUsed
+                    // 6 roles
 
 					for (var i in rankedArray) {
-						response.data.modules[i].attributes['health'] = (rankedArray[i][2] + rankedArray[i][3] * 1.5 + rankedArray[i][4] * 3) * -1;
-						response.data.modules[i].attributes['uniformity'] = (rankedArray[i][5]) * -1;
-						response.data.modules[i].attributes['utilization'] = response.data.modules[i].attributes.sitesWithEnabled / response.data.modules[i].attributes.sitesWithAvailable;
-						response.data.modules[i].attributes['availability'] = rankedArray[i][0];
+						response.data.users[i].attributes['accessibility'] = rankedArray[i][1];
+						response.data.users[i].attributes['privilege'] = rankedArray[i][6];
+						response.data.users[i].attributes['activity'] = rankedArray[i][4] + rankedArray[i][5];
+						response.data.users[i].attributes['restriction'] = rankedArray[i][2];
 					}
 
 					// Loop through all sites and determine absolute values of attributes
-					var attributes = {'health': [], 'uniformity': [], 'utilization': [], 'availability': []};
+					var attributes = {'accessibility': [], 'privilege': [], 'activity': [], 'restriction': []};
 
-					for (var i in response.data.modules) {
+					for (var i in response.data.users) {
 						for (var attribute in attributes) {
 							if (attributes[attribute]['maximum'] == null) {
-								attributes[attribute]['maximum'] = response.data.modules[i].attributes[attribute];
-							} else if (attributes[attribute]['maximum'] < response.data.modules[i].attributes[attribute]) {
-								attributes[attribute]['maximum'] = response.data.modules[i].attributes[attribute];
+								attributes[attribute]['maximum'] = response.data.users[i].attributes[attribute];
+							} else if (attributes[attribute]['maximum'] < response.data.users[i].attributes[attribute]) {
+								attributes[attribute]['maximum'] = response.data.users[i].attributes[attribute];
 							}
 							if (attributes[attribute]['minimum'] == null) {
-								attributes[attribute]['minimum'] = response.data.modules[i].attributes[attribute];
-							} else if (attributes[attribute]['minimum'] > response.data.modules[i].attributes[attribute]) {
-								attributes[attribute]['minimum'] = response.data.modules[i].attributes[attribute];
+								attributes[attribute]['minimum'] = response.data.users[i].attributes[attribute];
+							} else if (attributes[attribute]['minimum'] > response.data.users[i].attributes[attribute]) {
+								attributes[attribute]['minimum'] = response.data.users[i].attributes[attribute];
 							}
 						}
 					}
@@ -170,13 +172,13 @@ factories.factory('drupalUserFactory', ['$http', 'ENV', function($http, ENV) {
 					}
 
 					// Set normalized values
-					for (var i in response.data.modules) {
+					for (var i in response.data.users) {
 						for (var attribute in attributes) {
 							if (!attributes[attribute]['increment']) {
-								response.data.modules[i][attribute] = 10;
+								response.data.users[i][attribute] = 10;
 							} 
 							else {
-								response.data.modules[i][attribute] = ((response.data.modules[i].attributes[attribute] - attributes[attribute]['minimum']) / attributes[attribute]['increment']) + 1;
+								response.data.users[i][attribute] = ((response.data.users[i].attributes[attribute] - attributes[attribute]['minimum']) / attributes[attribute]['increment']) + 1;
 							}
 						}
 					}
