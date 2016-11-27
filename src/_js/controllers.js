@@ -616,6 +616,10 @@ controllers.controller('overviewController', ['$scope', '$location', 'sitesFacto
 			$scope.userData = data.userData;
 			$scope.viewPage = 'templates/overview_users.html';
 		}
+		else if ($scope.view == 'roles') {
+			$scope.roleData = data.roleData;
+			$scope.viewPage = 'templates/overview_roles.html';
+		}
 		else if ($scope.view == 'content') {
 			$scope.viewPage = 'templates/overview_content.html';
 		}
@@ -798,6 +802,49 @@ controllers.controller('overviewUsersController', ['$scope', 'drupalUserFactory'
 					$scope.openUser = $scope.userData.users[index];
 					$scope.openUser.detail = detail;
 					$scope.openUser.index = index;
+				}
+			}
+		}
+		
+		$scope.sort = {
+			column: 'm',
+			descending: false
+		};
+}]);
+
+controllers.controller('overviewRolesController', ['$scope', 'drupalRoleFactory',
+	function ($scope, drupalRoleFactory) {
+		$scope.changeSorting = function(column) {
+			var sort = $scope.sort;
+
+			if (sort.column == column) {
+				sort.descending = !sort.descending;
+			} else {
+				sort.column = column;
+				sort.descending = false;
+			}
+		}
+		$scope.openDetails = function(index, detail) {
+			// If the user is already open to that same user and view, close the view
+			if ($scope.openRole && $scope.openRole.index == index && $scope.openRole.detail == detail) {
+				$scope.openRole = null;
+			}
+			else {
+				// If details haven't been already loaded for the site, go grab the site details
+				if (!('details' in $scope.roleData.roles[index])) {
+					if ($scope.currentFilter) {
+						var fid = $scope.currentFilter.fid;
+					}
+					drupalRoleFactory.getDetails($scope.roleData.roles[index].r, fid).then(function(details) {
+						$scope.roleData.roles[index].details = details;
+						$scope.openRole = $scope.roleData.roles[index];
+						$scope.openRole.detail = detail;
+						$scope.openRole.index = index;
+					});
+				} else {
+					$scope.openRole = $scope.roleData.roles[index];
+					$scope.openRole.detail = detail;
+					$scope.openRole.index = index;
 				}
 			}
 		}

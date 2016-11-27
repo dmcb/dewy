@@ -422,19 +422,15 @@ factories.factory('drupalRoleFactory', ['$http', 'ENV', function($http, ENV) {
 		return $http.get(ENV.api + 'drupalRoles/_filter/' + fid)
 			.then(function (response) {
 				var arrayOfRankings = [];
-				for (var i in response.data.modules) {
-					response.data.modules[i].attributes = {
-						sitesWithAvailable: response.data.modules[i].a,
-						sitesWithEnabled: response.data.modules[i].e,
-						sitesWithDatabaseUpdates: response.data.modules[i].d,
-						sitesWithUpdates: response.data.modules[i].u,
-						sitesWithSecurityUpdates: response.data.modules[i].s,
-						versions: response.data.modules[i].v
+				for (var i in response.data.roles) {
+					response.data.roles[i].attributes = {
+						sitesInUse: response.data.roles[i].i,
+						users: response.data.roles[i].u
 					}
 
 					var ranking = [];
-					for (var j in response.data.modules[i].attributes) {
-						ranking.push(response.data.modules[i].attributes[j]);
+					for (var j in response.data.roles[i].attributes) {
+						ranking.push(response.data.roles[i].attributes[j]);
 					}
 					arrayOfRankings.push(ranking);
 				}
@@ -476,34 +472,30 @@ factories.factory('drupalRoleFactory', ['$http', 'ENV', function($http, ENV) {
 					    });
 					}
 
-					// 0 sitesWithAvailable
-					// 1 sitesWithEnabled
-					// 2 sitesWithDatabaseUpdates
-					// 3 sitesWithUpdates
-					// 4 sitesWithSecurityUpdates
-					// 5 versions
+					// 0 sitesInUse
+					// 1 users
 
 					for (var i in rankedArray) {
-						response.data.modules[i].attributes['health'] = (rankedArray[i][2] + rankedArray[i][3] * 1.5 + rankedArray[i][4] * 3) * -1;
-						response.data.modules[i].attributes['uniformity'] = (rankedArray[i][5]) * -1;
-						response.data.modules[i].attributes['utilization'] = response.data.modules[i].attributes.sitesWithEnabled / response.data.modules[i].attributes.sitesWithAvailable;
-						response.data.modules[i].attributes['availability'] = rankedArray[i][0];
+						response.data.roles[i].attributes['availability'] = 0;
+						response.data.roles[i].attributes['utilization'] = rankedArray[i][0];
+						response.data.roles[i].attributes['size'] = rankedArray[i][1];
+						response.data.roles[i].attributes['uniformity'] = 0;
 					}
 
 					// Loop through all sites and determine absolute values of attributes
-					var attributes = {'health': [], 'uniformity': [], 'utilization': [], 'availability': []};
+					var attributes = {'availability': [], 'utilization': [], 'size': [], 'uniformity': []};
 
-					for (var i in response.data.modules) {
+					for (var i in response.data.roles) {
 						for (var attribute in attributes) {
 							if (attributes[attribute]['maximum'] == null) {
-								attributes[attribute]['maximum'] = response.data.modules[i].attributes[attribute];
-							} else if (attributes[attribute]['maximum'] < response.data.modules[i].attributes[attribute]) {
-								attributes[attribute]['maximum'] = response.data.modules[i].attributes[attribute];
+								attributes[attribute]['maximum'] = response.data.roles[i].attributes[attribute];
+							} else if (attributes[attribute]['maximum'] < response.data.roles[i].attributes[attribute]) {
+								attributes[attribute]['maximum'] = response.data.roles[i].attributes[attribute];
 							}
 							if (attributes[attribute]['minimum'] == null) {
-								attributes[attribute]['minimum'] = response.data.modules[i].attributes[attribute];
-							} else if (attributes[attribute]['minimum'] > response.data.modules[i].attributes[attribute]) {
-								attributes[attribute]['minimum'] = response.data.modules[i].attributes[attribute];
+								attributes[attribute]['minimum'] = response.data.roles[i].attributes[attribute];
+							} else if (attributes[attribute]['minimum'] > response.data.roles[i].attributes[attribute]) {
+								attributes[attribute]['minimum'] = response.data.roles[i].attributes[attribute];
 							}
 						}
 					}
@@ -514,13 +506,13 @@ factories.factory('drupalRoleFactory', ['$http', 'ENV', function($http, ENV) {
 					}
 
 					// Set normalized values
-					for (var i in response.data.modules) {
+					for (var i in response.data.roles) {
 						for (var attribute in attributes) {
 							if (!attributes[attribute]['increment']) {
-								response.data.modules[i][attribute] = 10;
+								response.data.roles[i][attribute] = 10;
 							} 
 							else {
-								response.data.modules[i][attribute] = ((response.data.modules[i].attributes[attribute] - attributes[attribute]['minimum']) / attributes[attribute]['increment']) + 1;
+								response.data.roles[i][attribute] = ((response.data.roles[i].attributes[attribute] - attributes[attribute]['minimum']) / attributes[attribute]['increment']) + 1;
 							}
 						}
 					}
