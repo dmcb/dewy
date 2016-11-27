@@ -144,7 +144,7 @@ factories.factory('drupalUserFactory', ['$http', 'ENV', function($http, ENV) {
 					for (var i in rankedArray) {
 						response.data.users[i].attributes['accessibility'] = rankedArray[i][1];
 						response.data.users[i].attributes['privilege'] = rankedArray[i][6];
-						response.data.users[i].attributes['activity'] = rankedArray[i][4] + (response.data.users[i].attributes.sitesNotUsed / response.data.users[i].attributes.sitesAvailable) * -1;
+						response.data.users[i].attributes['activity'] = rankedArray[i][4] + (response.data.users[i].attributes.sitesNotUsed / response.data.users[i].attributes.sitesAvailable) * -10;
 						response.data.users[i].attributes['restriction'] = (response.data.users[i].attributes.sitesBlocked / response.data.users[i].attributes.sitesAvailable) * -1;
 					}
 
