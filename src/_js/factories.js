@@ -145,7 +145,7 @@ factories.factory('drupalUserFactory', ['$http', 'ENV', function($http, ENV) {
 						response.data.users[i].attributes['accessibility'] = rankedArray[i][1];
 						response.data.users[i].attributes['privilege'] = rankedArray[i][6];
 						response.data.users[i].attributes['activity'] = (response.data.users[i].attributes.sitesNotUsed / response.data.users[i].attributes.sitesAvailable) * -1;
-						response.data.users[i].attributes['restriction'] = rankedArray[i][2];
+						response.data.users[i].attributes['restriction'] = (response.data.users[i].attributes.sitesBlocked / response.data.users[i].attributes.sitesAvailable) * -1;
 					}
 
 					// Loop through all sites and determine absolute values of attributes

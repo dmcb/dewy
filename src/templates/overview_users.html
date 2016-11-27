@@ -78,21 +78,9 @@ layout: compress
                 </ul>
                 <ul ng-if="openUser.detail == 'restriction'">
                     <li>
-                        <h3><ng-pluralize count="{(openUser.attributes.sitesWithSecurityUpdates)}" when="{'0': 'No sites with security updates', '1': '1 site with security updates', 'other': '{} sites with security updates'}"></ng-pluralize></h3>
-                        <ul class="items" ng-if="openUser.details.s.length">
-                            <li ng-repeat="item in openUser.details.s | orderBy">{(item)}</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <h3><ng-pluralize count="{(openUser.attributes.sitesWithUpdates)}" when="{'0': 'No sites with updates', '1': '1 site with updates', 'other': '{} sites with updates'}"></ng-pluralize></h3>
-                        <ul class="items" ng-if="openUser.details.u.length">
-                            <li ng-repeat="item in openUser.details.u | orderBy">{(item)}</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <h3><ng-pluralize count="{(openUser.attributes.sitesWithDatabaseUpdates)}" when="{'0': 'No sites with pending database updates', '1': '1 site with pending database updates', 'other': '{} sites with pending database updates'}"></ng-pluralize></h3>
-                        <ul class="items" ng-if="openUser.details.d.length">
-                            <li ng-repeat="item in openUser.details.d | orderBy">{(item)}</li>
+                        <h3><ng-pluralize count="{(openUser.attributes.sitesBlocked)}" when="{'0': 'No sites the user is blocked on', '1': '1 site the user is blocked on', 'other': '{} sites the user is blocked on'}"></ng-pluralize> (out of {(openUser.attributes.sitesAvailable)} where the user is registered)</h3>
+                        <ul class="items" ng-if="openUser.details.b.length">
+                            <li ng-repeat="item in openUser.details.b | orderBy">{(item)}</li>
                         </ul>
                     </li>
                 </ul>
