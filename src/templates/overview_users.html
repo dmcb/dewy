@@ -39,16 +39,19 @@ layout: compress
             </ul>
             <div class="detail-view" ng-if="openUser.u == user.u">
                 <ul ng-if="openUser.detail == 'meta'">
-                    <li ng-if="user.details.p">
-                        <h3>user is part of project <a href="https://www.drupal.org/project/{(user.details.p)}" target="_blank">{(user.details.p)}</a></h3>
+                    <li>
+                        <h3><ng-pluralize count="{(openUser.attributes.emails)}" when="{'0': 'No email addresses on your sites', '1': '1 email address on your sites', 'other': '{} email addresses on your sites'}"></ng-pluralize></h3>
                     </li>
-                    <li ng-if="!user.details.p">
-                        <h3>user is not a part of any Drupal.org registered project</a></h3>
+                    <li ng-repeat="(item, value) in openUser.details.e | orderBy">
+                        <h3><ng-pluralize count="{(value.length)}" when="{'0': 'No sites', '1': '1 site', 'other': '{} sites'}"></ng-pluralize> using email {(item)}</h3>
+                        <ul class="items" ng-if="value.length">
+                            <li ng-repeat="item in value | orderBy">{(item)}</li>
+                        </ul>
                     </li>
                 </ul>
                 <ul ng-if="openUser.detail == 'accessibility'">
                     <li>
-                        <h3><ng-pluralize count="{(openUser.attributes.sitesWithAvailable)}" when="{'0': 'No sites where the user is available', '1': '1 site where the user is available', 'other': '{} sites where the user is available'}"></ng-pluralize> (out of {(userData.siteTotal)})</h3>
+                        <h3><ng-pluralize count="{(openUser.attributes.sitesAvailable)}" when="{'0': 'No sites the user is registered', '1': '1 site the user is registered', 'other': '{} sites the user is registered'}"></ng-pluralize> (out of {(userData.siteTotal)})</h3>
                         <ul class="items" ng-if="openUser.details.a.length">
                             <li ng-repeat="item in openUser.details.a | orderBy">{(item)}</li>
                         </ul>
@@ -56,20 +59,20 @@ layout: compress
                 </ul>
                 <ul ng-if="openUser.detail == 'privilege'">
                     <li>
-                        <h3><ng-pluralize count="{(openUser.attributes.sitesWithEnabled)}" when="{'0': 'No sites where the user is enabled', '1': '1 site where the user is enabled', 'other': '{} sites where the user is enabled'}"></ng-pluralize> (out of {(openUser.attributes.sitesWithAvailable)} where it is available)</h3>
-                        <ul class="items" ng-if="openUser.details.e.length">
-                            <li ng-repeat="item in openUser.details.e | orderBy">{(item)}</li>
+                        <h3><ng-pluralize count="{(openUser.attributes.roles)}" when="{'0': 'No roles on your sites', '1': '1 role on your sites', 'other': '{} roles on your sites'}"></ng-pluralize></h3>
+                    </li>
+                    <li ng-repeat="(item, value) in openUser.details.r | orderBy">
+                        <h3><ng-pluralize count="{(value.length)}" when="{'0': 'No sites', '1': '1 site', 'other': '{} sites'}"></ng-pluralize> with the role {(item)}</h3>
+                        <ul class="items" ng-if="value.length">
+                            <li ng-repeat="item in value | orderBy">{(item)}</li>
                         </ul>
                     </li>
                 </ul>
                 <ul ng-if="openUser.detail == 'activity'">
                     <li>
-                        <h3><ng-pluralize count="{(openUser.attributes.versions)}" when="{'0': 'No versions on your sites', '1': '1 version on your sites', 'other': '{} versions on your sites'}"></ng-pluralize></h3>
-                    </li>
-                    <li ng-repeat="(item, value) in openUser.details.v | orderBy">
-                        <h3><ng-pluralize count="{(value.length)}" when="{'0': 'No sites', '1': '1 site', 'other': '{} sites'}"></ng-pluralize> using version <a href="https://www.drupal.org/project/{(user.details.p)}/releases/{(item)}" target="_blank">{(item)}</a></h3>
-                        <ul class="items" ng-if="value.length">
-                            <li ng-repeat="item in value | orderBy">{(item)}</li>
+                        <h3><ng-pluralize count="{(openUser.attributes.sitesNotUsed)}" when="{'0': 'No sites the user has never signed on to', '1': '1 site the user has never signed on to', 'other': '{} sites the user has never signed on to'}"></ng-pluralize> (out of {(openUser.attributes.sitesAvailable)} where the user is registered)</h3>
+                        <ul class="items" ng-if="openUser.details.n.length">
+                            <li ng-repeat="item in openUser.details.n | orderBy">{(item)}</li>
                         </ul>
                     </li>
                 </ul>

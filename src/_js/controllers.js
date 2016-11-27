@@ -791,7 +791,7 @@ controllers.controller('overviewUsersController', ['$scope', 'drupalUserFactory'
 					if ($scope.currentFilter) {
 						var fid = $scope.currentFilter.fid;
 					}
-					drupalUserFactory.getDetails($scope.userData.users[index].m, fid).then(function(details) {
+					drupalUserFactory.getDetails($scope.userData.users[index].u, fid).then(function(details) {
 						$scope.userData.users[index].details = details;
 						$scope.openUser = $scope.userData.users[index];
 						$scope.openUser.detail = detail;
