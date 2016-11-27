@@ -69,8 +69,14 @@ layout: compress
                     </li>
                 </ul>
                 <ul ng-if="openUser.detail == 'activity'">
+                    <li ng-if="openUser.attributes.avgLastAccess != 0">
+                        <h3>Average last site log in was <span am-time-ago="openUser.attributes.avgLastAccess * 1000" class="number"></span></h3>
+                    </li>
+                    <li ng-if="openUser.attributes.avgLastAccess == 0">
+                        <h3>User has never logged into any site</h3>
+                    </li>
                     <li>
-                        <h3><ng-pluralize count="{(openUser.attributes.sitesNotUsed)}" when="{'0': 'No sites the user has never signed on to', '1': '1 site the user has never signed on to', 'other': '{} sites the user has never signed on to'}"></ng-pluralize> (out of {(openUser.attributes.sitesAvailable)} where the user is registered)</h3>
+                        <h3><ng-pluralize count="{(openUser.attributes.sitesNotUsed)}" when="{'0': 'No sites the user has never logged into', '1': '1 site the user has never logged into', 'other': '{} sites the user has never logged into'}"></ng-pluralize> (out of {(openUser.attributes.sitesAvailable)} where the user is registered)</h3>
                         <ul class="items" ng-if="openUser.details.n.length">
                             <li ng-repeat="item in openUser.details.n | orderBy">{(item)}</li>
                         </ul>
