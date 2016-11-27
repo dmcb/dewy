@@ -24,13 +24,13 @@ layout: compress
                 <li class="title" ng-class="{open: openSite.sid == site.sid && openSite.detail == 'meta'}"><a href="" ng-if="!currentUser.subscription.expired" ng-click="openDetails(sites.indexOf(site), 'meta')"><span class="title"><div class="point" ng-if="site.tags.length"></div>{(site.title)}</span></a><p ng-if="currentUser.subscription.expired"><span class="title">{(site.title)}</span></p></li>
                 <ul class="variables">
                     <li class="complexity" ng-class="{open: openSite.sid == site.sid && openSite.detail == 'complexity'}">
-                        <a href="" ng-if="!currentUser.subscription.expired" ng-click="openDetails(sites.indexOf(site), 'complexity')"><div class="point" ng-repeat="i in getNumber(site.complexity) track by $index"></div></a>
+                        <a href="" ng-if="!currentUser.subscription.expired" ng-click="openDetails(sites.indexOf(site), 'complexity')"><div class="point" ng-repeat="i in getFloor(site.complexity) track by $index"></div></a>
                     </li>
                     <li class="size" ng-class="{open: openSite.sid == site.sid && openSite.detail == 'size'}">
-                        <a href="" ng-if="!currentUser.subscription.expired" ng-click="openDetails(sites.indexOf(site), 'size')"><div class="point" ng-repeat="i in getNumber(site.size) track by $index"></div></a>
+                        <a href="" ng-if="!currentUser.subscription.expired" ng-click="openDetails(sites.indexOf(site), 'size')"><div class="point" ng-repeat="i in getFloor(site.size) track by $index"></div></a>
                     </li>
                     <li class="activity" ng-class="{open: openSite.sid == site.sid && openSite.detail == 'activity'}">
-                        <a href="" ng-if="!currentUser.subscription.expired" ng-click="openDetails(sites.indexOf(site), 'activity')"><div class="point" ng-repeat="i in getNumber(site.activity) track by $index"></div></a>
+                        <a href="" ng-if="!currentUser.subscription.expired" ng-click="openDetails(sites.indexOf(site), 'activity')"><div class="point" ng-repeat="i in getFloor(site.activity) track by $index"></div></a>
                     </li>
                     <li class="health opinionated-{(getFloor(site.health).length)}" ng-class="{open: openSite.sid == site.sid && openSite.detail == 'health'}">
                         <a href="" ng-if="!currentUser.subscription.expired" ng-click="openDetails(sites.indexOf(site), 'health')"><div class="point" ng-repeat="i in getFloor(site.health) track by $index"></div></a>

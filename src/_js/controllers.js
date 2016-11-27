@@ -590,9 +590,6 @@ controllers.controller('overviewController', ['$scope', '$location', 'sitesFacto
 		$scope.getFloor = function(number) {
 			return new Array(Math.floor(number));
 		}
-		$scope.getNumber = function(number) {
-			return new Array(Math.round(number));
-		}
 		$scope.openFolder = function(index) {
 			$scope.folders[index] = !$scope.folders[index];
 			sessionStorage.folders = JSON.stringify($scope.folders);

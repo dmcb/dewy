@@ -24,13 +24,13 @@ layout: compress
                 <li class="title" ng-class="{open: openUser.u == user.u&& openUser.detail == 'meta'}"><a href="" ng-click="openDetails(userData.users.indexOf(user), 'meta')"><span class="title">{(user.u)}</span></a></li>
                 <ul class="variables">
                     <li class="accessibility" ng-class="{open: openUser.u == user.u&& openUser.detail == 'accessibility'}">
-                        <a href="" ng-click="openDetails(userData.users.indexOf(user), 'accessibility')"><div class="point" ng-repeat="i in getNumber(user.accessibility) track by $index"></div></a>
+                        <a href="" ng-click="openDetails(userData.users.indexOf(user), 'accessibility')"><div class="point" ng-repeat="i in getFloor(user.accessibility) track by $index"></div></a>
                     </li>
                     <li class="privilege" ng-class="{open: openUser.u == user.u&& openUser.detail == 'privilege'}">
-                        <a href="" ng-click="openDetails(userData.users.indexOf(user), 'privilege')"><div class="point" ng-repeat="i in getNumber(user.privilege) track by $index"></div></a>
+                        <a href="" ng-click="openDetails(userData.users.indexOf(user), 'privilege')"><div class="point" ng-repeat="i in getFloor(user.privilege) track by $index"></div></a>
                     </li>
                     <li class="activity opinionated-{(getFloor(user.activity).length)}" ng-class="{open: openUser.u == user.u&& openUser.detail == 'activity'}">
-                        <a href="" ng-click="openDetails(userData.users.indexOf(user), 'activity')"><div class="point" ng-repeat="i in getNumber(user.activity) track by $index"></div></a>
+                        <a href="" ng-click="openDetails(userData.users.indexOf(user), 'activity')"><div class="point" ng-repeat="i in getFloor(user.activity) track by $index"></div></a>
                     </li>
                     <li class="restriction opinionated-{(getFloor(user.restriction).length)}" ng-class="{open: openUser.u == user.u&& openUser.detail == 'restriction'}">
                         <a href="" ng-click="openDetails(userData.users.indexOf(user), 'restriction')"><div class="point" ng-repeat="i in getFloor(user.restriction) track by $index"></div></a>
