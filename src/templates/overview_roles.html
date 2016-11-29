@@ -9,7 +9,7 @@ layout: compress
                 <li class="availability"><a href="" ng-class="{selected: sort.column=='availability', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('availability')">Availability</a></li>
                 <li class="utilization"><a href="" ng-class="{selected: sort.column=='utilization', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('utilization')">Utilization</a></li>
                 <li class="size"><a href="" ng-class="{selected: sort.column=='size', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('size')">Size</a></li>
-                <li class="uniformity"><a href="" ng-class="{selected: sort.column=='uniformity', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('uniformity')">Uniformity</a></li>
+<!--                 <li class="uniformity"><a href="" ng-class="{selected: sort.column=='uniformity', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('uniformity')">Uniformity</a></li> -->
             </ul>
         </ul>
     </div>
@@ -32,9 +32,9 @@ layout: compress
                     <li class="size" ng-class="{open: openRole.r == role.r&& openRole.detail == 'size'}">
                         <a href="" ng-click="openDetails(roleData.roles.indexOf(role), 'size')"><div class="point" ng-repeat="i in getFloor(role.size) track by $index"></div></a>
                     </li>
-                    <li class="uniformity opinionated-{(getFloor(role.uniformity).length)}" ng-class="{open: openRole.r == role.r&& openRole.detail == 'uniformity'}">
+<!--                     <li class="uniformity opinionated-{(getFloor(role.uniformity).length)}" ng-class="{open: openRole.r == role.r&& openRole.detail == 'uniformity'}">
                         <a href="" ng-click="openDetails(roleData.roles.indexOf(role), 'uniformity')"><div class="point" ng-repeat="i in getFloor(role.uniformity) track by $index"></div></a>
-                    </li>
+                    </li> -->
                 </ul>
             </ul>
             <div class="detail-view" ng-if="openRole.r == role.r">
