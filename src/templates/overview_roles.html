@@ -29,7 +29,7 @@ layout: compress
                     <li class="utilization" ng-class="{open: openRole.r == role.r&& openRole.detail == 'utilization'}">
                         <a href="" ng-click="openDetails(roleData.roles.indexOf(role), 'utilization')"><div class="point" ng-repeat="i in getFloor(role.utilization) track by $index"></div></a>
                     </li>
-                    <li class="size opinionated-{(getFloor(role.size).length)}" ng-class="{open: openRole.r == role.r&& openRole.detail == 'size'}">
+                    <li class="size" ng-class="{open: openRole.r == role.r&& openRole.detail == 'size'}">
                         <a href="" ng-click="openDetails(roleData.roles.indexOf(role), 'size')"><div class="point" ng-repeat="i in getFloor(role.size) track by $index"></div></a>
                     </li>
                     <li class="uniformity opinionated-{(getFloor(role.uniformity).length)}" ng-class="{open: openRole.r == role.r&& openRole.detail == 'uniformity'}">
@@ -53,7 +53,7 @@ layout: compress
                 </ul>
                 <ul ng-if="openRole.detail == 'utilization'">
                     <li>
-                        <h3><ng-pluralize count="{(openRole.attributes.sitesInUse)}" when="{'0': 'No sites are using this role', '1': '1 site is using this role', 'other': '{} sites are using this role'}"></ng-pluralize></h3>
+                        <h3><ng-pluralize count="{(openRole.attributes.sitesInUse)}" when="{'0': 'No sites are using this role', '1': '1 site is using this role', 'other': '{} sites are using this role'}"></ng-pluralize> (out of {(openRole.attributes.sitesAvailable)} where the role is available)</h3>
                         <ul class="items" ng-if="openRole.details.i.length">
                             <li ng-repeat="item in openRole.details.i | orderBy">{(item)}</li>
                         </ul>
