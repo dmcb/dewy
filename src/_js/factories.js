@@ -86,7 +86,8 @@ factories.factory('drupalUserFactory', ['$http', 'ENV', function($http, ENV) {
 						avgCreatedDate: response.data.users[i].c,
 						avgLastAccess: response.data.users[i].l,
 						sitesNotUsed: response.data.users[i].n,
-						roles: response.data.users[i].r
+						roles: response.data.users[i].r,
+						nodesAuthored: response.data.users[i].d
 					}
 
 					var ranking = [];
@@ -140,11 +141,12 @@ factories.factory('drupalUserFactory', ['$http', 'ENV', function($http, ENV) {
                     // 4 avgLastAccess
                     // 5 sitesNotUsed
                     // 6 roles
+                    // 7 nodesAuthored
 
 					for (var i in rankedArray) {
 						response.data.users[i].attributes['accessibility'] = rankedArray[i][1];
 						response.data.users[i].attributes['privilege'] = rankedArray[i][6];
-						response.data.users[i].attributes['activity'] = rankedArray[i][4] + (response.data.users[i].attributes.sitesNotUsed / response.data.users[i].attributes.sitesAvailable) * -10;
+						response.data.users[i].attributes['activity'] = rankedArray[i][7] + rankedArray[i][4] + (response.data.users[i].attributes.sitesNotUsed / response.data.users[i].attributes.sitesAvailable) * -10;
 						response.data.users[i].attributes['restriction'] = (response.data.users[i].attributes.sitesBlocked / response.data.users[i].attributes.sitesAvailable) * -1;
 					}
 

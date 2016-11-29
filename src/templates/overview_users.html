@@ -69,6 +69,9 @@ layout: compress
                     </li>
                 </ul>
                 <ul ng-if="openUser.detail == 'activity'">
+                    <li>
+                        <h3><ng-pluralize count="{(openUser.attributes.nodesAuthored)}" when="{'0': 'No nodes authored on your sites', '1': '1 node authored on your sites', 'other': '{} nodes authored on your sites'}"></ng-pluralize></h3>
+                    </li>
                     <li ng-if="openUser.attributes.avgLastAccess != 0">
                         <h3>Average last site log in was <span am-time-ago="openUser.attributes.avgLastAccess * 1000" class="number"></span></h3>
                     </li>
