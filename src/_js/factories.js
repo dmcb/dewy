@@ -424,6 +424,7 @@ factories.factory('drupalRoleFactory', ['$http', 'ENV', function($http, ENV) {
 				var arrayOfRankings = [];
 				for (var i in response.data.roles) {
 					response.data.roles[i].attributes = {
+						sitesAvailable: response.data.roles[i].a,
 						sitesInUse: response.data.roles[i].i,
 						users: response.data.roles[i].u
 					}
@@ -472,13 +473,14 @@ factories.factory('drupalRoleFactory', ['$http', 'ENV', function($http, ENV) {
 					    });
 					}
 
-					// 0 sitesInUse
-					// 1 users
+					// 0 sitesAvailable
+					// 1 sitesInUse
+					// 2 users
 
 					for (var i in rankedArray) {
-						response.data.roles[i].attributes['availability'] = 0;
-						response.data.roles[i].attributes['utilization'] = rankedArray[i][0];
-						response.data.roles[i].attributes['size'] = rankedArray[i][1];
+						response.data.roles[i].attributes['availability'] = rankedArray[i][0];
+						response.data.roles[i].attributes['utilization'] = rankedArray[i][1];
+						response.data.roles[i].attributes['size'] = rankedArray[i][2];
 						response.data.roles[i].attributes['uniformity'] = 0;
 					}
 

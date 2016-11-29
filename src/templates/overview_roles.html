@@ -45,7 +45,10 @@ layout: compress
                 </ul>
                 <ul ng-if="openRole.detail == 'availability'">
                     <li>
-
+                        <h3><ng-pluralize count="{(openRole.attributes.sitesAvailable)}" when="{'0': 'No sites have this role available', '1': '1 site has this role available', 'other': '{} sites have this role available'}"></ng-pluralize></h3>
+                        <ul class="items" ng-if="openRole.details.a.length">
+                            <li ng-repeat="item in openRole.details.a | orderBy">{(item)}</li>
+                        </ul>
                     </li>
                 </ul>
                 <ul ng-if="openRole.detail == 'utilization'">
