@@ -3,9 +3,133 @@ layout: compress
 ---
 <div class="content" ng-controller="overviewUsersController">
     <div class="header">
-
+        <ul class="site">
+            <li class="title"><a href="" ng-class="{selected: sort.column=='m', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('m')">{(filteredUsers.length)} users</a></li>
+            <ul class="variables">
+                <li class="accessibility"><a href="" ng-class="{selected: sort.column=='accessibility', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('accessibility')">Accessibility</a></li>
+                <li class="privilege"><a href="" ng-class="{selected: sort.column=='privilege', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('privilege')">Privilege</a></li>
+                <li class="activity"><a href="" ng-class="{selected: sort.column=='activity', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('activity')">Activity</a></li>
+                <li class="restriction"><a href="" ng-class="{selected: sort.column=='restriction', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('restriction')">Restriction</a></li>
+            </ul>
+        </ul>
     </div>
     <div class="sites">
-        
+        <div ng-if="!filteredUsers.length" class="noresults">
+            <span ng-if="!query && !currentFilter"><i class="fa fa-exclamation-triangle"></i> You haven't added any sites with users to Dewy. <a href="/manage">Manage your sites.</a></span>
+            <span ng-if="!query && currentFilter"><i class="fa fa-exclamation-triangle"></i> No sites meet your filter criteria. <a href="/filter/{(currentFilter.fid)}">Edit your filter.</a></span>            
+            <span ng-if="query"><i class="fa fa-exclamation-triangle"></i> Your search returned no results.</span>
+        </div>
+        <div ng-repeat="user in filteredUsers = (userData.users | filter:query) | orderBy:sort.column:sort.descending" class="site">
+            <ul class="site">
+                <li class="title" ng-class="{open: openUser.u == user.u&& openUser.detail == 'meta'}"><a href="" ng-click="openDetails(userData.users.indexOf(user), 'meta')"><span class="title">{(user.u)}</span></a></li>
+                <ul class="variables">
+                    <li class="accessibility" ng-class="{open: openUser.u == user.u&& openUser.detail == 'accessibility'}">
+                        <a href="" ng-click="openDetails(userData.users.indexOf(user), 'accessibility')"><div class="point" ng-repeat="i in getFloor(user.accessibility) track by $index"></div></a>
+                    </li>
+                    <li class="privilege" ng-class="{open: openUser.u == user.u&& openUser.detail == 'privilege'}">
+                        <a href="" ng-click="openDetails(userData.users.indexOf(user), 'privilege')"><div class="point" ng-repeat="i in getFloor(user.privilege) track by $index"></div></a>
+                    </li>
+                    <li class="activity opinionated-{(getFloor(user.activity).length)}" ng-class="{open: openUser.u == user.u&& openUser.detail == 'activity'}">
+                        <a href="" ng-click="openDetails(userData.users.indexOf(user), 'activity')"><div class="point" ng-repeat="i in getFloor(user.activity) track by $index"></div></a>
+                    </li>
+                    <li class="restriction opinionated-{(getFloor(user.restriction).length)}" ng-class="{open: openUser.u == user.u&& openUser.detail == 'restriction'}">
+                        <a href="" ng-click="openDetails(userData.users.indexOf(user), 'restriction')"><div class="point" ng-repeat="i in getFloor(user.restriction) track by $index"></div></a>
+                    </li>
+                </ul>
+            </ul>
+            <div class="detail-view" ng-if="openUser.u == user.u">
+                <ul ng-if="openUser.detail == 'meta'">
+                    <li>
+                        <h3><ng-pluralize count="{(openUser.attributes.emails)}" when="{'0': 'No email addresses on your sites', '1': '1 email address on your sites', 'other': '{} email addresses on your sites'}"></ng-pluralize></h3>
+                    </li>
+                    <li ng-repeat="(item, value) in openUser.details.e | orderBy">
+                        <h3><ng-pluralize count="{(value.length)}" when="{'0': 'No sites', '1': '1 site', 'other': '{} sites'}"></ng-pluralize> using email {(item)}</h3>
+                        <ul class="items" ng-if="value.length">
+                            <li ng-repeat="item in value | orderBy">{(item)}</li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul ng-if="openUser.detail == 'accessibility'">
+                    <li>
+                        <h3><ng-pluralize count="{(openUser.attributes.sitesAvailable)}" when="{'0': 'No sites the user is registered', '1': '1 site the user is registered', 'other': '{} sites the user is registered'}"></ng-pluralize> (out of {(userData.siteTotal)})</h3>
+                        <ul class="items" ng-if="openUser.details.a.length">
+                            <li ng-repeat="item in openUser.details.a | orderBy">{(item)}</li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul ng-if="openUser.detail == 'privilege'">
+                    <li>
+                        <h3><ng-pluralize count="{(openUser.attributes.roles)}" when="{'0': 'No roles on your sites', '1': '1 role on your sites', 'other': '{} roles on your sites'}"></ng-pluralize></h3>
+                    </li>
+                    <li ng-repeat="(item, value) in openUser.details.r | orderBy">
+                        <h3><ng-pluralize count="{(value.length)}" when="{'0': 'No sites', '1': '1 site', 'other': '{} sites'}"></ng-pluralize> with the role {(item)}</h3>
+                        <ul class="items" ng-if="value.length">
+                            <li ng-repeat="item in value | orderBy">{(item)}</li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul ng-if="openUser.detail == 'activity'">
+                    <li>
+                        <h3><ng-pluralize count="{(openUser.attributes.nodesAuthored)}" when="{'0': 'No nodes authored on your sites', '1': '1 node authored on your sites', 'other': '{} nodes authored on your sites'}"></ng-pluralize></h3>
+                    </li>
+                    <li ng-if="openUser.details.d['0'].length">
+                        <h3><ng-pluralize count="{(openUser.details.d['0'].length)}" when="{'0': 'No sites with no nodes authored', '1': '1 site with no nodes authored', 'other': '{} sites with no nodes authored'}"></ng-pluralize></h3>
+                        <ul class="items" ng-if="openUser.details.d['0'].length">
+                            <li ng-repeat="item in openUser.details.d['0'] | orderBy">{(item)}</li>
+                        </ul>
+                    </li>
+                    <li ng-if="openUser.details.d['1'].length">
+                        <h3><ng-pluralize count="{(openUser.details.d['1'].length)}" when="{'0': 'No sites with 1-10 nodes authored', '1': '1 site with 1-10 nodes authored', 'other': '{} sites with 1-10 nodes authored'}"></ng-pluralize></h3>
+                        <ul class="items" ng-if="openUser.details.d['1'].length">
+                            <li ng-repeat="item in openUser.details.d['1'] | orderBy">{(item)}</li>
+                        </ul>
+                    </li>
+                    <li ng-if="openUser.details.d['10'].length">
+                        <h3><ng-pluralize count="{(openUser.details.d['10'].length)}" when="{'0': 'No sites with 10-100 nodes authored', '10': '1 site with 10-100 nodes authored', 'other': '{} sites with 10-100 nodes authored'}"></ng-pluralize></h3>
+                        <ul class="items" ng-if="openUser.details.d['10'].length">
+                            <li ng-repeat="item in openUser.details.d['10'] | orderBy">{(item)}</li>
+                        </ul>
+                    </li>
+                    <li ng-if="openUser.details.d['100'].length">
+                        <h3><ng-pluralize count="{(openUser.details.d['100'].length)}" when="{'0': 'No sites with 100-1000 nodes authored', '100': '1 site with 100-1000 nodes authored', 'other': '{} sites with 100-1000 nodes authored'}"></ng-pluralize></h3>
+                        <ul class="items" ng-if="openUser.details.d['100'].length">
+                            <li ng-repeat="item in openUser.details.d['100'] | orderBy">{(item)}</li>
+                        </ul>
+                    </li>
+                    <li ng-if="openUser.details.d['1000'].length">
+                        <h3><ng-pluralize count="{(openUser.details.d['1000'].length)}" when="{'0': 'No sites with 1000-10000 nodes authored', '1000': '1 site with 1000-10000 nodes authored', 'other': '{} sites with 1000-10000 nodes authored'}"></ng-pluralize></h3>
+                        <ul class="items" ng-if="openUser.details.d['1000'].length">
+                            <li ng-repeat="item in openUser.details.d['1000'] | orderBy">{(item)}</li>
+                        </ul>
+                    </li>
+                    <li ng-if="openUser.details.d['10000'].length">
+                        <h3><ng-pluralize count="{(openUser.details.d['10000'].length)}" when="{'0': 'No sites with greater than 10000 nodes authored', '10000': '1 site with greater than 10000 nodes authored', 'other': '{} sites with greater than 10000 nodes authored'}"></ng-pluralize></h3>
+                        <ul class="items" ng-if="openUser.details.d['10000'].length">
+                            <li ng-repeat="item in openUser.details.d['10000'] | orderBy">{(item)}</li>
+                        </ul>
+                    </li>
+                    <li ng-if="openUser.attributes.avgLastAccess != 0">
+                        <h3>Average last site log in was <span am-time-ago="openUser.attributes.avgLastAccess * 1000" class="number"></span></h3>
+                    </li>
+                    <li ng-if="openUser.attributes.avgLastAccess == 0">
+                        <h3>User has never logged into any site</h3>
+                    </li>
+                    <li>
+                        <h3><ng-pluralize count="{(openUser.attributes.sitesNotUsed)}" when="{'0': 'No sites the user has never logged into', '1': '1 site the user has never logged into', 'other': '{} sites the user has never logged into'}"></ng-pluralize> (out of {(openUser.attributes.sitesAvailable)} where the user is registered)</h3>
+                        <ul class="items" ng-if="openUser.details.n.length">
+                            <li ng-repeat="item in openUser.details.n | orderBy">{(item)}</li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul ng-if="openUser.detail == 'restriction'">
+                    <li>
+                        <h3><ng-pluralize count="{(openUser.attributes.sitesBlocked)}" when="{'0': 'No sites the user is blocked on', '1': '1 site the user is blocked on', 'other': '{} sites the user is blocked on'}"></ng-pluralize> (out of {(openUser.attributes.sitesAvailable)} where the user is registered)</h3>
+                        <ul class="items" ng-if="openUser.details.b.length">
+                            <li ng-repeat="item in openUser.details.b | orderBy">{(item)}</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>

@@ -71,6 +71,134 @@ factories.factory('authService', ['dewySession', '$rootScope', '$injector', 'ENV
 	return authService;
 }]);
 
+factories.factory('drupalUserFactory', ['$http', 'ENV', function($http, ENV) {
+	var drupalUserFactory = {};
+
+	drupalUserFactory.getAll = function(fid) {
+		return $http.get(ENV.api + 'drupalUsers/_filter/' + fid)
+			.then(function (response) {
+				var arrayOfRankings = [];
+				for (var i in response.data.users) {
+					response.data.users[i].attributes = {
+						emails: response.data.users[i].e,
+						sitesAvailable: response.data.users[i].a,
+						sitesBlocked: response.data.users[i].b,
+						avgCreatedDate: response.data.users[i].c,
+						avgLastAccess: response.data.users[i].l,
+						sitesNotUsed: response.data.users[i].n,
+						roles: response.data.users[i].r,
+						nodesAuthored: response.data.users[i].d
+					}
+
+					var ranking = [];
+					for (var j in response.data.users[i].attributes) {
+						ranking.push(response.data.users[i].attributes[j]);
+					}
+					arrayOfRankings.push(ranking);
+				}
+
+				if (arrayOfRankings.length) {
+					var length = arrayOfRankings[0].length,
+					    rankedArray = Array.apply(null, { length: arrayOfRankings.length }).map(function () { return []; }),
+					    temp, i;
+
+					// For each attribute ...
+					for (i = 0; i < length; i++) {
+					    temp = [];
+					    // ... create a temporary array of values (v) to module index (i)
+					    arrayOfRankings.forEach(function (a, j) {
+					        temp.push({ v: a[i], i: j });
+					    });
+
+					    // Sort temporary array by value (v) 
+					    // This gives us each module ranked in order of value size
+					    temp.sort(function (a, b) {
+					        return a.v - b.v;
+					    });
+
+					    // Get minimum and maximum value for attribute
+					    var minimum = temp[0].v;
+					    var maximum = temp[temp.length-1].v;
+					    var increment = (maximum - minimum) / 9;
+
+					    // Instead of leaving in value ranges of some randomly huge number to 1 (which will skew results)
+					    // Normalize to scale 1 out of 10
+					    temp.forEach(function (a, j) {
+					    	if (!increment) {
+								rankedArray[a.i][i] = 1;
+							}
+							else {
+								rankedArray[a.i][i] = ((temp[j].v - minimum) / increment) + 1;
+								// rankedArray[a.i][i] = Math.log(((temp[j].v - minimum) / increment) + 1);
+							}
+					    });
+					}
+
+                    // 0 emails
+                    // 1 sitesAvailable
+                    // 2 sitesBlocked
+                    // 3 avgCreatedDate
+                    // 4 avgLastAccess
+                    // 5 sitesNotUsed
+                    // 6 roles
+                    // 7 nodesAuthored
+
+					for (var i in rankedArray) {
+						response.data.users[i].attributes['accessibility'] = rankedArray[i][1];
+						response.data.users[i].attributes['privilege'] = rankedArray[i][6];
+						response.data.users[i].attributes['activity'] = rankedArray[i][7] + rankedArray[i][4] + (response.data.users[i].attributes.sitesNotUsed / response.data.users[i].attributes.sitesAvailable) * -10;
+						response.data.users[i].attributes['restriction'] = (response.data.users[i].attributes.sitesBlocked / response.data.users[i].attributes.sitesAvailable) * -1;
+					}
+
+					// Loop through all sites and determine absolute values of attributes
+					var attributes = {'accessibility': [], 'privilege': [], 'activity': [], 'restriction': []};
+
+					for (var i in response.data.users) {
+						for (var attribute in attributes) {
+							if (attributes[attribute]['maximum'] == null) {
+								attributes[attribute]['maximum'] = response.data.users[i].attributes[attribute];
+							} else if (attributes[attribute]['maximum'] < response.data.users[i].attributes[attribute]) {
+								attributes[attribute]['maximum'] = response.data.users[i].attributes[attribute];
+							}
+							if (attributes[attribute]['minimum'] == null) {
+								attributes[attribute]['minimum'] = response.data.users[i].attributes[attribute];
+							} else if (attributes[attribute]['minimum'] > response.data.users[i].attributes[attribute]) {
+								attributes[attribute]['minimum'] = response.data.users[i].attributes[attribute];
+							}
+						}
+					}
+
+					// Determine how much value is in a dot from range of attribute values
+					for (var attribute in attributes) {
+						attributes[attribute]['increment'] = (attributes[attribute]['maximum'] - attributes[attribute]['minimum']) / 9;
+					}
+
+					// Set normalized values
+					for (var i in response.data.users) {
+						for (var attribute in attributes) {
+							if (!attributes[attribute]['increment']) {
+								response.data.users[i][attribute] = 10;
+							} 
+							else {
+								response.data.users[i][attribute] = ((response.data.users[i].attributes[attribute] - attributes[attribute]['minimum']) / attributes[attribute]['increment']) + 1;
+							}
+						}
+					}
+				}
+				return response.data;
+			});
+	}
+
+	drupalUserFactory.getDetails = function(drupalUser, fid) {
+		return $http.get(ENV.api + 'drupalUsers/' + drupalUser + '/' + fid)
+			.then(function (response) {
+				return response.data;
+			});
+	}
+
+	return drupalUserFactory;
+}]);
+
 factories.factory('filterFactory', ['$http', 'ENV', function($http, ENV) {
 	var filterFactory = {};
 
@@ -287,6 +415,124 @@ factories.factory('projectFactory', ['$http', 'ENV', function($http, ENV) {
 	}
 
 	return projectFactory;
+}]);
+
+factories.factory('drupalRoleFactory', ['$http', 'ENV', function($http, ENV) {
+	var drupalRoleFactory = {};
+
+	drupalRoleFactory.getAll = function(fid) {
+		return $http.get(ENV.api + 'drupalRoles/_filter/' + fid)
+			.then(function (response) {
+				var arrayOfRankings = [];
+				for (var i in response.data.roles) {
+					response.data.roles[i].attributes = {
+						sitesAvailable: response.data.roles[i].a,
+						sitesInUse: response.data.roles[i].i,
+						users: response.data.roles[i].u
+					}
+
+					var ranking = [];
+					for (var j in response.data.roles[i].attributes) {
+						ranking.push(response.data.roles[i].attributes[j]);
+					}
+					arrayOfRankings.push(ranking);
+				}
+
+				if (arrayOfRankings.length) {
+					var length = arrayOfRankings[0].length,
+					    rankedArray = Array.apply(null, { length: arrayOfRankings.length }).map(function () { return []; }),
+					    temp, i;
+
+					// For each attribute ...
+					for (i = 0; i < length; i++) {
+					    temp = [];
+					    // ... create a temporary array of values (v) to module index (i)
+					    arrayOfRankings.forEach(function (a, j) {
+					        temp.push({ v: a[i], i: j });
+					    });
+
+					    // Sort temporary array by value (v) 
+					    // This gives us each module ranked in order of value size
+					    temp.sort(function (a, b) {
+					        return a.v - b.v;
+					    });
+
+					    // Get minimum and maximum value for attribute
+					    var minimum = temp[0].v;
+					    var maximum = temp[temp.length-1].v;
+					    var increment = (maximum - minimum) / 9;
+
+					    // Instead of leaving in value ranges of some randomly huge number to 1 (which will skew results)
+					    // Normalize to scale 1 out of 10
+					    temp.forEach(function (a, j) {
+					    	if (!increment) {
+								rankedArray[a.i][i] = 1;
+							}
+							else {
+								rankedArray[a.i][i] = ((temp[j].v - minimum) / increment) + 1;
+								// rankedArray[a.i][i] = Math.log(((temp[j].v - minimum) / increment) + 1);
+							}
+					    });
+					}
+
+					// 0 sitesAvailable
+					// 1 sitesInUse
+					// 2 users
+
+					for (var i in rankedArray) {
+						response.data.roles[i].attributes['availability'] = rankedArray[i][0];
+						response.data.roles[i].attributes['utilization'] = rankedArray[i][1];
+						response.data.roles[i].attributes['size'] = rankedArray[i][2];
+						response.data.roles[i].attributes['uniformity'] = 0;
+					}
+
+					// Loop through all sites and determine absolute values of attributes
+					var attributes = {'availability': [], 'utilization': [], 'size': [], 'uniformity': []};
+
+					for (var i in response.data.roles) {
+						for (var attribute in attributes) {
+							if (attributes[attribute]['maximum'] == null) {
+								attributes[attribute]['maximum'] = response.data.roles[i].attributes[attribute];
+							} else if (attributes[attribute]['maximum'] < response.data.roles[i].attributes[attribute]) {
+								attributes[attribute]['maximum'] = response.data.roles[i].attributes[attribute];
+							}
+							if (attributes[attribute]['minimum'] == null) {
+								attributes[attribute]['minimum'] = response.data.roles[i].attributes[attribute];
+							} else if (attributes[attribute]['minimum'] > response.data.roles[i].attributes[attribute]) {
+								attributes[attribute]['minimum'] = response.data.roles[i].attributes[attribute];
+							}
+						}
+					}
+
+					// Determine how much value is in a dot from range of attribute values
+					for (var attribute in attributes) {
+						attributes[attribute]['increment'] = (attributes[attribute]['maximum'] - attributes[attribute]['minimum']) / 9;
+					}
+
+					// Set normalized values
+					for (var i in response.data.roles) {
+						for (var attribute in attributes) {
+							if (!attributes[attribute]['increment']) {
+								response.data.roles[i][attribute] = 10;
+							} 
+							else {
+								response.data.roles[i][attribute] = ((response.data.roles[i].attributes[attribute] - attributes[attribute]['minimum']) / attributes[attribute]['increment']) + 1;
+							}
+						}
+					}
+				}
+				return response.data;
+			});
+	}
+
+	drupalRoleFactory.getDetails = function(role, fid) {
+		return $http.get(ENV.api + 'drupalRoles/' + role + '/' + fid)
+			.then(function (response) {
+				return response.data;
+			});
+	}
+
+	return drupalRoleFactory;
 }]);
 
 factories.factory('sitesFactory', ['$http', 'ENV', function($http, ENV) {

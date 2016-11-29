@@ -24,13 +24,13 @@ layout: compress
                 <li class="title" ng-class="{open: openModule.m == module.m&& openModule.detail == 'meta'}"><a href="" ng-click="openDetails(moduleData.modules.indexOf(module), 'meta')"><span class="title">{(module.m)}</span></a></li>
                 <ul class="variables">
                     <li class="availability" ng-class="{open: openModule.m == module.m&& openModule.detail == 'availability'}">
-                        <a href="" ng-click="openDetails(moduleData.modules.indexOf(module), 'availability')"><div class="point" ng-repeat="i in getNumber(module.availability) track by $index"></div></a>
+                        <a href="" ng-click="openDetails(moduleData.modules.indexOf(module), 'availability')"><div class="point" ng-repeat="i in getFloor(module.availability) track by $index"></div></a>
                     </li>
                     <li class="utilization" ng-class="{open: openModule.m == module.m&& openModule.detail == 'utilization'}">
-                        <a href="" ng-click="openDetails(moduleData.modules.indexOf(module), 'utilization')"><div class="point" ng-repeat="i in getNumber(module.utilization) track by $index"></div></a>
+                        <a href="" ng-click="openDetails(moduleData.modules.indexOf(module), 'utilization')"><div class="point" ng-repeat="i in getFloor(module.utilization) track by $index"></div></a>
                     </li>
                     <li class="uniformity opinionated-{(getFloor(module.uniformity).length)}" ng-class="{open: openModule.m == module.m&& openModule.detail == 'uniformity'}">
-                        <a href="" ng-click="openDetails(moduleData.modules.indexOf(module), 'uniformity')"><div class="point" ng-repeat="i in getNumber(module.uniformity) track by $index"></div></a>
+                        <a href="" ng-click="openDetails(moduleData.modules.indexOf(module), 'uniformity')"><div class="point" ng-repeat="i in getFloor(module.uniformity) track by $index"></div></a>
                     </li>
                     <li class="health opinionated-{(getFloor(module.health).length)}" ng-class="{open: openModule.m == module.m&& openModule.detail == 'health'}">
                         <a href="" ng-click="openDetails(moduleData.modules.indexOf(module), 'health')"><div class="point" ng-repeat="i in getFloor(module.health) track by $index"></div></a>
@@ -67,7 +67,7 @@ layout: compress
                         <h3><ng-pluralize count="{(openModule.attributes.versions)}" when="{'0': 'No versions on your sites', '1': '1 version on your sites', 'other': '{} versions on your sites'}"></ng-pluralize></h3>
                     </li>
                     <li ng-repeat="(item, value) in openModule.details.v | orderBy">
-                        <h3><ng-pluralize count="{(value.length)}" when="{'0': 'No sites', '1': '1 site', 'other': '{} sites'}"></ng-pluralize> using version {(item)}</h3>
+                        <h3><ng-pluralize count="{(value.length)}" when="{'0': 'No sites', '1': '1 site', 'other': '{} sites'}"></ng-pluralize> using version <a href="https://www.drupal.org/project/{(module.details.p)}/releases/{(item)}" target="_blank">{(item)}</a></h3>
                         <ul class="items" ng-if="value.length">
                             <li ng-repeat="item in value | orderBy">{(item)}</li>
                         </ul>

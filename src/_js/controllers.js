@@ -590,9 +590,6 @@ controllers.controller('overviewController', ['$scope', '$location', 'sitesFacto
 		$scope.getFloor = function(number) {
 			return new Array(Math.floor(number));
 		}
-		$scope.getNumber = function(number) {
-			return new Array(Math.round(number));
-		}
 		$scope.openFolder = function(index) {
 			$scope.folders[index] = !$scope.folders[index];
 			sessionStorage.folders = JSON.stringify($scope.folders);
@@ -616,7 +613,12 @@ controllers.controller('overviewController', ['$scope', '$location', 'sitesFacto
 			$scope.viewPage = 'templates/overview_modules.html';
 		}
 		else if ($scope.view == 'users') {
+			$scope.userData = data.userData;
 			$scope.viewPage = 'templates/overview_users.html';
+		}
+		else if ($scope.view == 'roles') {
+			$scope.roleData = data.roleData;
+			$scope.viewPage = 'templates/overview_roles.html';
 		}
 		else if ($scope.view == 'content') {
 			$scope.viewPage = 'templates/overview_content.html';
@@ -767,8 +769,90 @@ controllers.controller('overviewSitesController', ['$scope', 'sitesFactory',
 		};
 }]);
 
-controllers.controller('overviewUsersController', ['$scope',
-	function ($scope) {
+controllers.controller('overviewUsersController', ['$scope', 'drupalUserFactory',
+	function ($scope, drupalUserFactory) {
+		$scope.changeSorting = function(column) {
+			var sort = $scope.sort;
+
+			if (sort.column == column) {
+				sort.descending = !sort.descending;
+			} else {
+				sort.column = column;
+				sort.descending = false;
+			}
+		}
+		$scope.openDetails = function(index, detail) {
+			// If the user is already open to that same user and view, close the view
+			if ($scope.openUser && $scope.openUser.index == index && $scope.openUser.detail == detail) {
+				$scope.openUser = null;
+			}
+			else {
+				// If details haven't been already loaded for the site, go grab the site details
+				if (!('details' in $scope.userData.users[index])) {
+					if ($scope.currentFilter) {
+						var fid = $scope.currentFilter.fid;
+					}
+					drupalUserFactory.getDetails($scope.userData.users[index].u, fid).then(function(details) {
+						$scope.userData.users[index].details = details;
+						$scope.openUser = $scope.userData.users[index];
+						$scope.openUser.detail = detail;
+						$scope.openUser.index = index;
+					});
+				} else {
+					$scope.openUser = $scope.userData.users[index];
+					$scope.openUser.detail = detail;
+					$scope.openUser.index = index;
+				}
+			}
+		}
+		
+		$scope.sort = {
+			column: 'm',
+			descending: false
+		};
+}]);
+
+controllers.controller('overviewRolesController', ['$scope', 'drupalRoleFactory',
+	function ($scope, drupalRoleFactory) {
+		$scope.changeSorting = function(column) {
+			var sort = $scope.sort;
+
+			if (sort.column == column) {
+				sort.descending = !sort.descending;
+			} else {
+				sort.column = column;
+				sort.descending = false;
+			}
+		}
+		$scope.openDetails = function(index, detail) {
+			// If the user is already open to that same user and view, close the view
+			if ($scope.openRole && $scope.openRole.index == index && $scope.openRole.detail == detail) {
+				$scope.openRole = null;
+			}
+			else {
+				// If details haven't been already loaded for the site, go grab the site details
+				if (!('details' in $scope.roleData.roles[index])) {
+					if ($scope.currentFilter) {
+						var fid = $scope.currentFilter.fid;
+					}
+					drupalRoleFactory.getDetails($scope.roleData.roles[index].r, fid).then(function(details) {
+						$scope.roleData.roles[index].details = details;
+						$scope.openRole = $scope.roleData.roles[index];
+						$scope.openRole.detail = detail;
+						$scope.openRole.index = index;
+					});
+				} else {
+					$scope.openRole = $scope.roleData.roles[index];
+					$scope.openRole.detail = detail;
+					$scope.openRole.index = index;
+				}
+			}
+		}
+		
+		$scope.sort = {
+			column: 'm',
+			descending: false
+		};
 }]);
 
 controllers.controller('subscriptionController', ['$scope', '$timeout', '$rootScope', 'userFactory', 'authService', 'ENV', 'customer',

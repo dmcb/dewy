@@ -4,7 +4,7 @@ title: Dewy
 url: https://dewy.io
 description: Take back Drupal with Dewy, a service that lets you know what your Drupal sites are doing at your higher-ed institution, multi-site organization or digital agency.
 shortDescription: A service that lets you know what your Drupal sites are doing at your higher-ed institution, multi-site organization or digital agency.
-moduleURL: /module/dewy-7.x-1.0-beta1.tar.gz
+moduleURL: /module/dewy-7.x-1.0-beta2.tar.gz
 defaults:
   - scope:
       path: ""

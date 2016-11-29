@@ -1,0 +1,78 @@
+---
+layout: compress
+---
+<div class="content" ng-controller="overviewRolesController">
+    <div class="header">
+        <ul class="site">
+            <li class="title"><a href="" ng-class="{selected: sort.column=='m', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('m')">{(filteredRoles.length)} roles</a></li>
+            <ul class="variables">
+                <li class="availability"><a href="" ng-class="{selected: sort.column=='availability', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('availability')">Availability</a></li>
+                <li class="utilization"><a href="" ng-class="{selected: sort.column=='utilization', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('utilization')">Utilization</a></li>
+                <li class="size"><a href="" ng-class="{selected: sort.column=='size', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('size')">Size</a></li>
+<!--                 <li class="uniformity"><a href="" ng-class="{selected: sort.column=='uniformity', desc: sort.descending, asc: !sort.descending}" ng-click="changeSorting('uniformity')">Uniformity</a></li> -->
+            </ul>
+        </ul>
+    </div>
+    <div class="sites">
+        <div ng-if="!filteredRoles.length" class="noresults">
+            <span ng-if="!query && !currentFilter"><i class="fa fa-exclamation-triangle"></i> You haven't added any sites with roles to Dewy. <a href="/manage">Manage your sites.</a></span>
+            <span ng-if="!query && currentFilter"><i class="fa fa-exclamation-triangle"></i> No sites meet your filter criteria. <a href="/filter/{(currentFilter.fid)}">Edit your filter.</a></span>            
+            <span ng-if="query"><i class="fa fa-exclamation-triangle"></i> Your search returned no results.</span>
+        </div>
+        <div ng-repeat="role in filteredRoles = (roleData.roles | filter:query) | orderBy:sort.column:sort.descending" class="site">
+            <ul class="site">
+                <li class="title" ng-class="{open: openRole.r == role.r&& openRole.detail == 'meta'}"><a href="" ng-click="openDetails(roleData.roles.indexOf(role), 'meta')"><span class="title">{(role.r)}</span></a></li>
+                <ul class="variables">
+                    <li class="availability" ng-class="{open: openRole.r == role.r&& openRole.detail == 'availability'}">
+                        <a href="" ng-click="openDetails(roleData.roles.indexOf(role), 'availability')"><div class="point" ng-repeat="i in getFloor(role.availability) track by $index"></div></a>
+                    </li>
+                    <li class="utilization" ng-class="{open: openRole.r == role.r&& openRole.detail == 'utilization'}">
+                        <a href="" ng-click="openDetails(roleData.roles.indexOf(role), 'utilization')"><div class="point" ng-repeat="i in getFloor(role.utilization) track by $index"></div></a>
+                    </li>
+                    <li class="size" ng-class="{open: openRole.r == role.r&& openRole.detail == 'size'}">
+                        <a href="" ng-click="openDetails(roleData.roles.indexOf(role), 'size')"><div class="point" ng-repeat="i in getFloor(role.size) track by $index"></div></a>
+                    </li>
+<!--                     <li class="uniformity opinionated-{(getFloor(role.uniformity).length)}" ng-class="{open: openRole.r == role.r&& openRole.detail == 'uniformity'}">
+                        <a href="" ng-click="openDetails(roleData.roles.indexOf(role), 'uniformity')"><div class="point" ng-repeat="i in getFloor(role.uniformity) track by $index"></div></a>
+                    </li> -->
+                </ul>
+            </ul>
+            <div class="detail-view" ng-if="openRole.r == role.r">
+                <ul ng-if="openRole.detail == 'meta'">
+                    <li>
+
+                    </li>
+                </ul>
+                <ul ng-if="openRole.detail == 'availability'">
+                    <li>
+                        <h3><ng-pluralize count="{(openRole.attributes.sitesAvailable)}" when="{'0': 'No sites have this role available', '1': '1 site has this role available', 'other': '{} sites have this role available'}"></ng-pluralize></h3>
+                        <ul class="items" ng-if="openRole.details.a.length">
+                            <li ng-repeat="item in openRole.details.a | orderBy">{(item)}</li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul ng-if="openRole.detail == 'utilization'">
+                    <li>
+                        <h3><ng-pluralize count="{(openRole.attributes.sitesInUse)}" when="{'0': 'No sites are using this role', '1': '1 site is using this role', 'other': '{} sites are using this role'}"></ng-pluralize> (out of {(openRole.attributes.sitesAvailable)} where the role is available)</h3>
+                        <ul class="items" ng-if="openRole.details.i.length">
+                            <li ng-repeat="item in openRole.details.i | orderBy">{(item)}</li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul ng-if="openRole.detail == 'size'">
+                    <li>
+                        <h3><ng-pluralize count="{(openRole.attributes.users)}" when="{'0': 'No users with this role on your sites', '1': '1 user with this role on your sites', 'other': '{} users with this role on your sites'}"></ng-pluralize></h3>
+                        <ul class="items" ng-if="openRole.details.u.length">
+                            <li ng-repeat="item in openRole.details.u | orderBy">{(item)}</li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul ng-if="openRole.detail == 'uniformity'">
+                    <li>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
