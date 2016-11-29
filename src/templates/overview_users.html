@@ -85,25 +85,25 @@ layout: compress
                         </ul>
                     </li>
                     <li ng-if="openUser.details.d['10'].length">
-                        <h3><ng-pluralize count="{(openUser.details.d['10'].length)}" when="{'0': 'No sites with 10-100 nodes authored', '10': '1 site with 10-100 nodes authored', 'other': '{} sites with 10-100 nodes authored'}"></ng-pluralize></h3>
+                        <h3><ng-pluralize count="{(openUser.details.d['10'].length)}" when="{'0': 'No sites with 10-100 nodes authored', '1': '1 site with 10-100 nodes authored', 'other': '{} sites with 10-100 nodes authored'}"></ng-pluralize></h3>
                         <ul class="items" ng-if="openUser.details.d['10'].length">
                             <li ng-repeat="item in openUser.details.d['10'] | orderBy">{(item)}</li>
                         </ul>
                     </li>
                     <li ng-if="openUser.details.d['100'].length">
-                        <h3><ng-pluralize count="{(openUser.details.d['100'].length)}" when="{'0': 'No sites with 100-1000 nodes authored', '100': '1 site with 100-1000 nodes authored', 'other': '{} sites with 100-1000 nodes authored'}"></ng-pluralize></h3>
+                        <h3><ng-pluralize count="{(openUser.details.d['100'].length)}" when="{'0': 'No sites with 100-1000 nodes authored', '1': '1 site with 100-1000 nodes authored', 'other': '{} sites with 100-1000 nodes authored'}"></ng-pluralize></h3>
                         <ul class="items" ng-if="openUser.details.d['100'].length">
                             <li ng-repeat="item in openUser.details.d['100'] | orderBy">{(item)}</li>
                         </ul>
                     </li>
                     <li ng-if="openUser.details.d['1000'].length">
-                        <h3><ng-pluralize count="{(openUser.details.d['1000'].length)}" when="{'0': 'No sites with 1000-10000 nodes authored', '1000': '1 site with 1000-10000 nodes authored', 'other': '{} sites with 1000-10000 nodes authored'}"></ng-pluralize></h3>
+                        <h3><ng-pluralize count="{(openUser.details.d['1000'].length)}" when="{'0': 'No sites with 1000-10000 nodes authored', '1': '1 site with 1000-10000 nodes authored', 'other': '{} sites with 1000-10000 nodes authored'}"></ng-pluralize></h3>
                         <ul class="items" ng-if="openUser.details.d['1000'].length">
                             <li ng-repeat="item in openUser.details.d['1000'] | orderBy">{(item)}</li>
                         </ul>
                     </li>
                     <li ng-if="openUser.details.d['10000'].length">
-                        <h3><ng-pluralize count="{(openUser.details.d['10000'].length)}" when="{'0': 'No sites with greater than 10000 nodes authored', '10000': '1 site with greater than 10000 nodes authored', 'other': '{} sites with greater than 10000 nodes authored'}"></ng-pluralize></h3>
+                        <h3><ng-pluralize count="{(openUser.details.d['10000'].length)}" when="{'0': 'No sites with greater than 10000 nodes authored', '1': '1 site with greater than 10000 nodes authored', 'other': '{} sites with greater than 10000 nodes authored'}"></ng-pluralize></h3>
                         <ul class="items" ng-if="openUser.details.d['10000'].length">
                             <li ng-repeat="item in openUser.details.d['10000'] | orderBy">{(item)}</li>
                         </ul>
