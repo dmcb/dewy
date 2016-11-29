@@ -72,6 +72,42 @@ layout: compress
                     <li>
                         <h3><ng-pluralize count="{(openUser.attributes.nodesAuthored)}" when="{'0': 'No nodes authored on your sites', '1': '1 node authored on your sites', 'other': '{} nodes authored on your sites'}"></ng-pluralize></h3>
                     </li>
+                    <li ng-if="openUser.details.d['0'].length">
+                        <h3><ng-pluralize count="{(openUser.details.d['0'].length)}" when="{'0': 'No sites with no nodes authored', '1': '1 site with no nodes authored', 'other': '{} sites with no nodes authored'}"></ng-pluralize></h3>
+                        <ul class="items" ng-if="openUser.details.d['0'].length">
+                            <li ng-repeat="item in openUser.details.d['0'] | orderBy">{(item)}</li>
+                        </ul>
+                    </li>
+                    <li ng-if="openUser.details.d['1'].length">
+                        <h3><ng-pluralize count="{(openUser.details.d['1'].length)}" when="{'0': 'No sites with 1-10 nodes authored', '1': '1 site with 1-10 nodes authored', 'other': '{} sites with 1-10 nodes authored'}"></ng-pluralize></h3>
+                        <ul class="items" ng-if="openUser.details.d['1'].length">
+                            <li ng-repeat="item in openUser.details.d['1'] | orderBy">{(item)}</li>
+                        </ul>
+                    </li>
+                    <li ng-if="openUser.details.d['10'].length">
+                        <h3><ng-pluralize count="{(openUser.details.d['10'].length)}" when="{'0': 'No sites with 10-100 nodes authored', '10': '1 site with 10-100 nodes authored', 'other': '{} sites with 10-100 nodes authored'}"></ng-pluralize></h3>
+                        <ul class="items" ng-if="openUser.details.d['10'].length">
+                            <li ng-repeat="item in openUser.details.d['10'] | orderBy">{(item)}</li>
+                        </ul>
+                    </li>
+                    <li ng-if="openUser.details.d['100'].length">
+                        <h3><ng-pluralize count="{(openUser.details.d['100'].length)}" when="{'0': 'No sites with 100-1000 nodes authored', '100': '1 site with 100-1000 nodes authored', 'other': '{} sites with 100-1000 nodes authored'}"></ng-pluralize></h3>
+                        <ul class="items" ng-if="openUser.details.d['100'].length">
+                            <li ng-repeat="item in openUser.details.d['100'] | orderBy">{(item)}</li>
+                        </ul>
+                    </li>
+                    <li ng-if="openUser.details.d['1000'].length">
+                        <h3><ng-pluralize count="{(openUser.details.d['1000'].length)}" when="{'0': 'No sites with 1000-10000 nodes authored', '1000': '1 site with 1000-10000 nodes authored', 'other': '{} sites with 1000-10000 nodes authored'}"></ng-pluralize></h3>
+                        <ul class="items" ng-if="openUser.details.d['1000'].length">
+                            <li ng-repeat="item in openUser.details.d['1000'] | orderBy">{(item)}</li>
+                        </ul>
+                    </li>
+                    <li ng-if="openUser.details.d['10000'].length">
+                        <h3><ng-pluralize count="{(openUser.details.d['10000'].length)}" when="{'0': 'No sites with greater than 10000 nodes authored', '10000': '1 site with greater than 10000 nodes authored', 'other': '{} sites with greater than 10000 nodes authored'}"></ng-pluralize></h3>
+                        <ul class="items" ng-if="openUser.details.d['10000'].length">
+                            <li ng-repeat="item in openUser.details.d['10000'] | orderBy">{(item)}</li>
+                        </ul>
+                    </li>
                     <li ng-if="openUser.attributes.avgLastAccess != 0">
                         <h3>Average last site log in was <span am-time-ago="openUser.attributes.avgLastAccess * 1000" class="number"></span></h3>
                     </li>
