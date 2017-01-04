@@ -610,6 +610,7 @@ controllers.controller('overviewController', ['$scope', '$location', 'sitesFacto
 		}
 		else if ($scope.view == 'modules') {
 			$scope.moduleData = data.moduleData;
+			$scope.projects = projects;
 			$scope.viewPage = 'templates/overview_modules.html';
 		}
 		else if ($scope.view == 'users') {
@@ -667,6 +668,14 @@ controllers.controller('overviewModulesController', ['$scope', 'moduleFactory',
 			} else {
 				sort.column = column;
 				sort.descending = false;
+			}
+		}
+		$scope.getProjectDetail = function(projectIndex, detail) {
+			if ($scope.projects[projectIndex]) {
+				return $scope.projects[projectIndex][detail];
+			}
+			else {
+				return 'Unknown';
 			}
 		}
 		$scope.openDetails = function(index, detail) {
@@ -737,8 +746,13 @@ controllers.controller('overviewSitesController', ['$scope', 'sitesFactory',
 			$scope.sites[siteIndex].tags = $scope.openSite.tags;
 			sitesFactory.setTags($scope.openSite);
 		}
-		$scope.getProject = function(projectIndex) {
-			return $scope.projects[projectIndex + '-' + $scope.openSite.details.core.major];
+		$scope.getProjectDetail = function(projectIndex, detail) {
+			if ($scope.projects[projectIndex]) {
+				return $scope.projects[projectIndex][detail];
+			}
+			else {
+				return 'Unknown';
+			}
 		}
 		$scope.openDetails = function(index, detail) {
 			// If the site is already open to that same site and view, close the view

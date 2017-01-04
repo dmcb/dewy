@@ -42,6 +42,12 @@ layout: compress
                     <li ng-if="module.details.p">
                         <h3>Module is part of project <a href="https://www.drupal.org/project/{(module.details.p)}" target="_blank">{(module.details.p)}</a></h3>
                     </li>
+                    <li ng-if="module.details.p">
+                        <h3>Maintenance status: {(getProjectDetail(module.details.p + '-' + module.details.c, 'maintenanceStatus'))}</h3>
+                    </li>
+                    <li ng-if="module.details.p">
+                        <h3>Development status: {(getProjectDetail(module.details.p + '-' + module.details.c, 'developmentStatus'))}</h3>
+                    </li>
                     <li ng-if="!module.details.p">
                         <h3>Module is not a part of any Drupal.org registered project</a></h3>
                     </li>
