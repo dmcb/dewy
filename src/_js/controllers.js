@@ -38,15 +38,14 @@ controllers.controller('accountController', ['$scope', '$timeout', '$rootScope',
 		$scope.submitNotifications = function(uid) {
 			userFactory.changeNotifications(uid, $scope.notifications)
 			.success(function(userDoc) {
-				$scope.notificationsForm.error = null;
 				authService.setUser(userDoc);
 				$scope.$emit('flashMessage', {content: 'Notification preferences updated', type: 'message'});
 			})
 			.error(function(error, status) {
 				if (status != '400') {
-					$scope.notificationsForm.error = {error: 'Dewy could not update your notifications preference at this time.'};
+					$scope.$emit('flashMessage', {content: 'Dewy could not update your notifications preference at this time', type: 'error'});
 				} else {
-					$scope.notificationsForm.error = error;
+					$scope.$emit('flashMessage', {content: error, type: 'error'});
 				}
 			});
 		}
@@ -60,9 +59,9 @@ controllers.controller('accountController', ['$scope', '$timeout', '$rootScope',
 				})
 				.error(function(error, status) {
 					if (status != '400') {
-						$scope.profileForm.error.username = 'Dewy could not update your profile at this time.';
+						$scope.$emit('flashMessage', {content: 'Dewy could not update your notifications preference at this time', type: 'error'});
 					} else {
-						$scope.profileForm.error.username = error;
+						$scope.$emit('flashMessage', {content: error, type: 'error'});
 					}
 				});
 			}
@@ -73,9 +72,15 @@ controllers.controller('accountController', ['$scope', '$timeout', '$rootScope',
 				$scope.$emit('flashMessage', {content: 'Verification email sent', type: 'message'});
 			});
 		}
-		$scope.notifications = $scope.currentUser.notifications;
-		if ($scope.notifications != 'all' && $scope.notifications != 'security') {
-			$scope.notifications = 'none';
+		$scope.notifications = {
+			version: $scope.currentUser.notifications.version,
+			status: $scope.currentUser.notifications.status
+		}
+		if ($scope.notifications.version != 'all' && $scope.notifications.version != 'security') {
+			$scope.notifications.version = 'none';
+		}
+		if ($scope.notifications.status != 'all') {
+			$scope.notifications.status = 'none';
 		}
 }]);
 

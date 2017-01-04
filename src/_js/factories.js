@@ -770,9 +770,10 @@ factories.factory('userFactory', ['$http', '$httpParamSerializer', 'ENV', functi
 		return $http.put(ENV.api + 'users/' + uid, post);
 	}
 
-	userFactory.changeNotifications = function(uid, notifications) {
+	userFactory.changeNotifications = function(uid, notifications, notificationType) {
 		var update = {
-			notifications: notifications
+			notifications: notifications,
+			notificationType: notificationType
 		}
 		return $http.put(ENV.api + 'users/' + uid, update);
 	}
